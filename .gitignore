@@ -1,0 +1,44 @@
+# Local/system files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+id_rsa
+id_dsa
+id_ecdsa
+id_ed25519
+
+# Database dumps and backups
+*.sql
+*.sqlite
+*.sqlite3
+*.bak
+*.backup
+*.old
+*.orig
+
+# Dependencies/build cache
+node_modules/
+vendor/
+.cache/
+dist/
+build/
+
+# Temporary/source design files
+*.tmp
+*.raw
+*.psd
+*.ai
+*.sketch
+*.fig
+
+# Heavy content excluded from GitHub deploy
+images/izrazcy-360/

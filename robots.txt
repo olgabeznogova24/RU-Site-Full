@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+Disallow: /images/_originals/
+
+Sitemap: https://ceramicadecor.ru/sitemap.xml
+
+# Yandex
+User-agent: Yandex
+Allow: /
+Disallow: /images/_originals/
+Clean-param: utm_source&utm_medium&utm_campaign&utm_content&utm_term&fbclid&gclid

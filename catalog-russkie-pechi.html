@@ -1,0 +1,2603 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Русские печи — CeramicaDecor</title>
+  <meta name="description" content="Более 50 моделей каминов и барбекю в керамической облицовке. Собственное производство, ручная работа, доставка по всей России.">
+  <link rel="canonical" href="https://ceramicadecor.ru/catalog-russkie-pechi.html">
+  <meta name="keywords" content="каталог каминов, барбекю комплекс, изразцы купить, камины Россия, облицовка камина">
+  <meta property="og:title" content="Каталог каминов и барбекю — CeramicaDecor | Доставка по России">
+  <meta property="og:description" content="Более 50 моделей каминов и барбекю в керамической облицовке. Собственное производство, ручная работа, доставка по всей России.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:image" content="images/kamin_card.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+    <meta property="og:url" content="https://ceramicadecor.ru/catalog-russkie-pechi.html">
+<meta property="og:site_name" content="CeramicaDecor">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.cdnfonts.com/css/tt-ramillas-trl" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* ===== CATALOG PAGE HERO ===== */
+    .catalog-hero {
+      padding: 160px 0 140px;
+      text-align: center;
+      position: relative;
+      background: url('images/banner-kaminy_desktop.jpg') center 20%/cover no-repeat;
+      margin-bottom: -60px;
+      min-height: 460px;
+      box-sizing: border-box;
+      overflow: hidden;
+    }
+    @supports (background-image: url('x.webp')) {
+      .catalog-hero {
+        background-image: url('images/banner-kaminy_desktop.webp');
+      }
+      .catalog-hero--bbq {
+        background-image: url('images/banner-bbk_desktop.webp');
+      }
+    }
+    .catalog-hero--bbq {
+      background-image: url('images/banner-bbk_desktop.jpg');
+      background-position: center 20%;
+    }
+    @media (max-width: 768px) {
+      .catalog-hero { background-image: url('images/banner-kaminy_mobile.jpg'); }
+      .catalog-hero--bbq { background-image: url('images/banner-bbk_mobile.jpg'); }
+    }
+    @supports (background-image: url('x.webp')) {
+      @media (max-width: 768px) {
+        .catalog-hero { background-image: url('images/banner-kaminy_mobile.webp'); }
+        .catalog-hero--bbq { background-image: url('images/banner-bbk_mobile.webp'); }
+      }
+    }
+    .catalog-hero__bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+    .catalog-hero__bg img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      object-position: center 40%;
+    }
+    .catalog-hero__overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background: rgba(16,16,16,0.65);
+    }
+    .catalog-hero__content {
+      position: relative;
+      z-index: 2;
+    }
+    .catalog-hero__title {
+      font-family: 'TT Ramillas Trl', serif;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 400;
+      color: #fff;
+      margin: 0 0 16px;
+      letter-spacing: -0.02em;
+    }
+    .catalog-hero__subtitle {
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      color: rgba(255,255,255,0.6);
+      font-weight: 300;
+      margin: 0;
+      text-wrap: balance;
+    }
+    @media (min-width: 769px) {
+      .catalog-hero { height: 460px; }
+    }
+    @media (max-width: 768px) {
+      .catalog-hero__subtitle br { display: none; }
+    }
+
+    /* ===== CATALOG FILTER TABS ===== */
+    .catalog-filters {
+      padding: 108px 0 48px;
+    }
+    .catalog-filters__tabs-wrap {
+      position: relative;
+      max-width: 100%;
+    }
+    .catalog-filters__tabs-wrap::before,
+    .catalog-filters__tabs-wrap::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 96px;
+      pointer-events: none;
+      opacity: 1;
+      transition: opacity 0.2s ease;
+    }
+    .catalog-filters__tabs-wrap::before {
+      left: 0;
+      background: linear-gradient(to left, rgba(16,16,16,0), #101010 70%);
+    }
+    .catalog-filters__tabs-wrap::after {
+      right: 0;
+      background: linear-gradient(to right, rgba(16,16,16,0), #101010 70%);
+    }
+    .catalog-filters__tabs-wrap.is-start::before,
+    .catalog-filters__tabs-wrap.is-end::after {
+      opacity: 0;
+    }
+    .catalog-filters__tabs {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      padding: 4px 54px 4px 0;
+      justify-content: flex-start;
+      flex-wrap: nowrap;
+      scroll-behavior: smooth;
+    }
+    .catalog-filters__tabs::-webkit-scrollbar {
+      display: none;
+    }
+    .catalog-filters__scroll {
+      position: absolute;
+      top: 50%;
+      z-index: 2;
+      width: 42px;
+      height: 42px;
+      transform: translateY(-50%);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.18);
+      background: #cb3b25;
+      color: #fff;
+      cursor: pointer;
+      transition: background 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+    }
+    .catalog-filters__scroll[hidden] {
+      display: none;
+    }
+    .catalog-filters__scroll--prev {
+      left: 0;
+    }
+    .catalog-filters__scroll--next {
+      right: 0;
+    }
+    .catalog-filters__scroll:hover {
+      background: #b5321f;
+      border-color: rgba(255,255,255,0.28);
+    }
+    .catalog-filters__scroll--prev:hover {
+      transform: translateY(-50%) translateX(-2px);
+    }
+    .catalog-filters__scroll--next:hover {
+      transform: translateY(-50%) translateX(2px);
+    }
+    .catalog-filters__scroll svg {
+      width: 18px;
+      height: 18px;
+    }
+    .catalog-filters__tab {
+      display: inline-flex;
+      align-items: center;
+      padding: 10px 24px;
+      border-radius: 100px;
+      border: 1px solid rgba(255,255,255,0.15);
+      background: transparent;
+      color: rgba(255,255,255,0.7);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 400;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      white-space: nowrap;
+      text-decoration: none;
+    }
+    .catalog-filters__tab:hover {
+      border-color: rgba(255,255,255,0.35);
+      color: #fff;
+    }
+    .catalog-filters__tab--active {
+      background: #cb3b25;
+      border-color: #cb3b25;
+      color: #fff;
+    }
+
+    /* ===== PRODUCT GRID ===== */
+    .catalog-grid {
+      padding: 0 0 100px;
+    }
+    .catalog-grid__inner {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 32px;
+    }
+
+    /* ===== PRODUCT CARD ===== */
+    .product-card {
+      background: rgba(255,255,255,0.04);
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.08);
+      transition: transform 0.3s ease, border-color 0.3s ease;
+      cursor: pointer;
+    }
+    @media (min-width: 769px) {
+      .product-card {
+        display: flex;
+        flex-direction: column;
+      }
+      .product-card__body {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+      }
+      .product-card__actions {
+        margin-top: auto;
+      }
+    }
+    .product-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(255,255,255,0.15);
+    }
+    .product-card.hidden {
+      display: none;
+    }
+    .product-card__slider {
+      position: relative;
+      aspect-ratio: 4/3;
+      overflow: hidden;
+      border-radius: 12px;
+      margin: 12px 12px 0;
+    }
+    .product-card__slider img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 12px;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+    .product-card__slider--contain img {
+      object-fit: contain;
+      background: #111;
+    }
+    .product-card__slider--vertical img {
+      object-fit: contain;
+      background: #111;
+    }
+    .product-card__slider img.active {
+      opacity: 1;
+    }
+    /* Card arrows */
+    .product-card__arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: rgba(0,0,0,0.5);
+      border: none;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 2;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      font-size: 14px;
+      line-height: 1;
+      padding: 0;
+    }
+    .product-card:hover .product-card__arrow {
+      opacity: 1;
+    }
+    .product-card__arrow:hover {
+      background: rgba(0,0,0,0.75);
+    }
+    .product-card__arrow--prev { left: 8px; }
+    .product-card__arrow--next { right: 8px; }
+    /* Card dots */
+    .product-card__dots {
+      position: absolute;
+      bottom: 8px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 5px;
+      z-index: 2;
+    }
+    .product-card__dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.4);
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    .product-card__dot.active {
+      background: #fff;
+    }
+    .product-card__body {
+      padding: 20px 20px 24px;
+    }
+    .product-card__name {
+      font-family: 'TT Ramillas Trl', serif;
+      font-size: 1.35rem;
+      font-weight: 400;
+      color: #fff;
+      margin: 0 0 6px;
+      letter-spacing: -0.01em;
+    }
+    .product-card__collection {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.4);
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin: 0 0 10px;
+    }
+    .product-card__desc {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.55);
+      font-weight: 300;
+      line-height: 1.5;
+      margin: 0 0 16px;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .product-card__price {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 500;
+      color: #cb3b25;
+      margin: 0 0 6px;
+    }
+    .product-card__price--turnkey {
+      color: rgba(255,255,255,0.7);
+      font-size: 0.95rem;
+      margin: 0 0 20px;
+    }
+    .product-card__actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .product-card__btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      border-radius: 100px;
+      border: 1px solid rgba(255,255,255,0.2);
+      background: transparent;
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 400;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    .product-card__btn:hover {
+      background: rgba(255,255,255,0.08);
+      border-color: rgba(255,255,255,0.3);
+    }
+    .product-card__btn--details {
+      background: none;
+      border: none;
+      padding: 0;
+      color: rgba(255,255,255,0.7);
+      font-size: 0.82rem;
+      font-weight: 400;
+      text-decoration: underline;
+      gap: 4px;
+      flex-basis: 100%;
+      align-self: flex-start;
+    }
+    .product-card__btn--details:hover {
+      background: none;
+      border: none;
+      color: #fff;
+    }
+    /* ===== CARD REVIEW BLOCK ===== */
+    .product-card__review {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 20px 20px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: opacity 0.2s ease;
+    }
+    .product-card__review:hover {
+      opacity: 0.85;
+    }
+    .product-card__review-thumb {
+      position: relative;
+      width: 56px;
+      height: 40px;
+      border-radius: 6px;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .product-card__review-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .product-card__review-thumb::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.25);
+    }
+    .product-card__review-thumb .play-icon {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 1;
+      width: 16px;
+      height: 16px;
+      border: none;
+      background: none;
+    }
+    .product-card__review-text {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.4;
+    }
+    .product-card__review-label {
+      color: rgba(255,255,255,0.7);
+      font-weight: 500;
+      font-size: 0.8rem;
+    }
+
+    /* ===== MODAL REVIEWS SECTION ===== */
+    .product-modal__reviews {
+      padding: 40px 0 0;
+      margin-top: 8px;
+    }
+    .product-modal__reviews h3 {
+      font-family: 'TT Ramillas Trl', serif;
+      font-size: 1.3rem;
+      font-weight: 400;
+      color: #fff;
+      margin: 0 0 20px;
+    }
+    .product-modal__reviews-grid {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .product-modal__review-item {
+      position: relative;
+      width: 280px;
+      border-radius: 12px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+      text-decoration: none;
+      display: block;
+    }
+    .product-modal__review-item:hover {
+      transform: translateY(-3px);
+    }
+    .product-modal__review-item img {
+      width: 100%;
+      aspect-ratio: 16/9;
+      object-fit: cover;
+      display: block;
+    }
+    .product-modal__review-item::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.3);
+      transition: background 0.2s ease;
+    }
+    .product-modal__review-item:hover::after {
+      background: rgba(0,0,0,0.15);
+    }
+    .product-modal__review-play {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 1;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: rgba(203,59,37,0.9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .product-modal__review-play svg {
+      width: 20px;
+      height: 20px;
+      margin-left: 2px;
+    }
+    .product-modal__review-name {
+      padding: 10px 12px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.4;
+      background: rgba(255,255,255,0.04);
+    }
+    @media (max-width: 768px) {
+      .product-modal__review-item {
+        width: 100%;
+      }
+    }
+
+    .product-card__btn--request {
+      background: #cb3b25;
+      border-color: #cb3b25;
+      color: #fff;
+    }
+    .product-card__btn--request:hover {
+      background: #b5321f;
+      border-color: #b5321f;
+    }
+    .product-card__btn svg {
+      flex-shrink: 0;
+    }
+
+    /* ===== VK VIDEO MODAL ===== */
+    .vk-video-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 10001;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+    .vk-video-modal.active { display: flex; }
+    .vk-video-modal__backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.88);
+    }
+    .vk-video-modal__box {
+      position: relative;
+      z-index: 1;
+      width: 90vw;
+      max-width: 960px;
+    }
+    .vk-video-modal__close {
+      position: absolute;
+      top: -44px;
+      right: 0;
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 36px;
+      line-height: 1;
+      cursor: pointer;
+      padding: 4px 8px;
+      opacity: 0.8;
+    }
+    .vk-video-modal__close:hover { opacity: 1; }
+    .vk-video-modal__player {
+      position: relative;
+      padding-bottom: 56.25%;
+      background: #000;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .vk-video-modal__player iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* ===== REQUEST MODAL ===== */
+    .request-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 10002;
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      align-items: center;
+      justify-content: center;
+    }
+    .request-modal.open {
+      display: flex;
+    }
+    .request-modal__box {
+      background: #1a1a1a;
+      border-radius: 20px;
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 40px;
+      max-width: 440px;
+      width: 90%;
+      position: relative;
+    }
+    .request-modal__close {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.1);
+      border: none;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 1.2rem;
+      transition: background 0.3s ease;
+    }
+    .request-modal__close:hover {
+      background: #cb3b25;
+    }
+    .request-modal__title {
+      font-family: 'TT Ramillas Trl', serif;
+      font-size: 1.5rem;
+      color: #fff;
+      margin: 0 0 8px;
+    }
+    .request-modal__product {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.5);
+      margin: 0 0 24px;
+    }
+    .request-modal__field {
+      margin-bottom: 16px;
+    }
+    .request-modal__field label {
+      display: block;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 6px;
+    }
+    .request-modal__field input,
+    .request-modal__field textarea {
+      width: 100%;
+      padding: 12px 16px;
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,0.15);
+      background: rgba(255,255,255,0.06);
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color 0.3s ease;
+      box-sizing: border-box;
+    }
+    .request-modal__field input:focus,
+    .request-modal__field textarea:focus {
+      border-color: #cb3b25;
+    }
+    .request-modal__field textarea {
+      resize: vertical;
+      min-height: 70px;
+    }
+    .request-modal__submit {
+      width: 100%;
+      padding: 14px;
+      border-radius: 100px;
+      background: #cb3b25;
+      border: none;
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.2s ease;
+      margin-top: 8px;
+    }
+    .request-modal__submit:hover {
+      background: #b5321f;
+      transform: translateY(-2px);
+    }
+    .request-modal__success {
+      text-align: center;
+      padding: 20px 0;
+    }
+    .request-modal__success-icon {
+      font-size: 3rem;
+      margin-bottom: 16px;
+      display: block;
+    }
+    .request-modal__success-text {
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      color: rgba(255,255,255,0.8);
+      line-height: 1.6;
+    }
+
+    /* ===== PRODUCT MODAL ===== */
+    .product-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 10000;
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      overflow-y: auto;
+      overscroll-behavior: contain;
+    }
+    .product-modal.open {
+      display: block;
+    }
+    .product-modal__inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 40px 40px 80px;
+      min-height: 100vh;
+    }
+    .product-modal__close {
+      position: fixed;
+      top: 20px;
+      right: 24px;
+      z-index: 10001;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 1.5rem;
+      line-height: 1;
+    }
+    .product-modal__close:hover {
+      background: #cb3b25;
+      border-color: #cb3b25;
+    }
+    .product-modal__header {
+      padding-top: 60px;
+      margin-bottom: 32px;
+    }
+    .product-modal__title {
+      font-family: 'TT Ramillas Trl', serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 400;
+      color: #fff;
+      margin: 0 0 8px;
+      letter-spacing: -0.02em;
+    }
+    .product-modal__subtitle {
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      color: rgba(255,255,255,0.5);
+      font-weight: 300;
+      margin: 0;
+    }
+
+    /* Gallery */
+    .product-modal__gallery {
+      margin-bottom: 40px;
+    }
+    .product-modal__main-img {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16/10;
+      border-radius: 16px;
+      overflow: hidden;
+      margin-bottom: 12px;
+      background: rgba(255,255,255,0.04);
+    }
+    .product-modal__main-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 0.15s ease;
+    }
+    .product-modal__main-img img.active {
+      opacity: 1;
+      position: relative;
+    }
+    /* Modal arrows */
+    .product-modal__arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(0,0,0,0.5);
+      border: 1px solid rgba(255,255,255,0.15);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 2;
+      transition: all 0.3s ease;
+      font-size: 18px;
+      line-height: 1;
+      padding: 0;
+    }
+    .product-modal__arrow:hover {
+      background: rgba(0,0,0,0.8);
+      border-color: rgba(255,255,255,0.3);
+    }
+    .product-modal__arrow--prev { left: 12px; }
+    .product-modal__arrow--next { right: 12px; }
+    .product-modal__counter {
+      position: absolute;
+      bottom: 12px;
+      right: 12px;
+      background: rgba(0,0,0,0.6);
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8rem;
+      padding: 4px 10px;
+      border-radius: 100px;
+      z-index: 2;
+    }
+    .product-modal__thumbs {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding: 4px 0;
+    }
+    .product-modal__thumbs::-webkit-scrollbar {
+      display: none;
+    }
+    .product-modal__thumb {
+      flex: 0 0 auto;
+      width: 120px;
+      height: 80px;
+      border-radius: 8px;
+      overflow: hidden;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: border-color 0.15s ease, opacity 0.15s ease;
+      opacity: 0.6;
+    }
+    .product-modal__thumb:hover,
+    .product-modal__thumb--active {
+      opacity: 1;
+      border-color: #cb3b25;
+    }
+    .product-modal__thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Info */
+    .product-modal__info {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 16px;
+    }
+    .product-modal__description h3 {
+      font-family: 'TT Ramillas Trl', serif;
+      font-size: 1.3rem;
+      font-weight: 400;
+      color: #fff;
+      margin: 0 0 16px;
+    }
+    .product-modal__description p {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.7);
+      font-weight: 300;
+      line-height: 1.7;
+      margin: 0 0 12px;
+    }
+    .product-modal__specs h3 {
+      font-family: 'TT Ramillas Trl', serif;
+      font-size: 1.3rem;
+      font-weight: 400;
+      color: #fff;
+      margin: 0 0 16px;
+    }
+    .product-modal__specs-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .product-modal__specs-list li {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.6);
+      font-weight: 300;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .product-modal__specs-list li span:last-child {
+      color: #fff;
+      font-weight: 400;
+      text-align: right;
+    }
+
+    /* Price & Actions */
+    .product-modal__bottom {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+      padding: 32px 0;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+    .product-modal__prices {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+      align-items: flex-start;
+    }
+    .product-modal__actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .product-modal__promo {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.5);
+      font-weight: 300;
+      flex-basis: 100%;
+      margin: 0;
+      line-height: 1.5;
+    }
+    .product-modal__price {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: #cb3b25;
+    }
+    .product-modal__price-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.4);
+      font-weight: 300;
+      margin-top: 2px;
+    }
+    .product-modal__request-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 32px;
+      border-radius: 100px;
+      background: #cb3b25;
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+    }
+    .product-modal__request-btn:hover {
+      background: #a82e1a;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .catalog-hero {
+        padding: 130px 0 50px;
+        min-height: 480px;
+      }
+      .catalog-hero__content { padding: 0 20px; }
+      .catalog-hero__title { font-size: clamp(2rem, 5vw, 4rem); }
+      .catalog-filters__tabs {
+        padding: 4px 54px 4px 0;
+      }
+      .catalog-grid__inner {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      .product-modal__inner {
+        padding: 20px 16px 60px;
+      }
+      .product-modal__info {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+      .product-modal__close {
+        top: 12px;
+        right: 12px;
+        width: 40px;
+        height: 40px;
+      }
+      .product-modal__header {
+        padding-top: 48px;
+      }
+      .product-modal__thumbs {
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: wrap !important;
+      }
+      .product-modal__thumb {
+        flex: 0 0 auto;
+        width: 80px;
+        height: 56px;
+      }
+      .product-modal__arrow {
+        width: 36px;
+        height: 36px;
+        font-size: 16px;
+      }
+      .product-card__arrow {
+        opacity: 0.7;
+      }
+      .product-modal__bottom {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+      }
+    }
+    @media (max-width: 480px) {
+      .catalog-filters__tabs {
+        gap: 6px;
+        padding: 4px 50px 4px 0;
+      }
+      .catalog-filters__tabs-wrap::before,
+      .catalog-filters__tabs-wrap::after { width: 78px; }
+      .catalog-filters__scroll { width: 38px; height: 38px; }
+      .catalog-filters__tab {
+        padding: 7px 12px;
+        font-size: 0.78rem;
+      }
+      .product-card__actions {
+        flex-direction: column;
+      }
+      .product-card__btn {
+        justify-content: center;
+      }
+      .request-modal__box {
+        padding: 28px 20px;
+        margin: 16px;
+      }
+    }
+  </style>
+  <!-- Яндекс.Метрика — TODO: вставить код счётчика -->
+  <!-- Яндекс.Вебмастер — TODO: вставить мета-тег верификации -->
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="header" id="header">
+    <div class="container header__inner">
+      <a href="index.html" class="header__logo">
+        <img src="images/logo.png" alt="CeramicaDecor" class="header__logo-img">
+      </a>
+      <nav class="header__nav" id="mainNav">
+        <ul class="header__nav-list">
+          <li class="header__nav-dropdown">
+            <a href="catalog-izrazcy.html" class="header__nav-link" aria-haspopup="true" aria-expanded="false">Каталог</a>
+            <ul class="header__dropdown-menu">
+              <li><a href="catalog-izrazcy.html">Весь каталог</a></li>
+              <li><a href="glaze-palette.html">Палитра глазурей</a></li>
+              <li><a href="catalog-izrazcy.html">Изразцы</a></li>
+              <li><a href="catalog-kaminy.html">Камины</a></li>
+              <li><a href="catalog-biokaminy.html">Биокамины</a></li>
+              <li><a href="catalog-elektrokaminy.html">Электрокамины</a></li>
+              <li><a href="catalog-pech-kaminy.html">Печь-камины</a></li>
+              <li><a href="catalog-mramornye-kaminy-portaly.html">Мраморные камины и порталы</a></li>
+              <li><a href="catalog-russkie-pechi.html">Русские печи</a></li>
+              <li><a href="catalog-otopitelnye-pechi.html">Отопительные печи</a></li>
+              <li><a href="catalog-barbekyu-kompleksy.html">Барбекю комплексы</a></li>
+              <li><a href="catalog-bannye-pechi.html">Банные печи</a></li>
+              <li><a href="catalog-bannye-portaly.html">Банные порталы</a></li>
+              <li><a href="catalog-seriynye-modeli.html">Серийные модели</a></li>
+              <li><a href="catalog-fasadnaya-keramika.html">Фасадная керамика</a></li>
+              <li><a href="catalog-interernaya-keramika.html">Интерьерная керамика</a></li>
+              <li><a href="catalog-suvenirnaya-produkciya.html">Сувенирная продукция</a></li>
+            </ul>
+          </li>
+          <li><a href="restoration.html" class="header__nav-link">Реставрация</a></li>
+          <li><a href="components.html" class="header__nav-link">Комплектующие</a></li>
+          <li><a href="cooperation.html" class="header__nav-link">Сотрудничество</a></li>
+          <li><a href="about.html" class="header__nav-link">О компании</a></li>
+          <li><a href="contacts.html" class="header__nav-link">Контакты</a></li>
+        </ul>
+        <a href="tel:+74952293046" class="header__nav-phone-link">+7 (495) 229-30-46</a>
+        <a href="mailto:info@ceramicadecor.ru" class="header__nav-phone-link">info@ceramicadecor.ru</a>
+        <div class="header__nav-item--search"><a href="#" class="header__nav-link" id="searchBtnMobile"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg> Поиск</a></div>
+      </nav>
+      <div class="header__actions">
+        <button class="header__search-btn" id="searchBtn" aria-label="Поиск"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></button>
+        <a href="tel:+74952293046" class="header__phone-desktop">+7 (495) 229-30-46</a>
+        <button class="header__burger" id="burgerBtn" aria-label="Меню">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== CATALOG HERO ===== -->
+  <section class="catalog-hero">
+    <div class="catalog-hero__bg">
+      <picture>
+        <source srcset="images/banner-kaminy_desktop.webp" type="image/webp">
+        <img src="images/banner-kaminy_desktop.jpg" alt="Каталог CeramicaDecor" loading="eager" fetchpriority="high" decoding="async">
+      </picture>
+    </div>
+    <div class="catalog-hero__overlay"></div>
+    <div class="catalog-hero__content">
+      <h1 class="catalog-hero__title">Русские печи</h1>
+      <p class="catalog-hero__subtitle">Русские печи с керамической облицовкой и ручной отделкой</p>
+    </div>
+  </section>
+
+  <!-- ===== CATEGORY FILTER TABS ===== -->
+  <section class="catalog-filters">
+    <div class="container">
+      <div class="catalog-filters__tabs-wrap is-start">
+        <div class="catalog-filters__tabs" id="catalogTabs">
+        <a href="catalog-izrazcy.html" class="catalog-filters__tab" data-category="izrazcy">Изразцы</a>
+        <a href="catalog-kaminy.html" class="catalog-filters__tab" data-category="kaminy">Камины</a>
+        <a href="catalog-biokaminy.html" class="catalog-filters__tab" data-category="biokaminy">Биокамины</a>
+        <a href="catalog-elektrokaminy.html" class="catalog-filters__tab" data-category="elektrokaminy">Электрокамины</a>
+        <a href="catalog-pech-kaminy.html" class="catalog-filters__tab" data-category="pech-kaminy">Печь-камины</a>
+        <a href="catalog-mramornye-kaminy-portaly.html" class="catalog-filters__tab" data-category="mramornye-kaminy-portaly">Мраморные камины и порталы</a>
+        <a href="catalog-russkie-pechi.html" class="catalog-filters__tab" data-category="russkie-pechi">Русские печи</a>
+        <a href="catalog-otopitelnye-pechi.html" class="catalog-filters__tab" data-category="otopitelnye-pechi">Отопительные печи</a>
+        <a href="catalog-barbekyu-kompleksy.html" class="catalog-filters__tab" data-category="barbekyu-kompleksy">Барбекю комплексы</a>
+        <a href="catalog-bannye-pechi.html" class="catalog-filters__tab" data-category="bannye-pechi">Банные печи</a>
+        <a href="catalog-bannye-portaly.html" class="catalog-filters__tab" data-category="bannye-portaly">Банные порталы</a>
+        <a href="catalog-seriynye-modeli.html" class="catalog-filters__tab" data-category="seriynye-modeli">Серийные модели</a>
+        <a href="catalog-fasadnaya-keramika.html" class="catalog-filters__tab" data-category="fasadnaya-keramika">Фасадная керамика</a>
+        <a href="catalog-interernaya-keramika.html" class="catalog-filters__tab" data-category="interernaya-keramika">Интерьерная керамика</a>
+        <a href="catalog-suvenirnaya-produkciya.html" class="catalog-filters__tab" data-category="suvenirnaya-produkciya">Сувенирная продукция</a>
+        </div>
+        <button class="catalog-filters__scroll catalog-filters__scroll--prev" type="button" id="catalogTabsScrollPrev" aria-label="Прокрутить разделы каталога влево" hidden>
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 5l-7 7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <button class="catalog-filters__scroll catalog-filters__scroll--next" type="button" id="catalogTabsScroll" aria-label="Прокрутить разделы каталога вправо">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PRODUCT GRID ===== -->
+  <section class="catalog-grid">
+    <div class="container">
+      <div class="catalog-grid__inner" id="catalogGrid">
+        <!-- Cards rendered by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== REQUEST MODAL ===== -->
+  <div class="request-modal" id="requestModal">
+    <div class="request-modal__box">
+      <button class="request-modal__close" id="requestModalClose">&times;</button>
+      <div id="requestModalBody">
+        <h3 class="request-modal__title">Оставить заявку</h3>
+        <p class="request-modal__product" id="requestProductName"></p>
+        <form id="requestForm">
+          <div class="request-modal__field">
+            <label for="requestName">Ваше имя</label>
+            <input type="text" id="requestName" placeholder="Как к вам обращаться?" required>
+          </div>
+          <div class="request-modal__field">
+            <label for="requestPhone">Телефон</label>
+            <input type="tel" id="requestPhone" placeholder="+7 (___) ___-__-__" required>
+          </div>
+          <div class="request-modal__field">
+            <label for="requestMessage">Комментарий (необязательно)</label>
+            <textarea id="requestMessage" placeholder="Ваши пожелания или вопросы"></textarea>
+          </div>
+          <label class="consent-label">
+            <input type="checkbox" class="consent-checkbox" required>
+            <span>Я даю согласие на обработку персональных данных в соответствии с <a href="privacy.html" target="_blank">политикой конфиденциальности</a></span>
+          </label>
+          <button type="submit" class="request-modal__submit">Отправить заявку</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== PRODUCT MODAL ===== -->
+  <div class="product-modal" id="productModal">
+    <button class="product-modal__close" id="modalClose">&times;</button>
+    <div class="product-modal__inner" id="modalContent">
+      <!-- Filled by JS -->
+    </div>
+  </div>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer" id="footer">
+    <div class="footer__glow"></div>
+    <div class="container">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <a href="index.html" class="footer__logo">
+            <img src="images/logo.png" alt="CeramicaDecor" class="footer__logo-img">
+          </a>
+          <p class="footer__tagline">Керамические премиальные облицовки.<br>14+ лет, своё производство, монтаж.<br>Под ключ по России и СНГ</p>
+        </div>
+                <div class="footer__columns">
+          <div class="footer__col">
+            <h4 class="footer__col-title" style="font-size:16px;font-weight:700;color:#fff;">Каталог</h4>
+            <ul class="footer__col-list">
+              <li><a href="glaze-palette.html">Палитра глазурей</a></li>
+              <li><a href="catalog-izrazcy.html">Изразцы</a></li>
+              <li><a href="catalog-kaminy.html">Камины</a></li>
+              <li><a href="catalog-barbekyu-kompleksy.html">Барбекю комплексы</a></li>
+            </ul>
+          </div>
+          <div class="footer__col">
+            <ul class="footer__col-list footer__col-list--offset">
+              <li><a href="cooperation.html" style="color:#fff;font-size:16px;font-weight:500;">Сотрудничество</a></li>
+              <li><a href="about.html" style="color:#fff;font-size:16px;font-weight:500;">О компании</a></li>
+              <li><a href="contacts.html" style="color:#fff;font-size:16px;font-weight:500;">Контакты</a></li>
+              <li><a href="tel:+74952293046" style="font-weight:700;">+7 (495) 229-30-46</a></li>
+              <li><a href="mailto:info@ceramicadecor.ru" style="font-weight:700;">info@ceramicadecor.ru</a></li>
+              <li style="margin-top: 0.75em;"><a href="contacts.html" class="btn btn--primary" style="padding:9px 20px;font-size:13px;color:#fff;">Оставить заявку</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p class="footer__copy">&copy; 2013&ndash;2026 CeramicaDecor. Все права защищены.</p>
+        <p class="footer__org-info">ООО «АРТ КЕРАМИКА» &middot; ИНН&nbsp;5018178964 &middot; ОГРН&nbsp;1155018002150 &middot; 141068, Московская обл., г.&nbsp;Королев, ул.&nbsp;Силикатная, д.&nbsp;74, пом.&nbsp;204</p>
+        <div class="footer__legal">
+          <a href="privacy.html" target="_blank">Политика конфиденциальности</a>
+          <a href="terms.html" target="_blank">Пользовательское соглашение</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- VK VIDEO MODAL (must be before inline script so getElementById works) -->
+  <div id="vkVideoModal" class="vk-video-modal">
+    <div class="vk-video-modal__backdrop"></div>
+    <div class="vk-video-modal__box">
+      <button class="vk-video-modal__close" aria-label="Закрыть">&times;</button>
+      <div class="vk-video-modal__player" id="vkVideoPlayer"></div>
+    </div>
+  </div>
+
+  <script src="script.js" defer></script>
+  <script>
+  window.CATALOG_DEFAULT_CATEGORY = 'russkie-pechi';
+  (function() {
+    'use strict';
+
+    var ARROW_SVG = '<svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+    var PLAY_SVG = '<svg class="play-icon" viewBox="0 0 16 16" fill="#fff"><path d="M5 3l8 5-8 5V3z"/></svg>';
+
+    /* ===== REVIEW MAP (collection keyword → vk video ID + thumb + label) ===== */
+    var reviewMap = {
+      'дорф': { vk: 'video-178201211_456239596', thumb: 'video_thumb_dorf_client.jpg', label: 'Отзыв клиента о камине Дорф' },
+      'альбион': { vk: 'video-178201211_456239511', thumb: 'video_thumb_albion_designer.jpg', label: 'Отзыв дизайнера о камине Альбион' },
+      'арт нуво': { vk: 'video-178201211_456239559', thumb: 'video_thumb_artnouvo_designer.jpg', label: 'Отзыв дизайнера интерьера' },
+      'бристоль': { vk: 'video-178201211_456239074', thumb: 'video_thumb_bristol_client.jpg', label: 'Отзыв клиента о камине Бристоль' },
+      'универсал': { vk: 'video-178201211_456239193', thumb: 'video_thumb_universal_client.jpg', label: 'Отзыв заказчицы о камине Универсал' },
+      'тюльпан': { vk: 'video-178201211_456239167', thumb: 'video_thumb_tulip_client.jpg', label: 'Отзыв заказчицы о камине Тюльпан' }
+    };
+
+    function getReview(productName) {
+      var nameLower = productName.toLowerCase();
+      var keys = Object.keys(reviewMap);
+      for (var i = 0; i < keys.length; i++) {
+        if (nameLower.indexOf(keys[i]) !== -1) return reviewMap[keys[i]];
+      }
+      return null;
+    }
+
+    /* ===== PRODUCT DATA ===== */
+    var products = [
+      // === КАМИНЫ ===
+      {
+        id: 'kamin-albion',
+        cat: 'kaminy',
+        name: 'Камин Альбион',
+        collection: 'Коллекция Альбион',
+        desc: 'Классический белый камин Альбион с топкой LISEO CASTIRON',
+        price: '767 994',
+        priceTurnkey: '1 350 000',
+        fullDesc: 'Классический белый камин Альбион с топкой LISEO CASTIRON. Изразцовая облицовка ручной работы в белоснежной цветовой гамме создаёт элегантный и утончённый образ. Камин гармонично вписывается в классические и неоклассические интерьеры.',
+        specs: {
+          'Производитель': 'CeramicaDecor',
+          'Артикул': '2882',
+          'Вес облицовки': '217.8 кг',
+          'Ширина': '1325 мм',
+          'Высота': '2535 мм',
+          'Глубина': '700 мм',
+          'Топка': 'LISEO CASTIRON'
+        },
+        images: ['kamin_albion_new_1.jpg','kamin_albion_new_2.jpg','kamin_albion_new_3.jpg','kamin_albion_new_4.jpg','kamin_albion_new_5.jpg','kamin_albion_new_6.jpg']
+      },
+      {
+        id: 'kamin-albion-bio',
+        cat: 'kaminy',
+        name: 'Биокамин Альбион',
+        collection: 'Коллекция Альбион',
+        desc: 'Облицовка биокамина изразцами Альбион в майоликовой глазури',
+        price: '722 464',
+        priceTurnkey: '1 355 786',
+        fullDesc: 'Облицовка биокамина изразцами Альбион в майоликовой глазури. Уникальный проект, сочетающий современный биокамин с традиционной изразцовой облицовкой. Майоликовая глазурь придаёт поверхности особый блеск и глубину цвета.',
+        specs: {
+          'Производитель': 'CeramicaDecor',
+          'Тип': 'Биокамин',
+          'Глазурь': 'Майоликовая'
+        },
+        images: ['kamin_albion_bio_new_1.jpg','kamin_albion_bio_new_2.jpg','kamin_albion_bio_new_3.jpg','kamin_albion_bio_new_4.jpg','kamin_albion_bio_new_5.jpg','kamin_albion_bio_new_6.jpg']
+      },
+      {
+        id: 'kamin-artnuvo',
+        cat: 'kaminy',
+        name: 'Камин Арт Нуво',
+        collection: 'Коллекция Арт Нуво',
+        desc: 'Комплект каминной облицовки Арт Нуво в фисташковой декоративной палитре',
+        price: '612 738',
+        priceTurnkey: '1 433 372',
+        fullDesc: 'Комплект каминной облицовки Арт Нуво в фисташковой декоративной палитре. Изящные линии модерна в сочетании с нежными зелёными тонами. Вдохновлён стилем ар-нуво начала XX века.',
+        specs: {
+          'Производитель': 'CeramicaDecor',
+          'Коллекция': 'Арт Нуво',
+          'Палитра': 'Фисташковая'
+        },
+        images: ['kamin_artnuvo_new_1.jpg','kamin_artnuvo_new_2.jpg','kamin_artnuvo_new_3.jpg','kamin_artnuvo_new_4.jpg','kamin_artnuvo_new_5.jpg','kamin_artnuvo_new_6.jpg']
+      },
+      {
+        id: 'kamin-tulpan',
+        cat: 'kaminy',
+        name: 'Камин Тюльпан',
+        collection: 'Коллекция Тюльпан',
+        desc: 'Камин в облицовке Тюльпан с Г-образной топкой Экокамин Альфа 1000 RB',
+        price: '1 095 310',
+        priceTurnkey: '1 850 000',
+        fullDesc: 'Камин в облицовке Тюльпан с Г-образной топкой Экокамин Альфа 1000 RB. Рельефные изразцы с цветочным орнаментом в зелёных тонах. Г-образная топка позволяет наслаждаться видом огня с двух сторон.',
+        specs: {
+          'Производитель': 'CeramicaDecor',
+          'Топка': 'Экокамин Альфа 1000 RB',
+          'Тип топки': 'Г-образная'
+        },
+        images: ['kamin_tulpan_new_1.jpg','kamin_tulpan_new_2.jpg','kamin_tulpan_new_3.jpg','kamin_tulpan_new_4.jpg','kamin_tulpan_new_5.jpg','kamin_tulpan_new_6.jpg']
+      },
+      {
+        id: 'kamin-tulpan-arktika',
+        cat: 'kaminy',
+        name: 'Камин Тюльпан Арктика',
+        collection: 'Коллекция Тюльпан',
+        desc: 'Комплект каминной облицовки Тюльпан в цвете Арктика',
+        price: '793 469',
+        priceTurnkey: '1 150 000',
+        fullDesc: 'Комплект каминной облицовки Тюльпан в цвете Арктика. Белоснежные изразцы с рельефными тюльпанами создают нежный и воздушный образ камина. Идеально подходит для светлых интерьеров.',
+        specs: {
+          'Производитель': 'CeramicaDecor',
+          'Коллекция': 'Тюльпан',
+          'Цвет': 'Арктика'
+        },
+        images: ['kamin_tulpan_arktika_new_1.jpg','kamin_tulpan_arktika_new_2.jpg','kamin_tulpan_arktika_new_3.jpg','kamin_tulpan_arktika_new_4.jpg','kamin_tulpan_arktika_new_5.jpg','kamin_tulpan_arktika_new_6.jpg']
+      },
+      {
+        id: 'kamin-pticy',
+        cat: 'kaminy',
+        name: 'Камин Птицы',
+        collection: 'Коллекция Птицы',
+        desc: 'Изразцовый камин с топкой Астов П2С в облицовке Птицы',
+        price: '1 464 041',
+        priceTurnkey: '2 552 550',
+        fullDesc: 'Изразцовый камин с топкой Астов П2С в облицовке Птицы. Уникальная ручная роспись с изображением птиц в природном окружении. Каждый изразец — это маленькое произведение искусства.',
+        specs: {
+          'Производитель': 'CeramicaDecor',
+          'Коллекция': 'Птицы',
+          'Топка': 'АСТОВ П2С'
+        },
+        images: ['kamin_pticy_new_1.jpg','kamin_pticy_new_2.jpg','kamin_pticy_new_3.jpg','kamin_pticy_new_4.jpg','kamin_pticy_new_5.jpg','kamin_pticy_new_6.jpg']
+      },
+      {
+        id: 'kamin-versal',
+        cat: 'kaminy',
+        name: 'Камин Версаль',
+        collection: 'Коллекция Версаль',
+        desc: 'Изразцовый камин Версаль в цвете Арктическая лагуна',
+        price: '1 001 758',
+        priceTurnkey: '2 084 728',
+        fullDesc: 'Изразцовый камин Версаль в цвете Арктическая лагуна. Роскошная облицовка с детализированным орнаментом в насыщенных лазурных тонах. Вдохновлен интерьерами французских дворцов. Каждый изразец изготовлен вручную.',
+        specs: {
+          'Производитель': 'CeramicaDecor',
+          'Коллекция': 'Версаль',
+          'Цвет': 'Синий'
+        },
+        images: ['kamin_versal_new_1.jpg','kamin_versal_new_2.jpg','kamin_versal_new_3.jpg','kamin_versal_new_4.jpg','kamin_versal_new_5.jpg']
+      },
+      {
+        id: 'kamin-bristol',
+        cat: 'kaminy',
+        name: 'Камин Бристоль',
+        collection: 'Коллекция Бристоль',
+        desc: 'Камин с П-образной топкой в облицовке «Бристоль» в цвете Чёрная ночь',
+        price: '969 760',
+        priceTurnkey: '1 950 000',
+        fullDesc: 'Камин с П-образной топкой в облицовке «Бристоль» в цвете Чёрная ночь. Тёмные изразцы с глубокой глазурью создают драматичный и стильный образ. П-образная топка обеспечивает обзор огня с трёх сторон.',
+        specs: {
+          'Производитель': 'CeramicaDecor',
+          'Коллекция': 'Бристоль',
+          'Цвет': 'Чёрная ночь',
+          'Тип топки': 'П-образная'
+        },
+        images: ['kamin_bristol_new_1.jpg','kamin_bristol_new_2.jpg','kamin_bristol_new_3.jpg','kamin_bristol_new_4.jpg','kamin_bristol_new_5.jpg','kamin_bristol_new_6.jpg']
+      },
+      {
+        id: 'kamin-dorf',
+        cat: 'kaminy',
+        name: 'Камин Дорф',
+        collection: 'Коллекция Дорф',
+        desc: 'Биокамин Дорф с очагом Airtone Andalle 1000',
+        price: '1 800 849',
+        priceTurnkey: '2 650 000',
+        fullDesc: 'Декоративный камин с очагом Airtone Andalle 1000, облицован изразцами коллекции Дорф. Специально разработанный проект для ресторанного интерьера. Масштабная облицовка от пола до потолка создаёт величественный акцент.',
+        specs: {
+          'Производитель': 'CeramicaDecor',
+          'Артикул': '5013',
+          'Вес облицовки': '431.5 кг',
+          'Ширина': '1680 мм',
+          'Высота': '3691 мм',
+          'Глубина': '740 мм',
+          'Очаг': 'Airtone Andalle 1000'
+        },
+        images: ['kamin_dorf_new_1.jpg','kamin_dorf_new_2.jpg','kamin_dorf_new_3.jpg','kamin_dorf_new_4.jpg']
+      },
+      {
+        id: 'kamin-dorf-murav',
+        cat: 'kaminy',
+        name: 'Камин Дорф Муравленый',
+        collection: 'Коллекция Дорф',
+        desc: 'Комплект каминной облицовки Дорф в цвете Муравленый',
+        price: '1 303 647',
+        priceTurnkey: '2 100 000',
+        fullDesc: 'Комплект каминной облицовки Дорф в цвете Муравленый. Изразцы с характерной зеленоватой «муравленой» глазурью — традиционной для русского изразцового искусства. Каждый элемент выполнен вручную.',
+        specs: {
+          'Производитель': 'CeramicaDecor',
+          'Коллекция': 'Дорф',
+          'Цвет': 'Муравленый'
+        },
+        images: ['kamin_dorf_murav_new_1.jpg','kamin_dorf_murav_new_2.jpg','kamin_dorf_murav_new_3.jpg','kamin_dorf_murav_new_4.jpg','kamin_dorf_murav_new_5.jpg','kamin_dorf_murav_new_6.jpg']
+      },
+      {
+        id: 'kamin-vizantiya',
+        cat: 'kaminy',
+        name: 'Камин Византия',
+        collection: 'Коллекция Византия',
+        desc: 'Изразцовый камин Византия в росписи Олива',
+        price: '1 426 640',
+        priceTurnkey: '2 241 366',
+        fullDesc: 'Изразцовый камин Византия в росписи Олива. Богатый орнамент, вдохновлённый византийским искусством, выполнен в тёплых оливковых тонах. Сложная многослойная роспись с золотистыми акцентами.',
+        specs: {
+          'Производитель': 'CeramicaDecor',
+          'Коллекция': 'Византия',
+          'Роспись': 'Олива'
+        },
+        images: ['kamin_vizantiya_1.jpg','kamin_vizantiya_2.jpg','kamin_vizantiya_3.jpg','kamin_vizantiya_4.jpg','kamin_vizantiya_5.jpg','kamin_vizantiya_6.jpg']
+      },
+      {
+        id: 'kamin-rollers',
+        cat: 'kaminy',
+        name: 'Камин Роллерс',
+        collection: 'Коллекция Роллерс',
+        desc: 'Камин с топкой Астов П2С 8457 в облицовке изразцами коллекции Роллерс',
+        price: '1 465 274',
+        priceTurnkey: '2 450 000',
+        fullDesc: 'Камин с топкой Астов П2С 8457 в облицовке изразцами коллекции Роллерс. Современный дизайн с геометрическим рельефом в светлых тонах. Идеальное сочетание классического мастерства и современной эстетики.',
+        specs: {
+          'Производитель': 'CeramicaDecor',
+          'Коллекция': 'Роллерс',
+          'Топка': 'Астов П2С 8457'
+        },
+        images: ['kamin_rollers_new_1.jpg','kamin_rollers_new_2.jpg','kamin_rollers_new_3.jpg','kamin_rollers_new_4.jpg','kamin_rollers_new_5.jpg','kamin_rollers_new_6.jpg']
+      },
+      {
+        id: 'kamin-luna',
+        cat: 'kaminy',
+        name: 'Камин Луна',
+        collection: 'Коллекция Луна',
+        desc: 'Камин в классическом стиле из коллекции Луна с топкой Spartherm Linear 4S Arte',
+        price: '920 251',
+        priceTurnkey: '1 850 000',
+        fullDesc: 'Камин в классическом стиле из коллекции Луна с топкой Spartherm Linear 4S Arte. Элегантные изразцы с лунным орнаментом в сочетании с премиальной немецкой топкой. Утончённый дизайн для изысканных интерьеров.',
+        specs: {
+          'Производитель': 'CeramicaDecor',
+          'Коллекция': 'Луна',
+          'Топка': 'Spartherm Linear 4S Arte'
+        },
+        images: ['kamin_luna_new_1.jpg','kamin_luna_new_2.jpg','kamin_luna_new_3.jpg','kamin_luna_new_4.jpg','kamin_luna_new_5.jpg','kamin_luna_new_6.jpg']
+      },
+      {
+        id: 'kamin-universal',
+        cat: 'kaminy',
+        name: 'Каминный портал Универсал',
+        collection: 'Коллекция Универсал',
+        desc: 'Каминный портал Универсал в цвете Арктика',
+        price: '381 912',
+        priceTurnkey: '950 000',
+        fullDesc: 'Каминный портал Универсал в цвете Арктика. Компактный и элегантный портал, подходящий для различных типов топок. Белоснежная глазурь и лаконичный дизайн делают его универсальным решением.',
+        specs: {
+          'Производитель': 'CeramicaDecor',
+          'Артикул': '1156',
+          'Вес облицовки': '116.8 кг',
+          'Ширина': '1658 мм',
+          'Высота': '1876 мм',
+          'Глубина': '295 мм',
+          'Цвет': 'Арктика'
+        },
+        images: ['kamin_universal_6.jpg','kamin_universal_1.jpg','kamin_universal_2.jpg','kamin_universal_3.jpg','kamin_universal_4.jpg','kamin_universal_5.jpg']
+      },
+      {
+        id: 'kamin-universal-uglov',
+        cat: 'kaminy',
+        name: 'Угловой камин Универсал',
+        collection: 'Коллекция Универсал',
+        desc: 'Облицовка углового камина изразцами Универсал',
+        price: '356 866',
+        priceTurnkey: '950 000',
+        fullDesc: 'Облицовка углового камина изразцами Универсал. Топка с двумя стеклами обепечивает широкий обзор огня. Минималистичные изразцы подчеркнуты глазурью благородного зеленого цвета с разнотоном.',
+        specs: {
+          'Производитель': 'CeramicaDecor',
+          'Артикул': '2548',
+          'Вес облицовки': '108.4 кг',
+          'Ширина': '1348 мм',
+          'Высота': '2022 мм',
+          'Глубина': '751 мм',
+          'Тип': 'Угловой'
+        },
+        images: ['kamin_universal_uglov_1.jpg','kamin_universal_uglov_2.jpg','kamin_universal_uglov_3.jpg','kamin_universal_uglov_4.jpg','kamin_universal_uglov_5.jpg','kamin_universal_uglov_6.jpg']
+      },
+      {
+        id: 'kamin-provans',
+        cat: 'kaminy',
+        name: 'Камин Камея',
+        collection: 'Коллекция Камея',
+        desc: 'Изразцовый камин в коллекции Камея с художественной росписью ручной работы',
+        price: '734 935',
+        priceTurnkey: '1 220 000',
+        fullDesc: 'Изразцовый камин в коллекции Камея с художественной росписью ручной работы. Классический голландский стиль с характерными сине-белыми медальонами. Широкая полочка и продуманный дровник добавляют функциональности и уюта.',
+        specs: {
+          'Производитель': 'CeramicaDecor',
+          'Коллекция': 'Камея',
+          'Особенности': 'Дровник, ручная роспись'
+        },
+        images: ['kamin_kameya_new_1.jpg','kamin_kameya_new_2.jpg','kamin_kameya_new_3.jpg','kamin_kameya_new_4.jpg','kamin_kameya_new_5.jpg','kamin_kameya_new_6.jpg']
+      },
+      {
+        id: 'kamin-bravo',
+        cat: 'kaminy',
+        name: 'Камин Браво',
+        collection: 'Коллекция Браво',
+        desc: 'Камин в облицовке изразцами коллекции Браво с росписью',
+        price: '835 350',
+        priceTurnkey: '1 580 000',
+        fullDesc: 'Камин в облицовке изразцами коллекции Браво с росписью. Яркий и выразительный дизайн с авторской росписью. Каждый камин этой коллекции уникален благодаря ручной работе мастеров.',
+        specs: {
+          'Производитель': 'CeramicaDecor',
+          'Коллекция': 'Браво',
+          'Особенности': 'Авторская роспись'
+        },
+        images: ['kamin_bravo_4.jpg','kamin_bravo_1.jpg','kamin_bravo_2.jpg','kamin_bravo_3.jpg','kamin_bravo_5.jpg','kamin_bravo_6.jpg']
+      },
+      {
+        id: 'kamin-soho',
+        cat: 'kaminy',
+        name: 'Камин Сохо',
+        collection: 'Коллекция Сохо',
+        desc: 'Облицовка камина до полки с дровниками по бокам в коллекции Сохо',
+        price: '1 712 668',
+        priceTurnkey: '2 830 000',
+        fullDesc: 'Облицовка камина до полки с дровниками по бокам в коллекции Сохо. Современный и функциональный дизайн: облицовка доходит до каминной полки, а по бокам расположены дровники. Стильное решение для современных интерьеров.',
+        specs: {
+          'Производитель': 'CeramicaDecor',
+          'Коллекция': 'Сохо',
+          'Особенности': 'Дровники по бокам'
+        },
+        images: ['kamin_soho_new_1.jpg','kamin_soho_new_2.jpg','kamin_soho_new_3.jpg','kamin_soho_new_4.jpg','kamin_soho_new_5.jpg','kamin_soho_new_6.jpg']
+      },
+      {
+        id: 'kamin-usadba',
+        cat: 'kaminy',
+        name: 'Камин Усадьба',
+        collection: 'Коллекция Усадьба',
+        desc: 'Изразцовый камин Усадьба с призматической угловой топкой',
+        price: '875 523',
+        priceTurnkey: '1 470 000',
+        fullDesc: 'Изразцовый камин Усадьба с призматической угловой топкой. Рельефные изразцы ручной формовки в традиционном стиле русской усадьбы. Призматическая топка и практичные полки создают объемную архитектурную композицию камина.',
+        specs: {
+          'Производитель': 'CeramicaDecor',
+          'Коллекция': 'Усадьба',
+          'Тип топки': 'Призматичная угловая',
+          'Особенности': 'Подиумы'
+        },
+        images: ['kamin_usadba_new_1.jpg','kamin_usadba_new_2.jpg','kamin_usadba_new_3.jpg','kamin_usadba_new_4.jpg','kamin_usadba_new_5.jpg','kamin_usadba_new_6.jpg']
+      },
+      {
+        id: 'kamin-ptichki',
+        cat: 'kaminy',
+        name: 'Камин Птички',
+        collection: 'Коллекция Птички',
+        desc: 'Каминная облицовка Птички в декоративной палитре Лесная',
+        price: '808 246',
+        priceTurnkey: '1 450 000',
+        fullDesc: 'Каминная облицовка Птички в декоративной палитре Лесная. Изразцы с миниатюрными птичками среди растительного орнамента в зелёных лесных тонах. Создаёт атмосферу природной гармонии.',
+        specs: {
+          'Производитель': 'CeramicaDecor',
+          'Коллекция': 'Птички',
+          'Палитра': 'Лесная'
+        },
+        images: ['kamin_ptichki_new_1.jpg','kamin_ptichki_new_2.jpg','kamin_ptichki_new_3.jpg','kamin_ptichki_new_4.jpg','kamin_ptichki_new_5.jpg','kamin_ptichki_new_6.jpg']
+      },
+      {
+        id: 'kamin-elegans',
+        cat: 'kaminy',
+        name: 'Камин Элеганс',
+        collection: 'Коллекция Элеганс',
+        desc: 'Комплект каминной облицовки Элеганс в цвете Лесной Туман',
+        price: '949 823',
+        priceTurnkey: '1 945 720',
+        fullDesc: 'Комплект каминной облицовки Элеганс в цвете Лесной Туман. Изысканные изразцы с мягкими приглушёнными тонами, напоминающими утренний туман в лесу. Идеальный выбор для создания спокойной и расслабляющей атмосферы.',
+        specs: {
+          'Производитель': 'CeramicaDecor',
+          'Коллекция': 'Элеганс',
+          'Цвет': 'Лесной Туман'
+        },
+        images: ['kamin_elegans_2.jpg','kamin_elegans_1.jpg','kamin_elegans_3.jpg','kamin_elegans_4.jpg','kamin_elegans_5.jpg','kamin_elegans_6.jpg']
+      },
+      {
+        id: 'kamin-minimalist',
+        cat: 'kaminy',
+        name: 'Камин Минималист',
+        collection: 'Коллекция Минималист',
+        desc: 'Каминная облицовка в стиле минимализм',
+        price: '907 913',
+        priceTurnkey: '1 367 144',
+        fullDesc: 'Каминная облицовка в стиле минимализм. Чистые линии и лаконичные формы без лишнего декора. Идеальный выбор для современных интерьеров, где ценится сдержанность и функциональность.',
+        specs: {
+          'Производитель': 'CeramicaDecor',
+          'Коллекция': 'Минималист',
+          'Стиль': 'Минимализм'
+        },
+        images: ['kamin_minimalist_new_1.jpg','kamin_minimalist_new_2.jpg','kamin_minimalist_new_3.jpg','kamin_minimalist_new_4.jpg']
+      },
+      {
+        id: 'kamin-venskaya',
+        cat: 'kaminy',
+        name: 'Камин Венская',
+        collection: 'Коллекция Венская',
+        desc: 'Электрокамин белого цвета в изразцах коллекции Венская',
+        price: '810 963',
+        priceTurnkey: '1 380 000',
+        fullDesc: 'Электрокамин белого цвета в изразцах коллекции Венская. Элегантная облицовка в венском стиле для электрокамина. Белоснежные изразцы с утончённым рельефом создают роскошный образ без необходимости дымохода.',
+        specs: {
+          'Производитель': 'CeramicaDecor',
+          'Коллекция': 'Венская',
+          'Тип': 'Электрокамин',
+          'Цвет': 'Белый'
+        },
+        images: ['kamin_venskaya_1.jpg','kamin_venskaya_2.jpg','kamin_venskaya_3.jpg','kamin_venskaya_4.jpg','kamin_venskaya_5.jpg','kamin_venskaya_6.jpg']
+      },
+      {
+        id: 'kamin-dorf-brunner',
+        cat: 'kaminy',
+        name: 'Камин Венская с топкой Brunner',
+        collection: 'Коллекция Венская',
+        desc: 'Классический камин в облицовке коллекции Венская с топкой Brunner',
+        price: '2 100 676',
+        priceTurnkey: '3 130 000',
+        fullDesc: 'Классический камин в облицовке коллекции Венская с топкой Brunner. Премиальный проект: изразцовая облицовка с росписью ручной работы в сочетании с одной из лучших немецких топок. Полностью индивидуальный дизайн по проекту заказчика.',
+        specs: {
+          'Производитель': 'CeramicaDecor',
+          'Артикул': '6282',
+          'Ширина': '1618 мм',
+          'Высота': '3566 мм',
+          'Глубина': '708 мм',
+          'Топка': 'BRUNNER STIL-KAMIN CLASSIC'
+        },
+        images: ['kamin_venskaya_brunner_new2_1.jpg','kamin_venskaya_brunner_new2_2.jpg','kamin_venskaya_brunner_new2_3.jpg']
+      },
+
+      // === БАРБЕКЮ КОМПЛЕКСЫ ===
+      {
+        id: 'bbq-albion',
+        cat: 'bbq',
+        name: 'Барбекю комплекс Альбион с мангалом и казаном',
+        collection: 'Коллекция Альбион',
+        desc: 'Зона барбекю с мангалом и казаном в загородном доме',
+        price: '1 368 000',
+        priceTurnkey: '3 020 000',
+        fullDesc: 'Зона барбекю с мангалом и казаном в загородном доме коллекции «Альбион». Полноценный печной комплекс с мангалом и печью под казан, облицованный белоснежными изразцами. Функциональность и красота в одном решении.',
+        specs: {
+          'Производитель': 'CeramicaDecor',
+          'Артикул': '6127',
+          'Коллекция': 'Альбион',
+          'Оборудование': 'Мангал, казан'
+        },
+        images: ['bbq_albion_new_1.jpg','bbq_albion_new_2.jpg','bbq_albion_new_3.jpg','bbq_albion_new_4.jpg','bbq_albion_new_5.jpg','bbq_albion_new_6.jpg']
+      },
+      {
+        id: 'bbq-albion-mini',
+        cat: 'bbq',
+        name: 'Барбекю комплекс Альбион с мангалом',
+        collection: 'Коллекция Альбион',
+        desc: 'Облицовка маленького печного комплекса с мангалом',
+        price: '1 194 000',
+        priceTurnkey: '2 890 000',
+        fullDesc: 'Облицовка маленького печного комплекса с мангалом. Компактный вариант барбекю комплекса в изразцовой облицовке Альбион. Идеально подходит для небольших террас и площадок.',
+        specs: {
+          'Производитель': 'CeramicaDecor',
+          'Артикул': '6261',
+          'Коллекция': 'Альбион',
+          'Оборудование': 'Мангал'
+        },
+        images: ['bbq_albion_mini_new_1.jpg','bbq_albion_mini_new_2.jpg','bbq_albion_mini_new_3.jpg']
+      },
+      {
+        id: 'bbq-ptichki',
+        cat: 'bbq',
+        name: 'Барбекю комплекс Птички',
+        collection: 'Коллекция Птички',
+        desc: 'Барбекю комплекс в яркой облицовке «Птички»',
+        price: '1 159 000',
+        priceTurnkey: '2 140 000',
+        fullDesc: 'Барбекю комплекс в яркой облицовке «Птички». Жизнерадостный печной комплекс с ярким растительным орнаментом и птичками. Создаёт праздничную атмосферу на открытой террасе.',
+        specs: {
+          'Производитель': 'CeramicaDecor',
+          'Артикул': '3548',
+          'Вес облицовки': '252.7 кг',
+          'Ширина': '3065 мм',
+          'Высота': '2025 мм',
+          'Глубина': '2620 мм'
+        },
+        images: ['bbq_ptichki_new_1.jpg','bbq_ptichki_new_2.jpg','bbq_ptichki_new_3.jpg','bbq_ptichki_new_4.jpg','bbq_ptichki_new_5.jpg','bbq_ptichki_new_6.jpg']
+      },
+      {
+        id: 'bbq-versal-klassicheskiy',
+        cat: 'bbq',
+        name: 'Барбекю комплекс<br>в изразцовой облицовке Версаль',
+        collection: 'Коллекция Версаль',
+        desc: 'Барбекю комплекс в изразцовой облицовке Версаль',
+        price: '3 434 000',
+        priceTurnkey: '6 355 000',
+        fullDesc: 'Представительный барбекю комплекс в изразцовой облицовке коллекции Версаль. Классический рельефный орнамент в природных зелёных оттенках придаёт зоне барбекю благородство и изысканность. Открытый камин и духовая печь органично вписаны в монументальную облицовку — идеальное решение для загородной резиденции.',
+        specs: {
+          'Производитель': 'CeramicaDecor',
+          'Коллекция': 'Версаль',
+          'Оборудование': 'Открытый камин, духовка'
+        },
+        images: ['bbk_versal_chern_1.jpg','bbk_versal_chern_2.jpg','bbk_versal_chern_3.jpg','bbk_versal_chern_4.jpg','bbk_versal_chern_5.jpg']
+      },
+      {
+        id: 'bbq-versal',
+        cat: 'bbq',
+        name: 'Барбекю комплекс Версаль',
+        collection: 'Коллекция Версаль',
+        desc: 'Представительный барбекю комплекс в изразцовой облицовке коллекции Версаль',
+        price: '1 628 000',
+        priceTurnkey: '2 190 000',
+        fullDesc: 'Представительный барбекю комплекс в изразцовой облицовке коллекции Версаль. Классический рельефный орнамент придаёт зоне барбекю благородство и изысканность. В наполнении комплекса весь необходимый функционал — мангал, плита под казан, рабочие поверхности, шкафчики для хранения и мойка.',
+        specs: {
+          'Производитель': 'CeramicaDecor',
+          'Коллекция': 'Версаль'
+        },
+        images: ['bbq_versal_new_1.jpg','bbq_versal_new_2.jpg','bbq_versal_new_3.jpg','bbq_versal_new_4.jpg','bbq_versal_new_5.jpg']
+      },
+      {
+        id: 'bbq-versal-siniy',
+        cat: 'bbq',
+        name: 'Летняя кухня Версаль',
+        collection: 'Коллекция Версаль',
+        desc: 'Многофункциональная летняя кухня в облицовке изразцами Версаль',
+        price: '4 243 000',
+        priceTurnkey: '7 893 000',
+        fullDesc: 'Многофункциональная летняя кухня в облицовке изразцами Версаль. Масштабный проект с полным набором оборудования: мангал, мойка, духовка, тандыр, рабочие поверхности и дровники. Яркие изразцы голубых оттенков создают настроение летней беседки.',
+        specs: {
+          'Производитель': 'CeramicaDecor',
+          'Коллекция': 'Версаль',
+          'Цвет': 'Синий'
+        },
+        images: ['bbq_versal_siniy_new_1.jpg','bbq_versal_siniy_new_2.jpg','bbq_versal_siniy_new_3.jpg','bbq_versal_siniy_new_4.jpg','bbq_versal_siniy_new_5.jpg','bbq_versal_siniy_new_6.jpg']
+      },
+      {
+        id: 'bbq-azulezhu',
+        cat: 'bbq',
+        name: 'Мангал Азулежу',
+        collection: 'Коллекция Азулежу',
+        desc: 'Мангал на кухне в изразцах из коллекции Азулежу',
+        price: '649 000',
+        priceTurnkey: '1 320 000',
+        fullDesc: 'Мангал на кухне в изразцах из коллекции Азулежу. Компактный мангал в стиле португальских азулежу. Сине-белые изразцы с характерным средиземноморским орнаментом создают уютную атмосферу.',
+        specs: {
+          'Производитель': 'CeramicaDecor',
+          'Коллекция': 'Азулежу',
+          'Оборудование': 'Мангал'
+        },
+        images: ['bbq_azulezhu_new_1.jpg','bbq_azulezhu_new_2.jpg','bbq_azulezhu_new_3.jpg','bbq_azulezhu_new_4.jpg','bbq_azulezhu_new_5.jpg','bbq_azulezhu_new_6.jpg']
+      },
+      {
+        id: 'bbq-tulpan',
+        cat: 'bbq',
+        name: 'Мангал Тюльпан',
+        collection: 'Коллекция Тюльпан',
+        desc: 'Белый мангал в облицовке изразцами коллекции Тюльпан',
+        price: '1 172 000',
+        priceTurnkey: '2 610 000',
+        fullDesc: 'Белый мангал в облицовке изразцами коллекции Тюльпан. Изящный мангал в белоснежных изразцах с лаконичными формами облицовки. Компактное и стильное решение для открытой зоны барбекю.',
+        specs: {
+          'Производитель': 'CeramicaDecor',
+          'Коллекция': 'Тюльпан',
+          'Оборудование': 'Мангал'
+        },
+        images: ['bbq_tulpan_new_1.jpg','bbq_tulpan_new_2.jpg']
+      },
+      {
+        id: 'bbq-dorf',
+        cat: 'bbq',
+        name: 'Эксклюзивная кухня<br>в изразцовой облицовке',
+        collection: 'Коллекция Дорф',
+        desc: 'Масштабный проект премиум-класса в облицовке изразцами коллекции Дорф',
+        price: '4 629 000',
+        priceTurnkey: '8 184 000',
+        fullDesc: 'Масштабный проект премиум-класса в облицовке изразцами коллекции Дорф. Полный набор необходимого оборудования: большой мангал, мойка, рабочие поверхности, плита, а также встроенная посудомоечная машина, ящики и шкафчики для хранения.',
+        specs: {
+          'Производитель': 'CeramicaDecor',
+          'Коллекция': 'Дорф',
+          'Оборудование': 'Мангал'
+        },
+        images: ['bbq_dorf_1.jpg','bbq_dorf_2.jpg','bbq_dorf_3.jpg','bbq_dorf_4.jpg','bbq_dorf_5.jpg']
+      },
+      {
+        id: 'bbq-dorf-mangal',
+        cat: 'bbq',
+        name: 'Барбекю комплекс Дорф<br>с мангалом и духовкой',
+        collection: 'Коллекция Дорф',
+        desc: 'Барбекю комплекс в ярких зеленых изразцах коллекции Дорф',
+        price: '1 658 000',
+        priceTurnkey: '2 820 000',
+        fullDesc: 'Барбекю комплекс в ярких зеленых изразцах коллекции Дорф. Оснащен всем необходимым функционалом: мангал, духовка, печь под казан и вместительный дровник.',
+        specs: {
+          'Производитель': 'CeramicaDecor',
+          'Артикул': '5397',
+          'Коллекция': 'Дорф',
+          'Оборудование': 'Мангал, дровник'
+        },
+        images: ['bbq_dorf_mangal_new_1.jpg','bbq_dorf_mangal_new_2.jpg','bbq_dorf_mangal_new_3.jpg','bbq_dorf_mangal_new_4.jpg','bbq_dorf_mangal_new_5.jpg','bbq_dorf_mangal_new_6.jpg']
+      },
+      {
+        id: 'bbq-ptichki-elegans',
+        cat: 'bbq',
+        name: 'Барбекю комплекс Птички и Элеганс',
+        collection: 'Коллекции Элеганс и Птички',
+        desc: 'Печной комплекс с мангалом и печью под казан в облицовке Элеганс и Птички',
+        price: '1 778 000',
+        priceTurnkey: '2 940 000',
+        fullDesc: 'Печной комплекс с мангалом и печью под казан в облицовке изразцами коллекции Элеганс и Птички. Уникальное сочетание двух коллекций создаёт многослойный и интересный визуальный образ.',
+        specs: {
+          'Производитель': 'CeramicaDecor',
+          'Коллекции': 'Элеганс, Птички',
+          'Оборудование': 'Мангал, казан'
+        },
+        images: ['bbq_ptichki_elegans_1.jpg','bbq_ptichki_elegans_2.jpg']
+      },
+      {
+        id: 'bbq-pticy',
+        cat: 'bbq',
+        name: 'Барбекю комплекс Птицы',
+        collection: 'Коллекция Птицы',
+        desc: 'Печной комплекс из кирпича в коллекции Птицы',
+        price: '3 748 000',
+        priceTurnkey: '5 750 000',
+        fullDesc: 'Печной комплекс из кирпича в коллекции Птицы. Масштабный барбекю комплекс с уникальной ручной росписью. Изразцы с изображением птиц превращают печной комплекс в настоящее произведение искусства.',
+        specs: {
+          'Производитель': 'CeramicaDecor',
+          'Артикул': '7676',
+          'Вес облицовки': '673.1 кг',
+          'Ширина': '3007 мм',
+          'Высота': '2926 мм',
+          'Глубина': '1969 мм'
+        },
+        images: ['bbq_pticy_new_1.jpg','bbq_pticy_new_2.jpg']
+      },
+      {
+        id: 'bbq-vizantiya',
+        cat: 'bbq',
+        name: 'Летняя кухня Византия',
+        collection: 'Коллекция Византия',
+        desc: 'Летняя кухня в изразцовой облицовке Византия',
+        price: '830 000',
+        priceTurnkey: '2 497 000',
+        fullDesc: 'Летняя кухня в изразцовой облицовке Византия. Компактный барбекю комплекс с богатым византийским орнаментом. Идеальное сочетание функциональности и декоративного искусства.',
+        specs: {
+          'Производитель': 'CeramicaDecor',
+          'Коллекция': 'Византия'
+        },
+        images: ['bbq_vizantiya_new_1.jpg','bbq_vizantiya_new_2.jpg','bbq_vizantiya_new_3.jpg','bbq_vizantiya_new_4.jpg','bbq_vizantiya_new_5.jpg','bbq_vizantiya_new_6.jpg']
+      },
+      {
+        id: 'bbq-vizantiya-kamin',
+        cat: 'bbq',
+        name: 'Барбекю комплекс Византия с камином',
+        collection: 'Коллекция Византия',
+        desc: 'Облицовка печного комплекса с высоким открытым камином изразцами Византия',
+        price: '7 302 000',
+        priceTurnkey: '9 430 000',
+        fullDesc: 'Облицовка печного комплекса с высоким открытым камином изразцами Византия. Грандиозный проект с открытым камином и полным набором кулинарного оборудования: мангал, мини русская печь, мойка, рабочие поверхности и шкафчики для хранения.',
+        specs: {
+          'Производитель': 'CeramicaDecor',
+          'Артикул': '7268',
+          'Коллекция': 'Византия'
+        },
+        images: ['bbq_vizantiya_kamin_new_1.jpg','bbq_vizantiya_kamin_new_2.jpg','bbq_vizantiya_kamin_new_3.jpg','bbq_vizantiya_kamin_new_4.jpg','bbq_vizantiya_kamin_new_5.jpg','bbq_vizantiya_kamin_new_6.jpg']
+      },
+      {
+        id: 'bbq-vizantiya-big',
+        cat: 'bbq',
+        name: 'Печной комплекс<br>в изразцовой облицовке Византия с беседкой',
+        collection: 'Коллекция Византия',
+        desc: 'Изразцовая облицовка Византия в палитре росписи Бирюзовая',
+        price: '5 066 000',
+        priceTurnkey: '9 814 000',
+        fullDesc: 'Изразцовая облицовка Византия в палитре росписи Бирюзовая. Масштабный проект беседки включает в себя навес из дерева, а также печной комплекс с мангалом, тандыром, печью под казан и другими необходимыми функциями. Сложная геометрия и богатый декор создают впечатляющий ансамбль.',
+        specs: {
+          'Производитель': 'CeramicaDecor',
+          'Коллекция': 'Византия'
+        },
+        images: ['bbq_vizantiya_big_new_1.jpg','bbq_vizantiya_big_new_2.jpg','bbq_vizantiya_big_new_3.jpg','bbq_vizantiya_big_new_4.jpg','bbq_vizantiya_big_new_5.jpg','bbq_vizantiya_big_new_6.jpg']
+      },
+      {
+        id: 'bbq-elegans',
+        cat: 'bbq',
+        name: 'Барбекю комплекс Элеганс',
+        collection: 'Коллекция Элеганс',
+        desc: 'Облицовка готового печного комплекса с мангалом, печью и плитой',
+        price: '3 014 000',
+        priceTurnkey: '7 560 000',
+        fullDesc: 'Облицовка готового печного комплекса с мангалом, печью и плитой. Полнофункциональный барбекю комплекс в изразцовой облицовке Элеганс. Три рабочие зоны: мангал, печь и варочная плита.',
+        specs: {
+          'Производитель': 'CeramicaDecor',
+          'Артикул': '6514',
+          'Вес облицовки': '652.9 кг',
+          'Ширина': '4386 мм',
+          'Высота': '2779 мм',
+          'Глубина': '1171 мм',
+          'Оборудование': 'Мангал, печь, плита'
+        },
+        images: ['bbq_elegans_new_1.jpg','bbq_elegans_new_2.jpg','bbq_elegans_new_3.jpg','bbq_elegans_new_4.jpg']
+      },
+      {
+        id: 'bbq-elegans-granit',
+        cat: 'bbq',
+        name: 'Летняя кухня Элеганс',
+        collection: 'Коллекция Элеганс',
+        desc: 'Летняя кухня в изразцовой облицовке коллекции Элеганс и столешницей из гранита',
+        price: '863 000',
+        priceTurnkey: '1 880 000',
+        fullDesc: 'Летняя кухня в изразцовой облицовке коллекции Элеганс и столешницей из гранита. Яркие бирюзовые изразцы создают стильный акцент беседки. А наполнение комплекса (мангал, тандыр, плита) позволяет воплотить любые кулинарные идеи.',
+        specs: {
+          'Производитель': 'CeramicaDecor',
+          'Артикул': '4100',
+          'Коллекция': 'Элеганс',
+          'Столешница': 'Гранит'
+        },
+        images: ['bbq_elegans_granit_new_1.jpg','bbq_elegans_granit_new_2.jpg','bbq_elegans_granit_new_3.jpg','bbq_elegans_granit_new_4.jpg']
+      },
+      {
+        id: 'bbq-scenki',
+        cat: 'bbq',
+        name: 'Барбекю комплекс Камея',
+        collection: 'Коллекция Камея',
+        desc: 'Барбекю комплекс в изразцовой облицовке с художественной росписью Птицы',
+        price: '1 759 000',
+        priceTurnkey: '2 560 000',
+        fullDesc: 'Барбекю комплекс в изразцовой облицовке с художественной росписью Птицы. Каждый изразец - уникальная сценка с изображением птиц, выполненная вручную. Настоящее произведение искусства, которое хочется разглядывать.',
+        specs: {
+          'Производитель': 'CeramicaDecor',
+          'Коллекция': 'Сценки',
+          'Особенности': 'Художественная роспись'
+        },
+        images: ['bbq_scenki_new_1.jpg','bbq_scenki_new_2.jpg','bbq_scenki_new_3.jpg']
+      }
+    ];
+
+    /* ===== RENDER CARDS ===== */
+    var grid = document.getElementById('catalogGrid');
+
+    function renderCards(category) {
+      if (!grid) { grid = document.getElementById('catalogGrid'); }
+      if (!grid) return;
+      grid.innerHTML = '';
+      var productCategory = category === 'barbekyu-kompleksy' ? 'bbq' : category;
+      var filtered = category === 'all' ? products : products.filter(function(p) { return p.cat === productCategory; });
+      if (!filtered.length) {
+        grid.innerHTML = '<div class="catalog-empty"><h2>' + (categoryTitles[category] || 'Раздел каталога') + '</h2><p>Это демонстрационный шаблон раздела. Карточки, фильтры и контент будут подключены из внутренней системы.</p></div>';
+        return;
+      }
+
+      filtered.forEach(function(p) {
+        var card = document.createElement('div');
+        card.className = 'product-card';
+        card.setAttribute('data-category', p.cat);
+        card.setAttribute('data-id', p.id);
+
+        var sliderImgs = '';
+        var sliderDots = '';
+        p.images.forEach(function(img, idx) {
+          var webpImg = img.replace(/\.(jpg|jpeg|png)$/i, '.webp');
+          sliderImgs += '<picture><source srcset="images/' + webpImg + '" type="image/webp"><img src="images/' + img + '" alt="' + p.name + '" loading="' + (idx === 0 ? 'eager' : 'lazy') + '" class="' + (idx === 0 ? 'active' : '') + '" onerror="this.style.display=\'none\'"></picture>';
+          sliderDots += '<button class="product-card__dot' + (idx === 0 ? ' active' : '') + '" data-idx="' + idx + '"></button>';
+        });
+
+        var verticalIds = ['kamin-dorf', 'kamin-rollers', 'kamin-dorf-brunner', 'bbq-albion-mini', 'bbq-versal', 'bbq-tulpan', 'bbq-dorf-mangal', 'bbq-pticy', 'bbq-scenki'];
+        var sliderClass = 'product-card__slider' + (p.id === 'kamin-minimalist' ? ' product-card__slider--contain' : '') + (verticalIds.indexOf(p.id) !== -1 ? ' product-card__slider--vertical' : '');
+        card.innerHTML =
+          '<div class="' + sliderClass + '">' +
+            sliderImgs +
+            '<button class="product-card__arrow product-card__arrow--prev">&#8249;</button>' +
+            '<button class="product-card__arrow product-card__arrow--next">&#8250;</button>' +
+            '<div class="product-card__dots">' + sliderDots + '</div>' +
+          '</div>' +
+          '<div class="product-card__body">' +
+            '<p class="product-card__collection">' + p.collection + '</p>' +
+            '<h3 class="product-card__name">' + p.name + '</h3>' +
+            '<p class="product-card__desc">' + p.desc + '</p>' +
+            '<p class="product-card__price">Облицовка: ' + p.price + ' &#8381;</p>' +
+            (p.priceTurnkey ? '<p class="product-card__price product-card__price--turnkey">Под ключ: ' + p.priceTurnkey + ' &#8381;</p>' : '') +
+            '<div class="product-card__actions">' +
+              '<a class="product-card__btn product-card__btn--details" href="?product=' + encodeURIComponent(p.id) + '" data-id="' + p.id + '">' +
+                'Описание ' + ARROW_SVG +
+              '</a>' +
+              '<button class="product-card__btn product-card__btn--request" data-product="' + p.name + '" data-price="' + p.price + '" onclick="event.stopPropagation(); openRequestModal(\'' + p.name.replace(/'/g, "\\'") + '\', \'' + p.price + '\')">' +
+                'Оставить заявку' +
+              '</button>' +
+            '</div>' +
+          '</div>';
+
+        // Card slider logic
+        (function(cardEl, images) {
+          var currentIdx = 0;
+          var imgs = cardEl.querySelectorAll('.product-card__slider img');
+          var dots = cardEl.querySelectorAll('.product-card__dot');
+          var slider = cardEl.querySelector('.product-card__slider');
+          var touchStartX = 0;
+
+          function showSlide(idx) {
+            if (idx < 0) idx = imgs.length - 1;
+            if (idx >= imgs.length) idx = 0;
+            imgs.forEach(function(img) { img.classList.remove('active'); });
+            dots.forEach(function(d) { d.classList.remove('active'); });
+            imgs[idx].classList.add('active');
+            if (dots[idx]) dots[idx].classList.add('active');
+            currentIdx = idx;
+          }
+
+          cardEl.querySelector('.product-card__arrow--prev').addEventListener('click', function(e) {
+            e.stopPropagation();
+            showSlide(currentIdx - 1);
+          });
+          cardEl.querySelector('.product-card__arrow--next').addEventListener('click', function(e) {
+            e.stopPropagation();
+            showSlide(currentIdx + 1);
+          });
+          dots.forEach(function(dot) {
+            dot.addEventListener('click', function(e) {
+              e.stopPropagation();
+              showSlide(parseInt(this.getAttribute('data-idx')));
+            });
+          });
+
+          // Swipe support
+          slider.addEventListener('touchstart', function(e) {
+            touchStartX = e.touches[0].clientX;
+          }, { passive: true });
+          slider.addEventListener('touchend', function(e) {
+            var diff = touchStartX - e.changedTouches[0].clientX;
+            if (Math.abs(diff) > 40) {
+              e.stopPropagation();
+              showSlide(diff > 0 ? currentIdx + 1 : currentIdx - 1);
+            }
+          });
+        })(card, p.images);
+
+        // Click on card opens modal; the details link remains a real URL for integration.
+        card.addEventListener('click', function(e) {
+          var detailLink = e.target.closest('.product-card__btn--details');
+          if (detailLink) { e.preventDefault(); openModal(p.id); return; }
+          if (e.target.closest('.product-card__arrow') || e.target.closest('.product-card__dot') || e.target.closest('.product-card__btn--request')) return;
+          openModal(p.id);
+        });
+
+        grid.appendChild(card);
+      });
+    }
+
+    /* ===== MODAL ===== */
+    var modal = document.getElementById('productModal');
+    var modalContent = document.getElementById('modalContent');
+    var modalClose = document.getElementById('modalClose');
+
+    function openModal(productId) {
+      var p = products.find(function(item) { return item.id === productId; });
+      if (!p) return;
+
+      var specsHtml = '';
+      if (p.specs) {
+        var keys = Object.keys(p.specs);
+        specsHtml = '<ul class="product-modal__specs-list">';
+        keys.forEach(function(key) {
+          specsHtml += '<li><span>' + key + '</span><span>' + p.specs[key] + '</span></li>';
+        });
+        specsHtml += '</ul>';
+      }
+
+      var thumbsHtml = '';
+      var availableImages = p.images || [];
+      availableImages.forEach(function(img, idx) {
+        thumbsHtml += '<div class="product-modal__thumb' + (idx === 0 ? ' product-modal__thumb--active' : '') + '" data-idx="' + idx + '">' +
+          '<picture><source srcset="images/' + img.replace(/\.(jpg|jpeg|png)$/i, '.webp') + '" type="image/webp"><img src="images/' + img + '" alt="' + p.name + ' фото ' + (idx+1) + '" loading="lazy" onerror="this.parentElement.style.display=\'none\'"></picture>' +
+        '</div>';
+      });
+
+      var modalImgsHtml = '';
+      availableImages.forEach(function(img, idx) {
+        modalImgsHtml += '<picture><source srcset="images/' + img.replace(/\.(jpg|jpeg|png)$/i, '.webp') + '" type="image/webp"><img src="images/' + img + '" alt="' + p.name + ' фото ' + (idx+1) + '" class="' + (idx === 0 ? 'active' : '') + '" onerror="this.style.display=\'none\'"></picture>';
+      });
+
+      modalContent.innerHTML =
+        '<div class="product-modal__header">' +
+          '<h2 class="product-modal__title">' + p.name + '</h2>' +
+          '<p class="product-modal__subtitle">' + p.collection + '</p>' +
+        '</div>' +
+        '<div class="product-modal__gallery">' +
+          '<div class="product-modal__main-img" id="modalMainImg">' +
+            modalImgsHtml +
+            '<button class="product-modal__arrow product-modal__arrow--prev" id="modalPrev">&#8249;</button>' +
+            '<button class="product-modal__arrow product-modal__arrow--next" id="modalNext">&#8250;</button>' +
+            '<div class="product-modal__counter" id="modalCounter">1 / ' + availableImages.length + '</div>' +
+          '</div>' +
+          '<div class="product-modal__thumbs" id="modalThumbs">' +
+            thumbsHtml +
+          '</div>' +
+        '</div>' +
+        '<div class="product-modal__info">' +
+          '<div class="product-modal__description">' +
+            '<h3>Описание</h3>' +
+            '<p>' + p.fullDesc + '</p>' +
+          '</div>' +
+          '<div class="product-modal__specs">' +
+            '<h3>Характеристики</h3>' +
+            specsHtml +
+          '</div>' +
+        '</div>' +
+        '<div class="product-modal__bottom">' +
+          '<div class="product-modal__prices">' +
+            '<div>' +
+              '<div class="product-modal__price">' + p.price + ' &#8381;</div>' +
+              '<div class="product-modal__price-label">Облицовка</div>' +
+            '</div>' +
+            (p.priceTurnkey ? '<div>' +
+              '<div class="product-modal__price">' + p.priceTurnkey + ' &#8381;</div>' +
+              '<div class="product-modal__price-label">' + (p.cat === 'bbq' ? 'Под ключ (конструктив, облицовка, работа)' : 'Под ключ (топка, дымоход, облицовка, работа)') + '</div>' +
+            '</div>' : '') +
+          '</div>' +
+          '<div class="product-modal__actions">' +
+            '<button class="product-modal__request-btn" onclick="openRequestModal(\'' + p.name.replace(/'/g, "\\'") + '\', \'' + p.price + '\')">' +
+              'Оставить заявку' +
+            '</button>' +
+          '</div>' +
+          '<p class="product-modal__promo">Оставьте заявку сейчас, и мы сделаем бесплатный расчет + 3D-проект</p>' +
+        '</div>' +
+        (function() {
+          var rev = getReview(p.name);
+          var allReviews = [
+            { vk: 'video-178201211_456239596', thumb: 'video_thumb_dorf_client.jpg', label: 'Камин «Дорф». Отзыв клиента' },
+            { vk: 'video-178201211_456239511', thumb: 'video_thumb_albion_designer.jpg', label: 'Камин «Альбион». Отзыв дизайнера' },
+            { vk: 'video-178201211_456239559', thumb: 'video_thumb_artnouvo_designer.jpg', label: 'Камин «Арт Нуво». Отзыв дизайнера' },
+            { vk: 'video-178201211_456239074', thumb: 'video_thumb_bristol_client.jpg', label: 'Камин «Бристоль». Отзыв клиента' },
+            { vk: 'video-178201211_456239504', thumb: 'video_thumb_dorf_customers.jpg', label: 'Камин «Дорф». Отзыв заказчиков' },
+            { vk: 'video-178201211_456239193', thumb: 'video_thumb_universal_client.jpg', label: 'Камин «Универсал». Отзыв заказчицы' },
+            { vk: 'video-178201211_456239167', thumb: 'video_thumb_tulip_client.jpg', label: 'Камин «Тюльпан». Отзыв заказчицы' },
+            { vk: 'video-178201211_456239494', thumb: 'video_thumb_majestic_designer.jpg', label: 'Камин «Маджестик». Отзыв дизайнера' },
+            { vk: 'video-178201211_456239883', thumb: 'video_thumb_dutch_client.jpg', label: 'Печь-голландка. Отзыв хозяйки' }
+          ];
+          var items = [];
+          if (rev) {
+            items.push(rev);
+            allReviews.forEach(function(r) {
+              if (r.vk !== rev.vk) items.push(r);
+            });
+          } else {
+            items = allReviews.slice();
+          }
+          var html = '<div class="product-modal__reviews">' +
+            '<h3>Видеоотзывы клиентов</h3>' +
+            '<div class="product-modal__reviews-grid">';
+          items.forEach(function(r) {
+            html += '<div data-vk="' + r.vk + '" class="product-modal__review-item">' +
+              '<img src="images/' + r.thumb + '" alt="' + r.label + '" loading="lazy">' +
+              '<div class="product-modal__review-play"><svg viewBox="0 0 16 16" fill="#fff"><path d="M5 3l8 5-8 5V3z"/></svg></div>' +
+              '<div class="product-modal__review-name">' + r.label + '</div>' +
+            '</div>';
+          });
+          html += '</div></div>';
+          return html;
+        })();
+
+      // Modal gallery controls
+      var modalImgContainer = document.getElementById('modalMainImg');
+      var modalImgs = modalImgContainer.querySelectorAll('img');
+      var thumbs = document.querySelectorAll('#modalThumbs .product-modal__thumb');
+      var counter = document.getElementById('modalCounter');
+      var modalIdx = 0;
+
+      function showModalSlide(idx) {
+        if (idx < 0) idx = availableImages.length - 1;
+        if (idx >= availableImages.length) idx = 0;
+        modalImgs.forEach(function(img) { img.classList.remove('active'); });
+        thumbs.forEach(function(t) { t.classList.remove('product-modal__thumb--active'); });
+        modalImgs[idx].classList.add('active');
+        if (thumbs[idx]) thumbs[idx].classList.add('product-modal__thumb--active');
+        counter.textContent = (idx + 1) + ' / ' + availableImages.length;
+        modalIdx = idx;
+      }
+
+      document.getElementById('modalPrev').addEventListener('click', function() { showModalSlide(modalIdx - 1); });
+      document.getElementById('modalNext').addEventListener('click', function() { showModalSlide(modalIdx + 1); });
+
+      thumbs.forEach(function(thumb) {
+        thumb.addEventListener('click', function() {
+          showModalSlide(parseInt(this.getAttribute('data-idx')));
+        });
+      });
+
+      // Keyboard arrows
+      document.addEventListener('keydown', function modalKeys(e) {
+        if (!modal.classList.contains('open')) return;
+        if (e.key === 'ArrowLeft') showModalSlide(modalIdx - 1);
+        if (e.key === 'ArrowRight') showModalSlide(modalIdx + 1);
+      });
+
+      // Swipe support for modal
+      var mTouchX = 0;
+      modalImgContainer.addEventListener('touchstart', function(e) {
+        mTouchX = e.touches[0].clientX;
+      }, { passive: true });
+      modalImgContainer.addEventListener('touchend', function(e) {
+        var diff = mTouchX - e.changedTouches[0].clientX;
+        if (Math.abs(diff) > 40) {
+          showModalSlide(diff > 0 ? modalIdx + 1 : modalIdx - 1);
+        }
+      });
+
+      modal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+
+      // Update URL
+      history.pushState({ product: p.id }, '', location.pathname + '?product=' + p.id);
+    }
+
+    function closeModal() {
+      modal.classList.remove('open');
+      document.body.style.overflow = '';
+      setActiveTab(activeCategory);
+      history.replaceState(null, '', location.pathname + '?cat=' + activeCategory);
+    }
+
+    modalClose.addEventListener('click', closeModal);
+    modal.addEventListener('click', function(e) {
+      if (e.target === modal) closeModal();
+    });
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
+    });
+
+    /* ===== VK VIDEO MODAL ===== */
+    var vkModal = document.getElementById('vkVideoModal');
+    var vkPlayer = document.getElementById('vkVideoPlayer');
+    var vkClose = vkModal.querySelector('.vk-video-modal__close');
+    var vkBackdrop = vkModal.querySelector('.vk-video-modal__backdrop');
+
+    function openVkVideo(vkId) {
+      var parts = vkId.replace('video', '').split('_');
+      var iframe = document.createElement('iframe');
+      iframe.src = 'https://vk.com/video_ext.php?oid=' + parts[0] + '&id=' + parts[1] + '&hd=2&autoplay=1';
+      iframe.setAttribute('allow', 'autoplay; encrypted-media; fullscreen');
+      iframe.setAttribute('allowfullscreen', '');
+      vkPlayer.innerHTML = '';
+      vkPlayer.appendChild(iframe);
+      vkModal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeVkVideo() {
+      vkModal.classList.remove('active');
+      vkPlayer.innerHTML = '';
+      document.body.style.overflow = '';
+    }
+
+    vkClose.addEventListener('click', closeVkVideo);
+    vkBackdrop.addEventListener('click', closeVkVideo);
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && vkModal.classList.contains('active')) closeVkVideo();
+    });
+
+    // Event delegation: catch clicks on review items inside dynamically rendered product modal
+    document.addEventListener('click', function(e) {
+      var item = e.target.closest('.product-modal__review-item[data-vk]');
+      if (item) openVkVideo(item.dataset.vk);
+    });
+
+    /* ===== FILTER TABS ===== */
+    var tabs = document.querySelectorAll('.catalog-filters__tab');
+    var catalogTabsPrev = document.getElementById('catalogTabsScrollPrev');
+    var catalogTabsNext = document.getElementById('catalogTabsScroll');
+    var catalogTabsList = document.getElementById('catalogTabs');
+    var catalogTabsWrap = catalogTabsList ? catalogTabsList.closest('.catalog-filters__tabs-wrap') : null;
+    function updateCatalogTabsScroll() {
+      if (!catalogTabsList || !catalogTabsPrev || !catalogTabsNext) return;
+      var maxScroll = Math.max(0, catalogTabsList.scrollWidth - catalogTabsList.clientWidth);
+      var hasOverflow = maxScroll > 1;
+      var atStart = catalogTabsList.scrollLeft <= 1;
+      var atEnd = catalogTabsList.scrollLeft >= maxScroll - 1;
+      catalogTabsPrev.hidden = !hasOverflow || atStart;
+      catalogTabsNext.hidden = !hasOverflow || atEnd;
+      if (catalogTabsWrap) {
+        catalogTabsWrap.classList.toggle('is-start', !hasOverflow || atStart);
+        catalogTabsWrap.classList.toggle('is-end', !hasOverflow || atEnd);
+      }
+    }
+    if (catalogTabsPrev && catalogTabsNext && catalogTabsList) {
+      catalogTabsPrev.addEventListener('click', function() {
+        catalogTabsList.scrollTo({ left: 0, behavior: 'smooth' });
+      });
+      catalogTabsNext.addEventListener('click', function() {
+        catalogTabsList.scrollBy({ left: Math.max(280, catalogTabsList.clientWidth * 0.65), behavior: 'smooth' });
+      });
+      catalogTabsList.addEventListener('scroll', updateCatalogTabsScroll, { passive: true });
+      window.addEventListener('resize', updateCatalogTabsScroll);
+      updateCatalogTabsScroll();
+    }
+
+    var validCategories = ['izrazcy', 'kaminy', 'biokaminy', 'elektrokaminy', 'pech-kaminy', 'mramornye-kaminy-portaly', 'russkie-pechi', 'otopitelnye-pechi', 'barbekyu-kompleksy', 'bannye-pechi', 'bannye-portaly', 'seriynye-modeli', 'fasadnaya-keramika', 'interernaya-keramika', 'suvenirnaya-produkciya'];
+    var activeCategory = 'kaminy';
+
+    var categoryTitles = {
+      'izrazcy': 'Изразцы',
+      'kaminy': 'Камины',
+      'biokaminy': 'Биокамины',
+      'elektrokaminy': 'Электрокамины',
+      'pech-kaminy': 'Печь-камины',
+      'mramornye-kaminy-portaly': 'Мраморные камины и порталы',
+      'russkie-pechi': 'Русские печи',
+      'otopitelnye-pechi': 'Отопительные печи',
+      'barbekyu-kompleksy': 'Барбекю комплексы',
+      'bannye-pechi': 'Банные печи',
+      'bannye-portaly': 'Банные порталы',
+      'seriynye-modeli': 'Серийные модели',
+      'fasadnaya-keramika': 'Фасадная керамика',
+      'interernaya-keramika': 'Интерьерная керамика',
+      'suvenirnaya-produkciya': 'Сувенирная продукция'
+    };
+    var categorySubtitles = {
+      'izrazcy': 'Каталог изразцов и керамических элементов ручной работы',
+      'kaminy': 'Камины в керамической облицовке изразцами ручной формовки',
+      'biokaminy': 'Декоративные биокамины и облицовки для современных интерьеров',
+      'elektrokaminy': 'Электрокамины и керамические порталы для городских интерьеров',
+      'pech-kaminy': 'Печь-камины в керамической облицовке для дома и дачи',
+      'mramornye-kaminy-portaly': 'Мраморные каминные порталы и облицовки под разные стили интерьера',
+      'russkie-pechi': 'Русские печи с керамической облицовкой и ручной отделкой',
+      'otopitelnye-pechi': 'Отопительные печи для загородных домов и частных интерьеров',
+      'barbekyu-kompleksy': 'Барбекю комплексы в керамической облицовке для террас и участков',
+      'bannye-pechi': 'Банные печи и решения для парных, бань и wellness-зон',
+      'bannye-portaly': 'Керамические и декоративные порталы для банных печей',
+      'seriynye-modeli': 'Готовые серийные модели каминов, печей и облицовок',
+      'fasadnaya-keramika': 'Фасадная керамика, плитка и декоративные элементы для архитектуры',
+      'interernaya-keramika': 'Интерьерная керамика, панно и декоративные элементы ручной работы',
+      'suvenirnaya-produkciya': 'Керамическая сувенирная продукция и подарочные изделия'
+    };
+    var heroTitle = document.querySelector('.catalog-hero__title');
+    var heroSubtitle = document.querySelector('.catalog-hero__subtitle');
+    var heroSection = document.querySelector('.catalog-hero');
+    var heroImage = document.querySelector('.catalog-hero__bg img');
+    var heroSource = document.querySelector('.catalog-hero__bg source');
+
+    function setActiveTab(category) {
+      if (validCategories.indexOf(category) === -1) category = window.CATALOG_DEFAULT_CATEGORY || 'kaminy';
+      activeCategory = category;
+      tabs.forEach(function(tab) {
+        tab.classList.remove('catalog-filters__tab--active');
+        if (tab.getAttribute('data-category') === category) {
+          tab.classList.add('catalog-filters__tab--active');
+        }
+      });
+      if (heroSection) {
+        if (category === 'barbekyu-kompleksy') {
+          heroSection.classList.add('catalog-hero--bbq');
+        } else {
+          heroSection.classList.remove('catalog-hero--bbq');
+        }
+      }
+      if (heroImage) {
+        var heroBase = category === 'barbekyu-kompleksy' ? 'banner-bbk' : 'banner-kaminy';
+        heroImage.src = 'images/' + heroBase + '_desktop.jpg';
+        heroImage.alt = (categoryTitles[category] || 'Каталог') + ' CeramicaDecor';
+        if (heroSource) heroSource.srcset = 'images/' + heroBase + '_desktop.webp';
+      }
+      if (heroTitle) heroTitle.textContent = categoryTitles[category] || 'Каталог';
+      if (heroSubtitle) heroSubtitle.innerHTML = categorySubtitles[category] || '';
+      renderCards(category);
+    }
+
+    tabs.forEach(function(tab) {
+      tab.addEventListener('click', function() {
+        var cat = this.getAttribute('data-category');
+        if (!cat || validCategories.indexOf(cat) === -1) return;
+
+        var animTargets = [
+          heroTitle,
+          heroSubtitle,
+          document.getElementById('catalogTabs')
+        ];
+        animTargets.forEach(function(el) {
+          if (el && el.classList.contains('fade-up')) {
+            el.classList.remove('visible');
+            void el.offsetWidth;
+          }
+        });
+
+        setActiveTab(cat);
+        history.replaceState(null, '', location.pathname + '?cat=' + cat);
+
+        setTimeout(function() {
+          animTargets.forEach(function(el) {
+            if (el && el.classList.contains('fade-up')) el.classList.add('visible');
+          });
+        }, 10);
+      });
+    });
+
+    /* ===== INIT ===== */
+    var params = new URLSearchParams(window.location.search);
+    var productParam = params.get('product');
+    var catParam = params.get('cat');
+
+    if (productParam) {
+      var p = products.find(function(item) { return item.id === productParam; });
+      if (p) {
+        setActiveTab(p.cat === 'bbq' ? 'barbekyu-kompleksy' : p.cat);
+        openModal(productParam);
+      } else {
+        setActiveTab(catParam || window.CATALOG_DEFAULT_CATEGORY || 'kaminy');
+      }
+    } else {
+      setActiveTab(catParam || window.CATALOG_DEFAULT_CATEGORY || 'kaminy');
+    }
+
+    // Handle browser back/forward
+    window.addEventListener('popstate', function(e) {
+      if (e.state && e.state.product) {
+        openModal(e.state.product);
+      } else {
+        closeModal();
+      }
+    });
+
+    /* ===== REQUEST MODAL ===== */
+    var requestModal = document.getElementById('requestModal');
+    var requestModalClose = document.getElementById('requestModalClose');
+    var requestForm = document.getElementById('requestForm');
+    var requestProductName = document.getElementById('requestProductName');
+    var requestModalBody = document.getElementById('requestModalBody');
+    var currentRequestProduct = '';
+
+    window.openRequestModal = function(productName, productPrice) {
+      currentRequestProduct = productName;
+      requestProductName.textContent = productName + ' (' + productPrice + ' \u20BD)';
+      requestModalBody.innerHTML =
+        '<h3 class="request-modal__title">Оставить заявку</h3>' +
+        '<p class="request-modal__product">' + productName + ' (' + productPrice + ' \u20BD)</p>' +
+        '<form id="requestForm">' +
+          '<div class="request-modal__field">' +
+            '<label for="requestName">Ваше имя</label>' +
+            '<input type="text" id="requestName" placeholder="Как к вам обращаться?" required>' +
+          '</div>' +
+          '<div class="request-modal__field">' +
+            '<label for="requestPhone">Телефон</label>' +
+            '<input type="tel" id="requestPhone" placeholder="+7 (___) ___-__-__" required>' +
+          '</div>' +
+          '<div class="request-modal__field">' +
+            '<label for="requestMessage">Комментарий (необязательно)</label>' +
+            '<textarea id="requestMessage" placeholder="Ваши пожелания или вопросы"></textarea>' +
+          '</div>' +
+          '<button type="submit" class="request-modal__submit">Отправить заявку</button>' +
+        '</form>';
+      requestModal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+
+      document.getElementById('requestForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        var name =document.getElementById('requestName').value.trim();
+        var phone = document.getElementById('requestPhone').value.trim();
+        var message = document.getElementById('requestMessage').value.trim();
+        var comment = (currentRequestProduct ? 'Товар: ' + currentRequestProduct + '\n' : '') + 'Страница: ' + location.href + (message ? '\nКомментарий: ' + message : '');
+        fetch('https://ceramicadecor.ru/feedback/ceramicadecor_pro', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: new URLSearchParams({ name: name, phone: phone, comment: comment })
+        });
+        requestModalBody.innerHTML =
+          '<div class="request-modal__success">' +
+            '<span class="request-modal__success-icon">&#10003;</span>' +
+            '<h3 class="request-modal__title">Заявка отправлена!</h3>' +
+            '<p class="request-modal__success-text">Спасибо за интерес к нашей продукции.<br>Мы свяжемся с вами в ближайшее время.</p>' +
+          '</div>';
+        setTimeout(function() { closeRequestModal(); }, 4000);
+      });
+    };
+
+    function closeRequestModal() {
+      requestModal.classList.remove('open');
+      if (!modal.classList.contains('open')) {
+        document.body.style.overflow = '';
+      }
+    }
+
+    requestModalClose.addEventListener('click', closeRequestModal);
+    requestModal.addEventListener('click', function(e) {
+      if (e.target === requestModal) closeRequestModal();
+    });
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && requestModal.classList.contains('open')) closeRequestModal();
+    });
+  })();
+  </script>
+  <button class="scroll-to-top" aria-label="Наверх">
+    <svg viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+  </button>
+  <script src="search.js" defer></script>
+
+  <!-- COOKIE BANNER -->
+  <div class="cookie-banner" id="cookieBanner">
+    <p class="cookie-banner__text">Мы используем файлы cookie. Продолжая использование сайта, вы соглашаетесь с нашей <a href="privacy.html">Политикой конфиденциальности</a>.</p>
+    <button class="cookie-banner__btn" id="cookieAccept">Принять</button>
+  </div>
+</body>
+</html>
+
+
+

@@ -1,0 +1,711 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Контакты — CeramicaDecor</title>
+  <meta name="description" content="Контакты CeramicaDecor — телефоны Москвы, СПб, Сочи, шоурумы на ул. Свободы и пр. Энгельса, email, Telegram. Работаем пн–вс 10:00–19:00.">
+  <link rel="canonical" href="https://ceramicadecor.ru/contacts.html">
+  <meta property="og:title" content="Контакты — CeramicaDecor">
+  <meta property="og:description" content="Свяжитесь с нами — обсудим проект камина или печи">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:image" content="images/hero_main.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:url" content="https://ceramicadecor.ru/contacts.html">
+  <meta property="og:site_name" content="CeramicaDecor">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.cdnfonts.com/css/tt-ramillas-trl" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* ===== CONTACTS PAGE HERO ===== */
+    .contacts-hero {
+      padding: 160px 0 80px;
+      text-align: center;
+      position: relative;
+    }
+    .contacts-hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 200px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border-light), transparent);
+    }
+    .contacts-hero__title {
+      font-family: var(--font-heading);
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 400;
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+    .contacts-hero__subtitle {
+      font-size: 1.125rem;
+      color: var(--text-muted);
+      font-weight: 300;
+    }
+
+    /* ===== CONTACTS MAIN ===== */
+    .contacts-main {
+      padding: 80px 0;
+    }
+    .contacts-main__grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+
+    /* ===== CONTACT FORM SIDE ===== */
+    .contacts-form__title {
+      font-family: var(--font-heading);
+      font-size: clamp(1.5rem, 2.5vw, 2rem);
+      font-weight: 400;
+      line-height: 1.3;
+      margin-bottom: 12px;
+    }
+    .contacts-form__subtitle {
+      font-size: 0.9375rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 32px;
+    }
+    .contacts-form__form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .contacts-form__field {
+      position: relative;
+    }
+    .contacts-form__input {
+      width: 100%;
+      padding: 16px 20px;
+      background: var(--bg-lighter);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      color: var(--white);
+      font-family: var(--font-body);
+      font-size: 0.9375rem;
+      outline: none;
+      transition: border-color var(--transition);
+    }
+    .contacts-form__input:focus {
+      border-color: var(--primary);
+    }
+    .contacts-form__input::placeholder {
+      color: var(--text-dim);
+    }
+    .contacts-form__phone-wrap {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+    .contacts-form__phone-prefix {
+      position: absolute;
+      left: 20px;
+      color: var(--white);
+      font-size: 0.9375rem;
+      font-weight: 500;
+      z-index: 1;
+      pointer-events: none;
+    }
+    .contacts-form__input--phone {
+      padding-left: 48px;
+    }
+    .contacts-form__textarea {
+      width: 100%;
+      padding: 16px 20px;
+      background: var(--bg-lighter);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      color: var(--white);
+      font-family: var(--font-body);
+      font-size: 0.9375rem;
+      outline: none;
+      transition: border-color var(--transition);
+      resize: vertical;
+      min-height: 120px;
+    }
+    .contacts-form__textarea:focus {
+      border-color: var(--primary);
+    }
+    .contacts-form__textarea::placeholder {
+      color: var(--text-dim);
+    }
+    .contacts-form__privacy {
+      font-size: 0.8125rem;
+      color: var(--text-dim);
+      line-height: 1.5;
+    }
+    .contacts-form__privacy a {
+      color: var(--text-muted);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+    .contacts-form__privacy a:hover {
+      color: var(--white);
+    }
+    .contacts-form__success {
+      display: none;
+      background: rgba(147, 210, 0, 0.1);
+      border: 1px solid rgba(147, 210, 0, 0.3);
+      border-radius: 12px;
+      padding: 20px 24px;
+      color: var(--green);
+      font-size: 0.9375rem;
+      line-height: 1.5;
+      text-align: center;
+    }
+    .contacts-form__success.active {
+      display: block;
+    }
+    .contacts-form__error {
+      font-size: 0.8125rem;
+      color: var(--primary);
+      margin-top: 4px;
+      display: none;
+    }
+    .contacts-form__error.active {
+      display: block;
+    }
+
+    /* ===== CONTACT INFO SIDE ===== */
+    .contacts-info {
+      background: var(--bg-lighter);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 24px 28px;
+    }
+    .contacts-info__phone {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: var(--font-heading);
+      font-size: clamp(1.25rem, 2vw, 1.625rem);
+      color: var(--white);
+      text-decoration: none;
+      margin-bottom: 4px;
+      transition: color var(--transition);
+    }
+    .contacts-info__phone:hover {
+      color: var(--primary);
+    }
+    .contacts-info__buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 32px;
+    }
+    .contacts-info__wa-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 28px;
+      background: #25D366;
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      font-family: var(--font-body);
+      font-size: 0.9375rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: background var(--transition), transform var(--transition);
+      cursor: pointer;
+    }
+    .contacts-info__wa-btn:hover {
+      background: #1fba59;
+      transform: translateY(-2px);
+    }
+    .contacts-info__links {
+      list-style: none;
+      margin-bottom: 12px;
+    }
+    .contacts-info__links li {
+      padding: 6px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .contacts-info__links li:last-child {
+      border-bottom: none;
+    }
+    .contacts-info__link {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--white);
+      text-decoration: none;
+      font-size: clamp(1.25rem, 2vw, 1.625rem);
+      font-family: var(--font-heading);
+      transition: color var(--transition);
+    }
+    .contacts-info__link:hover {
+      color: var(--primary);
+    }
+    .contacts-info__link-icon {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+    }
+    .contacts-info__meta {
+      padding-top: 4px;
+    }
+    .contacts-info__meta-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 5px 0;
+      font-size: 0.9375rem;
+      color: var(--text-muted);
+    }
+    .contacts-info__meta-icon {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 2px;
+    }
+
+    /* ===== COMMON CONTACTS BAR ===== */
+    .contacts-common {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      background: var(--bg-lighter);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 20px 28px;
+      flex-wrap: wrap;
+    }
+    .contacts-common__phone,
+    .contacts-common__email {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-heading);
+      font-size: clamp(1.125rem, 2vw, 1.5rem);
+      color: var(--white);
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+    .contacts-common__phone:hover,
+    .contacts-common__email:hover {
+      color: var(--primary);
+    }
+    .contacts-common__sep {
+      width: 1px;
+      height: 28px;
+      background: var(--border);
+      flex-shrink: 0;
+    }
+    .contacts-common__hint {
+      margin-left: auto;
+      font-size: 0.8125rem;
+      color: var(--text-dim);
+    }
+    /* ===== CITY CARDS ===== */
+    .contacts-cities__row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .contacts-cities__title {
+      font-family: var(--font-heading);
+      font-size: clamp(1.5rem, 2.5vw, 2rem);
+      font-weight: 400;
+      color: var(--white);
+      margin-bottom: 6px;
+    }
+    .contacts-cities {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+    .contacts-info__city {
+      font-family: var(--font-heading);
+      font-size: 1.25rem;
+      font-weight: 400;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+    .contacts-info__meta-sub {
+      display: block;
+      color: var(--text-dim);
+      font-size: 0.8125rem;
+      margin-top: 2px;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 1024px) {
+      .contacts-main__grid {
+        gap: 40px;
+      }
+    }
+    @media (max-width: 768px) {
+      .contacts-hero {
+        padding: 140px 0 60px;
+      }
+      .contacts-main {
+        padding: 28px 0;
+      }
+      .contacts-main__grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+      .contacts-info {
+        padding: 16px;
+      }
+      .contacts-info__phone,
+      .contacts-info__link {
+        font-size: 1rem;
+      }
+      .contacts-cities__row {
+        grid-template-columns: 1fr;
+      }
+      .contacts-common {
+        padding: 14px 16px;
+        gap: 12px;
+      }
+      .contacts-common__sep,
+      .contacts-common__hint {
+        display: none;
+      }
+      .contacts-common__phone,
+      .contacts-common__email {
+        font-size: 1rem;
+      }
+    }
+  </style>
+  <!-- Яндекс.Метрика — TODO: вставить код счётчика -->
+  <!-- Яндекс.Вебмастер — TODO: вставить мета-тег верификации -->
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="header" id="header">
+    <div class="container header__inner">
+      <a href="index.html" class="header__logo">
+        <img src="images/logo.png" alt="CeramicaDecor" class="header__logo-img">
+      </a>
+      <nav class="header__nav" id="mainNav">
+        <ul class="header__nav-list">
+          <li class="header__nav-dropdown">
+            <a href="catalog-izrazcy.html" class="header__nav-link" aria-haspopup="true" aria-expanded="false">Каталог</a>
+            <ul class="header__dropdown-menu">
+              <li><a href="catalog-izrazcy.html">Весь каталог</a></li>
+              <li><a href="glaze-palette.html">Палитра глазурей</a></li>
+              <li><a href="catalog-izrazcy.html">Изразцы</a></li>
+              <li><a href="catalog-kaminy.html">Камины</a></li>
+              <li><a href="catalog-biokaminy.html">Биокамины</a></li>
+              <li><a href="catalog-elektrokaminy.html">Электрокамины</a></li>
+              <li><a href="catalog-pech-kaminy.html">Печь-камины</a></li>
+              <li><a href="catalog-mramornye-kaminy-portaly.html">Мраморные камины и порталы</a></li>
+              <li><a href="catalog-russkie-pechi.html">Русские печи</a></li>
+              <li><a href="catalog-otopitelnye-pechi.html">Отопительные печи</a></li>
+              <li><a href="catalog-barbekyu-kompleksy.html">Барбекю комплексы</a></li>
+              <li><a href="catalog-bannye-pechi.html">Банные печи</a></li>
+              <li><a href="catalog-bannye-portaly.html">Банные порталы</a></li>
+              <li><a href="catalog-seriynye-modeli.html">Серийные модели</a></li>
+              <li><a href="catalog-fasadnaya-keramika.html">Фасадная керамика</a></li>
+              <li><a href="catalog-interernaya-keramika.html">Интерьерная керамика</a></li>
+              <li><a href="catalog-suvenirnaya-produkciya.html">Сувенирная продукция</a></li>
+            </ul>
+          </li>
+          <li><a href="restoration.html" class="header__nav-link">Реставрация</a></li>
+          <li><a href="components.html" class="header__nav-link">Комплектующие</a></li>
+          <li><a href="cooperation.html" class="header__nav-link">Сотрудничество</a></li>
+          <li><a href="about.html" class="header__nav-link">О компании</a></li>
+          <li><a href="contacts.html" class="header__nav-link">Контакты</a></li>
+        </ul>
+        <a href="tel:+74952293046" class="header__nav-phone-link">+7 (495) 229-30-46</a>
+        <a href="mailto:info@ceramicadecor.ru" class="header__nav-phone-link">info@ceramicadecor.ru</a>
+        <div class="header__nav-item--search"><a href="#" class="header__nav-link" id="searchBtnMobile"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg> Поиск</a></div>
+      </nav>
+      <div class="header__actions">
+        <button class="header__search-btn" id="searchBtn" aria-label="Поиск"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></button>
+        <a href="tel:+74952293046" class="header__phone-desktop">+7 (495) 229-30-46</a>
+        <button class="header__burger" id="burgerBtn" aria-label="Меню"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <section class="contacts-hero">
+    <div class="container">
+      <h1 class="contacts-hero__title">Контакты</h1>
+      <p class="contacts-hero__subtitle">Свяжитесь с нами — обсудим проект</p>
+    </div>
+  </section>
+
+  <!-- ===== CONTACTS MAIN ===== -->
+  <section class="contacts-main">
+    <div class="container">
+
+      <div class="contacts-main__grid">
+        <!-- LEFT: Form -->
+        <div class="contacts-form">
+          <h2 class="contacts-form__title">Напишите нам — обсудим проект, материалы и сроки</h2>
+          <p class="contacts-form__subtitle">Мы создаём камины и печи под архитектуру дома. Перезвоним в ближайшее рабочее время в течение часа</p>
+          <form class="contacts-form__form" id="contactPageForm" name="contact-page" method="POST" novalidate>
+            <div class="contacts-form__field">
+              <input type="text" name="name" placeholder="Ваше имя" required class="contacts-form__input" id="contactName">
+              <p class="contacts-form__error" id="nameError">Пожалуйста, введите ваше имя</p>
+            </div>
+            <div class="contacts-form__field">
+              <div class="contacts-form__phone-wrap">
+                <span class="contacts-form__phone-prefix">+7</span>
+                <input type="tel" name="phone" placeholder="(___) ___-__-__" required class="contacts-form__input contacts-form__input--phone" id="contactPhone" maxlength="15">
+              </div>
+              <p class="contacts-form__error" id="phoneError">Пожалуйста, введите корректный номер телефона</p>
+            </div>
+            <div class="contacts-form__field">
+              <textarea name="message" placeholder="Опишите ваш проект" class="contacts-form__textarea" id="contactMessage"></textarea>
+            </div>
+            <label class="consent-label">
+              <input type="checkbox" class="consent-checkbox" required>
+              <span>Я даю согласие на обработку персональных данных в соответствии с <a href="privacy.html" target="_blank">политикой конфиденциальности</a></span>
+            </label>
+            <button type="submit" class="btn btn--primary btn--full">Отправить заявку</button>
+          </form>
+          <div class="contacts-form__success" id="formSuccess">Спасибо! Мы свяжемся с вами в ближайшее время</div>
+        </div>
+
+        <!-- RIGHT: City contact cards -->
+        <div class="contacts-cities">
+
+          <!-- Common contacts bar -->
+          <div class="contacts-common">
+            <a href="tel:88005558032" class="contacts-common__phone">
+              <span class="contacts-info__link-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01.5 2.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.72 6.72l1.28-1.28a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              8 (800) 555-80-32
+            </a>
+            <span class="contacts-common__sep"></span>
+            <a href="mailto:info@ceramicadecor.ru" class="contacts-common__email">
+              <span class="contacts-info__link-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="2" y="4" width="20" height="16" rx="3" stroke="currentColor" stroke-width="1.3"/><path d="M2 7l10 6 10-6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              info@ceramicadecor.ru
+            </a>
+          </div>
+
+          <h3 class="contacts-cities__title">Адреса шоурумов</h3>
+
+          <div class="contacts-cities__row">
+
+          <!-- Moscow -->
+          <div class="contacts-info">
+            <h3 class="contacts-info__city">Москва</h3>
+            <a href="tel:+74952293046" class="contacts-info__phone">
+              <span class="contacts-info__link-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01.5 2.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.72 6.72l1.28-1.28a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              +7 (495) 229-30-46
+            </a>
+            <ul class="contacts-info__links">
+              <li>
+                <a href="mailto:info@ceramicadecor.ru" class="contacts-info__link">
+                  <span class="contacts-info__link-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="2" y="4" width="20" height="16" rx="3" stroke="currentColor" stroke-width="1.3"/><path d="M2 7l10 6 10-6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </span>
+                  info@ceramicadecor.ru
+                </a>
+              </li>
+            </ul>
+            <div class="contacts-info__meta">
+              <div class="contacts-info__meta-item">
+                <span class="contacts-info__meta-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.3"/><path d="M12 6v6l4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+                Пн–Вс: 10:00 — 19:00
+              </div>
+              <div class="contacts-info__meta-item">
+                <span class="contacts-info__meta-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" stroke="currentColor" stroke-width="1.3"/><circle cx="12" cy="10" r="3" stroke="currentColor" stroke-width="1.3"/></svg>
+                </span>
+                <span>ул. Свободы, 99к1<span class="contacts-info__meta-sub">м. Планерная, 7 мин. пешком</span></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Saint Petersburg -->
+          <div class="contacts-info">
+            <h3 class="contacts-info__city">Санкт-Петербург</h3>
+            <a href="tel:+78125048032" class="contacts-info__phone">
+              <span class="contacts-info__link-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01.5 2.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.72 6.72l1.28-1.28a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              +7 (812) 504-80-32
+            </a>
+            <ul class="contacts-info__links">
+              <li>
+                <a href="mailto:spb@ceramicadecor.ru" class="contacts-info__link">
+                  <span class="contacts-info__link-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="2" y="4" width="20" height="16" rx="3" stroke="currentColor" stroke-width="1.3"/><path d="M2 7l10 6 10-6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </span>
+                  spb@ceramicadecor.ru
+                </a>
+              </li>
+            </ul>
+            <div class="contacts-info__meta">
+              <div class="contacts-info__meta-item">
+                <span class="contacts-info__meta-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.3"/><path d="M12 6v6l4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+                <span>Пн–Пт: 10:00 — 19:00<span class="contacts-info__meta-sub">Выходные — по записи</span></span>
+              </div>
+              <div class="contacts-info__meta-item">
+                <span class="contacts-info__meta-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" stroke="currentColor" stroke-width="1.3"/><circle cx="12" cy="10" r="3" stroke="currentColor" stroke-width="1.3"/></svg>
+                </span>
+                пр. Энгельса, д. 60
+              </div>
+            </div>
+          </div>
+
+          </div><!-- /contacts-cities__row -->
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer" id="footer">
+    <div class="footer__glow"></div>
+    <div class="container">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <a href="index.html" class="footer__logo"><img src="images/logo.png" alt="CeramicaDecor" class="footer__logo-img"></a>
+          <p class="footer__tagline">Керамические премиальные облицовки.<br>14+ лет, своё производство, монтаж.<br>Под ключ по России и СНГ</p>
+        </div>
+        <div class="footer__columns">
+          <div class="footer__col">
+            <h4 class="footer__col-title" style="font-size:16px;font-weight:700;color:#fff;">Каталог</h4>
+            <ul class="footer__col-list">
+              <li><a href="glaze-palette.html">Палитра глазурей</a></li>
+              <li><a href="catalog-izrazcy.html">Изразцы</a></li>
+              <li><a href="catalog-kaminy.html">Камины</a></li>
+              <li><a href="catalog-barbekyu-kompleksy.html">Барбекю комплексы</a></li>
+            </ul>
+          </div>
+          <div class="footer__col">
+            <ul class="footer__col-list footer__col-list--offset">
+              <li><a href="cooperation.html" style="color:#fff;font-size:16px;font-weight:500;">Сотрудничество</a></li>
+              <li><a href="about.html" style="color:#fff;font-size:16px;font-weight:500;">О компании</a></li>
+              <li><a href="contacts.html" style="color:#fff;font-size:16px;font-weight:500;">Контакты</a></li>
+              <li><a href="tel:+74952293046" style="font-weight:700;">+7 (495) 229-30-46</a></li>
+              <li><a href="mailto:info@ceramicadecor.ru" style="font-weight:700;">info@ceramicadecor.ru</a></li>
+              <li style="margin-top: 0.75em;"><a href="contacts.html" class="btn btn--primary" style="padding:9px 20px;font-size:13px;color:#fff;">Оставить заявку</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p class="footer__copy">&copy; 2013&ndash;2026 CeramicaDecor. Все права защищены.</p>
+        <p class="footer__org-info">ООО «АРТ КЕРАМИКА» &middot; ИНН&nbsp;5018178964 &middot; ОГРН&nbsp;1155018002150 &middot; 141068, Московская обл., г.&nbsp;Королев, ул.&nbsp;Силикатная, д.&nbsp;74, пом.&nbsp;204</p>
+        <div class="footer__legal">
+          <a href="privacy.html" target="_blank">Политика конфиденциальности</a>
+          <a href="terms.html" target="_blank">Пользовательское соглашение</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js" defer></script>
+  <script>
+    // Contact form validation and submission
+    (function() {
+      var form = document.getElementById('contactPageForm');
+      var nameInput = document.getElementById('contactName');
+      var phoneInput = document.getElementById('contactPhone');
+      var nameError = document.getElementById('nameError');
+      var phoneError = document.getElementById('phoneError');
+      var successMsg = document.getElementById('formSuccess');
+
+      // Phone mask
+      if (phoneInput) {
+        phoneInput.addEventListener('input', function(e) {
+          var x = e.target.value.replace(/\D/g, '');
+          var formatted = '';
+          if (x.length > 0) formatted = '(' + x.substring(0, 3);
+          if (x.length >= 3) formatted += ') ' + x.substring(3, 6);
+          if (x.length >= 6) formatted += '-' + x.substring(6, 8);
+          if (x.length >= 8) formatted += '-' + x.substring(8, 10);
+          e.target.value = formatted;
+        });
+      }
+
+      // Clear errors on input
+      if (nameInput) {
+        nameInput.addEventListener('input', function() {
+          nameError.classList.remove('active');
+          nameInput.style.borderColor = '';
+        });
+      }
+      if (phoneInput) {
+        phoneInput.addEventListener('input', function() {
+          phoneError.classList.remove('active');
+          phoneInput.style.borderColor = '';
+        });
+      }
+
+      if (form) {
+        form.addEventListener('submit', function(e) {
+          e.preventDefault();
+          var valid = true;
+
+          // Validate name
+          if (!nameInput.value.trim()) {
+            nameError.classList.add('active');
+            nameInput.style.borderColor = 'var(--primary)';
+            valid = false;
+          }
+
+          // Validate phone (at least 10 digits)
+          var phoneDigits = phoneInput.value.replace(/\D/g, '');
+          if (phoneDigits.length < 10) {
+            phoneError.classList.add('active');
+            phoneInput.style.borderColor = 'var(--primary)';
+            valid = false;
+          }
+
+          var consentBox = form.querySelector('.consent-checkbox');
+          if (consentBox && !consentBox.checked) {
+            valid = false;
+          }
+          if (!valid) return;
+
+          var msgInput = document.getElementById('contactMessage');
+          var comment = msgInput && msgInput.value.trim() ? msgInput.value.trim() : '';
+          fetch('https://ceramicadecor.ru/feedback/ceramicadecor_pro', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: new URLSearchParams({ name: nameInput.value.trim(), phone: '+7' + phoneInput.value.trim(), comment: comment })
+          });
+          form.style.display = 'none';
+          successMsg.classList.add('active');
+        });
+      }
+    })();
+  </script>
+  <button class="scroll-to-top" aria-label="Наверх">
+    <svg viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+  </button>
+  <script src="search.js" defer></script>
+
+  <!-- COOKIE BANNER -->
+  <div class="cookie-banner" id="cookieBanner">
+    <p class="cookie-banner__text">Мы используем файлы cookie. Продолжая использование сайта, вы соглашаетесь с нашей <a href="privacy.html">Политикой конфиденциальности</a>.</p>
+    <button class="cookie-banner__btn" id="cookieAccept">Принять</button>
+  </div>
+</body>
+</html>
+
+
