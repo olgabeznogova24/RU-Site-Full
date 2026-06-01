@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Review кадрирования фото шоурумов</title>
+  <style>
+    :root {
+      --bg: #111;
+      --panel: #1b1b1b;
+      --panel-soft: #242424;
+      --text: #f4f1ea;
+      --muted: rgba(244, 241, 234, 0.62);
+      --line: rgba(255,255,255,0.12);
+      --accent: #cb3b25;
+    }
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Arial, sans-serif;
+      line-height: 1.5;
+    }
+    .page {
+      width: min(1440px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 32px 0 56px;
+    }
+    .topbar {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 24px;
+      align-items: end;
+      margin-bottom: 28px;
+    }
+    h1 {
+      margin: 0 0 8px;
+      font-family: Georgia, serif;
+      font-size: clamp(32px, 4vw, 56px);
+      font-weight: 400;
+      line-height: 1.08;
+    }
+    .lead {
+      max-width: 780px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 16px;
+    }
+    .actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+    button {
+      min-height: 40px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: var(--panel-soft);
+      color: var(--text);
+      cursor: pointer;
+      font: inherit;
+      padding: 9px 14px;
+    }
+    button:hover {
+      border-color: var(--accent);
+    }
+    .button-primary {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+    }
+    .review-grid {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      grid-auto-flow: dense;
+      grid-auto-rows: 170px;
+      gap: 12px;
+      margin-bottom: 32px;
+    }
+    .tile {
+      position: relative;
+      overflow: hidden;
+      border-radius: 8px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+    }
+    .tile--large {
+      grid-column: span 2;
+      grid-row: span 2;
+    }
+    .tile--wide {
+      grid-column: span 2;
+    }
+    .tile--tall {
+      grid-column: span 1;
+      grid-row: span 2;
+    }
+    .tile--small {
+      grid-column: span 1;
+    }
+    .tile img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: var(--pos-x, 50%) var(--pos-y, 50%);
+      transform: scale(var(--zoom, 1));
+      transform-origin: var(--pos-x, 50%) var(--pos-y, 50%);
+      display: block;
+    }
+    .tile__label {
+      position: absolute;
+      left: 8px;
+      top: 8px;
+      z-index: 2;
+      border-radius: 999px;
+      background: rgba(0,0,0,0.66);
+      color: #fff;
+      font-size: 12px;
+      line-height: 1;
+      padding: 6px 8px;
+    }
+    .controls {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .control-card {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      padding: 14px;
+    }
+    .control-card__head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+    .control-card__title {
+      margin: 0;
+      font-size: 15px;
+      font-weight: 700;
+    }
+    .control-card__meta {
+      color: var(--muted);
+      font-size: 12px;
+      white-space: nowrap;
+    }
+    .control-row {
+      display: grid;
+      grid-template-columns: 72px minmax(0, 1fr) 48px;
+      gap: 10px;
+      align-items: center;
+      margin: 8px 0;
+    }
+    label {
+      color: var(--muted);
+      font-size: 13px;
+    }
+    input[type="range"] {
+      width: 100%;
+      accent-color: var(--accent);
+    }
+    .value {
+      color: var(--text);
+      font-size: 13px;
+      text-align: right;
+    }
+    .output {
+      width: 100%;
+      min-height: 220px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #0b0b0b;
+      color: #f7eadf;
+      font-family: Consolas, monospace;
+      font-size: 13px;
+      padding: 14px;
+      resize: vertical;
+    }
+    .hint {
+      color: var(--muted);
+      font-size: 13px;
+      margin: 8px 0 0;
+    }
+    @media (max-width: 1024px) {
+      .topbar {
+        grid-template-columns: 1fr;
+      }
+      .actions {
+        justify-content: flex-start;
+      }
+      .review-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        grid-auto-rows: 150px;
+      }
+      .controls {
+        grid-template-columns: 1fr;
+      }
+    }
+    @media (max-width: 640px) {
+      .page {
+        width: min(100% - 24px, 1440px);
+        padding-top: 20px;
+      }
+      .review-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-auto-rows: 150px;
+      }
+      .tile,
+      .tile--large,
+      .tile--wide,
+      .tile--tall,
+      .tile--small {
+        grid-column: span 1;
+        grid-row: span 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="topbar">
+      <div>
+        <h1>Кадрирование фото шоурумов</h1>
+        <p class="lead">Двигайте положение фото внутри ячеек. Изменения сохраняются в этом браузере. Когда результат устроит, нажмите “Сформировать CSS” и перенесите стили в основную страницу.</p>
+      </div>
+      <div class="actions">
+        <button type="button" id="resetAll">Сбросить всё</button>
+        <button type="button" id="exportCss" class="button-primary">Сформировать CSS</button>
+      </div>
+    </div>
+
+    <section class="review-grid" id="reviewGrid" aria-label="Предпросмотр галереи"></section>
+
+    <section class="controls" id="controls" aria-label="Настройки кадрирования"></section>
+
+    <h2>CSS для переноса</h2>
+    <textarea class="output" id="cssOutput" spellcheck="false" readonly></textarea>
+    <p class="hint">CSS появится после нажатия кнопки. Он задаёт `object-position` и `transform-origin` для каждого изображения галереи.</p>
+  </main>
+
+  <script>
+    (function() {
+      var items = [
+        { id: 1, type: 'large' },
+        { id: 2, type: 'small' },
+        { id: 3, type: 'small' },
+        { id: 4, type: 'wide' },
+        { id: 5, type: 'tall' },
+        { id: 6, type: 'small' },
+        { id: 7, type: 'small' },
+        { id: 8, type: 'wide' },
+        { id: 9, type: 'large' },
+        { id: 10, type: 'small' },
+        { id: 11, type: 'tall' },
+        { id: 12, type: 'small' },
+        { id: 13, type: 'wide' },
+        { id: 14, type: 'small' },
+        { id: 15, type: 'small' },
+        { id: 16, type: 'wide' },
+        { id: 17, type: 'small' },
+        { id: 18, type: 'small' }
+      ];
+      var defaults = { x: 50, y: 50, zoom: 1 };
+      var storageKey = 'ceramicadecor.contacts.galleryCrop.v1';
+      var state = loadState();
+      var grid = document.getElementById('reviewGrid');
+      var controls = document.getElementById('controls');
+      var output = document.getElementById('cssOutput');
+
+      function pad(num) {
+        return String(num).padStart(2, '0');
+      }
+
+      function getItemState(id) {
+        return Object.assign({}, defaults, state[id] || {});
+      }
+
+      function loadState() {
+        try {
+          return JSON.parse(localStorage.getItem(storageKey)) || {};
+        } catch (e) {
+          return {};
+        }
+      }
+
+      function saveState() {
+        localStorage.setItem(storageKey, JSON.stringify(state));
+      }
+
+      function applyState(id) {
+        var values = getItemState(id);
+        document.querySelectorAll('[data-crop-id="' + id + '"]').forEach(function(el) {
+          el.style.setProperty('--pos-x', values.x + '%');
+          el.style.setProperty('--pos-y', values.y + '%');
+          el.style.setProperty('--zoom', values.zoom);
+        });
+        document.querySelectorAll('[data-value-for="' + id + '"]').forEach(function(el) {
+          var key = el.getAttribute('data-key');
+          el.textContent = key === 'zoom' ? values.zoom.toFixed(2) : values[key] + '%';
+        });
+      }
+
+      function update(id, key, value) {
+        state[id] = getItemState(id);
+        state[id][key] = key === 'zoom' ? Number(value) : parseInt(value, 10);
+        saveState();
+        applyState(id);
+      }
+
+      function resetItem(id) {
+        delete state[id];
+        saveState();
+        ['x', 'y'].forEach(function(key) {
+          document.getElementById('control-' + id + '-' + key).value = defaults[key];
+        });
+        document.getElementById('control-' + id + '-zoom').value = defaults.zoom;
+        applyState(id);
+      }
+
+      function render() {
+        grid.innerHTML = items.map(function(item) {
+          var num = pad(item.id);
+          return '<figure class="tile tile--' + item.type + '" data-crop-id="' + item.id + '">' +
+            '<span class="tile__label">' + item.id + '</span>' +
+            '<picture>' +
+              '<source type="image/webp" srcset="images/contacts_showroom_' + num + '_sm.webp 700w, images/contacts_showroom_' + num + '_lg.webp 1400w" sizes="(max-width: 768px) 50vw, 25vw">' +
+              '<img src="images/contacts_showroom_' + num + '_sm.jpg" srcset="images/contacts_showroom_' + num + '_sm.jpg 700w, images/contacts_showroom_' + num + '_lg.jpg 1400w" sizes="(max-width: 768px) 50vw, 25vw" alt="Фото шоурума ' + item.id + '">' +
+            '</picture>' +
+          '</figure>';
+        }).join('');
+
+        controls.innerHTML = items.map(function(item) {
+          var values = getItemState(item.id);
+          return '<article class="control-card">' +
+            '<div class="control-card__head">' +
+              '<h3 class="control-card__title">Фото ' + item.id + '</h3>' +
+              '<span class="control-card__meta">' + item.type + '</span>' +
+            '</div>' +
+            rangeRow(item.id, 'x', 'X', 0, 100, 1, values.x) +
+            rangeRow(item.id, 'y', 'Y', 0, 100, 1, values.y) +
+            rangeRow(item.id, 'zoom', 'Масштаб', 1, 1.35, 0.01, values.zoom) +
+            '<button type="button" data-reset="' + item.id + '">Сбросить фото</button>' +
+          '</article>';
+        }).join('');
+
+        items.forEach(function(item) {
+          applyState(item.id);
+        });
+      }
+
+      function rangeRow(id, key, label, min, max, step, value) {
+        var display = key === 'zoom' ? Number(value).toFixed(2) : value + '%';
+        return '<div class="control-row">' +
+          '<label for="control-' + id + '-' + key + '">' + label + '</label>' +
+          '<input id="control-' + id + '-' + key + '" type="range" min="' + min + '" max="' + max + '" step="' + step + '" value="' + value + '" data-id="' + id + '" data-key="' + key + '">' +
+          '<span class="value" data-value-for="' + id + '" data-key="' + key + '">' + display + '</span>' +
+        '</div>';
+      }
+
+      function exportCss() {
+        var lines = [];
+        items.forEach(function(item) {
+          var values = getItemState(item.id);
+          if (values.x === defaults.x && values.y === defaults.y && values.zoom === defaults.zoom) return;
+          lines.push('.contacts-showrooms__item:nth-child(' + item.id + ') {');
+          lines.push('  --image-pos-x: ' + values.x + '%;');
+          lines.push('  --image-pos-y: ' + values.y + '%;');
+          if (values.zoom !== defaults.zoom) {
+            lines.push('  --image-zoom: ' + values.zoom.toFixed(2) + ';');
+          }
+          lines.push('}');
+          lines.push('');
+        });
+        output.value = lines.length ? lines.join('\n') : '/* Все фото сейчас в положении по умолчанию. */';
+      }
+
+      controls.addEventListener('input', function(e) {
+        if (!e.target.matches('input[type="range"]')) return;
+        update(e.target.getAttribute('data-id'), e.target.getAttribute('data-key'), e.target.value);
+      });
+
+      controls.addEventListener('click', function(e) {
+        var resetId = e.target.getAttribute('data-reset');
+        if (!resetId) return;
+        resetItem(resetId);
+      });
+
+      document.getElementById('resetAll').addEventListener('click', function() {
+        state = {};
+        saveState();
+        render();
+        output.value = '';
+      });
+
+      document.getElementById('exportCss').addEventListener('click', exportCss);
+
+      render();
+    })();
+  </script>
+</body>
+</html>

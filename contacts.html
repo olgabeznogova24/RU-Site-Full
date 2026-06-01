@@ -25,31 +25,59 @@
   <style>
     /* ===== CONTACTS PAGE HERO ===== */
     .contacts-hero {
-      padding: 160px 0 80px;
-      text-align: center;
       position: relative;
+      min-height: 60vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: #101010 url('images/contacts_banner_desktop.jpg') center center / cover no-repeat;
+      overflow: hidden;
+      padding: 160px 0 100px;
     }
-    .contacts-hero::after {
+    @supports (background-image: url('x.webp')) {
+      .contacts-hero {
+        background-image: url('images/contacts_banner_desktop.webp');
+      }
+    }
+    @media (max-width: 768px) {
+      .contacts-hero {
+        background-image: url('images/contacts_banner_mobile.jpg');
+      }
+    }
+    @supports (background-image: url('x.webp')) {
+      @media (max-width: 768px) {
+        .contacts-hero {
+          background-image: url('images/contacts_banner_mobile.webp');
+        }
+      }
+    }
+    .contacts-hero::before {
       content: '';
       position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 200px;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--border-light), transparent);
+      inset: 0;
+      background: rgba(0,0,0,0.60);
+      pointer-events: none;
+    }
+    .contacts-hero .container {
+      position: relative;
+      z-index: 1;
     }
     .contacts-hero__title {
       font-family: var(--font-heading);
-      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
       font-weight: 400;
+      color: var(--white);
       line-height: 1.15;
-      margin-bottom: 16px;
+      margin: 0 0 24px;
     }
     .contacts-hero__subtitle {
-      font-size: 1.125rem;
-      color: var(--text-muted);
+      font-size: clamp(1rem, 1.5vw, 1.25rem);
+      color: rgba(255,255,255,0.68);
       font-weight: 300;
+      line-height: 1.6;
+      max-width: 700px;
+      margin: 0 auto;
     }
 
     /* ===== CONTACTS MAIN ===== */
@@ -58,12 +86,30 @@
     }
     .contacts-main__grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: minmax(0, 1fr) minmax(320px, 420px);
       gap: 64px;
       align-items: start;
     }
+    .contacts-left {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      min-width: 0;
+    }
 
     /* ===== CONTACT FORM SIDE ===== */
+    .contacts-form-shell {
+      align-self: start;
+      justify-self: stretch;
+      min-width: 0;
+      position: relative;
+      z-index: 2;
+      will-change: transform;
+    }
+    .contacts-form {
+      width: 100%;
+      position: static;
+    }
     .contacts-form__title {
       font-family: var(--font-heading);
       font-size: clamp(1.5rem, 2.5vw, 2rem);
@@ -182,6 +228,7 @@
       background: var(--bg-lighter);
       border: 1px solid var(--border);
       border-radius: 20px;
+      min-width: 0;
       padding: 24px 28px;
     }
     .contacts-info__phone {
@@ -193,6 +240,7 @@
       color: var(--white);
       text-decoration: none;
       margin-bottom: 4px;
+      min-width: 0;
       transition: color var(--transition);
     }
     .contacts-info__phone:hover {
@@ -244,6 +292,7 @@
       text-decoration: none;
       font-size: clamp(1.25rem, 2vw, 1.625rem);
       font-family: var(--font-heading);
+      min-width: 0;
       transition: color var(--transition);
     }
     .contacts-info__link:hover {
@@ -287,6 +336,7 @@
       background: var(--bg-lighter);
       border: 1px solid var(--border);
       border-radius: 16px;
+      min-width: 0;
       padding: 20px 28px;
       flex-wrap: wrap;
     }
@@ -298,6 +348,7 @@
       font-family: var(--font-heading);
       font-size: clamp(1.125rem, 2vw, 1.5rem);
       color: var(--white);
+      min-width: 0;
       text-decoration: none;
       transition: color var(--transition);
     }
@@ -319,8 +370,9 @@
     /* ===== CITY CARDS ===== */
     .contacts-cities__row {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 16px;
+      min-width: 0;
     }
     .contacts-cities__title {
       font-family: var(--font-heading);
@@ -333,6 +385,174 @@
       display: flex;
       flex-direction: column;
       gap: 24px;
+    }
+    .contacts-managers {
+      background: var(--bg-lighter);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 24px 28px;
+    }
+    .contacts-managers-section {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .contacts-managers-section .contacts-cities__title {
+      margin-bottom: 0;
+    }
+    .contacts-managers-section .contacts-managers__description {
+      margin: -4px 0 0;
+    }
+    .contacts-managers__title {
+      font-family: var(--font-heading);
+      font-size: 1.25rem;
+      font-weight: 400;
+      color: var(--white);
+      margin-bottom: 16px;
+    }
+    .contacts-managers__description {
+      color: var(--text-muted);
+      font-size: 0.9375rem;
+      line-height: 1.55;
+      margin: -6px 0 18px;
+      max-width: 620px;
+    }
+    .contacts-managers__groups {
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+    }
+    .contacts-managers__group-title {
+      color: var(--white);
+      font-size: 0.8125rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+    }
+    .contacts-managers__list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px 24px;
+    }
+    .contacts-managers__list--single {
+      grid-template-columns: 1fr;
+    }
+    .contacts-managers__item {
+      display: grid;
+      grid-template-columns: 116px minmax(0, 1fr);
+      gap: 6px 16px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .contacts-managers__item:last-child {
+      border-bottom: none;
+    }
+    .contacts-managers__name {
+      color: var(--text-muted);
+      font-size: 0.9375rem;
+    }
+    .contacts-managers__phone {
+      background: none;
+      border: none;
+      color: var(--white);
+      cursor: pointer;
+      display: inline-flex;
+      font-family: var(--font-heading);
+      font-size: 1.125rem;
+      line-height: 1.2;
+      padding: 0;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: color var(--transition);
+    }
+    .contacts-managers__phone:hover {
+      color: var(--primary);
+    }
+    .contacts-managers__contact {
+      justify-self: start;
+      position: relative;
+    }
+    .contacts-managers__contact summary {
+      list-style: none;
+    }
+    .contacts-managers__contact summary::-webkit-details-marker {
+      display: none;
+    }
+    .contacts-managers__contact-menu {
+      position: absolute;
+      right: 0;
+      top: calc(100% + 10px);
+      z-index: 10;
+      display: grid;
+      grid-template-columns: repeat(4, 42px);
+      gap: 10px;
+      padding: 10px;
+      background: var(--bg-lighter);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      box-shadow: 0 16px 36px rgba(0,0,0,0.36);
+    }
+    .contacts-managers__contact-menu::before {
+      content: '';
+      position: absolute;
+      top: -6px;
+      right: 22px;
+      width: 10px;
+      height: 10px;
+      background: var(--bg-lighter);
+      border-left: 1px solid var(--border);
+      border-top: 1px solid var(--border);
+      transform: rotate(45deg);
+    }
+    .contacts-managers__contact-link {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 42px;
+      height: 42px;
+      border: 0;
+      border-radius: 50%;
+      color: var(--white);
+      text-decoration: none;
+      background: transparent;
+      overflow: hidden;
+      transition: transform var(--transition), box-shadow var(--transition), filter var(--transition);
+    }
+    .contacts-managers__contact-link img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+    .contacts-managers__contact-link svg {
+      width: 21px;
+      height: 21px;
+    }
+    .contacts-managers__contact-link:hover {
+      transform: translateY(-2px);
+      filter: saturate(1.08);
+    }
+    .contacts-managers__contact-link--wa {
+      border-radius: 50%;
+    }
+    .contacts-managers__contact-link--tg {
+      border-radius: 50%;
+    }
+    .contacts-managers__contact-link--max {
+      border-radius: 13px;
+    }
+    .contacts-managers__contact-link[data-messenger="phone"] {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid var(--border);
+      box-shadow: 0 8px 18px rgba(0,0,0,0.22);
+    }
+    .contacts-managers__contact-link[data-messenger="phone"]:hover {
+      background: rgba(203, 59, 37, 0.16);
+      box-shadow: 0 12px 24px rgba(0,0,0,0.3);
     }
     .contacts-info__city {
       font-family: var(--font-heading);
@@ -347,23 +567,232 @@
       font-size: 0.8125rem;
       margin-top: 2px;
     }
+    .contacts-map {
+      width: 100%;
+    }
+    .contacts-map__layout {
+      display: block;
+    }
+    .contacts-map__canvas {
+      position: relative;
+      min-height: 360px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      background:
+        linear-gradient(rgba(255,255,255,0.055) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.055) 1px, transparent 1px),
+        var(--bg-lighter);
+      background-size: 44px 44px;
+    }
+    .contacts-map__canvas::before {
+      content: '';
+      position: absolute;
+      inset: 14%;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 50%;
+    }
+    .contacts-map__placeholder {
+      position: absolute;
+      left: 32px;
+      bottom: 32px;
+      max-width: 360px;
+      color: var(--text-muted);
+      font-size: 0.9375rem;
+      line-height: 1.6;
+    }
+    .contacts-map__marker {
+      position: absolute;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      background: var(--primary);
+      border-radius: 999px;
+      color: var(--white);
+      font-size: 0.8125rem;
+      font-weight: 500;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.28);
+    }
+    .contacts-map__marker::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: currentColor;
+    }
+    .contacts-map__marker--moscow {
+      top: 38%;
+      left: 42%;
+    }
+    .contacts-map__marker--spb {
+      top: 22%;
+      left: 31%;
+    }
+    .contacts-showrooms {
+      padding: 8px 0 112px;
+    }
+    .contacts-showrooms__header {
+      max-width: 760px;
+      margin-bottom: 32px;
+    }
+    .contacts-showrooms__eyebrow {
+      color: var(--primary);
+      font-size: 0.8125rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+    }
+    .contacts-showrooms__title {
+      font-family: var(--font-heading);
+      font-size: clamp(2rem, 4vw, 3.25rem);
+      font-weight: 400;
+      color: var(--white);
+      line-height: 1.12;
+      margin-bottom: 16px;
+    }
+    .contacts-showrooms__text {
+      color: var(--text-muted);
+      font-size: clamp(1rem, 1.4vw, 1.125rem);
+      font-weight: 300;
+      line-height: 1.7;
+      margin: 0;
+    }
+    .contacts-showrooms__grid {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      grid-auto-flow: dense;
+      grid-auto-rows: 210px;
+      gap: 14px;
+    }
+    .contacts-showrooms__item {
+      display: block;
+      min-width: 0;
+      overflow: hidden;
+      border-radius: 8px;
+      background: var(--bg-lighter);
+    }
+    .contacts-showrooms__item picture,
+    .contacts-showrooms__item img {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+    .contacts-showrooms__item img {
+      object-fit: cover;
+      object-position: var(--image-pos-x, 50%) var(--image-pos-y, 50%);
+      transform: scale(var(--image-zoom, 1));
+      transform-origin: var(--image-pos-x, 50%) var(--image-pos-y, 50%);
+      transition: transform 0.7s ease, filter 0.7s ease;
+    }
+    .contacts-showrooms__item:hover img {
+      transform: scale(calc(var(--image-zoom, 1) + 0.035));
+      filter: saturate(1.05);
+    }
+    .contacts-showrooms__item--large {
+      grid-column: span 2;
+      grid-row: span 2;
+    }
+    .contacts-showrooms__item--wide {
+      grid-column: span 2;
+    }
+    .contacts-showrooms__item--tall {
+      grid-column: span 1;
+      grid-row: span 2;
+    }
+    .contacts-showrooms__item--small {
+      grid-column: span 1;
+    }
+    .contacts-showrooms__item:nth-child(1) {
+      --image-pos-x: 80%;
+      --image-pos-y: 50%;
+    }
+    .contacts-showrooms__item:nth-child(2) {
+      --image-pos-x: 60%;
+      --image-pos-y: 50%;
+    }
+    .contacts-showrooms__item:nth-child(5) {
+      --image-pos-x: 43%;
+      --image-pos-y: 50%;
+    }
+    .contacts-showrooms__item:nth-child(8) {
+      --image-pos-x: 50%;
+      --image-pos-y: 76%;
+    }
+    .contacts-showrooms__item:nth-child(10) {
+      --image-pos-x: 30%;
+      --image-pos-y: 50%;
+    }
+    .contacts-showrooms__item:nth-child(11) {
+      --image-pos-x: 10%;
+      --image-pos-y: 50%;
+    }
+    .contacts-showrooms__item:nth-child(14) {
+      --image-pos-x: 10%;
+      --image-pos-y: 50%;
+    }
 
     /* ===== RESPONSIVE ===== */
     @media (max-width: 1024px) {
       .contacts-main__grid {
         gap: 40px;
+        grid-template-columns: minmax(0, 1fr) minmax(300px, 360px);
+      }
+      .contacts-showrooms__grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        grid-auto-rows: 180px;
+      }
+      .contacts-showrooms__item--large,
+      .contacts-showrooms__item--wide {
+        grid-column: span 2;
+      }
+      .contacts-showrooms__item--tall,
+      .contacts-showrooms__item--small {
+        grid-column: span 1;
       }
     }
     @media (max-width: 768px) {
       .contacts-hero {
-        padding: 140px 0 60px;
+        min-height: auto;
+        padding: 140px 0 70px;
       }
       .contacts-main {
         padding: 28px 0;
       }
       .contacts-main__grid {
         grid-template-columns: 1fr;
+        grid-template-areas:
+          "cities"
+          "managers"
+          "partners"
+          "form"
+          "map";
         gap: 32px;
+      }
+      .contacts-left {
+        display: contents;
+      }
+      .contacts-cities {
+        grid-area: cities;
+      }
+      .contacts-managers-section--projects {
+        grid-area: managers;
+      }
+      .contacts-managers-section--partners {
+        grid-area: partners;
+      }
+      .contacts-form-shell {
+        grid-area: form;
+        position: static;
+        transform: none !important;
+        will-change: auto;
+      }
+      .contacts-map {
+        grid-area: map;
+      }
+      .contacts-form {
+        position: static;
       }
       .contacts-info {
         padding: 16px;
@@ -374,6 +803,17 @@
       }
       .contacts-cities__row {
         grid-template-columns: 1fr;
+      }
+      .contacts-managers {
+        padding: 16px;
+      }
+      .contacts-managers__list {
+        grid-template-columns: 1fr;
+      }
+      .contacts-managers__item {
+        align-items: flex-start;
+        grid-template-columns: 1fr;
+        gap: 4px;
       }
       .contacts-common {
         padding: 14px 16px;
@@ -386,6 +826,43 @@
       .contacts-common__phone,
       .contacts-common__email {
         font-size: 1rem;
+      }
+      .contacts-map__canvas {
+        min-height: 320px;
+      }
+      .contacts-map__placeholder {
+        left: 20px;
+        right: 20px;
+        bottom: 20px;
+      }
+      .contacts-map__marker--moscow {
+        left: 44%;
+      }
+      .contacts-map__marker--spb {
+        left: 20%;
+      }
+      .contacts-showrooms {
+        padding: 16px 0 64px;
+      }
+      .contacts-showrooms__header {
+        margin-bottom: 22px;
+      }
+      .contacts-showrooms__grid {
+        display: flex;
+        gap: 12px;
+        margin: 0 calc(var(--container-padding, 20px) * -1);
+        overflow-x: auto;
+        padding: 0 var(--container-padding, 20px) 8px;
+        scroll-snap-type: x mandatory;
+      }
+      .contacts-showrooms__item,
+      .contacts-showrooms__item--large,
+      .contacts-showrooms__item--wide,
+      .contacts-showrooms__item--tall,
+      .contacts-showrooms__item--small {
+        flex: 0 0 min(78vw, 340px);
+        height: 260px;
+        scroll-snap-align: start;
       }
     }
   </style>
@@ -446,7 +923,7 @@
   <section class="contacts-hero">
     <div class="container">
       <h1 class="contacts-hero__title">Контакты</h1>
-      <p class="contacts-hero__subtitle">Свяжитесь с нами — обсудим проект</p>
+      <p class="contacts-hero__subtitle">Расскажите о вашем проекте, а мы подскажем подходящие решения, сориентируем по материалам и договоримся о встрече в шоуруме</p>
     </div>
   </section>
 
@@ -455,36 +932,9 @@
     <div class="container">
 
       <div class="contacts-main__grid">
-        <!-- LEFT: Form -->
-        <div class="contacts-form">
-          <h2 class="contacts-form__title">Напишите нам — обсудим проект, материалы и сроки</h2>
-          <p class="contacts-form__subtitle">Мы создаём камины и печи под архитектуру дома. Перезвоним в ближайшее рабочее время в течение часа</p>
-          <form class="contacts-form__form" id="contactPageForm" name="contact-page" method="POST" novalidate>
-            <div class="contacts-form__field">
-              <input type="text" name="name" placeholder="Ваше имя" required class="contacts-form__input" id="contactName">
-              <p class="contacts-form__error" id="nameError">Пожалуйста, введите ваше имя</p>
-            </div>
-            <div class="contacts-form__field">
-              <div class="contacts-form__phone-wrap">
-                <span class="contacts-form__phone-prefix">+7</span>
-                <input type="tel" name="phone" placeholder="(___) ___-__-__" required class="contacts-form__input contacts-form__input--phone" id="contactPhone" maxlength="15">
-              </div>
-              <p class="contacts-form__error" id="phoneError">Пожалуйста, введите корректный номер телефона</p>
-            </div>
-            <div class="contacts-form__field">
-              <textarea name="message" placeholder="Опишите ваш проект" class="contacts-form__textarea" id="contactMessage"></textarea>
-            </div>
-            <label class="consent-label">
-              <input type="checkbox" class="consent-checkbox" required>
-              <span>Я даю согласие на обработку персональных данных в соответствии с <a href="privacy.html" target="_blank">политикой конфиденциальности</a></span>
-            </label>
-            <button type="submit" class="btn btn--primary btn--full">Отправить заявку</button>
-          </form>
-          <div class="contacts-form__success" id="formSuccess">Спасибо! Мы свяжемся с вами в ближайшее время</div>
-        </div>
-
-        <!-- RIGHT: City contact cards -->
-        <div class="contacts-cities">
+        <div class="contacts-left">
+          <!-- LEFT: City contact cards -->
+          <div class="contacts-cities">
 
           <!-- Common contacts bar -->
           <div class="contacts-common">
@@ -531,7 +981,7 @@
                 <span class="contacts-info__meta-icon">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" stroke="currentColor" stroke-width="1.3"/><circle cx="12" cy="10" r="3" stroke="currentColor" stroke-width="1.3"/></svg>
                 </span>
-                <span>ул. Свободы, 99к1<span class="contacts-info__meta-sub">м. Планерная, 7 мин. пешком</span></span>
+                <span>ул. Свободы, 99к1<span class="contacts-info__meta-sub">м. Планерная, 10 мин. пешком</span></span>
               </div>
             </div>
           </div>
@@ -564,14 +1014,331 @@
                 <span class="contacts-info__meta-icon">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" stroke="currentColor" stroke-width="1.3"/><circle cx="12" cy="10" r="3" stroke="currentColor" stroke-width="1.3"/></svg>
                 </span>
-                пр. Энгельса, д. 60
+                <span>пр. Энгельса, д. 60<span class="contacts-info__meta-sub">м. Удельная, 7 мин. пешком</span></span>
               </div>
             </div>
           </div>
 
           </div><!-- /contacts-cities__row -->
+          </div>
 
+          <section class="contacts-managers-section contacts-managers-section--projects">
+            <h3 class="contacts-cities__title">Менеджеры проектов</h3>
+            <div class="contacts-managers">
+            <div class="contacts-managers__groups">
+              <div class="contacts-managers__group">
+                <h4 class="contacts-managers__group-title">Москва</h4>
+                <ul class="contacts-managers__list">
+                  <li class="contacts-managers__item">
+                    <span class="contacts-managers__name">Ольга</span>
+                    <details class="contacts-managers__contact">
+                      <summary class="contacts-managers__phone">+7 (995) 000-11-66</summary>
+                      <div class="contacts-managers__contact-menu" aria-label="Способы связи с Ольгой">
+                        <a href="https://api.whatsapp.com/send?phone=79950001166" class="contacts-managers__contact-link contacts-managers__contact-link--wa" target="_blank" rel="noopener" aria-label="WhatsApp" data-manager="Ольга" data-messenger="whatsapp"><img src="images/logo_whatsapp.png" alt="" loading="lazy"></a>
+                        <a href="https://t.me/+79950001166" class="contacts-managers__contact-link contacts-managers__contact-link--tg" target="_blank" rel="noopener" aria-label="Telegram" data-manager="Ольга" data-messenger="telegram"><img src="images/logo_telegram.svg.webp" alt="" loading="lazy"></a>
+                        <a href="https://max.ru/" class="contacts-managers__contact-link contacts-managers__contact-link--max" target="_blank" rel="noopener" aria-label="Max" data-manager="Ольга" data-messenger="max" data-placeholder="true"><img src="images/logo_max.webp" alt="" loading="lazy"></a>
+                        <a href="tel:+79950001166" class="contacts-managers__contact-link" aria-label="Позвонить Ольге" data-manager="Ольга" data-messenger="phone"><svg viewBox="0 0 24 24" fill="none"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1 1 .4 1.9.7 2.8a2 2 0 01-.5 2.1L8.1 9.9a16 16 0 006 6l1.3-1.3a2 2 0 012.1-.5c.9.3 1.8.6 2.8.7A2 2 0 0122 16.9z" stroke="currentColor" stroke-width="1.6"/></svg></a>
+                      </div>
+                    </details>
+                  </li>
+                  <li class="contacts-managers__item">
+                    <span class="contacts-managers__name">Нана</span>
+                    <details class="contacts-managers__contact">
+                      <summary class="contacts-managers__phone">+7 (995) 000-11-33</summary>
+                      <div class="contacts-managers__contact-menu" aria-label="Способы связи с Наной">
+                        <a href="https://api.whatsapp.com/send?phone=79950001133" class="contacts-managers__contact-link contacts-managers__contact-link--wa" target="_blank" rel="noopener" aria-label="WhatsApp" data-manager="Нана" data-messenger="whatsapp"><img src="images/logo_whatsapp.png" alt="" loading="lazy"></a>
+                        <a href="https://t.me/+79950001133" class="contacts-managers__contact-link contacts-managers__contact-link--tg" target="_blank" rel="noopener" aria-label="Telegram" data-manager="Нана" data-messenger="telegram"><img src="images/logo_telegram.svg.webp" alt="" loading="lazy"></a>
+                        <a href="https://max.ru/" class="contacts-managers__contact-link contacts-managers__contact-link--max" target="_blank" rel="noopener" aria-label="Max" data-manager="Нана" data-messenger="max" data-placeholder="true"><img src="images/logo_max.webp" alt="" loading="lazy"></a>
+                        <a href="tel:+79950001133" class="contacts-managers__contact-link" aria-label="Позвонить Нане" data-manager="Нана" data-messenger="phone"><svg viewBox="0 0 24 24" fill="none"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1 1 .4 1.9.7 2.8a2 2 0 01-.5 2.1L8.1 9.9a16 16 0 006 6l1.3-1.3a2 2 0 012.1-.5c.9.3 1.8.6 2.8.7A2 2 0 0122 16.9z" stroke="currentColor" stroke-width="1.6"/></svg></a>
+                      </div>
+                    </details>
+                  </li>
+                  <li class="contacts-managers__item">
+                    <span class="contacts-managers__name">Елена</span>
+                    <details class="contacts-managers__contact">
+                      <summary class="contacts-managers__phone">+7 (995) 000-11-88</summary>
+                      <div class="contacts-managers__contact-menu" aria-label="Способы связи с Еленой">
+                        <a href="https://api.whatsapp.com/send?phone=79950001188" class="contacts-managers__contact-link contacts-managers__contact-link--wa" target="_blank" rel="noopener" aria-label="WhatsApp" data-manager="Елена" data-messenger="whatsapp"><img src="images/logo_whatsapp.png" alt="" loading="lazy"></a>
+                        <a href="https://t.me/+79950001188" class="contacts-managers__contact-link contacts-managers__contact-link--tg" target="_blank" rel="noopener" aria-label="Telegram" data-manager="Елена" data-messenger="telegram"><img src="images/logo_telegram.svg.webp" alt="" loading="lazy"></a>
+                        <a href="https://max.ru/" class="contacts-managers__contact-link contacts-managers__contact-link--max" target="_blank" rel="noopener" aria-label="Max" data-manager="Елена" data-messenger="max" data-placeholder="true"><img src="images/logo_max.webp" alt="" loading="lazy"></a>
+                        <a href="tel:+79950001188" class="contacts-managers__contact-link" aria-label="Позвонить Елене" data-manager="Елена" data-messenger="phone"><svg viewBox="0 0 24 24" fill="none"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1 1 .4 1.9.7 2.8a2 2 0 01-.5 2.1L8.1 9.9a16 16 0 006 6l1.3-1.3a2 2 0 012.1-.5c.9.3 1.8.6 2.8.7A2 2 0 0122 16.9z" stroke="currentColor" stroke-width="1.6"/></svg></a>
+                      </div>
+                    </details>
+                  </li>
+                  <li class="contacts-managers__item">
+                    <span class="contacts-managers__name">Александра</span>
+                    <details class="contacts-managers__contact">
+                      <summary class="contacts-managers__phone">+7 (995) 000-44-88</summary>
+                      <div class="contacts-managers__contact-menu" aria-label="Способы связи с Александрой">
+                        <a href="https://api.whatsapp.com/send?phone=79950004488" class="contacts-managers__contact-link contacts-managers__contact-link--wa" target="_blank" rel="noopener" aria-label="WhatsApp" data-manager="Александра" data-messenger="whatsapp"><img src="images/logo_whatsapp.png" alt="" loading="lazy"></a>
+                        <a href="https://t.me/+79950004488" class="contacts-managers__contact-link contacts-managers__contact-link--tg" target="_blank" rel="noopener" aria-label="Telegram" data-manager="Александра" data-messenger="telegram"><img src="images/logo_telegram.svg.webp" alt="" loading="lazy"></a>
+                        <a href="https://max.ru/" class="contacts-managers__contact-link contacts-managers__contact-link--max" target="_blank" rel="noopener" aria-label="Max" data-manager="Александра" data-messenger="max" data-placeholder="true"><img src="images/logo_max.webp" alt="" loading="lazy"></a>
+                        <a href="tel:+79950004488" class="contacts-managers__contact-link" aria-label="Позвонить Александре" data-manager="Александра" data-messenger="phone"><svg viewBox="0 0 24 24" fill="none"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1 1 .4 1.9.7 2.8a2 2 0 01-.5 2.1L8.1 9.9a16 16 0 006 6l1.3-1.3a2 2 0 012.1-.5c.9.3 1.8.6 2.8.7A2 2 0 0122 16.9z" stroke="currentColor" stroke-width="1.6"/></svg></a>
+                      </div>
+                    </details>
+                  </li>
+                  <li class="contacts-managers__item">
+                    <span class="contacts-managers__name">Наталия</span>
+                    <details class="contacts-managers__contact">
+                      <summary class="contacts-managers__phone">+7 (995) 000-44-22</summary>
+                      <div class="contacts-managers__contact-menu" aria-label="Способы связи с Наталией">
+                        <a href="https://api.whatsapp.com/send?phone=79950004422" class="contacts-managers__contact-link contacts-managers__contact-link--wa" target="_blank" rel="noopener" aria-label="WhatsApp" data-manager="Наталия" data-messenger="whatsapp"><img src="images/logo_whatsapp.png" alt="" loading="lazy"></a>
+                        <a href="https://t.me/+79950004422" class="contacts-managers__contact-link contacts-managers__contact-link--tg" target="_blank" rel="noopener" aria-label="Telegram" data-manager="Наталия" data-messenger="telegram"><img src="images/logo_telegram.svg.webp" alt="" loading="lazy"></a>
+                        <a href="https://max.ru/" class="contacts-managers__contact-link contacts-managers__contact-link--max" target="_blank" rel="noopener" aria-label="Max" data-manager="Наталия" data-messenger="max" data-placeholder="true"><img src="images/logo_max.webp" alt="" loading="lazy"></a>
+                        <a href="tel:+79950004422" class="contacts-managers__contact-link" aria-label="Позвонить Наталии" data-manager="Наталия" data-messenger="phone"><svg viewBox="0 0 24 24" fill="none"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1 1 .4 1.9.7 2.8a2 2 0 01-.5 2.1L8.1 9.9a16 16 0 006 6l1.3-1.3a2 2 0 012.1-.5c.9.3 1.8.6 2.8.7A2 2 0 0122 16.9z" stroke="currentColor" stroke-width="1.6"/></svg></a>
+                      </div>
+                    </details>
+                  </li>
+                  <li class="contacts-managers__item">
+                    <span class="contacts-managers__name">Валерия</span>
+                    <details class="contacts-managers__contact">
+                      <summary class="contacts-managers__phone">+7 (995) 000-46-46</summary>
+                      <div class="contacts-managers__contact-menu" aria-label="Способы связи с Валерией">
+                        <a href="https://api.whatsapp.com/send?phone=79950004646" class="contacts-managers__contact-link contacts-managers__contact-link--wa" target="_blank" rel="noopener" aria-label="WhatsApp" data-manager="Валерия" data-messenger="whatsapp"><img src="images/logo_whatsapp.png" alt="" loading="lazy"></a>
+                        <a href="https://t.me/+79950004646" class="contacts-managers__contact-link contacts-managers__contact-link--tg" target="_blank" rel="noopener" aria-label="Telegram" data-manager="Валерия" data-messenger="telegram"><img src="images/logo_telegram.svg.webp" alt="" loading="lazy"></a>
+                        <a href="https://max.ru/" class="contacts-managers__contact-link contacts-managers__contact-link--max" target="_blank" rel="noopener" aria-label="Max" data-manager="Валерия" data-messenger="max" data-placeholder="true"><img src="images/logo_max.webp" alt="" loading="lazy"></a>
+                        <a href="tel:+79950004646" class="contacts-managers__contact-link" aria-label="Позвонить Валерии" data-manager="Валерия" data-messenger="phone"><svg viewBox="0 0 24 24" fill="none"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1 1 .4 1.9.7 2.8a2 2 0 01-.5 2.1L8.1 9.9a16 16 0 006 6l1.3-1.3a2 2 0 012.1-.5c.9.3 1.8.6 2.8.7A2 2 0 0122 16.9z" stroke="currentColor" stroke-width="1.6"/></svg></a>
+                      </div>
+                    </details>
+                  </li>
+                </ul>
+              </div>
+              <div class="contacts-managers__group">
+                <h4 class="contacts-managers__group-title">Санкт-Петербург</h4>
+                <ul class="contacts-managers__list">
+                  <li class="contacts-managers__item">
+                    <span class="contacts-managers__name">Екатерина</span>
+                    <details class="contacts-managers__contact">
+                      <summary class="contacts-managers__phone">+7 (995) 000-33-99</summary>
+                      <div class="contacts-managers__contact-menu" aria-label="Способы связи с Екатериной">
+                        <a href="https://api.whatsapp.com/send?phone=79950003399" class="contacts-managers__contact-link contacts-managers__contact-link--wa" target="_blank" rel="noopener" aria-label="WhatsApp" data-manager="Екатерина" data-messenger="whatsapp"><img src="images/logo_whatsapp.png" alt="" loading="lazy"></a>
+                        <a href="https://t.me/+79950003399" class="contacts-managers__contact-link contacts-managers__contact-link--tg" target="_blank" rel="noopener" aria-label="Telegram" data-manager="Екатерина" data-messenger="telegram"><img src="images/logo_telegram.svg.webp" alt="" loading="lazy"></a>
+                        <a href="https://max.ru/" class="contacts-managers__contact-link contacts-managers__contact-link--max" target="_blank" rel="noopener" aria-label="Max" data-manager="Екатерина" data-messenger="max" data-placeholder="true"><img src="images/logo_max.webp" alt="" loading="lazy"></a>
+                        <a href="tel:+79950003399" class="contacts-managers__contact-link" aria-label="Позвонить Екатерине" data-manager="Екатерина" data-messenger="phone"><svg viewBox="0 0 24 24" fill="none"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1 1 .4 1.9.7 2.8a2 2 0 01-.5 2.1L8.1 9.9a16 16 0 006 6l1.3-1.3a2 2 0 012.1-.5c.9.3 1.8.6 2.8.7A2 2 0 0122 16.9z" stroke="currentColor" stroke-width="1.6"/></svg></a>
+                      </div>
+                    </details>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            </div>
+          </section>
+
+          <section class="contacts-managers-section contacts-managers-section--partners">
+            <h3 class="contacts-cities__title">Отдел по работе с партнерами</h3>
+            <p class="contacts-managers__description">Вы дизайнер, печник или строительная компания? Свяжитесь с нами для долгосрочного сотрудничества.</p>
+            <div class="contacts-managers contacts-managers--partners">
+              <div class="contacts-managers__groups">
+              <div class="contacts-managers__group">
+                <h4 class="contacts-managers__group-title">Коммерческий директор</h4>
+                <ul class="contacts-managers__list">
+                  <li class="contacts-managers__item">
+                    <span class="contacts-managers__name">Евгения</span>
+                    <details class="contacts-managers__contact">
+                      <summary class="contacts-managers__phone">+7 (995) 000-77-33</summary>
+                      <div class="contacts-managers__contact-menu" aria-label="Способы связи с Евгенией">
+                        <a href="https://api.whatsapp.com/send?phone=79950007733" class="contacts-managers__contact-link contacts-managers__contact-link--wa" target="_blank" rel="noopener" aria-label="WhatsApp" data-manager="Евгения" data-messenger="whatsapp"><img src="images/logo_whatsapp.png" alt="" loading="lazy"></a>
+                        <a href="https://t.me/+79950007733" class="contacts-managers__contact-link contacts-managers__contact-link--tg" target="_blank" rel="noopener" aria-label="Telegram" data-manager="Евгения" data-messenger="telegram"><img src="images/logo_telegram.svg.webp" alt="" loading="lazy"></a>
+                        <a href="https://max.ru/" class="contacts-managers__contact-link contacts-managers__contact-link--max" target="_blank" rel="noopener" aria-label="Max" data-manager="Евгения" data-messenger="max" data-placeholder="true"><img src="images/logo_max.webp" alt="" loading="lazy"></a>
+                        <a href="tel:+79950007733" class="contacts-managers__contact-link" aria-label="Позвонить Евгении" data-manager="Евгения" data-messenger="phone"><svg viewBox="0 0 24 24" fill="none"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1 1 .4 1.9.7 2.8a2 2 0 01-.5 2.1L8.1 9.9a16 16 0 006 6l1.3-1.3a2 2 0 012.1-.5c.9.3 1.8.6 2.8.7A2 2 0 0122 16.9z" stroke="currentColor" stroke-width="1.6"/></svg></a>
+                      </div>
+                    </details>
+                  </li>
+                </ul>
+              </div>
+              <div class="contacts-managers__group">
+                <h4 class="contacts-managers__group-title">Менеджеры по работе с партнерами</h4>
+                <ul class="contacts-managers__list contacts-managers__list--single">
+                  <li class="contacts-managers__item">
+                    <span class="contacts-managers__name">Сергей</span>
+                    <details class="contacts-managers__contact">
+                      <summary class="contacts-managers__phone">+7 (995) 000-11-77</summary>
+                      <div class="contacts-managers__contact-menu" aria-label="Способы связи с Сергеем">
+                        <a href="https://api.whatsapp.com/send?phone=79950001177" class="contacts-managers__contact-link contacts-managers__contact-link--wa" target="_blank" rel="noopener" aria-label="WhatsApp" data-manager="Сергей" data-messenger="whatsapp"><img src="images/logo_whatsapp.png" alt="" loading="lazy"></a>
+                        <a href="https://t.me/+79950001177" class="contacts-managers__contact-link contacts-managers__contact-link--tg" target="_blank" rel="noopener" aria-label="Telegram" data-manager="Сергей" data-messenger="telegram"><img src="images/logo_telegram.svg.webp" alt="" loading="lazy"></a>
+                        <a href="tel:+79950001177" class="contacts-managers__contact-link" aria-label="Позвонить Сергею" data-manager="Сергей" data-messenger="phone"><svg viewBox="0 0 24 24" fill="none"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1 1 .4 1.9.7 2.8a2 2 0 01-.5 2.1L8.1 9.9a16 16 0 006 6l1.3-1.3a2 2 0 012.1-.5c.9.3 1.8.6 2.8.7A2 2 0 0122 16.9z" stroke="currentColor" stroke-width="1.6"/></svg></a>
+                      </div>
+                    </details>
+                  </li>
+                  <li class="contacts-managers__item">
+                    <span class="contacts-managers__name">Рина</span>
+                    <details class="contacts-managers__contact">
+                      <summary class="contacts-managers__phone">+7 (995) 000-30-80</summary>
+                      <div class="contacts-managers__contact-menu" aria-label="Способы связи с Риной">
+                        <a href="https://api.whatsapp.com/send?phone=79950003080" class="contacts-managers__contact-link contacts-managers__contact-link--wa" target="_blank" rel="noopener" aria-label="WhatsApp" data-manager="Рина" data-messenger="whatsapp"><img src="images/logo_whatsapp.png" alt="" loading="lazy"></a>
+                        <a href="https://t.me/+79950003080" class="contacts-managers__contact-link contacts-managers__contact-link--tg" target="_blank" rel="noopener" aria-label="Telegram" data-manager="Рина" data-messenger="telegram"><img src="images/logo_telegram.svg.webp" alt="" loading="lazy"></a>
+                        <a href="https://max.ru/" class="contacts-managers__contact-link contacts-managers__contact-link--max" target="_blank" rel="noopener" aria-label="Max" data-manager="Рина" data-messenger="max" data-placeholder="true"><img src="images/logo_max.webp" alt="" loading="lazy"></a>
+                        <a href="tel:+79950003080" class="contacts-managers__contact-link" aria-label="Позвонить Рине" data-manager="Рина" data-messenger="phone"><svg viewBox="0 0 24 24" fill="none"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1 1 .4 1.9.7 2.8a2 2 0 01-.5 2.1L8.1 9.9a16 16 0 006 6l1.3-1.3a2 2 0 012.1-.5c.9.3 1.8.6 2.8.7A2 2 0 0122 16.9z" stroke="currentColor" stroke-width="1.6"/></svg></a>
+                      </div>
+                    </details>
+                  </li>
+                </ul>
+              </div>
+              </div>
+            </div>
+          </section>
+
+          <div class="contacts-map" data-map-template="showrooms" data-map-provider="internal">
+            <div class="contacts-map__layout">
+              <div class="contacts-map__canvas" id="showroomsMap" data-map-target="showrooms">
+                <span class="contacts-map__marker contacts-map__marker--spb" data-showroom-id="spb">Санкт-Петербург</span>
+                <span class="contacts-map__marker contacts-map__marker--moscow" data-showroom-id="moscow">Москва</span>
+                <p class="contacts-map__placeholder">Здесь будет интерактивная карта с адресами шоурумов, маркерами, масштабированием и маршрутом.</p>
+              </div>
+            </div>
+          </div>
         </div>
+
+        <!-- RIGHT: Form -->
+        <div class="contacts-form-shell">
+          <div class="contacts-form">
+            <h2 class="contacts-form__title">Напишите нам — обсудим проект, материалы и сроки</h2>
+            <p class="contacts-form__subtitle">Мы создаём камины и печи под архитектуру дома. Перезвоним в ближайшее рабочее время в течение часа</p>
+            <form class="contacts-form__form" id="contactPageForm" name="contact-page" method="POST" novalidate>
+              <div class="contacts-form__field">
+                <input type="text" name="name" placeholder="Ваше имя" required class="contacts-form__input" id="contactName">
+                <p class="contacts-form__error" id="nameError">Пожалуйста, введите ваше имя</p>
+              </div>
+              <div class="contacts-form__field">
+                <div class="contacts-form__phone-wrap">
+                  <span class="contacts-form__phone-prefix">+7</span>
+                  <input type="tel" name="phone" placeholder="(___) ___-__-__" required class="contacts-form__input contacts-form__input--phone" id="contactPhone" maxlength="15">
+                </div>
+                <p class="contacts-form__error" id="phoneError">Пожалуйста, введите корректный номер телефона</p>
+              </div>
+              <div class="contacts-form__field">
+                <textarea name="message" placeholder="Опишите ваш проект" class="contacts-form__textarea" id="contactMessage"></textarea>
+              </div>
+              <label class="consent-label">
+                <input type="checkbox" class="consent-checkbox" required>
+                <span>Я даю согласие на обработку персональных данных в соответствии с <a href="privacy.html" target="_blank">политикой конфиденциальности</a></span>
+              </label>
+              <button type="submit" class="btn btn--primary btn--full">Отправить заявку</button>
+            </form>
+            <div class="contacts-form__success" id="formSuccess">Спасибо! Мы свяжемся с вами в ближайшее время</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SHOWROOMS GALLERY ===== -->
+  <section class="contacts-showrooms" aria-labelledby="contactsShowroomsTitle">
+    <div class="container">
+      <div class="contacts-showrooms__header">
+        <p class="contacts-showrooms__eyebrow">Наши шоурумы</p>
+        <h2 class="contacts-showrooms__title" id="contactsShowroomsTitle">Приезжайте посмотреть керамику вживую</h2>
+        <p class="contacts-showrooms__text">В шоурумах можно оценить фактуру глазурей, масштаб готовых изделий и обсудить проект с менеджером рядом с реальными образцами.</p>
+      </div>
+      <div class="contacts-showrooms__grid">
+        <figure class="contacts-showrooms__item contacts-showrooms__item--large">
+          <picture>
+            <source type="image/webp" srcset="images/contacts_showroom_01_sm.webp 700w, images/contacts_showroom_01_lg.webp 1400w" sizes="(max-width: 768px) 78vw, 50vw">
+            <img src="images/contacts_showroom_01_sm.jpg" srcset="images/contacts_showroom_01_sm.jpg 700w, images/contacts_showroom_01_lg.jpg 1400w" sizes="(max-width: 768px) 78vw, 50vw" alt="Интерьер шоурума CeramicaDecor с керамическими образцами" loading="lazy" decoding="async">
+          </picture>
+        </figure>
+        <figure class="contacts-showrooms__item contacts-showrooms__item--small">
+          <picture>
+            <source type="image/webp" srcset="images/contacts_showroom_02_sm.webp 700w, images/contacts_showroom_02_lg.webp 1400w" sizes="(max-width: 768px) 78vw, 25vw">
+            <img src="images/contacts_showroom_02_sm.jpg" srcset="images/contacts_showroom_02_sm.jpg 700w, images/contacts_showroom_02_lg.jpg 1400w" sizes="(max-width: 768px) 78vw, 25vw" alt="Керамические изделия и образцы в шоуруме CeramicaDecor" loading="lazy" decoding="async">
+          </picture>
+        </figure>
+        <figure class="contacts-showrooms__item contacts-showrooms__item--small">
+          <picture>
+            <source type="image/webp" srcset="images/contacts_showroom_03_sm.webp 700w, images/contacts_showroom_03_lg.webp 1400w" sizes="(max-width: 768px) 78vw, 25vw">
+            <img src="images/contacts_showroom_03_sm.jpg" srcset="images/contacts_showroom_03_sm.jpg 700w, images/contacts_showroom_03_lg.jpg 1400w" sizes="(max-width: 768px) 78vw, 25vw" alt="Фрагмент экспозиции шоурума CeramicaDecor" loading="lazy" decoding="async">
+          </picture>
+        </figure>
+        <figure class="contacts-showrooms__item contacts-showrooms__item--wide">
+          <picture>
+            <source type="image/webp" srcset="images/contacts_showroom_04_sm.webp 700w, images/contacts_showroom_04_lg.webp 1400w" sizes="(max-width: 768px) 78vw, 34vw">
+            <img src="images/contacts_showroom_04_sm.jpg" srcset="images/contacts_showroom_04_sm.jpg 700w, images/contacts_showroom_04_lg.jpg 1400w" sizes="(max-width: 768px) 78vw, 34vw" alt="Зона консультаций в шоуруме CeramicaDecor" loading="lazy" decoding="async">
+          </picture>
+        </figure>
+        <figure class="contacts-showrooms__item contacts-showrooms__item--tall">
+          <picture>
+            <source type="image/webp" srcset="images/contacts_showroom_05_sm.webp 700w, images/contacts_showroom_05_lg.webp 1400w" sizes="(max-width: 768px) 78vw, 25vw">
+            <img src="images/contacts_showroom_05_sm.jpg" srcset="images/contacts_showroom_05_sm.jpg 700w, images/contacts_showroom_05_lg.jpg 1400w" sizes="(max-width: 768px) 78vw, 25vw" alt="Вертикальная экспозиция керамики в шоуруме CeramicaDecor" loading="lazy" decoding="async">
+          </picture>
+        </figure>
+        <figure class="contacts-showrooms__item contacts-showrooms__item--small">
+          <picture>
+            <source type="image/webp" srcset="images/contacts_showroom_06_sm.webp 700w, images/contacts_showroom_06_lg.webp 1400w" sizes="(max-width: 768px) 78vw, 25vw">
+            <img src="images/contacts_showroom_06_sm.jpg" srcset="images/contacts_showroom_06_sm.jpg 700w, images/contacts_showroom_06_lg.jpg 1400w" sizes="(max-width: 768px) 78vw, 25vw" alt="Детали керамической отделки в шоуруме" loading="lazy" decoding="async">
+          </picture>
+        </figure>
+        <figure class="contacts-showrooms__item contacts-showrooms__item--small">
+          <picture>
+            <source type="image/webp" srcset="images/contacts_showroom_07_sm.webp 700w, images/contacts_showroom_07_lg.webp 1400w" sizes="(max-width: 768px) 78vw, 25vw">
+            <img src="images/contacts_showroom_07_sm.jpg" srcset="images/contacts_showroom_07_sm.jpg 700w, images/contacts_showroom_07_lg.jpg 1400w" sizes="(max-width: 768px) 78vw, 25vw" alt="Образцы глазурей и керамики CeramicaDecor" loading="lazy" decoding="async">
+          </picture>
+        </figure>
+        <figure class="contacts-showrooms__item contacts-showrooms__item--wide">
+          <picture>
+            <source type="image/webp" srcset="images/contacts_showroom_08_sm.webp 700w, images/contacts_showroom_08_lg.webp 1400w" sizes="(max-width: 768px) 78vw, 34vw">
+            <img src="images/contacts_showroom_08_sm.jpg" srcset="images/contacts_showroom_08_sm.jpg 700w, images/contacts_showroom_08_lg.jpg 1400w" sizes="(max-width: 768px) 78vw, 34vw" alt="Пространство шоурума CeramicaDecor" loading="lazy" decoding="async">
+          </picture>
+        </figure>
+        <figure class="contacts-showrooms__item contacts-showrooms__item--large">
+          <picture>
+            <source type="image/webp" srcset="images/contacts_showroom_09_sm.webp 700w, images/contacts_showroom_09_lg.webp 1400w" sizes="(max-width: 768px) 78vw, 50vw">
+            <img src="images/contacts_showroom_09_sm.jpg" srcset="images/contacts_showroom_09_sm.jpg 700w, images/contacts_showroom_09_lg.jpg 1400w" sizes="(max-width: 768px) 78vw, 50vw" alt="Крупный вид экспозиции шоурума CeramicaDecor" loading="lazy" decoding="async">
+          </picture>
+        </figure>
+        <figure class="contacts-showrooms__item contacts-showrooms__item--small">
+          <picture>
+            <source type="image/webp" srcset="images/contacts_showroom_10_sm.webp 700w, images/contacts_showroom_10_lg.webp 1400w" sizes="(max-width: 768px) 78vw, 25vw">
+            <img src="images/contacts_showroom_10_sm.jpg" srcset="images/contacts_showroom_10_sm.jpg 700w, images/contacts_showroom_10_lg.jpg 1400w" sizes="(max-width: 768px) 78vw, 25vw" alt="Керамические поверхности и детали в шоуруме" loading="lazy" decoding="async">
+          </picture>
+        </figure>
+        <figure class="contacts-showrooms__item contacts-showrooms__item--tall">
+          <picture>
+            <source type="image/webp" srcset="images/contacts_showroom_11_sm.webp 700w, images/contacts_showroom_11_lg.webp 1400w" sizes="(max-width: 768px) 78vw, 25vw">
+            <img src="images/contacts_showroom_11_sm.jpg" srcset="images/contacts_showroom_11_sm.jpg 700w, images/contacts_showroom_11_lg.jpg 1400w" sizes="(max-width: 768px) 78vw, 25vw" alt="Вертикальный кадр шоурума CeramicaDecor" loading="lazy" decoding="async">
+          </picture>
+        </figure>
+        <figure class="contacts-showrooms__item contacts-showrooms__item--small">
+          <picture>
+            <source type="image/webp" srcset="images/contacts_showroom_12_sm.webp 700w, images/contacts_showroom_12_lg.webp 1400w" sizes="(max-width: 768px) 78vw, 25vw">
+            <img src="images/contacts_showroom_12_sm.jpg" srcset="images/contacts_showroom_12_sm.jpg 700w, images/contacts_showroom_12_lg.jpg 1400w" sizes="(max-width: 768px) 78vw, 25vw" alt="Фрагмент зала шоурума CeramicaDecor" loading="lazy" decoding="async">
+          </picture>
+        </figure>
+        <figure class="contacts-showrooms__item contacts-showrooms__item--wide">
+          <picture>
+            <source type="image/webp" srcset="images/contacts_showroom_13_sm.webp 700w, images/contacts_showroom_13_lg.webp 1400w" sizes="(max-width: 768px) 78vw, 34vw">
+            <img src="images/contacts_showroom_13_sm.jpg" srcset="images/contacts_showroom_13_sm.jpg 700w, images/contacts_showroom_13_lg.jpg 1400w" sizes="(max-width: 768px) 78vw, 34vw" alt="Общий вид шоурума с керамическими изделиями" loading="lazy" decoding="async">
+          </picture>
+        </figure>
+        <figure class="contacts-showrooms__item contacts-showrooms__item--small">
+          <picture>
+            <source type="image/webp" srcset="images/contacts_showroom_14_sm.webp 700w, images/contacts_showroom_14_lg.webp 1400w" sizes="(max-width: 768px) 78vw, 25vw">
+            <img src="images/contacts_showroom_14_sm.jpg" srcset="images/contacts_showroom_14_sm.jpg 700w, images/contacts_showroom_14_lg.jpg 1400w" sizes="(max-width: 768px) 78vw, 25vw" alt="Образцы и декоративные элементы в шоуруме" loading="lazy" decoding="async">
+          </picture>
+        </figure>
+        <figure class="contacts-showrooms__item contacts-showrooms__item--small">
+          <picture>
+            <source type="image/webp" srcset="images/contacts_showroom_15_sm.webp 700w, images/contacts_showroom_15_lg.webp 1400w" sizes="(max-width: 768px) 78vw, 25vw">
+            <img src="images/contacts_showroom_15_sm.jpg" srcset="images/contacts_showroom_15_sm.jpg 700w, images/contacts_showroom_15_lg.jpg 1400w" sizes="(max-width: 768px) 78vw, 25vw" alt="Шоурум CeramicaDecor с готовыми керамическими решениями" loading="lazy" decoding="async">
+          </picture>
+        </figure>
+        <figure class="contacts-showrooms__item contacts-showrooms__item--wide">
+          <picture>
+            <source type="image/webp" srcset="images/contacts_showroom_16_sm.webp 700w, images/contacts_showroom_16_lg.webp 1400w" sizes="(max-width: 768px) 78vw, 34vw">
+            <img src="images/contacts_showroom_16_sm.jpg" srcset="images/contacts_showroom_16_sm.jpg 700w, images/contacts_showroom_16_lg.jpg 1400w" sizes="(max-width: 768px) 78vw, 34vw" alt="Демонстрационная зона шоурума CeramicaDecor" loading="lazy" decoding="async">
+          </picture>
+        </figure>
+        <figure class="contacts-showrooms__item contacts-showrooms__item--small">
+          <picture>
+            <source type="image/webp" srcset="images/contacts_showroom_17_sm.webp 700w, images/contacts_showroom_17_lg.webp 1400w" sizes="(max-width: 768px) 78vw, 25vw">
+            <img src="images/contacts_showroom_17_sm.jpg" srcset="images/contacts_showroom_17_sm.jpg 700w, images/contacts_showroom_17_lg.jpg 1400w" sizes="(max-width: 768px) 78vw, 25vw" alt="Керамическая экспозиция в шоуруме CeramicaDecor" loading="lazy" decoding="async">
+          </picture>
+        </figure>
+        <figure class="contacts-showrooms__item contacts-showrooms__item--small">
+          <picture>
+            <source type="image/webp" srcset="images/contacts_showroom_18_sm.webp 700w, images/contacts_showroom_18_lg.webp 1400w" sizes="(max-width: 768px) 78vw, 25vw">
+            <img src="images/contacts_showroom_18_sm.jpg" srcset="images/contacts_showroom_18_sm.jpg 700w, images/contacts_showroom_18_lg.jpg 1400w" sizes="(max-width: 768px) 78vw, 25vw" alt="Шоурум CeramicaDecor с керамической экспозицией" loading="lazy" decoding="async">
+          </picture>
+        </figure>
       </div>
     </div>
   </section>
@@ -628,6 +1395,85 @@
       var nameError = document.getElementById('nameError');
       var phoneError = document.getElementById('phoneError');
       var successMsg = document.getElementById('formSuccess');
+      var managerContacts = document.querySelectorAll('.contacts-managers__contact');
+
+      if (managerContacts.length) {
+        document.addEventListener('click', function(e) {
+          if (e.target.closest('.contacts-managers__contact')) return;
+
+          managerContacts.forEach(function(contact) {
+            contact.open = false;
+          });
+        });
+      }
+
+      var formShell = document.querySelector('.contacts-form-shell');
+      var showroomsSection = document.querySelector('.contacts-showrooms');
+      var dynamicFormMedia = window.matchMedia('(min-width: 769px)');
+      var formTargetY = 0;
+      var formCurrentY = 0;
+      var formFrame = null;
+
+      function getPageTop(element) {
+        return element.getBoundingClientRect().top + window.pageYOffset;
+      }
+
+      function resetDynamicForm() {
+        formTargetY = 0;
+        formCurrentY = 0;
+        if (formShell) {
+          formShell.style.transform = '';
+        }
+        if (formFrame) {
+          window.cancelAnimationFrame(formFrame);
+          formFrame = null;
+        }
+      }
+
+      function updateDynamicFormTarget() {
+        if (!formShell || !showroomsSection || !dynamicFormMedia.matches) {
+          resetDynamicForm();
+          return;
+        }
+
+        var viewportOffset = 96;
+        var sectionGap = 32;
+        var shellTop = getPageTop(formShell) - formCurrentY;
+        var stopTop = getPageTop(showroomsSection) - formShell.offsetHeight - sectionGap;
+        var maxTravel = Math.max(0, stopTop - shellTop);
+        formTargetY = Math.min(Math.max(0, window.pageYOffset + viewportOffset - shellTop), maxTravel);
+
+        if (!formFrame) {
+          formFrame = window.requestAnimationFrame(animateDynamicForm);
+        }
+      }
+
+      function animateDynamicForm() {
+        formCurrentY += (formTargetY - formCurrentY) * 0.16;
+        if (Math.abs(formTargetY - formCurrentY) < 0.5) {
+          formCurrentY = formTargetY;
+        }
+
+        formShell.style.transform = 'translate3d(0,' + formCurrentY.toFixed(2) + 'px,0)';
+
+        if (formCurrentY !== formTargetY) {
+          formFrame = window.requestAnimationFrame(animateDynamicForm);
+        } else {
+          formFrame = null;
+        }
+      }
+
+      if (formShell && showroomsSection) {
+        window.addEventListener('scroll', updateDynamicFormTarget, { passive: true });
+        window.addEventListener('resize', updateDynamicFormTarget);
+        window.addEventListener('load', updateDynamicFormTarget);
+        if (dynamicFormMedia.addEventListener) {
+          dynamicFormMedia.addEventListener('change', updateDynamicFormTarget);
+        } else if (dynamicFormMedia.addListener) {
+          dynamicFormMedia.addListener(updateDynamicFormTarget);
+        }
+        updateDynamicFormTarget();
+      }
 
       // Phone mask
       if (phoneInput) {
@@ -707,5 +1553,6 @@
   </div>
 </body>
 </html>
+
 
 
