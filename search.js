@@ -1,4 +1,4 @@
-﻿/* ===== CeramicaDecor — Site Search ===== */
+/* ===== CeramicaDecor — Site Search ===== */
 (function () {
   'use strict';
 
@@ -10,21 +10,21 @@
     { title: 'Камины', url: 'catalog-kaminy.html', desc: 'Камины в керамической облицовке' },
     { title: 'Биокамины', url: 'catalog-biokaminy.html', desc: 'Биокамины и декоративные облицовки' },
     { title: 'Электрокамины', url: 'catalog-elektrokaminy.html', desc: 'Электрокамины и порталы' },
-    { title: 'Печь-камины', url: 'catalog-pech-kaminy.html', desc: 'Печь-камины для дома' },
     { title: 'Мраморные камины и порталы', url: 'catalog-mramornye-kaminy-portaly.html', desc: 'Мраморные каминные порталы' },
     { title: 'Русские печи', url: 'catalog-russkie-pechi.html', desc: 'Русские печи с керамической облицовкой' },
     { title: 'Отопительные печи', url: 'catalog-otopitelnye-pechi.html', desc: 'Отопительные печи' },
     { title: 'Барбекю комплексы', url: 'catalog-barbekyu-kompleksy.html', desc: 'Барбекю комплексы и летние кухни' },
     { title: 'Банные печи', url: 'catalog-bannye-pechi.html', desc: 'Банные печи' },
-    { title: 'Банные порталы', url: 'catalog-bannye-portaly.html', desc: 'Банные порталы' },
     { title: 'Серийные модели', url: 'catalog-seriynye-modeli.html', desc: 'Серийные модели каминов и печей' },
     { title: 'Фасадная керамика', url: 'catalog-fasadnaya-keramika.html', desc: 'Фасадная керамика' },
     { title: 'Интерьерная керамика', url: 'catalog-interernaya-keramika.html', desc: 'Интерьерная керамика' },
+    { title: 'Метлахская плитка', url: 'catalog-metlahskaya-plitka.html', desc: 'Метлахская плитка' },
     { title: 'Сувенирная продукция', url: 'catalog-suvenirnaya-produkciya.html', desc: 'Керамические сувениры' },
     { title: 'Палитра глазурей', url: 'glaze-palette.html', desc: 'Палитра глазурей и оттенков' },
     { title: 'Реставрация', url: 'restoration.html', desc: 'Реставрация каминов, печей и изразцов' },
-    { title: 'Комплектующие', url: 'components.html', desc: 'Топки, дымоходы и комплектующие' },
+    { title: 'Оборудование', url: 'components.html', desc: 'Топки, дымоходы и оборудование' },
     { title: 'Сотрудничество', url: 'cooperation.html', desc: 'Партнерство для архитекторов, дизайнеров, строителей и дилеров' },
+    { title: 'Блог', url: 'blog.html', desc: 'Материалы об изразцах, каминах, печах и керамике' },
     { title: 'О компании', url: 'about.html', desc: 'CeramicaDecor — 14 лет опыта' },
     { title: 'Контакты', url: 'contacts.html', desc: 'Связаться с нами' }
   ];

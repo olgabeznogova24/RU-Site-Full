@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
@@ -847,6 +847,52 @@
       .catalog-filters__scroll { width: 38px; height: 38px; }
       .catalog-filters__tab { padding: 7px 12px; font-size: 0.78rem; }
     }
+    /* Two-line catalog section tabs */
+    .catalog-filters__tabs-wrap {
+      max-width: 1160px;
+      margin: 0 auto;
+    }
+    .catalog-filters__tabs-wrap::before,
+    .catalog-filters__tabs-wrap::after {
+      display: none;
+    }
+    .catalog-filters__tabs {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: 10px;
+      overflow: visible;
+      padding: 4px 0;
+      justify-content: stretch;
+      scroll-behavior: auto;
+    }
+    .catalog-filters__tab {
+      justify-content: center;
+      min-height: 44px;
+      padding: 10px 14px;
+      text-align: center;
+      white-space: normal;
+      line-height: 1.15;
+    }
+    .catalog-filters__scroll {
+      display: none !important;
+    }
+    @media (max-width: 900px) {
+      .catalog-filters__tabs {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+    @media (max-width: 480px) {
+      .catalog-filters__tabs {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 7px;
+        padding: 0;
+      }
+      .catalog-filters__tab {
+        min-height: 40px;
+        padding: 8px 10px;
+        font-size: 0.76rem;
+      }
+    }
   </style>
   <!-- Яндекс.Метрика — TODO: вставить код счётчика -->
   <!-- Яндекс.Вебмастер — TODO: вставить мета-тег верификации -->
@@ -891,32 +937,93 @@
       </a>
       <nav class="header__nav" id="mainNav">
         <ul class="header__nav-list">
-          <li class="header__nav-dropdown">
-            <a href="catalog-izrazcy.html" class="header__nav-link" aria-haspopup="true" aria-expanded="false">Каталог</a>
+          <li class="header__nav-dropdown header__nav-dropdown--catalog">
+            <button type="button" class="header__catalog-btn" aria-haspopup="true" aria-expanded="false">Каталог</button>
+            <div class="header__mega-menu" role="menu">
+              <a href="catalog.html" class="header__mega-feature" role="menuitem">
+                <span>Весь каталог</span>
+                <small>Общий список каминов, печей, изразцов, барбекю комплексов и керамики</small>
+              </a>
+              <div class="header__mega-grid">
+                <div class="header__mega-col">
+                  <h3>Изразцы</h3>
+                  <a href="catalog-izrazcy.html" role="menuitem">Каталог изразцов</a>
+                  <a href="glaze-palette.html" role="menuitem">Палитра глазурей</a>
+                </div>
+                <div class="header__mega-col">
+                  <h3>Камины</h3>
+                  <a href="catalog-kaminy.html" role="menuitem">Дровяные камины</a>
+                  <a href="catalog-biokaminy.html" role="menuitem">Биокамины</a>
+                  <a href="catalog-elektrokaminy.html" role="menuitem">Электрокамины</a>
+                </div>
+                <div class="header__mega-col">
+                  <h3>Печи</h3>
+                  <a href="catalog-russkie-pechi.html" role="menuitem">Русские печи</a>
+                  <a href="catalog-otopitelnye-pechi.html" role="menuitem">Отопительные печи</a>
+                  <a href="catalog-bannye-pechi.html" role="menuitem">Банные печи и порталы</a>
+                </div>
+                <div class="header__mega-col">
+                  <h3>Типовые печи-камины из наличия</h3>
+                  <a href="catalog-seriynye-modeli.html" role="menuitem">Смотреть раздел</a>
+                </div>
+                <div class="header__mega-col">
+                  <h3>Барбекю комплексы</h3>
+                  <a href="catalog-barbekyu-kompleksy.html" role="menuitem">Смотреть раздел</a>
+                </div>
+                <div class="header__mega-col">
+                  <h3>Мраморные камины и порталы</h3>
+                  <a href="catalog-mramornye-kaminy-portaly.html" role="menuitem">Смотреть раздел</a>
+                </div>
+                <div class="header__mega-col">
+                  <h3>Плитка ручной работы</h3>
+                  <a href="catalog-interernaya-keramika.html" role="menuitem">Кухонные фартуки</a>
+                  <a href="catalog-interernaya-keramika.html" role="menuitem">Барные стойки</a>
+                  <a href="catalog-interernaya-keramika.html" role="menuitem">Облицовка стен</a>
+                </div>
+                <div class="header__mega-col">
+                  <h3>Фасадная керамика</h3>
+                  <a href="catalog-fasadnaya-keramika.html" role="menuitem">Смотреть раздел</a>
+                </div>
+                <div class="header__mega-col">
+                  <h3>Метлахская плитка</h3>
+                  <a href="catalog-metlahskaya-plitka.html" role="menuitem">Смотреть раздел</a>
+                </div>
+                <div class="header__mega-col">
+                  <h3>Реставрация</h3>
+                  <a href="restoration.html" role="menuitem">Смотреть раздел</a>
+                </div>
+                <div class="header__mega-col">
+                  <h3>Сувенирная продукция</h3>
+                  <a href="catalog-suvenirnaya-produkciya.html" role="menuitem">Смотреть раздел</a>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="header__nav-dropdown header__nav-dropdown--simple">
+            <a href="components.html" class="header__nav-link" aria-haspopup="true" aria-expanded="false">Оборудование</a>
             <ul class="header__dropdown-menu">
-              <li><a href="catalog-izrazcy.html">Весь каталог</a></li>
-              <li><a href="glaze-palette.html">Палитра глазурей</a></li>
-              <li><a href="catalog-izrazcy.html">Изразцы</a></li>
-              <li><a href="catalog-kaminy.html">Камины</a></li>
-              <li><a href="catalog-biokaminy.html">Биокамины</a></li>
-              <li><a href="catalog-elektrokaminy.html">Электрокамины</a></li>
-              <li><a href="catalog-pech-kaminy.html">Печь-камины</a></li>
-              <li><a href="catalog-mramornye-kaminy-portaly.html">Мраморные камины и порталы</a></li>
-              <li><a href="catalog-russkie-pechi.html">Русские печи</a></li>
-              <li><a href="catalog-otopitelnye-pechi.html">Отопительные печи</a></li>
-              <li><a href="catalog-barbekyu-kompleksy.html">Барбекю комплексы</a></li>
-              <li><a href="catalog-bannye-pechi.html">Банные печи</a></li>
-              <li><a href="catalog-bannye-portaly.html">Банные порталы</a></li>
-              <li><a href="catalog-seriynye-modeli.html">Серийные модели</a></li>
-              <li><a href="catalog-fasadnaya-keramika.html">Фасадная керамика</a></li>
-              <li><a href="catalog-interernaya-keramika.html">Интерьерная керамика</a></li>
-              <li><a href="catalog-suvenirnaya-produkciya.html">Сувенирная продукция</a></li>
+              <li><a href="components.html">Каминные топки</a></li>
+              <li><a href="components.html">Электроочаги</a></li>
             </ul>
           </li>
-          <li><a href="restoration.html" class="header__nav-link">Реставрация</a></li>
-          <li><a href="components.html" class="header__nav-link">Комплектующие</a></li>
-          <li><a href="cooperation.html" class="header__nav-link">Сотрудничество</a></li>
-          <li><a href="about.html" class="header__nav-link">О компании</a></li>
+          <li class="header__nav-dropdown header__nav-dropdown--simple">
+            <a href="cooperation.html" class="header__nav-link" aria-haspopup="true" aria-expanded="false">Сотрудничество</a>
+            <ul class="header__dropdown-menu">
+              <li><a href="cooperation.html">Печники</a></li>
+              <li><a href="cooperation.html">Дизайнеры</a></li>
+              <li><a href="cooperation.html">Застройщики</a></li>
+              <li><a href="cooperation.html">Салоны каминов</a></li>
+              <li><a href="cooperation.html">Салоны интерьерных решений</a></li>
+            </ul>
+          </li>
+          <li><a href="blog.html" class="header__nav-link">Блог</a></li>
+          <li class="header__nav-dropdown header__nav-dropdown--simple">
+            <a href="about.html" class="header__nav-link" aria-haspopup="true" aria-expanded="false">О компании</a>
+            <ul class="header__dropdown-menu">
+              <li><a href="about.html#team">Наша команда</a></li>
+              <li><a href="contacts-gallery-review.html">Видеоотзывы</a></li>
+            </ul>
+          </li>
           <li><a href="contacts.html" class="header__nav-link">Контакты</a></li>
         </ul>
         <a href="tel:+74952293046" class="header__nav-phone-link">+7 (495) 229-30-46</a>
@@ -951,21 +1058,17 @@
     <div class="container">
       <div class="catalog-filters__tabs-wrap is-start">
         <div class="catalog-filters__tabs" id="catalogSectionTabs">
-          <a class="catalog-filters__tab catalog-filters__tab--active" href="catalog-izrazcy.html">Изразцы</a>
-          <a class="catalog-filters__tab" href="catalog-kaminy.html">Камины</a>
-          <a class="catalog-filters__tab" href="catalog-biokaminy.html">Биокамины</a>
-          <a class="catalog-filters__tab" href="catalog-elektrokaminy.html">Электрокамины</a>
-          <a class="catalog-filters__tab" href="catalog-pech-kaminy.html">Печь-камины</a>
-          <a class="catalog-filters__tab" href="catalog-mramornye-kaminy-portaly.html">Мраморные камины и порталы</a>
-          <a class="catalog-filters__tab" href="catalog-russkie-pechi.html">Русские печи</a>
-          <a class="catalog-filters__tab" href="catalog-otopitelnye-pechi.html">Отопительные печи</a>
-          <a class="catalog-filters__tab" href="catalog-barbekyu-kompleksy.html">Барбекю комплексы</a>
-          <a class="catalog-filters__tab" href="catalog-bannye-pechi.html">Банные печи</a>
-          <a class="catalog-filters__tab" href="catalog-bannye-portaly.html">Банные порталы</a>
-          <a class="catalog-filters__tab" href="catalog-seriynye-modeli.html">Серийные модели</a>
-          <a class="catalog-filters__tab" href="catalog-fasadnaya-keramika.html">Фасадная керамика</a>
-          <a class="catalog-filters__tab" href="catalog-interernaya-keramika.html">Интерьерная керамика</a>
-          <a class="catalog-filters__tab" href="catalog-suvenirnaya-produkciya.html">Сувенирная продукция</a>
+          <a href="catalog-izrazcy.html" class="catalog-filters__tab catalog-filters__tab--active" data-category="izrazcy">Изразцы</a>
+          <a href="catalog-kaminy.html" class="catalog-filters__tab" data-category="kaminy">Камины</a>
+          <a href="catalog-otopitelnye-pechi.html" class="catalog-filters__tab" data-category="otopitelnye-pechi">Печи</a>
+          <a href="catalog-seriynye-modeli.html" class="catalog-filters__tab" data-category="seriynye-modeli">Типовые печи-камины из наличия</a>
+          <a href="catalog-barbekyu-kompleksy.html" class="catalog-filters__tab" data-category="barbekyu-kompleksy">Барбекю комплексы</a>
+          <a href="catalog-mramornye-kaminy-portaly.html" class="catalog-filters__tab" data-category="mramornye-kaminy-portaly">Мраморные камины и порталы</a>
+          <a href="catalog-interernaya-keramika.html" class="catalog-filters__tab" data-category="interernaya-keramika">Плитка ручной работы</a>
+          <a href="catalog-fasadnaya-keramika.html" class="catalog-filters__tab" data-category="fasadnaya-keramika">Фасадная керамика</a>
+          <a href="catalog-metlahskaya-plitka.html" class="catalog-filters__tab" data-category="metlahskaya-plitka">Метлахская плитка</a>
+          <a href="restoration.html" class="catalog-filters__tab">Реставрация</a>
+          <a href="catalog-suvenirnaya-produkciya.html" class="catalog-filters__tab" data-category="suvenirnaya-produkciya">Сувенирная продукция</a>
         </div>
         <button class="catalog-filters__scroll catalog-filters__scroll--prev" type="button" id="catalogTabsScrollPrev" aria-label="Прокрутить разделы каталога влево" hidden>
           <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 5l-7 7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>

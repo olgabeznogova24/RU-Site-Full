@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Блог — CeramicaDecor</title>
+  <meta name="description" content="Блог CeramicaDecor: материалы об изразцах, каминах, печах, керамике, реставрации и проектировании.">
+  <link rel="canonical" href="https://ceramicadecor.ru/blog.html">
+  <meta property="og:title" content="Блог — CeramicaDecor">
+  <meta property="og:description" content="Материалы об изразцах, каминах, печах, керамике и работе с проектами.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:image" content="images/hero_main.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:url" content="https://ceramicadecor.ru/blog.html">
+  <meta property="og:site_name" content="CeramicaDecor">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .blog-hero {
+      padding: 160px 0 88px;
+      text-align: center;
+      background: #101010;
+      position: relative;
+    }
+    .blog-hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 220px;
+      height: 1px;
+      transform: translateX(-50%);
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.18), transparent);
+    }
+    .blog-hero__title {
+      margin: 0 0 18px;
+      color: #fff;
+      font-family: var(--font-heading);
+      font-size: clamp(2.6rem, 5vw, 4.4rem);
+      font-weight: 400;
+      line-height: 1.08;
+    }
+    .blog-hero__subtitle {
+      max-width: 680px;
+      margin: 0 auto;
+      color: rgba(255,255,255,0.62);
+      font-size: 1.08rem;
+      line-height: 1.65;
+      font-weight: 300;
+    }
+    .blog-list {
+      padding: 82px 0 110px;
+      background: #101010;
+    }
+    .blog-list__grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
+    }
+    .blog-card {
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 10px;
+      background: rgba(255,255,255,0.035);
+      color: inherit;
+      text-decoration: none;
+      transition: transform var(--transition), border-color var(--transition), background var(--transition);
+    }
+    .blog-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(203,59,37,0.38);
+      background: rgba(203,59,37,0.08);
+    }
+    .blog-card__image {
+      display: grid;
+      place-items: center;
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+      background:
+        linear-gradient(135deg, rgba(203,59,37,0.16), rgba(255,255,255,0.035)),
+        #171717;
+    }
+    .blog-card__placeholder {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: calc(100% - 36px);
+      height: calc(100% - 36px);
+      border: 1px dashed rgba(255,255,255,0.18);
+      color: rgba(255,255,255,0.54);
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-align: center;
+      text-transform: uppercase;
+    }
+    .blog-card__body {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      padding: 22px;
+    }
+    .blog-card__meta {
+      margin-bottom: 12px;
+      color: var(--primary);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .blog-card__title {
+      margin: 0 0 12px;
+      color: #fff;
+      font-family: var(--font-heading);
+      font-size: 1.28rem;
+      font-weight: 400;
+      line-height: 1.25;
+    }
+    .blog-card__text {
+      margin: 0;
+      color: rgba(255,255,255,0.58);
+      font-size: 0.95rem;
+      line-height: 1.6;
+      font-weight: 300;
+    }
+    .blog-note {
+      max-width: 820px;
+      margin: 56px auto 0;
+      padding: 24px 28px;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 10px;
+      background: rgba(255,255,255,0.035);
+      color: rgba(255,255,255,0.6);
+      font-size: 0.96rem;
+      line-height: 1.65;
+      text-align: center;
+    }
+    .blog-articles {
+      background: #101010;
+      padding: 0 0 118px;
+    }
+    .blog-articles__inner {
+      display: grid;
+      gap: 46px;
+    }
+    .blog-article {
+      display: grid;
+      grid-template-columns: minmax(0, 260px) minmax(0, 1fr);
+      gap: 38px;
+      padding-top: 46px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      scroll-margin-top: 120px;
+    }
+    .blog-article__aside {
+      position: sticky;
+      top: 104px;
+      align-self: start;
+    }
+    .blog-article__kicker {
+      margin-bottom: 14px;
+      color: var(--primary);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .blog-article__title {
+      margin: 0;
+      color: #fff;
+      font-family: var(--font-heading);
+      font-size: clamp(1.45rem, 2.2vw, 2rem);
+      font-weight: 400;
+      line-height: 1.16;
+      overflow-wrap: anywhere;
+    }
+    .blog-article__lead {
+      margin: 22px 0 0;
+      color: rgba(255,255,255,0.68);
+      font-size: 1.06rem;
+      line-height: 1.7;
+      font-weight: 300;
+    }
+    .blog-article__toc {
+      display: grid;
+      gap: 10px;
+      margin-top: 24px;
+      padding-left: 0;
+      list-style: none;
+    }
+    .blog-article__toc a {
+      color: rgba(255,255,255,0.62);
+      font-size: 0.92rem;
+      line-height: 1.45;
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+    .blog-article__toc a:hover {
+      color: #fff;
+    }
+    .blog-article__content {
+      min-width: 0;
+    }
+    .blog-article__content h3 {
+      margin: 36px 0 16px;
+      color: #fff;
+      font-family: var(--font-heading);
+      font-size: clamp(1.45rem, 2vw, 2rem);
+      font-weight: 400;
+      line-height: 1.18;
+    }
+    .blog-article__content p,
+    .blog-article__content li {
+      color: rgba(255,255,255,0.66);
+      font-size: 1rem;
+      line-height: 1.75;
+      font-weight: 300;
+    }
+    .blog-article__content p {
+      margin: 0 0 18px;
+    }
+    .blog-article__content ul {
+      margin: 0 0 22px;
+      padding-left: 22px;
+    }
+    .blog-article__media {
+      display: grid;
+      place-items: center;
+      min-height: 320px;
+      margin: 28px 0;
+      border: 1px dashed rgba(255,255,255,0.18);
+      border-radius: 10px;
+      background:
+        linear-gradient(135deg, rgba(203,59,37,0.11), rgba(255,255,255,0.035)),
+        #171717;
+      color: rgba(255,255,255,0.5);
+      font-size: 0.86rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-align: center;
+      text-transform: uppercase;
+    }
+    .blog-article__quote {
+      margin: 30px 0;
+      padding: 22px 26px;
+      border-left: 2px solid var(--primary);
+      background: rgba(255,255,255,0.035);
+      color: rgba(255,255,255,0.72);
+      font-size: 1.02rem;
+      line-height: 1.65;
+      font-weight: 300;
+    }
+    .blog-article__video {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 12px;
+      color: #fff;
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .blog-article__video:hover {
+      color: var(--primary);
+    }
+    @media (max-width: 980px) {
+      .blog-list__grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .blog-article {
+        grid-template-columns: 1fr;
+      }
+      .blog-article__aside {
+        position: static;
+      }
+    }
+    @media (max-width: 640px) {
+      .blog-hero {
+        padding: 132px 0 64px;
+      }
+      .blog-list {
+        padding: 56px 0 82px;
+      }
+      .blog-list__grid {
+        grid-template-columns: 1fr;
+      }
+      .blog-articles {
+        padding-bottom: 82px;
+      }
+      .blog-article {
+        gap: 22px;
+        padding-top: 36px;
+      }
+      .blog-article__media {
+        min-height: 220px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="header" id="header">
+    <div class="container header__inner">
+      <a href="index.html" class="header__logo">
+        <img src="images/logo.png" alt="CeramicaDecor" class="header__logo-img">
+      </a>
+      <nav class="header__nav" id="mainNav">
+        <ul class="header__nav-list">
+          <li class="header__nav-dropdown header__nav-dropdown--catalog">
+            <button type="button" class="header__catalog-btn" aria-haspopup="true" aria-expanded="false">Каталог</button>
+            <div class="header__mega-menu" role="menu">
+              <a href="catalog.html" class="header__mega-feature" role="menuitem">
+                <span>Весь каталог</span>
+                <small>Общий список каминов, печей, изразцов, барбекю комплексов и керамики</small>
+              </a>
+              <div class="header__mega-grid">
+                <div class="header__mega-col">
+                  <h3>Изразцы</h3>
+                  <a href="catalog-izrazcy.html" role="menuitem">Каталог изразцов</a>
+                  <a href="glaze-palette.html" role="menuitem">Палитра глазурей</a>
+                </div>
+                <div class="header__mega-col">
+                  <h3>Камины</h3>
+                  <a href="catalog-kaminy.html" role="menuitem">Дровяные камины</a>
+                  <a href="catalog-biokaminy.html" role="menuitem">Биокамины</a>
+                  <a href="catalog-elektrokaminy.html" role="menuitem">Электрокамины</a>
+                </div>
+                <div class="header__mega-col">
+                  <h3>Печи</h3>
+                  <a href="catalog-russkie-pechi.html" role="menuitem">Русские печи</a>
+                  <a href="catalog-otopitelnye-pechi.html" role="menuitem">Отопительные печи</a>
+                  <a href="catalog-bannye-pechi.html" role="menuitem">Банные печи и порталы</a>
+                </div>
+                <div class="header__mega-col">
+                  <h3>Типовые печи-камины из наличия</h3>
+                  <a href="catalog-seriynye-modeli.html" role="menuitem">Смотреть раздел</a>
+                </div>
+                <div class="header__mega-col">
+                  <h3>Барбекю комплексы</h3>
+                  <a href="catalog-barbekyu-kompleksy.html" role="menuitem">Смотреть раздел</a>
+                </div>
+                <div class="header__mega-col">
+                  <h3>Мраморные камины и порталы</h3>
+                  <a href="catalog-mramornye-kaminy-portaly.html" role="menuitem">Смотреть раздел</a>
+                </div>
+                <div class="header__mega-col">
+                  <h3>Плитка ручной работы</h3>
+                  <a href="catalog-interernaya-keramika.html" role="menuitem">Кухонные фартуки</a>
+                  <a href="catalog-interernaya-keramika.html" role="menuitem">Барные стойки</a>
+                  <a href="catalog-interernaya-keramika.html" role="menuitem">Облицовка стен</a>
+                </div>
+                <div class="header__mega-col">
+                  <h3>Фасадная керамика</h3>
+                  <a href="catalog-fasadnaya-keramika.html" role="menuitem">Смотреть раздел</a>
+                </div>
+                <div class="header__mega-col">
+                  <h3>Метлахская плитка</h3>
+                  <a href="catalog-metlahskaya-plitka.html" role="menuitem">Смотреть раздел</a>
+                </div>
+                <div class="header__mega-col">
+                  <h3>Реставрация</h3>
+                  <a href="restoration.html" role="menuitem">Смотреть раздел</a>
+                </div>
+                <div class="header__mega-col">
+                  <h3>Сувенирная продукция</h3>
+                  <a href="catalog-suvenirnaya-produkciya.html" role="menuitem">Смотреть раздел</a>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="header__nav-dropdown header__nav-dropdown--simple">
+            <a href="components.html" class="header__nav-link" aria-haspopup="true" aria-expanded="false">Оборудование</a>
+            <ul class="header__dropdown-menu">
+              <li><a href="components.html">Каминные топки</a></li>
+              <li><a href="components.html">Электроочаги</a></li>
+            </ul>
+          </li>
+          <li class="header__nav-dropdown header__nav-dropdown--simple">
+            <a href="cooperation.html" class="header__nav-link" aria-haspopup="true" aria-expanded="false">Сотрудничество</a>
+            <ul class="header__dropdown-menu">
+              <li><a href="cooperation.html">Печники</a></li>
+              <li><a href="cooperation.html">Дизайнеры</a></li>
+              <li><a href="cooperation.html">Застройщики</a></li>
+              <li><a href="cooperation.html">Салоны каминов</a></li>
+              <li><a href="cooperation.html">Салоны интерьерных решений</a></li>
+            </ul>
+          </li>
+          <li><a href="blog.html" class="header__nav-link">Блог</a></li>
+          <li class="header__nav-dropdown header__nav-dropdown--simple">
+            <a href="about.html" class="header__nav-link" aria-haspopup="true" aria-expanded="false">О компании</a>
+            <ul class="header__dropdown-menu">
+              <li><a href="about.html#team">Наша команда</a></li>
+              <li><a href="contacts-gallery-review.html">Видеоотзывы</a></li>
+            </ul>
+          </li>
+          <li><a href="contacts.html" class="header__nav-link">Контакты</a></li>
+        </ul>
+        <a href="tel:+74952293046" class="header__nav-phone-link">+7 (495) 229-30-46</a>
+        <a href="mailto:info@ceramicadecor.ru" class="header__nav-phone-link">info@ceramicadecor.ru</a>
+        <div class="header__nav-item--search"><a href="#" class="header__nav-link" id="searchBtnMobile"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg> Поиск</a></div>
+      </nav>
+      <div class="header__actions">
+        <button class="header__search-btn" id="searchBtn" aria-label="Поиск"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></button>
+        <a href="tel:+74952293046" class="header__phone-desktop">+7 (495) 229-30-46</a>
+        <button class="header__burger" id="burgerBtn" aria-label="Меню"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="blog-hero">
+      <div class="container">
+        <h1 class="blog-hero__title">Блог</h1>
+        <p class="blog-hero__subtitle">Проекты CeramicaDecor: изразцовые облицовки, печи, банные порталы и барбекю-комплексы. Статьи перенесены в новый темный дизайн без старых фотографий.</p>
+      </div>
+    </section>
+
+    <section class="blog-list">
+      <div class="container">
+        <div class="blog-list__grid">
+          <a href="#solnechnaya-keramika" class="blog-card">
+            <div class="blog-card__image"><span class="blog-card__placeholder">Фото проекта</span></div>
+            <div class="blog-card__body">
+              <div class="blog-card__meta">Камины</div>
+              <h2 class="blog-card__title">Солнечная керамическая облицовка камина</h2>
+              <p class="blog-card__text">Ярко-желтые изразцы для камина из проекта «Дачного ответа»: демонтаж старой конструкции, новая топка и индивидуальный цвет.</p>
+            </div>
+          </a>
+          <a href="#syuzhetnaya-izraztsovaya-oblitsovka" class="blog-card">
+            <div class="blog-card__image"><span class="blog-card__placeholder">Фото проекта</span></div>
+            <div class="blog-card__body">
+              <div class="blog-card__meta">Изразцы</div>
+              <h2 class="blog-card__title">Сюжетная изразцовая облицовка</h2>
+              <p class="blog-card__text">Как роспись превращает печь в содержательный арт-объект и сохраняет в керамике историю, символы и настроение дома.</p>
+            </div>
+          </a>
+          <a href="#pech-v-starorusskom-stile" class="blog-card">
+            <div class="blog-card__image"><span class="blog-card__placeholder">Фото проекта</span></div>
+            <div class="blog-card__body">
+              <div class="blog-card__meta">Печи</div>
+              <h2 class="blog-card__title">Печь в старорусском стиле</h2>
+              <p class="blog-card__text">Печь-камин с духовым шкафом, ручной росписью, усиленным фундаментом и безопасной конструкцией для каркасного дома.</p>
+            </div>
+          </a>
+          <a href="#belaya-bannaya-pech-v-russkom-stile" class="blog-card">
+            <div class="blog-card__image"><span class="blog-card__placeholder">Фото проекта</span></div>
+            <div class="blog-card__body">
+              <div class="blog-card__meta">Банные печи</div>
+              <h2 class="blog-card__title">Белая банная печь в русском стиле</h2>
+              <p class="blog-card__text">Изразцы с румпой, коллекция «Русская этника», белая глазурь и рекордные сроки изготовления и монтажа.</p>
+            </div>
+          </a>
+          <a href="#izraztsovyj-barbekyu-kompleks" class="blog-card">
+            <div class="blog-card__image"><span class="blog-card__placeholder">Фото проекта</span></div>
+            <div class="blog-card__body">
+              <div class="blog-card__meta">Барбекю</div>
+              <h2 class="blog-card__title">Изразцовый барбекю комплекс в беседке</h2>
+              <p class="blog-card__text">Летняя кухня с мангалом, казанной плитой, винным шкафом, аргентинским грилем и облицовкой «Версаль».</p>
+            </div>
+          </a>
+        </div>
+        <p class="blog-note">Вместо старых изображений оставлены дизайнерские заглушки. При интеграции программист сможет заменить их реальными фотографиями, датами, авторами и SEO-полями из внутренней системы.</p>
+      </div>
+    </section>
+
+    <section class="blog-articles">
+      <div class="container blog-articles__inner">
+        <article class="blog-article" id="solnechnaya-keramika">
+          <aside class="blog-article__aside">
+            <div class="blog-article__kicker">Камины</div>
+            <h2 class="blog-article__title">Солнечная керамическая облицовка камина</h2>
+            <p class="blog-article__lead">Яркая изразцовая облицовка помогла обновить интерьер загородного дома и стала для хозяев маленьким солнцем в помещении, куда попадает не так много естественного света.</p>
+            <ul class="blog-article__toc">
+              <li><a href="#sunny-demontazh">Демонтаж старого камина</a></li>
+              <li><a href="#sunny-oblicovka">Индивидуальная облицовка</a></li>
+              <li><a href="#sunny-production">Собственное производство</a></li>
+            </ul>
+          </aside>
+          <div class="blog-article__content">
+            <div class="blog-article__media">Заглушка фото: облицованный камин в интерьере</div>
+            <p>Команда CeramicaDecor помогает кардинально изменить внешний вид помещения: наши изделия дают дому возможность заиграть новыми красками. В одном из выпусков телепередачи «Дачный ответ» мы показали, какой важной частью интерьера может стать камин, облицованный уникальными изразцами, подобранными специально под задачу заказчика.</p>
+            <h3 id="sunny-demontazh">Демонтаж старого камина и установка нового</h3>
+            <p>Дом, в котором команда работала над этим объектом, был куплен с уже готовым ремонтом. Чтобы освежить пространство, хозяева обратились за помощью к специалистам. На месте прежнего камина, который не соответствовал запросам заказчиков, начали с нуля устанавливать новый.</p>
+            <p>Материал для выкладки был стандартным: кирпич. Но сам процесс установки предполагал особенности. Для внешней части дымохода оказалось сложно подобрать трубу, поэтому команда использовала новую технологию: полимерный рукав. При нагревании он расширяется и принимает нужную форму, заменяя старый дымоход.</p>
+            <p>Новая чугунная топка с закаленным стеклом и хорошим обзором огня позволяет регулировать пламя. На одних дровах огонь внутри может гореть пять-шесть часов.</p>
+            <div class="blog-article__media">Заглушка фото: чугунная топка с закаленным стеклом</div>
+            <h3 id="sunny-oblicovka">Индивидуальная керамическая облицовка под ваш запрос</h3>
+            <p>Благодаря ручной работе CeramicaDecor делает изразцы любой формы и размера. Это помогает реализовывать самые разные идеи заказчиков и адаптировать облицовку под конкретный интерьер.</p>
+            <p>Камин облицевали ярко-желтыми изразцами. По индивидуальному запросу эта работа должна была стать для хозяев маленьким солнцем в доме, куда из-за особенностей пространства проникает не так много света.</p>
+            <div class="blog-article__media">Заглушка фото: солнечная изразцовая облицовка камина</div>
+            <p>Чтобы дизайнерская задумка осуществилась точно, в ходе реализации команда перебрала много образцов и оттенков цвета. В итоге был найден вариант, который поддержал интерьер и сделал камин главным теплым акцентом комнаты.</p>
+            <div class="blog-article__media">Заглушка фото: желтые изразцы камина</div>
+            <h3 id="sunny-production">Осуществляем ваши идеи на собственном производстве</h3>
+            <p>CeramicaDecor не боится сложностей и стремится точно выполнять пожелания заказчиков. Собственное керамическое производство и ручная роспись позволяют работать не только в рамках существующих коллекций, но и по индивидуальному запросу.</p>
+            <p>Команда с энтузиазмом берется за необычные идеи: подбирает форму, цвет, рельеф и характер облицовки так, чтобы готовый камин выглядел естественной частью дома.</p>
+            <a class="blog-article__video" href="https://vkvideo.ru/video-178201211_456239511" target="_blank" rel="noopener">Смотреть отзыв дизайнера проекта</a>
+          </div>
+        </article>
+
+        <article class="blog-article" id="syuzhetnaya-izraztsovaya-oblitsovka">
+          <aside class="blog-article__aside">
+            <div class="blog-article__kicker">Изразцы</div>
+            <h2 class="blog-article__title">Сюжетная изразцовая облицовка</h2>
+            <p class="blog-article__lead">Сюжетные изразцы делают печь не только источником тепла, но и носителем истории: в керамике могут жить народная мудрость, религиозные символы, бытовые сцены и личные смыслы владельцев дома.</p>
+            <ul class="blog-article__toc">
+              <li><a href="#syuzhet-history">Как сюжет оживает на изразцах</a></li>
+              <li><a href="#syuzhet-symbols">Символы и надписи</a></li>
+              <li><a href="#syuzhet-value">Почему это важно сегодня</a></li>
+            </ul>
+          </aside>
+          <div class="blog-article__content">
+            <div class="blog-article__media">Заглушка фото: сюжетная изразцовая облицовка</div>
+            <h3 id="syuzhet-history">Как сюжет оживает на изразцах</h3>
+            <p>В XVII-XIX веках изразцы для печей и каминов с сюжетной росписью стали особенно популярны. Такие изображения передавали особенности жизни, быта и отношений людей своего времени. Иногда печь становилась почти учебным пособием: ее рассматривали, «читали» и обсуждали, находя в рисунках знакомые истории и нравоучительные мотивы.</p>
+            <p>В сюжетной облицовке особенно важен ритм: отдельные плитки складываются в цельную декоративную систему, где каждая сцена поддерживает общую идею. Благодаря этому печь воспринимается не как набор керамических деталей, а как законченная художественная композиция.</p>
+            <div class="blog-article__media">Заглушка фото: фрагмент росписи</div>
+            <h3 id="syuzhet-symbols">Символы и надписи</h3>
+            <p>На старинных печах можно встретить не только изображения, но и короткие текстовые фрагменты. Они усиливают смысл росписи и помогают понять, о чем говорит изображение. В религиозных или нравоучительных сюжетах надпись становится ключом: она переводит декоративную сцену в размышление о милости, справедливости, добре и зле.</p>
+            <p>Сюжетные изразцы ценны именно многослойностью. С первого взгляда видна красота цвета, формы и глазури, а при внимательном рассмотрении открываются детали: жесты персонажей, растения, животные, бытовые предметы, знаки времени и личная интонация мастера.</p>
+            <div class="blog-article__quote">Керамическая облицовка очага может не только радовать глаз, но и быть наполненной содержанием, глубиной и характером.</div>
+            <h3 id="syuzhet-value">Почему это важно сегодня</h3>
+            <p>Современная сюжетная облицовка сохраняет эту традицию, но работает уже с задачами конкретного интерьера. В росписи можно отразить семейную историю, любимый пейзаж, мотивы русской усадьбы, голландские сценки, охотничьи сюжеты, растительный орнамент или авторскую фантазию.</p>
+            <p>Каждый расписной изразец изготавливается вручную, поэтому даже повторяющийся мотив остается живым. В этом и состоит главная ценность сюжетной керамики: она соединяет функциональность печи или камина с индивидуальной художественной работой.</p>
+          </div>
+        </article>
+
+        <article class="blog-article" id="pech-v-starorusskom-stile">
+          <aside class="blog-article__aside">
+            <div class="blog-article__kicker">Печи</div>
+            <h2 class="blog-article__title">Печь в старорусском стиле</h2>
+            <p class="blog-article__lead">Проект стал центром семейного тепла в доме заказчика: печь-камин совмещает широкую топочную дверь, аккумулирующую печную конструкцию и отдельный духовой шкаф.</p>
+            <ul class="blog-article__toc">
+              <li><a href="#starorusskaya-safety">Безопасная печь</a></li>
+              <li><a href="#starorusskaya-style">Старорусский образ</a></li>
+              <li><a href="#starorusskaya-comfort">Тепло и уют</a></li>
+            </ul>
+          </aside>
+          <div class="blog-article__content">
+            <p>В ходе работы CeramicaDecor получает запросы на изготовление объектов разных направлений. Этот заказ был выполнен в старорусском стиле и стал центром семейного тепла и уюта в доме заказчика. Проект уникален тем, что совмещает в себе сразу три функционала: это облицованная изразцами печь-камин с отдельным духовым шкафом.</p>
+            <div class="blog-article__media">Заглушка фото: печь-камин со встроенным духовым шкафом</div>
+            <h3 id="starorusskaya-safety">CeramicaDecor гарантирует безопасные печи</h3>
+            <p>Пожеланием заказчика было максимально расширить топочную дверь, чтобы в гостиной можно было наслаждаться огнем. При этом тепло аккумулируется: в отличие от камина, объект действительно нагревается, и тепло не уходит сразу в трубу.</p>
+            <p>Дверь печи заказная: регулируемая шторка с подачей воздуха, посадочная часть сделана глубже, около ста миллиметров, чтобы дверь была устойчивой и прочно фиксировалась. Приток воздуха организован с помощью герметичного клапана с силиконовым ободком, рядом расположены прочистные дверки, симметрично установленные и с другой стороны.</p>
+            <p>Отдельное внимание команда уделила дымоходу. Визуально кажется, что он упирается в балку: такие пропорции использованы для симметрии и полноты композиции, хотя сама труба внутри намного меньше. Вес печи составляет более пяти тонн, поэтому для надежности пришлось усилить фундамент.</p>
+            <p>Кирпичная труба дополнительно нагрузила бы основание, поэтому было принято решение перейти на изолированную утепленную сэндвич-трубу. Проходка сделана скользящей: дом каркасный, и команда учла возможную усадку.</p>
+            <div class="blog-article__media">Заглушка фото: топочная дверь и дымоход</div>
+            <p>В печь также интегрирована противопожарная стенка, закрытая изразцами. Снаружи ее не видно, но в деревянно-каркасном доме она обеспечивает дополнительную безопасность.</p>
+            <h3 id="starorusskaya-style">Стилизованная под ваш запрос печь</h3>
+            <p>Задачей компании было стилизовать печь в старорусском стиле. Дизайнеры разработали проект, который был утвержден заказчиком, и в ходе реализации впервые использовали некоторые элементы, например балясину определенного размера и формата.</p>
+            <p>Все изразцы расписываются вручную. Для их изготовления не используются шаблоны или трафареты: каждый элемент становится уникальной работой художника и показывает преимущества ручной керамики перед фабричной плиткой. В этом проекте представлено более полутора тысяч единиц изразцов в различном виде.</p>
+            <p>Особенность работы заключалась и в термическом расширении кирпича, из которого изготовлена печь. Чтобы изразцы крепились надежно и долговечно, используется специальная армирующая сетка. Она создает своеобразный панцирь и удерживает керамику на местах даже при движении кирпичей.</p>
+            <div class="blog-article__media">Заглушка фото: изразцовая облицовка в старорусском стиле</div>
+            <h3 id="starorusskaya-comfort">CeramicaDecor создает уют</h3>
+            <p>Команда CeramicaDecor много лет помогает воплощать разнообразные задумки заказчиков, наполняя дома теплом и комфортом. Компания проводит работы с нуля и сопровождает проект на каждом этапе создания уникального сердца дома.</p>
+            <a class="blog-article__video" href="https://vkvideo.ru/video-178201211_456239567" target="_blank" rel="noopener">Смотреть видео о проекте</a>
+          </div>
+        </article>
+
+        <article class="blog-article" id="belaya-bannaya-pech-v-russkom-stile">
+          <aside class="blog-article__aside">
+            <div class="blog-article__kicker">Банные печи</div>
+            <h2 class="blog-article__title">Белая банная печь в русском стиле</h2>
+            <p class="blog-article__lead">Проект в Одинцовском районе: белая изразцовая облицовка коллекции «Русская этника», повышенная теплоемкость и очень короткие сроки реализации.</p>
+            <ul class="blog-article__toc">
+              <li><a href="#bannaya-oblicovka">Облицовка ручной работы</a></li>
+              <li><a href="#bannaya-sroki">Сжатые сроки</a></li>
+              <li><a href="#bannaya-design">Индивидуальный дизайн</a></li>
+            </ul>
+          </aside>
+          <div class="blog-article__content">
+            <div class="blog-article__media">Заглушка фото: белая банная печь</div>
+            <p>Команда CeramicaDecor регулярно сталкивается с уникальными проектами и задачами. Исключением не становится ни один проект по изготовлению изразцов и монтажу: будь то барбекю-комплекс, камин или банная печь.</p>
+            <h3 id="bannaya-oblicovka">Облицовка банной печи изразцами ручной работы</h3>
+            <p>В Одинцовском районе компании поступил запрос на облицовку банной печи. Архитекторы-проектировщики подготовили варианты, и заказчик остановился на коллекции «Русская этника» в благородном белом цвете, идеально сочетающемся с интерьером бани.</p>
+            <p>Для этого проекта команда изготовила изразцы с румпой. Пространство между румпой и кирпичом было заполнено раствором: благодаря этому теплоемкость печи увеличилась, а теплопередача жара от кирпича на внешнюю поверхность осталась на нужном уровне. Несмотря на увеличение времени протопки, такая теплоемкость позволяет дольше сохранять тепло.</p>
+            <div class="blog-article__media">Заглушка фото: белая изразцовая облицовка</div>
+            <h3 id="bannaya-sroki">Реализуем проект в кратчайшие сроки</h3>
+            <p>Этот объект стал для команды знаковым, поскольку перед ней стояла задача изготовить изразцы за месяц, а монтаж выполнить за неделю. Заказчик хотел как можно раньше вновь пользоваться банной печью.</p>
+            <p>Запрос был сложным: за более чем десять лет работы такой объем в столь короткие сроки компании выполнять не доводилось. Производство нужно было завершить даже быстрее четырех недель, чтобы монтажники получили небольшой запас времени на установку керамики.</p>
+            <p>Для команды это был настоящий вызов, но проект удалось реализовать в желаемом виде и в нужные, рекордные сроки.</p>
+            <div class="blog-article__media">Заглушка фото: печь в интерьере бани</div>
+            <h3 id="bannaya-design">CeramicaDecor предлагает уникальный и индивидуальный дизайн</h3>
+            <p>В повседневной практике часто можно увидеть необлицованные банные печи из кирпича. Такой внешний вид нравится не каждому, и CeramicaDecor предлагает решения, которые делают дизайн более выразительным и не влияют на работоспособность печи.</p>
+            <p>Если вы хотите подчеркнуть индивидуальность бани, изразцовая облицовка станет удачным решением: она добавляет интерьеру цельность, светлый акцент и ощущение ручной работы.</p>
+            <a class="blog-article__video" href="https://vkvideo.ru/video-178201211_456239204" target="_blank" rel="noopener">Смотреть видео о проекте</a>
+          </div>
+        </article>
+
+        <article class="blog-article" id="izraztsovyj-barbekyu-kompleks">
+          <aside class="blog-article__aside">
+            <div class="blog-article__kicker">Барбекю</div>
+            <h2 class="blog-article__title">Изразцовый барбекю комплекс в беседке загородного дома</h2>
+            <p class="blog-article__lead">Многофункциональная летняя кухня с панорамным остеклением, прочной железобетонной основой, грилем, казанной плитой и керамической облицовкой «Версаль».</p>
+            <ul class="blog-article__toc">
+              <li><a href="#bbq-function">Многофункциональность</a></li>
+              <li><a href="#bbq-construction">Надежная конструкция</a></li>
+              <li><a href="#bbq-grill">Гриль и оборудование</a></li>
+              <li><a href="#bbq-versal">Облицовка «Версаль»</a></li>
+            </ul>
+          </aside>
+          <div class="blog-article__content">
+            <p>CeramicaDecor получила запрос на постройку барбекю-комплекса в беседке загородного дома. Команда разработала сложный и уникальный проект, в котором летняя кухня стала полноценной зоной приготовления, хранения и отдыха.</p>
+            <h3 id="bbq-function">Многофункциональный барбекю комплекс</h3>
+            <p>Современная летняя беседка с панорамными остеклениями особенно выделяется мангальным комплексом и варочной плитой. В ходе общения с заказчиком было определено наполнение, компоновка, сделано несколько набросков, а понравившийся вариант команда доработала до полноценного проекта.</p>
+            <p>Для организации кухни требовалось использовать всю возможную полезную площадь и пространство. В этом вопросе команда советовалась с опытным шеф-поваром: такие консультации помогают точнее продумать сценарии приготовления и удобство рабочих поверхностей.</p>
+            <div class="blog-article__media">Заглушка фото: варочная плита барбекю-комплекса</div>
+            <p>К использованию здесь готовы посудомоечная машина, винный шкаф, полки для хранения посуды и множество кухонной утвари. На кухне предусмотрены огневые точки, мангал, казанная плита и печь под нее, выполненная из чешского шамота. Он удобнее, практичнее и компактнее кирпича.</p>
+            <div class="blog-article__media">Заглушка фото: винный шкаф и рабочая зона</div>
+            <h3 id="bbq-construction">Прочная и надежная конструкция барбекю комплекса</h3>
+            <p>Чтобы конструкция была максимально прочной, по требованию заказчика нижняя часть барбекю-комплекса была выполнена из железобетона. Столешницы также железобетонные.</p>
+            <p>Подвесные шкафы основаны на металлических сварных конструкциях, обшитых тонкостенными аквапанелями. Они подходят для открытых помещений. Силами заказчика были установлены стеклянные двери, заранее учтенные в проекте.</p>
+            <p>В качестве системы дымоудаления используются дымоходные системы Schiedel. Каждый дымовой канал оборудован шиберной задвижкой для отсечения холодного воздуха зимой. Над варочными поверхностями установлены вытяжные зонты со съемными фильтрами для обслуживания, а также канальные жаропрочные вентиляторы.</p>
+            <div class="blog-article__media">Заглушка фото: подвесные шкафы мангального комплекса</div>
+            <h3 id="bbq-grill">Установка ваших грилей в мангальный комплекс</h3>
+            <p>Отдельное внимание стоит уделить аргентинскому грилю. Он был заказан и привезен из США силами заказчика. У дальней стенки находится углегенератор, куда закладываются дрова. Горение происходит в корзине, угли ссыпаются вниз, высота жаровни регулируется в зависимости от продукта, а угли распределяются по рабочей зоне.</p>
+            <p>В распоряжении владельцев есть разные варианты корзин для жаровен. Гриль сочетается с остальными деталями проекта и вместе с ними формирует желаемый образ летней кухни.</p>
+            <div class="blog-article__media">Заглушка фото: аргентинский гриль</div>
+            <h3 id="bbq-versal">Керамическая облицовка барбекю комплекса «Версаль»</h3>
+            <p>Исходя из общего дизайна беседки и пожеланий заказчика, команда спроектировала несколько вариантов внешнего вида летней кухни. Для этого проекта было важно подчеркнуть уникальность комплекса, поэтому выбрали керамику ручной работы: безопасную, надежную, долговечную и дающую широкие возможности для художественного образа.</p>
+            <p>Выбор пал на коллекцию «Версаль». Благодаря прямым формам она удачно вписывается в современный интерьер, а геометрические и классические рельефы хорошо сочетаются с мебелью разных стилей. Именно с помощью облицовки проект получил свой характер.</p>
+            <div class="blog-article__media">Заглушка фото: изразцовая облицовка «Версаль»</div>
+            <h3>Почему CeramicaDecor?</h3>
+            <p>Благодаря ручной работе на собственном производстве CeramicaDecor может сделать изделие любой формы, размера и цвета. В индивидуальных проектах это позволяет адаптировать облицовки для объектов любой сложности.</p>
+            <p>В этом проекте команда смоделировала новые угловые элементы специальных размеров, что позволило избежать дополнительных швов и придать облицовке более совершенную форму. По заданию заказчика была разработана новая серая глазурь, чтобы оттенок оптимально подошел к интерьеру.</p>
+            <a class="blog-article__video" href="https://vkvideo.ru/video-178201211_456239564" target="_blank" rel="noopener">Смотреть видео о проекте</a>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" id="footer">
+    <div class="footer__glow"></div>
+    <div class="container">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <a href="index.html" class="footer__logo"><img src="images/logo.png" alt="CeramicaDecor" class="footer__logo-img"></a>
+          <p class="footer__tagline">Керамические премиальные облицовки.<br>14+ лет, своё производство, монтаж.<br>Под ключ по России и СНГ</p>
+        </div>
+        <div class="footer__columns">
+          <div class="footer__col">
+            <h4 class="footer__col-title" style="font-size:16px;font-weight:500;">Разделы</h4>
+            <ul class="footer__col-list">
+              <li><a href="catalog.html" style="color:#fff;font-size:16px;font-weight:500;">Каталог</a></li>
+              <li><a href="cooperation.html" style="color:#fff;font-size:16px;font-weight:500;">Сотрудничество</a></li>
+              <li><a href="blog.html" style="color:#fff;font-size:16px;font-weight:500;">Блог</a></li>
+              <li><a href="about.html" style="color:#fff;font-size:16px;font-weight:500;">О компании</a></li>
+              <li><a href="contacts.html" style="color:#fff;font-size:16px;font-weight:500;">Контакты</a></li>
+            </ul>
+          </div>
+          <div class="footer__col">
+            <ul class="footer__col-list footer__col-list--offset">
+              <li><a href="tel:+74952293046" style="font-weight:700;">+7 (495) 229-30-46</a></li>
+              <li><a href="mailto:info@ceramicadecor.ru" style="font-weight:700;">info@ceramicadecor.ru</a></li>
+              <li style="margin-top: 0.75em;"><a href="contacts.html" class="btn btn--primary" style="padding:9px 20px;font-size:13px;color:#fff;">Оставить заявку</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p class="footer__copy">&copy; 2013&ndash;2026 CeramicaDecor. Все права защищены.</p>
+        <p class="footer__org-info">ООО «АРТ КЕРАМИКА» &middot; ИНН&nbsp;5018178964 &middot; ОГРН&nbsp;1155018002150 &middot; 141068, Московская обл., г.&nbsp;Королев, ул.&nbsp;Силикатная, д.&nbsp;74, пом.&nbsp;204</p>
+        <div class="footer__legal">
+          <a href="privacy.html" target="_blank">Политика конфиденциальности</a>
+          <a href="terms.html" target="_blank">Пользовательское соглашение</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <button class="scroll-to-top" aria-label="Наверх">
+    <svg viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+  </button>
+  <script src="script.js" defer></script>
+  <script src="search.js" defer></script>
+
+  <div class="cookie-banner" id="cookieBanner">
+    <p class="cookie-banner__text">Мы используем файлы cookie. Продолжая использование сайта, вы соглашаетесь с нашей <a href="privacy.html">Политикой конфиденциальности</a>.</p>
+    <button class="cookie-banner__btn" id="cookieAccept">Принять</button>
+  </div>
+</body>
+</html>

@@ -37,26 +37,54 @@
     nav.classList.remove('open');
     burger.classList.remove('active');
     overlay.classList.remove('active');
+    closeCatalogDropdowns();
+    document.body.style.overflow = '';
+  }
+
+  function closeCatalogDropdowns(exceptDropdown) {
     nav.querySelectorAll('.header__nav-dropdown.open').forEach(function (dropdown) {
+      if (exceptDropdown && dropdown === exceptDropdown) return;
       dropdown.classList.remove('open');
-      var trigger = dropdown.querySelector('.header__nav-link');
+      var trigger = dropdown.querySelector('.header__catalog-btn, .header__nav-link');
       if (trigger) trigger.setAttribute('aria-expanded', 'false');
     });
-    document.body.style.overflow = '';
   }
 
   burger.addEventListener('click', toggleMenu);
   overlay.addEventListener('click', closeMenu);
 
-  nav.querySelectorAll('.header__nav-dropdown > .header__nav-link').forEach(function (trigger) {
+  nav.querySelectorAll('.header__catalog-btn').forEach(function (trigger) {
+    trigger.addEventListener('click', function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      var dropdown = this.closest('.header__nav-dropdown');
+      closeCatalogDropdowns(dropdown);
+      var isOpen = dropdown.classList.toggle('open');
+      this.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+  });
+
+  nav.querySelectorAll('.header__nav-dropdown--simple > .header__nav-link').forEach(function (trigger) {
     trigger.addEventListener('click', function (e) {
       if (!window.matchMedia('(max-width: 900px)').matches) return;
 
       e.preventDefault();
+      e.stopPropagation();
       var dropdown = this.closest('.header__nav-dropdown');
+      closeCatalogDropdowns(dropdown);
       var isOpen = dropdown.classList.toggle('open');
       this.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
     });
+  });
+
+  document.addEventListener('click', function (e) {
+    if (!e.target.closest('.header__nav-dropdown')) {
+      closeCatalogDropdowns();
+    }
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeCatalogDropdowns();
   });
 
   // Close menu on nav link click
@@ -64,11 +92,11 @@
     link.addEventListener('click', function () {
       if (
         window.matchMedia('(max-width: 900px)').matches &&
-        link.parentElement &&
-        link.parentElement.classList.contains('header__nav-dropdown')
+        link.matches('.header__nav-dropdown--simple > .header__nav-link')
       ) {
         return;
       }
+      closeCatalogDropdowns();
       closeMenu();
     });
   });
