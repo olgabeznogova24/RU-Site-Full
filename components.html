@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Оборудование — CeramicaDecor</title>
+  <title>Все для монтажа — CeramicaDecor</title>
   <meta name="description" content="Более 50 моделей каминов и барбекю в керамической облицовке. Собственное производство, ручная работа, доставка по всей России.">
   <link rel="canonical" href="https://ceramicadecor.ru/components.html">
   <meta name="keywords" content="каталог каминов, барбекю комплекс, изразцы купить, камины Россия, облицовка камина">
@@ -26,15 +26,20 @@
   <style>
     /* ===== CATALOG PAGE HERO ===== */
     .catalog-hero {
-      padding: 160px 0 140px;
-      text-align: center;
       position: relative;
-      background: url('images/banner-kaminy_desktop.jpg') center 20%/cover no-repeat;
+      min-height: 60vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: #101010 url('images/vse-dlya-montaga_desktop.jpg') center 50% / cover no-repeat;
+      overflow: hidden;
+      padding: 160px 0 100px;
       margin-bottom: 0;
     }
     @supports (background-image: url('x.webp')) {
       .catalog-hero {
-        background-image: url('images/banner-kaminy_desktop.webp');
+        background-image: url('images/vse-dlya-montaga_desktop.webp');
       }
       .catalog-hero--bbq {
         background-image: url('images/banner-bbk_desktop.webp');
@@ -45,12 +50,12 @@
       background-position: center 20%;
     }
     @media (max-width: 768px) {
-      .catalog-hero { background-image: url('images/banner-kaminy_mobile.jpg'); }
+      .catalog-hero { background-image: url('images/vse-dlya-montaga_mobile.jpg'); }
       .catalog-hero--bbq { background-image: url('images/banner-bbk_mobile.jpg'); }
     }
     @supports (background-image: url('x.webp')) {
       @media (max-width: 768px) {
-        .catalog-hero { background-image: url('images/banner-kaminy_mobile.webp'); }
+        .catalog-hero { background-image: url('images/vse-dlya-montaga_mobile.webp'); }
         .catalog-hero--bbq { background-image: url('images/banner-bbk_mobile.webp'); }
       }
     }
@@ -58,35 +63,37 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: rgba(16,16,16,0.65);
+      background: rgba(0,0,0,0.60);
+      pointer-events: none;
     }
     .catalog-hero .container {
       position: relative;
       z-index: 1;
     }
     .catalog-hero__title {
-      font-family: 'TT Ramillas Trl', serif;
-      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-family: var(--font-heading);
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
       font-weight: 400;
-      color: #fff;
-      margin: 0 0 16px;
-      letter-spacing: -0.02em;
+      color: var(--white);
+      line-height: 1.15;
+      margin: 0 0 24px;
     }
     .catalog-hero__subtitle {
-      font-family: 'Inter', sans-serif;
-      font-size: clamp(1rem, 2vw, 1.25rem);
-      color: rgba(255,255,255,0.6);
+      font-size: clamp(1rem, 1.5vw, 1.25rem);
+      color: rgba(255,255,255,0.68);
       font-weight: 300;
-      margin: 0;
-      text-wrap: balance;
+      line-height: 1.6;
+      max-width: 700px;
+      margin: 0 auto;
     }
     @media (max-width: 768px) {
       .catalog-hero__subtitle br { display: none; }
     }
 
+
     /* ===== CATALOG FILTER TABS ===== */
     .catalog-filters {
-      padding: 108px 0 48px;
+      padding: 44px 0 20px;
     }
     .catalog-filters__tabs {
       display: flex;
@@ -127,9 +134,324 @@
       color: #fff;
     }
 
+    /* ===== FIREBOX SCHEME ===== */
+    .firebox-guide {
+      background: #101010;
+      color: #fff;
+      padding: 32px 0 28px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .firebox-guide[hidden] {
+      display: none;
+    }
+    .firebox-guide__title {
+      font-family: var(--font-heading);
+      font-size: clamp(1.9rem, 3vw, 2.7rem);
+      font-weight: 400;
+      line-height: 1.15;
+      text-align: center;
+      margin: 0 0 26px;
+      color: #fff;
+    }
+    .firebox-guide__scheme {
+      position: relative;
+      min-height: 560px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .firebox-guide__image {
+      width: min(360px, 42vw);
+      height: auto;
+      display: block;
+      position: relative;
+      z-index: 1;
+      border-radius: 8px;
+      background: rgba(255,255,255,0.96);
+      box-shadow: 0 22px 80px rgba(0,0,0,0.42);
+    }
+    .firebox-guide__callout {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      width: min(34%, 360px);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 400;
+      color: rgba(255,255,255,0.72);
+      white-space: nowrap;
+      border: 0;
+      background: transparent;
+      padding: 0;
+      cursor: pointer;
+      text-align: inherit;
+      transition: color 0.25s ease;
+    }
+    .firebox-guide__callout:hover,
+    .firebox-guide__callout--active {
+      color: #fff;
+    }
+    .firebox-guide__callout::before {
+      content: '+';
+      color: #cb3b25;
+      font-weight: 700;
+      font-size: 1.2rem;
+      line-height: 1;
+    }
+    .firebox-guide__callout::after {
+      content: '';
+      height: 1px;
+      background: rgba(255,255,255,0.22);
+      flex: 1;
+      min-width: 80px;
+      transition: background 0.25s ease;
+    }
+    .firebox-guide__callout:hover::after,
+    .firebox-guide__callout--active::after {
+      background: rgba(203,59,37,0.72);
+    }
+    .firebox-guide__callout--left {
+      flex-direction: row;
+      left: 4%;
+    }
+    .firebox-guide__callout--right {
+      flex-direction: row-reverse;
+      right: 4%;
+    }
+    .firebox-guide__callout--side { top: 32%; }
+    .firebox-guide__callout--lift { bottom: 24%; }
+    .firebox-guide__callout--door { top: 32%; }
+    .firebox-guide__callout--lining { bottom: 24%; }
+    .firebox-lining-panel {
+      position: absolute;
+      right: 4%;
+      bottom: 7%;
+      z-index: 3;
+      width: min(340px, 34vw);
+      padding: 18px 18px 20px;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 8px;
+      background: rgba(20,20,20,0.94);
+      box-shadow: 0 24px 80px rgba(0,0,0,0.46);
+    }
+    .firebox-lining-panel[hidden] {
+      display: none;
+    }
+    .firebox-lining-panel__close {
+      position: absolute;
+      top: 8px;
+      right: 10px;
+      width: 26px;
+      height: 26px;
+      border: 0;
+      background: transparent;
+      color: rgba(255,255,255,0.72);
+      font-size: 24px;
+      line-height: 1;
+      cursor: pointer;
+    }
+    .firebox-lining-panel__close:hover {
+      color: #fff;
+    }
+    .firebox-lining-panel__title {
+      margin: 0 34px 14px 0;
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 600;
+    }
+    .firebox-lining-panel__grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(40px, 1fr));
+      gap: 14px;
+      justify-items: center;
+    }
+    .firebox-lining-panel__option {
+      width: 54px;
+      height: 54px;
+      border: 1px solid rgba(255,255,255,0.16);
+      border-radius: 50%;
+      cursor: pointer;
+      background: var(--lining-bg, #333);
+      box-shadow: inset 0 0 0 1px rgba(0,0,0,0.28);
+      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+    .firebox-lining-panel__option:hover,
+    .firebox-lining-panel__option--active {
+      transform: translateY(-2px);
+      border-color: #cb3b25;
+      box-shadow: 0 0 0 3px rgba(203,59,37,0.18), inset 0 0 0 1px rgba(0,0,0,0.28);
+    }
+    .firebox-lining-panel__option--firebrick {
+      --lining-bg:
+        linear-gradient(160deg, rgba(0,0,0,0.18), transparent 44%),
+        repeating-linear-gradient(24deg, transparent 0 18px, rgba(0,0,0,0.26) 19px 21px),
+        repeating-linear-gradient(96deg, #b39a67 0 13px, #d7c18a 14px 27px);
+    }
+    .firebox-lining-panel__option--grey {
+      --lining-bg:
+        repeating-linear-gradient(0deg, rgba(0,0,0,0.22) 0 2px, transparent 2px 17px),
+        linear-gradient(135deg, #73757b, #4f5157);
+    }
+    .firebox-lining-panel__option--brick {
+      --lining-bg:
+        repeating-linear-gradient(0deg, rgba(0,0,0,0.24) 0 2px, transparent 2px 16px),
+        repeating-linear-gradient(90deg, transparent 0 22px, rgba(0,0,0,0.24) 22px 24px),
+        linear-gradient(135deg, #9d6f5f, #c19180);
+    }
+    .firebox-lining-panel__option--black {
+      --lining-bg: linear-gradient(135deg, #101010, #292929);
+    }
+    .firebox-lining-panel__option--ribbed {
+      --lining-bg:
+        repeating-linear-gradient(90deg, #171717 0 4px, #303030 4px 8px);
+    }
+    .firebox-lining-panel__option--sand {
+      --lining-bg:
+        radial-gradient(circle at 28% 24%, rgba(255,255,255,0.42), transparent 24%),
+        linear-gradient(135deg, #cbb7a2, #e4d2bd);
+    }
+    .firebox-lining-panel__option--graphite {
+      --lining-bg: linear-gradient(135deg, #252525, #3a3a3a);
+    }
+    .firebox-guide__note {
+      max-width: 620px;
+      margin: -12px auto 0;
+      text-align: center;
+    }
+    .firebox-guide__note-title {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: #fff;
+      margin: 0 0 6px;
+    }
+    .firebox-guide__note-text {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      line-height: 1.55;
+      color: rgba(255,255,255,0.58);
+      margin: 0;
+    }
+    .firebox-type-filter {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 18px;
+    }
+    .firebox-type-filter__btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 999px;
+      background: rgba(255,255,255,0.03);
+      color: rgba(255,255,255,0.72);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 400;
+      cursor: pointer;
+      padding: 10px 18px;
+      transition: color 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+    }
+    .firebox-type-filter__btn:hover {
+      color: #fff;
+      border-color: rgba(255,255,255,0.32);
+      background: rgba(255,255,255,0.06);
+    }
+    .firebox-type-filter__icon {
+      width: 30px;
+      height: 18px;
+      position: relative;
+      display: inline-block;
+    }
+    .firebox-type-filter__icon::before,
+    .firebox-type-filter__icon::after {
+      content: '';
+      position: absolute;
+      inset: auto;
+      display: block;
+    }
+    .firebox-type-filter__icon::before {
+      left: 0;
+      right: 0;
+      top: 0;
+      height: 4px;
+      background: rgba(255,255,255,0.82);
+    }
+    .firebox-type-filter__icon::after {
+      left: 5px;
+      right: 5px;
+      bottom: 0;
+      height: 4px;
+      background: #cb3b25;
+    }
+    .firebox-type-filter__btn--active {
+      color: #fff;
+      background: #cb3b25;
+      border-color: #cb3b25;
+    }
+    .firebox-type-filter__btn--active .firebox-type-filter__icon::before {
+      background: #fff;
+    }
+    .firebox-type-filter__btn--active .firebox-type-filter__icon::after {
+      background: rgba(255,255,255,0.72);
+    }
+    .firebox-type-filter__btn--active .firebox-type-filter__icon--u::after {
+      box-shadow: -4px -7px 0 rgba(255,255,255,0.72), 4px -7px 0 rgba(255,255,255,0.72);
+    }
+    .firebox-type-filter__btn--active .firebox-type-filter__icon--tunnel::before {
+      box-shadow: 26px 0 0 #fff;
+    }
+    .firebox-type-filter__icon--corner::before {
+      width: 4px;
+      height: 18px;
+      left: 0;
+      top: 0;
+      right: auto;
+    }
+    .firebox-type-filter__icon--corner::after {
+      left: 4px;
+      right: 0;
+      top: 0;
+      bottom: auto;
+    }
+    .firebox-type-filter__icon--u::before {
+      height: 4px;
+      top: 0;
+    }
+    .firebox-type-filter__icon--u::after {
+      left: 4px;
+      right: 4px;
+      bottom: 0;
+      box-shadow: -4px -7px 0 #cb3b25, 4px -7px 0 #cb3b25;
+    }
+    .firebox-type-filter__icon--prism::before {
+      top: 1px;
+      height: 4px;
+      transform: skewX(28deg);
+    }
+    .firebox-type-filter__icon--tunnel::before {
+      left: 0;
+      width: 4px;
+      height: 18px;
+      top: 0;
+      right: auto;
+      box-shadow: 26px 0 0 rgba(255,255,255,0.82);
+    }
+    .firebox-type-filter__icon--tunnel::after {
+      left: 7px;
+      right: 7px;
+      top: 7px;
+      bottom: auto;
+    }
+
     /* ===== PRODUCT GRID ===== */
     .catalog-grid {
-      padding: 48px 0 100px;
+      padding: 20px 0 100px;
     }
     .catalog-grid__inner {
       display: grid;
@@ -286,6 +608,21 @@
       font-weight: 500;
       color: #cb3b25;
       margin: 0 0 6px;
+    }
+    .product-card__price--old {
+      color: rgba(255,255,255,0.46);
+      text-decoration: line-through;
+      font-weight: 400;
+      margin-bottom: 4px;
+    }
+    .product-card__discount {
+      display: inline-flex;
+      align-self: flex-start;
+      padding: 5px 10px;
+      border-radius: 999px;
+      background: rgba(203,59,37,0.16);
+      color: #f0a093;
+      margin-bottom: 10px;
     }
     .product-card__price--turnkey {
       color: rgba(255,255,255,0.7);
@@ -932,14 +1269,59 @@
     /* ===== RESPONSIVE ===== */
     @media (max-width: 768px) {
       .catalog-hero {
-        padding: 130px 0 50px;
-        min-height: 480px;
+        min-height: auto;
+        padding: 140px 0 70px;
       }
       .catalog-filters__tabs {
         justify-content: flex-start;
         flex-wrap: nowrap;
         gap: 8px;
         padding: 4px 0;
+      }
+      .firebox-guide {
+        padding: 30px 0 28px;
+      }
+      .firebox-guide__title {
+        margin-bottom: 20px;
+      }
+      .firebox-guide__scheme {
+        min-height: auto;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+      .firebox-guide__image {
+        width: min(280px, 78vw);
+        margin: 0 auto;
+      }
+      .firebox-guide__callout {
+        position: static;
+        width: auto;
+        white-space: normal;
+        justify-content: flex-start;
+        font-size: 0.88rem;
+      }
+      .firebox-guide__callout::after {
+        min-width: 40px;
+      }
+      .firebox-lining-panel {
+        position: relative;
+        right: auto;
+        bottom: auto;
+        width: 100%;
+        margin-top: 4px;
+      }
+      .firebox-lining-panel__grid {
+        grid-template-columns: repeat(auto-fit, minmax(46px, 1fr));
+      }
+      .firebox-lining-panel__option {
+        width: 50px;
+        height: 50px;
+      }
+      .firebox-type-filter {
+        gap: 14px 24px;
+        justify-content: flex-start;
+        margin-top: 20px;
       }
       .catalog-grid__inner {
         grid-template-columns: 1fr;
@@ -1014,110 +1396,143 @@
   <!-- ===== HEADER ===== -->
   <header class="header" id="header">
     <div class="container header__inner">
-      <a href="index.html" class="header__logo">
-        <img src="images/logo.png" alt="CeramicaDecor" class="header__logo-img">
-      </a>
-      <nav class="header__nav" id="mainNav">
-        <ul class="header__nav-list">
+      <div class="header__top-row">
+        <nav class="header__top-nav" aria-label="Дополнительная навигация">
+          <ul class="header__top-nav-list">
+            <li><a href="about.html" class="header__top-link">О компании</a></li>
+            <li><a href="about.html#team" class="header__top-link">Наша команда</a></li>
+            <li><a href="contacts-gallery-review.html" class="header__top-link">Видеоотзывы</a></li>
+            <li><a href="cooperation.html" class="header__top-link">Сотрудничество</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="header__main-row">
+        <a href="index.html" class="header__logo">
+          <img src="images/logo.png" alt="CeramicaDecor" class="header__logo-img">
+        </a>
+        <nav class="header__nav" id="mainNav">
+          <ul class="header__nav-list">
           <li class="header__nav-dropdown header__nav-dropdown--catalog">
             <button type="button" class="header__catalog-btn" aria-haspopup="true" aria-expanded="false">Каталог</button>
-            <div class="header__mega-menu" role="menu">
-              <a href="catalog.html" class="header__mega-feature" role="menuitem">
-                <span>Весь каталог</span>
-                <small>Общий список каминов, печей, изразцов, барбекю комплексов и керамики</small>
-              </a>
-              <div class="header__mega-grid">
-                <div class="header__mega-col">
-                  <h3>Изразцы</h3>
-                  <a href="catalog-izrazcy.html" role="menuitem">Каталог изразцов</a>
-                  <a href="glaze-palette.html" role="menuitem">Палитра глазурей</a>
-                </div>
-                <div class="header__mega-col">
-                  <h3>Камины</h3>
-                  <a href="catalog-kaminy.html" role="menuitem">Дровяные камины</a>
-                  <a href="catalog-biokaminy.html" role="menuitem">Биокамины</a>
-                  <a href="catalog-elektrokaminy.html" role="menuitem">Электрокамины</a>
-                </div>
-                <div class="header__mega-col">
-                  <h3>Печи</h3>
-                  <a href="catalog-russkie-pechi.html" role="menuitem">Русские печи</a>
-                  <a href="catalog-otopitelnye-pechi.html" role="menuitem">Отопительные печи</a>
-                  <a href="catalog-bannye-pechi.html" role="menuitem">Банные печи и порталы</a>
-                </div>
-                <div class="header__mega-col">
-                  <h3>Типовые печи-камины из наличия</h3>
-                  <a href="catalog-seriynye-modeli.html" role="menuitem">Смотреть раздел</a>
-                </div>
-                <div class="header__mega-col">
-                  <h3>Барбекю комплексы</h3>
-                  <a href="catalog-barbekyu-kompleksy.html" role="menuitem">Смотреть раздел</a>
-                </div>
-                <div class="header__mega-col">
-                  <h3>Мраморные камины и порталы</h3>
-                  <a href="catalog-mramornye-kaminy-portaly.html" role="menuitem">Смотреть раздел</a>
-                </div>
-                <div class="header__mega-col">
-                  <h3>Плитка ручной работы</h3>
-                  <a href="catalog-interernaya-keramika.html" role="menuitem">Кухонные фартуки</a>
-                  <a href="catalog-interernaya-keramika.html" role="menuitem">Барные стойки</a>
-                  <a href="catalog-interernaya-keramika.html" role="menuitem">Облицовка стен</a>
-                </div>
-                <div class="header__mega-col">
-                  <h3>Фасадная керамика</h3>
-                  <a href="catalog-fasadnaya-keramika.html" role="menuitem">Смотреть раздел</a>
-                </div>
-                <div class="header__mega-col">
-                  <h3>Метлахская плитка</h3>
-                  <a href="catalog-metlahskaya-plitka.html" role="menuitem">Смотреть раздел</a>
-                </div>
-                <div class="header__mega-col">
-                  <h3>Реставрация</h3>
-                  <a href="restoration.html" role="menuitem">Смотреть раздел</a>
-                </div>
-                <div class="header__mega-col">
-                  <h3>Сувенирная продукция</h3>
-                  <a href="catalog-suvenirnaya-produkciya.html" role="menuitem">Смотреть раздел</a>
-                </div>
+            <div class="header__mega-menu header__mega-menu--showcase" role="menu">
+              <div class="header__mega-tabs" role="tablist" aria-label="Разделы каталога">
+                <button type="button" class="header__mega-tab active" role="tab" aria-selected="true" data-mega-target="kaminy">Камины</button>
+                <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="pechi">Печи</button>
+                <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="barbekyu">Барбекю комплексы</button>
+                <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="izrazcy">Изразцы</button>
+                <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="seriynye">Печи-камины<br>из наличия</button>
+                <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="mramor">Мраморные камины<br>и порталы</button>
+                <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="interior">Плитка ручной работы</button>
+                <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="fasad">Фасадная керамика</button>
+                <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="metlah">Метлахская плитка</button>
+                <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="restoration">Реставрация</button>
+                <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="suvenir">Сувенирная продукция</button>
+              </div>
+              <div class="header__mega-panels">
+                <section class="header__mega-panel active" role="tabpanel" data-mega-panel="kaminy">
+                  <div class="header__mega-cards">
+                    <a href="catalog-kaminy.html" class="header__mega-card header__mega-card--large" role="menuitem"><img src="images/kamin_dorf_murav_new_3.jpg" alt="Дровяные камины"><span>Дровяные камины</span></a>
+                    <a href="catalog-biokaminy.html" class="header__mega-card" role="menuitem"><img src="images/banner-biokaminy_desktop.webp" alt="Биокамины"><span>Биокамины</span></a>
+                    <a href="catalog-elektrokaminy.html" class="header__mega-card" role="menuitem"><img src="images/banner-elektrokaminy_desktop.webp" alt="Электрокамины"><span>Электрокамины</span></a>
+                  </div>
+                </section>
+                <section class="header__mega-panel" role="tabpanel" data-mega-panel="pechi">
+                  <div class="header__mega-cards">
+                    <a href="catalog-russkie-pechi.html" class="header__mega-card header__mega-card--large" role="menuitem"><img src="images/banner-russkie-pechi_desktop.webp" alt="Русские печи"><span>Русские печи</span></a>
+                    <a href="catalog-otopitelnye-pechi.html" class="header__mega-card" role="menuitem"><img src="images/banner-otopitelnye-pechi_desktop.webp" alt="Отопительные печи"><span>Отопительные печи</span></a>
+                    <a href="catalog-bannye-pechi.html" class="header__mega-card" role="menuitem"><img src="images/banner-bannye-pechi_desktop.webp" alt="Банные печи"><span>Банные печи</span></a>
+                    <a href="catalog-bannye-pechi.html" class="header__mega-card" role="menuitem"><img src="images/banner-bannye-portaly_desktop.webp" alt="Банные порталы"><span>Банные порталы</span></a>
+                  </div>
+                </section>
+                <section class="header__mega-panel" role="tabpanel" data-mega-panel="barbekyu">
+                  <div class="header__mega-cards">
+                    <a href="catalog-barbekyu-kompleksy.html" class="header__mega-card header__mega-card--large" role="menuitem"><img src="images/barbekyu_card_new.webp" alt="Барбекю комплексы"><span>Барбекю комплексы</span></a>
+                  </div>
+                </section>
+                <section class="header__mega-panel" role="tabpanel" data-mega-panel="izrazcy">
+                  <div class="header__mega-cards">
+                    <a href="catalog-izrazcy.html" class="header__mega-card header__mega-card--large" role="menuitem"><img src="images/izrazcy_card.webp" alt="Каталог изразцов"><span>Каталог изразцов</span></a>
+                    <a href="glaze-palette.html" class="header__mega-card" role="menuitem"><img src="images/palitra_izrazcy.jpg" alt="Палитра глазурей"><span>Палитра глазурей</span></a>
+                  </div>
+                </section>
+                <section class="header__mega-panel" role="tabpanel" data-mega-panel="seriynye">
+                  <div class="header__mega-cards">
+                    <a href="catalog-seriynye-modeli.html" class="header__mega-card header__mega-card--large header__mega-card--ready" role="menuitem"><img src="images/ready_banner.png" alt="Печи-камины из наличия"><span>Печи-камины<br>из наличия</span></a>
+                  </div>
+                </section>
+                <section class="header__mega-panel" role="tabpanel" data-mega-panel="mramor">
+                  <div class="header__mega-cards">
+                    <a href="catalog-mramornye-kaminy-portaly.html" class="header__mega-card header__mega-card--large" role="menuitem"><img src="images/banner-mramor_desktop.webp" alt="Мраморные камины"><span>Мраморные камины<br>и порталы</span></a>
+                  </div>
+                </section>
+                <section class="header__mega-panel" role="tabpanel" data-mega-panel="interior">
+                  <div class="header__mega-cards">
+                    <a href="catalog-interernaya-keramika.html" class="header__mega-card header__mega-card--bar" role="menuitem"><img src="images/barnye stoyki.jpg" alt="Барные стойки"><span>Барные стойки</span></a>
+                    <a href="catalog-interernaya-keramika.html" class="header__mega-card" role="menuitem"><img src="images/oblicovka sten.jpg" alt="Облицовка стен"><span>Облицовка стен</span></a>
+                    <a href="catalog-interernaya-keramika.html" class="header__mega-card header__mega-card--large" role="menuitem"><img src="images/banner-interior_desktop.webp" alt="Кухонные фартуки"><span>Кухонные фартуки</span></a>
+                  </div>
+                </section>
+                <section class="header__mega-panel" role="tabpanel" data-mega-panel="fasad">
+                  <div class="header__mega-cards">
+                    <a href="catalog-fasadnaya-keramika.html" class="header__mega-card header__mega-card--large" role="menuitem"><img src="images/banner-fasad_desktop.webp" alt="Фасадная керамика"><span>Фасадная керамика</span></a>
+                  </div>
+                </section>
+                <section class="header__mega-panel" role="tabpanel" data-mega-panel="metlah">
+                  <div class="header__mega-cards">
+                    <a href="catalog-metlahskaya-plitka.html" class="header__mega-card header__mega-card--large" role="menuitem"><img src="images/metlahskaya plitka.jpg?v=20260610-2041" alt="Метлахская плитка"><span>Метлахская плитка</span></a>
+                  </div>
+                </section>
+                <section class="header__mega-panel" role="tabpanel" data-mega-panel="restoration">
+                  <div class="header__mega-cards">
+                    <a href="restoration.html" class="header__mega-card header__mega-card--large" role="menuitem"><img src="images/restavraciya.jpg" alt="Реставрация"><span>Реставрация</span></a>
+                  </div>
+                </section>
+                <section class="header__mega-panel" role="tabpanel" data-mega-panel="suvenir">
+                  <div class="header__mega-cards">
+                    <a href="catalog-suvenirnaya-produkciya.html" class="header__mega-card header__mega-card--large" role="menuitem"><img src="images/suvenirnaya produkcya.jpg" alt="Сувенирная продукция"><span>Сувенирная продукция</span></a>
+                  </div>
+                </section>
               </div>
             </div>
           </li>
+          <li><a href="portfolio.html" class="header__nav-link">Портфолио</a></li>
           <li class="header__nav-dropdown header__nav-dropdown--simple">
-            <a href="components.html" class="header__nav-link" aria-haspopup="true" aria-expanded="false">Оборудование</a>
+            <a href="components.html" class="header__nav-link" aria-haspopup="true" aria-expanded="false">Все для монтажа</a>
             <ul class="header__dropdown-menu">
               <li><a href="components.html">Каминные топки</a></li>
               <li><a href="components.html">Электроочаги</a></li>
             </ul>
           </li>
-          <li class="header__nav-dropdown header__nav-dropdown--simple">
-            <a href="cooperation.html" class="header__nav-link" aria-haspopup="true" aria-expanded="false">Сотрудничество</a>
-            <ul class="header__dropdown-menu">
-              <li><a href="cooperation.html">Печники</a></li>
-              <li><a href="cooperation.html">Дизайнеры</a></li>
-              <li><a href="cooperation.html">Застройщики</a></li>
-              <li><a href="cooperation.html">Салоны каминов</a></li>
-              <li><a href="cooperation.html">Салоны интерьерных решений</a></li>
-            </ul>
-          </li>
-          <li><a href="blog.html" class="header__nav-link">Блог</a></li>
-          <li class="header__nav-dropdown header__nav-dropdown--simple">
-            <a href="about.html" class="header__nav-link" aria-haspopup="true" aria-expanded="false">О компании</a>
-            <ul class="header__dropdown-menu">
-              <li><a href="about.html#team">Наша команда</a></li>
-              <li><a href="contacts-gallery-review.html">Видеоотзывы</a></li>
-            </ul>
-          </li>
           <li><a href="contacts.html" class="header__nav-link">Контакты</a></li>
-        </ul>
-        <a href="tel:+74952293046" class="header__nav-phone-link">+7 (495) 229-30-46</a>
-        <a href="mailto:info@ceramicadecor.ru" class="header__nav-phone-link">info@ceramicadecor.ru</a>
-        <div class="header__nav-item--search"><a href="#" class="header__nav-link" id="searchBtnMobile"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg> Поиск</a></div>
-      </nav>
-      <div class="header__actions">
-        <button class="header__search-btn" id="searchBtn" aria-label="Поиск"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></button>
-        <a href="tel:+74952293046" class="header__phone-desktop">+7 (495) 229-30-46</a>
-        <button class="header__burger" id="burgerBtn" aria-label="Меню">
-          <span></span><span></span><span></span>
-        </button>
+          </ul>
+          <ul class="header__nav-list header__nav-list--mobile-secondary">
+            <li><a href="about.html" class="header__nav-link">О компании</a></li>
+            <li><a href="about.html#team" class="header__nav-link">Наша команда</a></li>
+            <li><a href="contacts-gallery-review.html" class="header__nav-link">Видеоотзывы</a></li>
+            <li><a href="cooperation.html" class="header__nav-link">Сотрудничество</a></li>
+          </ul>
+          <a href="tel:+74952293046" class="header__nav-phone-link">+7 (495) 229-30-46</a>
+          <div class="header__nav-messengers" aria-label="Мессенджеры">
+            <a href="https://t.me/+79950001166" class="header__messenger-link" target="_blank" rel="noopener" aria-label="Telegram"><img src="images/icons/png-klev-club-p-telegram-logotip-png-9.png" alt="" class="header__messenger-icon"></a>
+            <a href="https://max.ru/" class="header__messenger-link" target="_blank" rel="noopener" aria-label="Max"><img src="images/icons/max.png" alt="" class="header__messenger-icon"></a>
+          </div>
+          <a href="mailto:info@ceramicadecor.ru" class="header__nav-phone-link">info@ceramicadecor.ru</a>
+          <div class="header__nav-item--search"><a href="#" class="header__nav-link" id="searchBtnMobile"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg> Поиск</a></div>
+        </nav>
+
+        <div class="header__actions">
+          <button class="header__search-btn" id="searchBtn" aria-label="Поиск"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></button>
+          <a href="#contact" class="btn btn--primary header__cta-btn">Оставить заявку</a>
+          <a href="tel:+74952293046" class="header__phone-desktop">+7 (495) 229-30-46</a>
+          <div class="header__messengers" aria-label="Мессенджеры">
+            <a href="https://t.me/+79950001166" class="header__messenger-link" target="_blank" rel="noopener" aria-label="Telegram"><img src="images/icons/png-klev-club-p-telegram-logotip-png-9.png" alt="" class="header__messenger-icon"></a>
+            <a href="https://max.ru/" class="header__messenger-link" target="_blank" rel="noopener" aria-label="Max"><img src="images/icons/max.png" alt="" class="header__messenger-icon"></a>
+          </div>
+          <button class="header__burger" id="burgerBtn" aria-label="Меню">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
       </div>
     </div>
   </header>
@@ -1125,8 +1540,54 @@
   <!-- ===== CATALOG HERO ===== -->
   <section class="catalog-hero">
     <div class="container">
-      <h1 class="catalog-hero__title">Оборудование</h1>
+      <h1 class="catalog-hero__title">Все для монтажа</h1>
       <p class="catalog-hero__subtitle">Топки, дымоходы и оборудование для каминов и печей</p>
+    </div>
+  </section>
+  <!-- ===== CATALOG FILTER TABS ===== -->
+  <section class="catalog-filters" aria-label="Фильтр подразделов">
+    <div class="container">
+      <div class="catalog-filters__tabs" role="tablist" aria-label="Подразделы Все для монтажа">
+        <button type="button" class="catalog-filters__tab catalog-filters__tab--active" data-category="kaminnye-topki" role="tab" aria-selected="true">Каминные топки</button>
+        <button type="button" class="catalog-filters__tab" data-category="ochagi" role="tab" aria-selected="false">Электроочаги</button>
+      </div>
+    </div>
+  </section>
+  <!-- ===== FIREBOX SCHEME ===== -->
+  <section class="firebox-guide" id="fireboxGuide" aria-label="Схема каминной топки">
+    <div class="container">
+      <h2 class="firebox-guide__title">Каминные топки</h2>
+      <div class="firebox-guide__scheme">
+        <button type="button" class="firebox-guide__callout firebox-guide__callout--left firebox-guide__callout--side firebox-guide__callout--active" data-scheme-state="side-opening" aria-pressed="true">Боковое открывание</button>
+        <button type="button" class="firebox-guide__callout firebox-guide__callout--left firebox-guide__callout--lift" data-scheme-state="vertical-lift" aria-pressed="false">Вертикальный подъём</button>
+        <img src="images/kaminnye-topki-schema.jpg" alt="Схема каминной топки: боковое открывание" class="firebox-guide__image" id="fireboxSchemeImage" loading="lazy">
+        <button type="button" class="firebox-guide__callout firebox-guide__callout--right firebox-guide__callout--door" data-scheme-state="drop-door" aria-pressed="false">Откидная дверца</button>
+        <button type="button" class="firebox-guide__callout firebox-guide__callout--right firebox-guide__callout--lining" data-scheme-state="lining" aria-pressed="false">Футеровка</button>
+        <div class="firebox-lining-panel" id="fireboxLiningPanel" hidden>
+          <button type="button" class="firebox-lining-panel__close" id="fireboxLiningClose" aria-label="Закрыть список футеровок">&times;</button>
+          <p class="firebox-lining-panel__title">Варианты футеровки</p>
+          <div class="firebox-lining-panel__grid" aria-label="Список возможных футеровок">
+            <button type="button" class="firebox-lining-panel__option firebox-lining-panel__option--firebrick firebox-lining-panel__option--active" data-lining="firebrick" aria-label="Светлый шамот"></button>
+            <button type="button" class="firebox-lining-panel__option firebox-lining-panel__option--grey" data-lining="grey" aria-label="Серый шамот"></button>
+            <button type="button" class="firebox-lining-panel__option firebox-lining-panel__option--brick" data-lining="brick" aria-label="Кирпичная футеровка"></button>
+            <button type="button" class="firebox-lining-panel__option firebox-lining-panel__option--black" data-lining="black" aria-label="Черная футеровка"></button>
+            <button type="button" class="firebox-lining-panel__option firebox-lining-panel__option--ribbed" data-lining="ribbed" aria-label="Ребристая черная футеровка"></button>
+            <button type="button" class="firebox-lining-panel__option firebox-lining-panel__option--sand" data-lining="sand" aria-label="Песочная футеровка"></button>
+            <button type="button" class="firebox-lining-panel__option firebox-lining-panel__option--graphite" data-lining="graphite" aria-label="Графитовая футеровка"></button>
+          </div>
+        </div>
+      </div>
+      <div class="firebox-guide__note" aria-live="polite">
+        <p class="firebox-guide__note-title" id="fireboxSchemeTitle">Боковое открывание</p>
+        <p class="firebox-guide__note-text" id="fireboxSchemeText">Динамическая зона схемы: сейчас используется демонстрационное изображение, позже сюда подключаются нужные состояния топки.</p>
+      </div>
+      <div class="firebox-type-filter" id="fireboxTypeFilter" role="tablist" aria-label="Типы каминных топок">
+        <button type="button" class="firebox-type-filter__btn" data-firebox-type="straight" role="tab" aria-selected="false"><span class="firebox-type-filter__icon"></span>Прямая</button>
+        <button type="button" class="firebox-type-filter__btn" data-firebox-type="corner" role="tab" aria-selected="false"><span class="firebox-type-filter__icon firebox-type-filter__icon--corner"></span>Угловая</button>
+        <button type="button" class="firebox-type-filter__btn" data-firebox-type="u-shaped" role="tab" aria-selected="false"><span class="firebox-type-filter__icon firebox-type-filter__icon--u"></span>П-образная</button>
+        <button type="button" class="firebox-type-filter__btn" data-firebox-type="prismatic" role="tab" aria-selected="false"><span class="firebox-type-filter__icon firebox-type-filter__icon--prism"></span>Призматическая</button>
+        <button type="button" class="firebox-type-filter__btn" data-firebox-type="tunnel" role="tab" aria-selected="false"><span class="firebox-type-filter__icon firebox-type-filter__icon--tunnel"></span>Туннельная</button>
+      </div>
     </div>
   </section>
   <!-- ===== PRODUCT GRID ===== -->
@@ -1191,19 +1652,32 @@
           <div class="footer__col">
             <h4 class="footer__col-title" style="font-size:16px;font-weight:700;color:#fff;">Каталог</h4>
             <ul class="footer__col-list">
-              <li><a href="glaze-palette.html">Палитра глазурей</a></li>
-              <li><a href="catalog-izrazcy.html">Изразцы</a></li>
               <li><a href="catalog-kaminy.html">Камины</a></li>
+              <li><a href="catalog-otopitelnye-pechi.html">Печи</a></li>
               <li><a href="catalog-barbekyu-kompleksy.html">Барбекю комплексы</a></li>
+              <li><a href="catalog-izrazcy.html">Изразцы</a></li>
             </ul>
           </div>
           <div class="footer__col">
             <ul class="footer__col-list footer__col-list--offset">
+              <li><a href="portfolio.html" style="color:#fff;font-size:16px;font-weight:500;">Портфолио</a></li>
+              <li><a href="components.html" style="color:#fff;font-size:16px;font-weight:500;">Все для монтажа</a></li>
+              <li><a href="components.html">Каминные топки</a></li>
+              <li><a href="components.html">Электроочаги</a></li>
               <li><a href="cooperation.html" style="color:#fff;font-size:16px;font-weight:500;">Сотрудничество</a></li>
+              <li><a href="blog.html" style="color:#fff;font-size:16px;font-weight:500;">Блог</a></li>
               <li><a href="about.html" style="color:#fff;font-size:16px;font-weight:500;">О компании</a></li>
-              <li><a href="contacts.html" style="color:#fff;font-size:16px;font-weight:500;">Контакты</a></li>
+            </ul>
+          </div>
+          <div class="footer__col footer__col--contacts">
+            <h4 class="footer__col-title" style="font-size:16px;font-weight:700;color:#fff;"><a href="contacts.html" class="footer__col-title-link">Контакты</a></h4>
+            <ul class="footer__col-list footer__contact-list">
               <li><a href="tel:+74952293046" style="font-weight:700;">+7 (495) 229-30-46</a></li>
               <li><a href="mailto:info@ceramicadecor.ru" style="font-weight:700;">info@ceramicadecor.ru</a></li>
+              <li class="footer__messengers" aria-label="Мессенджеры">
+                <a href="https://t.me/+79950001166" class="footer__messenger-link" target="_blank" rel="noopener" aria-label="Telegram"><img src="images/icons/png-klev-club-p-telegram-logotip-png-9.png" alt="" class="footer__messenger-icon"></a>
+                <a href="https://max.ru/" class="footer__messenger-link" target="_blank" rel="noopener" aria-label="Max"><img src="images/icons/max.png" alt="" class="footer__messenger-icon"></a>
+</li>
               <li style="margin-top: 0.75em;"><a href="contacts.html" class="btn btn--primary" style="padding:9px 20px;font-size:13px;color:#fff;">Оставить заявку</a></li>
             </ul>
           </div>
@@ -1231,7 +1705,7 @@
 
   <script src="script.js" defer></script>
   <script>
-  window.CATALOG_DEFAULT_CATEGORY = 'components';
+  window.CATALOG_DEFAULT_CATEGORY = 'kaminnye-topki';
   (function() {
     'use strict';
 
@@ -1259,6 +1733,229 @@
 
     /* ===== PRODUCT DATA ===== */
     var products = [
+      // === КАМИННЫЕ ТОПКИ ===
+      {
+        id: 'topka-astov-ps-7363',
+        cat: 'kaminnye-topki',
+        name: 'Каминная топка АСТОВ ПС 7363',
+        collection: 'АСТОВ',
+        fireboxType: 'straight',
+        desc: 'Прямая стальная каминная топка с вертикальным подъёмом, мощностью 8 кВт и КПД 82%.',
+        price: '290 000',
+        priceOld: '363 000',
+        discount: 'Выгода от 20%',
+        fullDesc: 'Каминная топка АСТОВ ПС 7363. Данные перенесены со страницы ceramicadecor.ru/kaminnye-topki/ как демонстрационный пример карточки товара для будущей интеграции.',
+        specs: {
+          'Габаритные размеры': '890 x 1420 x 522 мм',
+          'Размеры проёма': '730 x 630 мм',
+          'Диаметр дымохода': '200 мм',
+          'Вес': 'от 290 кг',
+          'Мощность': '8 кВт',
+          'КПД': '82 %',
+          'Материал': 'Сталь'
+        },
+        images: ['vse_dlya_montaga_banner.jpg']
+      },
+      {
+        id: 'topka-astov-m-700-b',
+        cat: 'kaminnye-topki',
+        name: 'Каминная топка АСТОВ М 700 Б',
+        collection: 'АСТОВ',
+        fireboxType: 'straight',
+        desc: 'Компактная стальная топка с боковым открыванием, мощностью 8 кВт и дымоходом 180 мм.',
+        price: '134 000',
+        priceOld: '167 000',
+        discount: 'Выгода от 20%',
+        fullDesc: 'Каминная топка АСТОВ М 700 Б. Карточка показывает набор полей, которые затем можно подключить к внутренней системе.',
+        specs: {
+          'Габаритные размеры': '710 x 885 x 388 мм',
+          'Размеры проёма': '704 x 514 мм',
+          'Диаметр дымохода': '180 мм',
+          'Вес': '98 кг',
+          'Мощность': '8 кВт',
+          'КПД': '82 %',
+          'Материал': 'Сталь'
+        },
+        images: ['kamin_card.jpg']
+      },
+      {
+        id: 'topka-astov-ps-8063',
+        cat: 'kaminnye-topki',
+        name: 'Каминная топка АСТОВ ПС 8063',
+        collection: 'АСТОВ',
+        fireboxType: 'straight',
+        desc: 'Топка с проёмом 800 x 630 мм, вертикальным подъёмом и стальным корпусом.',
+        price: '305 000',
+        priceOld: '381 000',
+        discount: 'Выгода от 20%',
+        fullDesc: 'Каминная топка АСТОВ ПС 8063. Подходит для облицовок, где требуется широкое прямое стекло.',
+        specs: {
+          'Габаритные размеры': '960 x 1435 x 522 мм',
+          'Размеры проёма': '800 x 630 мм',
+          'Диаметр дымохода': '200 мм',
+          'Вес': 'от 315 кг',
+          'Мощность': '8 кВт',
+          'КПД': '82 %',
+          'Материал': 'Сталь'
+        },
+        images: ['banner-kaminy_desktop.jpg']
+      },
+      {
+        id: 'topka-astov-ps-8057',
+        cat: 'kaminnye-topki',
+        name: 'Топка для камина АСТОВ ПС 8057',
+        collection: 'АСТОВ',
+        fireboxType: 'straight',
+        desc: 'Прямое стекло, проём 800 x 570 мм, мощность 8 кВт, КПД 82%.',
+        price: '290 000',
+        priceOld: '363 000',
+        discount: 'Выгода от 20%',
+        fullDesc: 'Топка для камина АСТОВ ПС 8057 с прямым стеклом. Демонстрационная карточка для подраздела каминных топок.',
+        specs: {
+          'Габаритные размеры': '960 x 1321 x 520 мм',
+          'Размеры проёма': '800 x 570 мм',
+          'Диаметр дымохода': '200 мм',
+          'Вес': 'от 280 кг',
+          'Мощность': '8 кВт',
+          'КПД': '82 %',
+          'Материал': 'Сталь'
+        },
+        images: ['kamin_albion_new_1.jpg']
+      },
+      {
+        id: 'topka-astov-ps-9074',
+        cat: 'kaminnye-topki',
+        name: 'Каминная топка АСТОВ ПС 9074',
+        collection: 'АСТОВ',
+        fireboxType: 'straight',
+        desc: 'Крупная прямая топка с проёмом 900 x 740 мм и дымоходом 250 мм.',
+        price: '330 000',
+        priceOld: '413 000',
+        discount: 'Выгода от 20%',
+        fullDesc: 'Каминная топка АСТОВ ПС 9074. Модель для просторных каминных облицовок.',
+        specs: {
+          'Габаритные размеры': '1060 x 1665 x 520 мм',
+          'Размеры проёма': '900 x 740 мм',
+          'Диаметр дымохода': '250 мм',
+          'Вес': 'от 360 кг',
+          'Мощность': '9 кВт',
+          'КПД': '82 %',
+          'Материал': 'Сталь'
+        },
+        images: ['kamin_bristol_new_1.jpg']
+      },
+      {
+        id: 'topka-astov-p2c-10057-r',
+        cat: 'kaminnye-topki',
+        name: 'Г-образная топка АСТОВ П2C 10057 R',
+        collection: 'АСТОВ',
+        fireboxType: 'corner',
+        desc: 'Два стекла и вертикальный подъём для угловых каминных решений.',
+        price: '427 000',
+        priceOld: '534 000',
+        discount: 'Выгода от 20%',
+        fullDesc: 'Г-образная топка АСТОВ П2C 10057 R с двумя стеклами и вертикальным подъёмом.',
+        specs: {
+          'Габаритные размеры': '1134 x 1473 x 617 мм',
+          'Размеры проёма': '460 x 570 x 1000 мм',
+          'Диаметр дымохода': '250 мм',
+          'Вес': 'от 220 кг',
+          'Мощность': '6 кВт',
+          'КПД': '75 %',
+          'Материал': 'Сталь'
+        },
+        images: ['kamin_dorf_new_1.jpg']
+      },
+      {
+        id: 'topka-ecokamin-delta-800',
+        cat: 'kaminnye-topki',
+        name: 'Топка Экокамин ДЕЛЬТА 800',
+        collection: 'Экокамин',
+        fireboxType: 'u-shaped',
+        desc: 'П-образное стекло, мощность 16 кВт, стальной корпус и КПД 80%.',
+        price: '331 000',
+        priceOld: '390 000',
+        discount: 'Выгода от 15%',
+        fullDesc: 'Топка Экокамин ДЕЛЬТА 800 с П-образным стеклом. Карточка демонстрирует формат товара с характеристиками и ценой.',
+        specs: {
+          'Габаритные размеры': '876 x 1401 x 643 мм',
+          'Размеры проёма': '814 x 508 x 460 мм',
+          'Диаметр дымохода': '250 мм',
+          'Вес': '370 кг',
+          'Мощность': '16 кВт',
+          'КПД': '80 %',
+          'Материал': 'Сталь'
+        },
+        images: ['kamin_elegans_1.jpg']
+      },
+      {
+        id: 'topka-ecokamin-vega-1000-m',
+        cat: 'kaminnye-topki',
+        name: 'Топка для камина Экокамин ВЕГА 1000 M',
+        collection: 'Экокамин',
+        fireboxType: 'prismatic',
+        desc: 'Широкая топка с мощностью 18 кВт и проёмом 900 x 700 мм.',
+        price: '297 000',
+        priceOld: '350 000',
+        discount: 'Выгода от 15%',
+        fullDesc: 'Топка для камина Экокамин ВЕГА 1000 M. Демонстрационная карточка товара для страницы Все для монтажа.',
+        specs: {
+          'Габаритные размеры': '1078 x 1565 x 575 мм',
+          'Размеры проёма': '900 x 700 мм',
+          'Диаметр дымохода': '250 мм',
+          'Вес': '398 кг',
+          'Мощность': '18 кВт',
+          'КПД': '80 %',
+          'Материал': 'Сталь'
+        },
+        images: ['kamin_minimalist_new_1.jpg']
+      },
+      // === ЭЛЕКТРООЧАГИ ===
+      {
+        id: 'ochag-airtone-andalle-1000',
+        cat: 'ochagi',
+        name: 'Очаг Airtone Andalle 1000',
+        collection: 'Электроочаги для декоративных каминов',
+        desc: 'Демонстрационный очаг для керамических порталов и интерьерных каминов.',
+        price: 'по запросу',
+        fullDesc: 'Очаг Airtone Andalle 1000 используется как пример оборудования для декоративных каминов и порталов.',
+        specs: {
+          'Тип': 'Очаг',
+          'Назначение': 'Декоративный камин',
+          'Интеграция': 'Под облицовку CeramicaDecor'
+        },
+        images: ['kamin_dorf_new_1.jpg']
+      },
+      {
+        id: 'ochag-vivente-150',
+        cat: 'ochagi',
+        name: 'Очаг Vivente 150',
+        collection: 'Электроочаги',
+        desc: 'Широкий электроочаг для современных порталов и встроенных решений.',
+        price: 'по запросу',
+        fullDesc: 'Очаг Vivente 150 показан как шаблон карточки для будущего подключения товарных данных.',
+        specs: {
+          'Тип': 'Электроочаг',
+          'Формат': 'Встраиваемый',
+          'Назначение': 'Порталы и облицовки'
+        },
+        images: ['kamin_minimalist_new_1.jpg']
+      },
+      {
+        id: 'ochag-cassette-400',
+        cat: 'ochagi',
+        name: 'Очаг Cassette 400 LNH-INT',
+        collection: 'Электроочаги',
+        desc: 'Компактный очаг с декоративными дровами для порталов и ниш.',
+        price: 'по запросу',
+        fullDesc: 'Очаг Cassette 400 LNH-INT с дровами добавлен как демонстрационная карточка подраздела очагов.',
+        specs: {
+          'Тип': 'Электроочаг',
+          'Декор': 'Дрова',
+          'Формат': 'Встраиваемый'
+        },
+        images: ['kamin_albion_bio_new_1.jpg']
+      },
       // === КАМИНЫ ===
       {
         id: 'kamin-albion',
@@ -1971,6 +2668,7 @@
 
     /* ===== RENDER CARDS ===== */
     var grid = document.getElementById('catalogGrid');
+    var activeFireboxType = 'all';
 
     function renderCards(category) {
       if (!grid) { grid = document.getElementById('catalogGrid'); }
@@ -1978,8 +2676,11 @@
       grid.innerHTML = '';
       var productCategory = category === 'barbekyu-kompleksy' ? 'bbq' : category;
       var filtered = category === 'all' ? products : products.filter(function(p) { return p.cat === productCategory; });
+      if (productCategory === 'kaminnye-topki' && activeFireboxType !== 'all') {
+        filtered = filtered.filter(function(p) { return p.fireboxType === activeFireboxType; });
+      }
       if (!filtered.length) {
-        grid.innerHTML = '<div class="catalog-empty"><h2>' + (categoryTitles[category] || 'Раздел каталога') + '</h2><p>Это демонстрационный шаблон раздела. Карточки, фильтры и контент будут подключены из внутренней системы.</p></div>';
+        grid.innerHTML = '<div class="catalog-empty"><h2>' + (categoryTitles[category] || 'Раздел каталога') + '</h2><p>В текущем демонстрационном наборе нет карточек для выбранного типа. При интеграции сюда подключатся реальные товары из внутренней системы.</p></div>';
         return;
       }
 
@@ -1999,6 +2700,13 @@
 
         var verticalIds = ['kamin-dorf', 'kamin-rollers', 'kamin-dorf-brunner', 'bbq-albion-mini', 'bbq-versal', 'bbq-tulpan', 'bbq-dorf-mangal', 'bbq-pticy', 'bbq-scenki'];
         var sliderClass = 'product-card__slider' + (p.id === 'kamin-minimalist' ? ' product-card__slider--contain' : '') + (verticalIds.indexOf(p.id) !== -1 ? ' product-card__slider--vertical' : '');
+        var pricePrefix = (p.cat === 'kaminnye-topki' || p.cat === 'ochagi') ? 'Цена: ' : 'Облицовка: ';
+        var priceHtml = '<p class="product-card__price">' + pricePrefix + p.price + (p.price === 'по запросу' ? '' : ' &#8381;') + '</p>';
+        if (p.priceOld) {
+          priceHtml = '<p class="product-card__collection product-card__discount">' + p.discount + '</p>' +
+            '<p class="product-card__price product-card__price--old">' + p.priceOld + ' &#8381;</p>' +
+            priceHtml;
+        }
         card.innerHTML =
           '<div class="' + sliderClass + '">' +
             sliderImgs +
@@ -2010,7 +2718,7 @@
             '<p class="product-card__collection">' + p.collection + '</p>' +
             '<h3 class="product-card__name">' + p.name + '</h3>' +
             '<p class="product-card__desc">' + p.desc + '</p>' +
-            '<p class="product-card__price">Облицовка: ' + p.price + ' &#8381;</p>' +
+            priceHtml +
             (p.priceTurnkey ? '<p class="product-card__price product-card__price--turnkey">Под ключ: ' + p.priceTurnkey + ' &#8381;</p>' : '') +
             '<div class="product-card__actions">' +
               '<button class="product-card__btn product-card__btn--details" data-id="' + p.id + '">' +
@@ -2297,11 +3005,13 @@
     /* ===== FILTER TABS ===== */
     var tabs = document.querySelectorAll('.catalog-filters__tab');
 
-    var validCategories = ['components', 'izrazcy', 'kaminy', 'biokaminy', 'elektrokaminy', 'pech-kaminy', 'mramornye-kaminy-portaly', 'russkie-pechi', 'otopitelnye-pechi', 'barbekyu-kompleksy', 'bannye-pechi', 'bannye-portaly', 'seriynye-modeli', 'fasadnaya-keramika', 'interernaya-keramika', 'suvenirnaya-produkciya'];
-    var activeCategory = 'kaminy';
+    var validCategories = ['kaminnye-topki', 'ochagi'];
+    var activeCategory = 'kaminnye-topki';
 
     var categoryTitles = {
-      'components': 'Оборудование',
+      'components': 'Все для монтажа',
+      'kaminnye-topki': 'Каминные топки',
+      'ochagi': 'Электроочаги',
       'izrazcy': 'Изразцы',
       'kaminy': 'Камины',
       'biokaminy': 'Биокамины',
@@ -2311,15 +3021,16 @@
       'russkie-pechi': 'Русские печи',
       'otopitelnye-pechi': 'Отопительные печи',
       'barbekyu-kompleksy': 'Барбекю комплексы',
-      'bannye-pechi': 'Банные печи',
-      'bannye-portaly': 'Банные порталы',
-      'seriynye-modeli': 'Серийные модели',
+      'bannye-pechi': 'Банные печи и порталы',
+      'seriynye-modeli': 'Печи-камины из наличия',
       'fasadnaya-keramika': 'Фасадная керамика',
-      'interernaya-keramika': 'Интерьерная керамика',
+      'interernaya-keramika': 'Плитка ручной работы',
       'suvenirnaya-produkciya': 'Сувенирная продукция'
     };
     var categorySubtitles = {
       'components': 'Топки, дымоходы и оборудование для каминов и печей',
+      'kaminnye-topki': 'Дровяные каминные топки для керамических облицовок, порталов и индивидуальных проектов',
+      'ochagi': 'Электроочаги для декоративных каминов, порталов и встроенных решений',
       'izrazcy': 'Каталог изразцов и керамических элементов ручной работы',
       'kaminy': 'Камины в керамической облицовке изразцами ручной формовки',
       'biokaminy': 'Декоративные биокамины и облицовки для современных интерьеров',
@@ -2329,35 +3040,34 @@
       'russkie-pechi': 'Русские печи с керамической облицовкой и ручной отделкой',
       'otopitelnye-pechi': 'Отопительные печи для загородных домов и частных интерьеров',
       'barbekyu-kompleksy': 'Барбекю комплексы в керамической облицовке для террас и участков',
-      'bannye-pechi': 'Банные печи и решения для парных, бань и wellness-зон',
-      'bannye-portaly': 'Керамические и декоративные порталы для банных печей',
-      'seriynye-modeli': 'Готовые серийные модели каминов, печей и облицовок',
+      'bannye-pechi': 'Банные печи и порталы для парных, бань и wellness-зон',
+      'seriynye-modeli': 'Типовые камины и печи в изразцовой облицовке ручной формовки. Готовы к заказу — устанавливаем под ключ по России и СНГ',
       'fasadnaya-keramika': 'Фасадная керамика, плитка и декоративные элементы для архитектуры',
-      'interernaya-keramika': 'Интерьерная керамика, панно и декоративные элементы ручной работы',
+      'interernaya-keramika': 'Плитка ручной работы, панно и декоративные элементы ручной работы',
       'suvenirnaya-produkciya': 'Керамическая сувенирная продукция и подарочные изделия'
     };
     var heroTitle = document.querySelector('.catalog-hero__title');
     var heroSubtitle = document.querySelector('.catalog-hero__subtitle');
     var heroSection = document.querySelector('.catalog-hero');
+    var fireboxGuide = document.getElementById('fireboxGuide');
 
     function setActiveTab(category) {
       if (validCategories.indexOf(category) === -1) category = window.CATALOG_DEFAULT_CATEGORY || 'kaminy';
       activeCategory = category;
       tabs.forEach(function(tab) {
         tab.classList.remove('catalog-filters__tab--active');
+        tab.setAttribute('aria-selected', 'false');
         if (tab.getAttribute('data-category') === category) {
           tab.classList.add('catalog-filters__tab--active');
+          tab.setAttribute('aria-selected', 'true');
         }
       });
-      if (heroSection) {
-        if (category === 'barbekyu-kompleksy') {
-          heroSection.classList.add('catalog-hero--bbq');
-        } else {
-          heroSection.classList.remove('catalog-hero--bbq');
-        }
-      }
+      if (heroSection) heroSection.classList.remove('catalog-hero--bbq');
       if (heroTitle) heroTitle.textContent = categoryTitles[category] || 'Каталог';
       if (heroSubtitle) heroSubtitle.innerHTML = categorySubtitles[category] || '';
+      if (heroTitle) heroTitle.textContent = categoryTitles.components;
+      if (heroSubtitle) heroSubtitle.innerHTML = categorySubtitles.components;
+      if (fireboxGuide) fireboxGuide.hidden = category !== 'kaminnye-topki';
       renderCards(category);
     }
 
@@ -2386,6 +3096,104 @@
             if (el && el.classList.contains('fade-up')) el.classList.add('visible');
           });
         }, 10);
+      });
+    });
+
+    var fireboxSchemeStates = {
+      'side-opening': {
+        title: 'Боковое открывание',
+        text: 'Динамическая зона схемы: сейчас используется демонстрационное изображение бокового открывания. Программист может заменить image на нужный файл состояния.',
+        image: 'images/kaminnye-topki-schema.jpg',
+        alt: 'Схема каминной топки: боковое открывание'
+      },
+      'vertical-lift': {
+        title: 'Вертикальный подъём',
+        text: 'Заглушка для состояния вертикального подъёма. При интеграции сюда подставляется отдельная схема или кадр анимации.',
+        image: 'images/kaminnye-topki-schema.jpg',
+        alt: 'Схема каминной топки: вертикальный подъём'
+      },
+      'drop-door': {
+        title: 'Откидная дверца',
+        text: 'Заглушка для состояния откидной дверцы. Данные и изображение рассчитаны на последующую замену из внутренней системы.',
+        image: 'images/kaminnye-topki-schema.jpg',
+        alt: 'Схема каминной топки: откидная дверца'
+      },
+      'lining': {
+        title: 'Футеровка',
+        text: 'Заглушка для состояния футеровки. В будущем эта кнопка будет показывать нужный слой или отдельную схему.',
+        image: 'images/kaminnye-topki-schema.jpg',
+        alt: 'Схема каминной топки: футеровка'
+      }
+    };
+    var fireboxSchemeButtons = document.querySelectorAll('.firebox-guide__callout[data-scheme-state]');
+    var fireboxSchemeImage = document.getElementById('fireboxSchemeImage');
+    var fireboxSchemeTitle = document.getElementById('fireboxSchemeTitle');
+    var fireboxSchemeText = document.getElementById('fireboxSchemeText');
+    var fireboxLiningPanel = document.getElementById('fireboxLiningPanel');
+    var fireboxLiningClose = document.getElementById('fireboxLiningClose');
+    var fireboxLiningOptions = document.querySelectorAll('.firebox-lining-panel__option');
+
+    function setLiningPanelOpen(isOpen) {
+      if (!fireboxLiningPanel) return;
+      fireboxLiningPanel.hidden = !isOpen;
+    }
+
+    function setFireboxSchemeState(stateId) {
+      var state = fireboxSchemeStates[stateId] || fireboxSchemeStates['side-opening'];
+      fireboxSchemeButtons.forEach(function(button) {
+        var isActive = button.getAttribute('data-scheme-state') === stateId;
+        button.classList.toggle('firebox-guide__callout--active', isActive);
+        button.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+      });
+      if (fireboxSchemeImage) {
+        fireboxSchemeImage.src = state.image;
+        fireboxSchemeImage.alt = state.alt;
+      }
+      if (fireboxSchemeTitle) fireboxSchemeTitle.textContent = state.title;
+      if (fireboxSchemeText) fireboxSchemeText.textContent = state.text;
+      setLiningPanelOpen(stateId === 'lining');
+    }
+
+    fireboxSchemeButtons.forEach(function(button) {
+      button.addEventListener('click', function() {
+        setFireboxSchemeState(this.getAttribute('data-scheme-state'));
+      });
+    });
+    if (fireboxLiningClose) {
+      fireboxLiningClose.addEventListener('click', function(e) {
+        e.stopPropagation();
+        setLiningPanelOpen(false);
+      });
+    }
+    fireboxLiningOptions.forEach(function(option) {
+      option.addEventListener('click', function(e) {
+        e.stopPropagation();
+        fireboxLiningOptions.forEach(function(item) {
+          item.classList.remove('firebox-lining-panel__option--active');
+        });
+        this.classList.add('firebox-lining-panel__option--active');
+      });
+    });
+    document.addEventListener('click', function(e) {
+      if (!fireboxLiningPanel || fireboxLiningPanel.hidden) return;
+      if (e.target.closest('#fireboxLiningPanel') || e.target.closest('[data-scheme-state="lining"]')) return;
+      setLiningPanelOpen(false);
+    });
+
+    var fireboxTypeButtons = document.querySelectorAll('.firebox-type-filter__btn');
+    fireboxTypeButtons.forEach(function(button) {
+      button.addEventListener('click', function() {
+        var nextType = this.getAttribute('data-firebox-type') || 'all';
+        activeFireboxType = activeFireboxType === nextType ? 'all' : nextType;
+        fireboxTypeButtons.forEach(function(item) {
+          item.classList.remove('firebox-type-filter__btn--active');
+          item.setAttribute('aria-selected', 'false');
+        });
+        if (activeFireboxType !== 'all') {
+          this.classList.add('firebox-type-filter__btn--active');
+          this.setAttribute('aria-selected', 'true');
+        }
+        renderCards('kaminnye-topki');
       });
     });
 
@@ -2496,6 +3304,13 @@
   </div>
 </body>
 </html>
+
+
+
+
+
+
+
 
 
 

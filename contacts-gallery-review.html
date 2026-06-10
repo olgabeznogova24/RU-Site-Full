@@ -2,406 +2,506 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Review кадрирования фото шоурумов</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Видеоотзывы — CeramicaDecor</title>
+  <meta name="description" content="Видеоотзывы клиентов CeramicaDecor о каминах, печах, барбекю и керамической облицовке ручной работы.">
+  <link rel="canonical" href="https://ceramicadecor.ru/contacts-gallery-review.html">
+  <meta property="og:title" content="Видеоотзывы — CeramicaDecor">
+  <meta property="og:description" content="Видеоотзывы клиентов CeramicaDecor о каминах, печах, барбекю и керамической облицовке ручной работы.">
+  <meta property="og:image" content="images/banner-videootzyvy_desktop.jpg">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:url" content="https://ceramicadecor.ru/contacts-gallery-review.html">
+  <meta property="og:site_name" content="CeramicaDecor">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.cdnfonts.com/css/tt-ramillas-trl" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
   <style>
-    :root {
-      --bg: #111;
-      --panel: #1b1b1b;
-      --panel-soft: #242424;
-      --text: #f4f1ea;
-      --muted: rgba(244, 241, 234, 0.62);
-      --line: rgba(255,255,255,0.12);
-      --accent: #cb3b25;
-    }
-    * {
-      box-sizing: border-box;
-    }
-    body {
-      margin: 0;
-      background: var(--bg);
-      color: var(--text);
-      font-family: Arial, sans-serif;
-      line-height: 1.5;
-    }
-    .page {
-      width: min(1440px, calc(100% - 40px));
-      margin: 0 auto;
-      padding: 32px 0 56px;
-    }
-    .topbar {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) auto;
-      gap: 24px;
-      align-items: end;
-      margin-bottom: 28px;
-    }
-    h1 {
-      margin: 0 0 8px;
-      font-family: Georgia, serif;
-      font-size: clamp(32px, 4vw, 56px);
-      font-weight: 400;
-      line-height: 1.08;
-    }
-    .lead {
-      max-width: 780px;
-      margin: 0;
-      color: var(--muted);
-      font-size: 16px;
-    }
-    .actions {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-    }
-    button {
-      min-height: 40px;
-      border: 1px solid var(--line);
-      border-radius: 6px;
-      background: var(--panel-soft);
-      color: var(--text);
-      cursor: pointer;
-      font: inherit;
-      padding: 9px 14px;
-    }
-    button:hover {
-      border-color: var(--accent);
-    }
-    .button-primary {
-      background: var(--accent);
-      border-color: var(--accent);
-      color: #fff;
-    }
-    .review-grid {
-      display: grid;
-      grid-template-columns: repeat(6, minmax(0, 1fr));
-      grid-auto-flow: dense;
-      grid-auto-rows: 170px;
-      gap: 12px;
-      margin-bottom: 32px;
-    }
-    .tile {
-      position: relative;
-      overflow: hidden;
-      border-radius: 8px;
-      background: var(--panel);
-      border: 1px solid var(--line);
-    }
-    .tile--large {
-      grid-column: span 2;
-      grid-row: span 2;
-    }
-    .tile--wide {
-      grid-column: span 2;
-    }
-    .tile--tall {
-      grid-column: span 1;
-      grid-row: span 2;
-    }
-    .tile--small {
-      grid-column: span 1;
-    }
-    .tile img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: var(--pos-x, 50%) var(--pos-y, 50%);
-      transform: scale(var(--zoom, 1));
-      transform-origin: var(--pos-x, 50%) var(--pos-y, 50%);
-      display: block;
-    }
-    .tile__label {
-      position: absolute;
-      left: 8px;
-      top: 8px;
-      z-index: 2;
-      border-radius: 999px;
-      background: rgba(0,0,0,0.66);
-      color: #fff;
-      font-size: 12px;
-      line-height: 1;
-      padding: 6px 8px;
-    }
-    .controls {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 12px;
-    }
-    .control-card {
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      background: var(--panel);
-      padding: 14px;
-    }
-    .control-card__head {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      margin-bottom: 12px;
-    }
-    .control-card__title {
-      margin: 0;
-      font-size: 15px;
-      font-weight: 700;
-    }
-    .control-card__meta {
-      color: var(--muted);
-      font-size: 12px;
-      white-space: nowrap;
-    }
-    .control-row {
-      display: grid;
-      grid-template-columns: 72px minmax(0, 1fr) 48px;
-      gap: 10px;
-      align-items: center;
-      margin: 8px 0;
-    }
-    label {
-      color: var(--muted);
-      font-size: 13px;
-    }
-    input[type="range"] {
-      width: 100%;
-      accent-color: var(--accent);
-    }
-    .value {
-      color: var(--text);
-      font-size: 13px;
-      text-align: right;
-    }
-    .output {
-      width: 100%;
-      min-height: 220px;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      background: #0b0b0b;
-      color: #f7eadf;
-      font-family: Consolas, monospace;
-      font-size: 13px;
-      padding: 14px;
-      resize: vertical;
-    }
-    .hint {
-      color: var(--muted);
-      font-size: 13px;
-      margin: 8px 0 0;
-    }
-    @media (max-width: 1024px) {
-      .topbar {
-        grid-template-columns: 1fr;
-      }
-      .actions {
-        justify-content: flex-start;
-      }
-      .review-grid {
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-        grid-auto-rows: 150px;
-      }
-      .controls {
-        grid-template-columns: 1fr;
-      }
-    }
-    @media (max-width: 640px) {
-      .page {
-        width: min(100% - 24px, 1440px);
-        padding-top: 20px;
-      }
-      .review-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        grid-auto-rows: 150px;
-      }
-      .tile,
-      .tile--large,
-      .tile--wide,
-      .tile--tall,
-      .tile--small {
-        grid-column: span 1;
-        grid-row: span 1;
-      }
-    }
+    .video-reviews-hero { position: relative; min-height: 60vh; display: flex; align-items: center; justify-content: center; text-align: center; background: #101010 url('images/banner-videootzyvy_desktop.jpg') center center / cover no-repeat; overflow: hidden; padding: 160px 0 100px; }
+    @media (max-width: 768px) { .video-reviews-hero { background-image: url('images/banner-videootzyvy_mobile.jpg'); } }
+    .video-reviews-hero::before { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.60); pointer-events: none; }
+    .video-reviews-hero__inner { position: relative; z-index: 1; }
+    .video-reviews-hero h1 { font-family: 'TT Ramillas Trl', serif; font-size: clamp(2.5rem, 5vw, 4.5rem); font-weight: 400; color: #fff; line-height: 1.15; margin: 0 0 24px; }
+    .video-reviews-hero p { font-family: 'Inter', sans-serif; font-size: clamp(1rem, 1.5vw, 1.25rem); font-weight: 300; color: rgba(255,255,255,0.6); max-width: 820px; line-height: 1.6; margin: 0 auto; text-wrap: balance; }
+    .desktop-break { display: inline; }
+    .video-reviews-section { padding: 54px 0 90px; background: #101010; }
+    .video-reviews-grid { display: grid; grid-template-columns: 1fr; gap: 18px; max-width: 1120px; margin: 0 auto; }
+    .video-reviews-grid.fade-up { opacity: 1; visibility: visible; transform: none; }
+    .video-review-card { display: grid; grid-template-columns: minmax(360px, 0.92fr) minmax(0, 1fr); align-items: center; background: rgba(255,255,255,0.035); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; overflow: hidden; }
+    .video-review-card__media { position: relative; display: block; aspect-ratio: 3 / 2; overflow: hidden; background: #181818; }
+    .video-review-card__media picture { display: block; height: 100%; }
+    .video-review-card__media img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.45s ease; }
+    .video-review-card:hover .video-review-card__media img { transform: scale(1.02); }
+    .video-review-card__media::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0.06), rgba(0,0,0,0.42)); pointer-events: none; }
+    .video-review-card__play { position: absolute; z-index: 1; left: 50%; top: 50%; width: 58px; height: 58px; transform: translate(-50%, -50%); border-radius: 50%; background: rgba(203,59,37,0.92); }
+    .video-review-card__play::after { content: ''; position: absolute; left: 23px; top: 18px; border-left: 16px solid #fff; border-top: 10px solid transparent; border-bottom: 10px solid transparent; }
+    .video-review-card__body { padding: 20px 24px; }
+    .video-review-card__eyebrow { color: var(--primary); font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin: 0 0 9px; }
+    .video-review-card h2 { font-family: var(--font-heading); font-size: 24px; font-weight: 300; line-height: 1.18; margin: 0 0 10px; }
+    .video-review-card p { color: rgba(255,255,255,0.56); margin: 0 0 16px; }
+    .video-review-card__body > p:not(.video-review-card__eyebrow) { max-height: 7.4em; overflow-y: auto; padding-right: 10px; scrollbar-width: thin; scrollbar-color: rgba(255,255,255,0.28) rgba(255,255,255,0.08); }
+    .video-review-card__body > p:not(.video-review-card__eyebrow)::-webkit-scrollbar { width: 6px; }
+    .video-review-card__body > p:not(.video-review-card__eyebrow)::-webkit-scrollbar-track { background: rgba(255,255,255,0.08); border-radius: 999px; }
+    .video-review-card__body > p:not(.video-review-card__eyebrow)::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.28); border-radius: 999px; }
+    .video-review-card__link { color: #fff; font-weight: 700; border-bottom: 1px solid rgba(255,255,255,0.34); }
+    .video-review-modal { position: fixed; inset: 0; z-index: 10020; display: none; align-items: center; justify-content: center; padding: 24px; background: rgba(0,0,0,0.82); }
+    .video-review-modal.active { display: flex; }
+    .video-review-modal__dialog { position: relative; width: min(1120px, 100%); aspect-ratio: 16 / 9; background: #050505; border-radius: 8px; box-shadow: 0 24px 90px rgba(0,0,0,0.55); }
+    #videoReviewPlayer { width: 100%; height: 100%; }
+    .video-review-modal__dialog iframe { width: 100%; height: 100%; border: 0; display: block; border-radius: 8px; }
+    .video-review-modal__close { position: absolute; right: -12px; top: -46px; width: 40px; height: 40px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50%; background: rgba(0,0,0,0.65); color: #fff; font-size: 26px; line-height: 1; cursor: pointer; }
+    .video-review-modal__close:hover { border-color: rgba(255,255,255,0.5); }
+    @media (max-width: 960px) { .video-review-card { grid-template-columns: minmax(300px, 0.9fr) minmax(0, 1fr); } }
+    @media (max-width: 720px) { .video-reviews-grid, .video-review-card { grid-template-columns: 1fr; } .video-review-card__body { padding: 20px; } }
+    @media (max-width: 640px) { .desktop-break { display: none; } }
+    @media (max-width: 640px) { .video-review-modal { padding: 14px; } .video-review-modal__close { right: 0; top: -48px; } }
   </style>
 </head>
 <body>
-  <main class="page">
-    <div class="topbar">
-      <div>
-        <h1>Кадрирование фото шоурумов</h1>
-        <p class="lead">Двигайте положение фото внутри ячеек. Изменения сохраняются в этом браузере. Когда результат устроит, нажмите “Сформировать CSS” и перенесите стили в основную страницу.</p>
+
+  <header class="header" id="header">
+    <div class="container header__inner">
+      <div class="header__top-row">
+        <nav class="header__top-nav" aria-label="Дополнительная навигация">
+          <ul class="header__top-nav-list">
+            <li><a href="about.html" class="header__top-link">О компании</a></li>
+            <li><a href="about.html#team" class="header__top-link">Наша команда</a></li>
+            <li><a href="contacts-gallery-review.html" class="header__top-link">Видеоотзывы</a></li>
+            <li><a href="cooperation.html" class="header__top-link">Сотрудничество</a></li>
+          </ul>
+        </nav>
       </div>
-      <div class="actions">
-        <button type="button" id="resetAll">Сбросить всё</button>
-        <button type="button" id="exportCss" class="button-primary">Сформировать CSS</button>
+
+      <div class="header__main-row">
+        <a href="index.html" class="header__logo">
+          <img src="images/logo.png" alt="CeramicaDecor" class="header__logo-img">
+        </a>
+        <nav class="header__nav" id="mainNav">
+          <ul class="header__nav-list">
+          <li class="header__nav-dropdown header__nav-dropdown--catalog">
+            <button type="button" class="header__catalog-btn" aria-haspopup="true" aria-expanded="false">Каталог</button>
+            <div class="header__mega-menu header__mega-menu--showcase" role="menu">
+              <div class="header__mega-tabs" role="tablist" aria-label="Разделы каталога">
+                <button type="button" class="header__mega-tab active" role="tab" aria-selected="true" data-mega-target="kaminy">Камины</button>
+                <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="pechi">Печи</button>
+                <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="barbekyu">Барбекю комплексы</button>
+                <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="izrazcy">Изразцы</button>
+                <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="seriynye">Печи-камины<br>из наличия</button>
+                <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="mramor">Мраморные камины<br>и порталы</button>
+                <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="interior">Плитка ручной работы</button>
+                <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="fasad">Фасадная керамика</button>
+                <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="metlah">Метлахская плитка</button>
+                <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="restoration">Реставрация</button>
+                <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="suvenir">Сувенирная продукция</button>
+              </div>
+              <div class="header__mega-panels">
+                <section class="header__mega-panel active" role="tabpanel" data-mega-panel="kaminy">
+                  <div class="header__mega-cards">
+                    <a href="catalog-kaminy.html" class="header__mega-card header__mega-card--large" role="menuitem"><img src="images/kamin_dorf_murav_new_3.jpg" alt="Дровяные камины"><span>Дровяные камины</span></a>
+                    <a href="catalog-biokaminy.html" class="header__mega-card" role="menuitem"><img src="images/banner-biokaminy_desktop.webp" alt="Биокамины"><span>Биокамины</span></a>
+                    <a href="catalog-elektrokaminy.html" class="header__mega-card" role="menuitem"><img src="images/banner-elektrokaminy_desktop.webp" alt="Электрокамины"><span>Электрокамины</span></a>
+                  </div>
+                </section>
+                <section class="header__mega-panel" role="tabpanel" data-mega-panel="pechi">
+                  <div class="header__mega-cards">
+                    <a href="catalog-russkie-pechi.html" class="header__mega-card header__mega-card--large" role="menuitem"><img src="images/banner-russkie-pechi_desktop.webp" alt="Русские печи"><span>Русские печи</span></a>
+                    <a href="catalog-otopitelnye-pechi.html" class="header__mega-card" role="menuitem"><img src="images/banner-otopitelnye-pechi_desktop.webp" alt="Отопительные печи"><span>Отопительные печи</span></a>
+                    <a href="catalog-bannye-pechi.html" class="header__mega-card" role="menuitem"><img src="images/banner-bannye-pechi_desktop.webp" alt="Банные печи"><span>Банные печи</span></a>
+                    <a href="catalog-bannye-pechi.html" class="header__mega-card" role="menuitem"><img src="images/banner-bannye-portaly_desktop.webp" alt="Банные порталы"><span>Банные порталы</span></a>
+                  </div>
+                </section>
+                <section class="header__mega-panel" role="tabpanel" data-mega-panel="barbekyu">
+                  <div class="header__mega-cards">
+                    <a href="catalog-barbekyu-kompleksy.html" class="header__mega-card header__mega-card--large" role="menuitem"><img src="images/barbekyu_card_new.webp" alt="Барбекю комплексы"><span>Барбекю комплексы</span></a>
+                  </div>
+                </section>
+                <section class="header__mega-panel" role="tabpanel" data-mega-panel="izrazcy">
+                  <div class="header__mega-cards">
+                    <a href="catalog-izrazcy.html" class="header__mega-card header__mega-card--large" role="menuitem"><img src="images/izrazcy_card.webp" alt="Каталог изразцов"><span>Каталог изразцов</span></a>
+                    <a href="glaze-palette.html" class="header__mega-card" role="menuitem"><img src="images/palitra_izrazcy.jpg" alt="Палитра глазурей"><span>Палитра глазурей</span></a>
+                  </div>
+                </section>
+                <section class="header__mega-panel" role="tabpanel" data-mega-panel="seriynye">
+                  <div class="header__mega-cards">
+                    <a href="catalog-seriynye-modeli.html" class="header__mega-card header__mega-card--large header__mega-card--ready" role="menuitem"><img src="images/ready_banner.png" alt="Печи-камины из наличия"><span>Печи-камины<br>из наличия</span></a>
+                  </div>
+                </section>
+                <section class="header__mega-panel" role="tabpanel" data-mega-panel="mramor">
+                  <div class="header__mega-cards">
+                    <a href="catalog-mramornye-kaminy-portaly.html" class="header__mega-card header__mega-card--large" role="menuitem"><img src="images/banner-mramor_desktop.webp" alt="Мраморные камины"><span>Мраморные камины<br>и порталы</span></a>
+                  </div>
+                </section>
+                <section class="header__mega-panel" role="tabpanel" data-mega-panel="interior">
+                  <div class="header__mega-cards">
+                    <a href="catalog-interernaya-keramika.html" class="header__mega-card header__mega-card--bar" role="menuitem"><img src="images/barnye stoyki.jpg" alt="Барные стойки"><span>Барные стойки</span></a>
+                    <a href="catalog-interernaya-keramika.html" class="header__mega-card" role="menuitem"><img src="images/oblicovka sten.jpg" alt="Облицовка стен"><span>Облицовка стен</span></a>
+                    <a href="catalog-interernaya-keramika.html" class="header__mega-card header__mega-card--large" role="menuitem"><img src="images/banner-interior_desktop.webp" alt="Кухонные фартуки"><span>Кухонные фартуки</span></a>
+                  </div>
+                </section>
+                <section class="header__mega-panel" role="tabpanel" data-mega-panel="fasad">
+                  <div class="header__mega-cards">
+                    <a href="catalog-fasadnaya-keramika.html" class="header__mega-card header__mega-card--large" role="menuitem"><img src="images/banner-fasad_desktop.webp" alt="Фасадная керамика"><span>Фасадная керамика</span></a>
+                  </div>
+                </section>
+                <section class="header__mega-panel" role="tabpanel" data-mega-panel="metlah">
+                  <div class="header__mega-cards">
+                    <a href="catalog-metlahskaya-plitka.html" class="header__mega-card header__mega-card--large" role="menuitem"><img src="images/metlahskaya plitka.jpg?v=20260610-2041" alt="Метлахская плитка"><span>Метлахская плитка</span></a>
+                  </div>
+                </section>
+                <section class="header__mega-panel" role="tabpanel" data-mega-panel="restoration">
+                  <div class="header__mega-cards">
+                    <a href="restoration.html" class="header__mega-card header__mega-card--large" role="menuitem"><img src="images/restavraciya.jpg" alt="Реставрация"><span>Реставрация</span></a>
+                  </div>
+                </section>
+                <section class="header__mega-panel" role="tabpanel" data-mega-panel="suvenir">
+                  <div class="header__mega-cards">
+                    <a href="catalog-suvenirnaya-produkciya.html" class="header__mega-card header__mega-card--large" role="menuitem"><img src="images/suvenirnaya produkcya.jpg" alt="Сувенирная продукция"><span>Сувенирная продукция</span></a>
+                  </div>
+                </section>
+              </div>
+            </div>
+          </li>
+          <li><a href="portfolio.html" class="header__nav-link">Портфолио</a></li>
+          <li class="header__nav-dropdown header__nav-dropdown--simple">
+            <a href="components.html" class="header__nav-link" aria-haspopup="true" aria-expanded="false">Все для монтажа</a>
+            <ul class="header__dropdown-menu">
+              <li><a href="components.html">Каминные топки</a></li>
+              <li><a href="components.html">Электроочаги</a></li>
+            </ul>
+          </li>
+          <li><a href="contacts.html" class="header__nav-link">Контакты</a></li>
+          </ul>
+          <ul class="header__nav-list header__nav-list--mobile-secondary">
+            <li><a href="about.html" class="header__nav-link">О компании</a></li>
+            <li><a href="about.html#team" class="header__nav-link">Наша команда</a></li>
+            <li><a href="contacts-gallery-review.html" class="header__nav-link">Видеоотзывы</a></li>
+            <li><a href="cooperation.html" class="header__nav-link">Сотрудничество</a></li>
+          </ul>
+          <a href="tel:+74952293046" class="header__nav-phone-link">+7 (495) 229-30-46</a>
+          <div class="header__nav-messengers" aria-label="Мессенджеры">
+            <a href="https://t.me/+79950001166" class="header__messenger-link" target="_blank" rel="noopener" aria-label="Telegram"><img src="images/icons/png-klev-club-p-telegram-logotip-png-9.png" alt="" class="header__messenger-icon"></a>
+            <a href="https://max.ru/" class="header__messenger-link" target="_blank" rel="noopener" aria-label="Max"><img src="images/icons/max.png" alt="" class="header__messenger-icon"></a>
+          </div>
+          <a href="mailto:info@ceramicadecor.ru" class="header__nav-phone-link">info@ceramicadecor.ru</a>
+          <div class="header__nav-item--search"><a href="#" class="header__nav-link" id="searchBtnMobile"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg> Поиск</a></div>
+        </nav>
+
+        <div class="header__actions">
+          <button class="header__search-btn" id="searchBtn" aria-label="Поиск"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></button>
+          <a href="#contact" class="btn btn--primary header__cta-btn">Оставить заявку</a>
+          <a href="tel:+74952293046" class="header__phone-desktop">+7 (495) 229-30-46</a>
+          <div class="header__messengers" aria-label="Мессенджеры">
+            <a href="https://t.me/+79950001166" class="header__messenger-link" target="_blank" rel="noopener" aria-label="Telegram"><img src="images/icons/png-klev-club-p-telegram-logotip-png-9.png" alt="" class="header__messenger-icon"></a>
+            <a href="https://max.ru/" class="header__messenger-link" target="_blank" rel="noopener" aria-label="Max"><img src="images/icons/max.png" alt="" class="header__messenger-icon"></a>
+          </div>
+          <button class="header__burger" id="burgerBtn" aria-label="Меню">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
       </div>
     </div>
+  </header>
 
-    <section class="review-grid" id="reviewGrid" aria-label="Предпросмотр галереи"></section>
+  <main>
+    <section class="video-reviews-hero">
+      <div class="container video-reviews-hero__inner">
+        <h1>Видеоотзывы клиентов</h1>
+        <p>Живые истории о проектах CeramicaDecor: как выбирали форму, обсуждали<br class="desktop-break">керамику, ждали монтаж и наслаждались готовым камином или печью</p>
+      </div>
+    </section>
 
-    <section class="controls" id="controls" aria-label="Настройки кадрирования"></section>
-
-    <h2>CSS для переноса</h2>
-    <textarea class="output" id="cssOutput" spellcheck="false" readonly></textarea>
-    <p class="hint">CSS появится после нажатия кнопки. Он задаёт `object-position` и `transform-origin` для каждого изображения галереи.</p>
+    <section class="video-reviews-section">
+      <div class="container">
+        <div class="video-reviews-grid">
+          <article class="video-review-card">
+            <a class="video-review-card__media" href="#video-178201211_456239596" data-vk="video-178201211_456239596" aria-label="Смотреть видеоотзыв о камине Дорф">
+              <img src="images/video_thumb_dorf_client.jpg" alt="Камин Дорф — отзыв клиента" loading="lazy" decoding="async">
+              <span class="video-review-card__play" aria-hidden="true"></span>
+            </a>
+            <div class="video-review-card__body">
+              <p class="video-review-card__eyebrow">Видео 01</p>
+              <h2>Камин в изразцовой облицовке «Дорф». Отзыв клиента</h2>
+              <p>Клиент рассказывает о выборе изразцовой облицовки, впечатлениях от готового камина и его роли в интерьере дома.</p>
+              <a href="#video-178201211_456239596" data-vk="video-178201211_456239596" class="video-review-card__link">Смотреть видео</a>
+            </div>
+          </article>
+          <article class="video-review-card">
+            <a class="video-review-card__media" href="#video-178201211_456239511" data-vk="video-178201211_456239511" aria-label="Смотреть видеоотзыв дизайнера о камине Альбион">
+              <img src="images/video_thumb_albion_designer.jpg" alt="Камин Альбион — отзыв дизайнера" loading="lazy" decoding="async">
+              <span class="video-review-card__play" aria-hidden="true"></span>
+            </a>
+            <div class="video-review-card__body">
+              <p class="video-review-card__eyebrow">Видео 02</p>
+              <h2>Камин в облицовке «Альбион». Отзыв дизайнера Елизаветы Ашкенази</h2>
+              <p>Дизайнер делится опытом совместной работы над проектом и объясняет, как камин встроился в общую концепцию интерьера.</p>
+              <a href="#video-178201211_456239511" data-vk="video-178201211_456239511" class="video-review-card__link">Смотреть видео</a>
+            </div>
+          </article>
+          <article class="video-review-card">
+            <a class="video-review-card__media" href="#video-178201211_456239559" data-vk="video-178201211_456239559" aria-label="Смотреть видеоотзыв дизайнера о камине Арт Нуво">
+              <img src="images/video_thumb_artnouvo_designer.jpg" alt="Камин Арт Нуво — отзыв дизайнера" loading="lazy" decoding="async">
+              <span class="video-review-card__play" aria-hidden="true"></span>
+            </a>
+            <div class="video-review-card__body">
+              <p class="video-review-card__eyebrow">Видео 03</p>
+              <h2>Камин в облицовке «Арт Нуво». Отзыв дизайнера интерьера</h2>
+              <p>История о декоративной керамике, стилистике проекта и деталях, которые помогают камину выглядеть естественно в жилом пространстве.</p>
+              <a href="#video-178201211_456239559" data-vk="video-178201211_456239559" class="video-review-card__link">Смотреть видео</a>
+            </div>
+          </article>
+          <article class="video-review-card">
+            <a class="video-review-card__media" href="#video-178201211_456239074" data-vk="video-178201211_456239074" aria-label="Смотреть видеоотзыв клиента о камине Бристоль">
+              <picture>
+                <source srcset="images/video_thumb_bristol_client.webp" type="image/webp">
+                <img src="images/video_thumb_bristol_client.jpg" alt="Камин Бристоль — отзыв клиента" loading="lazy" decoding="async">
+              </picture>
+              <span class="video-review-card__play" aria-hidden="true"></span>
+            </a>
+            <div class="video-review-card__body">
+              <p class="video-review-card__eyebrow">Видео 04</p>
+              <h2>Камин в облицовке «Бристоль». Отзыв клиента</h2>
+              <p>Владелец проекта рассказывает о впечатлениях от облицовки, монтажа и готового результата в доме.</p>
+              <a href="#video-178201211_456239074" data-vk="video-178201211_456239074" class="video-review-card__link">Смотреть видео</a>
+            </div>
+          </article>
+          <article class="video-review-card">
+            <a class="video-review-card__media" href="#video-178201211_456239504" data-vk="video-178201211_456239504" aria-label="Смотреть видеоотзыв заказчиков о камине Дорф">
+              <picture>
+                <source srcset="images/video_thumb_dorf_customers.webp" type="image/webp">
+                <img src="images/video_thumb_dorf_customers.jpg" alt="Камин Дорф — отзыв заказчиков" loading="lazy" decoding="async">
+              </picture>
+              <span class="video-review-card__play" aria-hidden="true"></span>
+            </a>
+            <div class="video-review-card__body">
+              <p class="video-review-card__eyebrow">Видео 05</p>
+              <h2>Камин в облицовке «Дорф». Отзыв заказчиков</h2>
+              <p>Заказчики делятся, как проходил выбор модели, согласование деталей и знакомство с готовым камином после установки.</p>
+              <a href="#video-178201211_456239504" data-vk="video-178201211_456239504" class="video-review-card__link">Смотреть видео</a>
+            </div>
+          </article>
+          <article class="video-review-card">
+            <a class="video-review-card__media" href="#video-178201211_456239193" data-vk="video-178201211_456239193" aria-label="Смотреть видеоотзыв заказчицы о камине Универсал">
+              <picture>
+                <source srcset="images/video_thumb_universal_client.webp" type="image/webp">
+                <img src="images/video_thumb_universal_client.jpg" alt="Камин Универсал — отзыв заказчицы" loading="lazy" decoding="async">
+              </picture>
+              <span class="video-review-card__play" aria-hidden="true"></span>
+            </a>
+            <div class="video-review-card__body">
+              <p class="video-review-card__eyebrow">Видео 06</p>
+              <h2>Камин в облицовке «Универсал». Отзыв заказчицы</h2>
+              <p>Отзыв о практичности камина, визуальном решении и том, как керамическая облицовка работает в повседневном интерьере.</p>
+              <a href="#video-178201211_456239193" data-vk="video-178201211_456239193" class="video-review-card__link">Смотреть видео</a>
+            </div>
+          </article>
+          <article class="video-review-card">
+            <a class="video-review-card__media" href="#video-178201211_456239167" data-vk="video-178201211_456239167" aria-label="Смотреть видеоотзыв заказчицы о камине Тюльпан">
+              <img src="images/video_thumb_tulip_client.jpg" alt="Камин Тюльпан — отзыв заказчицы" loading="lazy" decoding="async">
+              <span class="video-review-card__play" aria-hidden="true"></span>
+            </a>
+            <div class="video-review-card__body">
+              <p class="video-review-card__eyebrow">Видео 07</p>
+              <h2>Камин в облицовке «Тюльпан». Отзыв заказчицы</h2>
+              <p>Клиентка рассказывает о декоративном образе камина, подборе цвета и ощущениях от готового проекта.</p>
+              <a href="#video-178201211_456239167" data-vk="video-178201211_456239167" class="video-review-card__link">Смотреть видео</a>
+            </div>
+          </article>
+          <article class="video-review-card">
+            <a class="video-review-card__media" href="#video-178201211_456239494" data-vk="video-178201211_456239494" aria-label="Смотреть видеоотзыв дизайнера о камине Маджестик">
+              <img src="images/video_thumb_majestic_designer.jpg" alt="Камин Маджестик — отзыв дизайнера" loading="lazy" decoding="async">
+              <span class="video-review-card__play" aria-hidden="true"></span>
+            </a>
+            <div class="video-review-card__body">
+              <p class="video-review-card__eyebrow">Видео 08</p>
+              <h2>Камин в облицовке «Маджестик». Отзыв дизайнера</h2>
+              <p>Дизайнер комментирует выразительную форму облицовки, работу с пропорциями и роль камина как интерьерного акцента.</p>
+              <a href="#video-178201211_456239494" data-vk="video-178201211_456239494" class="video-review-card__link">Смотреть видео</a>
+            </div>
+          </article>
+          <article class="video-review-card">
+            <a class="video-review-card__media" href="#video-178201211_456239883" data-vk="video-178201211_456239883" aria-label="Смотреть видеоотзыв хозяйки о печи-голландке">
+              <img src="images/video_thumb_dutch_client.jpg" alt="Печь-голландка — отзыв хозяйки" loading="lazy" decoding="async">
+              <span class="video-review-card__play" aria-hidden="true"></span>
+            </a>
+            <div class="video-review-card__body">
+              <p class="video-review-card__eyebrow">Видео 09</p>
+              <h2>Печь-голландка с изразцами CeramicaDecor. Отзыв хозяйки</h2>
+              <p>Хозяйка дома рассказывает о печи-голландке, изразцах и том, как готовое решение стало частью домашней атмосферы.</p>
+              <a href="#video-178201211_456239883" data-vk="video-178201211_456239883" class="video-review-card__link">Смотреть видео</a>
+            </div>
+          </article>
+          <article class="video-review-card">
+            <a class="video-review-card__media" href="#video-178201211_456239110" data-vk="video-178201211_456239110" aria-label="Смотреть видеоотзыв: Камин в изразцовой облицовке Арт Нуво кофейный. Отзыв клиентки">
+              <img src="images/video_thumb_artnuvi_client_1200.jpg" alt="Камин в изразцовой облицовке Арт Нуво кофейный. Отзыв клиентки" loading="lazy" decoding="async">
+              <span class="video-review-card__play" aria-hidden="true"></span>
+            </a>
+            <div class="video-review-card__body">
+              <p class="video-review-card__eyebrow">Видео 10</p>
+              <h2>Камин в изразцовой облицовке Арт Нуво кофейный. Отзыв клиентки</h2>
+              <p>По словам нашей клиентки, эта уютная кухня-гостиная стала центром единения всей семьи именно благодаря камину. Цвета мебели и интерьера подбирались под изразцы Арт Нуво в кофейной палитре росписи.</p>
+              <a href="#video-178201211_456239110" data-vk="video-178201211_456239110" class="video-review-card__link">Смотреть видео</a>
+            </div>
+          </article>
+          <article class="video-review-card">
+            <a class="video-review-card__media" href="#video-178201211_456239073" data-vk="video-178201211_456239073" aria-label="Смотреть видеоотзыв: Банная печь в изразцовой облицовке &quot;Сценки&quot;. Отзыв печника">
+              <img src="images/video_thumb_scenki_client_1200.jpg" alt="Банная печь в изразцовой облицовке &quot;Сценки&quot;. Отзыв печника" loading="lazy" decoding="async">
+              <span class="video-review-card__play" aria-hidden="true"></span>
+            </a>
+            <div class="video-review-card__body">
+              <p class="video-review-card__eyebrow">Видео 11</p>
+              <h2>Банная печь в изразцовой облицовке &quot;Сценки&quot;. Отзыв печника</h2>
+              <p>Опытный печник из Нижнего Новгорода Роман Растригин (Rastrigin.com) рассказывает о сотрудничестве с нашей компанией.</p>
+              <a href="#video-178201211_456239073" data-vk="video-178201211_456239073" class="video-review-card__link">Смотреть видео</a>
+            </div>
+          </article>
+          <article class="video-review-card">
+            <a class="video-review-card__media" href="#video-178201211_456239071" data-vk="video-178201211_456239071" aria-label="Смотреть видеоотзыв: Камин в изразцовой облицовке &quot;Альбион&quot;. Отзыв дизайнера интерьера">
+              <img src="images/video_thumb_albion_client_1200.jpg" alt="Камин в изразцовой облицовке &quot;Альбион&quot;. Отзыв дизайнера интерьера" loading="lazy" decoding="async">
+              <span class="video-review-card__play" aria-hidden="true"></span>
+            </a>
+            <div class="video-review-card__body">
+              <p class="video-review-card__eyebrow">Видео 12</p>
+              <h2>Камин в изразцовой облицовке &quot;Альбион&quot;. Отзыв дизайнера интерьера</h2>
+              <p>К нам обратились с задачей облицевать изразцами уже построенный камин. Разработка дизайн-проекта велась в тесном сотрудничестве наших дизайнеров и дизайнеров со стороны заказчика. Дизайнер Елена Чеброва рассказывает о своем опыте взаимодействия с нашей компанией и делится впечатлениями.</p>
+              <a href="#video-178201211_456239071" data-vk="video-178201211_456239071" class="video-review-card__link">Смотреть видео</a>
+            </div>
+          </article>
+          <article class="video-review-card">
+            <a class="video-review-card__media" href="#video-178201211_456239070" data-vk="video-178201211_456239070" aria-label="Смотреть видеоотзыв: Керамический портал &quot;Русский изразец&quot; с биокамином. Отзыв клиента">
+              <img src="images/video_thumb_rusizrazec_client_1200.jpg" alt="Керамический портал &quot;Русский изразец&quot; с биокамином. Отзыв клиента" loading="lazy" decoding="async">
+              <span class="video-review-card__play" aria-hidden="true"></span>
+            </a>
+            <div class="video-review-card__body">
+              <p class="video-review-card__eyebrow">Видео 13</p>
+              <h2>Керамический портал &quot;Русский изразец&quot; с биокамином. Отзыв клиента</h2>
+              <p>Портал «Русский изразец» создан под вдохновением творчества русских художников-керамистов. Мастера конца XIX — начала XX века задали новые стандарты в работе с керамикой, композицией, росписью и декоративным оформлением. Необычная пластика элементов керамической отделки, навеянная каминами Михаила Врубеля и Петра Ваулина, изысканная витая роспись, восходящая к традициям Абрамцевской художественной мастерской, и многовековое наследие русского декоративно-прикладного искусства органично воплотились в керамике портала «Русский изразец».</p>
+              <a href="#video-178201211_456239070" data-vk="video-178201211_456239070" class="video-review-card__link">Смотреть видео</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
   </main>
 
+  <footer class="footer" id="footer">
+    <div class="footer__glow"></div>
+    <div class="container">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <a href="index.html" class="footer__logo">
+            <img src="images/logo.png" alt="CeramicaDecor" class="footer__logo-img">
+          </a>
+          <p class="footer__tagline">Керамические премиальные облицовки.<br>14+ лет, своё производство, монтаж.<br>Под ключ по России и СНГ</p>
+        </div>
+        <div class="footer__columns">
+          <div class="footer__col">
+            <h4 class="footer__col-title" style="font-size:16px;font-weight:700;color:#fff;">Каталог</h4>
+            <ul class="footer__col-list">
+              <li><a href="catalog-kaminy.html">Камины</a></li>
+              <li><a href="catalog-otopitelnye-pechi.html">Печи</a></li>
+              <li><a href="catalog-barbekyu-kompleksy.html">Барбекю комплексы</a></li>
+              <li><a href="catalog-izrazcy.html">Изразцы</a></li>
+            </ul>
+          </div>
+          <div class="footer__col">
+            <ul class="footer__col-list footer__col-list--offset">
+              <li><a href="portfolio.html" style="color:#fff;font-size:16px;font-weight:500;">Портфолио</a></li>
+              <li><a href="components.html" style="color:#fff;font-size:16px;font-weight:500;">Все для монтажа</a></li>
+              <li><a href="cooperation.html" style="color:#fff;font-size:16px;font-weight:500;">Сотрудничество</a></li>
+              <li><a href="blog.html" style="color:#fff;font-size:16px;font-weight:500;">Блог</a></li>
+              <li><a href="about.html" style="color:#fff;font-size:16px;font-weight:500;">О компании</a></li>
+            </ul>
+          </div>
+          <div class="footer__col footer__col--contacts">
+            <h4 class="footer__col-title" style="font-size:16px;font-weight:700;color:#fff;"><a href="contacts.html" class="footer__col-title-link">Контакты</a></h4>
+            <ul class="footer__col-list footer__contact-list">
+              <li><a href="tel:+74952293046" style="font-weight:700;">+7 (495) 229-30-46</a></li>
+              <li><a href="mailto:info@ceramicadecor.ru" style="font-weight:700;">info@ceramicadecor.ru</a></li>
+              <li class="footer__messengers" aria-label="Мессенджеры">
+                <a href="https://t.me/+79950001166" class="footer__messenger-link" target="_blank" rel="noopener" aria-label="Telegram"><img src="images/icons/png-klev-club-p-telegram-logotip-png-9.png" alt="" class="footer__messenger-icon"></a>
+                <a href="https://max.ru/" class="footer__messenger-link" target="_blank" rel="noopener" aria-label="Max"><img src="images/icons/max.png" alt="" class="footer__messenger-icon"></a>
+</li>
+              <li style="margin-top: 0.75em;"><a href="contacts.html" class="btn btn--primary" style="padding:9px 20px;font-size:13px;color:#fff;">Оставить заявку</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p class="footer__copy">&copy; 2013&ndash;2026 CeramicaDecor. Все права защищены.</p>
+        <p class="footer__org-info">ООО «АРТ КЕРАМИКА» &middot; ИНН&nbsp;5018178964 &middot; ОГРН&nbsp;1155018002150 &middot; 141068, Московская обл., г.&nbsp;Королев, ул.&nbsp;Силикатная, д.&nbsp;74, пом.&nbsp;204</p>
+        <div class="footer__legal">
+          <a href="privacy.html" target="_blank">Политика конфиденциальности</a>
+          <a href="terms.html" target="_blank">Пользовательское соглашение</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <button class="scroll-to-top" id="scrollToTop" aria-label="Вернуться вверх">
+    <svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg>
+  </button>
+  <div class="video-review-modal" id="videoReviewModal" aria-hidden="true">
+    <div class="video-review-modal__dialog" role="dialog" aria-modal="true" aria-label="Видеоотзыв">
+      <button class="video-review-modal__close" type="button" aria-label="Закрыть видео">&times;</button>
+      <div id="videoReviewPlayer"></div>
+    </div>
+  </div>
+  <script src="script.js" defer></script>
+  <script src="search.js" defer></script>
   <script>
     (function() {
-      var items = [
-        { id: 1, type: 'large' },
-        { id: 2, type: 'small' },
-        { id: 3, type: 'small' },
-        { id: 4, type: 'wide' },
-        { id: 5, type: 'tall' },
-        { id: 6, type: 'small' },
-        { id: 7, type: 'small' },
-        { id: 8, type: 'wide' },
-        { id: 9, type: 'large' },
-        { id: 10, type: 'small' },
-        { id: 11, type: 'tall' },
-        { id: 12, type: 'small' },
-        { id: 13, type: 'wide' },
-        { id: 14, type: 'small' },
-        { id: 15, type: 'small' },
-        { id: 16, type: 'wide' },
-        { id: 17, type: 'small' },
-        { id: 18, type: 'small' }
-      ];
-      var defaults = { x: 50, y: 50, zoom: 1 };
-      var storageKey = 'ceramicadecor.contacts.galleryCrop.v1';
-      var state = loadState();
-      var grid = document.getElementById('reviewGrid');
-      var controls = document.getElementById('controls');
-      var output = document.getElementById('cssOutput');
+      var btn = document.getElementById('scrollToTop');
+      window.addEventListener('scroll', function() {
+        if (window.scrollY > 400) { btn.classList.add('visible'); } else { btn.classList.remove('visible'); }
+      }, { passive: true });
+      btn.addEventListener('click', function() { window.scrollTo({ top: 0, behavior: 'smooth' }); });
 
-      function pad(num) {
-        return String(num).padStart(2, '0');
+      var modal = document.getElementById('videoReviewModal');
+      var player = document.getElementById('videoReviewPlayer');
+      var closeBtn = modal ? modal.querySelector('.video-review-modal__close') : null;
+
+      function buildVkEmbedUrl(vkId) {
+        var parts = vkId.replace('video', '').split('_');
+        return 'https://vk.com/video_ext.php?oid=' + parts[0] + '&id=' + parts[1] + '&hd=2&autoplay=1';
       }
 
-      function getItemState(id) {
-        return Object.assign({}, defaults, state[id] || {});
+      function openVideo(vkId) {
+        if (!modal || !player || !vkId) return;
+        player.innerHTML = '<iframe src="' + buildVkEmbedUrl(vkId) + '" allow="autoplay; encrypted-media; fullscreen; picture-in-picture" allowfullscreen></iframe>';
+        modal.classList.add('active');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        if (closeBtn) closeBtn.focus();
       }
 
-      function loadState() {
-        try {
-          return JSON.parse(localStorage.getItem(storageKey)) || {};
-        } catch (e) {
-          return {};
-        }
+      function closeVideo() {
+        if (!modal || !player) return;
+        modal.classList.remove('active');
+        modal.setAttribute('aria-hidden', 'true');
+        player.innerHTML = '';
+        document.body.style.overflow = '';
       }
 
-      function saveState() {
-        localStorage.setItem(storageKey, JSON.stringify(state));
-      }
-
-      function applyState(id) {
-        var values = getItemState(id);
-        document.querySelectorAll('[data-crop-id="' + id + '"]').forEach(function(el) {
-          el.style.setProperty('--pos-x', values.x + '%');
-          el.style.setProperty('--pos-y', values.y + '%');
-          el.style.setProperty('--zoom', values.zoom);
+      document.querySelectorAll('.video-review-card [data-vk]').forEach(function(link) {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          openVideo(this.getAttribute('data-vk'));
         });
-        document.querySelectorAll('[data-value-for="' + id + '"]').forEach(function(el) {
-          var key = el.getAttribute('data-key');
-          el.textContent = key === 'zoom' ? values.zoom.toFixed(2) : values[key] + '%';
-        });
-      }
-
-      function update(id, key, value) {
-        state[id] = getItemState(id);
-        state[id][key] = key === 'zoom' ? Number(value) : parseInt(value, 10);
-        saveState();
-        applyState(id);
-      }
-
-      function resetItem(id) {
-        delete state[id];
-        saveState();
-        ['x', 'y'].forEach(function(key) {
-          document.getElementById('control-' + id + '-' + key).value = defaults[key];
-        });
-        document.getElementById('control-' + id + '-zoom').value = defaults.zoom;
-        applyState(id);
-      }
-
-      function render() {
-        grid.innerHTML = items.map(function(item) {
-          var num = pad(item.id);
-          return '<figure class="tile tile--' + item.type + '" data-crop-id="' + item.id + '">' +
-            '<span class="tile__label">' + item.id + '</span>' +
-            '<picture>' +
-              '<source type="image/webp" srcset="images/contacts_showroom_' + num + '_sm.webp 700w, images/contacts_showroom_' + num + '_lg.webp 1400w" sizes="(max-width: 768px) 50vw, 25vw">' +
-              '<img src="images/contacts_showroom_' + num + '_sm.jpg" srcset="images/contacts_showroom_' + num + '_sm.jpg 700w, images/contacts_showroom_' + num + '_lg.jpg 1400w" sizes="(max-width: 768px) 50vw, 25vw" alt="Фото шоурума ' + item.id + '">' +
-            '</picture>' +
-          '</figure>';
-        }).join('');
-
-        controls.innerHTML = items.map(function(item) {
-          var values = getItemState(item.id);
-          return '<article class="control-card">' +
-            '<div class="control-card__head">' +
-              '<h3 class="control-card__title">Фото ' + item.id + '</h3>' +
-              '<span class="control-card__meta">' + item.type + '</span>' +
-            '</div>' +
-            rangeRow(item.id, 'x', 'X', 0, 100, 1, values.x) +
-            rangeRow(item.id, 'y', 'Y', 0, 100, 1, values.y) +
-            rangeRow(item.id, 'zoom', 'Масштаб', 1, 1.35, 0.01, values.zoom) +
-            '<button type="button" data-reset="' + item.id + '">Сбросить фото</button>' +
-          '</article>';
-        }).join('');
-
-        items.forEach(function(item) {
-          applyState(item.id);
-        });
-      }
-
-      function rangeRow(id, key, label, min, max, step, value) {
-        var display = key === 'zoom' ? Number(value).toFixed(2) : value + '%';
-        return '<div class="control-row">' +
-          '<label for="control-' + id + '-' + key + '">' + label + '</label>' +
-          '<input id="control-' + id + '-' + key + '" type="range" min="' + min + '" max="' + max + '" step="' + step + '" value="' + value + '" data-id="' + id + '" data-key="' + key + '">' +
-          '<span class="value" data-value-for="' + id + '" data-key="' + key + '">' + display + '</span>' +
-        '</div>';
-      }
-
-      function exportCss() {
-        var lines = [];
-        items.forEach(function(item) {
-          var values = getItemState(item.id);
-          if (values.x === defaults.x && values.y === defaults.y && values.zoom === defaults.zoom) return;
-          lines.push('.contacts-showrooms__item:nth-child(' + item.id + ') {');
-          lines.push('  --image-pos-x: ' + values.x + '%;');
-          lines.push('  --image-pos-y: ' + values.y + '%;');
-          if (values.zoom !== defaults.zoom) {
-            lines.push('  --image-zoom: ' + values.zoom.toFixed(2) + ';');
-          }
-          lines.push('}');
-          lines.push('');
-        });
-        output.value = lines.length ? lines.join('\n') : '/* Все фото сейчас в положении по умолчанию. */';
-      }
-
-      controls.addEventListener('input', function(e) {
-        if (!e.target.matches('input[type="range"]')) return;
-        update(e.target.getAttribute('data-id'), e.target.getAttribute('data-key'), e.target.value);
       });
 
-      controls.addEventListener('click', function(e) {
-        var resetId = e.target.getAttribute('data-reset');
-        if (!resetId) return;
-        resetItem(resetId);
+      if (closeBtn) closeBtn.addEventListener('click', closeVideo);
+      if (modal) {
+        modal.addEventListener('click', function(e) {
+          if (e.target === modal) closeVideo();
+        });
+      }
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modal && modal.classList.contains('active')) closeVideo();
       });
-
-      document.getElementById('resetAll').addEventListener('click', function() {
-        state = {};
-        saveState();
-        render();
-        output.value = '';
-      });
-
-      document.getElementById('exportCss').addEventListener('click', exportCss);
-
-      render();
     })();
   </script>
 </body>

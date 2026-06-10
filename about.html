@@ -4,10 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>О компании — CeramicaDecor</title>
-  <meta name="description" content="О компании CeramicaDecor — большая творческая команда, объединённая мастерством создания произведений из керамики. 14+ лет опыта, своё производство, монтаж под ключ.">
+  <meta name="description" content="О компании CeramicaDecor — большая команда, объединённая мастерством создания произведений из керамики. 14+ лет опыта, своё производство, монтаж под ключ.">
   <link rel="canonical" href="https://ceramicadecor.ru/about.html">
   <meta property="og:title" content="О компании — CeramicaDecor">
-  <meta property="og:description" content="Большая творческая команда, объединенная мастерством создания каминов, барбекю комплексов и облицовок из керамики. Более 14 лет опыта, собственный проектный отдел, работа с нуля и под ключ">
+  <meta property="og:description" content="Большая команда, объединенная мастерством создания каминов, печей и облицовок из керамики. Более 14 лет опыта, собственный проектный отдел, работа с нуля и под ключ">
   <meta property="og:image" content="images/hero_bg.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -108,6 +108,17 @@
     }
     .about-info__card-icon {
       margin-bottom: 20px;
+    }
+    .about-info__card-icon-img {
+      display: block;
+      width: 40px;
+      height: 40px;
+      object-fit: contain;
+      filter: brightness(0) saturate(100%) invert(28%) sepia(73%) saturate(2055%) hue-rotate(349deg) brightness(90%) contrast(89%);
+    }
+    .about-info__card-icon-img--paintbrush {
+      width: 34px;
+      height: 34px;
     }
     .about-info__card-title {
       font-family: 'TT Ramillas Trl', serif;
@@ -355,108 +366,143 @@
   <!-- ===== HEADER ===== -->
   <header class="header" id="header">
     <div class="container header__inner">
-      <a href="index.html" class="header__logo">
-        <img src="images/logo.png" alt="CeramicaDecor" class="header__logo-img">
-      </a>
-      <nav class="header__nav" id="mainNav">
-        <ul class="header__nav-list">
+      <div class="header__top-row">
+        <nav class="header__top-nav" aria-label="Дополнительная навигация">
+          <ul class="header__top-nav-list">
+            <li><a href="about.html" class="header__top-link">О компании</a></li>
+            <li><a href="about.html#team" class="header__top-link">Наша команда</a></li>
+            <li><a href="contacts-gallery-review.html" class="header__top-link">Видеоотзывы</a></li>
+            <li><a href="cooperation.html" class="header__top-link">Сотрудничество</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="header__main-row">
+        <a href="index.html" class="header__logo">
+          <img src="images/logo.png" alt="CeramicaDecor" class="header__logo-img">
+        </a>
+        <nav class="header__nav" id="mainNav">
+          <ul class="header__nav-list">
           <li class="header__nav-dropdown header__nav-dropdown--catalog">
             <button type="button" class="header__catalog-btn" aria-haspopup="true" aria-expanded="false">Каталог</button>
-            <div class="header__mega-menu" role="menu">
-              <a href="catalog.html" class="header__mega-feature" role="menuitem">
-                <span>Весь каталог</span>
-                <small>Общий список каминов, печей, изразцов, барбекю комплексов и керамики</small>
-              </a>
-              <div class="header__mega-grid">
-                <div class="header__mega-col">
-                  <h3>Изразцы</h3>
-                  <a href="catalog-izrazcy.html" role="menuitem">Каталог изразцов</a>
-                  <a href="glaze-palette.html" role="menuitem">Палитра глазурей</a>
-                </div>
-                <div class="header__mega-col">
-                  <h3>Камины</h3>
-                  <a href="catalog-kaminy.html" role="menuitem">Дровяные камины</a>
-                  <a href="catalog-biokaminy.html" role="menuitem">Биокамины</a>
-                  <a href="catalog-elektrokaminy.html" role="menuitem">Электрокамины</a>
-                </div>
-                <div class="header__mega-col">
-                  <h3>Печи</h3>
-                  <a href="catalog-russkie-pechi.html" role="menuitem">Русские печи</a>
-                  <a href="catalog-otopitelnye-pechi.html" role="menuitem">Отопительные печи</a>
-                  <a href="catalog-bannye-pechi.html" role="menuitem">Банные печи и порталы</a>
-                </div>
-                <div class="header__mega-col">
-                  <h3>Типовые печи-камины из наличия</h3>
-                  <a href="catalog-seriynye-modeli.html" role="menuitem">Смотреть раздел</a>
-                </div>
-                <div class="header__mega-col">
-                  <h3>Барбекю комплексы</h3>
-                  <a href="catalog-barbekyu-kompleksy.html" role="menuitem">Смотреть раздел</a>
-                </div>
-                <div class="header__mega-col">
-                  <h3>Мраморные камины и порталы</h3>
-                  <a href="catalog-mramornye-kaminy-portaly.html" role="menuitem">Смотреть раздел</a>
-                </div>
-                <div class="header__mega-col">
-                  <h3>Плитка ручной работы</h3>
-                  <a href="catalog-interernaya-keramika.html" role="menuitem">Кухонные фартуки</a>
-                  <a href="catalog-interernaya-keramika.html" role="menuitem">Барные стойки</a>
-                  <a href="catalog-interernaya-keramika.html" role="menuitem">Облицовка стен</a>
-                </div>
-                <div class="header__mega-col">
-                  <h3>Фасадная керамика</h3>
-                  <a href="catalog-fasadnaya-keramika.html" role="menuitem">Смотреть раздел</a>
-                </div>
-                <div class="header__mega-col">
-                  <h3>Метлахская плитка</h3>
-                  <a href="catalog-metlahskaya-plitka.html" role="menuitem">Смотреть раздел</a>
-                </div>
-                <div class="header__mega-col">
-                  <h3>Реставрация</h3>
-                  <a href="restoration.html" role="menuitem">Смотреть раздел</a>
-                </div>
-                <div class="header__mega-col">
-                  <h3>Сувенирная продукция</h3>
-                  <a href="catalog-suvenirnaya-produkciya.html" role="menuitem">Смотреть раздел</a>
-                </div>
+            <div class="header__mega-menu header__mega-menu--showcase" role="menu">
+              <div class="header__mega-tabs" role="tablist" aria-label="Разделы каталога">
+                <button type="button" class="header__mega-tab active" role="tab" aria-selected="true" data-mega-target="kaminy">Камины</button>
+                <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="pechi">Печи</button>
+                <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="barbekyu">Барбекю комплексы</button>
+                <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="izrazcy">Изразцы</button>
+                <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="seriynye">Печи-камины<br>из наличия</button>
+                <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="mramor">Мраморные камины<br>и порталы</button>
+                <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="interior">Плитка ручной работы</button>
+                <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="fasad">Фасадная керамика</button>
+                <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="metlah">Метлахская плитка</button>
+                <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="restoration">Реставрация</button>
+                <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="suvenir">Сувенирная продукция</button>
+              </div>
+              <div class="header__mega-panels">
+                <section class="header__mega-panel active" role="tabpanel" data-mega-panel="kaminy">
+                  <div class="header__mega-cards">
+                    <a href="catalog-kaminy.html" class="header__mega-card header__mega-card--large" role="menuitem"><img src="images/kamin_dorf_murav_new_3.jpg" alt="Дровяные камины"><span>Дровяные камины</span></a>
+                    <a href="catalog-biokaminy.html" class="header__mega-card" role="menuitem"><img src="images/banner-biokaminy_desktop.webp" alt="Биокамины"><span>Биокамины</span></a>
+                    <a href="catalog-elektrokaminy.html" class="header__mega-card" role="menuitem"><img src="images/banner-elektrokaminy_desktop.webp" alt="Электрокамины"><span>Электрокамины</span></a>
+                  </div>
+                </section>
+                <section class="header__mega-panel" role="tabpanel" data-mega-panel="pechi">
+                  <div class="header__mega-cards">
+                    <a href="catalog-russkie-pechi.html" class="header__mega-card header__mega-card--large" role="menuitem"><img src="images/banner-russkie-pechi_desktop.webp" alt="Русские печи"><span>Русские печи</span></a>
+                    <a href="catalog-otopitelnye-pechi.html" class="header__mega-card" role="menuitem"><img src="images/banner-otopitelnye-pechi_desktop.webp" alt="Отопительные печи"><span>Отопительные печи</span></a>
+                    <a href="catalog-bannye-pechi.html" class="header__mega-card" role="menuitem"><img src="images/banner-bannye-pechi_desktop.webp" alt="Банные печи"><span>Банные печи</span></a>
+                    <a href="catalog-bannye-pechi.html" class="header__mega-card" role="menuitem"><img src="images/banner-bannye-portaly_desktop.webp" alt="Банные порталы"><span>Банные порталы</span></a>
+                  </div>
+                </section>
+                <section class="header__mega-panel" role="tabpanel" data-mega-panel="barbekyu">
+                  <div class="header__mega-cards">
+                    <a href="catalog-barbekyu-kompleksy.html" class="header__mega-card header__mega-card--large" role="menuitem"><img src="images/barbekyu_card_new.webp" alt="Барбекю комплексы"><span>Барбекю комплексы</span></a>
+                  </div>
+                </section>
+                <section class="header__mega-panel" role="tabpanel" data-mega-panel="izrazcy">
+                  <div class="header__mega-cards">
+                    <a href="catalog-izrazcy.html" class="header__mega-card header__mega-card--large" role="menuitem"><img src="images/izrazcy_card.webp" alt="Каталог изразцов"><span>Каталог изразцов</span></a>
+                    <a href="glaze-palette.html" class="header__mega-card" role="menuitem"><img src="images/palitra_izrazcy.jpg" alt="Палитра глазурей"><span>Палитра глазурей</span></a>
+                  </div>
+                </section>
+                <section class="header__mega-panel" role="tabpanel" data-mega-panel="seriynye">
+                  <div class="header__mega-cards">
+                    <a href="catalog-seriynye-modeli.html" class="header__mega-card header__mega-card--large header__mega-card--ready" role="menuitem"><img src="images/ready_banner.png" alt="Печи-камины из наличия"><span>Печи-камины<br>из наличия</span></a>
+                  </div>
+                </section>
+                <section class="header__mega-panel" role="tabpanel" data-mega-panel="mramor">
+                  <div class="header__mega-cards">
+                    <a href="catalog-mramornye-kaminy-portaly.html" class="header__mega-card header__mega-card--large" role="menuitem"><img src="images/banner-mramor_desktop.webp" alt="Мраморные камины"><span>Мраморные камины<br>и порталы</span></a>
+                  </div>
+                </section>
+                <section class="header__mega-panel" role="tabpanel" data-mega-panel="interior">
+                  <div class="header__mega-cards">
+                    <a href="catalog-interernaya-keramika.html" class="header__mega-card header__mega-card--bar" role="menuitem"><img src="images/barnye stoyki.jpg" alt="Барные стойки"><span>Барные стойки</span></a>
+                    <a href="catalog-interernaya-keramika.html" class="header__mega-card" role="menuitem"><img src="images/oblicovka sten.jpg" alt="Облицовка стен"><span>Облицовка стен</span></a>
+                    <a href="catalog-interernaya-keramika.html" class="header__mega-card header__mega-card--large" role="menuitem"><img src="images/banner-interior_desktop.webp" alt="Кухонные фартуки"><span>Кухонные фартуки</span></a>
+                  </div>
+                </section>
+                <section class="header__mega-panel" role="tabpanel" data-mega-panel="fasad">
+                  <div class="header__mega-cards">
+                    <a href="catalog-fasadnaya-keramika.html" class="header__mega-card header__mega-card--large" role="menuitem"><img src="images/banner-fasad_desktop.webp" alt="Фасадная керамика"><span>Фасадная керамика</span></a>
+                  </div>
+                </section>
+                <section class="header__mega-panel" role="tabpanel" data-mega-panel="metlah">
+                  <div class="header__mega-cards">
+                    <a href="catalog-metlahskaya-plitka.html" class="header__mega-card header__mega-card--large" role="menuitem"><img src="images/metlahskaya plitka.jpg?v=20260610-2041" alt="Метлахская плитка"><span>Метлахская плитка</span></a>
+                  </div>
+                </section>
+                <section class="header__mega-panel" role="tabpanel" data-mega-panel="restoration">
+                  <div class="header__mega-cards">
+                    <a href="restoration.html" class="header__mega-card header__mega-card--large" role="menuitem"><img src="images/restavraciya.jpg" alt="Реставрация"><span>Реставрация</span></a>
+                  </div>
+                </section>
+                <section class="header__mega-panel" role="tabpanel" data-mega-panel="suvenir">
+                  <div class="header__mega-cards">
+                    <a href="catalog-suvenirnaya-produkciya.html" class="header__mega-card header__mega-card--large" role="menuitem"><img src="images/suvenirnaya produkcya.jpg" alt="Сувенирная продукция"><span>Сувенирная продукция</span></a>
+                  </div>
+                </section>
               </div>
             </div>
           </li>
+          <li><a href="portfolio.html" class="header__nav-link">Портфолио</a></li>
           <li class="header__nav-dropdown header__nav-dropdown--simple">
-            <a href="components.html" class="header__nav-link" aria-haspopup="true" aria-expanded="false">Оборудование</a>
+            <a href="components.html" class="header__nav-link" aria-haspopup="true" aria-expanded="false">Все для монтажа</a>
             <ul class="header__dropdown-menu">
               <li><a href="components.html">Каминные топки</a></li>
               <li><a href="components.html">Электроочаги</a></li>
             </ul>
           </li>
-          <li class="header__nav-dropdown header__nav-dropdown--simple">
-            <a href="cooperation.html" class="header__nav-link" aria-haspopup="true" aria-expanded="false">Сотрудничество</a>
-            <ul class="header__dropdown-menu">
-              <li><a href="cooperation.html">Печники</a></li>
-              <li><a href="cooperation.html">Дизайнеры</a></li>
-              <li><a href="cooperation.html">Застройщики</a></li>
-              <li><a href="cooperation.html">Салоны каминов</a></li>
-              <li><a href="cooperation.html">Салоны интерьерных решений</a></li>
-            </ul>
-          </li>
-          <li><a href="blog.html" class="header__nav-link">Блог</a></li>
-          <li class="header__nav-dropdown header__nav-dropdown--simple">
-            <a href="about.html" class="header__nav-link" aria-haspopup="true" aria-expanded="false">О компании</a>
-            <ul class="header__dropdown-menu">
-              <li><a href="about.html#team">Наша команда</a></li>
-              <li><a href="contacts-gallery-review.html">Видеоотзывы</a></li>
-            </ul>
-          </li>
           <li><a href="contacts.html" class="header__nav-link">Контакты</a></li>
-        </ul>
-        <a href="tel:+74952293046" class="header__nav-phone-link">+7 (495) 229-30-46</a>
-        <a href="mailto:info@ceramicadecor.ru" class="header__nav-phone-link">info@ceramicadecor.ru</a>
-        <div class="header__nav-item--search"><a href="#" class="header__nav-link" id="searchBtnMobile"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg> Поиск</a></div>
-      </nav>
-      <div class="header__actions">
-        <button class="header__search-btn" id="searchBtn" aria-label="Поиск"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></button>
-        <a href="tel:+74952293046" class="header__phone-desktop">+7 (495) 229-30-46</a>
-        <button class="header__burger" id="burgerBtn" aria-label="Меню"><span></span><span></span><span></span></button>
+          </ul>
+          <ul class="header__nav-list header__nav-list--mobile-secondary">
+            <li><a href="about.html" class="header__nav-link">О компании</a></li>
+            <li><a href="about.html#team" class="header__nav-link">Наша команда</a></li>
+            <li><a href="contacts-gallery-review.html" class="header__nav-link">Видеоотзывы</a></li>
+            <li><a href="cooperation.html" class="header__nav-link">Сотрудничество</a></li>
+          </ul>
+          <a href="tel:+74952293046" class="header__nav-phone-link">+7 (495) 229-30-46</a>
+          <div class="header__nav-messengers" aria-label="Мессенджеры">
+            <a href="https://t.me/+79950001166" class="header__messenger-link" target="_blank" rel="noopener" aria-label="Telegram"><img src="images/icons/png-klev-club-p-telegram-logotip-png-9.png" alt="" class="header__messenger-icon"></a>
+            <a href="https://max.ru/" class="header__messenger-link" target="_blank" rel="noopener" aria-label="Max"><img src="images/icons/max.png" alt="" class="header__messenger-icon"></a>
+          </div>
+          <a href="mailto:info@ceramicadecor.ru" class="header__nav-phone-link">info@ceramicadecor.ru</a>
+          <div class="header__nav-item--search"><a href="#" class="header__nav-link" id="searchBtnMobile"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg> Поиск</a></div>
+        </nav>
+
+        <div class="header__actions">
+          <button class="header__search-btn" id="searchBtn" aria-label="Поиск"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></button>
+          <a href="#contact" class="btn btn--primary header__cta-btn">Оставить заявку</a>
+          <a href="tel:+74952293046" class="header__phone-desktop">+7 (495) 229-30-46</a>
+          <div class="header__messengers" aria-label="Мессенджеры">
+            <a href="https://t.me/+79950001166" class="header__messenger-link" target="_blank" rel="noopener" aria-label="Telegram"><img src="images/icons/png-klev-club-p-telegram-logotip-png-9.png" alt="" class="header__messenger-icon"></a>
+            <a href="https://max.ru/" class="header__messenger-link" target="_blank" rel="noopener" aria-label="Max"><img src="images/icons/max.png" alt="" class="header__messenger-icon"></a>
+          </div>
+          <button class="header__burger" id="burgerBtn" aria-label="Меню">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
       </div>
     </div>
   </header>
@@ -465,7 +511,7 @@
   <section class="about-hero" id="hero">
     <div class="container" style="position:relative;z-index:1;">
       <h1 class="about-hero__title">О компании CeramicaDecor</h1>
-      <p class="about-hero__subtitle">Большая творческая команда, объединенная мастерством создания каминов, барбекю комплексов и облицовок из керамики. Более 14 лет опыта, собственный проектный отдел, работа с нуля и под ключ</p>
+      <p class="about-hero__subtitle">Большая команда, объединенная мастерством создания каминов, печей и облицовок из керамики. Более 14 лет опыта, собственный проектный отдел, работа с нуля и под ключ</p>
     </div>
   </section>
 
@@ -479,45 +525,45 @@
       <div class="about-info__cards">
         <div class="about-info__card">
           <div class="about-info__card-icon">
-            <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><path d="M20 5C12 5 8 12 8 20s4 15 12 15 12-7 12-15S28 5 20 5z" stroke="#cb3b25" stroke-width="1.5"/><path d="M15 18c2-4 8-4 10 0" stroke="#cb3b25" stroke-width="1.5" stroke-linecap="round"/><path d="M20 25v-7" stroke="#cb3b25" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><path d="M20 6l11 4v8c0 7.2-4.4 13.7-11 16-6.6-2.3-11-8.8-11-16v-8l11-4z" stroke="#cb3b25" stroke-width="1.5" stroke-linejoin="round"/><path d="M15 20l3.2 3.2L25.5 16" stroke="#cb3b25" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3 class="about-info__card-title">Высокое качество продукта и сервиса</h3>
+          <p class="about-info__card-text">Европейское сырьё, непрерывное развитие технологий и постоянное совершенствование сервиса позволяют нам создавать изразцы с точной геометрией и высоким качеством.</p>
+        </div>
+        <div class="about-info__card">
+          <div class="about-info__card-icon">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><rect x="9" y="7" width="22" height="26" rx="2" stroke="#cb3b25" stroke-width="1.5"/><path d="M14 14h12M14 19h12M14 24h8" stroke="#cb3b25" stroke-width="1.5" stroke-linecap="round"/><path d="M26 7v6h5" stroke="#cb3b25" stroke-width="1.5" stroke-linejoin="round"/></svg>
+          </div>
+          <h3 class="about-info__card-title">Работа с нуля и под ключ</h3>
+          <p class="about-info__card-text">Берём на себя полный цикл работ: проектирование, разработку дизайна, производство, строительство и монтаж. Гарантируем качество исполнения, предоставляем гарантию и обеспечиваем дальнейшее обслуживание объектов.</p>
+        </div>
+        <div class="about-info__card">
+          <div class="about-info__card-icon">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="14" r="4" stroke="#cb3b25" stroke-width="1.5"/><circle cx="11.5" cy="17" r="3" stroke="#cb3b25" stroke-width="1.5"/><circle cx="28.5" cy="17" r="3" stroke="#cb3b25" stroke-width="1.5"/><path d="M13 31c0-4 3.1-7 7-7s7 3 7 7M6 30c0-3.2 2.4-5.5 5.5-5.5M34 30c0-3.2-2.4-5.5-5.5-5.5" stroke="#cb3b25" stroke-width="1.5" stroke-linecap="round"/><path d="M30 7l1.2 2.4 2.8.4-2 1.9.5 2.8-2.5-1.3-2.5 1.3.5-2.8-2-1.9 2.8-.4L30 7z" stroke="#cb3b25" stroke-width="1.5" stroke-linejoin="round"/></svg>
+          </div>
+          <h3 class="about-info__card-title">Многолетний опыт</h3>
+          <p class="about-info__card-text">Более 100 специалистов в штате — проектировщики, инженеры, технологи, художники и монтажники. Автоматизированные бизнес-процессы, слаженная работа всех отделов и многолетний опыт сотрудников обеспечивают высокий уровень качества на каждом этапе проекта.</p>
+        </div>
+        <div class="about-info__card">
+          <div class="about-info__card-icon">
+            <img class="about-info__card-icon-img about-info__card-icon-img--paintbrush" src="images/icons/free-icon-paintbrush-26795.png" alt="" aria-hidden="true">
           </div>
           <h3 class="about-info__card-title">Ручная формовка и роспись</h3>
           <p class="about-info__card-text">Наш каталог включает изразцы ручной формовки, керамические панно, сложные архитектурные формы и интерьерную керамику. Каждый элемент изготавливается, глазуруется, расписывается вручную на собственном производстве.</p>
         </div>
         <div class="about-info__card">
           <div class="about-info__card-icon">
-            <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="10" stroke="#cb3b25" stroke-width="1.5"/><path d="M20 14v6l4 4" stroke="#cb3b25" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><path d="M9 32V18c0-6 4.9-11 11-11s11 5 11 11v14H9z" stroke="#cb3b25" stroke-width="1.5" stroke-linejoin="round"/><path d="M13 32V19c0-3.9 3.1-7 7-7s7 3.1 7 7v13" stroke="#cb3b25" stroke-width="1.5" stroke-linejoin="round"/><path d="M20 18c-3.2 3-4 5.4-4 7.2a4 4 0 0 0 8 0c0-1.8-.8-4.2-4-7.2z" stroke="#cb3b25" stroke-width="1.5" stroke-linejoin="round"/><path d="M14 32h12" stroke="#cb3b25" stroke-width="1.5" stroke-linecap="round"/></svg>
           </div>
           <h3 class="about-info__card-title">Высокотемпературный обжиг</h3>
           <p class="about-info__card-text">Каждый элемент проходит высокотемпературный обжиг свыше 1000 °C. Это обеспечивает прочность, термостойкость и долговечность наших изделий на десятилетия.</p>
         </div>
         <div class="about-info__card">
           <div class="about-info__card-icon">
-            <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><path d="M10 30L20 10l10 20H10z" stroke="#cb3b25" stroke-width="1.5" stroke-linejoin="round"/><path d="M15 30l5-10 5 10" stroke="#cb3b25" stroke-width="1.5" stroke-linejoin="round"/></svg>
-          </div>
-          <h3 class="about-info__card-title">Победители конкурсов</h3>
-          <p class="about-info__card-text">Победители открытого архитектурного конкурса в номинациях "Изразцовые печи и камины" и "Зона барбекю". Признание профессионального сообщества.</p>
-        </div>
-        <div class="about-info__card">
-          <div class="about-info__card-icon">
-            <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><rect x="8" y="12" width="24" height="18" rx="2" stroke="#cb3b25" stroke-width="1.5"/><path d="M8 18h24M14 12V8M26 12V8" stroke="#cb3b25" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <img class="about-info__card-icon-img" src="images/icons/free-icon-handshake-10083481.png" alt="" aria-hidden="true">
           </div>
           <h3 class="about-info__card-title">Сотрудничество с профессионалами</h3>
           <p class="about-info__card-text">Работаем со строительными компаниями, дизайн-бюро, реставрационными мастерскими. Тесное сотрудничество с архитекторами и дизайнерами по всей России и СНГ.</p>
-        </div>
-        <div class="about-info__card">
-          <div class="about-info__card-icon">
-            <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><path d="M20 8l3 6h7l-5.5 4.5 2 7L20 21l-6.5 4.5 2-7L10 14h7l3-6z" stroke="#cb3b25" stroke-width="1.5" stroke-linejoin="round"/></svg>
-          </div>
-          <h3 class="about-info__card-title">Единый творческий процесс</h3>
-          <p class="about-info__card-text">Каждый проект — это совместная работа дизайнеров, проектировщиков, формовщиков и художников. От идеи до готового изделия — всё создаётся на нашем производстве.</p>
-        </div>
-        <div class="about-info__card">
-          <div class="about-info__card-icon">
-            <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="15" r="5" stroke="#cb3b25" stroke-width="1.5"/><path d="M10 33c0-5.523 4.477-10 10-10s10 4.477 10 10" stroke="#cb3b25" stroke-width="1.5" stroke-linecap="round"/></svg>
-          </div>
-          <h3 class="about-info__card-title">Талантливая команда</h3>
-          <p class="about-info__card-text">Больше 100 человек в штате: проектировщики, инженеры, технологи, художники, монтажники. Каждый специалист - профессионал с многолетним опытом.</p>
         </div>
       </div>
     </div>
@@ -647,7 +693,7 @@
   <section class="process-steps" id="process-steps">
     <div class="container">
       <div class="process-steps__header">
-        <h2 class="section-title">Как мы создаём камины и барбекю комплексы</h2>
+        <h2 class="section-title">Как мы создаем камины и печи</h2>
         <p class="section-subtitle">Каждый проект проходит путь от идеи до установки — всё создаётся вручную на нашем производстве</p>
       </div>
       <div class="process-steps__grid">
@@ -663,7 +709,7 @@
         </div>
         <div class="process-steps__item process-steps__item--reverse">
           <div class="process-steps__img">
-            <picture><source srcset="images/work_kamin2_new.webp" type="image/webp"><img src="images/work_kamin2_new.jpg" alt="Изготовление изразцов" loading="lazy"></picture>
+            <picture><source srcset="images/izgotovlenie_izrazcov.webp" type="image/webp"><img src="images/izgotovlenie_izrazcov.jpg" alt="Изготовление изразцов" loading="lazy"></picture>
           </div>
           <div class="process-steps__info">
             <span class="process-steps__num">02</span>
@@ -673,7 +719,7 @@
         </div>
         <div class="process-steps__item">
           <div class="process-steps__img">
-            <picture><source srcset="images/work_oblicovka1_new.webp" type="image/webp"><img src="images/work_oblicovka1_new.jpg" alt="Монтаж конструктивной части" loading="lazy"></picture>
+            <picture><source srcset="images/montag_konstructiva.webp" type="image/webp"><img src="images/montag_konstructiva.jpg" alt="Монтаж конструктивной части" loading="lazy"></picture>
           </div>
           <div class="process-steps__info">
             <span class="process-steps__num">03</span>
@@ -683,7 +729,7 @@
         </div>
         <div class="process-steps__item process-steps__item--reverse">
           <div class="process-steps__img">
-            <picture><source srcset="images/work_restavraciya_new.webp" type="image/webp"><img src="images/work_restavraciya_new.jpg" alt="Монтаж облицовки" loading="lazy"></picture>
+            <picture><source srcset="images/montag_oblicovki.webp" type="image/webp"><img src="images/montag_oblicovki.jpg" alt="Монтаж облицовки" loading="lazy"></picture>
           </div>
           <div class="process-steps__info">
             <span class="process-steps__num">04</span>
@@ -740,19 +786,30 @@
           <div class="footer__col">
             <h4 class="footer__col-title" style="font-size:16px;font-weight:700;color:#fff;">Каталог</h4>
             <ul class="footer__col-list">
-              <li><a href="glaze-palette.html">Палитра глазурей</a></li>
-              <li><a href="catalog-izrazcy.html">Изразцы</a></li>
               <li><a href="catalog-kaminy.html">Камины</a></li>
+              <li><a href="catalog-otopitelnye-pechi.html">Печи</a></li>
               <li><a href="catalog-barbekyu-kompleksy.html">Барбекю комплексы</a></li>
+              <li><a href="catalog-izrazcy.html">Изразцы</a></li>
             </ul>
           </div>
           <div class="footer__col">
             <ul class="footer__col-list footer__col-list--offset">
+              <li><a href="portfolio.html" style="color:#fff;font-size:16px;font-weight:500;">Портфолио</a></li>
+              <li><a href="components.html" style="color:#fff;font-size:16px;font-weight:500;">Все для монтажа</a></li>
               <li><a href="cooperation.html" style="color:#fff;font-size:16px;font-weight:500;">Сотрудничество</a></li>
+              <li><a href="blog.html" style="color:#fff;font-size:16px;font-weight:500;">Блог</a></li>
               <li><a href="about.html" style="color:#fff;font-size:16px;font-weight:500;">О компании</a></li>
-              <li><a href="contacts.html" style="color:#fff;font-size:16px;font-weight:500;">Контакты</a></li>
+            </ul>
+          </div>
+          <div class="footer__col footer__col--contacts">
+            <h4 class="footer__col-title" style="font-size:16px;font-weight:700;color:#fff;"><a href="contacts.html" class="footer__col-title-link">Контакты</a></h4>
+            <ul class="footer__col-list footer__contact-list">
               <li><a href="tel:+74952293046" style="font-weight:700;">+7 (495) 229-30-46</a></li>
               <li><a href="mailto:info@ceramicadecor.ru" style="font-weight:700;">info@ceramicadecor.ru</a></li>
+              <li class="footer__messengers" aria-label="Мессенджеры">
+                <a href="https://t.me/+79950001166" class="footer__messenger-link" target="_blank" rel="noopener" aria-label="Telegram"><img src="images/icons/png-klev-club-p-telegram-logotip-png-9.png" alt="" class="footer__messenger-icon"></a>
+                <a href="https://max.ru/" class="footer__messenger-link" target="_blank" rel="noopener" aria-label="Max"><img src="images/icons/max.png" alt="" class="footer__messenger-icon"></a>
+</li>
               <li style="margin-top: 0.75em;"><a href="contacts.html" class="btn btn--primary" style="padding:9px 20px;font-size:13px;color:#fff;">Оставить заявку</a></li>
             </ul>
           </div>
@@ -841,5 +898,12 @@
   </div>
 </body>
 </html>
+
+
+
+
+
+
+
 
 

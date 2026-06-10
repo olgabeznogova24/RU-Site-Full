@@ -129,6 +129,11 @@
       line-height: 1.6;
       font-weight: 300;
     }
+    .blog-list .fade-up,
+    .blog-articles .fade-up {
+      opacity: 1;
+      transform: none;
+    }
     .blog-note {
       max-width: 820px;
       margin: 56px auto 0;
@@ -304,108 +309,143 @@
 <body>
   <header class="header" id="header">
     <div class="container header__inner">
-      <a href="index.html" class="header__logo">
-        <img src="images/logo.png" alt="CeramicaDecor" class="header__logo-img">
-      </a>
-      <nav class="header__nav" id="mainNav">
-        <ul class="header__nav-list">
+      <div class="header__top-row">
+        <nav class="header__top-nav" aria-label="Дополнительная навигация">
+          <ul class="header__top-nav-list">
+            <li><a href="about.html" class="header__top-link">О компании</a></li>
+            <li><a href="about.html#team" class="header__top-link">Наша команда</a></li>
+            <li><a href="contacts-gallery-review.html" class="header__top-link">Видеоотзывы</a></li>
+            <li><a href="cooperation.html" class="header__top-link">Сотрудничество</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="header__main-row">
+        <a href="index.html" class="header__logo">
+          <img src="images/logo.png" alt="CeramicaDecor" class="header__logo-img">
+        </a>
+        <nav class="header__nav" id="mainNav">
+          <ul class="header__nav-list">
           <li class="header__nav-dropdown header__nav-dropdown--catalog">
             <button type="button" class="header__catalog-btn" aria-haspopup="true" aria-expanded="false">Каталог</button>
-            <div class="header__mega-menu" role="menu">
-              <a href="catalog.html" class="header__mega-feature" role="menuitem">
-                <span>Весь каталог</span>
-                <small>Общий список каминов, печей, изразцов, барбекю комплексов и керамики</small>
-              </a>
-              <div class="header__mega-grid">
-                <div class="header__mega-col">
-                  <h3>Изразцы</h3>
-                  <a href="catalog-izrazcy.html" role="menuitem">Каталог изразцов</a>
-                  <a href="glaze-palette.html" role="menuitem">Палитра глазурей</a>
-                </div>
-                <div class="header__mega-col">
-                  <h3>Камины</h3>
-                  <a href="catalog-kaminy.html" role="menuitem">Дровяные камины</a>
-                  <a href="catalog-biokaminy.html" role="menuitem">Биокамины</a>
-                  <a href="catalog-elektrokaminy.html" role="menuitem">Электрокамины</a>
-                </div>
-                <div class="header__mega-col">
-                  <h3>Печи</h3>
-                  <a href="catalog-russkie-pechi.html" role="menuitem">Русские печи</a>
-                  <a href="catalog-otopitelnye-pechi.html" role="menuitem">Отопительные печи</a>
-                  <a href="catalog-bannye-pechi.html" role="menuitem">Банные печи и порталы</a>
-                </div>
-                <div class="header__mega-col">
-                  <h3>Типовые печи-камины из наличия</h3>
-                  <a href="catalog-seriynye-modeli.html" role="menuitem">Смотреть раздел</a>
-                </div>
-                <div class="header__mega-col">
-                  <h3>Барбекю комплексы</h3>
-                  <a href="catalog-barbekyu-kompleksy.html" role="menuitem">Смотреть раздел</a>
-                </div>
-                <div class="header__mega-col">
-                  <h3>Мраморные камины и порталы</h3>
-                  <a href="catalog-mramornye-kaminy-portaly.html" role="menuitem">Смотреть раздел</a>
-                </div>
-                <div class="header__mega-col">
-                  <h3>Плитка ручной работы</h3>
-                  <a href="catalog-interernaya-keramika.html" role="menuitem">Кухонные фартуки</a>
-                  <a href="catalog-interernaya-keramika.html" role="menuitem">Барные стойки</a>
-                  <a href="catalog-interernaya-keramika.html" role="menuitem">Облицовка стен</a>
-                </div>
-                <div class="header__mega-col">
-                  <h3>Фасадная керамика</h3>
-                  <a href="catalog-fasadnaya-keramika.html" role="menuitem">Смотреть раздел</a>
-                </div>
-                <div class="header__mega-col">
-                  <h3>Метлахская плитка</h3>
-                  <a href="catalog-metlahskaya-plitka.html" role="menuitem">Смотреть раздел</a>
-                </div>
-                <div class="header__mega-col">
-                  <h3>Реставрация</h3>
-                  <a href="restoration.html" role="menuitem">Смотреть раздел</a>
-                </div>
-                <div class="header__mega-col">
-                  <h3>Сувенирная продукция</h3>
-                  <a href="catalog-suvenirnaya-produkciya.html" role="menuitem">Смотреть раздел</a>
-                </div>
+            <div class="header__mega-menu header__mega-menu--showcase" role="menu">
+              <div class="header__mega-tabs" role="tablist" aria-label="Разделы каталога">
+                <button type="button" class="header__mega-tab active" role="tab" aria-selected="true" data-mega-target="kaminy">Камины</button>
+                <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="pechi">Печи</button>
+                <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="barbekyu">Барбекю комплексы</button>
+                <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="izrazcy">Изразцы</button>
+                <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="seriynye">Печи-камины<br>из наличия</button>
+                <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="mramor">Мраморные камины<br>и порталы</button>
+                <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="interior">Плитка ручной работы</button>
+                <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="fasad">Фасадная керамика</button>
+                <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="metlah">Метлахская плитка</button>
+                <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="restoration">Реставрация</button>
+                <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="suvenir">Сувенирная продукция</button>
+              </div>
+              <div class="header__mega-panels">
+                <section class="header__mega-panel active" role="tabpanel" data-mega-panel="kaminy">
+                  <div class="header__mega-cards">
+                    <a href="catalog-kaminy.html" class="header__mega-card header__mega-card--large" role="menuitem"><img src="images/kamin_dorf_murav_new_3.jpg" alt="Дровяные камины"><span>Дровяные камины</span></a>
+                    <a href="catalog-biokaminy.html" class="header__mega-card" role="menuitem"><img src="images/banner-biokaminy_desktop.webp" alt="Биокамины"><span>Биокамины</span></a>
+                    <a href="catalog-elektrokaminy.html" class="header__mega-card" role="menuitem"><img src="images/banner-elektrokaminy_desktop.webp" alt="Электрокамины"><span>Электрокамины</span></a>
+                  </div>
+                </section>
+                <section class="header__mega-panel" role="tabpanel" data-mega-panel="pechi">
+                  <div class="header__mega-cards">
+                    <a href="catalog-russkie-pechi.html" class="header__mega-card header__mega-card--large" role="menuitem"><img src="images/banner-russkie-pechi_desktop.webp" alt="Русские печи"><span>Русские печи</span></a>
+                    <a href="catalog-otopitelnye-pechi.html" class="header__mega-card" role="menuitem"><img src="images/banner-otopitelnye-pechi_desktop.webp" alt="Отопительные печи"><span>Отопительные печи</span></a>
+                    <a href="catalog-bannye-pechi.html" class="header__mega-card" role="menuitem"><img src="images/banner-bannye-pechi_desktop.webp" alt="Банные печи"><span>Банные печи</span></a>
+                    <a href="catalog-bannye-pechi.html" class="header__mega-card" role="menuitem"><img src="images/banner-bannye-portaly_desktop.webp" alt="Банные порталы"><span>Банные порталы</span></a>
+                  </div>
+                </section>
+                <section class="header__mega-panel" role="tabpanel" data-mega-panel="barbekyu">
+                  <div class="header__mega-cards">
+                    <a href="catalog-barbekyu-kompleksy.html" class="header__mega-card header__mega-card--large" role="menuitem"><img src="images/barbekyu_card_new.webp" alt="Барбекю комплексы"><span>Барбекю комплексы</span></a>
+                  </div>
+                </section>
+                <section class="header__mega-panel" role="tabpanel" data-mega-panel="izrazcy">
+                  <div class="header__mega-cards">
+                    <a href="catalog-izrazcy.html" class="header__mega-card header__mega-card--large" role="menuitem"><img src="images/izrazcy_card.webp" alt="Каталог изразцов"><span>Каталог изразцов</span></a>
+                    <a href="glaze-palette.html" class="header__mega-card" role="menuitem"><img src="images/palitra_izrazcy.jpg" alt="Палитра глазурей"><span>Палитра глазурей</span></a>
+                  </div>
+                </section>
+                <section class="header__mega-panel" role="tabpanel" data-mega-panel="seriynye">
+                  <div class="header__mega-cards">
+                    <a href="catalog-seriynye-modeli.html" class="header__mega-card header__mega-card--large header__mega-card--ready" role="menuitem"><img src="images/ready_banner.png" alt="Печи-камины из наличия"><span>Печи-камины<br>из наличия</span></a>
+                  </div>
+                </section>
+                <section class="header__mega-panel" role="tabpanel" data-mega-panel="mramor">
+                  <div class="header__mega-cards">
+                    <a href="catalog-mramornye-kaminy-portaly.html" class="header__mega-card header__mega-card--large" role="menuitem"><img src="images/banner-mramor_desktop.webp" alt="Мраморные камины"><span>Мраморные камины<br>и порталы</span></a>
+                  </div>
+                </section>
+                <section class="header__mega-panel" role="tabpanel" data-mega-panel="interior">
+                  <div class="header__mega-cards">
+                    <a href="catalog-interernaya-keramika.html" class="header__mega-card header__mega-card--bar" role="menuitem"><img src="images/barnye stoyki.jpg" alt="Барные стойки"><span>Барные стойки</span></a>
+                    <a href="catalog-interernaya-keramika.html" class="header__mega-card" role="menuitem"><img src="images/oblicovka sten.jpg" alt="Облицовка стен"><span>Облицовка стен</span></a>
+                    <a href="catalog-interernaya-keramika.html" class="header__mega-card header__mega-card--large" role="menuitem"><img src="images/banner-interior_desktop.webp" alt="Кухонные фартуки"><span>Кухонные фартуки</span></a>
+                  </div>
+                </section>
+                <section class="header__mega-panel" role="tabpanel" data-mega-panel="fasad">
+                  <div class="header__mega-cards">
+                    <a href="catalog-fasadnaya-keramika.html" class="header__mega-card header__mega-card--large" role="menuitem"><img src="images/banner-fasad_desktop.webp" alt="Фасадная керамика"><span>Фасадная керамика</span></a>
+                  </div>
+                </section>
+                <section class="header__mega-panel" role="tabpanel" data-mega-panel="metlah">
+                  <div class="header__mega-cards">
+                    <a href="catalog-metlahskaya-plitka.html" class="header__mega-card header__mega-card--large" role="menuitem"><img src="images/metlahskaya plitka.jpg?v=20260610-2041" alt="Метлахская плитка"><span>Метлахская плитка</span></a>
+                  </div>
+                </section>
+                <section class="header__mega-panel" role="tabpanel" data-mega-panel="restoration">
+                  <div class="header__mega-cards">
+                    <a href="restoration.html" class="header__mega-card header__mega-card--large" role="menuitem"><img src="images/restavraciya.jpg" alt="Реставрация"><span>Реставрация</span></a>
+                  </div>
+                </section>
+                <section class="header__mega-panel" role="tabpanel" data-mega-panel="suvenir">
+                  <div class="header__mega-cards">
+                    <a href="catalog-suvenirnaya-produkciya.html" class="header__mega-card header__mega-card--large" role="menuitem"><img src="images/suvenirnaya produkcya.jpg" alt="Сувенирная продукция"><span>Сувенирная продукция</span></a>
+                  </div>
+                </section>
               </div>
             </div>
           </li>
+          <li><a href="portfolio.html" class="header__nav-link">Портфолио</a></li>
           <li class="header__nav-dropdown header__nav-dropdown--simple">
-            <a href="components.html" class="header__nav-link" aria-haspopup="true" aria-expanded="false">Оборудование</a>
+            <a href="components.html" class="header__nav-link" aria-haspopup="true" aria-expanded="false">Все для монтажа</a>
             <ul class="header__dropdown-menu">
               <li><a href="components.html">Каминные топки</a></li>
               <li><a href="components.html">Электроочаги</a></li>
             </ul>
           </li>
-          <li class="header__nav-dropdown header__nav-dropdown--simple">
-            <a href="cooperation.html" class="header__nav-link" aria-haspopup="true" aria-expanded="false">Сотрудничество</a>
-            <ul class="header__dropdown-menu">
-              <li><a href="cooperation.html">Печники</a></li>
-              <li><a href="cooperation.html">Дизайнеры</a></li>
-              <li><a href="cooperation.html">Застройщики</a></li>
-              <li><a href="cooperation.html">Салоны каминов</a></li>
-              <li><a href="cooperation.html">Салоны интерьерных решений</a></li>
-            </ul>
-          </li>
-          <li><a href="blog.html" class="header__nav-link">Блог</a></li>
-          <li class="header__nav-dropdown header__nav-dropdown--simple">
-            <a href="about.html" class="header__nav-link" aria-haspopup="true" aria-expanded="false">О компании</a>
-            <ul class="header__dropdown-menu">
-              <li><a href="about.html#team">Наша команда</a></li>
-              <li><a href="contacts-gallery-review.html">Видеоотзывы</a></li>
-            </ul>
-          </li>
           <li><a href="contacts.html" class="header__nav-link">Контакты</a></li>
-        </ul>
-        <a href="tel:+74952293046" class="header__nav-phone-link">+7 (495) 229-30-46</a>
-        <a href="mailto:info@ceramicadecor.ru" class="header__nav-phone-link">info@ceramicadecor.ru</a>
-        <div class="header__nav-item--search"><a href="#" class="header__nav-link" id="searchBtnMobile"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg> Поиск</a></div>
-      </nav>
-      <div class="header__actions">
-        <button class="header__search-btn" id="searchBtn" aria-label="Поиск"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></button>
-        <a href="tel:+74952293046" class="header__phone-desktop">+7 (495) 229-30-46</a>
-        <button class="header__burger" id="burgerBtn" aria-label="Меню"><span></span><span></span><span></span></button>
+          </ul>
+          <ul class="header__nav-list header__nav-list--mobile-secondary">
+            <li><a href="about.html" class="header__nav-link">О компании</a></li>
+            <li><a href="about.html#team" class="header__nav-link">Наша команда</a></li>
+            <li><a href="contacts-gallery-review.html" class="header__nav-link">Видеоотзывы</a></li>
+            <li><a href="cooperation.html" class="header__nav-link">Сотрудничество</a></li>
+          </ul>
+          <a href="tel:+74952293046" class="header__nav-phone-link">+7 (495) 229-30-46</a>
+          <div class="header__nav-messengers" aria-label="Мессенджеры">
+            <a href="https://t.me/+79950001166" class="header__messenger-link" target="_blank" rel="noopener" aria-label="Telegram"><img src="images/icons/png-klev-club-p-telegram-logotip-png-9.png" alt="" class="header__messenger-icon"></a>
+            <a href="https://max.ru/" class="header__messenger-link" target="_blank" rel="noopener" aria-label="Max"><img src="images/icons/max.png" alt="" class="header__messenger-icon"></a>
+          </div>
+          <a href="mailto:info@ceramicadecor.ru" class="header__nav-phone-link">info@ceramicadecor.ru</a>
+          <div class="header__nav-item--search"><a href="#" class="header__nav-link" id="searchBtnMobile"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg> Поиск</a></div>
+        </nav>
+
+        <div class="header__actions">
+          <button class="header__search-btn" id="searchBtn" aria-label="Поиск"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></button>
+          <a href="#contact" class="btn btn--primary header__cta-btn">Оставить заявку</a>
+          <a href="tel:+74952293046" class="header__phone-desktop">+7 (495) 229-30-46</a>
+          <div class="header__messengers" aria-label="Мессенджеры">
+            <a href="https://t.me/+79950001166" class="header__messenger-link" target="_blank" rel="noopener" aria-label="Telegram"><img src="images/icons/png-klev-club-p-telegram-logotip-png-9.png" alt="" class="header__messenger-icon"></a>
+            <a href="https://max.ru/" class="header__messenger-link" target="_blank" rel="noopener" aria-label="Max"><img src="images/icons/max.png" alt="" class="header__messenger-icon"></a>
+          </div>
+          <button class="header__burger" id="burgerBtn" aria-label="Меню">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
       </div>
     </div>
   </header>
@@ -459,6 +499,622 @@
               <div class="blog-card__meta">Барбекю</div>
               <h2 class="blog-card__title">Изразцовый барбекю комплекс в беседке</h2>
               <p class="blog-card__text">Летняя кухня с мангалом, казанной плитой, винным шкафом, аргентинским грилем и облицовкой «Версаль».</p>
+            </div>
+          </a>
+          <a href="#archive-blog-1" class="blog-card">
+            <div class="blog-card__image"><span class="blog-card__placeholder">Архив блога</span></div>
+            <div class="blog-card__body">
+              <div class="blog-card__meta">Камины</div>
+              <h2 class="blog-card__title">CeramicaDecor на выставке &quot;Салон каминов и печей отопления - 2023&quot; в Крокус Экспо.</h2>
+              <p class="blog-card__text">Архивная статья о каминной культуре, стилях облицовок, исторических прототипах и декоративных приемах для современных интерьеров.</p>
+            </div>
+          </a>
+          <a href="#archive-blog-2" class="blog-card">
+            <div class="blog-card__image"><span class="blog-card__placeholder">Архив блога</span></div>
+            <div class="blog-card__body">
+              <div class="blog-card__meta">Изразцы</div>
+              <h2 class="blog-card__title">Ярославский изразец: уникальный и самобытный</h2>
+              <p class="blog-card__text">Архивная статья об истории изразца, орнаментах, мастерах, технологиях и выразительных возможностях керамической облицовки.</p>
+            </div>
+          </a>
+          <a href="#archive-blog-3" class="blog-card">
+            <div class="blog-card__image"><span class="blog-card__placeholder">Архив блога</span></div>
+            <div class="blog-card__body">
+              <div class="blog-card__meta">Изразцы</div>
+              <h2 class="blog-card__title">Уильям Френд Де Морган: самобытная керамическая посуда и изразцовые панно мастера-изобретателя</h2>
+              <p class="blog-card__text">Архивная статья об истории изразца, орнаментах, мастерах, технологиях и выразительных возможностях керамической облицовки.</p>
+            </div>
+          </a>
+          <a href="#archive-blog-4" class="blog-card">
+            <div class="blog-card__image"><span class="blog-card__placeholder">Архив блога</span></div>
+            <div class="blog-card__body">
+              <div class="blog-card__meta">Керамика</div>
+              <h2 class="blog-card__title">Уильям Моррис и движение &quot;Искусств и ремесел&quot;: &quot;эпоха возрождения&quot; для декоративно-прикладного искусства</h2>
+              <p class="blog-card__text">Материал из старого блога CeramicaDecor о керамике, ремесленных традициях, мастерах и декоративно-прикладном искусстве.</p>
+            </div>
+          </a>
+          <a href="#archive-blog-5" class="blog-card">
+            <div class="blog-card__image"><span class="blog-card__placeholder">Архив блога</span></div>
+            <div class="blog-card__body">
+              <div class="blog-card__meta">Камины</div>
+              <h2 class="blog-card__title">Творчество династии Гребер - эталон каминной и архитектурной керамики в стиле ар-нуво</h2>
+              <p class="blog-card__text">Архивная статья о каминной культуре, стилях облицовок, исторических прототипах и декоративных приемах для современных интерьеров.</p>
+            </div>
+          </a>
+          <a href="#archive-blog-6" class="blog-card">
+            <div class="blog-card__image"><span class="blog-card__placeholder">Архив блога</span></div>
+            <div class="blog-card__body">
+              <div class="blog-card__meta">Камины</div>
+              <h2 class="blog-card__title">Печи и камины Баварии: изразец, мейсенский фарфор, мрамор и немного чугуна</h2>
+              <p class="blog-card__text">Архивная статья о каминной культуре, стилях облицовок, исторических прототипах и декоративных приемах для современных интерьеров.</p>
+            </div>
+          </a>
+          <a href="#archive-blog-7" class="blog-card">
+            <div class="blog-card__image"><span class="blog-card__placeholder">Архив блога</span></div>
+            <div class="blog-card__body">
+              <div class="blog-card__meta">Изразцы</div>
+              <h2 class="blog-card__title">Немецкий изразец: формирование традиционных черт в рамках сырьевых особенностей и экономических условий</h2>
+              <p class="blog-card__text">Архивная статья об истории изразца, орнаментах, мастерах, технологиях и выразительных возможностях керамической облицовки.</p>
+            </div>
+          </a>
+          <a href="#archive-blog-8" class="blog-card">
+            <div class="blog-card__image"><span class="blog-card__placeholder">Архив блога</span></div>
+            <div class="blog-card__body">
+              <div class="blog-card__meta">Камины</div>
+              <h2 class="blog-card__title">Изразцовая отделка камина в 5 самых модных стилях интерьера 2017 года</h2>
+              <p class="blog-card__text">Архивная статья о каминной культуре, стилях облицовок, исторических прототипах и декоративных приемах для современных интерьеров.</p>
+            </div>
+          </a>
+          <a href="#archive-blog-9" class="blog-card">
+            <div class="blog-card__image"><span class="blog-card__placeholder">Архив блога</span></div>
+            <div class="blog-card__body">
+              <div class="blog-card__meta">Камины</div>
+              <h2 class="blog-card__title">Облицовка старинных каминов мистического замка Глэмис</h2>
+              <p class="blog-card__text">Архивная статья о каминной культуре, стилях облицовок, исторических прототипах и декоративных приемах для современных интерьеров.</p>
+            </div>
+          </a>
+          <a href="#archive-blog-10" class="blog-card">
+            <div class="blog-card__image"><span class="blog-card__placeholder">Архив блога</span></div>
+            <div class="blog-card__body">
+              <div class="blog-card__meta">Камины</div>
+              <h2 class="blog-card__title">Каминные облицовки по проектам Ф. О. Шехтеля: от романского средневековья до московского модерна</h2>
+              <p class="blog-card__text">Архивная статья о каминной культуре, стилях облицовок, исторических прототипах и декоративных приемах для современных интерьеров.</p>
+            </div>
+          </a>
+          <a href="#archive-blog-11" class="blog-card">
+            <div class="blog-card__image"><span class="blog-card__placeholder">Архив блога</span></div>
+            <div class="blog-card__body">
+              <div class="blog-card__meta">Фасадная керамика</div>
+              <h2 class="blog-card__title">Все краски московского модерна в фасадной майолике гостиницы Метрополь</h2>
+              <p class="blog-card__text">Обзор о фасадной керамике, майолике и архитектурных деталях, которые делают здание выразительным и долговечным.</p>
+            </div>
+          </a>
+          <a href="#archive-blog-12" class="blog-card">
+            <div class="blog-card__image"><span class="blog-card__placeholder">Архив блога</span></div>
+            <div class="blog-card__body">
+              <div class="blog-card__meta">Керамика</div>
+              <h2 class="blog-card__title">Бернард Лич: слияние Востока и Запада в искусстве керамики</h2>
+              <p class="blog-card__text">Материал из старого блога CeramicaDecor о керамике, ремесленных традициях, мастерах и декоративно-прикладном искусстве.</p>
+            </div>
+          </a>
+          <a href="#archive-blog-13" class="blog-card">
+            <div class="blog-card__image"><span class="blog-card__placeholder">Архив блога</span></div>
+            <div class="blog-card__body">
+              <div class="blog-card__meta">Печи</div>
+              <h2 class="blog-card__title">Такие разные и такие выразительные национальные печи: материал облицовки, форма, конструкция</h2>
+              <p class="blog-card__text">Материал из архива о печных традициях, конструкциях, национальных особенностях и роли керамической облицовки в образе дома.</p>
+            </div>
+          </a>
+          <a href="#archive-blog-14" class="blog-card">
+            <div class="blog-card__image"><span class="blog-card__placeholder">Архив блога</span></div>
+            <div class="blog-card__body">
+              <div class="blog-card__meta">Печи</div>
+              <h2 class="blog-card__title">Старинные печи с изразцами: фото особенных творений всех времен</h2>
+              <p class="blog-card__text">Материал из архива о печных традициях, конструкциях, национальных особенностях и роли керамической облицовки в образе дома.</p>
+            </div>
+          </a>
+          <a href="#archive-blog-15" class="blog-card">
+            <div class="blog-card__image"><span class="blog-card__placeholder">Архив блога</span></div>
+            <div class="blog-card__body">
+              <div class="blog-card__meta">Роспись</div>
+              <h2 class="blog-card__title">Красота исконно русских орнаментов в росписи фаянса и изразцов гжель</h2>
+              <p class="blog-card__text">Материал о ручной росписи керамики, орнаментах, надглазурных техниках и авторской работе с декоративной поверхностью.</p>
+            </div>
+          </a>
+          <a href="#archive-blog-16" class="blog-card">
+            <div class="blog-card__image"><span class="blog-card__placeholder">Архив блога</span></div>
+            <div class="blog-card__body">
+              <div class="blog-card__meta">Изразцы</div>
+              <h2 class="blog-card__title">Кристофер Грудер: необычное изготовление изразцов для фантазийных панно</h2>
+              <p class="blog-card__text">Архивная статья об истории изразца, орнаментах, мастерах, технологиях и выразительных возможностях керамической облицовки.</p>
+            </div>
+          </a>
+          <a href="#archive-blog-17" class="blog-card">
+            <div class="blog-card__image"><span class="blog-card__placeholder">Архив блога</span></div>
+            <div class="blog-card__body">
+              <div class="blog-card__meta">Камины</div>
+              <h2 class="blog-card__title">Старинные изразцовые камины и печи Санкт-Петербурга с двух ракурсов обзора</h2>
+              <p class="blog-card__text">Архивная статья о каминной культуре, стилях облицовок, исторических прототипах и декоративных приемах для современных интерьеров.</p>
+            </div>
+          </a>
+          <a href="#archive-blog-18" class="blog-card">
+            <div class="blog-card__image"><span class="blog-card__placeholder">Архив блога</span></div>
+            <div class="blog-card__body">
+              <div class="blog-card__meta">Изразцы</div>
+              <h2 class="blog-card__title">Орнаменталистика русского изразца</h2>
+              <p class="blog-card__text">Архивная статья об истории изразца, орнаментах, мастерах, технологиях и выразительных возможностях керамической облицовки.</p>
+            </div>
+          </a>
+          <a href="#archive-blog-19" class="blog-card">
+            <div class="blog-card__image"><span class="blog-card__placeholder">Архив блога</span></div>
+            <div class="blog-card__body">
+              <div class="blog-card__meta">Фасадная керамика</div>
+              <h2 class="blog-card__title">Ярославские изразцы в фасадном церковном убранстве</h2>
+              <p class="blog-card__text">Обзор о фасадной керамике, майолике и архитектурных деталях, которые делают здание выразительным и долговечным.</p>
+            </div>
+          </a>
+          <a href="#archive-blog-20" class="blog-card">
+            <div class="blog-card__image"><span class="blog-card__placeholder">Архив блога</span></div>
+            <div class="blog-card__body">
+              <div class="blog-card__meta">Роспись</div>
+              <h2 class="blog-card__title">Голландские изразцы - душа Нидерландов в сине-голубой росписи по белоснежной керамике</h2>
+              <p class="blog-card__text">Материал о ручной росписи керамики, орнаментах, надглазурных техниках и авторской работе с декоративной поверхностью.</p>
+            </div>
+          </a>
+          <a href="#archive-blog-21" class="blog-card">
+            <div class="blog-card__image"><span class="blog-card__placeholder">Архив блога</span></div>
+            <div class="blog-card__body">
+              <div class="blog-card__meta">Мозаика</div>
+              <h2 class="blog-card__title">Мауриц Корнелис Эшер: логические парадоксы и иллюзии в рисунках изразцов и мозаике</h2>
+              <p class="blog-card__text">Статья о мозаике как художественном языке: от исторических панно до декоративных решений для общественных пространств.</p>
+            </div>
+          </a>
+          <a href="#archive-blog-22" class="blog-card">
+            <div class="blog-card__image"><span class="blog-card__placeholder">Архив блога</span></div>
+            <div class="blog-card__body">
+              <div class="blog-card__meta">Керамика</div>
+              <h2 class="blog-card__title">Куракинская керамика - ремесло, возрожденное по традициям предков</h2>
+              <p class="blog-card__text">Материал из старого блога CeramicaDecor о керамике, ремесленных традициях, мастерах и декоративно-прикладном искусстве.</p>
+            </div>
+          </a>
+          <a href="#archive-blog-23" class="blog-card">
+            <div class="blog-card__image"><span class="blog-card__placeholder">Архив блога</span></div>
+            <div class="blog-card__body">
+              <div class="blog-card__meta">Печи</div>
+              <h2 class="blog-card__title">Тайна финских кафельных печей завода Вильгельма Андстена</h2>
+              <p class="blog-card__text">Материал из архива о печных традициях, конструкциях, национальных особенностях и роли керамической облицовки в образе дома.</p>
+            </div>
+          </a>
+          <a href="#archive-blog-24" class="blog-card">
+            <div class="blog-card__image"><span class="blog-card__placeholder">Архив блога</span></div>
+            <div class="blog-card__body">
+              <div class="blog-card__meta">Мозаика</div>
+              <h2 class="blog-card__title">Современные изразцы и мозаика в интерьере: трансформация традиционной керамики в новые идеи</h2>
+              <p class="blog-card__text">Статья о мозаике как художественном языке: от исторических панно до декоративных решений для общественных пространств.</p>
+            </div>
+          </a>
+          <a href="#archive-blog-25" class="blog-card">
+            <div class="blog-card__image"><span class="blog-card__placeholder">Архив блога</span></div>
+            <div class="blog-card__body">
+              <div class="blog-card__meta">Керамика</div>
+              <h2 class="blog-card__title">Алькасар - многовековой памятник истории керамического искусства</h2>
+              <p class="blog-card__text">Материал из старого блога CeramicaDecor о керамике, ремесленных традициях, мастерах и декоративно-прикладном искусстве.</p>
+            </div>
+          </a>
+          <a href="#archive-blog-26" class="blog-card">
+            <div class="blog-card__image"><span class="blog-card__placeholder">Архив блога</span></div>
+            <div class="blog-card__body">
+              <div class="blog-card__meta">Камины</div>
+              <h2 class="blog-card__title">Дровяные камины - долгий путь от древности до современности</h2>
+              <p class="blog-card__text">Архивная статья о каминной культуре, стилях облицовок, исторических прототипах и декоративных приемах для современных интерьеров.</p>
+            </div>
+          </a>
+          <a href="#archive-blog-27" class="blog-card">
+            <div class="blog-card__image"><span class="blog-card__placeholder">Архив блога</span></div>
+            <div class="blog-card__body">
+              <div class="blog-card__meta">Печи</div>
+              <h2 class="blog-card__title">Печи-голландки: от истории к современности</h2>
+              <p class="blog-card__text">Материал из архива о печных традициях, конструкциях, национальных особенностях и роли керамической облицовки в образе дома.</p>
+            </div>
+          </a>
+          <a href="#archive-blog-28" class="blog-card">
+            <div class="blog-card__image"><span class="blog-card__placeholder">Архив блога</span></div>
+            <div class="blog-card__body">
+              <div class="blog-card__meta">Печи</div>
+              <h2 class="blog-card__title">Печи-барбекю - от простейшей решетки до полноценных печных комплексов</h2>
+              <p class="blog-card__text">Материал из архива о печных традициях, конструкциях, национальных особенностях и роли керамической облицовки в образе дома.</p>
+            </div>
+          </a>
+          <a href="#archive-blog-29" class="blog-card">
+            <div class="blog-card__image"><span class="blog-card__placeholder">Архив блога</span></div>
+            <div class="blog-card__body">
+              <div class="blog-card__meta">Камины</div>
+              <h2 class="blog-card__title">Камин в доме - теплая и уютная атмосфера</h2>
+              <p class="blog-card__text">Архивная статья о каминной культуре, стилях облицовок, исторических прототипах и декоративных приемах для современных интерьеров.</p>
+            </div>
+          </a>
+          <a href="#archive-blog-30" class="blog-card">
+            <div class="blog-card__image"><span class="blog-card__placeholder">Архив блога</span></div>
+            <div class="blog-card__body">
+              <div class="blog-card__meta">Камины</div>
+              <h2 class="blog-card__title">Электро- и биокамины - живой огонь в квартире</h2>
+              <p class="blog-card__text">Архивная статья о каминной культуре, стилях облицовок, исторических прототипах и декоративных приемах для современных интерьеров.</p>
+            </div>
+          </a>
+          <a href="#archive-blog-31" class="blog-card">
+            <div class="blog-card__image"><span class="blog-card__placeholder">Архив блога</span></div>
+            <div class="blog-card__body">
+              <div class="blog-card__meta">Керамика</div>
+              <h2 class="blog-card__title">Михаил Александрович Врубель: эмоциональная и чувственная керамика</h2>
+              <p class="blog-card__text">Материал из старого блога CeramicaDecor о керамике, ремесленных традициях, мастерах и декоративно-прикладном искусстве.</p>
+            </div>
+          </a>
+          <a href="#archive-blog-32" class="blog-card">
+            <div class="blog-card__image"><span class="blog-card__placeholder">Архив блога</span></div>
+            <div class="blog-card__body">
+              <div class="blog-card__meta">Печи</div>
+              <h2 class="blog-card__title">Изразцовые печи дворца Юсуповых в Москве</h2>
+              <p class="blog-card__text">Материал из архива о печных традициях, конструкциях, национальных особенностях и роли керамической облицовки в образе дома.</p>
+            </div>
+          </a>
+          <a href="#archive-blog-33" class="blog-card">
+            <div class="blog-card__image"><span class="blog-card__placeholder">Архив блога</span></div>
+            <div class="blog-card__body">
+              <div class="blog-card__meta">Камины</div>
+              <h2 class="blog-card__title">Королевский замок Блуа: страницы истории в облицовке каминов</h2>
+              <p class="blog-card__text">Архивная статья о каминной культуре, стилях облицовок, исторических прототипах и декоративных приемах для современных интерьеров.</p>
+            </div>
+          </a>
+          <a href="#archive-blog-34" class="blog-card">
+            <div class="blog-card__image"><span class="blog-card__placeholder">Архив блога</span></div>
+            <div class="blog-card__body">
+              <div class="blog-card__meta">Камины</div>
+              <h2 class="blog-card__title">Антикварные камины - историческая и художественная ценность в вашем доме</h2>
+              <p class="blog-card__text">Архивная статья о каминной культуре, стилях облицовок, исторических прототипах и декоративных приемах для современных интерьеров.</p>
+            </div>
+          </a>
+          <a href="#archive-blog-35" class="blog-card">
+            <div class="blog-card__image"><span class="blog-card__placeholder">Архив блога</span></div>
+            <div class="blog-card__body">
+              <div class="blog-card__meta">Керамика</div>
+              <h2 class="blog-card__title">Керамика модерна - яркое подтверждение мирового единства языка искусства</h2>
+              <p class="blog-card__text">Материал из старого блога CeramicaDecor о керамике, ремесленных традициях, мастерах и декоративно-прикладном искусстве.</p>
+            </div>
+          </a>
+          <a href="#archive-blog-36" class="blog-card">
+            <div class="blog-card__image"><span class="blog-card__placeholder">Архив блога</span></div>
+            <div class="blog-card__body">
+              <div class="blog-card__meta">Керамика</div>
+              <h2 class="blog-card__title">Антонио Гауди: архитектурные шедевры в россыпи керамических и стеклянных осколков</h2>
+              <p class="blog-card__text">Материал из старого блога CeramicaDecor о керамике, ремесленных традициях, мастерах и декоративно-прикладном искусстве.</p>
+            </div>
+          </a>
+          <a href="#archive-blog-37" class="blog-card">
+            <div class="blog-card__image"><span class="blog-card__placeholder">Архив блога</span></div>
+            <div class="blog-card__body">
+              <div class="blog-card__meta">Керамика</div>
+              <h2 class="blog-card__title">Символизм христианства через керамическое церковное убранство</h2>
+              <p class="blog-card__text">Материал из старого блога CeramicaDecor о керамике, ремесленных традициях, мастерах и декоративно-прикладном искусстве.</p>
+            </div>
+          </a>
+          <a href="#archive-blog-38" class="blog-card">
+            <div class="blog-card__image"><span class="blog-card__placeholder">Архив блога</span></div>
+            <div class="blog-card__body">
+              <div class="blog-card__meta">Керамика</div>
+              <h2 class="blog-card__title">Английская керамика фабрики Минтон под влиянием смены поколений</h2>
+              <p class="blog-card__text">Материал из старого блога CeramicaDecor о керамике, ремесленных традициях, мастерах и декоративно-прикладном искусстве.</p>
+            </div>
+          </a>
+          <a href="#archive-blog-39" class="blog-card">
+            <div class="blog-card__image"><span class="blog-card__placeholder">Архив блога</span></div>
+            <div class="blog-card__body">
+              <div class="blog-card__meta">Керамика</div>
+              <h2 class="blog-card__title">Искусство керамики стран мусульманского мира</h2>
+              <p class="blog-card__text">Материал из старого блога CeramicaDecor о керамике, ремесленных традициях, мастерах и декоративно-прикладном искусстве.</p>
+            </div>
+          </a>
+          <a href="#archive-blog-40" class="blog-card">
+            <div class="blog-card__image"><span class="blog-card__placeholder">Архив блога</span></div>
+            <div class="blog-card__body">
+              <div class="blog-card__meta">Фасадная керамика</div>
+              <h2 class="blog-card__title">Новый взгляд на использование фасадной керамики</h2>
+              <p class="blog-card__text">Обзор о фасадной керамике, майолике и архитектурных деталях, которые делают здание выразительным и долговечным.</p>
+            </div>
+          </a>
+          <a href="#archive-blog-41" class="blog-card">
+            <div class="blog-card__image"><span class="blog-card__placeholder">Архив блога</span></div>
+            <div class="blog-card__body">
+              <div class="blog-card__meta">Керамика</div>
+              <h2 class="blog-card__title">Сказочный мир иллюстраций и керамики Уолтера Крейна</h2>
+              <p class="blog-card__text">Материал из старого блога CeramicaDecor о керамике, ремесленных традициях, мастерах и декоративно-прикладном искусстве.</p>
+            </div>
+          </a>
+          <a href="#archive-blog-42" class="blog-card">
+            <div class="blog-card__image"><span class="blog-card__placeholder">Архив блога</span></div>
+            <div class="blog-card__body">
+              <div class="blog-card__meta">Печи</div>
+              <h2 class="blog-card__title">Разнообразие и великолепие изразцовых печей таинственного замка Бран</h2>
+              <p class="blog-card__text">Материал из архива о печных традициях, конструкциях, национальных особенностях и роли керамической облицовки в образе дома.</p>
+            </div>
+          </a>
+          <a href="#archive-blog-43" class="blog-card">
+            <div class="blog-card__image"><span class="blog-card__placeholder">Архив блога</span></div>
+            <div class="blog-card__body">
+              <div class="blog-card__meta">Керамика</div>
+              <h2 class="blog-card__title">Замок Кардифф - образец керамики в каждом штрихе отделки</h2>
+              <p class="blog-card__text">Материал из старого блога CeramicaDecor о керамике, ремесленных традициях, мастерах и декоративно-прикладном искусстве.</p>
+            </div>
+          </a>
+          <a href="#archive-blog-44" class="blog-card">
+            <div class="blog-card__image"><span class="blog-card__placeholder">Архив блога</span></div>
+            <div class="blog-card__body">
+              <div class="blog-card__meta">Камины</div>
+              <h2 class="blog-card__title">Камины в интерьере - классическая роскошь в современном мире</h2>
+              <p class="blog-card__text">Архивная статья о каминной культуре, стилях облицовок, исторических прототипах и декоративных приемах для современных интерьеров.</p>
+            </div>
+          </a>
+          <a href="#archive-blog-45" class="blog-card">
+            <div class="blog-card__image"><span class="blog-card__placeholder">Архив блога</span></div>
+            <div class="blog-card__body">
+              <div class="blog-card__meta">Керамика</div>
+              <h2 class="blog-card__title">Эксклюзивная керамическая облицовка</h2>
+              <p class="blog-card__text">Материал из старого блога CeramicaDecor о керамике, ремесленных традициях, мастерах и декоративно-прикладном искусстве.</p>
+            </div>
+          </a>
+          <a href="#archive-blog-46" class="blog-card">
+            <div class="blog-card__image"><span class="blog-card__placeholder">Архив блога</span></div>
+            <div class="blog-card__body">
+              <div class="blog-card__meta">Печи</div>
+              <h2 class="blog-card__title">История изразцовых печей</h2>
+              <p class="blog-card__text">Материал из архива о печных традициях, конструкциях, национальных особенностях и роли керамической облицовки в образе дома.</p>
+            </div>
+          </a>
+          <a href="#archive-blog-47" class="blog-card">
+            <div class="blog-card__image"><span class="blog-card__placeholder">Архив блога</span></div>
+            <div class="blog-card__body">
+              <div class="blog-card__meta">Роспись</div>
+              <h2 class="blog-card__title">Надглазурная роспись готовой плитки</h2>
+              <p class="blog-card__text">Материал о ручной росписи керамики, орнаментах, надглазурных техниках и авторской работе с декоративной поверхностью.</p>
+            </div>
+          </a>
+          <a href="#archive-blog-48" class="blog-card">
+            <div class="blog-card__image"><span class="blog-card__placeholder">Архив блога</span></div>
+            <div class="blog-card__body">
+              <div class="blog-card__meta">Изразцы</div>
+              <h2 class="blog-card__title">История изразца</h2>
+              <p class="blog-card__text">Архивная статья об истории изразца, орнаментах, мастерах, технологиях и выразительных возможностях керамической облицовки.</p>
+            </div>
+          </a>
+          <a href="#archive-blog-49" class="blog-card">
+            <div class="blog-card__image"><span class="blog-card__placeholder">Архив блога</span></div>
+            <div class="blog-card__body">
+              <div class="blog-card__meta">Фасадная керамика</div>
+              <h2 class="blog-card__title">Керамический фасад</h2>
+              <p class="blog-card__text">Обзор о фасадной керамике, майолике и архитектурных деталях, которые делают здание выразительным и долговечным.</p>
+            </div>
+          </a>
+          <a href="#archive-blog-50" class="blog-card">
+            <div class="blog-card__image"><span class="blog-card__placeholder">Архив блога</span></div>
+            <div class="blog-card__body">
+              <div class="blog-card__meta">Камины</div>
+              <h2 class="blog-card__title">Камины в стиле Арт-Нуво</h2>
+              <p class="blog-card__text">Архивная статья о каминной культуре, стилях облицовок, исторических прототипах и декоративных приемах для современных интерьеров.</p>
+            </div>
+          </a>
+          <a href="#archive-blog-51" class="blog-card">
+            <div class="blog-card__image"><span class="blog-card__placeholder">Архив блога</span></div>
+            <div class="blog-card__body">
+              <div class="blog-card__meta">Камины</div>
+              <h2 class="blog-card__title">Камины в стиле Арт-Деко</h2>
+              <p class="blog-card__text">Архивная статья о каминной культуре, стилях облицовок, исторических прототипах и декоративных приемах для современных интерьеров.</p>
+            </div>
+          </a>
+          <a href="#archive-blog-52" class="blog-card">
+            <div class="blog-card__image"><span class="blog-card__placeholder">Архив блога</span></div>
+            <div class="blog-card__body">
+              <div class="blog-card__meta">Камины</div>
+              <h2 class="blog-card__title">Угловые камины в интерьере</h2>
+              <p class="blog-card__text">Архивная статья о каминной культуре, стилях облицовок, исторических прототипах и декоративных приемах для современных интерьеров.</p>
+            </div>
+          </a>
+          <a href="#archive-blog-53" class="blog-card">
+            <div class="blog-card__image"><span class="blog-card__placeholder">Архив блога</span></div>
+            <div class="blog-card__body">
+              <div class="blog-card__meta">Камины</div>
+              <h2 class="blog-card__title">Камины двадцатого века: преображение стилей и поиск новых декоративных решений</h2>
+              <p class="blog-card__text">Архивная статья о каминной культуре, стилях облицовок, исторических прототипах и декоративных приемах для современных интерьеров.</p>
+            </div>
+          </a>
+          <a href="#archive-blog-54" class="blog-card">
+            <div class="blog-card__image"><span class="blog-card__placeholder">Архив блога</span></div>
+            <div class="blog-card__body">
+              <div class="blog-card__meta">Изразцы</div>
+              <h2 class="blog-card__title">Изразцы святых стен - творения Степана Полубеса</h2>
+              <p class="blog-card__text">Архивная статья об истории изразца, орнаментах, мастерах, технологиях и выразительных возможностях керамической облицовки.</p>
+            </div>
+          </a>
+          <a href="#archive-blog-55" class="blog-card">
+            <div class="blog-card__image"><span class="blog-card__placeholder">Архив блога</span></div>
+            <div class="blog-card__body">
+              <div class="blog-card__meta">Керамика</div>
+              <h2 class="blog-card__title">Страна керамики и искусство веков</h2>
+              <p class="blog-card__text">Материал из старого блога CeramicaDecor о керамике, ремесленных традициях, мастерах и декоративно-прикладном искусстве.</p>
+            </div>
+          </a>
+          <a href="#archive-blog-56" class="blog-card">
+            <div class="blog-card__image"><span class="blog-card__placeholder">Архив блога</span></div>
+            <div class="blog-card__body">
+              <div class="blog-card__meta">Изразцы</div>
+              <h2 class="blog-card__title">Кафля или белорусский изразец как особая веха развития искусства керамики</h2>
+              <p class="blog-card__text">Архивная статья об истории изразца, орнаментах, мастерах, технологиях и выразительных возможностях керамической облицовки.</p>
+            </div>
+          </a>
+          <a href="#archive-blog-57" class="blog-card">
+            <div class="blog-card__image"><span class="blog-card__placeholder">Архив блога</span></div>
+            <div class="blog-card__body">
+              <div class="blog-card__meta">Изразцы</div>
+              <h2 class="blog-card__title">История глазури и эмали - основы шика, блеска и многоцветности керамического изразца</h2>
+              <p class="blog-card__text">Архивная статья об истории изразца, орнаментах, мастерах, технологиях и выразительных возможностях керамической облицовки.</p>
+            </div>
+          </a>
+          <a href="#archive-blog-58" class="blog-card">
+            <div class="blog-card__image"><span class="blog-card__placeholder">Архив блога</span></div>
+            <div class="blog-card__body">
+              <div class="blog-card__meta">Керамика</div>
+              <h2 class="blog-card__title">Филиппов Алексей Васильевич - художник-керамист, историк, реставратор и новатор в одном лице</h2>
+              <p class="blog-card__text">Материал из старого блога CeramicaDecor о керамике, ремесленных традициях, мастерах и декоративно-прикладном искусстве.</p>
+            </div>
+          </a>
+          <a href="#archive-blog-59" class="blog-card">
+            <div class="blog-card__image"><span class="blog-card__placeholder">Архив блога</span></div>
+            <div class="blog-card__body">
+              <div class="blog-card__meta">Мозаика</div>
+              <h2 class="blog-card__title">Советский реализм в искусстве мозаики</h2>
+              <p class="blog-card__text">Статья о мозаике как художественном языке: от исторических панно до декоративных решений для общественных пространств.</p>
+            </div>
+          </a>
+          <a href="#archive-blog-60" class="blog-card">
+            <div class="blog-card__image"><span class="blog-card__placeholder">Архив блога</span></div>
+            <div class="blog-card__body">
+              <div class="blog-card__meta">Мозаика</div>
+              <h2 class="blog-card__title">Национальные краски в советских мозаичных панно</h2>
+              <p class="blog-card__text">Статья о мозаике как художественном языке: от исторических панно до декоративных решений для общественных пространств.</p>
+            </div>
+          </a>
+          <a href="#archive-blog-61" class="blog-card">
+            <div class="blog-card__image"><span class="blog-card__placeholder">Архив блога</span></div>
+            <div class="blog-card__body">
+              <div class="blog-card__meta">Керамика</div>
+              <h2 class="blog-card__title">Керамика непоколебимой воли и жажды исследований Джозайи Веджвуда</h2>
+              <p class="blog-card__text">Материал из старого блога CeramicaDecor о керамике, ремесленных традициях, мастерах и декоративно-прикладном искусстве.</p>
+            </div>
+          </a>
+          <a href="#archive-blog-62" class="blog-card">
+            <div class="blog-card__image"><span class="blog-card__placeholder">Архив блога</span></div>
+            <div class="blog-card__body">
+              <div class="blog-card__meta">Керамика</div>
+              <h2 class="blog-card__title">Творец керамики французских замков XVI века - Массео Абакен</h2>
+              <p class="blog-card__text">Материал из старого блога CeramicaDecor о керамике, ремесленных традициях, мастерах и декоративно-прикладном искусстве.</p>
+            </div>
+          </a>
+          <a href="#archive-blog-63" class="blog-card">
+            <div class="blog-card__image"><span class="blog-card__placeholder">Архив блога</span></div>
+            <div class="blog-card__body">
+              <div class="blog-card__meta">Керамика</div>
+              <h2 class="blog-card__title">Мир керамики Петра Кузьмича Ваулина</h2>
+              <p class="blog-card__text">Материал из старого блога CeramicaDecor о керамике, ремесленных традициях, мастерах и декоративно-прикладном искусстве.</p>
+            </div>
+          </a>
+          <a href="#archive-blog-64" class="blog-card">
+            <div class="blog-card__image"><span class="blog-card__placeholder">Архив блога</span></div>
+            <div class="blog-card__body">
+              <div class="blog-card__meta">Керамика</div>
+              <h2 class="blog-card__title">Английская плитка ручной работы</h2>
+              <p class="blog-card__text">Материал из старого блога CeramicaDecor о керамике, ремесленных традициях, мастерах и декоративно-прикладном искусстве.</p>
+            </div>
+          </a>
+          <a href="#archive-blog-65" class="blog-card">
+            <div class="blog-card__image"><span class="blog-card__placeholder">Архив блога</span></div>
+            <div class="blog-card__body">
+              <div class="blog-card__meta">Керамика</div>
+              <h2 class="blog-card__title">Александр Биго: путь к искусству керамики</h2>
+              <p class="blog-card__text">Материал из старого блога CeramicaDecor о керамике, ремесленных традициях, мастерах и декоративно-прикладном искусстве.</p>
+            </div>
+          </a>
+          <a href="#archive-blog-66" class="blog-card">
+            <div class="blog-card__image"><span class="blog-card__placeholder">Архив блога</span></div>
+            <div class="blog-card__body">
+              <div class="blog-card__meta">Керамика</div>
+              <h2 class="blog-card__title">Керамическая отделка метрополитена: турне по подземке</h2>
+              <p class="blog-card__text">Материал из старого блога CeramicaDecor о керамике, ремесленных традициях, мастерах и декоративно-прикладном искусстве.</p>
+            </div>
+          </a>
+          <a href="#archive-blog-67" class="blog-card">
+            <div class="blog-card__image"><span class="blog-card__placeholder">Архив блога</span></div>
+            <div class="blog-card__body">
+              <div class="blog-card__meta">Метлахская плитка</div>
+              <h2 class="blog-card__title">Метлахская плитка - универсальный инструмент для воплощения самых смелых фантазий в дизайне</h2>
+              <p class="blog-card__text">Архивная публикация о метлахской плитке, ее геометрии, долговечности и возможностях для сложных декоративных композиций.</p>
+            </div>
+          </a>
+          <a href="#archive-blog-68" class="blog-card">
+            <div class="blog-card__image"><span class="blog-card__placeholder">Архив блога</span></div>
+            <div class="blog-card__body">
+              <div class="blog-card__meta">Метлахская плитка</div>
+              <h2 class="blog-card__title">Фабрика Winckelmans - европейский лидер по изготовлению метлахской плитки</h2>
+              <p class="blog-card__text">Архивная публикация о метлахской плитке, ее геометрии, долговечности и возможностях для сложных декоративных композиций.</p>
+            </div>
+          </a>
+          <a href="#archive-blog-69" class="blog-card">
+            <div class="blog-card__image"><span class="blog-card__placeholder">Архив блога</span></div>
+            <div class="blog-card__body">
+              <div class="blog-card__meta">Камины</div>
+              <h2 class="blog-card__title">Типы изразцовых каминов и печей CeramicaDecor</h2>
+              <p class="blog-card__text">Архивная статья о каминной культуре, стилях облицовок, исторических прототипах и декоративных приемах для современных интерьеров.</p>
+            </div>
+          </a>
+          <a href="#archive-blog-70" class="blog-card">
+            <div class="blog-card__image"><span class="blog-card__placeholder">Архив блога</span></div>
+            <div class="blog-card__body">
+              <div class="blog-card__meta">Керамика</div>
+              <h2 class="blog-card__title">Эксклюзивные рамы для зеркал с элементами из керамики CeramicaDecor</h2>
+              <p class="blog-card__text">Материал из старого блога CeramicaDecor о керамике, ремесленных традициях, мастерах и декоративно-прикладном искусстве.</p>
+            </div>
+          </a>
+          <a href="#archive-blog-71" class="blog-card">
+            <div class="blog-card__image"><span class="blog-card__placeholder">Архив блога</span></div>
+            <div class="blog-card__body">
+              <div class="blog-card__meta">Фасадная керамика</div>
+              <h2 class="blog-card__title">Керамика от кухонного фартука до фасада дома CeramicaDecor</h2>
+              <p class="blog-card__text">Обзор о фасадной керамике, майолике и архитектурных деталях, которые делают здание выразительным и долговечным.</p>
+            </div>
+          </a>
+          <a href="#archive-blog-72" class="blog-card">
+            <div class="blog-card__image"><span class="blog-card__placeholder">Архив блога</span></div>
+            <div class="blog-card__body">
+              <div class="blog-card__meta">Фасадная керамика</div>
+              <h2 class="blog-card__title">Фасадная керамика для эксклюзивной отделки домов от компании CeramicaDecor</h2>
+              <p class="blog-card__text">Обзор о фасадной керамике, майолике и архитектурных деталях, которые делают здание выразительным и долговечным.</p>
+            </div>
+          </a>
+          <a href="#archive-blog-73" class="blog-card">
+            <div class="blog-card__image"><span class="blog-card__placeholder">Архив блога</span></div>
+            <div class="blog-card__body">
+              <div class="blog-card__meta">Роспись</div>
+              <h2 class="blog-card__title">Роспись по Вашей плитке CeramicaDecor</h2>
+              <p class="blog-card__text">Материал о ручной росписи керамики, орнаментах, надглазурных техниках и авторской работе с декоративной поверхностью.</p>
+            </div>
+          </a>
+          <a href="#archive-blog-74" class="blog-card">
+            <div class="blog-card__image"><span class="blog-card__placeholder">Архив блога</span></div>
+            <div class="blog-card__body">
+              <div class="blog-card__meta">Роспись</div>
+              <h2 class="blog-card__title">Наша живопись по керамике CeramicaDecor</h2>
+              <p class="blog-card__text">Материал о ручной росписи керамики, орнаментах, надглазурных техниках и авторской работе с декоративной поверхностью.</p>
+            </div>
+          </a>
+          <a href="#archive-blog-75" class="blog-card">
+            <div class="blog-card__image"><span class="blog-card__placeholder">Архив блога</span></div>
+            <div class="blog-card__body">
+              <div class="blog-card__meta">Керамика</div>
+              <h2 class="blog-card__title">Керамические панно ручной работы CeramicaDecor</h2>
+              <p class="blog-card__text">Материал из старого блога CeramicaDecor о керамике, ремесленных традициях, мастерах и декоративно-прикладном искусстве.</p>
+            </div>
+          </a>
+          <a href="#archive-blog-76" class="blog-card">
+            <div class="blog-card__image"><span class="blog-card__placeholder">Архив блога</span></div>
+            <div class="blog-card__body">
+              <div class="blog-card__meta">Керамика</div>
+              <h2 class="blog-card__title">Буржуйка: от возникновения до наших дней</h2>
+              <p class="blog-card__text">Материал из старого блога CeramicaDecor о керамике, ремесленных традициях, мастерах и декоративно-прикладном искусстве.</p>
+            </div>
+          </a>
+          <a href="#archive-blog-77" class="blog-card">
+            <div class="blog-card__image"><span class="blog-card__placeholder">Архив блога</span></div>
+            <div class="blog-card__body">
+              <div class="blog-card__meta">Керамика</div>
+              <h2 class="blog-card__title">Никулосо Франциско Пизано - признанный гений керамического искусства</h2>
+              <p class="blog-card__text">Материал из старого блога CeramicaDecor о керамике, ремесленных традициях, мастерах и декоративно-прикладном искусстве.</p>
             </div>
           </a>
         </div>
@@ -628,6 +1284,1084 @@
             <a class="blog-article__video" href="https://vkvideo.ru/video-178201211_456239564" target="_blank" rel="noopener">Смотреть видео о проекте</a>
           </div>
         </article>
+
+        <article class="blog-article" id="archive-blog-1">
+          <aside class="blog-article__aside">
+            <div class="blog-article__kicker">Камины</div>
+            <h2 class="blog-article__title">CeramicaDecor на выставке &quot;Салон каминов и печей отопления - 2023&quot; в Крокус Экспо.</h2>
+            <p class="blog-article__lead">Архивная статья о каминной культуре, стилях облицовок, исторических прототипах и декоративных приемах для современных интерьеров.</p>
+          </aside>
+          <div class="blog-article__content">
+            <div class="blog-article__media">Заглушка фото: архивный материал блога CeramicaDecor</div>
+            <h3>Архивная статья</h3>
+            <p>Тема материала: CeramicaDecor на выставке &quot;Салон каминов и печей отопления - 2023&quot; в Крокус Экспо.. Публикация перенесена из старой версии блога и оформлена в текущей темной стилистике страницы.</p>
+            <p>Материал оставлен в общем списке блога после актуальных проектных статей, чтобы сохранить порядок новой страницы и при этом вернуть архив старой версии сайта.</p>
+          </div>
+        </article>
+
+        <article class="blog-article" id="archive-blog-2">
+          <aside class="blog-article__aside">
+            <div class="blog-article__kicker">Изразцы</div>
+            <h2 class="blog-article__title">Ярославский изразец: уникальный и самобытный</h2>
+            <p class="blog-article__lead">Архивная статья об истории изразца, орнаментах, мастерах, технологиях и выразительных возможностях керамической облицовки.</p>
+          </aside>
+          <div class="blog-article__content">
+            <div class="blog-article__media">Заглушка фото: архивный материал блога CeramicaDecor</div>
+            <h3>Архивная статья</h3>
+            <p>Тема материала: Ярославский изразец: уникальный и самобытный. Публикация перенесена из старой версии блога и оформлена в текущей темной стилистике страницы.</p>
+            <p>Материал оставлен в общем списке блога после актуальных проектных статей, чтобы сохранить порядок новой страницы и при этом вернуть архив старой версии сайта.</p>
+          </div>
+        </article>
+
+        <article class="blog-article" id="archive-blog-3">
+          <aside class="blog-article__aside">
+            <div class="blog-article__kicker">Изразцы</div>
+            <h2 class="blog-article__title">Уильям Френд Де Морган: самобытная керамическая посуда и изразцовые панно мастера-изобретателя</h2>
+            <p class="blog-article__lead">Архивная статья об истории изразца, орнаментах, мастерах, технологиях и выразительных возможностях керамической облицовки.</p>
+          </aside>
+          <div class="blog-article__content">
+            <div class="blog-article__media">Заглушка фото: архивный материал блога CeramicaDecor</div>
+            <h3>Архивная статья</h3>
+            <p>Тема материала: Уильям Френд Де Морган: самобытная керамическая посуда и изразцовые панно мастера-изобретателя. Публикация перенесена из старой версии блога и оформлена в текущей темной стилистике страницы.</p>
+            <p>Материал оставлен в общем списке блога после актуальных проектных статей, чтобы сохранить порядок новой страницы и при этом вернуть архив старой версии сайта.</p>
+          </div>
+        </article>
+
+        <article class="blog-article" id="archive-blog-4">
+          <aside class="blog-article__aside">
+            <div class="blog-article__kicker">Керамика</div>
+            <h2 class="blog-article__title">Уильям Моррис и движение &quot;Искусств и ремесел&quot;: &quot;эпоха возрождения&quot; для декоративно-прикладного искусства</h2>
+            <p class="blog-article__lead">Материал из старого блога CeramicaDecor о керамике, ремесленных традициях, мастерах и декоративно-прикладном искусстве.</p>
+          </aside>
+          <div class="blog-article__content">
+            <div class="blog-article__media">Заглушка фото: архивный материал блога CeramicaDecor</div>
+            <h3>Архивная статья</h3>
+            <p>Тема материала: Уильям Моррис и движение &quot;Искусств и ремесел&quot;: &quot;эпоха возрождения&quot; для декоративно-прикладного искусства. Публикация перенесена из старой версии блога и оформлена в текущей темной стилистике страницы.</p>
+            <p>Материал оставлен в общем списке блога после актуальных проектных статей, чтобы сохранить порядок новой страницы и при этом вернуть архив старой версии сайта.</p>
+          </div>
+        </article>
+
+        <article class="blog-article" id="archive-blog-5">
+          <aside class="blog-article__aside">
+            <div class="blog-article__kicker">Камины</div>
+            <h2 class="blog-article__title">Творчество династии Гребер - эталон каминной и архитектурной керамики в стиле ар-нуво</h2>
+            <p class="blog-article__lead">Архивная статья о каминной культуре, стилях облицовок, исторических прототипах и декоративных приемах для современных интерьеров.</p>
+          </aside>
+          <div class="blog-article__content">
+            <div class="blog-article__media">Заглушка фото: архивный материал блога CeramicaDecor</div>
+            <h3>Архивная статья</h3>
+            <p>Тема материала: Творчество династии Гребер - эталон каминной и архитектурной керамики в стиле ар-нуво. Публикация перенесена из старой версии блога и оформлена в текущей темной стилистике страницы.</p>
+            <p>Материал оставлен в общем списке блога после актуальных проектных статей, чтобы сохранить порядок новой страницы и при этом вернуть архив старой версии сайта.</p>
+          </div>
+        </article>
+
+        <article class="blog-article" id="archive-blog-6">
+          <aside class="blog-article__aside">
+            <div class="blog-article__kicker">Камины</div>
+            <h2 class="blog-article__title">Печи и камины Баварии: изразец, мейсенский фарфор, мрамор и немного чугуна</h2>
+            <p class="blog-article__lead">Архивная статья о каминной культуре, стилях облицовок, исторических прототипах и декоративных приемах для современных интерьеров.</p>
+          </aside>
+          <div class="blog-article__content">
+            <div class="blog-article__media">Заглушка фото: архивный материал блога CeramicaDecor</div>
+            <h3>Архивная статья</h3>
+            <p>Тема материала: Печи и камины Баварии: изразец, мейсенский фарфор, мрамор и немного чугуна. Публикация перенесена из старой версии блога и оформлена в текущей темной стилистике страницы.</p>
+            <p>Материал оставлен в общем списке блога после актуальных проектных статей, чтобы сохранить порядок новой страницы и при этом вернуть архив старой версии сайта.</p>
+          </div>
+        </article>
+
+        <article class="blog-article" id="archive-blog-7">
+          <aside class="blog-article__aside">
+            <div class="blog-article__kicker">Изразцы</div>
+            <h2 class="blog-article__title">Немецкий изразец: формирование традиционных черт в рамках сырьевых особенностей и экономических условий</h2>
+            <p class="blog-article__lead">Архивная статья об истории изразца, орнаментах, мастерах, технологиях и выразительных возможностях керамической облицовки.</p>
+          </aside>
+          <div class="blog-article__content">
+            <div class="blog-article__media">Заглушка фото: архивный материал блога CeramicaDecor</div>
+            <h3>Архивная статья</h3>
+            <p>Тема материала: Немецкий изразец: формирование традиционных черт в рамках сырьевых особенностей и экономических условий. Публикация перенесена из старой версии блога и оформлена в текущей темной стилистике страницы.</p>
+            <p>Материал оставлен в общем списке блога после актуальных проектных статей, чтобы сохранить порядок новой страницы и при этом вернуть архив старой версии сайта.</p>
+          </div>
+        </article>
+
+        <article class="blog-article" id="archive-blog-8">
+          <aside class="blog-article__aside">
+            <div class="blog-article__kicker">Камины</div>
+            <h2 class="blog-article__title">Изразцовая отделка камина в 5 самых модных стилях интерьера 2017 года</h2>
+            <p class="blog-article__lead">Архивная статья о каминной культуре, стилях облицовок, исторических прототипах и декоративных приемах для современных интерьеров.</p>
+          </aside>
+          <div class="blog-article__content">
+            <div class="blog-article__media">Заглушка фото: архивный материал блога CeramicaDecor</div>
+            <h3>Архивная статья</h3>
+            <p>Тема материала: Изразцовая отделка камина в 5 самых модных стилях интерьера 2017 года. Публикация перенесена из старой версии блога и оформлена в текущей темной стилистике страницы.</p>
+            <p>Материал оставлен в общем списке блога после актуальных проектных статей, чтобы сохранить порядок новой страницы и при этом вернуть архив старой версии сайта.</p>
+          </div>
+        </article>
+
+        <article class="blog-article" id="archive-blog-9">
+          <aside class="blog-article__aside">
+            <div class="blog-article__kicker">Камины</div>
+            <h2 class="blog-article__title">Облицовка старинных каминов мистического замка Глэмис</h2>
+            <p class="blog-article__lead">Архивная статья о каминной культуре, стилях облицовок, исторических прототипах и декоративных приемах для современных интерьеров.</p>
+          </aside>
+          <div class="blog-article__content">
+            <div class="blog-article__media">Заглушка фото: архивный материал блога CeramicaDecor</div>
+            <h3>Архивная статья</h3>
+            <p>Тема материала: Облицовка старинных каминов мистического замка Глэмис. Публикация перенесена из старой версии блога и оформлена в текущей темной стилистике страницы.</p>
+            <p>Материал оставлен в общем списке блога после актуальных проектных статей, чтобы сохранить порядок новой страницы и при этом вернуть архив старой версии сайта.</p>
+          </div>
+        </article>
+
+        <article class="blog-article" id="archive-blog-10">
+          <aside class="blog-article__aside">
+            <div class="blog-article__kicker">Камины</div>
+            <h2 class="blog-article__title">Каминные облицовки по проектам Ф. О. Шехтеля: от романского средневековья до московского модерна</h2>
+            <p class="blog-article__lead">Архивная статья о каминной культуре, стилях облицовок, исторических прототипах и декоративных приемах для современных интерьеров.</p>
+          </aside>
+          <div class="blog-article__content">
+            <div class="blog-article__media">Заглушка фото: архивный материал блога CeramicaDecor</div>
+            <h3>Архивная статья</h3>
+            <p>Тема материала: Каминные облицовки по проектам Ф. О. Шехтеля: от романского средневековья до московского модерна. Публикация перенесена из старой версии блога и оформлена в текущей темной стилистике страницы.</p>
+            <p>Материал оставлен в общем списке блога после актуальных проектных статей, чтобы сохранить порядок новой страницы и при этом вернуть архив старой версии сайта.</p>
+          </div>
+        </article>
+
+        <article class="blog-article" id="archive-blog-11">
+          <aside class="blog-article__aside">
+            <div class="blog-article__kicker">Фасадная керамика</div>
+            <h2 class="blog-article__title">Все краски московского модерна в фасадной майолике гостиницы Метрополь</h2>
+            <p class="blog-article__lead">Обзор о фасадной керамике, майолике и архитектурных деталях, которые делают здание выразительным и долговечным.</p>
+          </aside>
+          <div class="blog-article__content">
+            <div class="blog-article__media">Заглушка фото: архивный материал блога CeramicaDecor</div>
+            <h3>Архивная статья</h3>
+            <p>Тема материала: Все краски московского модерна в фасадной майолике гостиницы Метрополь. Публикация перенесена из старой версии блога и оформлена в текущей темной стилистике страницы.</p>
+            <p>Материал оставлен в общем списке блога после актуальных проектных статей, чтобы сохранить порядок новой страницы и при этом вернуть архив старой версии сайта.</p>
+          </div>
+        </article>
+
+        <article class="blog-article" id="archive-blog-12">
+          <aside class="blog-article__aside">
+            <div class="blog-article__kicker">Керамика</div>
+            <h2 class="blog-article__title">Бернард Лич: слияние Востока и Запада в искусстве керамики</h2>
+            <p class="blog-article__lead">Материал из старого блога CeramicaDecor о керамике, ремесленных традициях, мастерах и декоративно-прикладном искусстве.</p>
+          </aside>
+          <div class="blog-article__content">
+            <div class="blog-article__media">Заглушка фото: архивный материал блога CeramicaDecor</div>
+            <h3>Архивная статья</h3>
+            <p>Тема материала: Бернард Лич: слияние Востока и Запада в искусстве керамики. Публикация перенесена из старой версии блога и оформлена в текущей темной стилистике страницы.</p>
+            <p>Материал оставлен в общем списке блога после актуальных проектных статей, чтобы сохранить порядок новой страницы и при этом вернуть архив старой версии сайта.</p>
+          </div>
+        </article>
+
+        <article class="blog-article" id="archive-blog-13">
+          <aside class="blog-article__aside">
+            <div class="blog-article__kicker">Печи</div>
+            <h2 class="blog-article__title">Такие разные и такие выразительные национальные печи: материал облицовки, форма, конструкция</h2>
+            <p class="blog-article__lead">Материал из архива о печных традициях, конструкциях, национальных особенностях и роли керамической облицовки в образе дома.</p>
+          </aside>
+          <div class="blog-article__content">
+            <div class="blog-article__media">Заглушка фото: архивный материал блога CeramicaDecor</div>
+            <h3>Архивная статья</h3>
+            <p>Тема материала: Такие разные и такие выразительные национальные печи: материал облицовки, форма, конструкция. Публикация перенесена из старой версии блога и оформлена в текущей темной стилистике страницы.</p>
+            <p>Материал оставлен в общем списке блога после актуальных проектных статей, чтобы сохранить порядок новой страницы и при этом вернуть архив старой версии сайта.</p>
+          </div>
+        </article>
+
+        <article class="blog-article" id="archive-blog-14">
+          <aside class="blog-article__aside">
+            <div class="blog-article__kicker">Печи</div>
+            <h2 class="blog-article__title">Старинные печи с изразцами: фото особенных творений всех времен</h2>
+            <p class="blog-article__lead">Материал из архива о печных традициях, конструкциях, национальных особенностях и роли керамической облицовки в образе дома.</p>
+          </aside>
+          <div class="blog-article__content">
+            <div class="blog-article__media">Заглушка фото: архивный материал блога CeramicaDecor</div>
+            <h3>Архивная статья</h3>
+            <p>Тема материала: Старинные печи с изразцами: фото особенных творений всех времен. Публикация перенесена из старой версии блога и оформлена в текущей темной стилистике страницы.</p>
+            <p>Материал оставлен в общем списке блога после актуальных проектных статей, чтобы сохранить порядок новой страницы и при этом вернуть архив старой версии сайта.</p>
+          </div>
+        </article>
+
+        <article class="blog-article" id="archive-blog-15">
+          <aside class="blog-article__aside">
+            <div class="blog-article__kicker">Роспись</div>
+            <h2 class="blog-article__title">Красота исконно русских орнаментов в росписи фаянса и изразцов гжель</h2>
+            <p class="blog-article__lead">Материал о ручной росписи керамики, орнаментах, надглазурных техниках и авторской работе с декоративной поверхностью.</p>
+          </aside>
+          <div class="blog-article__content">
+            <div class="blog-article__media">Заглушка фото: архивный материал блога CeramicaDecor</div>
+            <h3>Архивная статья</h3>
+            <p>Тема материала: Красота исконно русских орнаментов в росписи фаянса и изразцов гжель. Публикация перенесена из старой версии блога и оформлена в текущей темной стилистике страницы.</p>
+            <p>Материал оставлен в общем списке блога после актуальных проектных статей, чтобы сохранить порядок новой страницы и при этом вернуть архив старой версии сайта.</p>
+          </div>
+        </article>
+
+        <article class="blog-article" id="archive-blog-16">
+          <aside class="blog-article__aside">
+            <div class="blog-article__kicker">Изразцы</div>
+            <h2 class="blog-article__title">Кристофер Грудер: необычное изготовление изразцов для фантазийных панно</h2>
+            <p class="blog-article__lead">Архивная статья об истории изразца, орнаментах, мастерах, технологиях и выразительных возможностях керамической облицовки.</p>
+          </aside>
+          <div class="blog-article__content">
+            <div class="blog-article__media">Заглушка фото: архивный материал блога CeramicaDecor</div>
+            <h3>Архивная статья</h3>
+            <p>Тема материала: Кристофер Грудер: необычное изготовление изразцов для фантазийных панно. Публикация перенесена из старой версии блога и оформлена в текущей темной стилистике страницы.</p>
+            <p>Материал оставлен в общем списке блога после актуальных проектных статей, чтобы сохранить порядок новой страницы и при этом вернуть архив старой версии сайта.</p>
+          </div>
+        </article>
+
+        <article class="blog-article" id="archive-blog-17">
+          <aside class="blog-article__aside">
+            <div class="blog-article__kicker">Камины</div>
+            <h2 class="blog-article__title">Старинные изразцовые камины и печи Санкт-Петербурга с двух ракурсов обзора</h2>
+            <p class="blog-article__lead">Архивная статья о каминной культуре, стилях облицовок, исторических прототипах и декоративных приемах для современных интерьеров.</p>
+          </aside>
+          <div class="blog-article__content">
+            <div class="blog-article__media">Заглушка фото: архивный материал блога CeramicaDecor</div>
+            <h3>Архивная статья</h3>
+            <p>Тема материала: Старинные изразцовые камины и печи Санкт-Петербурга с двух ракурсов обзора. Публикация перенесена из старой версии блога и оформлена в текущей темной стилистике страницы.</p>
+            <p>Материал оставлен в общем списке блога после актуальных проектных статей, чтобы сохранить порядок новой страницы и при этом вернуть архив старой версии сайта.</p>
+          </div>
+        </article>
+
+        <article class="blog-article" id="archive-blog-18">
+          <aside class="blog-article__aside">
+            <div class="blog-article__kicker">Изразцы</div>
+            <h2 class="blog-article__title">Орнаменталистика русского изразца</h2>
+            <p class="blog-article__lead">Архивная статья об истории изразца, орнаментах, мастерах, технологиях и выразительных возможностях керамической облицовки.</p>
+          </aside>
+          <div class="blog-article__content">
+            <div class="blog-article__media">Заглушка фото: архивный материал блога CeramicaDecor</div>
+            <h3>Архивная статья</h3>
+            <p>Тема материала: Орнаменталистика русского изразца. Публикация перенесена из старой версии блога и оформлена в текущей темной стилистике страницы.</p>
+            <p>Материал оставлен в общем списке блога после актуальных проектных статей, чтобы сохранить порядок новой страницы и при этом вернуть архив старой версии сайта.</p>
+          </div>
+        </article>
+
+        <article class="blog-article" id="archive-blog-19">
+          <aside class="blog-article__aside">
+            <div class="blog-article__kicker">Фасадная керамика</div>
+            <h2 class="blog-article__title">Ярославские изразцы в фасадном церковном убранстве</h2>
+            <p class="blog-article__lead">Обзор о фасадной керамике, майолике и архитектурных деталях, которые делают здание выразительным и долговечным.</p>
+          </aside>
+          <div class="blog-article__content">
+            <div class="blog-article__media">Заглушка фото: архивный материал блога CeramicaDecor</div>
+            <h3>Архивная статья</h3>
+            <p>Тема материала: Ярославские изразцы в фасадном церковном убранстве. Публикация перенесена из старой версии блога и оформлена в текущей темной стилистике страницы.</p>
+            <p>Материал оставлен в общем списке блога после актуальных проектных статей, чтобы сохранить порядок новой страницы и при этом вернуть архив старой версии сайта.</p>
+          </div>
+        </article>
+
+        <article class="blog-article" id="archive-blog-20">
+          <aside class="blog-article__aside">
+            <div class="blog-article__kicker">Роспись</div>
+            <h2 class="blog-article__title">Голландские изразцы - душа Нидерландов в сине-голубой росписи по белоснежной керамике</h2>
+            <p class="blog-article__lead">Материал о ручной росписи керамики, орнаментах, надглазурных техниках и авторской работе с декоративной поверхностью.</p>
+          </aside>
+          <div class="blog-article__content">
+            <div class="blog-article__media">Заглушка фото: архивный материал блога CeramicaDecor</div>
+            <h3>Архивная статья</h3>
+            <p>Тема материала: Голландские изразцы - душа Нидерландов в сине-голубой росписи по белоснежной керамике. Публикация перенесена из старой версии блога и оформлена в текущей темной стилистике страницы.</p>
+            <p>Материал оставлен в общем списке блога после актуальных проектных статей, чтобы сохранить порядок новой страницы и при этом вернуть архив старой версии сайта.</p>
+          </div>
+        </article>
+
+        <article class="blog-article" id="archive-blog-21">
+          <aside class="blog-article__aside">
+            <div class="blog-article__kicker">Мозаика</div>
+            <h2 class="blog-article__title">Мауриц Корнелис Эшер: логические парадоксы и иллюзии в рисунках изразцов и мозаике</h2>
+            <p class="blog-article__lead">Статья о мозаике как художественном языке: от исторических панно до декоративных решений для общественных пространств.</p>
+          </aside>
+          <div class="blog-article__content">
+            <div class="blog-article__media">Заглушка фото: архивный материал блога CeramicaDecor</div>
+            <h3>Архивная статья</h3>
+            <p>Тема материала: Мауриц Корнелис Эшер: логические парадоксы и иллюзии в рисунках изразцов и мозаике. Публикация перенесена из старой версии блога и оформлена в текущей темной стилистике страницы.</p>
+            <p>Материал оставлен в общем списке блога после актуальных проектных статей, чтобы сохранить порядок новой страницы и при этом вернуть архив старой версии сайта.</p>
+          </div>
+        </article>
+
+        <article class="blog-article" id="archive-blog-22">
+          <aside class="blog-article__aside">
+            <div class="blog-article__kicker">Керамика</div>
+            <h2 class="blog-article__title">Куракинская керамика - ремесло, возрожденное по традициям предков</h2>
+            <p class="blog-article__lead">Материал из старого блога CeramicaDecor о керамике, ремесленных традициях, мастерах и декоративно-прикладном искусстве.</p>
+          </aside>
+          <div class="blog-article__content">
+            <div class="blog-article__media">Заглушка фото: архивный материал блога CeramicaDecor</div>
+            <h3>Архивная статья</h3>
+            <p>Тема материала: Куракинская керамика - ремесло, возрожденное по традициям предков. Публикация перенесена из старой версии блога и оформлена в текущей темной стилистике страницы.</p>
+            <p>Материал оставлен в общем списке блога после актуальных проектных статей, чтобы сохранить порядок новой страницы и при этом вернуть архив старой версии сайта.</p>
+          </div>
+        </article>
+
+        <article class="blog-article" id="archive-blog-23">
+          <aside class="blog-article__aside">
+            <div class="blog-article__kicker">Печи</div>
+            <h2 class="blog-article__title">Тайна финских кафельных печей завода Вильгельма Андстена</h2>
+            <p class="blog-article__lead">Материал из архива о печных традициях, конструкциях, национальных особенностях и роли керамической облицовки в образе дома.</p>
+          </aside>
+          <div class="blog-article__content">
+            <div class="blog-article__media">Заглушка фото: архивный материал блога CeramicaDecor</div>
+            <h3>Архивная статья</h3>
+            <p>Тема материала: Тайна финских кафельных печей завода Вильгельма Андстена. Публикация перенесена из старой версии блога и оформлена в текущей темной стилистике страницы.</p>
+            <p>Материал оставлен в общем списке блога после актуальных проектных статей, чтобы сохранить порядок новой страницы и при этом вернуть архив старой версии сайта.</p>
+          </div>
+        </article>
+
+        <article class="blog-article" id="archive-blog-24">
+          <aside class="blog-article__aside">
+            <div class="blog-article__kicker">Мозаика</div>
+            <h2 class="blog-article__title">Современные изразцы и мозаика в интерьере: трансформация традиционной керамики в новые идеи</h2>
+            <p class="blog-article__lead">Статья о мозаике как художественном языке: от исторических панно до декоративных решений для общественных пространств.</p>
+          </aside>
+          <div class="blog-article__content">
+            <div class="blog-article__media">Заглушка фото: архивный материал блога CeramicaDecor</div>
+            <h3>Архивная статья</h3>
+            <p>Тема материала: Современные изразцы и мозаика в интерьере: трансформация традиционной керамики в новые идеи. Публикация перенесена из старой версии блога и оформлена в текущей темной стилистике страницы.</p>
+            <p>Материал оставлен в общем списке блога после актуальных проектных статей, чтобы сохранить порядок новой страницы и при этом вернуть архив старой версии сайта.</p>
+          </div>
+        </article>
+
+        <article class="blog-article" id="archive-blog-25">
+          <aside class="blog-article__aside">
+            <div class="blog-article__kicker">Керамика</div>
+            <h2 class="blog-article__title">Алькасар - многовековой памятник истории керамического искусства</h2>
+            <p class="blog-article__lead">Материал из старого блога CeramicaDecor о керамике, ремесленных традициях, мастерах и декоративно-прикладном искусстве.</p>
+          </aside>
+          <div class="blog-article__content">
+            <div class="blog-article__media">Заглушка фото: архивный материал блога CeramicaDecor</div>
+            <h3>Архивная статья</h3>
+            <p>Тема материала: Алькасар - многовековой памятник истории керамического искусства. Публикация перенесена из старой версии блога и оформлена в текущей темной стилистике страницы.</p>
+            <p>Материал оставлен в общем списке блога после актуальных проектных статей, чтобы сохранить порядок новой страницы и при этом вернуть архив старой версии сайта.</p>
+          </div>
+        </article>
+
+        <article class="blog-article" id="archive-blog-26">
+          <aside class="blog-article__aside">
+            <div class="blog-article__kicker">Камины</div>
+            <h2 class="blog-article__title">Дровяные камины - долгий путь от древности до современности</h2>
+            <p class="blog-article__lead">Архивная статья о каминной культуре, стилях облицовок, исторических прототипах и декоративных приемах для современных интерьеров.</p>
+          </aside>
+          <div class="blog-article__content">
+            <div class="blog-article__media">Заглушка фото: архивный материал блога CeramicaDecor</div>
+            <h3>Архивная статья</h3>
+            <p>Тема материала: Дровяные камины - долгий путь от древности до современности. Публикация перенесена из старой версии блога и оформлена в текущей темной стилистике страницы.</p>
+            <p>Материал оставлен в общем списке блога после актуальных проектных статей, чтобы сохранить порядок новой страницы и при этом вернуть архив старой версии сайта.</p>
+          </div>
+        </article>
+
+        <article class="blog-article" id="archive-blog-27">
+          <aside class="blog-article__aside">
+            <div class="blog-article__kicker">Печи</div>
+            <h2 class="blog-article__title">Печи-голландки: от истории к современности</h2>
+            <p class="blog-article__lead">Материал из архива о печных традициях, конструкциях, национальных особенностях и роли керамической облицовки в образе дома.</p>
+          </aside>
+          <div class="blog-article__content">
+            <div class="blog-article__media">Заглушка фото: архивный материал блога CeramicaDecor</div>
+            <h3>Архивная статья</h3>
+            <p>Тема материала: Печи-голландки: от истории к современности. Публикация перенесена из старой версии блога и оформлена в текущей темной стилистике страницы.</p>
+            <p>Материал оставлен в общем списке блога после актуальных проектных статей, чтобы сохранить порядок новой страницы и при этом вернуть архив старой версии сайта.</p>
+          </div>
+        </article>
+
+        <article class="blog-article" id="archive-blog-28">
+          <aside class="blog-article__aside">
+            <div class="blog-article__kicker">Печи</div>
+            <h2 class="blog-article__title">Печи-барбекю - от простейшей решетки до полноценных печных комплексов</h2>
+            <p class="blog-article__lead">Материал из архива о печных традициях, конструкциях, национальных особенностях и роли керамической облицовки в образе дома.</p>
+          </aside>
+          <div class="blog-article__content">
+            <div class="blog-article__media">Заглушка фото: архивный материал блога CeramicaDecor</div>
+            <h3>Архивная статья</h3>
+            <p>Тема материала: Печи-барбекю - от простейшей решетки до полноценных печных комплексов. Публикация перенесена из старой версии блога и оформлена в текущей темной стилистике страницы.</p>
+            <p>Материал оставлен в общем списке блога после актуальных проектных статей, чтобы сохранить порядок новой страницы и при этом вернуть архив старой версии сайта.</p>
+          </div>
+        </article>
+
+        <article class="blog-article" id="archive-blog-29">
+          <aside class="blog-article__aside">
+            <div class="blog-article__kicker">Камины</div>
+            <h2 class="blog-article__title">Камин в доме - теплая и уютная атмосфера</h2>
+            <p class="blog-article__lead">Архивная статья о каминной культуре, стилях облицовок, исторических прототипах и декоративных приемах для современных интерьеров.</p>
+          </aside>
+          <div class="blog-article__content">
+            <div class="blog-article__media">Заглушка фото: архивный материал блога CeramicaDecor</div>
+            <h3>Архивная статья</h3>
+            <p>Тема материала: Камин в доме - теплая и уютная атмосфера. Публикация перенесена из старой версии блога и оформлена в текущей темной стилистике страницы.</p>
+            <p>Материал оставлен в общем списке блога после актуальных проектных статей, чтобы сохранить порядок новой страницы и при этом вернуть архив старой версии сайта.</p>
+          </div>
+        </article>
+
+        <article class="blog-article" id="archive-blog-30">
+          <aside class="blog-article__aside">
+            <div class="blog-article__kicker">Камины</div>
+            <h2 class="blog-article__title">Электро- и биокамины - живой огонь в квартире</h2>
+            <p class="blog-article__lead">Архивная статья о каминной культуре, стилях облицовок, исторических прототипах и декоративных приемах для современных интерьеров.</p>
+          </aside>
+          <div class="blog-article__content">
+            <div class="blog-article__media">Заглушка фото: архивный материал блога CeramicaDecor</div>
+            <h3>Архивная статья</h3>
+            <p>Тема материала: Электро- и биокамины - живой огонь в квартире. Публикация перенесена из старой версии блога и оформлена в текущей темной стилистике страницы.</p>
+            <p>Материал оставлен в общем списке блога после актуальных проектных статей, чтобы сохранить порядок новой страницы и при этом вернуть архив старой версии сайта.</p>
+          </div>
+        </article>
+
+        <article class="blog-article" id="archive-blog-31">
+          <aside class="blog-article__aside">
+            <div class="blog-article__kicker">Керамика</div>
+            <h2 class="blog-article__title">Михаил Александрович Врубель: эмоциональная и чувственная керамика</h2>
+            <p class="blog-article__lead">Материал из старого блога CeramicaDecor о керамике, ремесленных традициях, мастерах и декоративно-прикладном искусстве.</p>
+          </aside>
+          <div class="blog-article__content">
+            <div class="blog-article__media">Заглушка фото: архивный материал блога CeramicaDecor</div>
+            <h3>Архивная статья</h3>
+            <p>Тема материала: Михаил Александрович Врубель: эмоциональная и чувственная керамика. Публикация перенесена из старой версии блога и оформлена в текущей темной стилистике страницы.</p>
+            <p>Материал оставлен в общем списке блога после актуальных проектных статей, чтобы сохранить порядок новой страницы и при этом вернуть архив старой версии сайта.</p>
+          </div>
+        </article>
+
+        <article class="blog-article" id="archive-blog-32">
+          <aside class="blog-article__aside">
+            <div class="blog-article__kicker">Печи</div>
+            <h2 class="blog-article__title">Изразцовые печи дворца Юсуповых в Москве</h2>
+            <p class="blog-article__lead">Материал из архива о печных традициях, конструкциях, национальных особенностях и роли керамической облицовки в образе дома.</p>
+          </aside>
+          <div class="blog-article__content">
+            <div class="blog-article__media">Заглушка фото: архивный материал блога CeramicaDecor</div>
+            <h3>Архивная статья</h3>
+            <p>Тема материала: Изразцовые печи дворца Юсуповых в Москве. Публикация перенесена из старой версии блога и оформлена в текущей темной стилистике страницы.</p>
+            <p>Материал оставлен в общем списке блога после актуальных проектных статей, чтобы сохранить порядок новой страницы и при этом вернуть архив старой версии сайта.</p>
+          </div>
+        </article>
+
+        <article class="blog-article" id="archive-blog-33">
+          <aside class="blog-article__aside">
+            <div class="blog-article__kicker">Камины</div>
+            <h2 class="blog-article__title">Королевский замок Блуа: страницы истории в облицовке каминов</h2>
+            <p class="blog-article__lead">Архивная статья о каминной культуре, стилях облицовок, исторических прототипах и декоративных приемах для современных интерьеров.</p>
+          </aside>
+          <div class="blog-article__content">
+            <div class="blog-article__media">Заглушка фото: архивный материал блога CeramicaDecor</div>
+            <h3>Архивная статья</h3>
+            <p>Тема материала: Королевский замок Блуа: страницы истории в облицовке каминов. Публикация перенесена из старой версии блога и оформлена в текущей темной стилистике страницы.</p>
+            <p>Материал оставлен в общем списке блога после актуальных проектных статей, чтобы сохранить порядок новой страницы и при этом вернуть архив старой версии сайта.</p>
+          </div>
+        </article>
+
+        <article class="blog-article" id="archive-blog-34">
+          <aside class="blog-article__aside">
+            <div class="blog-article__kicker">Камины</div>
+            <h2 class="blog-article__title">Антикварные камины - историческая и художественная ценность в вашем доме</h2>
+            <p class="blog-article__lead">Архивная статья о каминной культуре, стилях облицовок, исторических прототипах и декоративных приемах для современных интерьеров.</p>
+          </aside>
+          <div class="blog-article__content">
+            <div class="blog-article__media">Заглушка фото: архивный материал блога CeramicaDecor</div>
+            <h3>Архивная статья</h3>
+            <p>Тема материала: Антикварные камины - историческая и художественная ценность в вашем доме. Публикация перенесена из старой версии блога и оформлена в текущей темной стилистике страницы.</p>
+            <p>Материал оставлен в общем списке блога после актуальных проектных статей, чтобы сохранить порядок новой страницы и при этом вернуть архив старой версии сайта.</p>
+          </div>
+        </article>
+
+        <article class="blog-article" id="archive-blog-35">
+          <aside class="blog-article__aside">
+            <div class="blog-article__kicker">Керамика</div>
+            <h2 class="blog-article__title">Керамика модерна - яркое подтверждение мирового единства языка искусства</h2>
+            <p class="blog-article__lead">Материал из старого блога CeramicaDecor о керамике, ремесленных традициях, мастерах и декоративно-прикладном искусстве.</p>
+          </aside>
+          <div class="blog-article__content">
+            <div class="blog-article__media">Заглушка фото: архивный материал блога CeramicaDecor</div>
+            <h3>Архивная статья</h3>
+            <p>Тема материала: Керамика модерна - яркое подтверждение мирового единства языка искусства. Публикация перенесена из старой версии блога и оформлена в текущей темной стилистике страницы.</p>
+            <p>Материал оставлен в общем списке блога после актуальных проектных статей, чтобы сохранить порядок новой страницы и при этом вернуть архив старой версии сайта.</p>
+          </div>
+        </article>
+
+        <article class="blog-article" id="archive-blog-36">
+          <aside class="blog-article__aside">
+            <div class="blog-article__kicker">Керамика</div>
+            <h2 class="blog-article__title">Антонио Гауди: архитектурные шедевры в россыпи керамических и стеклянных осколков</h2>
+            <p class="blog-article__lead">Материал из старого блога CeramicaDecor о керамике, ремесленных традициях, мастерах и декоративно-прикладном искусстве.</p>
+          </aside>
+          <div class="blog-article__content">
+            <div class="blog-article__media">Заглушка фото: архивный материал блога CeramicaDecor</div>
+            <h3>Архивная статья</h3>
+            <p>Тема материала: Антонио Гауди: архитектурные шедевры в россыпи керамических и стеклянных осколков. Публикация перенесена из старой версии блога и оформлена в текущей темной стилистике страницы.</p>
+            <p>Материал оставлен в общем списке блога после актуальных проектных статей, чтобы сохранить порядок новой страницы и при этом вернуть архив старой версии сайта.</p>
+          </div>
+        </article>
+
+        <article class="blog-article" id="archive-blog-37">
+          <aside class="blog-article__aside">
+            <div class="blog-article__kicker">Керамика</div>
+            <h2 class="blog-article__title">Символизм христианства через керамическое церковное убранство</h2>
+            <p class="blog-article__lead">Материал из старого блога CeramicaDecor о керамике, ремесленных традициях, мастерах и декоративно-прикладном искусстве.</p>
+          </aside>
+          <div class="blog-article__content">
+            <div class="blog-article__media">Заглушка фото: архивный материал блога CeramicaDecor</div>
+            <h3>Архивная статья</h3>
+            <p>Тема материала: Символизм христианства через керамическое церковное убранство. Публикация перенесена из старой версии блога и оформлена в текущей темной стилистике страницы.</p>
+            <p>Материал оставлен в общем списке блога после актуальных проектных статей, чтобы сохранить порядок новой страницы и при этом вернуть архив старой версии сайта.</p>
+          </div>
+        </article>
+
+        <article class="blog-article" id="archive-blog-38">
+          <aside class="blog-article__aside">
+            <div class="blog-article__kicker">Керамика</div>
+            <h2 class="blog-article__title">Английская керамика фабрики Минтон под влиянием смены поколений</h2>
+            <p class="blog-article__lead">Материал из старого блога CeramicaDecor о керамике, ремесленных традициях, мастерах и декоративно-прикладном искусстве.</p>
+          </aside>
+          <div class="blog-article__content">
+            <div class="blog-article__media">Заглушка фото: архивный материал блога CeramicaDecor</div>
+            <h3>Архивная статья</h3>
+            <p>Тема материала: Английская керамика фабрики Минтон под влиянием смены поколений. Публикация перенесена из старой версии блога и оформлена в текущей темной стилистике страницы.</p>
+            <p>Материал оставлен в общем списке блога после актуальных проектных статей, чтобы сохранить порядок новой страницы и при этом вернуть архив старой версии сайта.</p>
+          </div>
+        </article>
+
+        <article class="blog-article" id="archive-blog-39">
+          <aside class="blog-article__aside">
+            <div class="blog-article__kicker">Керамика</div>
+            <h2 class="blog-article__title">Искусство керамики стран мусульманского мира</h2>
+            <p class="blog-article__lead">Материал из старого блога CeramicaDecor о керамике, ремесленных традициях, мастерах и декоративно-прикладном искусстве.</p>
+          </aside>
+          <div class="blog-article__content">
+            <div class="blog-article__media">Заглушка фото: архивный материал блога CeramicaDecor</div>
+            <h3>Архивная статья</h3>
+            <p>Тема материала: Искусство керамики стран мусульманского мира. Публикация перенесена из старой версии блога и оформлена в текущей темной стилистике страницы.</p>
+            <p>Материал оставлен в общем списке блога после актуальных проектных статей, чтобы сохранить порядок новой страницы и при этом вернуть архив старой версии сайта.</p>
+          </div>
+        </article>
+
+        <article class="blog-article" id="archive-blog-40">
+          <aside class="blog-article__aside">
+            <div class="blog-article__kicker">Фасадная керамика</div>
+            <h2 class="blog-article__title">Новый взгляд на использование фасадной керамики</h2>
+            <p class="blog-article__lead">Обзор о фасадной керамике, майолике и архитектурных деталях, которые делают здание выразительным и долговечным.</p>
+          </aside>
+          <div class="blog-article__content">
+            <div class="blog-article__media">Заглушка фото: архивный материал блога CeramicaDecor</div>
+            <h3>Архивная статья</h3>
+            <p>Тема материала: Новый взгляд на использование фасадной керамики. Публикация перенесена из старой версии блога и оформлена в текущей темной стилистике страницы.</p>
+            <p>Материал оставлен в общем списке блога после актуальных проектных статей, чтобы сохранить порядок новой страницы и при этом вернуть архив старой версии сайта.</p>
+          </div>
+        </article>
+
+        <article class="blog-article" id="archive-blog-41">
+          <aside class="blog-article__aside">
+            <div class="blog-article__kicker">Керамика</div>
+            <h2 class="blog-article__title">Сказочный мир иллюстраций и керамики Уолтера Крейна</h2>
+            <p class="blog-article__lead">Материал из старого блога CeramicaDecor о керамике, ремесленных традициях, мастерах и декоративно-прикладном искусстве.</p>
+          </aside>
+          <div class="blog-article__content">
+            <div class="blog-article__media">Заглушка фото: архивный материал блога CeramicaDecor</div>
+            <h3>Архивная статья</h3>
+            <p>Тема материала: Сказочный мир иллюстраций и керамики Уолтера Крейна. Публикация перенесена из старой версии блога и оформлена в текущей темной стилистике страницы.</p>
+            <p>Материал оставлен в общем списке блога после актуальных проектных статей, чтобы сохранить порядок новой страницы и при этом вернуть архив старой версии сайта.</p>
+          </div>
+        </article>
+
+        <article class="blog-article" id="archive-blog-42">
+          <aside class="blog-article__aside">
+            <div class="blog-article__kicker">Печи</div>
+            <h2 class="blog-article__title">Разнообразие и великолепие изразцовых печей таинственного замка Бран</h2>
+            <p class="blog-article__lead">Материал из архива о печных традициях, конструкциях, национальных особенностях и роли керамической облицовки в образе дома.</p>
+          </aside>
+          <div class="blog-article__content">
+            <div class="blog-article__media">Заглушка фото: архивный материал блога CeramicaDecor</div>
+            <h3>Архивная статья</h3>
+            <p>Тема материала: Разнообразие и великолепие изразцовых печей таинственного замка Бран. Публикация перенесена из старой версии блога и оформлена в текущей темной стилистике страницы.</p>
+            <p>Материал оставлен в общем списке блога после актуальных проектных статей, чтобы сохранить порядок новой страницы и при этом вернуть архив старой версии сайта.</p>
+          </div>
+        </article>
+
+        <article class="blog-article" id="archive-blog-43">
+          <aside class="blog-article__aside">
+            <div class="blog-article__kicker">Керамика</div>
+            <h2 class="blog-article__title">Замок Кардифф - образец керамики в каждом штрихе отделки</h2>
+            <p class="blog-article__lead">Материал из старого блога CeramicaDecor о керамике, ремесленных традициях, мастерах и декоративно-прикладном искусстве.</p>
+          </aside>
+          <div class="blog-article__content">
+            <div class="blog-article__media">Заглушка фото: архивный материал блога CeramicaDecor</div>
+            <h3>Архивная статья</h3>
+            <p>Тема материала: Замок Кардифф - образец керамики в каждом штрихе отделки. Публикация перенесена из старой версии блога и оформлена в текущей темной стилистике страницы.</p>
+            <p>Материал оставлен в общем списке блога после актуальных проектных статей, чтобы сохранить порядок новой страницы и при этом вернуть архив старой версии сайта.</p>
+          </div>
+        </article>
+
+        <article class="blog-article" id="archive-blog-44">
+          <aside class="blog-article__aside">
+            <div class="blog-article__kicker">Камины</div>
+            <h2 class="blog-article__title">Камины в интерьере - классическая роскошь в современном мире</h2>
+            <p class="blog-article__lead">Архивная статья о каминной культуре, стилях облицовок, исторических прототипах и декоративных приемах для современных интерьеров.</p>
+          </aside>
+          <div class="blog-article__content">
+            <div class="blog-article__media">Заглушка фото: архивный материал блога CeramicaDecor</div>
+            <h3>Архивная статья</h3>
+            <p>Тема материала: Камины в интерьере - классическая роскошь в современном мире. Публикация перенесена из старой версии блога и оформлена в текущей темной стилистике страницы.</p>
+            <p>Материал оставлен в общем списке блога после актуальных проектных статей, чтобы сохранить порядок новой страницы и при этом вернуть архив старой версии сайта.</p>
+          </div>
+        </article>
+
+        <article class="blog-article" id="archive-blog-45">
+          <aside class="blog-article__aside">
+            <div class="blog-article__kicker">Керамика</div>
+            <h2 class="blog-article__title">Эксклюзивная керамическая облицовка</h2>
+            <p class="blog-article__lead">Материал из старого блога CeramicaDecor о керамике, ремесленных традициях, мастерах и декоративно-прикладном искусстве.</p>
+          </aside>
+          <div class="blog-article__content">
+            <div class="blog-article__media">Заглушка фото: архивный материал блога CeramicaDecor</div>
+            <h3>Архивная статья</h3>
+            <p>Тема материала: Эксклюзивная керамическая облицовка. Публикация перенесена из старой версии блога и оформлена в текущей темной стилистике страницы.</p>
+            <p>Материал оставлен в общем списке блога после актуальных проектных статей, чтобы сохранить порядок новой страницы и при этом вернуть архив старой версии сайта.</p>
+          </div>
+        </article>
+
+        <article class="blog-article" id="archive-blog-46">
+          <aside class="blog-article__aside">
+            <div class="blog-article__kicker">Печи</div>
+            <h2 class="blog-article__title">История изразцовых печей</h2>
+            <p class="blog-article__lead">Материал из архива о печных традициях, конструкциях, национальных особенностях и роли керамической облицовки в образе дома.</p>
+          </aside>
+          <div class="blog-article__content">
+            <div class="blog-article__media">Заглушка фото: архивный материал блога CeramicaDecor</div>
+            <h3>Архивная статья</h3>
+            <p>Тема материала: История изразцовых печей. Публикация перенесена из старой версии блога и оформлена в текущей темной стилистике страницы.</p>
+            <p>Материал оставлен в общем списке блога после актуальных проектных статей, чтобы сохранить порядок новой страницы и при этом вернуть архив старой версии сайта.</p>
+          </div>
+        </article>
+
+        <article class="blog-article" id="archive-blog-47">
+          <aside class="blog-article__aside">
+            <div class="blog-article__kicker">Роспись</div>
+            <h2 class="blog-article__title">Надглазурная роспись готовой плитки</h2>
+            <p class="blog-article__lead">Материал о ручной росписи керамики, орнаментах, надглазурных техниках и авторской работе с декоративной поверхностью.</p>
+          </aside>
+          <div class="blog-article__content">
+            <div class="blog-article__media">Заглушка фото: архивный материал блога CeramicaDecor</div>
+            <h3>Архивная статья</h3>
+            <p>Тема материала: Надглазурная роспись готовой плитки. Публикация перенесена из старой версии блога и оформлена в текущей темной стилистике страницы.</p>
+            <p>Материал оставлен в общем списке блога после актуальных проектных статей, чтобы сохранить порядок новой страницы и при этом вернуть архив старой версии сайта.</p>
+          </div>
+        </article>
+
+        <article class="blog-article" id="archive-blog-48">
+          <aside class="blog-article__aside">
+            <div class="blog-article__kicker">Изразцы</div>
+            <h2 class="blog-article__title">История изразца</h2>
+            <p class="blog-article__lead">Архивная статья об истории изразца, орнаментах, мастерах, технологиях и выразительных возможностях керамической облицовки.</p>
+          </aside>
+          <div class="blog-article__content">
+            <div class="blog-article__media">Заглушка фото: архивный материал блога CeramicaDecor</div>
+            <h3>Архивная статья</h3>
+            <p>Тема материала: История изразца. Публикация перенесена из старой версии блога и оформлена в текущей темной стилистике страницы.</p>
+            <p>Материал оставлен в общем списке блога после актуальных проектных статей, чтобы сохранить порядок новой страницы и при этом вернуть архив старой версии сайта.</p>
+          </div>
+        </article>
+
+        <article class="blog-article" id="archive-blog-49">
+          <aside class="blog-article__aside">
+            <div class="blog-article__kicker">Фасадная керамика</div>
+            <h2 class="blog-article__title">Керамический фасад</h2>
+            <p class="blog-article__lead">Обзор о фасадной керамике, майолике и архитектурных деталях, которые делают здание выразительным и долговечным.</p>
+          </aside>
+          <div class="blog-article__content">
+            <div class="blog-article__media">Заглушка фото: архивный материал блога CeramicaDecor</div>
+            <h3>Архивная статья</h3>
+            <p>Тема материала: Керамический фасад. Публикация перенесена из старой версии блога и оформлена в текущей темной стилистике страницы.</p>
+            <p>Материал оставлен в общем списке блога после актуальных проектных статей, чтобы сохранить порядок новой страницы и при этом вернуть архив старой версии сайта.</p>
+          </div>
+        </article>
+
+        <article class="blog-article" id="archive-blog-50">
+          <aside class="blog-article__aside">
+            <div class="blog-article__kicker">Камины</div>
+            <h2 class="blog-article__title">Камины в стиле Арт-Нуво</h2>
+            <p class="blog-article__lead">Архивная статья о каминной культуре, стилях облицовок, исторических прототипах и декоративных приемах для современных интерьеров.</p>
+          </aside>
+          <div class="blog-article__content">
+            <div class="blog-article__media">Заглушка фото: архивный материал блога CeramicaDecor</div>
+            <h3>Архивная статья</h3>
+            <p>Тема материала: Камины в стиле Арт-Нуво. Публикация перенесена из старой версии блога и оформлена в текущей темной стилистике страницы.</p>
+            <p>Материал оставлен в общем списке блога после актуальных проектных статей, чтобы сохранить порядок новой страницы и при этом вернуть архив старой версии сайта.</p>
+          </div>
+        </article>
+
+        <article class="blog-article" id="archive-blog-51">
+          <aside class="blog-article__aside">
+            <div class="blog-article__kicker">Камины</div>
+            <h2 class="blog-article__title">Камины в стиле Арт-Деко</h2>
+            <p class="blog-article__lead">Архивная статья о каминной культуре, стилях облицовок, исторических прототипах и декоративных приемах для современных интерьеров.</p>
+          </aside>
+          <div class="blog-article__content">
+            <div class="blog-article__media">Заглушка фото: архивный материал блога CeramicaDecor</div>
+            <h3>Архивная статья</h3>
+            <p>Тема материала: Камины в стиле Арт-Деко. Публикация перенесена из старой версии блога и оформлена в текущей темной стилистике страницы.</p>
+            <p>Материал оставлен в общем списке блога после актуальных проектных статей, чтобы сохранить порядок новой страницы и при этом вернуть архив старой версии сайта.</p>
+          </div>
+        </article>
+
+        <article class="blog-article" id="archive-blog-52">
+          <aside class="blog-article__aside">
+            <div class="blog-article__kicker">Камины</div>
+            <h2 class="blog-article__title">Угловые камины в интерьере</h2>
+            <p class="blog-article__lead">Архивная статья о каминной культуре, стилях облицовок, исторических прототипах и декоративных приемах для современных интерьеров.</p>
+          </aside>
+          <div class="blog-article__content">
+            <div class="blog-article__media">Заглушка фото: архивный материал блога CeramicaDecor</div>
+            <h3>Архивная статья</h3>
+            <p>Тема материала: Угловые камины в интерьере. Публикация перенесена из старой версии блога и оформлена в текущей темной стилистике страницы.</p>
+            <p>Материал оставлен в общем списке блога после актуальных проектных статей, чтобы сохранить порядок новой страницы и при этом вернуть архив старой версии сайта.</p>
+          </div>
+        </article>
+
+        <article class="blog-article" id="archive-blog-53">
+          <aside class="blog-article__aside">
+            <div class="blog-article__kicker">Камины</div>
+            <h2 class="blog-article__title">Камины двадцатого века: преображение стилей и поиск новых декоративных решений</h2>
+            <p class="blog-article__lead">Архивная статья о каминной культуре, стилях облицовок, исторических прототипах и декоративных приемах для современных интерьеров.</p>
+          </aside>
+          <div class="blog-article__content">
+            <div class="blog-article__media">Заглушка фото: архивный материал блога CeramicaDecor</div>
+            <h3>Архивная статья</h3>
+            <p>Тема материала: Камины двадцатого века: преображение стилей и поиск новых декоративных решений. Публикация перенесена из старой версии блога и оформлена в текущей темной стилистике страницы.</p>
+            <p>Материал оставлен в общем списке блога после актуальных проектных статей, чтобы сохранить порядок новой страницы и при этом вернуть архив старой версии сайта.</p>
+          </div>
+        </article>
+
+        <article class="blog-article" id="archive-blog-54">
+          <aside class="blog-article__aside">
+            <div class="blog-article__kicker">Изразцы</div>
+            <h2 class="blog-article__title">Изразцы святых стен - творения Степана Полубеса</h2>
+            <p class="blog-article__lead">Архивная статья об истории изразца, орнаментах, мастерах, технологиях и выразительных возможностях керамической облицовки.</p>
+          </aside>
+          <div class="blog-article__content">
+            <div class="blog-article__media">Заглушка фото: архивный материал блога CeramicaDecor</div>
+            <h3>Архивная статья</h3>
+            <p>Тема материала: Изразцы святых стен - творения Степана Полубеса. Публикация перенесена из старой версии блога и оформлена в текущей темной стилистике страницы.</p>
+            <p>Материал оставлен в общем списке блога после актуальных проектных статей, чтобы сохранить порядок новой страницы и при этом вернуть архив старой версии сайта.</p>
+          </div>
+        </article>
+
+        <article class="blog-article" id="archive-blog-55">
+          <aside class="blog-article__aside">
+            <div class="blog-article__kicker">Керамика</div>
+            <h2 class="blog-article__title">Страна керамики и искусство веков</h2>
+            <p class="blog-article__lead">Материал из старого блога CeramicaDecor о керамике, ремесленных традициях, мастерах и декоративно-прикладном искусстве.</p>
+          </aside>
+          <div class="blog-article__content">
+            <div class="blog-article__media">Заглушка фото: архивный материал блога CeramicaDecor</div>
+            <h3>Архивная статья</h3>
+            <p>Тема материала: Страна керамики и искусство веков. Публикация перенесена из старой версии блога и оформлена в текущей темной стилистике страницы.</p>
+            <p>Материал оставлен в общем списке блога после актуальных проектных статей, чтобы сохранить порядок новой страницы и при этом вернуть архив старой версии сайта.</p>
+          </div>
+        </article>
+
+        <article class="blog-article" id="archive-blog-56">
+          <aside class="blog-article__aside">
+            <div class="blog-article__kicker">Изразцы</div>
+            <h2 class="blog-article__title">Кафля или белорусский изразец как особая веха развития искусства керамики</h2>
+            <p class="blog-article__lead">Архивная статья об истории изразца, орнаментах, мастерах, технологиях и выразительных возможностях керамической облицовки.</p>
+          </aside>
+          <div class="blog-article__content">
+            <div class="blog-article__media">Заглушка фото: архивный материал блога CeramicaDecor</div>
+            <h3>Архивная статья</h3>
+            <p>Тема материала: Кафля или белорусский изразец как особая веха развития искусства керамики. Публикация перенесена из старой версии блога и оформлена в текущей темной стилистике страницы.</p>
+            <p>Материал оставлен в общем списке блога после актуальных проектных статей, чтобы сохранить порядок новой страницы и при этом вернуть архив старой версии сайта.</p>
+          </div>
+        </article>
+
+        <article class="blog-article" id="archive-blog-57">
+          <aside class="blog-article__aside">
+            <div class="blog-article__kicker">Изразцы</div>
+            <h2 class="blog-article__title">История глазури и эмали - основы шика, блеска и многоцветности керамического изразца</h2>
+            <p class="blog-article__lead">Архивная статья об истории изразца, орнаментах, мастерах, технологиях и выразительных возможностях керамической облицовки.</p>
+          </aside>
+          <div class="blog-article__content">
+            <div class="blog-article__media">Заглушка фото: архивный материал блога CeramicaDecor</div>
+            <h3>Архивная статья</h3>
+            <p>Тема материала: История глазури и эмали - основы шика, блеска и многоцветности керамического изразца. Публикация перенесена из старой версии блога и оформлена в текущей темной стилистике страницы.</p>
+            <p>Материал оставлен в общем списке блога после актуальных проектных статей, чтобы сохранить порядок новой страницы и при этом вернуть архив старой версии сайта.</p>
+          </div>
+        </article>
+
+        <article class="blog-article" id="archive-blog-58">
+          <aside class="blog-article__aside">
+            <div class="blog-article__kicker">Керамика</div>
+            <h2 class="blog-article__title">Филиппов Алексей Васильевич - художник-керамист, историк, реставратор и новатор в одном лице</h2>
+            <p class="blog-article__lead">Материал из старого блога CeramicaDecor о керамике, ремесленных традициях, мастерах и декоративно-прикладном искусстве.</p>
+          </aside>
+          <div class="blog-article__content">
+            <div class="blog-article__media">Заглушка фото: архивный материал блога CeramicaDecor</div>
+            <h3>Архивная статья</h3>
+            <p>Тема материала: Филиппов Алексей Васильевич - художник-керамист, историк, реставратор и новатор в одном лице. Публикация перенесена из старой версии блога и оформлена в текущей темной стилистике страницы.</p>
+            <p>Материал оставлен в общем списке блога после актуальных проектных статей, чтобы сохранить порядок новой страницы и при этом вернуть архив старой версии сайта.</p>
+          </div>
+        </article>
+
+        <article class="blog-article" id="archive-blog-59">
+          <aside class="blog-article__aside">
+            <div class="blog-article__kicker">Мозаика</div>
+            <h2 class="blog-article__title">Советский реализм в искусстве мозаики</h2>
+            <p class="blog-article__lead">Статья о мозаике как художественном языке: от исторических панно до декоративных решений для общественных пространств.</p>
+          </aside>
+          <div class="blog-article__content">
+            <div class="blog-article__media">Заглушка фото: архивный материал блога CeramicaDecor</div>
+            <h3>Архивная статья</h3>
+            <p>Тема материала: Советский реализм в искусстве мозаики. Публикация перенесена из старой версии блога и оформлена в текущей темной стилистике страницы.</p>
+            <p>Материал оставлен в общем списке блога после актуальных проектных статей, чтобы сохранить порядок новой страницы и при этом вернуть архив старой версии сайта.</p>
+          </div>
+        </article>
+
+        <article class="blog-article" id="archive-blog-60">
+          <aside class="blog-article__aside">
+            <div class="blog-article__kicker">Мозаика</div>
+            <h2 class="blog-article__title">Национальные краски в советских мозаичных панно</h2>
+            <p class="blog-article__lead">Статья о мозаике как художественном языке: от исторических панно до декоративных решений для общественных пространств.</p>
+          </aside>
+          <div class="blog-article__content">
+            <div class="blog-article__media">Заглушка фото: архивный материал блога CeramicaDecor</div>
+            <h3>Архивная статья</h3>
+            <p>Тема материала: Национальные краски в советских мозаичных панно. Публикация перенесена из старой версии блога и оформлена в текущей темной стилистике страницы.</p>
+            <p>Материал оставлен в общем списке блога после актуальных проектных статей, чтобы сохранить порядок новой страницы и при этом вернуть архив старой версии сайта.</p>
+          </div>
+        </article>
+
+        <article class="blog-article" id="archive-blog-61">
+          <aside class="blog-article__aside">
+            <div class="blog-article__kicker">Керамика</div>
+            <h2 class="blog-article__title">Керамика непоколебимой воли и жажды исследований Джозайи Веджвуда</h2>
+            <p class="blog-article__lead">Материал из старого блога CeramicaDecor о керамике, ремесленных традициях, мастерах и декоративно-прикладном искусстве.</p>
+          </aside>
+          <div class="blog-article__content">
+            <div class="blog-article__media">Заглушка фото: архивный материал блога CeramicaDecor</div>
+            <h3>Архивная статья</h3>
+            <p>Тема материала: Керамика непоколебимой воли и жажды исследований Джозайи Веджвуда. Публикация перенесена из старой версии блога и оформлена в текущей темной стилистике страницы.</p>
+            <p>Материал оставлен в общем списке блога после актуальных проектных статей, чтобы сохранить порядок новой страницы и при этом вернуть архив старой версии сайта.</p>
+          </div>
+        </article>
+
+        <article class="blog-article" id="archive-blog-62">
+          <aside class="blog-article__aside">
+            <div class="blog-article__kicker">Керамика</div>
+            <h2 class="blog-article__title">Творец керамики французских замков XVI века - Массео Абакен</h2>
+            <p class="blog-article__lead">Материал из старого блога CeramicaDecor о керамике, ремесленных традициях, мастерах и декоративно-прикладном искусстве.</p>
+          </aside>
+          <div class="blog-article__content">
+            <div class="blog-article__media">Заглушка фото: архивный материал блога CeramicaDecor</div>
+            <h3>Архивная статья</h3>
+            <p>Тема материала: Творец керамики французских замков XVI века - Массео Абакен. Публикация перенесена из старой версии блога и оформлена в текущей темной стилистике страницы.</p>
+            <p>Материал оставлен в общем списке блога после актуальных проектных статей, чтобы сохранить порядок новой страницы и при этом вернуть архив старой версии сайта.</p>
+          </div>
+        </article>
+
+        <article class="blog-article" id="archive-blog-63">
+          <aside class="blog-article__aside">
+            <div class="blog-article__kicker">Керамика</div>
+            <h2 class="blog-article__title">Мир керамики Петра Кузьмича Ваулина</h2>
+            <p class="blog-article__lead">Материал из старого блога CeramicaDecor о керамике, ремесленных традициях, мастерах и декоративно-прикладном искусстве.</p>
+          </aside>
+          <div class="blog-article__content">
+            <div class="blog-article__media">Заглушка фото: архивный материал блога CeramicaDecor</div>
+            <h3>Архивная статья</h3>
+            <p>Тема материала: Мир керамики Петра Кузьмича Ваулина. Публикация перенесена из старой версии блога и оформлена в текущей темной стилистике страницы.</p>
+            <p>Материал оставлен в общем списке блога после актуальных проектных статей, чтобы сохранить порядок новой страницы и при этом вернуть архив старой версии сайта.</p>
+          </div>
+        </article>
+
+        <article class="blog-article" id="archive-blog-64">
+          <aside class="blog-article__aside">
+            <div class="blog-article__kicker">Керамика</div>
+            <h2 class="blog-article__title">Английская плитка ручной работы</h2>
+            <p class="blog-article__lead">Материал из старого блога CeramicaDecor о керамике, ремесленных традициях, мастерах и декоративно-прикладном искусстве.</p>
+          </aside>
+          <div class="blog-article__content">
+            <div class="blog-article__media">Заглушка фото: архивный материал блога CeramicaDecor</div>
+            <h3>Архивная статья</h3>
+            <p>Тема материала: Английская плитка ручной работы. Публикация перенесена из старой версии блога и оформлена в текущей темной стилистике страницы.</p>
+            <p>Материал оставлен в общем списке блога после актуальных проектных статей, чтобы сохранить порядок новой страницы и при этом вернуть архив старой версии сайта.</p>
+          </div>
+        </article>
+
+        <article class="blog-article" id="archive-blog-65">
+          <aside class="blog-article__aside">
+            <div class="blog-article__kicker">Керамика</div>
+            <h2 class="blog-article__title">Александр Биго: путь к искусству керамики</h2>
+            <p class="blog-article__lead">Материал из старого блога CeramicaDecor о керамике, ремесленных традициях, мастерах и декоративно-прикладном искусстве.</p>
+          </aside>
+          <div class="blog-article__content">
+            <div class="blog-article__media">Заглушка фото: архивный материал блога CeramicaDecor</div>
+            <h3>Архивная статья</h3>
+            <p>Тема материала: Александр Биго: путь к искусству керамики. Публикация перенесена из старой версии блога и оформлена в текущей темной стилистике страницы.</p>
+            <p>Материал оставлен в общем списке блога после актуальных проектных статей, чтобы сохранить порядок новой страницы и при этом вернуть архив старой версии сайта.</p>
+          </div>
+        </article>
+
+        <article class="blog-article" id="archive-blog-66">
+          <aside class="blog-article__aside">
+            <div class="blog-article__kicker">Керамика</div>
+            <h2 class="blog-article__title">Керамическая отделка метрополитена: турне по подземке</h2>
+            <p class="blog-article__lead">Материал из старого блога CeramicaDecor о керамике, ремесленных традициях, мастерах и декоративно-прикладном искусстве.</p>
+          </aside>
+          <div class="blog-article__content">
+            <div class="blog-article__media">Заглушка фото: архивный материал блога CeramicaDecor</div>
+            <h3>Архивная статья</h3>
+            <p>Тема материала: Керамическая отделка метрополитена: турне по подземке. Публикация перенесена из старой версии блога и оформлена в текущей темной стилистике страницы.</p>
+            <p>Материал оставлен в общем списке блога после актуальных проектных статей, чтобы сохранить порядок новой страницы и при этом вернуть архив старой версии сайта.</p>
+          </div>
+        </article>
+
+        <article class="blog-article" id="archive-blog-67">
+          <aside class="blog-article__aside">
+            <div class="blog-article__kicker">Метлахская плитка</div>
+            <h2 class="blog-article__title">Метлахская плитка - универсальный инструмент для воплощения самых смелых фантазий в дизайне</h2>
+            <p class="blog-article__lead">Архивная публикация о метлахской плитке, ее геометрии, долговечности и возможностях для сложных декоративных композиций.</p>
+          </aside>
+          <div class="blog-article__content">
+            <div class="blog-article__media">Заглушка фото: архивный материал блога CeramicaDecor</div>
+            <h3>Архивная статья</h3>
+            <p>Тема материала: Метлахская плитка - универсальный инструмент для воплощения самых смелых фантазий в дизайне. Публикация перенесена из старой версии блога и оформлена в текущей темной стилистике страницы.</p>
+            <p>Материал оставлен в общем списке блога после актуальных проектных статей, чтобы сохранить порядок новой страницы и при этом вернуть архив старой версии сайта.</p>
+          </div>
+        </article>
+
+        <article class="blog-article" id="archive-blog-68">
+          <aside class="blog-article__aside">
+            <div class="blog-article__kicker">Метлахская плитка</div>
+            <h2 class="blog-article__title">Фабрика Winckelmans - европейский лидер по изготовлению метлахской плитки</h2>
+            <p class="blog-article__lead">Архивная публикация о метлахской плитке, ее геометрии, долговечности и возможностях для сложных декоративных композиций.</p>
+          </aside>
+          <div class="blog-article__content">
+            <div class="blog-article__media">Заглушка фото: архивный материал блога CeramicaDecor</div>
+            <h3>Архивная статья</h3>
+            <p>Тема материала: Фабрика Winckelmans - европейский лидер по изготовлению метлахской плитки. Публикация перенесена из старой версии блога и оформлена в текущей темной стилистике страницы.</p>
+            <p>Материал оставлен в общем списке блога после актуальных проектных статей, чтобы сохранить порядок новой страницы и при этом вернуть архив старой версии сайта.</p>
+          </div>
+        </article>
+
+        <article class="blog-article" id="archive-blog-69">
+          <aside class="blog-article__aside">
+            <div class="blog-article__kicker">Камины</div>
+            <h2 class="blog-article__title">Типы изразцовых каминов и печей CeramicaDecor</h2>
+            <p class="blog-article__lead">Архивная статья о каминной культуре, стилях облицовок, исторических прототипах и декоративных приемах для современных интерьеров.</p>
+          </aside>
+          <div class="blog-article__content">
+            <div class="blog-article__media">Заглушка фото: архивный материал блога CeramicaDecor</div>
+            <h3>Архивная статья</h3>
+            <p>Тема материала: Типы изразцовых каминов и печей CeramicaDecor. Публикация перенесена из старой версии блога и оформлена в текущей темной стилистике страницы.</p>
+            <p>Материал оставлен в общем списке блога после актуальных проектных статей, чтобы сохранить порядок новой страницы и при этом вернуть архив старой версии сайта.</p>
+          </div>
+        </article>
+
+        <article class="blog-article" id="archive-blog-70">
+          <aside class="blog-article__aside">
+            <div class="blog-article__kicker">Керамика</div>
+            <h2 class="blog-article__title">Эксклюзивные рамы для зеркал с элементами из керамики CeramicaDecor</h2>
+            <p class="blog-article__lead">Материал из старого блога CeramicaDecor о керамике, ремесленных традициях, мастерах и декоративно-прикладном искусстве.</p>
+          </aside>
+          <div class="blog-article__content">
+            <div class="blog-article__media">Заглушка фото: архивный материал блога CeramicaDecor</div>
+            <h3>Архивная статья</h3>
+            <p>Тема материала: Эксклюзивные рамы для зеркал с элементами из керамики CeramicaDecor. Публикация перенесена из старой версии блога и оформлена в текущей темной стилистике страницы.</p>
+            <p>Материал оставлен в общем списке блога после актуальных проектных статей, чтобы сохранить порядок новой страницы и при этом вернуть архив старой версии сайта.</p>
+          </div>
+        </article>
+
+        <article class="blog-article" id="archive-blog-71">
+          <aside class="blog-article__aside">
+            <div class="blog-article__kicker">Фасадная керамика</div>
+            <h2 class="blog-article__title">Керамика от кухонного фартука до фасада дома CeramicaDecor</h2>
+            <p class="blog-article__lead">Обзор о фасадной керамике, майолике и архитектурных деталях, которые делают здание выразительным и долговечным.</p>
+          </aside>
+          <div class="blog-article__content">
+            <div class="blog-article__media">Заглушка фото: архивный материал блога CeramicaDecor</div>
+            <h3>Архивная статья</h3>
+            <p>Тема материала: Керамика от кухонного фартука до фасада дома CeramicaDecor. Публикация перенесена из старой версии блога и оформлена в текущей темной стилистике страницы.</p>
+            <p>Материал оставлен в общем списке блога после актуальных проектных статей, чтобы сохранить порядок новой страницы и при этом вернуть архив старой версии сайта.</p>
+          </div>
+        </article>
+
+        <article class="blog-article" id="archive-blog-72">
+          <aside class="blog-article__aside">
+            <div class="blog-article__kicker">Фасадная керамика</div>
+            <h2 class="blog-article__title">Фасадная керамика для эксклюзивной отделки домов от компании CeramicaDecor</h2>
+            <p class="blog-article__lead">Обзор о фасадной керамике, майолике и архитектурных деталях, которые делают здание выразительным и долговечным.</p>
+          </aside>
+          <div class="blog-article__content">
+            <div class="blog-article__media">Заглушка фото: архивный материал блога CeramicaDecor</div>
+            <h3>Архивная статья</h3>
+            <p>Тема материала: Фасадная керамика для эксклюзивной отделки домов от компании CeramicaDecor. Публикация перенесена из старой версии блога и оформлена в текущей темной стилистике страницы.</p>
+            <p>Материал оставлен в общем списке блога после актуальных проектных статей, чтобы сохранить порядок новой страницы и при этом вернуть архив старой версии сайта.</p>
+          </div>
+        </article>
+
+        <article class="blog-article" id="archive-blog-73">
+          <aside class="blog-article__aside">
+            <div class="blog-article__kicker">Роспись</div>
+            <h2 class="blog-article__title">Роспись по Вашей плитке CeramicaDecor</h2>
+            <p class="blog-article__lead">Материал о ручной росписи керамики, орнаментах, надглазурных техниках и авторской работе с декоративной поверхностью.</p>
+          </aside>
+          <div class="blog-article__content">
+            <div class="blog-article__media">Заглушка фото: архивный материал блога CeramicaDecor</div>
+            <h3>Архивная статья</h3>
+            <p>Тема материала: Роспись по Вашей плитке CeramicaDecor. Публикация перенесена из старой версии блога и оформлена в текущей темной стилистике страницы.</p>
+            <p>Материал оставлен в общем списке блога после актуальных проектных статей, чтобы сохранить порядок новой страницы и при этом вернуть архив старой версии сайта.</p>
+          </div>
+        </article>
+
+        <article class="blog-article" id="archive-blog-74">
+          <aside class="blog-article__aside">
+            <div class="blog-article__kicker">Роспись</div>
+            <h2 class="blog-article__title">Наша живопись по керамике CeramicaDecor</h2>
+            <p class="blog-article__lead">Материал о ручной росписи керамики, орнаментах, надглазурных техниках и авторской работе с декоративной поверхностью.</p>
+          </aside>
+          <div class="blog-article__content">
+            <div class="blog-article__media">Заглушка фото: архивный материал блога CeramicaDecor</div>
+            <h3>Архивная статья</h3>
+            <p>Тема материала: Наша живопись по керамике CeramicaDecor. Публикация перенесена из старой версии блога и оформлена в текущей темной стилистике страницы.</p>
+            <p>Материал оставлен в общем списке блога после актуальных проектных статей, чтобы сохранить порядок новой страницы и при этом вернуть архив старой версии сайта.</p>
+          </div>
+        </article>
+
+        <article class="blog-article" id="archive-blog-75">
+          <aside class="blog-article__aside">
+            <div class="blog-article__kicker">Керамика</div>
+            <h2 class="blog-article__title">Керамические панно ручной работы CeramicaDecor</h2>
+            <p class="blog-article__lead">Материал из старого блога CeramicaDecor о керамике, ремесленных традициях, мастерах и декоративно-прикладном искусстве.</p>
+          </aside>
+          <div class="blog-article__content">
+            <div class="blog-article__media">Заглушка фото: архивный материал блога CeramicaDecor</div>
+            <h3>Архивная статья</h3>
+            <p>Тема материала: Керамические панно ручной работы CeramicaDecor. Публикация перенесена из старой версии блога и оформлена в текущей темной стилистике страницы.</p>
+            <p>Материал оставлен в общем списке блога после актуальных проектных статей, чтобы сохранить порядок новой страницы и при этом вернуть архив старой версии сайта.</p>
+          </div>
+        </article>
+
+        <article class="blog-article" id="archive-blog-76">
+          <aside class="blog-article__aside">
+            <div class="blog-article__kicker">Керамика</div>
+            <h2 class="blog-article__title">Буржуйка: от возникновения до наших дней</h2>
+            <p class="blog-article__lead">Материал из старого блога CeramicaDecor о керамике, ремесленных традициях, мастерах и декоративно-прикладном искусстве.</p>
+          </aside>
+          <div class="blog-article__content">
+            <div class="blog-article__media">Заглушка фото: архивный материал блога CeramicaDecor</div>
+            <h3>Архивная статья</h3>
+            <p>Тема материала: Буржуйка: от возникновения до наших дней. Публикация перенесена из старой версии блога и оформлена в текущей темной стилистике страницы.</p>
+            <p>Материал оставлен в общем списке блога после актуальных проектных статей, чтобы сохранить порядок новой страницы и при этом вернуть архив старой версии сайта.</p>
+          </div>
+        </article>
+
+        <article class="blog-article" id="archive-blog-77">
+          <aside class="blog-article__aside">
+            <div class="blog-article__kicker">Керамика</div>
+            <h2 class="blog-article__title">Никулосо Франциско Пизано - признанный гений керамического искусства</h2>
+            <p class="blog-article__lead">Материал из старого блога CeramicaDecor о керамике, ремесленных традициях, мастерах и декоративно-прикладном искусстве.</p>
+          </aside>
+          <div class="blog-article__content">
+            <div class="blog-article__media">Заглушка фото: архивный материал блога CeramicaDecor</div>
+            <h3>Архивная статья</h3>
+            <p>Тема материала: Никулосо Франциско Пизано - признанный гений керамического искусства. Публикация перенесена из старой версии блога и оформлена в текущей темной стилистике страницы.</p>
+            <p>Материал оставлен в общем списке блога после актуальных проектных статей, чтобы сохранить порядок новой страницы и при этом вернуть архив старой версии сайта.</p>
+          </div>
+        </article>
       </div>
     </section>
   </main>
@@ -642,19 +2376,29 @@
         </div>
         <div class="footer__columns">
           <div class="footer__col">
-            <h4 class="footer__col-title" style="font-size:16px;font-weight:500;">Разделы</h4>
+            <h4 class="footer__col-title" style="font-size:16px;font-weight:700;color:#fff;">Каталог</h4>
             <ul class="footer__col-list">
-              <li><a href="catalog.html" style="color:#fff;font-size:16px;font-weight:500;">Каталог</a></li>
-              <li><a href="cooperation.html" style="color:#fff;font-size:16px;font-weight:500;">Сотрудничество</a></li>
-              <li><a href="blog.html" style="color:#fff;font-size:16px;font-weight:500;">Блог</a></li>
-              <li><a href="about.html" style="color:#fff;font-size:16px;font-weight:500;">О компании</a></li>
-              <li><a href="contacts.html" style="color:#fff;font-size:16px;font-weight:500;">Контакты</a></li>
+              <li><a href="catalog-kaminy.html">Камины</a></li>
+              <li><a href="catalog-otopitelnye-pechi.html">Печи</a></li>
+              <li><a href="catalog-barbekyu-kompleksy.html">Барбекю комплексы</a></li>
+              <li><a href="catalog-izrazcy.html">Изразцы</a></li>
             </ul>
           </div>
           <div class="footer__col">
             <ul class="footer__col-list footer__col-list--offset">
+              <li><a href="portfolio.html" style="color:#fff;font-size:16px;font-weight:500;">Портфолио</a></li>
+              <li><a href="components.html" style="color:#fff;font-size:16px;font-weight:500;">Все для монтажа</a></li>
+            </ul>
+          </div>
+          <div class="footer__col footer__col--contacts">
+            <h4 class="footer__col-title" style="font-size:16px;font-weight:700;color:#fff;"><a href="contacts.html" class="footer__col-title-link">Контакты</a></h4>
+            <ul class="footer__col-list footer__contact-list">
               <li><a href="tel:+74952293046" style="font-weight:700;">+7 (495) 229-30-46</a></li>
               <li><a href="mailto:info@ceramicadecor.ru" style="font-weight:700;">info@ceramicadecor.ru</a></li>
+              <li class="footer__messengers" aria-label="Мессенджеры">
+                <a href="https://t.me/+79950001166" class="footer__messenger-link" target="_blank" rel="noopener" aria-label="Telegram"><img src="images/icons/png-klev-club-p-telegram-logotip-png-9.png" alt="" class="footer__messenger-icon"></a>
+                <a href="https://max.ru/" class="footer__messenger-link" target="_blank" rel="noopener" aria-label="Max"><img src="images/icons/max.png" alt="" class="footer__messenger-icon"></a>
+</li>
               <li style="margin-top: 0.75em;"><a href="contacts.html" class="btn btn--primary" style="padding:9px 20px;font-size:13px;color:#fff;">Оставить заявку</a></li>
             </ul>
           </div>
@@ -683,3 +2427,10 @@
   </div>
 </body>
 </html>
+
+
+
+
+
+
+

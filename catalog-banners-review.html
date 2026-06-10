@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Редактор баннеров каталога</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #101010;
+      --panel: #1b1a18;
+      --panel-soft: #24221f;
+      --text: #f5f1ea;
+      --muted: #b9b0a5;
+      --line: rgba(255,255,255,0.14);
+      --accent: #cb3b25;
+      --accent-2: #d8a75f;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Inter, Arial, sans-serif;
+      line-height: 1.45;
+    }
+
+    button,
+    input,
+    textarea,
+    select {
+      font: inherit;
+    }
+
+    .page {
+      width: min(1480px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 32px 0 56px;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      margin: -32px calc(50% - 50vw) 28px;
+      padding: 18px max(16px, calc((100vw - 1480px) / 2));
+      border-bottom: 1px solid var(--line);
+      background: rgba(16,16,16,0.92);
+      backdrop-filter: blur(18px);
+    }
+
+    .topbar__inner {
+      width: min(1480px, calc(100% - 32px));
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 18px;
+      align-items: center;
+    }
+
+    h1 {
+      margin: 0 0 4px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(28px, 3vw, 42px);
+      font-weight: 400;
+      letter-spacing: 0;
+    }
+
+    .lead {
+      margin: 0;
+      color: var(--muted);
+      max-width: 820px;
+      font-size: 15px;
+    }
+
+    .actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .btn {
+      min-height: 40px;
+      padding: 9px 14px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: var(--panel-soft);
+      color: var(--text);
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .btn:hover {
+      border-color: rgba(255,255,255,0.28);
+    }
+
+    .btn--primary {
+      border-color: var(--accent);
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .toolbar {
+      display: grid;
+      grid-template-columns: minmax(220px, 420px) 1fr;
+      gap: 16px;
+      align-items: end;
+      margin-bottom: 22px;
+    }
+
+    .field {
+      display: grid;
+      gap: 7px;
+    }
+
+    .field span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .field input,
+    .field select {
+      width: 100%;
+      min-height: 42px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #151515;
+      color: var(--text);
+      padding: 9px 12px;
+    }
+
+    .output {
+      width: 100%;
+      min-height: 140px;
+      resize: vertical;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #151515;
+      color: var(--text);
+      padding: 14px;
+      font-family: Consolas, "Courier New", monospace;
+      font-size: 13px;
+    }
+
+    .grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    .card {
+      display: grid;
+      gap: 16px;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+    }
+
+    .card__head {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .card h2 {
+      margin: 0;
+      font-size: 20px;
+      font-weight: 600;
+    }
+
+    .file {
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 13px;
+      word-break: break-all;
+    }
+
+    .previews {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(320px, 420px);
+      gap: 16px;
+      align-items: start;
+    }
+
+    .preview-block {
+      display: grid;
+      gap: 10px;
+      min-width: 0;
+    }
+
+    .preview-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .viewport {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 6px;
+      background: #090909;
+      cursor: grab;
+      user-select: none;
+      touch-action: none;
+    }
+
+    .viewport.is-dragging {
+      cursor: grabbing;
+    }
+
+    .viewport--desktop {
+      aspect-ratio: 1440 / 460;
+      min-height: 230px;
+    }
+
+    .viewport--mobile {
+      aspect-ratio: 390 / 460;
+      max-width: 420px;
+      min-height: 460px;
+    }
+
+    .viewport img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      object-position: var(--pos-x, 50%) var(--pos-y, 54%);
+      pointer-events: none;
+    }
+
+    .viewport::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(16,16,16,0.45);
+      pointer-events: none;
+    }
+
+    .crosshair {
+      position: absolute;
+      left: var(--pos-x, 50%);
+      top: var(--pos-y, 54%);
+      z-index: 2;
+      width: 22px;
+      height: 22px;
+      border: 2px solid #fff;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      box-shadow: 0 0 0 1px rgba(0,0,0,0.45), 0 0 18px rgba(0,0,0,0.45);
+      pointer-events: none;
+    }
+
+    .crosshair::before,
+    .crosshair::after {
+      content: "";
+      position: absolute;
+      background: #fff;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .crosshair::before {
+      width: 32px;
+      height: 2px;
+    }
+
+    .crosshair::after {
+      width: 2px;
+      height: 32px;
+    }
+
+    .controls {
+      display: grid;
+      grid-template-columns: 1fr 1fr auto;
+      gap: 8px;
+      align-items: end;
+    }
+
+    .controls .field input {
+      min-height: 36px;
+      padding: 7px 9px;
+    }
+
+    .controls .btn {
+      min-height: 36px;
+      padding: 7px 10px;
+    }
+
+    .missing {
+      display: grid;
+      place-items: center;
+      min-height: 180px;
+      border: 1px dashed rgba(255,255,255,0.24);
+      border-radius: 6px;
+      color: var(--muted);
+      text-align: center;
+      padding: 20px;
+    }
+
+    @media (max-width: 980px) {
+      .topbar__inner,
+      .toolbar,
+      .previews {
+        grid-template-columns: 1fr;
+      }
+
+      .actions {
+        justify-content: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar__inner">
+      <div>
+        <h1>Редактор баннеров каталога</h1>
+        <p class="lead">Перетаскивайте изображение внутри рамки или вводите проценты вручную. Desktop и mobile сохраняются отдельно в этом браузере.</p>
+      </div>
+      <div class="actions">
+        <button class="btn" type="button" data-reset-all>Сбросить все</button>
+        <button class="btn btn--primary" type="button" data-copy-css>Скопировать CSS</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="page">
+    <section class="toolbar" aria-label="Настройки вывода">
+      <label class="field">
+        <span>Фильтр разделов</span>
+        <input type="search" data-search placeholder="Например: камины, печи, фасад">
+      </label>
+      <label class="field">
+        <span>Готовые значения для переноса в проект</span>
+        <textarea class="output" data-output readonly></textarea>
+      </label>
+    </section>
+
+    <section class="grid" data-grid></section>
+  </main>
+
+  <script>
+    const STORAGE_KEY = 'ceramica-catalog-banner-positions-v1';
+    const DEFAULT_DESKTOP = { x: 50, y: 54 };
+    const DEFAULT_MOBILE = { x: 50, y: 50 };
+
+    const banners = [
+      { id: 'catalog', title: 'Каталог', page: 'catalog.html', desktop: 'images/banner-kaminy_desktop.jpg', mobile: 'images/banner-kaminy_mobile.jpg' },
+      { id: 'izrazcy', title: 'Изразцы', page: 'catalog-izrazcy.html', desktop: 'images/banner-izrazcy_desktop.jpg', mobile: 'images/banner-izrazcy_mobile.jpg' },
+      { id: 'kaminy', title: 'Камины', page: 'catalog-kaminy.html', desktop: 'images/banner-kaminy_desktop.jpg', mobile: 'images/banner-kaminy_mobile.jpg' },
+      { id: 'barbekyu-kompleksy', title: 'Барбекю комплексы', page: 'catalog-barbekyu-kompleksy.html', desktop: 'images/banner-bbk_desktop.jpg', mobile: 'images/banner-bbk_mobile.jpg' },
+      { id: 'biokaminy', title: 'Биокамины', page: 'catalog-biokaminy.html', desktop: 'images/banner-biokaminy_desktop.jpg', mobile: 'images/banner-biokaminy_desktop.jpg' },
+      { id: 'elektrokaminy', title: 'Электрокамины', page: 'catalog-elektrokaminy.html', desktop: 'images/banner-elektrokaminy_desktop.jpg', mobile: 'images/banner-elektrokaminy_desktop.jpg' },
+      { id: 'mramornye-kaminy-portaly', title: 'Мраморные камины и порталы', page: 'catalog-mramornye-kaminy-portaly.html', desktop: 'images/banner-mramor_desktop.jpg', mobile: 'images/banner-mramor_desktop.jpg' },
+      { id: 'russkie-pechi', title: 'Русские печи', page: 'catalog-russkie-pechi.html', desktop: 'images/banner-russkie-pechi_desktop.jpg', mobile: 'images/banner-russkie-pechi_desktop.jpg' },
+      { id: 'otopitelnye-pechi', title: 'Отопительные печи', page: 'catalog-otopitelnye-pechi.html', desktop: 'images/banner-otopitelnye-pechi_desktop.jpg', mobile: 'images/banner-otopitelnye-pechi_mobile.jpg' },
+      { id: 'bannye-pechi', title: 'Банные печи и порталы', page: 'catalog-bannye-pechi.html', desktop: 'images/banner-bannye-pechi_desktop.jpg', mobile: 'images/banner-bannye-pechi_desktop.jpg' },
+      { id: 'bannye-portaly', title: 'Банные порталы', page: 'catalog-bannye-pechi.html', desktop: 'images/banner-bannye-portaly_desktop.jpg', mobile: 'images/banner-bannye-portaly_desktop.jpg' },
+      { id: 'seriynye-modeli', title: 'Печи-камины из наличия', page: 'catalog-seriynye-modeli.html', desktop: 'images/banner-typovie_desktop.jpg', mobile: 'images/banner-typovie_mobile.jpg' },
+      { id: 'fasadnaya-keramika', title: 'Фасадная керамика', page: 'catalog-fasadnaya-keramika.html', desktop: 'images/banner-fasad_desktop.jpg', mobile: 'images/banner-fasad_desktop.jpg' },
+      { id: 'interernaya-keramika', title: 'Плитка ручной работы', page: 'catalog-interernaya-keramika.html', desktop: 'images/banner-interior_desktop.jpg', mobile: 'images/banner-interior_desktop.jpg' },
+      { id: 'metlahskaya-plitka', title: 'Метлахская плитка', page: 'catalog-metlahskaya-plitka.html', desktop: 'images/banner-interior_desktop.jpg', mobile: 'images/banner-interior_desktop.jpg' },
+      { id: 'restoration', title: 'Реставрация', page: 'restoration.html', desktop: 'images/restavraciya.jpg', mobile: 'images/restavraciya.jpg' },
+      { id: 'suvenirnaya-produkciya', title: 'Сувенирная продукция', page: 'catalog-suvenirnaya-produkciya.html', desktop: 'images/banner-suvenir_desktop.jpg', mobile: 'images/banner-suvenir_desktop.jpg' }
+    ];
+
+    const state = loadState();
+    const grid = document.querySelector('[data-grid]');
+    const output = document.querySelector('[data-output]');
+    const search = document.querySelector('[data-search]');
+
+    render();
+    updateOutput();
+
+    document.querySelector('[data-copy-css]').addEventListener('click', async (event) => {
+      updateOutput();
+      try {
+        await navigator.clipboard.writeText(output.value);
+      } catch (error) {
+        output.focus();
+        output.select();
+        document.execCommand('copy');
+      }
+      const button = event.currentTarget;
+      const oldText = button.textContent;
+      button.textContent = 'Скопировано';
+      window.setTimeout(() => button.textContent = oldText, 1400);
+    });
+
+    document.querySelector('[data-reset-all]').addEventListener('click', () => {
+      if (!confirm('Сбросить все позиции к исходным значениям?')) return;
+      localStorage.removeItem(STORAGE_KEY);
+      Object.keys(state).forEach((key) => delete state[key]);
+      render();
+      updateOutput();
+    });
+
+    search.addEventListener('input', () => render());
+
+    function render() {
+      const query = search.value.trim().toLowerCase();
+      grid.innerHTML = '';
+      banners
+        .filter((banner) => !query || banner.title.toLowerCase().includes(query) || banner.id.includes(query))
+        .forEach((banner) => grid.appendChild(createCard(banner)));
+    }
+
+    function createCard(banner) {
+      ensureBannerState(banner.id);
+
+      const card = document.createElement('article');
+      card.className = 'card';
+      card.dataset.banner = banner.id;
+      card.innerHTML = `
+        <div class="card__head">
+          <div>
+            <h2>${banner.title}</h2>
+            <div class="file">${banner.page}: ${banner.desktop} / ${banner.mobile}</div>
+          </div>
+          <button class="btn" type="button" data-reset-card>Сбросить</button>
+        </div>
+        <div class="previews">
+          ${createPreviewMarkup(banner, 'desktop', 'Desktop 1440 x 460')}
+          ${createPreviewMarkup(banner, 'mobile', 'Mobile 390 x 460')}
+        </div>
+      `;
+
+      card.querySelector('[data-reset-card]').addEventListener('click', () => {
+        delete state[banner.id];
+        saveState();
+        render();
+        updateOutput();
+      });
+
+      initPreview(card, banner.id, 'desktop');
+      initPreview(card, banner.id, 'mobile');
+      return card;
+    }
+
+    function createPreviewMarkup(banner, mode, label) {
+      const image = banner[mode];
+      const pos = getPosition(banner.id, mode);
+      return `
+        <div class="preview-block" data-preview="${mode}">
+          <div class="preview-title">
+            <strong>${label}</strong>
+            <span data-readout>${pos.x}% ${pos.y}%</span>
+          </div>
+          <div class="viewport viewport--${mode}" style="--pos-x:${pos.x}%;--pos-y:${pos.y}%;" data-viewport>
+            <img src="${image}" alt="${banner.title} ${mode}" onerror="this.closest('.viewport').replaceWith(createMissing('${image}'))">
+            <span class="crosshair" aria-hidden="true"></span>
+          </div>
+          <div class="controls">
+            <label class="field">
+              <span>X</span>
+              <input type="number" min="0" max="100" step="1" value="${pos.x}" data-axis="x">
+            </label>
+            <label class="field">
+              <span>Y</span>
+              <input type="number" min="0" max="100" step="1" value="${pos.y}" data-axis="y">
+            </label>
+            <button class="btn" type="button" data-center>50 / 50</button>
+          </div>
+        </div>
+      `;
+    }
+
+    function initPreview(card, id, mode) {
+      const block = card.querySelector(`[data-preview="${mode}"]`);
+      const viewport = block.querySelector('[data-viewport]');
+      const inputs = block.querySelectorAll('[data-axis]');
+      const center = block.querySelector('[data-center]');
+      const readout = block.querySelector('[data-readout]');
+
+      if (!viewport) return;
+
+      const setPosition = (x, y) => {
+        const next = {
+          x: clamp(Math.round(Number(x)), 0, 100),
+          y: clamp(Math.round(Number(y)), 0, 100)
+        };
+        ensureBannerState(id);
+        state[id][mode] = next;
+        viewport.style.setProperty('--pos-x', `${next.x}%`);
+        viewport.style.setProperty('--pos-y', `${next.y}%`);
+        inputs.forEach((input) => input.value = next[input.dataset.axis]);
+        readout.textContent = `${next.x}% ${next.y}%`;
+        saveState();
+        updateOutput();
+      };
+
+      inputs.forEach((input) => {
+        input.addEventListener('input', () => {
+          const pos = getPosition(id, mode);
+          setPosition(input.dataset.axis === 'x' ? input.value : pos.x, input.dataset.axis === 'y' ? input.value : pos.y);
+        });
+      });
+
+      center.addEventListener('click', () => setPosition(50, 50));
+
+      let dragging = false;
+      viewport.addEventListener('pointerdown', (event) => {
+        dragging = true;
+        viewport.classList.add('is-dragging');
+        viewport.setPointerCapture(event.pointerId);
+        moveFromPointer(event);
+      });
+      viewport.addEventListener('pointermove', (event) => {
+        if (dragging) moveFromPointer(event);
+      });
+      viewport.addEventListener('pointerup', () => {
+        dragging = false;
+        viewport.classList.remove('is-dragging');
+      });
+      viewport.addEventListener('pointercancel', () => {
+        dragging = false;
+        viewport.classList.remove('is-dragging');
+      });
+
+      function moveFromPointer(event) {
+        const rect = viewport.getBoundingClientRect();
+        const x = ((event.clientX - rect.left) / rect.width) * 100;
+        const y = ((event.clientY - rect.top) / rect.height) * 100;
+        setPosition(x, y);
+      }
+    }
+
+    function getPosition(id, mode) {
+      ensureBannerState(id);
+      return state[id][mode];
+    }
+
+    function ensureBannerState(id) {
+      if (!state[id]) {
+        state[id] = {
+          desktop: { ...DEFAULT_DESKTOP },
+          mobile: { ...DEFAULT_MOBILE }
+        };
+      }
+      if (!state[id].desktop) state[id].desktop = { ...DEFAULT_DESKTOP };
+      if (!state[id].mobile) state[id].mobile = { ...DEFAULT_MOBILE };
+    }
+
+    function updateOutput() {
+      const lines = [];
+      lines.push('/* Значения object-position для баннеров каталога */');
+      banners.forEach((banner) => {
+        const desktop = getPosition(banner.id, 'desktop');
+        const mobile = getPosition(banner.id, 'mobile');
+        lines.push(`/* ${banner.page} — ${banner.title} */`);
+        lines.push(`[data-catalog-hero="${banner.id}"] .catalog-hero__bg img { object-position: ${desktop.x}% ${desktop.y}%; }`);
+        lines.push(`@media (max-width: 768px) { [data-catalog-hero="${banner.id}"] .catalog-hero__bg img { object-position: ${mobile.x}% ${mobile.y}%; } }`);
+      });
+      output.value = lines.join('\n');
+    }
+
+    function loadState() {
+      try {
+        return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
+      } catch (error) {
+        return {};
+      }
+    }
+
+    function saveState() {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    }
+
+    function clamp(value, min, max) {
+      if (Number.isNaN(value)) return min;
+      return Math.min(max, Math.max(min, value));
+    }
+
+    function createMissing(path) {
+      const div = document.createElement('div');
+      div.className = 'missing';
+      div.textContent = `Файл не найден: ${path}`;
+      return div;
+    }
+  </script>
+</body>
+</html>
