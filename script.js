@@ -19,6 +19,244 @@
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
+  /* ----- Shared calltracking contacts ----- */
+  var calltrackingDefaults = {
+    phone: {
+      href: 'tel:+74952293046',
+      label: '+7 (495) 229-30-46'
+    },
+    email: {
+      href: 'mailto:info@ceramicadecor.ru',
+      label: 'info@ceramicadecor.ru'
+    }
+  };
+
+  function getCalltrackingValue(kind, value) {
+    if (!value) return calltrackingDefaults[kind];
+    if (typeof value === 'string') {
+      return {
+        href: kind === 'email' ? 'mailto:' + value : 'tel:' + value.replace(/[^\d+]/g, ''),
+        label: value
+      };
+    }
+
+    return {
+      href: value.href || value.url || calltrackingDefaults[kind].href,
+      label: value.label || value.text || value.value || calltrackingDefaults[kind].label
+    };
+  }
+
+  function replaceContactText(element, fromText, toText) {
+    var replaced = false;
+    var walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT);
+    var nodes = [];
+
+    while (walker.nextNode()) {
+      nodes.push(walker.currentNode);
+    }
+
+    nodes.forEach(function (node) {
+      if (node.nodeValue.indexOf(fromText) !== -1) {
+        node.nodeValue = node.nodeValue.split(fromText).join(toText);
+        replaced = true;
+      }
+    });
+
+    if (!replaced && element.childElementCount === 0) {
+      element.textContent = toText;
+    }
+  }
+
+  function syncStructuredContactData(values) {
+    document.querySelectorAll('script[type="application/ld+json"]').forEach(function (script) {
+      if (!script.textContent) return;
+
+      var updated = script.textContent
+        .split(calltrackingDefaults.phone.label).join(values.phone.label)
+        .split(calltrackingDefaults.email.label).join(values.email.label);
+
+      if (updated !== script.textContent) {
+        script.textContent = updated;
+      }
+    });
+  }
+
+  window.updateCeramicaDecorCalltracking = function (contacts) {
+    var values = {
+      phone: getCalltrackingValue('phone', contacts && contacts.phone),
+      email: getCalltrackingValue('email', contacts && contacts.email)
+    };
+
+    document.querySelectorAll('[data-calltracking]').forEach(function (element) {
+      var kind = element.dataset.calltracking;
+      var value = values[kind];
+      var defaults = calltrackingDefaults[kind];
+      if (!value || !defaults) return;
+
+      if (element.tagName === 'A') {
+        element.href = value.href;
+      }
+      replaceContactText(element, defaults.label, value.label);
+    });
+
+    syncStructuredContactData(values);
+  };
+
+  if (window.CeramicaDecorCalltracking) {
+    window.updateCeramicaDecorCalltracking(window.CeramicaDecorCalltracking);
+  }
+
+  function clearConsentError(consent) {
+    var label = consent && consent.closest('.consent-label');
+    if (label) label.classList.remove('is-error');
+  }
+
+  window.requireCeramicaDecorConsent = function (form) {
+    var consent = form && form.querySelector('.consent-checkbox');
+    if (!consent || consent.checked) {
+      clearConsentError(consent);
+      return true;
+    }
+
+    var label = consent.closest('.consent-label');
+    if (label) {
+      label.classList.add('is-error');
+      label.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+    consent.focus({ preventScroll: true });
+    return false;
+  };
+
+  document.addEventListener('change', function (event) {
+    if (event.target && event.target.matches('.consent-checkbox')) {
+      clearConsentError(event.target);
+    }
+  });
+
+  function createStandardRequestModal() {
+    var modal = document.createElement('div');
+    modal.className = 'request-modal standard-request-modal';
+    modal.id = 'standardRequestModal';
+    modal.innerHTML =
+      '<div class="request-modal__overlay" data-standard-request-close></div>' +
+      '<div class="request-modal__content" role="dialog" aria-modal="true" aria-labelledby="standardRequestTitle">' +
+        '<button class="request-modal__close" type="button" aria-label="Закрыть" data-standard-request-close>&times;</button>' +
+        '<h3 id="standardRequestTitle">Оставить заявку</h3>' +
+        '<p>Оставьте контакты, и мы свяжемся с вами в ближайшее рабочее время.</p>' +
+        '<form class="request-modal__form" id="standardRequestForm" novalidate>' +
+          '<input type="hidden" name="source" value="">' +
+          '<input type="hidden" name="product_name" value="">' +
+          '<input type="hidden" name="product_article" value="">' +
+          '<div class="standard-request-modal__product" data-standard-request-product hidden></div>' +
+          '<div class="input-group">' +
+            '<label for="standardRequestName">Ваше имя</label>' +
+            '<input type="text" id="standardRequestName" name="name" placeholder="Как к вам обращаться" required>' +
+          '</div>' +
+          '<div class="input-group">' +
+            '<label for="standardRequestPhone">Телефон</label>' +
+            '<input type="tel" id="standardRequestPhone" name="phone" value="+7" placeholder="+7" required>' +
+          '</div>' +
+          '<div class="input-group">' +
+            '<label for="standardRequestComment">Комментарий</label>' +
+            '<textarea id="standardRequestComment" name="comment" placeholder="Ваши пожелания или вопросы"></textarea>' +
+          '</div>' +
+          '<label class="consent-label">' +
+            '<input type="checkbox" class="consent-checkbox">' +
+            '<span>Я даю согласие на обработку персональных данных в соответствии с <a href="privacy.html" target="_blank">политикой конфиденциальности</a></span>' +
+          '</label>' +
+          '<button type="submit" class="btn btn--primary" style="width:100%">Отправить заявку</button>' +
+        '</form>' +
+      '</div>';
+    document.body.appendChild(modal);
+    return modal;
+  }
+
+  function getStandardRequestModal() {
+    return document.getElementById('standardRequestModal') || createStandardRequestModal();
+  }
+
+  function escapeHtml(value) {
+    return String(value || '').replace(/[&<>"']/g, function (char) {
+      return {
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#039;'
+      }[char];
+    });
+  }
+
+  function renderProductContext(productName, productArticle) {
+    var name = String(productName || '').trim();
+    var article = String(productArticle || '').trim();
+    if (!name) return '';
+
+    return '<strong>' + escapeHtml(name) + '</strong>' +
+      (article ? '<span>\u0410\u0440\u0442. ' + escapeHtml(article) + '</span>' : '');
+  }
+
+  function isHomePage() {
+    var path = location.pathname.replace(/\\/g, '/').split('/').pop();
+    return !path || path === 'index.html';
+  }
+
+  window.openStandardRequestModal = function (source) {
+    var modal = document.getElementById('standardRequestModal');
+    if (modal && !modal.querySelector('#standardRequestForm')) {
+      modal.remove();
+      modal = null;
+    }
+    modal = modal || getStandardRequestModal();
+    var form = modal.querySelector('#standardRequestForm');
+    if (form) {
+      form.reset();
+      var sourceValue = source || document.title || location.pathname;
+      var productName = '';
+      var productArticle = '';
+
+      if (source && typeof source === 'object') {
+        sourceValue = source.source || document.title || location.pathname;
+        productName = source.productName || '';
+        productArticle = source.productArticle || '';
+      }
+
+      var sourceInput = form.querySelector('[name="source"]');
+      var productNameInput = form.querySelector('[name="product_name"]');
+      var productArticleInput = form.querySelector('[name="product_article"]');
+      var productBox = form.querySelector('[data-standard-request-product]');
+
+      if (sourceInput) sourceInput.value = sourceValue;
+      if (productNameInput) productNameInput.value = productName;
+      if (productArticleInput) productArticleInput.value = productArticle;
+      if (productBox) {
+        var productHtml = renderProductContext(productName, productArticle);
+        productBox.innerHTML = productHtml;
+        productBox.hidden = !productHtml;
+      }
+    }
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+    var nameInput = modal.querySelector('[name="name"]');
+    if (nameInput) setTimeout(function () { nameInput.focus(); }, 50);
+  };
+
+  window.openProductRequestModal = function (productName, productArticle, source) {
+    if (!productName) return;
+    window.openStandardRequestModal({
+      source: source || location.href,
+      productName: productName,
+      productArticle: productArticle || ''
+    });
+  };
+
+  window.closeStandardRequestModal = function () {
+    var modal = document.getElementById('standardRequestModal');
+    if (!modal) return;
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+  };
+
   /* ----- Mobile menu ----- */
   const burger = document.getElementById('burgerBtn');
   const nav = document.getElementById('mainNav');
@@ -70,6 +308,15 @@
     var panels = menu.querySelectorAll('.header__mega-panel');
     var mobileMedia = window.matchMedia('(max-width: 960px)');
     var hasMobileSelection = false;
+    var hoverSwitchDelay = 300;
+    var hoverSwitchTimer = null;
+
+    function clearHoverSwitchTimer() {
+      if (hoverSwitchTimer) {
+        clearTimeout(hoverSwitchTimer);
+        hoverSwitchTimer = null;
+      }
+    }
 
     function restoreDesktopPanels() {
       panels.forEach(function (panel) {
@@ -150,15 +397,35 @@
       syncMegaLayout();
     }
 
+    menu.addEventListener('mouseleave', clearHoverSwitchTimer);
+    panelsContainer.addEventListener('mouseenter', clearHoverSwitchTimer);
+
     tabs.forEach(function (tab) {
       var target = tab.getAttribute('data-mega-target');
       tab.addEventListener('mouseenter', function () {
-        if (!mobileMedia.matches) activatePanel(target, false);
+        if (mobileMedia.matches) return;
+        clearHoverSwitchTimer();
+        hoverSwitchTimer = setTimeout(function () {
+          activatePanel(target, false);
+          hoverSwitchTimer = null;
+        }, hoverSwitchDelay);
       });
+      tab.addEventListener('mouseleave', clearHoverSwitchTimer);
+      tab.addEventListener('pointerdown', clearHoverSwitchTimer);
+      tab.addEventListener('touchstart', clearHoverSwitchTimer, { passive: true });
+      tab.addEventListener('blur', clearHoverSwitchTimer);
       tab.addEventListener('focus', function () {
-        if (!mobileMedia.matches) activatePanel(target, false);
+        if (!mobileMedia.matches) {
+          clearHoverSwitchTimer();
+          activatePanel(target, false);
+        }
       });
       tab.addEventListener('click', function (e) {
+        var href = tab.getAttribute('data-mega-href');
+        if (href && !mobileMedia.matches) {
+          window.location.href = href;
+          return;
+        }
         e.preventDefault();
         e.stopPropagation();
         activatePanel(target, true);
@@ -268,6 +535,7 @@
       el.closest('.cat-cards') ||
       el.closest('.catalog-grid') ||
       el.closest('.izrazcy-catalog') ||
+      el.closest('.portfolio-page') ||
       el.closest('.blog-list') ||
       el.closest('.blog-articles')
     ) return;
@@ -342,7 +610,7 @@
         return;
       }
 
-
+      if (!window.requireCeramicaDecorConsent(this)) return;
 
       // Visual feedback
       var submitBtn = this.querySelector('button[type="submit"]');
@@ -635,15 +903,86 @@
       var phone = this.querySelector('[name="phone"]').value.trim();
       var product = this.querySelector('[name="product"]').value;
       if (!name || phone.replace(/\D/g,'').length < 10) return;
+      if (!window.requireCeramicaDecorConsent(this)) return;
 
       fetch('https://ceramicadecor.ru/feedback/ceramicadecor_pro', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams({ name: name, phone: phone, comment: product ? 'Продукт: ' + product : '' })
+        body: new URLSearchParams({ name: name, phone: phone, comment: product || '' })
       });
       this.innerHTML = '<p style="color:#25D366;text-align:center;padding:20px 0;">Спасибо! Мы перезвоним в ближайшее время.</p>';
     });
   }
+
+  document.addEventListener('click', function(e) {
+    var closeTrigger = e.target.closest('[data-standard-request-close]');
+    if (closeTrigger) {
+      e.preventDefault();
+      window.closeStandardRequestModal();
+      return;
+    }
+
+    var requestTrigger = e.target.closest(
+      '.header__cta-btn, a.btn[href="#contact"], a.btn[href="contacts.html"]'
+    );
+    if (!requestTrigger) return;
+
+    if (isHomePage()) return;
+
+    e.preventDefault();
+    if (nav && burger) closeMenu();
+    window.openStandardRequestModal(requestTrigger.textContent.trim());
+  });
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      window.closeStandardRequestModal();
+    }
+  });
+
+  document.addEventListener('submit', function(e) {
+    var form = e.target.closest('#standardRequestForm');
+    if (!form) return;
+
+    e.preventDefault();
+    var nameInput = form.querySelector('[name="name"]');
+    var phoneInput = form.querySelector('[name="phone"]');
+    var commentInput = form.querySelector('[name="comment"]');
+    var sourceInput = form.querySelector('[name="source"]');
+    var productNameInput = form.querySelector('[name="product_name"]');
+    var productArticleInput = form.querySelector('[name="product_article"]');
+    var name = nameInput ? nameInput.value.trim() : '';
+    var phone = phoneInput ? phoneInput.value.trim() : '';
+    var userComment = commentInput ? commentInput.value.trim() : '';
+    var productName = productNameInput ? productNameInput.value.trim() : '';
+    var productArticle = productArticleInput ? productArticleInput.value.trim() : '';
+
+    if (!name) {
+      if (nameInput) nameInput.focus();
+      return;
+    }
+    if (!phone || phone.replace(/\D/g, '').length < 10) {
+      if (phoneInput) phoneInput.focus();
+      return;
+    }
+    if (!window.requireCeramicaDecorConsent(form)) return;
+
+    var productContext = productName
+      ? productName + (productArticle ? '\n\u0410\u0440\u0442. ' + productArticle : '') + '\n'
+      : '';
+
+    fetch('https://ceramicadecor.ru/feedback/ceramicadecor_pro', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams({
+        name: name,
+        phone: phone,
+        comment: productContext + 'Стандартная форма заявки. Источник: ' + (sourceInput && sourceInput.value ? sourceInput.value : location.href) + (userComment ? '\nКомментарий: ' + userComment : '')
+      })
+    });
+
+    form.innerHTML = '<p style="color:#25D366;text-align:center;padding:20px 0;">Спасибо! Мы свяжемся с вами в ближайшее время.</p>';
+  });
 
   /* ----- Scroll to top ----- */
   var scrollToTopBtn = document.querySelector('.scroll-to-top');

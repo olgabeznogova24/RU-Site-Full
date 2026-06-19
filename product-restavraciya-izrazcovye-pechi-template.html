@@ -1,0 +1,1282 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>Воссоздание изразцовых печей декоративного назначения | CeramicaDecor</title>
+  <meta name="description" content="Воссоздание изразцовых печей декоративного назначения для объекта культурного наследия постройки 1902 года в п. Мокшан. Реставрационный проект CeramicaDecor.">
+  <link rel="canonical" href="https://ceramicadecor.ru/product-restavraciya-izrazcovye-pechi-template.html">
+  <meta property="og:title" content="Воссоздание изразцовых печей декоративного назначения | CeramicaDecor">
+  <meta property="og:description" content="Реставрационный проект CeramicaDecor: воссоздание изразцовых печей для объекта культурного наследия в п. Мокшан.">
+  <meta property="og:type" content="product">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:image" content="images/restoration_1.jpg">
+  <meta property="og:url" content="https://ceramicadecor.ru/product-restavraciya-izrazcovye-pechi-template.html">
+  <meta property="og:site_name" content="CeramicaDecor">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.cdnfonts.com/css/tt-ramillas-trl" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .product-page {
+      background:
+        radial-gradient(circle at 64% 72%, rgba(203,59,37,0.18), transparent 26%),
+        radial-gradient(circle at 18% 92%, rgba(255,255,255,0.1), transparent 18%),
+        #050505;
+      color: #fff;
+      padding-top: 132px;
+    }
+    .product-detail {
+      padding: 42px 0 90px;
+    }
+    .product-detail > .container {
+      overflow: visible;
+    }
+    .product-breadcrumbs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 0 0 28px;
+      color: rgba(255,255,255,0.48);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.86rem;
+    }
+    .product-breadcrumbs a {
+      color: rgba(255,255,255,0.62);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+    .product-breadcrumbs a:hover { color: #fff; }
+    .product-detail__grid {
+      display: grid;
+      grid-template-columns: minmax(0, 0.95fr) minmax(460px, 0.7fr);
+      gap: 36px 44px;
+      align-items: start;
+    }
+    .product-header {
+      padding-top: 0;
+      margin-bottom: 0;
+    }
+    .product-title {
+      margin: 0 0 8px;
+      color: #fff;
+      font-family: 'TT Ramillas Trl', serif;
+      font-size: clamp(1.9rem, 4vw, 3rem);
+      font-weight: 400;
+      line-height: 1.08;
+      letter-spacing: 0;
+    }
+    .product-subtitle {
+      margin: 0 0 24px;
+      color: rgba(255,255,255,0.5);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .product-article {
+      margin: 0;
+      color: rgba(255,255,255,0.5);
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      font-weight: 300;
+      line-height: 1.45;
+    }
+    .product-gallery {
+      display: grid;
+      grid-template-rows: minmax(0, 1fr) auto auto;
+      min-width: 0;
+      margin-bottom: 0;
+      height: auto;
+      align-self: start;
+    }
+    .product-gallery__thumbs {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding: 4px 0;
+    }
+    .product-gallery__thumb {
+      flex: 0 0 auto;
+      width: 136px;
+      height: 90px;
+      border: 2px solid transparent;
+      border-radius: 8px;
+      overflow: hidden;
+      background: rgba(255,255,255,0.04);
+      opacity: 0.6;
+      padding: 0;
+      cursor: pointer;
+      transition: border-color 0.15s ease, opacity 0.15s ease;
+    }
+    .product-gallery__thumb:hover,
+    .product-gallery__thumb.is-active {
+      opacity: 1;
+      border-color: #cb3b25;
+    }
+    .product-gallery__thumb img,
+    .product-gallery__main img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+    .product-gallery__main {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 11;
+      min-height: 0;
+      border-radius: 16px;
+      overflow: hidden;
+      margin-bottom: 12px;
+      background: rgba(255,255,255,0.04);
+    }
+    .product-gallery__main img { object-fit: contain; }
+    .product-gallery__nav {
+      position: absolute;
+      top: 50%;
+      z-index: 2;
+      width: 38px;
+      height: 38px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(255,255,255,0.36);
+      border-radius: 50%;
+      background: rgba(5,5,5,0.38);
+      color: #fff;
+      transform: translateY(-50%);
+      transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+    }
+    .product-gallery__nav:hover {
+      background: rgba(203,59,37,0.9);
+      border-color: rgba(203,59,37,0.9);
+      transform: translateY(-50%) scale(1.04);
+    }
+    .product-gallery__nav--prev {
+      left: 14px;
+    }
+    .product-gallery__nav--next {
+      right: 14px;
+    }
+    .product-gallery__nav svg {
+      width: 18px;
+      height: 18px;
+      stroke: currentColor;
+    }
+    .product-summary {
+      min-width: 0;
+      display: grid;
+      gap: 22px;
+      align-self: start;
+    }
+    .product-info {
+      grid-column: 1 / -1;
+      margin: 8px 0 16px;
+      max-width: 920px;
+    }
+    .product-summary h2,
+    .product-info h2 {
+      margin: 0 0 16px;
+      color: #fff;
+      font-family: 'TT Ramillas Trl', serif;
+      font-size: 1.3rem;
+      font-weight: 400;
+      line-height: 1.2;
+      letter-spacing: 0;
+    }
+    .product-description {
+      margin-top: -8px;
+    }
+    .product-description p {
+      margin: 0 0 12px;
+      max-width: 680px;
+      color: rgba(255,255,255,0.7);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 300;
+      line-height: 1.62;
+    }
+    .product-purchase {
+      display: grid;
+      gap: 14px;
+      padding: 22px 0 0;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+    .product-price {
+      display: flex;
+      gap: 34px;
+      flex-wrap: nowrap;
+      align-items: start;
+      margin: 0;
+      padding: 0;
+      border: 0;
+    }
+    .product-price__row {
+      display: block;
+      max-width: none;
+      min-width: 0;
+    }
+    .product-price__label {
+      display: block;
+      color: rgba(255,255,255,0.42);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 300;
+      line-height: 1.35;
+      margin-top: 4px;
+      max-width: 100%;
+      white-space: normal;
+      overflow-wrap: anywhere;
+    }
+    .product-price__value {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 600;
+      line-height: 1.2;
+      color: #cb3b25;
+    }
+    .product-price__note {
+      display: block;
+      max-width: 250px;
+      color: rgba(255,255,255,0.4);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 300;
+      line-height: 1.35;
+      margin-top: 4px;
+    }
+    .product-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      margin: 0;
+    }
+    .product-actions .btn {
+      min-height: 50px;
+      padding: 14px 32px;
+      justify-content: center;
+      border-radius: 999px;
+      font-size: 1rem;
+    }
+    .product-specs {
+      display: block;
+      margin: 0;
+      background: transparent;
+      border: 0;
+      border-radius: 0;
+    }
+    .product-specs__item {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 16px;
+      min-height: 0;
+      padding: 10px 0;
+      background: transparent;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .product-specs__label {
+      display: block;
+      margin: 0;
+      color: rgba(255,255,255,0.6);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 300;
+      text-transform: none;
+      letter-spacing: 0;
+    }
+    .product-specs__value {
+      margin: 0;
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 400;
+      line-height: 1.35;
+      text-align: right;
+    }
+    .product-promo {
+      margin: 0;
+      color: rgba(255,255,255,0.5);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 300;
+      line-height: 1.5;
+    }
+    .product-specs-note {
+      margin: 16px 0 0;
+      max-width: none;
+      color: rgba(255,255,255,0.42);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 300;
+      line-height: 1.55;
+    }
+    .product-key-benefits {
+      display: grid;
+      gap: 10px;
+      margin: 0;
+      padding: 14px 0 2px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+    .product-key-benefits__intro {
+      margin: 0;
+      color: rgba(255,255,255,0.78);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 400;
+      line-height: 1.45;
+    }
+    .product-key-benefits__list {
+      display: grid;
+      gap: 0;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      counter-reset: product-benefit;
+    }
+    .product-key-benefits__item {
+      position: relative;
+      display: grid;
+      grid-template-columns: 38px minmax(0, 1fr);
+      gap: 14px;
+      padding: 11px 0;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      color: rgba(255,255,255,0.62);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 300;
+      line-height: 1.45;
+      counter-increment: product-benefit;
+    }
+    .product-key-benefits__item::before {
+      content: counter(product-benefit, decimal-leading-zero);
+      color: #cb3b25;
+      font-size: 0.78rem;
+      font-weight: 700;
+      line-height: 1.5;
+      letter-spacing: 0.04em;
+    }
+    .product-gallery-cta {
+      display: grid;
+      gap: 14px;
+      margin-top: 18px;
+    }
+    .product-purchase .product-actions {
+      display: none;
+    }
+    .product-tiles {
+      grid-column: 1 / -1;
+      padding: 54px 0 32px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+    .product-tiles__title {
+      margin: 0 0 24px;
+      font-family: 'TT Ramillas Trl', serif;
+      font-size: clamp(1.6rem, 3vw, 2.5rem);
+      font-weight: 400;
+      line-height: 1.15;
+      color: #fff;
+    }
+    .product-tiles__grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+    .product-tiles__item {
+      display: block;
+      min-width: 0;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 8px;
+      background: rgba(255,255,255,0.04);
+      color: #fff;
+      text-decoration: none;
+      transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+    }
+    .product-tiles__item:hover {
+      transform: translateY(-3px);
+      border-color: rgba(203,59,37,0.42);
+      background: rgba(203,59,37,0.08);
+    }
+    .product-tiles__image {
+      aspect-ratio: 4 / 3;
+      background:
+        linear-gradient(135deg, rgba(255,255,255,0.16), rgba(255,255,255,0.03)),
+        #2a2927;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .product-tiles__image img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+    .product-tiles__body {
+      padding: 16px 16px 18px;
+    }
+    .product-tiles__name {
+      margin: 0 0 8px;
+      color: rgba(255,255,255,0.88);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.98rem;
+      font-weight: 600;
+      line-height: 1.35;
+    }
+    .product-tiles__meta {
+      margin: 0;
+      color: rgba(255,255,255,0.46);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.84rem;
+      line-height: 1.45;
+    }
+    .product-reviews {
+      padding: 44px 0 20px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+    .product-reviews__title {
+      margin: 0 0 18px;
+      font-family: 'TT Ramillas Trl', serif;
+      font-size: clamp(1.45rem, 2.6vw, 2.2rem);
+      font-weight: 400;
+      letter-spacing: 0;
+      color: #fff;
+    }
+    .product-reviews__grid {
+      display: flex;
+      gap: 16px;
+      overflow-x: auto;
+      padding-bottom: 14px;
+      scroll-snap-type: x proximity;
+      scrollbar-color: rgba(203,59,37,0.45) rgba(255,255,255,0.08);
+    }
+    .product-reviews__grid::-webkit-scrollbar {
+      height: 8px;
+    }
+    .product-reviews__grid::-webkit-scrollbar-track {
+      background: rgba(255,255,255,0.08);
+      border-radius: 999px;
+    }
+    .product-reviews__grid::-webkit-scrollbar-thumb {
+      background: rgba(203,59,37,0.55);
+      border-radius: 999px;
+    }
+    .product-reviews__item {
+      position: relative;
+      flex: 0 0 clamp(220px, 24vw, 320px);
+      min-height: 150px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 8px;
+      background: #151515;
+      cursor: pointer;
+      scroll-snap-align: start;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+    .product-reviews__item:hover {
+      transform: translateY(-3px);
+      border-color: rgba(203,59,37,0.42);
+    }
+    .product-reviews__item img {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      display: block;
+      object-fit: cover;
+    }
+    .product-reviews__item::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.3);
+      pointer-events: none;
+    }
+    .product-reviews__item.is-playing::after { display: none; }
+    .product-reviews__play {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      z-index: 2;
+      width: 44px;
+      height: 44px;
+      transform: translate(-50%, -50%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: rgba(203,59,37,0.95);
+      color: #fff;
+      pointer-events: none;
+    }
+    .product-reviews__play svg {
+      width: 18px;
+      height: 18px;
+      margin-left: 2px;
+    }
+    .product-reviews__name {
+      position: absolute;
+      left: 12px;
+      right: 12px;
+      bottom: 12px;
+      z-index: 2;
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.82rem;
+      line-height: 1.3;
+    }
+    @media (max-width: 980px) {
+      .product-page { padding-top: 92px; }
+      .product-detail__grid {
+        grid-template-columns: 1fr;
+        gap: 34px;
+      }
+      .product-gallery {
+        display: block;
+        height: auto;
+        align-self: start;
+      }
+      .product-gallery__main {
+        aspect-ratio: 16 / 11;
+      }
+      .product-info {
+        grid-column: auto;
+      }
+    }
+    @media (max-width: 640px) {
+      .product-detail { padding-top: 30px; }
+      .product-header { margin-bottom: 24px; }
+      .product-subtitle {
+        font-size: 0.78rem;
+        letter-spacing: 0.01em;
+      }
+      .product-gallery { margin-bottom: 32px; }
+      .product-gallery__thumbs {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 6px;
+      }
+      .product-gallery__thumb {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 4 / 3;
+      }
+      .product-gallery__main {
+        aspect-ratio: 4 / 3;
+        border-radius: 16px;
+      }
+      .product-info {
+        gap: 30px;
+      }
+      .product-specs__item {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 6px;
+      }
+      .product-specs__value {
+        text-align: left;
+      }
+      .product-purchase {
+        padding: 28px 0;
+      }
+      .product-key-benefits {
+        padding-top: 14px;
+      }
+      .product-key-benefits__item {
+        grid-template-columns: 32px minmax(0, 1fr);
+        gap: 12px;
+      }
+      .product-price {
+        width: 100%;
+        flex-wrap: wrap;
+      }
+      .product-price__label {
+        white-space: normal;
+      }
+      .product-gallery-cta {
+        display: none;
+      }
+      .product-purchase .product-actions {
+        display: flex;
+      }
+      .product-tiles {
+        grid-column: auto;
+        padding-top: 30px;
+      }
+      .product-tiles__grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+      }
+      .product-actions .btn {
+        width: 100%;
+        min-height: 44px;
+        font-size: 0.92rem;
+      }
+    }
+    .request-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 10002;
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+      box-sizing: border-box;
+    }
+    .request-modal.open {
+      display: flex;
+    }
+    .request-modal__box {
+      background: #1a1a1a;
+      border-radius: 20px;
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 40px;
+      max-width: 440px;
+      width: min(100%, 440px);
+      position: relative;
+      box-sizing: border-box;
+    }
+    .request-modal__close {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.1);
+      border: none;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 1.2rem;
+      transition: background 0.3s ease;
+    }
+    .request-modal__close:hover {
+      background: #cb3b25;
+    }
+    .request-modal__title {
+      font-family: 'TT Ramillas Trl', serif;
+      font-size: 1.5rem;
+      color: #fff;
+      margin: 0 0 8px;
+    }
+    .request-modal__product {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.5);
+      margin: 0 0 24px;
+    }
+    .request-modal__field {
+      margin-bottom: 16px;
+    }
+    .request-modal__field label {
+      display: block;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 6px;
+    }
+    .request-modal__field input,
+    .request-modal__field textarea {
+      width: 100%;
+      padding: 12px 16px;
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,0.15);
+      background: rgba(255,255,255,0.06);
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color 0.3s ease;
+      box-sizing: border-box;
+    }
+    .request-modal__field input:focus,
+    .request-modal__field textarea:focus {
+      border-color: #cb3b25;
+    }
+    .request-modal__field textarea {
+      resize: vertical;
+      min-height: 70px;
+    }
+    .request-modal__submit {
+      width: 100%;
+      padding: 14px;
+      border-radius: 100px;
+      background: #cb3b25;
+      border: none;
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.2s ease;
+      margin-top: 8px;
+    }
+    .request-modal__submit:hover {
+      background: #b5321f;
+      transform: translateY(-2px);
+    }
+    .request-modal__success {
+      text-align: center;
+      padding: 20px 0;
+    }
+    .request-modal__success-icon {
+      font-size: 3rem;
+      margin-bottom: 16px;
+      display: block;
+    }
+    .request-modal__success-text {
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      color: rgba(255,255,255,0.8);
+      line-height: 1.6;
+    }
+    @media (max-width: 520px) {
+      .request-modal__box {
+        padding: 32px 20px 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="header" id="header">
+    <div class="container header__inner">
+      <div class="header__top-row">
+        <nav class="header__top-nav" aria-label="Дополнительная навигация">
+          <ul class="header__top-nav-list">
+            <li><a href="about.html" class="header__top-link">О компании</a></li>
+            <li><a href="about.html#team" class="header__top-link">Наша команда</a></li>
+            <li><a href="contacts-gallery-review.html" class="header__top-link">Видеоотзывы</a></li>
+            <li><a href="cooperation.html" class="header__top-link">Сотрудничество</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="header__main-row">
+        <a href="index.html" class="header__logo">
+          <img src="images/logo.png" alt="CeramicaDecor" class="header__logo-img">
+        </a>
+        <nav class="header__nav" id="mainNav">
+          <ul class="header__nav-list">
+          <li class="header__nav-dropdown header__nav-dropdown--catalog">
+            <button type="button" class="header__catalog-btn" aria-haspopup="true" aria-expanded="false">Каталог</button>
+            <div class="header__mega-menu header__mega-menu--showcase" role="menu">
+              <div class="header__mega-tabs" role="tablist" aria-label="Разделы каталога">
+                <button type="button" class="header__mega-tab active" role="tab" aria-selected="true" data-mega-target="kaminy" data-mega-href="catalog-kaminy.html">Камины</button>
+                <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="pechi" data-mega-href="catalog-otopitelnye-pechi.html">Печи</button>
+                <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="barbekyu" data-mega-href="catalog-barbekyu-kompleksy.html">Барбекю комплексы</button>
+                <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="izrazcy" data-mega-href="catalog-izrazcy.html">Изразцы</button>
+                <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="seriynye" data-mega-href="catalog-seriynye-modeli.html">Печи-камины<br>из наличия</button>
+                <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="mramor" data-mega-href="catalog-mramornye-kaminy-portaly.html">Мраморные камины<br>и порталы</button>
+                <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="interior" data-mega-href="catalog-interernaya-keramika.html">Плитка ручной работы</button>
+                <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="fasad" data-mega-href="catalog-fasadnaya-keramika.html">Фасадная керамика</button>
+                <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="metlah" data-mega-href="catalog-metlahskaya-plitka.html">Метлахская плитка</button>
+                <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="restoration" data-mega-href="restoration.html">Реставрация</button>
+                <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="suvenir" data-mega-href="catalog-suvenirnaya-produkciya.html">Сувенирная продукция</button>
+              </div>
+              <div class="header__mega-panels">
+                <section class="header__mega-panel active" role="tabpanel" data-mega-panel="kaminy">
+                  <div class="header__mega-cards">
+                    <a href="catalog-kaminy.html?subcategory=drovyanye-kaminy" class="header__mega-card header__mega-card--large" role="menuitem"><img src="images/kamin_dorf_murav_new_3.jpg" alt="Дровяные камины"><span>Дровяные камины</span></a>
+                    <a href="catalog-kaminy.html?subcategory=biokaminy" class="header__mega-card" role="menuitem"><img src="images/banner-biokaminy_desktop.webp" alt="Биокамины"><span>Биокамины</span></a>
+                    <a href="catalog-kaminy.html?subcategory=elektrokaminy" class="header__mega-card" role="menuitem"><img src="images/banner-elektrokaminy_desktop.webp" alt="Электрокамины"><span>Электрокамины</span></a>
+                  </div>
+                </section>
+                <section class="header__mega-panel" role="tabpanel" data-mega-panel="pechi">
+                  <div class="header__mega-cards">
+                    <a href="catalog-otopitelnye-pechi.html?subcategory=russkie-pechi" class="header__mega-card header__mega-card--large" role="menuitem"><img src="images/banner-russkie-pechi_desktop.webp" alt="Русские печи"><span>Русские печи</span></a>
+                    <a href="catalog-otopitelnye-pechi.html?subcategory=otopitelnye-pechi" class="header__mega-card" role="menuitem"><img src="images/banner-otopitelnye-pechi_desktop.webp" alt="Отопительные печи"><span>Отопительные печи</span></a>
+                    <a href="catalog-otopitelnye-pechi.html?subcategory=bannye-pechi" class="header__mega-card" role="menuitem"><img src="images/banner-bannye-pechi_desktop.webp" alt="Банные печи"><span>Банные печи</span></a>
+                    <a href="catalog-otopitelnye-pechi.html?subcategory=bannye-portaly" class="header__mega-card" role="menuitem"><img src="images/banner-bannye-portaly_desktop.webp" alt="Банные порталы"><span>Банные порталы</span></a>
+                  </div>
+                </section>
+                <section class="header__mega-panel" role="tabpanel" data-mega-panel="barbekyu">
+                  <div class="header__mega-cards">
+                    <a href="catalog-barbekyu-kompleksy.html" class="header__mega-card header__mega-card--large" role="menuitem"><img src="images/barbekyu_card_new.webp" alt="Барбекю комплексы"><span>Барбекю комплексы</span></a>
+                  </div>
+                </section>
+                <section class="header__mega-panel" role="tabpanel" data-mega-panel="izrazcy">
+                  <div class="header__mega-cards">
+                    <a href="catalog-izrazcy.html" class="header__mega-card header__mega-card--large" role="menuitem"><img src="images/izrazcy_card.webp" alt="Каталог изразцов"><span>Каталог изразцов</span></a>
+                    <a href="glaze-palette.html" class="header__mega-card" role="menuitem"><img src="images/palitra_izrazcy.jpg" alt="Палитра глазурей"><span>Палитра глазурей</span></a>
+                  </div>
+                </section>
+                <section class="header__mega-panel" role="tabpanel" data-mega-panel="seriynye">
+                  <div class="header__mega-cards">
+                    <a href="catalog-seriynye-modeli.html" class="header__mega-card header__mega-card--large header__mega-card--ready" role="menuitem"><img src="images/ready_banner.png" alt="Печи-камины из наличия"><span>Печи-камины<br>из наличия</span></a>
+                  </div>
+                </section>
+                <section class="header__mega-panel" role="tabpanel" data-mega-panel="mramor">
+                  <div class="header__mega-cards">
+                    <a href="catalog-mramornye-kaminy-portaly.html" class="header__mega-card header__mega-card--large" role="menuitem"><img src="images/banner-mramor_desktop.webp" alt="Мраморные камины"><span>Мраморные камины<br>и порталы</span></a>
+                  </div>
+                </section>
+                <section class="header__mega-panel" role="tabpanel" data-mega-panel="interior">
+                  <div class="header__mega-cards">
+                    <a href="catalog-interernaya-keramika.html?subcategory=barnye-stoyki" class="header__mega-card header__mega-card--bar" role="menuitem"><img src="images/barnye stoyki.jpg" alt="Барные стойки"><span>Барные стойки</span></a>
+                    <a href="catalog-interernaya-keramika.html?subcategory=oblicovka-sten" class="header__mega-card" role="menuitem"><img src="images/oblicovka sten.jpg" alt="Облицовка стен"><span>Облицовка стен</span></a>
+                    <a href="catalog-interernaya-keramika.html?subcategory=kuhonnye-fartuki" class="header__mega-card header__mega-card--large" role="menuitem"><img src="images/banner-interior_desktop.webp" alt="Кухонные фартуки"><span>Кухонные фартуки</span></a>
+                  </div>
+                </section>
+                <section class="header__mega-panel" role="tabpanel" data-mega-panel="fasad">
+                  <div class="header__mega-cards">
+                    <a href="catalog-fasadnaya-keramika.html" class="header__mega-card header__mega-card--large" role="menuitem"><img src="images/banner-fasad_desktop.webp" alt="Фасадная керамика"><span>Фасадная керамика</span></a>
+                  </div>
+                </section>
+                <section class="header__mega-panel" role="tabpanel" data-mega-panel="metlah">
+                  <div class="header__mega-cards">
+                    <a href="catalog-metlahskaya-plitka.html" class="header__mega-card header__mega-card--large" role="menuitem"><img src="images/metlahskaya plitka.jpg?v=20260610-2041" alt="Метлахская плитка"><span>Метлахская плитка</span></a>
+                  </div>
+                </section>
+                <section class="header__mega-panel" role="tabpanel" data-mega-panel="restoration">
+                  <div class="header__mega-cards">
+                    <a href="restoration.html" class="header__mega-card header__mega-card--large" role="menuitem"><img src="images/restavraciya.jpg" alt="Реставрация"><span>Реставрация</span></a>
+                  </div>
+                </section>
+                <section class="header__mega-panel" role="tabpanel" data-mega-panel="suvenir">
+                  <div class="header__mega-cards">
+                    <a href="catalog-suvenirnaya-produkciya.html" class="header__mega-card header__mega-card--large" role="menuitem"><img src="images/suvenirnaya produkcya.jpg" alt="Сувенирная продукция"><span>Сувенирная продукция</span></a>
+                  </div>
+                </section>
+              </div>
+            </div>
+          </li>
+          <li><a href="portfolio.html" class="header__nav-link">Портфолио</a></li>
+          <li class="header__nav-dropdown header__nav-dropdown--simple">
+            <a href="components.html" class="header__nav-link" aria-haspopup="true" aria-expanded="false">Все для монтажа</a>
+            <ul class="header__dropdown-menu">
+              <li><a href="components.html">Каминные топки</a></li>
+              <li><a href="components.html">Электроочаги</a></li>
+            </ul>
+          </li>
+          <li><a href="contacts.html" class="header__nav-link">Контакты</a></li>
+          </ul>
+          <ul class="header__nav-list header__nav-list--mobile-secondary">
+            <li><a href="about.html" class="header__nav-link">О компании</a></li>
+            <li><a href="about.html#team" class="header__nav-link">Наша команда</a></li>
+            <li><a href="contacts-gallery-review.html" class="header__nav-link">Видеоотзывы</a></li>
+            <li><a href="cooperation.html" class="header__nav-link">Сотрудничество</a></li>
+          </ul>
+          <a href="tel:+74952293046" data-calltracking="phone" data-calltracking-group="main" class="header__nav-phone-link">+7 (495) 229-30-46</a>
+          <div class="header__nav-messengers" aria-label="Мессенджеры">
+            <a href="https://t.me/+79950001166" class="header__messenger-link" target="_blank" rel="noopener" aria-label="Telegram"><img src="images/icons/png-klev-club-p-telegram-logotip-png-9.png" alt="" class="header__messenger-icon"></a>
+            <a href="https://max.ru/" class="header__messenger-link" target="_blank" rel="noopener" aria-label="Max"><img src="images/icons/max.png" alt="" class="header__messenger-icon"></a>
+          </div>
+          <a href="mailto:info@ceramicadecor.ru" data-calltracking="email" data-calltracking-group="main" class="header__nav-phone-link">info@ceramicadecor.ru</a>
+          <div class="header__nav-item--search"><a href="#" class="header__nav-link" id="searchBtnMobile"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg> Поиск</a></div>
+        </nav>
+
+        <div class="header__actions">
+          <button class="header__search-btn" id="searchBtn" aria-label="Поиск"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></button>
+          <a href="#" class="btn btn--primary header__cta-btn" data-product-request>Оставить заявку</a>
+          <a href="tel:+74952293046" data-calltracking="phone" data-calltracking-group="main" class="header__phone-desktop">+7 (495) 229-30-46</a>
+          <div class="header__messengers" aria-label="Мессенджеры">
+            <a href="https://t.me/+79950001166" class="header__messenger-link" target="_blank" rel="noopener" aria-label="Telegram"><img src="images/icons/png-klev-club-p-telegram-logotip-png-9.png" alt="" class="header__messenger-icon"></a>
+            <a href="https://max.ru/" class="header__messenger-link" target="_blank" rel="noopener" aria-label="Max"><img src="images/icons/max.png" alt="" class="header__messenger-icon"></a>
+          </div>
+          <button class="header__burger" id="burgerBtn" aria-label="Меню">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="product-page">
+    <section class="product-detail">
+      <div class="container">
+        <nav class="product-breadcrumbs" aria-label="Хлебные крошки">
+          <a href="index.html">Главная</a>
+          <span>/</span>
+          <a href="restoration.html">Реставрация</a>
+          <span>/</span>
+          <span>Воссоздание изразцовых печей</span>
+        </nav>
+        <div class="product-detail__grid">
+          <div class="product-gallery" data-product-gallery>
+            <div class="product-gallery__main">
+              <img src="images/restoration_1.jpg" alt="Воссоздание изразцовых печей декоративного назначения" data-gallery-main>
+              <button class="product-gallery__nav product-gallery__nav--prev" type="button" data-gallery-prev aria-label="Предыдущее фото">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+              </button>
+              <button class="product-gallery__nav product-gallery__nav--next" type="button" data-gallery-next aria-label="Следующее фото">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+              </button>
+            </div>
+            <div class="product-gallery__thumbs" aria-label="Фотографии реставрационного проекта">
+              <button class="product-gallery__thumb is-active" type="button" data-gallery-src="images/restoration_1.jpg"><img src="images/restoration_1.jpg" alt="Воссоздание изразцовых печей, фото 1"></button>
+              <button class="product-gallery__thumb" type="button" data-gallery-src="images/restoration_2.jpg"><img src="images/restoration_2.jpg" alt="Воссоздание изразцовых печей, фото 2"></button>
+              <button class="product-gallery__thumb" type="button" data-gallery-src="images/restoration_3.jpg"><img src="images/restoration_3.jpg" alt="Воссоздание изразцовых печей, фото 3"></button>
+              <button class="product-gallery__thumb" type="button" data-gallery-src="images/restoration_4.png"><img src="images/restoration_4.png" alt="Воссоздание изразцовых печей, фото 4"></button>
+              <button class="product-gallery__thumb" type="button" data-gallery-src="images/restoration_5.png"><img src="images/restoration_5.png" alt="Воссоздание изразцовых печей, фото 5"></button>
+              <button class="product-gallery__thumb" type="button" data-gallery-src="images/restoration_6.jpg"><img src="images/restoration_6.jpg" alt="Воссоздание изразцовых печей, фото 6"></button>
+            </div>
+            <div class="product-gallery-cta">
+              <p class="product-promo">Опишите объект и задачу, чтобы мы подготовили предварительную оценку реставрационных работ</p>
+              <div class="product-actions">
+                <a href="#" class="btn btn--primary" data-product-request>Оставить заявку</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-summary">
+            <div class="product-header">
+              <p class="product-subtitle">Реставрация&nbsp;/&nbsp;Объект культурного наследия</p>
+              <h1 class="product-title">Воссоздание изразцовых печей декоративного назначения</h1>
+              <p class="product-article">Пензенская обл., п. Мокшан</p>
+            </div>
+
+            <section class="product-description">
+              <p>Объект культурного наследия постройки 1902 года «Межпоселковая центральная районная библиотека», Пензенская обл, п. Мокшан. По заданию заказчика был реализован проект воссоздания изразцовых печей в помещениях библиотеки в местах, где на момент реставрационно-строительных работ находились остовы разрушенных печей.</p>
+            </section>
+
+            <div class="product-purchase">
+              <div class="product-price">
+                <div class="product-price__row">
+                  <span class="product-price__value">Цена по запросу</span>
+                  <span class="product-price__label">Состав и стоимость определяются индивидуально после изучения объекта, исходных материалов и степени утрат.</span>
+                </div>
+              </div>
+              <div class="product-key-benefits" aria-label="Что входит в заказ под ключ">
+                <p class="product-key-benefits__intro">В реставрационном проекте CeramicaDecor выполняет:</p>
+                <ol class="product-key-benefits__list">
+                  <li class="product-key-benefits__item">Изучение исходных образцов и анализ сохранившихся элементов</li>
+                  <li class="product-key-benefits__item">Воссоздание формы, рельефа и геометрии утраченных изразцов</li>
+                  <li class="product-key-benefits__item">Подбор глазурей и цветовой палитры под исторический облик объекта</li>
+                  <li class="product-key-benefits__item">Изготовление керамических элементов ручной работы на собственном производстве</li>
+                </ol>
+              </div>
+              <div class="product-actions">
+                <a href="#" class="btn btn--primary" data-product-request>Оставить заявку</a>
+              </div>
+            </div>
+          </div>
+
+          <section class="product-info">
+            <h2>Характеристики</h2>
+            <dl class="product-specs">
+              <div class="product-specs__item">
+                <dt class="product-specs__label">Производитель</dt>
+                <dd class="product-specs__value">CeramicaDecor</dd>
+              </div>
+              <div class="product-specs__item">
+                <dt class="product-specs__label">Тип</dt>
+                <dd class="product-specs__value">Реставрационный проект</dd>
+              </div>
+              <div class="product-specs__item">
+                <dt class="product-specs__label">Вид работ</dt>
+                <dd class="product-specs__value">Воссоздание изразцовых печей</dd>
+              </div>
+              <div class="product-specs__item">
+                <dt class="product-specs__label">Объект</dt>
+                <dd class="product-specs__value">Межпоселковая центральная районная библиотека, постройка 1902 года</dd>
+              </div>
+              <div class="product-specs__item">
+                <dt class="product-specs__label">Локация</dt>
+                <dd class="product-specs__value">Пензенская обл, п. Мокшан</dd>
+              </div>
+              <div class="product-specs__item">
+                <dt class="product-specs__label">Материал</dt>
+                <dd class="product-specs__value">Керамика, изразцы ручной работы</dd>
+              </div>
+              <div class="product-specs__item">
+                <dt class="product-specs__label">Раздел</dt>
+                <dd class="product-specs__value">Реставрация</dd>
+              </div>
+            </dl>
+          </section>
+        </div>
+
+      </div>
+
+      <section class="archive-wrapper" aria-label="Видеоотзывы клиентов">
+          <div class="stories_wrapper">
+            <div class="archive-heading">
+              <h2>Видеоотзывы наших клиентов</h2>
+              <p class="subheader">Наши клиенты рассказывают, как камины CeramicaDecor стали частью их&nbsp;дома</p>
+            </div>
+            <div class="stories_nav">
+              <span class="stories_counter"><span class="stories_current">1</span> / <span class="stories_total">13</span></span>
+              <div class="stories_arrows">
+                <button class="stories_arrow stories_arrow--left" aria-label="Назад">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M15 19l-7-7 7-7" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+                <button class="stories_arrow stories_arrow--right" aria-label="Вперёд">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M9 5l7 7-7 7" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+              </div>
+            </div>
+            <div class="stories_slider">
+              <div class="one_story one_story--video" data-vk="video-178201211_456239596">
+                <div class="image"><img src="images/video_thumb_dorf_client.jpg" alt="Камин Дорф — отзыв клиента" loading="lazy" decoding="async"><span class="play_btn"></span></div>
+                <span class="name">Камин в изразцовой облицовке «Дорф». Отзыв клиента</span>
+              </div>
+              <div class="one_story one_story--video" data-vk="video-178201211_456239511">
+                <div class="image"><img src="images/video_thumb_albion_designer.jpg" alt="Камин Альбион — отзыв дизайнера" loading="lazy" decoding="async"><span class="play_btn"></span></div>
+                <span class="name">Камин в облицовке «Альбион». Отзыв дизайнера Елизаветы Ашкенази</span>
+              </div>
+              <div class="one_story one_story--video" data-vk="video-178201211_456239559">
+                <div class="image"><img src="images/video_thumb_artnouvo_designer.jpg" alt="Камин Арт Нуво — отзыв дизайнера" loading="lazy" decoding="async"><span class="play_btn"></span></div>
+                <span class="name">Камин в облицовке «Арт Нуво». Отзыв дизайнера интерьера</span>
+              </div>
+              <div class="one_story one_story--video" data-vk="video-178201211_456239074">
+                <div class="image"><picture><source srcset="images/video_thumb_bristol_client.webp" type="image/webp"><img src="images/video_thumb_bristol_client.jpg" alt="Камин Бристоль — отзыв клиента" loading="lazy" decoding="async"></picture><span class="play_btn"></span></div>
+                <span class="name">Камин в облицовке «Бристоль». Отзыв клиента</span>
+              </div>
+              <div class="one_story one_story--video" data-vk="video-178201211_456239504">
+                <div class="image"><picture><source srcset="images/video_thumb_dorf_customers.webp" type="image/webp"><img src="images/video_thumb_dorf_customers.jpg" alt="Камин Дорф — отзыв заказчиков" loading="lazy" decoding="async"></picture><span class="play_btn"></span></div>
+                <span class="name">Камин в облицовке «Дорф». Отзыв заказчиков</span>
+              </div>
+              <div class="one_story one_story--video" data-vk="video-178201211_456239193">
+                <div class="image"><picture><source srcset="images/video_thumb_universal_client.webp" type="image/webp"><img src="images/video_thumb_universal_client.jpg" alt="Камин Универсал — отзыв заказчицы" loading="lazy" decoding="async"></picture><span class="play_btn"></span></div>
+                <span class="name">Камин в облицовке «Универсал». Отзыв заказчицы</span>
+              </div>
+              <div class="one_story one_story--video" data-vk="video-178201211_456239167">
+                <div class="image"><img src="images/video_thumb_tulip_client.jpg" alt="Камин Тюльпан — отзыв заказчицы" loading="lazy" decoding="async"><span class="play_btn"></span></div>
+                <span class="name">Камин в облицовке «Тюльпан». Отзыв заказчицы</span>
+              </div>
+              <div class="one_story one_story--video" data-vk="video-178201211_456239494">
+                <div class="image"><img src="images/video_thumb_majestic_designer.jpg" alt="Камин Маджестик — отзыв дизайнера" loading="lazy" decoding="async"><span class="play_btn"></span></div>
+                <span class="name">Камин в облицовке «Маджестик». Отзыв дизайнера</span>
+              </div>
+              <div class="one_story one_story--video" data-vk="video-178201211_456239883">
+                <div class="image"><img src="images/video_thumb_dutch_client.jpg" alt="Печь-голландка — отзыв хозяйки" loading="lazy" decoding="async"><span class="play_btn"></span></div>
+                <span class="name">Печь-голландка с изразцами CeramicaDecor. Отзыв хозяйки</span>
+              </div>
+              <div class="one_story one_story--video" data-vk="video-178201211_456239110">
+                <div class="image"><img src="images/video_thumb_artnuvi_client_1200.jpg" alt="Камин Арт Нуво кофейный. Отзыв клиентки" loading="lazy" decoding="async"><span class="play_btn"></span></div>
+                <span class="name">Камин в изразцовой облицовке Арт Нуво кофейный. Отзыв клиентки</span>
+              </div>
+              <div class="one_story one_story--video" data-vk="video-178201211_456239073">
+                <div class="image"><img src="images/video_thumb_scenki_client_1200.jpg" alt="Банная печь в изразцовой облицовке «Сценки». Отзыв печника" loading="lazy" decoding="async"><span class="play_btn"></span></div>
+                <span class="name">Банная печь в изразцовой облицовке «Сценки». Отзыв печника</span>
+              </div>
+              <div class="one_story one_story--video" data-vk="video-178201211_456239071">
+                <div class="image"><img src="images/video_thumb_albion_client_1200.jpg" alt="Камин в изразцовой облицовке «Альбион». Отзыв дизайнера интерьера" loading="lazy" decoding="async"><span class="play_btn"></span></div>
+                <span class="name">Камин в изразцовой облицовке «Альбион». Отзыв дизайнера интерьера</span>
+              </div>
+              <div class="one_story one_story--video" data-vk="video-178201211_456239070">
+                <div class="image"><img src="images/video_thumb_rusizrazec_client_1200.jpg" alt="Керамический портал «Русский изразец» с биокамином. Отзыв клиента" loading="lazy" decoding="async"><span class="play_btn"></span></div>
+                <span class="name">Керамический портал «Русский изразец» с биокамином. Отзыв клиента</span>
+              </div>
+            </div>
+          </div>
+      </section>
+    </section>
+
+  </main>
+
+  <footer class="footer" id="footer">
+    <div class="footer__glow"></div>
+    <div class="container">
+      <div class="footer__works-map" aria-label="Карта выполненных работ">
+        <h2 class="footer__works-map-title">Выполненные работы CeramicaDecor на карте</h2>
+        <div class="contacts-map" data-map-template="completed-works" data-map-provider="internal">
+          <div class="contacts-map__layout">
+            <div class="contacts-map__canvas" id="completedWorksMap" data-map-target="completed-works">
+              <span class="contacts-map__marker contacts-map__marker--spb" data-work-location="spb">Санкт-Петербург</span>
+              <span class="contacts-map__marker contacts-map__marker--moscow" data-work-location="moscow">Москва</span>
+              <p class="contacts-map__placeholder">Здесь будет интерактивная карта с выполненными работами, маркерами объектов, масштабированием и переходом к проектам.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer__top">
+        <div class="footer__brand">
+          <a href="index.html" class="footer__logo">
+            <img src="images/logo.png" alt="CeramicaDecor" class="footer__logo-img">
+          </a>
+          <p class="footer__tagline">Керамические премиальные облицовки.<br>14+ лет, своё производство, монтаж.<br>Под ключ по России и СНГ</p>
+        </div>
+        <div class="footer__columns">
+          <div class="footer__col">
+            <h4 class="footer__col-title" style="font-size:16px;font-weight:700;color:#fff;">Каталог</h4>
+            <ul class="footer__col-list">
+              <li><a href="catalog-kaminy.html">Камины</a></li>
+              <li><a href="catalog-otopitelnye-pechi.html">Печи</a></li>
+              <li><a href="catalog-seriynye-modeli.html">Печи-камины из наличия</a></li>
+              <li><a href="catalog-barbekyu-kompleksy.html">Барбекю комплексы</a></li>
+              <li><a href="catalog-izrazcy.html">Изразцы</a></li>
+              <li><a href="catalog-interernaya-keramika.html">Плитка ручной работы</a></li>
+            </ul>
+          </div>
+          <div class="footer__col">
+            <ul class="footer__col-list footer__col-list--offset">
+              <li><a href="portfolio.html" style="color:#fff;font-size:16px;font-weight:500;">Портфолио</a></li>
+              <li><a href="components.html" style="color:#fff;font-size:16px;font-weight:500;">Все для монтажа</a></li>
+              <li><a href="components.html">Каминные топки</a></li>
+              <li><a href="components.html">Электроочаги</a></li>
+              <li><a href="cooperation.html" style="color:#fff;font-size:16px;font-weight:500;">Сотрудничество</a></li>
+              <li><a href="blog.html" style="color:#fff;font-size:16px;font-weight:500;">Блог</a></li>
+              <li><a href="about.html" style="color:#fff;font-size:16px;font-weight:500;">О компании</a></li>
+            </ul>
+          </div>
+          <div class="footer__col footer__col--contacts">
+            <h4 class="footer__col-title" style="font-size:16px;font-weight:700;color:#fff;"><a href="contacts.html" class="footer__col-title-link">Контакты</a></h4>
+            <ul class="footer__col-list footer__contact-list">
+              <li><a href="tel:+74952293046" data-calltracking="phone" data-calltracking-group="main" style="font-weight:700;">+7 (495) 229-30-46</a></li>
+              <li><a href="mailto:info@ceramicadecor.ru" data-calltracking="email" data-calltracking-group="main" style="font-weight:700;">info@ceramicadecor.ru</a></li>
+              <li class="footer__messengers" aria-label="Мессенджеры">
+                <a href="https://t.me/+79950001166" class="footer__messenger-link" target="_blank" rel="noopener" aria-label="Telegram"><img src="images/icons/png-klev-club-p-telegram-logotip-png-9.png" alt="" class="footer__messenger-icon"></a>
+                <a href="https://max.ru/" class="footer__messenger-link" target="_blank" rel="noopener" aria-label="Max"><img src="images/icons/max.png" alt="" class="footer__messenger-icon"></a>
+</li>
+              <li style="margin-top: 0.75em;"><a href="#" class="btn btn--primary" data-product-request style="padding:9px 20px;font-size:13px;color:#fff;">Оставить заявку</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p class="footer__copy">&copy; 2013&ndash;2026 CeramicaDecor. Все права защищены.</p>
+        <p class="footer__org-info">ООО «АРТ КЕРАМИКА» &middot; ИНН&nbsp;5018178964 &middot; ОГРН&nbsp;1155018002150 &middot; 141068, Московская обл., г.&nbsp;Королев, ул.&nbsp;Силикатная, д.&nbsp;74, пом.&nbsp;204</p>
+        <div class="footer__legal">
+          <a href="privacy.html" target="_blank">Политика конфиденциальности</a>
+          <a href="terms.html" target="_blank">Пользовательское соглашение</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div class="request-modal" id="requestModal" aria-hidden="true">
+    <div class="request-modal__box" role="dialog" aria-modal="true" aria-labelledby="requestModalTitle">
+      <button class="request-modal__close" id="requestModalClose" type="button" aria-label="Закрыть">&times;</button>
+      <div id="requestModalBody"></div>
+    </div>
+  </div>
+
+  <button class="scroll-to-top" aria-label="Наверх"><svg viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
+  <script>
+    document.querySelectorAll('[data-product-gallery]').forEach(function(gallery) {
+      var main = gallery.querySelector('[data-gallery-main]');
+      var buttons = Array.prototype.slice.call(gallery.querySelectorAll('[data-gallery-src]'));
+      function activate(button) {
+        if (!button || !main) return;
+        buttons.forEach(function(item) { item.classList.remove('is-active'); });
+        button.classList.add('is-active');
+        main.src = button.getAttribute('data-gallery-src');
+        main.alt = button.querySelector('img').alt;
+      }
+      buttons.forEach(function(button) {
+        button.addEventListener('click', function() {
+          activate(button);
+        });
+      });
+      gallery.querySelectorAll('[data-gallery-prev], [data-gallery-next]').forEach(function(button) {
+        button.addEventListener('click', function() {
+          var activeIndex = buttons.findIndex(function(item) { return item.classList.contains('is-active'); });
+          if (activeIndex < 0) activeIndex = 0;
+          var direction = button.hasAttribute('data-gallery-prev') ? -1 : 1;
+          var nextIndex = (activeIndex + direction + buttons.length) % buttons.length;
+          activate(buttons[nextIndex]);
+        });
+      });
+    });
+
+    (function() {
+      var productName = 'Воссоздание изразцовых печей декоративного назначения';
+      var productArticle = 'реставрационный проект';
+      var requestModal = document.getElementById('requestModal');
+      var requestModalClose = document.getElementById('requestModalClose');
+      var requestModalBody = document.getElementById('requestModalBody');
+      var previousBodyOverflow = '';
+
+      function renderRequestForm() {
+        requestModalBody.innerHTML =
+          '<h3 class="request-modal__title" id="requestModalTitle">Оставить заявку</h3>' +
+          '<p class="request-modal__product">' + productName + ' (' + productArticle + ')</p>' +
+          '<form id="requestForm">' +
+            '<div class="request-modal__field">' +
+              '<label for="requestName">Ваше имя</label>' +
+              '<input type="text" id="requestName" placeholder="Как к вам обращаться?" required>' +
+            '</div>' +
+            '<div class="request-modal__field">' +
+              '<label for="requestPhone">Телефон</label>' +
+              '<input type="tel" id="requestPhone" placeholder="+7 (___) ___-__-__" required>' +
+            '</div>' +
+            '<div class="request-modal__field">' +
+              '<label for="requestMessage">Комментарий (необязательно)</label>' +
+              '<textarea id="requestMessage" placeholder="Ваши пожелания или вопросы"></textarea>' +
+            '</div>' +
+            '<label class="consent-label">' +
+              '<input type="checkbox" class="consent-checkbox">' +
+              '<span>Я даю согласие на обработку персональных данных в соответствии с <a href="privacy.html" target="_blank">политикой конфиденциальности</a></span>' +
+            '</label>' +
+          '<button type="submit" class="request-modal__submit">Отправить заявку</button>' +
+          '</form>';
+
+        document.getElementById('requestForm').addEventListener('submit', function(e) {
+          e.preventDefault();
+          var name = document.getElementById('requestName').value.trim();
+          var phone = document.getElementById('requestPhone').value.trim();
+          var message = document.getElementById('requestMessage').value.trim();
+        if (!window.requireCeramicaDecorConsent || !window.requireCeramicaDecorConsent(this)) return;
+          var comment = productName + '\n\u0410\u0440\u0442. ' + productArticle + '\nСтраница: ' + location.href + (message ? '\nКомментарий: ' + message : '');
+
+          fetch('https://ceramicadecor.ru/feedback/ceramicadecor_pro', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: new URLSearchParams({ name: name, phone: phone, comment: comment })
+          });
+
+          requestModalBody.innerHTML =
+            '<div class="request-modal__success">' +
+              '<span class="request-modal__success-icon">&#10003;</span>' +
+              '<h3 class="request-modal__title">Заявка отправлена!</h3>' +
+              '<p class="request-modal__success-text">Спасибо за интерес к нашей продукции.<br>Мы свяжемся с вами в ближайшее время.</p>' +
+            '</div>';
+          setTimeout(closeRequestModal, 4000);
+        });
+      }
+
+      window.openRequestModal = function() {
+        if (window.openProductRequestModal) {
+          window.openProductRequestModal(productName, productArticle, location.href);
+          return;
+        }
+
+        if (!requestModal || !requestModalBody) return;
+        renderRequestForm();
+        previousBodyOverflow = document.body.style.overflow;
+        requestModal.classList.add('open');
+        requestModal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+      };
+
+      function closeRequestModal() {
+        if (!requestModal) return;
+        requestModal.classList.remove('open');
+        requestModal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = previousBodyOverflow;
+      }
+
+      document.querySelectorAll('[data-product-request]').forEach(function(button) {
+        button.addEventListener('click', function(e) {
+          e.preventDefault();
+          window.openRequestModal();
+        });
+      });
+
+      if (requestModalClose) requestModalClose.addEventListener('click', closeRequestModal);
+      if (requestModal) {
+        requestModal.addEventListener('click', function(e) {
+          if (e.target === requestModal) closeRequestModal();
+        });
+      }
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && requestModal && requestModal.classList.contains('open')) closeRequestModal();
+      });
+    })();
+  </script>
+  <script src="script.js" defer></script>
+  <script src="search.js" defer></script>
+</body>
+</html>

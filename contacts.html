@@ -424,7 +424,7 @@
     }
     .contacts-managers__item {
       display: grid;
-      grid-template-columns: 116px minmax(0, 1fr);
+      grid-template-columns: 144px minmax(0, 1fr);
       gap: 6px 16px;
       padding: 10px 0;
       border-bottom: 1px solid var(--border);
@@ -433,8 +433,29 @@
       border-bottom: none;
     }
     .contacts-managers__name {
+      align-items: flex-start;
       color: var(--text-muted);
+      display: flex;
+      flex-direction: column;
       font-size: 0.9375rem;
+      gap: 5px;
+    }
+    .contacts-managers__duty-badge {
+      align-items: center;
+      align-self: flex-start;
+      color: var(--primary);
+      display: inline-flex;
+      font-size: 0.6875rem;
+      font-weight: 600;
+      line-height: 1;
+      padding: 0;
+      white-space: nowrap;
+    }
+    .contacts-managers__item[data-duty-today="true"] .contacts-managers__contact {
+      padding-top: 16px;
+    }
+    .contacts-managers__item[data-duty-today="true"] + .contacts-managers__item {
+      padding-top: 26px;
     }
     .contacts-managers__phone {
       background: none;
@@ -869,6 +890,12 @@
         grid-template-columns: 1fr;
         gap: 4px;
       }
+      .contacts-managers__item[data-duty-today="true"] .contacts-managers__contact {
+        padding-top: 0;
+      }
+      .contacts-managers__item[data-duty-today="true"] + .contacts-managers__item {
+        padding-top: 10px;
+      }
       .contacts-common {
         padding: 14px 16px;
         gap: 12px;
@@ -968,32 +995,32 @@
             <button type="button" class="header__catalog-btn" aria-haspopup="true" aria-expanded="false">Каталог</button>
             <div class="header__mega-menu header__mega-menu--showcase" role="menu">
               <div class="header__mega-tabs" role="tablist" aria-label="Разделы каталога">
-                <button type="button" class="header__mega-tab active" role="tab" aria-selected="true" data-mega-target="kaminy">Камины</button>
-                <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="pechi">Печи</button>
-                <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="barbekyu">Барбекю комплексы</button>
-                <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="izrazcy">Изразцы</button>
-                <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="seriynye">Печи-камины<br>из наличия</button>
-                <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="mramor">Мраморные камины<br>и порталы</button>
-                <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="interior">Плитка ручной работы</button>
-                <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="fasad">Фасадная керамика</button>
-                <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="metlah">Метлахская плитка</button>
-                <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="restoration">Реставрация</button>
-                <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="suvenir">Сувенирная продукция</button>
+                <button type="button" class="header__mega-tab active" role="tab" aria-selected="true" data-mega-target="kaminy" data-mega-href="catalog-kaminy.html">Камины</button>
+                <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="pechi" data-mega-href="catalog-otopitelnye-pechi.html">Печи</button>
+                <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="barbekyu" data-mega-href="catalog-barbekyu-kompleksy.html">Барбекю комплексы</button>
+                <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="izrazcy" data-mega-href="catalog-izrazcy.html">Изразцы</button>
+                <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="seriynye" data-mega-href="catalog-seriynye-modeli.html">Печи-камины<br>из наличия</button>
+                <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="mramor" data-mega-href="catalog-mramornye-kaminy-portaly.html">Мраморные камины<br>и порталы</button>
+                <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="interior" data-mega-href="catalog-interernaya-keramika.html">Плитка ручной работы</button>
+                <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="fasad" data-mega-href="catalog-fasadnaya-keramika.html">Фасадная керамика</button>
+                <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="metlah" data-mega-href="catalog-metlahskaya-plitka.html">Метлахская плитка</button>
+                <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="restoration" data-mega-href="restoration.html">Реставрация</button>
+                <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="suvenir" data-mega-href="catalog-suvenirnaya-produkciya.html">Сувенирная продукция</button>
               </div>
               <div class="header__mega-panels">
                 <section class="header__mega-panel active" role="tabpanel" data-mega-panel="kaminy">
                   <div class="header__mega-cards">
-                    <a href="catalog-kaminy.html" class="header__mega-card header__mega-card--large" role="menuitem"><img src="images/kamin_dorf_murav_new_3.jpg" alt="Дровяные камины"><span>Дровяные камины</span></a>
-                    <a href="catalog-biokaminy.html" class="header__mega-card" role="menuitem"><img src="images/banner-biokaminy_desktop.webp" alt="Биокамины"><span>Биокамины</span></a>
-                    <a href="catalog-elektrokaminy.html" class="header__mega-card" role="menuitem"><img src="images/banner-elektrokaminy_desktop.webp" alt="Электрокамины"><span>Электрокамины</span></a>
+                    <a href="catalog-kaminy.html?subcategory=drovyanye-kaminy" class="header__mega-card header__mega-card--large" role="menuitem"><img src="images/kamin_dorf_murav_new_3.jpg" alt="Дровяные камины"><span>Дровяные камины</span></a>
+                    <a href="catalog-kaminy.html?subcategory=biokaminy" class="header__mega-card" role="menuitem"><img src="images/banner-biokaminy_desktop.webp" alt="Биокамины"><span>Биокамины</span></a>
+                    <a href="catalog-kaminy.html?subcategory=elektrokaminy" class="header__mega-card" role="menuitem"><img src="images/banner-elektrokaminy_desktop.webp" alt="Электрокамины"><span>Электрокамины</span></a>
                   </div>
                 </section>
                 <section class="header__mega-panel" role="tabpanel" data-mega-panel="pechi">
                   <div class="header__mega-cards">
-                    <a href="catalog-russkie-pechi.html" class="header__mega-card header__mega-card--large" role="menuitem"><img src="images/banner-russkie-pechi_desktop.webp" alt="Русские печи"><span>Русские печи</span></a>
-                    <a href="catalog-otopitelnye-pechi.html" class="header__mega-card" role="menuitem"><img src="images/banner-otopitelnye-pechi_desktop.webp" alt="Отопительные печи"><span>Отопительные печи</span></a>
-                    <a href="catalog-bannye-pechi.html" class="header__mega-card" role="menuitem"><img src="images/banner-bannye-pechi_desktop.webp" alt="Банные печи"><span>Банные печи</span></a>
-                    <a href="catalog-bannye-pechi.html" class="header__mega-card" role="menuitem"><img src="images/banner-bannye-portaly_desktop.webp" alt="Банные порталы"><span>Банные порталы</span></a>
+                    <a href="catalog-otopitelnye-pechi.html?subcategory=russkie-pechi" class="header__mega-card header__mega-card--large" role="menuitem"><img src="images/banner-russkie-pechi_desktop.webp" alt="Русские печи"><span>Русские печи</span></a>
+                    <a href="catalog-otopitelnye-pechi.html?subcategory=otopitelnye-pechi" class="header__mega-card" role="menuitem"><img src="images/banner-otopitelnye-pechi_desktop.webp" alt="Отопительные печи"><span>Отопительные печи</span></a>
+                    <a href="catalog-otopitelnye-pechi.html?subcategory=bannye-pechi" class="header__mega-card" role="menuitem"><img src="images/banner-bannye-pechi_desktop.webp" alt="Банные печи"><span>Банные печи</span></a>
+                    <a href="catalog-otopitelnye-pechi.html?subcategory=bannye-portaly" class="header__mega-card" role="menuitem"><img src="images/banner-bannye-portaly_desktop.webp" alt="Банные порталы"><span>Банные порталы</span></a>
                   </div>
                 </section>
                 <section class="header__mega-panel" role="tabpanel" data-mega-panel="barbekyu">
@@ -1019,9 +1046,9 @@
                 </section>
                 <section class="header__mega-panel" role="tabpanel" data-mega-panel="interior">
                   <div class="header__mega-cards">
-                    <a href="catalog-interernaya-keramika.html" class="header__mega-card header__mega-card--bar" role="menuitem"><img src="images/barnye stoyki.jpg" alt="Барные стойки"><span>Барные стойки</span></a>
-                    <a href="catalog-interernaya-keramika.html" class="header__mega-card" role="menuitem"><img src="images/oblicovka sten.jpg" alt="Облицовка стен"><span>Облицовка стен</span></a>
-                    <a href="catalog-interernaya-keramika.html" class="header__mega-card header__mega-card--large" role="menuitem"><img src="images/banner-interior_desktop.webp" alt="Кухонные фартуки"><span>Кухонные фартуки</span></a>
+                    <a href="catalog-interernaya-keramika.html?subcategory=barnye-stoyki" class="header__mega-card header__mega-card--bar" role="menuitem"><img src="images/barnye stoyki.jpg" alt="Барные стойки"><span>Барные стойки</span></a>
+                    <a href="catalog-interernaya-keramika.html?subcategory=oblicovka-sten" class="header__mega-card" role="menuitem"><img src="images/oblicovka sten.jpg" alt="Облицовка стен"><span>Облицовка стен</span></a>
+                    <a href="catalog-interernaya-keramika.html?subcategory=kuhonnye-fartuki" class="header__mega-card header__mega-card--large" role="menuitem"><img src="images/banner-interior_desktop.webp" alt="Кухонные фартуки"><span>Кухонные фартуки</span></a>
                   </div>
                 </section>
                 <section class="header__mega-panel" role="tabpanel" data-mega-panel="fasad">
@@ -1063,22 +1090,22 @@
             <li><a href="contacts-gallery-review.html" class="header__nav-link">Видеоотзывы</a></li>
             <li><a href="cooperation.html" class="header__nav-link">Сотрудничество</a></li>
           </ul>
-          <a href="tel:+74952293046" class="header__nav-phone-link">+7 (495) 229-30-46</a>
+          <a href="tel:+74952293046" data-calltracking="phone" data-calltracking-group="main" class="header__nav-phone-link">+7 (495) 229-30-46</a>
           <div class="header__nav-messengers" aria-label="Мессенджеры">
-            <a href="https://t.me/+79950001166" class="header__messenger-link" target="_blank" rel="noopener" aria-label="Telegram"><img src="images/icons/png-klev-club-p-telegram-logotip-png-9.png" alt="" class="header__messenger-icon"></a>
-            <a href="https://max.ru/" class="header__messenger-link" target="_blank" rel="noopener" aria-label="Max"><img src="images/icons/max.png" alt="" class="header__messenger-icon"></a>
+            <a href="https://t.me/+79950001166" class="header__messenger-link" target="_blank" rel="noopener" aria-label="Telegram" data-duty-messenger="telegram"><img src="images/icons/png-klev-club-p-telegram-logotip-png-9.png" alt="" class="header__messenger-icon"></a>
+            <a href="https://max.ru/" class="header__messenger-link" target="_blank" rel="noopener" aria-label="Max" data-duty-messenger="max"><img src="images/icons/max.png" alt="" class="header__messenger-icon"></a>
           </div>
-          <a href="mailto:info@ceramicadecor.ru" class="header__nav-phone-link">info@ceramicadecor.ru</a>
+          <a href="mailto:info@ceramicadecor.ru" data-calltracking="email" data-calltracking-group="main" class="header__nav-phone-link">info@ceramicadecor.ru</a>
           <div class="header__nav-item--search"><a href="#" class="header__nav-link" id="searchBtnMobile"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg> Поиск</a></div>
         </nav>
 
         <div class="header__actions">
           <button class="header__search-btn" id="searchBtn" aria-label="Поиск"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></button>
           <a href="#contact" class="btn btn--primary header__cta-btn">Оставить заявку</a>
-          <a href="tel:+74952293046" class="header__phone-desktop">+7 (495) 229-30-46</a>
+          <a href="tel:+74952293046" data-calltracking="phone" data-calltracking-group="main" class="header__phone-desktop">+7 (495) 229-30-46</a>
           <div class="header__messengers" aria-label="Мессенджеры">
-            <a href="https://t.me/+79950001166" class="header__messenger-link" target="_blank" rel="noopener" aria-label="Telegram"><img src="images/icons/png-klev-club-p-telegram-logotip-png-9.png" alt="" class="header__messenger-icon"></a>
-            <a href="https://max.ru/" class="header__messenger-link" target="_blank" rel="noopener" aria-label="Max"><img src="images/icons/max.png" alt="" class="header__messenger-icon"></a>
+            <a href="https://t.me/+79950001166" class="header__messenger-link" target="_blank" rel="noopener" aria-label="Telegram" data-duty-messenger="telegram"><img src="images/icons/png-klev-club-p-telegram-logotip-png-9.png" alt="" class="header__messenger-icon"></a>
+            <a href="https://max.ru/" class="header__messenger-link" target="_blank" rel="noopener" aria-label="Max" data-duty-messenger="max"><img src="images/icons/max.png" alt="" class="header__messenger-icon"></a>
           </div>
           <button class="header__burger" id="burgerBtn" aria-label="Меню">
             <span></span><span></span><span></span>
@@ -1123,13 +1150,13 @@
           <!-- Moscow -->
           <div class="contacts-info">
             <h3 class="contacts-info__city">Москва</h3>
-            <a href="tel:+74952293046" class="contacts-info__phone">
+            <a href="tel:+74952293046" data-calltracking="phone" data-calltracking-group="main" class="contacts-info__phone">
               <span class="contacts-info__link-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01.5 2.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.72 6.72l1.28-1.28a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
               +7 (495) 229-30-46
             </a>
             <ul class="contacts-info__links">
               <li>
-                <a href="mailto:info@ceramicadecor.ru" class="contacts-info__link">
+                <a href="mailto:info@ceramicadecor.ru" data-calltracking="email" data-calltracking-group="main" class="contacts-info__link">
                   <span class="contacts-info__link-icon">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="2" y="4" width="20" height="16" rx="3" stroke="currentColor" stroke-width="1.3"/><path d="M2 7l10 6 10-6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
                   </span>
@@ -1189,15 +1216,15 @@
           </div><!-- /contacts-cities__row -->
           </div>
 
-          <section class="contacts-managers-section contacts-managers-section--projects">
+          <section class="contacts-managers-section contacts-managers-section--projects" data-project-managers>
             <h3 class="contacts-cities__title">Менеджеры проектов</h3>
             <div class="contacts-managers">
             <div class="contacts-managers__groups">
-              <div class="contacts-managers__group">
+              <div class="contacts-managers__group" data-manager-city="moscow">
                 <h4 class="contacts-managers__group-title">Москва</h4>
-                <ul class="contacts-managers__list">
-                  <li class="contacts-managers__item">
-                    <span class="contacts-managers__name">Ольга</span>
+                <ul class="contacts-managers__list" data-duty-sort="office-today">
+                  <li class="contacts-managers__item" data-manager-id="olga-berezhkova" data-manager-full-name="Ольга Бережкова" data-duty-today="true" data-duty-date="2026-06-15">
+                    <span class="contacts-managers__name"><span class="contacts-managers__duty-badge">дежурит сегодня</span>Ольга</span>
                     <details class="contacts-managers__contact">
                       <summary class="contacts-managers__phone">+7 (995) 000-11-66</summary>
                       <div class="contacts-managers__contact-menu" aria-label="Способы связи с Ольгой">
@@ -1207,7 +1234,7 @@
                       </div>
                     </details>
                   </li>
-                  <li class="contacts-managers__item">
+                  <li class="contacts-managers__item" data-manager-id="nana" data-manager-full-name="Нана">
                     <span class="contacts-managers__name">Нана</span>
                     <details class="contacts-managers__contact">
                       <summary class="contacts-managers__phone">+7 (995) 000-11-33</summary>
@@ -1218,7 +1245,7 @@
                       </div>
                     </details>
                   </li>
-                  <li class="contacts-managers__item">
+                  <li class="contacts-managers__item" data-manager-id="elena" data-manager-full-name="Елена">
                     <span class="contacts-managers__name">Елена</span>
                     <details class="contacts-managers__contact">
                       <summary class="contacts-managers__phone">+7 (995) 000-11-88</summary>
@@ -1229,7 +1256,7 @@
                       </div>
                     </details>
                   </li>
-                  <li class="contacts-managers__item">
+                  <li class="contacts-managers__item" data-manager-id="alexandra" data-manager-full-name="Александра">
                     <span class="contacts-managers__name">Александра</span>
                     <details class="contacts-managers__contact">
                       <summary class="contacts-managers__phone">+7 (995) 000-44-88</summary>
@@ -1240,7 +1267,7 @@
                       </div>
                     </details>
                   </li>
-                  <li class="contacts-managers__item">
+                  <li class="contacts-managers__item" data-manager-id="natalia" data-manager-full-name="Наталия">
                     <span class="contacts-managers__name">Наталия</span>
                     <details class="contacts-managers__contact">
                       <summary class="contacts-managers__phone">+7 (995) 000-44-22</summary>
@@ -1251,7 +1278,7 @@
                       </div>
                     </details>
                   </li>
-                  <li class="contacts-managers__item">
+                  <li class="contacts-managers__item" data-manager-id="valeria" data-manager-full-name="Валерия">
                     <span class="contacts-managers__name">Валерия</span>
                     <details class="contacts-managers__contact">
                       <summary class="contacts-managers__phone">+7 (995) 000-46-46</summary>
@@ -1368,7 +1395,7 @@
                 <textarea name="message" placeholder="Опишите ваш проект" class="contacts-form__textarea" id="contactMessage"></textarea>
               </div>
               <label class="consent-label">
-                <input type="checkbox" class="consent-checkbox" required>
+                <input type="checkbox" class="consent-checkbox">
                 <span>Я даю согласие на обработку персональных данных в соответствии с <a href="privacy.html" target="_blank">политикой конфиденциальности</a></span>
               </label>
               <button type="submit" class="btn btn--primary btn--full">Отправить заявку</button>
@@ -1513,9 +1540,23 @@
   <footer class="footer" id="footer">
     <div class="footer__glow"></div>
     <div class="container">
+      <div class="footer__works-map" aria-label="Карта выполненных работ">
+        <h2 class="footer__works-map-title">Выполненные работы CeramicaDecor на карте</h2>
+        <div class="contacts-map" data-map-template="completed-works" data-map-provider="internal">
+          <div class="contacts-map__layout">
+            <div class="contacts-map__canvas" id="completedWorksMap" data-map-target="completed-works">
+              <span class="contacts-map__marker contacts-map__marker--spb" data-work-location="spb">Санкт-Петербург</span>
+              <span class="contacts-map__marker contacts-map__marker--moscow" data-work-location="moscow">Москва</span>
+              <p class="contacts-map__placeholder">Здесь будет интерактивная карта с выполненными работами, маркерами объектов, масштабированием и переходом к проектам.</p>
+            </div>
+          </div>
+        </div>
+      </div>
       <div class="footer__top">
         <div class="footer__brand">
-          <a href="index.html" class="footer__logo"><img src="images/logo.png" alt="CeramicaDecor" class="footer__logo-img"></a>
+          <a href="index.html" class="footer__logo">
+            <img src="images/logo.png" alt="CeramicaDecor" class="footer__logo-img">
+          </a>
           <p class="footer__tagline">Керамические премиальные облицовки.<br>14+ лет, своё производство, монтаж.<br>Под ключ по России и СНГ</p>
         </div>
         <div class="footer__columns">
@@ -1524,14 +1565,18 @@
             <ul class="footer__col-list">
               <li><a href="catalog-kaminy.html">Камины</a></li>
               <li><a href="catalog-otopitelnye-pechi.html">Печи</a></li>
+              <li><a href="catalog-seriynye-modeli.html">Печи-камины из наличия</a></li>
               <li><a href="catalog-barbekyu-kompleksy.html">Барбекю комплексы</a></li>
               <li><a href="catalog-izrazcy.html">Изразцы</a></li>
+              <li><a href="catalog-interernaya-keramika.html">Плитка ручной работы</a></li>
             </ul>
           </div>
           <div class="footer__col">
             <ul class="footer__col-list footer__col-list--offset">
               <li><a href="portfolio.html" style="color:#fff;font-size:16px;font-weight:500;">Портфолио</a></li>
               <li><a href="components.html" style="color:#fff;font-size:16px;font-weight:500;">Все для монтажа</a></li>
+              <li><a href="components.html">Каминные топки</a></li>
+              <li><a href="components.html">Электроочаги</a></li>
               <li><a href="cooperation.html" style="color:#fff;font-size:16px;font-weight:500;">Сотрудничество</a></li>
               <li><a href="blog.html" style="color:#fff;font-size:16px;font-weight:500;">Блог</a></li>
               <li><a href="about.html" style="color:#fff;font-size:16px;font-weight:500;">О компании</a></li>
@@ -1540,8 +1585,8 @@
           <div class="footer__col footer__col--contacts">
             <h4 class="footer__col-title" style="font-size:16px;font-weight:700;color:#fff;"><a href="contacts.html" class="footer__col-title-link">Контакты</a></h4>
             <ul class="footer__col-list footer__contact-list">
-              <li><a href="tel:+74952293046" style="font-weight:700;">+7 (495) 229-30-46</a></li>
-              <li><a href="mailto:info@ceramicadecor.ru" style="font-weight:700;">info@ceramicadecor.ru</a></li>
+              <li><a href="tel:+74952293046" data-calltracking="phone" data-calltracking-group="main" style="font-weight:700;">+7 (495) 229-30-46</a></li>
+              <li><a href="mailto:info@ceramicadecor.ru" data-calltracking="email" data-calltracking-group="main" style="font-weight:700;">info@ceramicadecor.ru</a></li>
               <li class="footer__messengers" aria-label="Мессенджеры">
                 <a href="https://t.me/+79950001166" class="footer__messenger-link" target="_blank" rel="noopener" aria-label="Telegram"><img src="images/icons/png-klev-club-p-telegram-logotip-png-9.png" alt="" class="footer__messenger-icon"></a>
                 <a href="https://max.ru/" class="footer__messenger-link" target="_blank" rel="noopener" aria-label="Max"><img src="images/icons/max.png" alt="" class="footer__messenger-icon"></a>
@@ -1573,6 +1618,65 @@
       var phoneError = document.getElementById('phoneError');
       var successMsg = document.getElementById('formSuccess');
       var managerContacts = document.querySelectorAll('.contacts-managers__contact');
+
+      function promoteDutyProjectManagers() {
+        var dutyLists = document.querySelectorAll('[data-project-managers] [data-manager-city="moscow"] [data-duty-sort="office-today"]');
+        var activeDutyManager = null;
+
+        dutyLists.forEach(function(list) {
+          var managers = Array.prototype.slice.call(list.querySelectorAll('.contacts-managers__item'));
+
+          managers.sort(function(a, b) {
+            var aDuty = a.dataset.dutyToday === 'true' ? 0 : 1;
+            var bDuty = b.dataset.dutyToday === 'true' ? 0 : 1;
+            return aDuty - bDuty;
+          });
+
+          managers.forEach(function(manager) {
+            var name = manager.querySelector('.contacts-managers__name');
+            var hasBadge = manager.querySelector('.contacts-managers__duty-badge');
+
+            if (name && manager.dataset.dutyToday === 'true' && !hasBadge) {
+              var badge = document.createElement('span');
+              badge.className = 'contacts-managers__duty-badge';
+              badge.textContent = 'дежурит сегодня';
+              name.prepend(badge);
+            }
+
+            if (manager.dataset.dutyToday === 'true') {
+              activeDutyManager = manager;
+            }
+          });
+
+          managers.forEach(function(manager) {
+            list.appendChild(manager);
+          });
+        });
+
+        if (activeDutyManager) {
+          syncHeaderDutyMessengers(activeDutyManager);
+        }
+      }
+
+      function syncHeaderDutyMessengers(manager) {
+        var messengerLinks = manager.querySelectorAll('.contacts-managers__contact-link[data-messenger]');
+
+        messengerLinks.forEach(function(sourceLink) {
+          var messenger = sourceLink.dataset.messenger;
+          if (messenger === 'phone') return;
+
+          document.querySelectorAll('[data-duty-messenger="' + messenger + '"]').forEach(function(headerLink) {
+            headerLink.href = sourceLink.href;
+            if (sourceLink.dataset.placeholder === 'true') {
+              headerLink.dataset.placeholder = 'true';
+            } else {
+              delete headerLink.dataset.placeholder;
+            }
+          });
+        });
+      }
+
+      promoteDutyProjectManagers();
 
       if (managerContacts.length) {
         document.addEventListener('click', function(e) {
@@ -1806,6 +1910,7 @@
 
           var consentBox = form.querySelector('.consent-checkbox');
           if (consentBox && !consentBox.checked) {
+            if (window.requireCeramicaDecorConsent) window.requireCeramicaDecorConsent(form);
             valid = false;
           }
           if (!valid) return;

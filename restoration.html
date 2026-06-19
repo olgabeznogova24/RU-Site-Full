@@ -122,6 +122,98 @@
     }
 
     /* ===== PRODUCT GRID ===== */
+    .restoration-story {
+      padding: 64px 0 0;
+    }
+    .restoration-story__title {
+      max-width: 980px;
+      margin: 0 0 18px;
+      color: #fff;
+      font-family: 'TT Ramillas Trl', serif;
+      font-size: clamp(1.8rem, 3vw, 2.65rem);
+      font-weight: 400;
+      line-height: 1.12;
+      letter-spacing: -0.01em;
+    }
+    .restoration-story__text {
+      max-width: 1120px;
+      margin: 0;
+      color: rgba(255,255,255,0.68);
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      font-weight: 300;
+      line-height: 1.7;
+    }
+    .restoration-story__text + .restoration-story__text {
+      margin-top: 14px;
+    }
+    .restoration-heritage {
+      padding: 44px 0 0;
+    }
+    .restoration-heritage__title {
+      margin: 0 0 22px;
+      color: #fff;
+      font-family: 'TT Ramillas Trl', serif;
+      font-size: clamp(1.55rem, 2.5vw, 2.2rem);
+      font-weight: 400;
+      line-height: 1.18;
+      letter-spacing: -0.01em;
+    }
+    .restoration-heritage__grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
+    }
+    .restoration-heritage__card {
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+      background: rgba(255,255,255,0.035);
+    }
+    .restoration-heritage__placeholder {
+      position: relative;
+      display: grid;
+      place-items: center;
+      aspect-ratio: 4 / 3;
+      background:
+        linear-gradient(135deg, rgba(203,59,37,0.14), rgba(255,255,255,0.04)),
+        repeating-linear-gradient(45deg, rgba(255,255,255,0.035) 0 1px, transparent 1px 18px),
+        #141414;
+      color: rgba(255,255,255,0.52);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.82rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .restoration-heritage__body {
+      padding: 18px 18px 20px;
+    }
+    .restoration-heritage__number {
+      display: inline-flex;
+      margin: 0 0 10px;
+      color: #cb3b25;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.76rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .restoration-heritage__name {
+      margin: 0 0 10px;
+      color: #fff;
+      font-family: 'TT Ramillas Trl', serif;
+      font-size: 1.28rem;
+      font-weight: 400;
+      line-height: 1.22;
+    }
+    .restoration-heritage__text {
+      margin: 0;
+      color: rgba(255,255,255,0.58);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.92rem;
+      font-weight: 300;
+      line-height: 1.6;
+    }
     .catalog-grid {
       padding: 48px 0 100px;
     }
@@ -129,6 +221,105 @@
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
       gap: 32px;
+    }
+    .restoration-request {
+      padding: 0 0 100px;
+    }
+    .restoration-request__shell {
+      display: grid;
+      grid-template-columns: minmax(0, 0.85fr) minmax(320px, 1.15fr);
+      gap: 44px;
+      align-items: start;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 56px;
+    }
+    .restoration-request__title {
+      margin: 0 0 16px;
+      color: #fff;
+      font-family: 'TT Ramillas Trl', serif;
+      font-size: clamp(1.8rem, 3vw, 2.65rem);
+      font-weight: 400;
+      line-height: 1.12;
+      letter-spacing: -0.01em;
+    }
+    .restoration-request__text {
+      max-width: 520px;
+      margin: 0;
+      color: rgba(255,255,255,0.62);
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      font-weight: 300;
+      line-height: 1.7;
+    }
+    .restoration-request__form {
+      display: grid;
+      gap: 16px;
+    }
+    .restoration-request__row {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+    .restoration-request__field label {
+      display: block;
+      margin: 0 0 8px;
+      color: rgba(255,255,255,0.68);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.86rem;
+      font-weight: 400;
+    }
+    .restoration-request__field input,
+    .restoration-request__field textarea {
+      width: 100%;
+      border: 1px solid rgba(255,255,255,0.13);
+      border-radius: 8px;
+      background: rgba(255,255,255,0.055);
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      line-height: 1.4;
+      padding: 14px 16px;
+      transition: border-color 0.3s ease, background 0.3s ease;
+    }
+    .restoration-request__field input:focus,
+    .restoration-request__field textarea:focus {
+      outline: none;
+      border-color: rgba(203,59,37,0.72);
+      background: rgba(255,255,255,0.075);
+    }
+    .restoration-request__field textarea {
+      min-height: 126px;
+      resize: vertical;
+    }
+    .restoration-request__submit {
+      justify-self: start;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 14px 28px;
+      border-radius: 100px;
+      background: #cb3b25;
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+    .restoration-request__submit:hover {
+      background: #a82e1a;
+      transform: translateY(-2px);
+    }
+    .restoration-request__status {
+      display: none;
+      margin: 0;
+      color: rgba(255,255,255,0.72);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+    .restoration-request__status.active {
+      display: block;
     }
 
     /* ===== PRODUCT CARD ===== */
@@ -935,6 +1126,27 @@
         gap: 8px;
         padding: 4px 0;
       }
+      .restoration-story {
+        padding-top: 44px;
+      }
+      .restoration-heritage {
+        padding-top: 34px;
+      }
+      .restoration-heritage__grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+      }
+      .restoration-request {
+        padding-bottom: 70px;
+      }
+      .restoration-request__shell {
+        grid-template-columns: 1fr;
+        gap: 28px;
+        padding-top: 40px;
+      }
+      .restoration-request__row {
+        grid-template-columns: 1fr;
+      }
       .catalog-grid__inner {
         grid-template-columns: 1fr;
         gap: 20px;
@@ -1077,32 +1289,32 @@
             <button type="button" class="header__catalog-btn" aria-haspopup="true" aria-expanded="false">Каталог</button>
             <div class="header__mega-menu header__mega-menu--showcase" role="menu">
               <div class="header__mega-tabs" role="tablist" aria-label="Разделы каталога">
-                <button type="button" class="header__mega-tab active" role="tab" aria-selected="true" data-mega-target="kaminy">Камины</button>
-                <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="pechi">Печи</button>
-                <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="barbekyu">Барбекю комплексы</button>
-                <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="izrazcy">Изразцы</button>
-                <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="seriynye">Печи-камины<br>из наличия</button>
-                <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="mramor">Мраморные камины<br>и порталы</button>
-                <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="interior">Плитка ручной работы</button>
-                <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="fasad">Фасадная керамика</button>
-                <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="metlah">Метлахская плитка</button>
-                <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="restoration">Реставрация</button>
-                <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="suvenir">Сувенирная продукция</button>
+                <button type="button" class="header__mega-tab active" role="tab" aria-selected="true" data-mega-target="kaminy" data-mega-href="catalog-kaminy.html">Камины</button>
+                <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="pechi" data-mega-href="catalog-otopitelnye-pechi.html">Печи</button>
+                <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="barbekyu" data-mega-href="catalog-barbekyu-kompleksy.html">Барбекю комплексы</button>
+                <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="izrazcy" data-mega-href="catalog-izrazcy.html">Изразцы</button>
+                <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="seriynye" data-mega-href="catalog-seriynye-modeli.html">Печи-камины<br>из наличия</button>
+                <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="mramor" data-mega-href="catalog-mramornye-kaminy-portaly.html">Мраморные камины<br>и порталы</button>
+                <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="interior" data-mega-href="catalog-interernaya-keramika.html">Плитка ручной работы</button>
+                <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="fasad" data-mega-href="catalog-fasadnaya-keramika.html">Фасадная керамика</button>
+                <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="metlah" data-mega-href="catalog-metlahskaya-plitka.html">Метлахская плитка</button>
+                <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="restoration" data-mega-href="restoration.html">Реставрация</button>
+                <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="suvenir" data-mega-href="catalog-suvenirnaya-produkciya.html">Сувенирная продукция</button>
               </div>
               <div class="header__mega-panels">
                 <section class="header__mega-panel active" role="tabpanel" data-mega-panel="kaminy">
                   <div class="header__mega-cards">
-                    <a href="catalog-kaminy.html" class="header__mega-card header__mega-card--large" role="menuitem"><img src="images/kamin_dorf_murav_new_3.jpg" alt="Дровяные камины"><span>Дровяные камины</span></a>
-                    <a href="catalog-biokaminy.html" class="header__mega-card" role="menuitem"><img src="images/banner-biokaminy_desktop.webp" alt="Биокамины"><span>Биокамины</span></a>
-                    <a href="catalog-elektrokaminy.html" class="header__mega-card" role="menuitem"><img src="images/banner-elektrokaminy_desktop.webp" alt="Электрокамины"><span>Электрокамины</span></a>
+                    <a href="catalog-kaminy.html?subcategory=drovyanye-kaminy" class="header__mega-card header__mega-card--large" role="menuitem"><img src="images/kamin_dorf_murav_new_3.jpg" alt="Дровяные камины"><span>Дровяные камины</span></a>
+                    <a href="catalog-kaminy.html?subcategory=biokaminy" class="header__mega-card" role="menuitem"><img src="images/banner-biokaminy_desktop.webp" alt="Биокамины"><span>Биокамины</span></a>
+                    <a href="catalog-kaminy.html?subcategory=elektrokaminy" class="header__mega-card" role="menuitem"><img src="images/banner-elektrokaminy_desktop.webp" alt="Электрокамины"><span>Электрокамины</span></a>
                   </div>
                 </section>
                 <section class="header__mega-panel" role="tabpanel" data-mega-panel="pechi">
                   <div class="header__mega-cards">
-                    <a href="catalog-russkie-pechi.html" class="header__mega-card header__mega-card--large" role="menuitem"><img src="images/banner-russkie-pechi_desktop.webp" alt="Русские печи"><span>Русские печи</span></a>
-                    <a href="catalog-otopitelnye-pechi.html" class="header__mega-card" role="menuitem"><img src="images/banner-otopitelnye-pechi_desktop.webp" alt="Отопительные печи"><span>Отопительные печи</span></a>
-                    <a href="catalog-bannye-pechi.html" class="header__mega-card" role="menuitem"><img src="images/banner-bannye-pechi_desktop.webp" alt="Банные печи"><span>Банные печи</span></a>
-                    <a href="catalog-bannye-pechi.html" class="header__mega-card" role="menuitem"><img src="images/banner-bannye-portaly_desktop.webp" alt="Банные порталы"><span>Банные порталы</span></a>
+                    <a href="catalog-otopitelnye-pechi.html?subcategory=russkie-pechi" class="header__mega-card header__mega-card--large" role="menuitem"><img src="images/banner-russkie-pechi_desktop.webp" alt="Русские печи"><span>Русские печи</span></a>
+                    <a href="catalog-otopitelnye-pechi.html?subcategory=otopitelnye-pechi" class="header__mega-card" role="menuitem"><img src="images/banner-otopitelnye-pechi_desktop.webp" alt="Отопительные печи"><span>Отопительные печи</span></a>
+                    <a href="catalog-otopitelnye-pechi.html?subcategory=bannye-pechi" class="header__mega-card" role="menuitem"><img src="images/banner-bannye-pechi_desktop.webp" alt="Банные печи"><span>Банные печи</span></a>
+                    <a href="catalog-otopitelnye-pechi.html?subcategory=bannye-portaly" class="header__mega-card" role="menuitem"><img src="images/banner-bannye-portaly_desktop.webp" alt="Банные порталы"><span>Банные порталы</span></a>
                   </div>
                 </section>
                 <section class="header__mega-panel" role="tabpanel" data-mega-panel="barbekyu">
@@ -1128,9 +1340,9 @@
                 </section>
                 <section class="header__mega-panel" role="tabpanel" data-mega-panel="interior">
                   <div class="header__mega-cards">
-                    <a href="catalog-interernaya-keramika.html" class="header__mega-card header__mega-card--bar" role="menuitem"><img src="images/barnye stoyki.jpg" alt="Барные стойки"><span>Барные стойки</span></a>
-                    <a href="catalog-interernaya-keramika.html" class="header__mega-card" role="menuitem"><img src="images/oblicovka sten.jpg" alt="Облицовка стен"><span>Облицовка стен</span></a>
-                    <a href="catalog-interernaya-keramika.html" class="header__mega-card header__mega-card--large" role="menuitem"><img src="images/banner-interior_desktop.webp" alt="Кухонные фартуки"><span>Кухонные фартуки</span></a>
+                    <a href="catalog-interernaya-keramika.html?subcategory=barnye-stoyki" class="header__mega-card header__mega-card--bar" role="menuitem"><img src="images/barnye stoyki.jpg" alt="Барные стойки"><span>Барные стойки</span></a>
+                    <a href="catalog-interernaya-keramika.html?subcategory=oblicovka-sten" class="header__mega-card" role="menuitem"><img src="images/oblicovka sten.jpg" alt="Облицовка стен"><span>Облицовка стен</span></a>
+                    <a href="catalog-interernaya-keramika.html?subcategory=kuhonnye-fartuki" class="header__mega-card header__mega-card--large" role="menuitem"><img src="images/banner-interior_desktop.webp" alt="Кухонные фартуки"><span>Кухонные фартуки</span></a>
                   </div>
                 </section>
                 <section class="header__mega-panel" role="tabpanel" data-mega-panel="fasad">
@@ -1172,19 +1384,19 @@
             <li><a href="contacts-gallery-review.html" class="header__nav-link">Видеоотзывы</a></li>
             <li><a href="cooperation.html" class="header__nav-link">Сотрудничество</a></li>
           </ul>
-          <a href="tel:+74952293046" class="header__nav-phone-link">+7 (495) 229-30-46</a>
+          <a href="tel:+74952293046" data-calltracking="phone" data-calltracking-group="main" class="header__nav-phone-link">+7 (495) 229-30-46</a>
           <div class="header__nav-messengers" aria-label="Мессенджеры">
             <a href="https://t.me/+79950001166" class="header__messenger-link" target="_blank" rel="noopener" aria-label="Telegram"><img src="images/icons/png-klev-club-p-telegram-logotip-png-9.png" alt="" class="header__messenger-icon"></a>
             <a href="https://max.ru/" class="header__messenger-link" target="_blank" rel="noopener" aria-label="Max"><img src="images/icons/max.png" alt="" class="header__messenger-icon"></a>
           </div>
-          <a href="mailto:info@ceramicadecor.ru" class="header__nav-phone-link">info@ceramicadecor.ru</a>
+          <a href="mailto:info@ceramicadecor.ru" data-calltracking="email" data-calltracking-group="main" class="header__nav-phone-link">info@ceramicadecor.ru</a>
           <div class="header__nav-item--search"><a href="#" class="header__nav-link" id="searchBtnMobile"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg> Поиск</a></div>
         </nav>
 
         <div class="header__actions">
           <button class="header__search-btn" id="searchBtn" aria-label="Поиск"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></button>
           <a href="#contact" class="btn btn--primary header__cta-btn">Оставить заявку</a>
-          <a href="tel:+74952293046" class="header__phone-desktop">+7 (495) 229-30-46</a>
+          <a href="tel:+74952293046" data-calltracking="phone" data-calltracking-group="main" class="header__phone-desktop">+7 (495) 229-30-46</a>
           <div class="header__messengers" aria-label="Мессенджеры">
             <a href="https://t.me/+79950001166" class="header__messenger-link" target="_blank" rel="noopener" aria-label="Telegram"><img src="images/icons/png-klev-club-p-telegram-logotip-png-9.png" alt="" class="header__messenger-icon"></a>
             <a href="https://max.ru/" class="header__messenger-link" target="_blank" rel="noopener" aria-label="Max"><img src="images/icons/max.png" alt="" class="header__messenger-icon"></a>
@@ -1210,11 +1422,81 @@
     </div>
   </section>
 
+  <!-- ===== RESTORATION STORY ===== -->
+  <section class="restoration-story" aria-labelledby="restorationStoryTitle">
+    <div class="container">
+      <h2 class="restoration-story__title" id="restorationStoryTitle">Реставрация и восстановление керамического декора<br>в CeramicaDecor</h2>
+      <p class="restoration-story__text">CeramicaDecor выполняет работы по реставрации и воссозданию керамического декора для памятников истории и архитектуры: изразцовых печей, каминов, фасадной облицовки и отдельных архитектурных элементов. Главная задача таких работ - сохранить подлинный художественно-исторический облик объекта: форму, рельеф, цветовую палитру и характер поверхности.</p>
+      <p class="restoration-story__text">Реставрационные работы проводятся в соответствии с нормативными документами Минкультуры РФ по ремонтно-реставрационным работам в сфере охраны объектов культурного наследия. Над проектами работают аттестованные специалисты, которые занимаются реставрацией керамической и каменной облицовки.</p>
+      <p class="restoration-story__text">При воссоздании утраченных элементов учитываются технологические особенности керамики: усадка глиняной массы при сушке и обжиге, точность формы, фактура, глазурь и подбор цвета по образцам. Это позволяет изготовить новые детали так, чтобы они выглядели естественной частью исторического объекта, а не заметной заменой.</p>
+      <div class="restoration-heritage" aria-labelledby="restorationStagesTitle">
+        <h2 class="restoration-heritage__title" id="restorationStagesTitle">Этапы реставрационного проекта</h2>
+        <div class="restoration-heritage__grid">
+          <article class="restoration-heritage__card">
+            <div class="restoration-heritage__body">
+              <span class="restoration-heritage__number">01</span>
+              <h3 class="restoration-heritage__name">Анализ объекта</h3>
+              <p class="restoration-heritage__text">Осмотр, фотофиксация и изучение сохранившихся элементов.</p>
+            </div>
+          </article>
+          <article class="restoration-heritage__card">
+            <div class="restoration-heritage__body">
+              <span class="restoration-heritage__number">02</span>
+              <h3 class="restoration-heritage__name">Воссоздание формы</h3>
+              <p class="restoration-heritage__text">Моделирование рельефа и геометрии утраченных изразцов.</p>
+            </div>
+          </article>
+          <article class="restoration-heritage__card">
+            <div class="restoration-heritage__body">
+              <span class="restoration-heritage__number">03</span>
+              <h3 class="restoration-heritage__name">Изготовление керамики</h3>
+              <p class="restoration-heritage__text">Ручная формовка, обжиг, подбор глазурей и контроль соответствия.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ===== PRODUCT GRID ===== -->
   <section class="catalog-grid">
     <div class="container">
       <div class="catalog-grid__inner" id="catalogGrid">
         <!-- Cards rendered by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== RESTORATION REQUEST FORM ===== -->
+  <section class="restoration-request" id="contact" aria-labelledby="restorationRequestTitle">
+    <div class="container">
+      <div class="restoration-request__shell">
+        <div class="restoration-request__intro">
+          <h2 class="restoration-request__title" id="restorationRequestTitle">Оставить запрос на реставрацию</h2>
+          <p class="restoration-request__text">Опишите объект, задачу и текущее состояние керамического декора. Если есть фотографии или обмеры, укажите это в комментарии - специалист подскажет, какие материалы понадобятся для предварительной оценки.</p>
+        </div>
+        <form class="restoration-request__form" id="restorationRequestForm">
+          <div class="restoration-request__row">
+            <div class="restoration-request__field">
+              <label for="restorationRequestName">Ваше имя</label>
+              <input type="text" id="restorationRequestName" name="name" placeholder="Как к вам обращаться?" required>
+            </div>
+            <div class="restoration-request__field">
+              <label for="restorationRequestPhone">Телефон</label>
+              <input type="tel" id="restorationRequestPhone" name="phone" placeholder="+7 (___) ___-__-__" required>
+            </div>
+          </div>
+          <div class="restoration-request__field">
+            <label for="restorationRequestMessage">Комментарий</label>
+            <textarea id="restorationRequestMessage" name="message" placeholder="Расскажите об объекте, виде работ, сроках и имеющихся материалах"></textarea>
+          </div>
+          <label class="consent-label">
+            <input type="checkbox" class="consent-checkbox">
+            <span>Я даю согласие на обработку персональных данных в соответствии с <a href="privacy.html" target="_blank">политикой конфиденциальности</a></span>
+          </label>
+          <button type="submit" class="restoration-request__submit">Отправить запрос</button>
+          <p class="restoration-request__status" id="restorationRequestStatus" aria-live="polite">Спасибо! Запрос отправлен. Мы свяжемся с вами в ближайшее время.</p>
+        </form>
       </div>
     </div>
   </section>
@@ -1240,7 +1522,7 @@
             <textarea id="requestMessage" placeholder="Ваши пожелания или вопросы"></textarea>
           </div>
           <label class="consent-label">
-            <input type="checkbox" class="consent-checkbox" required>
+            <input type="checkbox" class="consent-checkbox">
             <span>Я даю согласие на обработку персональных данных в соответствии с <a href="privacy.html" target="_blank">политикой конфиденциальности</a></span>
           </label>
           <button type="submit" class="request-modal__submit">Отправить заявку</button>
@@ -1261,6 +1543,18 @@
   <footer class="footer" id="footer">
     <div class="footer__glow"></div>
     <div class="container">
+      <div class="footer__works-map" aria-label="Карта выполненных работ">
+        <h2 class="footer__works-map-title">Выполненные работы CeramicaDecor на карте</h2>
+        <div class="contacts-map" data-map-template="completed-works" data-map-provider="internal">
+          <div class="contacts-map__layout">
+            <div class="contacts-map__canvas" id="completedWorksMap" data-map-target="completed-works">
+              <span class="contacts-map__marker contacts-map__marker--spb" data-work-location="spb">Санкт-Петербург</span>
+              <span class="contacts-map__marker contacts-map__marker--moscow" data-work-location="moscow">Москва</span>
+              <p class="contacts-map__placeholder">Здесь будет интерактивная карта с выполненными работами, маркерами объектов, масштабированием и переходом к проектам.</p>
+            </div>
+          </div>
+        </div>
+      </div>
       <div class="footer__top">
         <div class="footer__brand">
           <a href="index.html" class="footer__logo">
@@ -1268,20 +1562,24 @@
           </a>
           <p class="footer__tagline">Керамические премиальные облицовки.<br>14+ лет, своё производство, монтаж.<br>Под ключ по России и СНГ</p>
         </div>
-                <div class="footer__columns">
+        <div class="footer__columns">
           <div class="footer__col">
             <h4 class="footer__col-title" style="font-size:16px;font-weight:700;color:#fff;">Каталог</h4>
             <ul class="footer__col-list">
               <li><a href="catalog-kaminy.html">Камины</a></li>
               <li><a href="catalog-otopitelnye-pechi.html">Печи</a></li>
+              <li><a href="catalog-seriynye-modeli.html">Печи-камины из наличия</a></li>
               <li><a href="catalog-barbekyu-kompleksy.html">Барбекю комплексы</a></li>
               <li><a href="catalog-izrazcy.html">Изразцы</a></li>
+              <li><a href="catalog-interernaya-keramika.html">Плитка ручной работы</a></li>
             </ul>
           </div>
           <div class="footer__col">
             <ul class="footer__col-list footer__col-list--offset">
               <li><a href="portfolio.html" style="color:#fff;font-size:16px;font-weight:500;">Портфолио</a></li>
               <li><a href="components.html" style="color:#fff;font-size:16px;font-weight:500;">Все для монтажа</a></li>
+              <li><a href="components.html">Каминные топки</a></li>
+              <li><a href="components.html">Электроочаги</a></li>
               <li><a href="cooperation.html" style="color:#fff;font-size:16px;font-weight:500;">Сотрудничество</a></li>
               <li><a href="blog.html" style="color:#fff;font-size:16px;font-weight:500;">Блог</a></li>
               <li><a href="about.html" style="color:#fff;font-size:16px;font-weight:500;">О компании</a></li>
@@ -1290,8 +1588,8 @@
           <div class="footer__col footer__col--contacts">
             <h4 class="footer__col-title" style="font-size:16px;font-weight:700;color:#fff;"><a href="contacts.html" class="footer__col-title-link">Контакты</a></h4>
             <ul class="footer__col-list footer__contact-list">
-              <li><a href="tel:+74952293046" style="font-weight:700;">+7 (495) 229-30-46</a></li>
-              <li><a href="mailto:info@ceramicadecor.ru" style="font-weight:700;">info@ceramicadecor.ru</a></li>
+              <li><a href="tel:+74952293046" data-calltracking="phone" data-calltracking-group="main" style="font-weight:700;">+7 (495) 229-30-46</a></li>
+              <li><a href="mailto:info@ceramicadecor.ru" data-calltracking="email" data-calltracking-group="main" style="font-weight:700;">info@ceramicadecor.ru</a></li>
               <li class="footer__messengers" aria-label="Мессенджеры">
                 <a href="https://t.me/+79950001166" class="footer__messenger-link" target="_blank" rel="noopener" aria-label="Telegram"><img src="images/icons/png-klev-club-p-telegram-logotip-png-9.png" alt="" class="footer__messenger-icon"></a>
                 <a href="https://max.ru/" class="footer__messenger-link" target="_blank" rel="noopener" aria-label="Max"><img src="images/icons/max.png" alt="" class="footer__messenger-icon"></a>
@@ -1351,6 +1649,25 @@
 
     /* ===== PRODUCT DATA ===== */
     var products = [
+      {
+        id: 'restavraciya-izrazcovye-pechi',
+        cat: 'restoration',
+        name: 'Воссоздание изразцовых печей декоративного назначения',
+        collection: 'Реставрационный проект',
+        desc: 'Объект культурного наследия постройки 1902 года «Межпоселковая центральная районная библиотека», Пензенская обл, п. Мокшан',
+        price: 'по запросу',
+        priceTurnkey: '',
+        detailUrl: 'product-restavraciya-izrazcovye-pechi-template.html',
+        fullDesc: 'По заданию заказчика был реализован проект воссоздания изразцовых печей в помещениях библиотеки в местах, где на момент реставрационно-строительных работ находились остовы разрушенных печей.',
+        specs: {
+          'Производитель': 'CeramicaDecor',
+          'Раздел': 'Реставрация',
+          'Тип работ': 'Воссоздание изразцовых печей',
+          'Объект': 'Межпоселковая центральная районная библиотека'
+        },
+        hasWebp: false,
+        images: ['restoration_1.jpg','restoration_2.jpg','restoration_3.jpg','restoration_4.png','restoration_5.png','restoration_6.jpg']
+      },
       // === КАМИНЫ ===
       {
         id: 'kamin-albion',
@@ -2085,11 +2402,12 @@
         var sliderDots = '';
         p.images.forEach(function(img, idx) {
           var webpImg = img.replace(/\.(jpg|jpeg|png)$/i, '.webp');
-          sliderImgs += '<picture><source srcset="images/' + webpImg + '" type="image/webp"><img src="images/' + img + '" alt="' + p.name + '" loading="' + (idx === 0 ? 'eager' : 'lazy') + '" class="' + (idx === 0 ? 'active' : '') + '" onerror="this.style.display=\'none\'"></picture>';
+          var imgTag = '<img src="images/' + img + '" alt="' + p.name + '" loading="' + (idx === 0 ? 'eager' : 'lazy') + '" class="' + (idx === 0 ? 'active' : '') + '" onerror="this.style.display=\'none\'">';
+          sliderImgs += p.hasWebp === false ? imgTag : '<picture><source srcset="images/' + webpImg + '" type="image/webp">' + imgTag + '</picture>';
           sliderDots += '<button class="product-card__dot' + (idx === 0 ? ' active' : '') + '" data-idx="' + idx + '"></button>';
         });
 
-        var verticalIds = ['kamin-dorf', 'kamin-rollers', 'kamin-dorf-brunner', 'bbq-albion-mini', 'bbq-versal', 'bbq-tulpan', 'bbq-dorf-mangal', 'bbq-pticy', 'bbq-scenki'];
+        var verticalIds = ['restavraciya-izrazcovye-pechi', 'kamin-dorf', 'kamin-rollers', 'kamin-dorf-brunner', 'bbq-albion-mini', 'bbq-versal', 'bbq-tulpan', 'bbq-dorf-mangal', 'bbq-pticy', 'bbq-scenki'];
         var sliderClass = 'product-card__slider' + (p.id === 'kamin-minimalist' ? ' product-card__slider--contain' : '') + (verticalIds.indexOf(p.id) !== -1 ? ' product-card__slider--vertical' : '');
         card.innerHTML =
           '<div class="' + sliderClass + '">' +
@@ -2102,12 +2420,12 @@
             '<p class="product-card__collection">' + p.collection + '</p>' +
             '<h3 class="product-card__name">' + p.name + '</h3>' +
             '<p class="product-card__desc">' + p.desc + '</p>' +
-            '<p class="product-card__price">Облицовка: ' + p.price + ' &#8381;</p>' +
+            '<p class="product-card__price">' + (p.cat === 'restoration' ? 'Стоимость: ' + p.price : 'Облицовка: ' + p.price + ' &#8381;') + '</p>' +
             (p.priceTurnkey ? '<p class="product-card__price product-card__price--turnkey">Под ключ: ' + p.priceTurnkey + ' &#8381;</p>' : '') +
             '<div class="product-card__actions">' +
-              '<button class="product-card__btn product-card__btn--details" data-id="' + p.id + '">' +
+              '<a class="product-card__btn product-card__btn--details" href="' + (p.detailUrl || '#') + '" data-id="' + p.id + '">' +
                 'Описание ' + ARROW_SVG +
-              '</button>' +
+              '</a>' +
               '<button class="product-card__btn product-card__btn--request" data-product="' + p.name + '" data-price="' + p.price + '" onclick="event.stopPropagation(); openRequestModal(\'' + p.name.replace(/'/g, "\\'") + '\', \'' + p.price + '\')">' +
                 'Оставить заявку' +
               '</button>' +
@@ -2160,10 +2478,15 @@
           });
         })(card, p.images);
 
-        // Click on card opens modal (except arrows, dots, request button)
+        // Demo cards are placeholders for future product pages; slider and request controls stay active.
         card.addEventListener('click', function(e) {
+          var detailLink = e.target.closest('.product-card__btn--details');
+          if (detailLink) {
+            if (!p.detailUrl) e.preventDefault();
+            return;
+          }
           if (e.target.closest('.product-card__arrow') || e.target.closest('.product-card__dot') || e.target.closest('.product-card__btn--request')) return;
-          openModal(p.id);
+          if (p.detailUrl) window.location.href = p.detailUrl;
         });
 
         grid.appendChild(card);
@@ -2469,7 +2792,10 @@
         });
 
         setActiveTab(cat);
-        history.replaceState(null, '', location.pathname + '?cat=' + cat);
+        var tabUrl = new URL(location.href);
+        tabUrl.searchParams.set('cat', cat);
+        tabUrl.searchParams.delete('subcategory');
+        history.replaceState(null, '', tabUrl.pathname + tabUrl.search);
 
         setTimeout(function() {
           animTargets.forEach(function(el) {
@@ -2486,9 +2812,10 @@
 
     if (productParam) {
       var p = products.find(function(item) { return item.id === productParam; });
-      if (p) {
+      if (p && p.detailUrl) {
+        window.location.href = p.detailUrl;
+      } else if (p) {
         setActiveTab(p.cat === 'bbq' ? 'barbekyu-kompleksy' : p.cat);
-        openModal(productParam);
       } else {
         setActiveTab(catParam || window.CATALOG_DEFAULT_CATEGORY || 'kaminy');
       }
@@ -2499,10 +2826,11 @@
     // Handle browser back/forward
     window.addEventListener('popstate', function(e) {
       if (e.state && e.state.product) {
-        openModal(e.state.product);
-      } else {
-        closeModal();
+        var p = products.find(function(item) { return item.id === e.state.product; });
+        if (p && p.detailUrl) window.location.href = p.detailUrl;
+        return;
       }
+      closeModal();
     });
 
     /* ===== REQUEST MODAL ===== */
@@ -2514,11 +2842,20 @@
     var currentRequestProduct = '';
 
     window.openRequestModal = function(productName, productPrice) {
+      var requestProduct = Array.isArray(products) ? products.find(function(item) { return item.name === productName; }) : null;
+      var productArticle = requestProduct && requestProduct.specs ? (requestProduct.specs['\u0410\u0440\u0442\u0438\u043a\u0443\u043b'] || '') : '';
+      productArticle = productArticle || (requestProduct && (requestProduct.article || requestProduct.artikul || requestProduct.sku || '')) || '';
+      if (window.openProductRequestModal && productName) {
+        window.openProductRequestModal(productName, productArticle, location.href);
+        return;
+      }
+
       currentRequestProduct = productName;
-      requestProductName.textContent = productName + ' (' + productPrice + ' \u20BD)';
+      var productPriceText = productPrice === 'по запросу' ? productPrice : productPrice + ' \u20BD';
+      requestProductName.textContent = productName + ' (' + productPriceText + ')';
       requestModalBody.innerHTML =
         '<h3 class="request-modal__title">Оставить заявку</h3>' +
-        '<p class="request-modal__product">' + productName + ' (' + productPrice + ' \u20BD)</p>' +
+        '<p class="request-modal__product">' + productName + ' (' + productPriceText + ')</p>' +
         '<form id="requestForm">' +
           '<div class="request-modal__field">' +
             '<label for="requestName">Ваше имя</label>' +
@@ -2532,6 +2869,10 @@
             '<label for="requestMessage">Комментарий (необязательно)</label>' +
             '<textarea id="requestMessage" placeholder="Ваши пожелания или вопросы"></textarea>' +
           '</div>' +
+          '<label class="consent-label">' +
+            '<input type="checkbox" class="consent-checkbox">' +
+            '<span>&#1071; &#1076;&#1072;&#1102; &#1089;&#1086;&#1075;&#1083;&#1072;&#1089;&#1080;&#1077; &#1085;&#1072; &#1086;&#1073;&#1088;&#1072;&#1073;&#1086;&#1090;&#1082;&#1091; &#1087;&#1077;&#1088;&#1089;&#1086;&#1085;&#1072;&#1083;&#1100;&#1085;&#1099;&#1093; &#1076;&#1072;&#1085;&#1085;&#1099;&#1093; &#1074; &#1089;&#1086;&#1086;&#1090;&#1074;&#1077;&#1090;&#1089;&#1090;&#1074;&#1080;&#1080; &#1089; <a href="privacy.html" target="_blank">&#1087;&#1086;&#1083;&#1080;&#1090;&#1080;&#1082;&#1086;&#1081; &#1082;&#1086;&#1085;&#1092;&#1080;&#1076;&#1077;&#1085;&#1094;&#1080;&#1072;&#1083;&#1100;&#1085;&#1086;&#1089;&#1090;&#1080;</a></span>' +
+          '</label>' +
           '<button type="submit" class="request-modal__submit">Отправить заявку</button>' +
         '</form>';
       requestModal.classList.add('open');
@@ -2542,7 +2883,8 @@
         var name =document.getElementById('requestName').value.trim();
         var phone = document.getElementById('requestPhone').value.trim();
         var message = document.getElementById('requestMessage').value.trim();
-        var comment = (currentRequestProduct ? 'Товар: ' + currentRequestProduct + '\n' : '') + 'Страница: ' + location.href + (message ? '\nКомментарий: ' + message : '');
+        if (!window.requireCeramicaDecorConsent || !window.requireCeramicaDecorConsent(this)) return;
+        var comment = (currentRequestProduct ? currentRequestProduct + '\n' : '') + 'Страница: ' + location.href + (message ? '\nКомментарий: ' + message : '');
         fetch('https://ceramicadecor.ru/feedback/ceramicadecor_pro', {
           method: 'POST',
           headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
@@ -2572,6 +2914,31 @@
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape' && requestModal.classList.contains('open')) closeRequestModal();
     });
+
+    var restorationRequestForm = document.getElementById('restorationRequestForm');
+    var restorationRequestStatus = document.getElementById('restorationRequestStatus');
+    if (restorationRequestForm) {
+      restorationRequestForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        var name = document.getElementById('restorationRequestName').value.trim();
+        var phone = document.getElementById('restorationRequestPhone').value.trim();
+        var message = document.getElementById('restorationRequestMessage').value.trim();
+        if (!window.requireCeramicaDecorConsent || !window.requireCeramicaDecorConsent(restorationRequestForm)) return;
+        var comment = 'Запрос на реставрацию\nСтраница: ' + location.href +
+          (message ? '\nКомментарий: ' + message : '');
+
+        fetch('https://ceramicadecor.ru/feedback/ceramicadecor_pro', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: new URLSearchParams({ name: name, phone: phone, comment: comment })
+        });
+
+        restorationRequestForm.reset();
+        if (restorationRequestStatus) {
+          restorationRequestStatus.classList.add('active');
+        }
+      });
+    }
   })();
   </script>
   <button class="scroll-to-top" aria-label="Наверх">
@@ -2586,14 +2953,3 @@
   </div>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
