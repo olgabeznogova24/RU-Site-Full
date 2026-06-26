@@ -137,7 +137,18 @@
       margin-bottom: 12px;
       background: rgba(255,255,255,0.04);
     }
-    .product-gallery__main img { object-fit: contain; }
+    .product-gallery__main img {
+      cursor: pointer;
+      object-fit: contain;
+      transition: transform 0.35s ease;
+    }
+    .product-gallery__main:hover img {
+      transform: scale(1.035);
+    }
+    .product-gallery__main img:focus-visible {
+      outline: 2px solid #cb3b25;
+      outline-offset: -6px;
+    }
     .product-gallery__nav {
       position: absolute;
       top: 50%;
@@ -618,6 +629,163 @@
         font-size: 0.92rem;
       }
     }
+    .product-lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 10001;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 28px;
+      background: rgba(0,0,0,0.9);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-sizing: border-box;
+    }
+    .product-lightbox.is-open {
+      display: flex;
+    }
+    .product-lightbox__inner {
+      position: relative;
+      width: min(100%, 1180px);
+      height: min(100%, 820px);
+      display: grid;
+      grid-template-rows: minmax(0, 1fr) auto;
+      gap: 14px;
+    }
+    .product-lightbox__stage {
+      position: relative;
+      min-height: 0;
+      border-radius: 16px;
+      overflow: hidden;
+      background: rgba(255,255,255,0.04);
+    }
+    .product-lightbox__img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: contain;
+    }
+    .product-lightbox__close,
+    .product-lightbox__nav {
+      position: absolute;
+      z-index: 2;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(255,255,255,0.32);
+      border-radius: 50%;
+      background: rgba(5,5,5,0.5);
+      color: #fff;
+      cursor: pointer;
+      transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+    }
+    .product-lightbox__close:hover,
+    .product-lightbox__nav:hover {
+      background: rgba(203,59,37,0.9);
+      border-color: rgba(203,59,37,0.9);
+    }
+    .product-lightbox__close {
+      top: 14px;
+      right: 14px;
+      width: 42px;
+      height: 42px;
+      font-size: 1.6rem;
+      line-height: 1;
+    }
+    .product-lightbox__nav {
+      top: 50%;
+      width: 46px;
+      height: 46px;
+      transform: translateY(-50%);
+    }
+    .product-lightbox__nav:hover {
+      transform: translateY(-50%) scale(1.04);
+    }
+    .product-lightbox__nav--prev {
+      left: 16px;
+    }
+    .product-lightbox__nav--next {
+      right: 16px;
+    }
+    .product-lightbox__nav svg {
+      width: 22px;
+      height: 22px;
+      stroke: currentColor;
+    }
+    .product-lightbox__counter {
+      position: absolute;
+      left: 16px;
+      bottom: 14px;
+      z-index: 2;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: rgba(5,5,5,0.56);
+      color: rgba(255,255,255,0.9);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.86rem;
+    }
+    .product-lightbox__thumbs {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding: 2px 0 8px;
+    }
+    .product-lightbox__thumb {
+      flex: 0 0 104px;
+      height: 72px;
+      border: 2px solid transparent;
+      border-radius: 8px;
+      overflow: hidden;
+      padding: 0;
+      background: rgba(255,255,255,0.06);
+      opacity: 0.62;
+      cursor: pointer;
+      transition: border-color 0.15s ease, opacity 0.15s ease;
+    }
+    .product-lightbox__thumb:hover,
+    .product-lightbox__thumb.is-active {
+      opacity: 1;
+      border-color: #cb3b25;
+    }
+    .product-lightbox__thumb img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+    @media (max-width: 640px) {
+      .product-lightbox {
+        padding: 14px;
+      }
+      .product-lightbox__inner {
+        height: min(100%, 700px);
+        gap: 10px;
+      }
+      .product-lightbox__stage {
+        border-radius: 12px;
+      }
+      .product-lightbox__close {
+        top: 10px;
+        right: 10px;
+        width: 38px;
+        height: 38px;
+      }
+      .product-lightbox__nav {
+        width: 40px;
+        height: 40px;
+      }
+      .product-lightbox__nav--prev {
+        left: 10px;
+      }
+      .product-lightbox__nav--next {
+        right: 10px;
+      }
+      .product-lightbox__thumb {
+        flex-basis: 82px;
+        height: 58px;
+      }
+    }
     .request-modal {
       display: none;
       position: fixed;
@@ -757,7 +925,7 @@
             <li><a href="about.html" class="header__top-link">О компании</a></li>
             <li><a href="about.html#team" class="header__top-link">Наша команда</a></li>
             <li><a href="contacts-gallery-review.html" class="header__top-link">Видеоотзывы</a></li>
-            <li><a href="cooperation.html" class="header__top-link">Сотрудничество</a></li>
+            <li class="header__top-dropdown"><button type="button" class="header__top-link header__top-dropdown-toggle" aria-haspopup="true" aria-expanded="false">Сотрудничество</button><ul class="header__top-dropdown-menu"><li><a href="cooperation.html">Дизайнеры</a></li><li><a href="cooperation-stovemakers.html">Печники</a></li><li><a href="cooperation-developers.html">Застройщики</a></li><li><a href="cooperation-fireplace-salons.html">Салоны каминов</a></li></ul></li>
           </ul>
         </nav>
       </div>
@@ -777,7 +945,7 @@
                 <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="barbekyu" data-mega-href="catalog-barbekyu-kompleksy.html">Барбекю комплексы</button>
                 <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="izrazcy" data-mega-href="catalog-izrazcy.html">Изразцы</button>
                 <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="seriynye" data-mega-href="catalog-seriynye-modeli.html">Печи-камины<br>из наличия</button>
-                <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="mramor" data-mega-href="catalog-mramornye-kaminy-portaly.html">Мраморные камины<br>и порталы</button>
+                <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="mramor" data-mega-href="catalog-mramornye-portaly.html">Мраморные камины<br>и порталы</button>
                 <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="interior" data-mega-href="catalog-interernaya-keramika.html">Плитка ручной работы</button>
                 <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="fasad" data-mega-href="catalog-fasadnaya-keramika.html">Фасадная керамика</button>
                 <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="metlah" data-mega-href="catalog-metlahskaya-plitka.html">Метлахская плитка</button>
@@ -795,7 +963,7 @@
                 <section class="header__mega-panel" role="tabpanel" data-mega-panel="pechi">
                   <div class="header__mega-cards">
                     <a href="catalog-otopitelnye-pechi.html?subcategory=russkie-pechi" class="header__mega-card header__mega-card--large" role="menuitem"><img src="images/banner-russkie-pechi_desktop.webp" alt="Русские печи"><span>Русские печи</span></a>
-                    <a href="catalog-otopitelnye-pechi.html?subcategory=otopitelnye-pechi" class="header__mega-card" role="menuitem"><img src="images/banner-otopitelnye-pechi_desktop.webp" alt="Отопительные печи"><span>Отопительные печи</span></a>
+                    <a href="catalog-otopitelnye-pechi.html?subcategory=otopitelnye-pechi" class="header__mega-card" role="menuitem"><img src="images/5393.jpg" alt="Отопительные печи"><span>Отопительные печи</span></a>
                     <a href="catalog-otopitelnye-pechi.html?subcategory=bannye-pechi" class="header__mega-card" role="menuitem"><img src="images/banner-bannye-pechi_desktop.webp" alt="Банные печи"><span>Банные печи</span></a>
                     <a href="catalog-otopitelnye-pechi.html?subcategory=bannye-portaly" class="header__mega-card" role="menuitem"><img src="images/banner-bannye-portaly_desktop.webp" alt="Банные порталы"><span>Банные порталы</span></a>
                   </div>
@@ -818,7 +986,8 @@
                 </section>
                 <section class="header__mega-panel" role="tabpanel" data-mega-panel="mramor">
                   <div class="header__mega-cards">
-                    <a href="catalog-mramornye-kaminy-portaly.html" class="header__mega-card header__mega-card--large" role="menuitem"><img src="images/banner-mramor_desktop.webp" alt="Мраморные камины"><span>Мраморные камины<br>и порталы</span></a>
+                    <a href="catalog-mramornye-portaly.html" class="header__mega-card header__mega-card--large" role="menuitem"><img src="images/banner-mramor_desktop.webp" alt="Мраморные порталы"><span>Мраморные порталы</span></a>
+                    <a href="catalog-kaminy-v-oblicovke-mramorom.html" class="header__mega-card" role="menuitem"><img src="images/kaminy_iz_mramora.jpg" alt="Камины в облицовке мрамором"><span>Камины в облицовке<br>мрамором</span></a>
                   </div>
                 </section>
                 <section class="header__mega-panel" role="tabpanel" data-mega-panel="interior">
@@ -865,7 +1034,7 @@
             <li><a href="about.html" class="header__nav-link">О компании</a></li>
             <li><a href="about.html#team" class="header__nav-link">Наша команда</a></li>
             <li><a href="contacts-gallery-review.html" class="header__nav-link">Видеоотзывы</a></li>
-            <li><a href="cooperation.html" class="header__nav-link">Сотрудничество</a></li>
+            <li class="header__nav-dropdown header__nav-dropdown--simple"><a href="cooperation.html" class="header__nav-link" aria-haspopup="true" aria-expanded="false">Сотрудничество</a><ul class="header__dropdown-menu"><li><a href="cooperation.html">Дизайнеры</a></li><li><a href="cooperation-stovemakers.html">Печники</a></li><li><a href="cooperation-developers.html">Застройщики</a></li><li><a href="cooperation-fireplace-salons.html">Салоны каминов</a></li></ul></li>
           </ul>
           <a href="tel:+74952293046" data-calltracking="phone" data-calltracking-group="main" class="header__nav-phone-link">+7 (495) 229-30-46</a>
           <div class="header__nav-messengers" aria-label="Мессенджеры">
@@ -1146,6 +1315,23 @@
     </div>
   </footer>
 
+  <div class="product-lightbox" id="productLightbox" aria-hidden="true">
+    <div class="product-lightbox__inner" role="dialog" aria-modal="true" aria-label="Галерея товара">
+      <div class="product-lightbox__stage" data-product-lightbox-stage>
+        <img class="product-lightbox__img" src="" alt="" data-product-lightbox-img>
+        <button class="product-lightbox__close" type="button" data-product-lightbox-close aria-label="Закрыть">&times;</button>
+        <button class="product-lightbox__nav product-lightbox__nav--prev" type="button" data-product-lightbox-prev aria-label="Предыдущее фото">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <button class="product-lightbox__nav product-lightbox__nav--next" type="button" data-product-lightbox-next aria-label="Следующее фото">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+        <div class="product-lightbox__counter" data-product-lightbox-counter>1 / 1</div>
+      </div>
+      <div class="product-lightbox__thumbs" data-product-lightbox-thumbs aria-label="Фотографии товара"></div>
+    </div>
+  </div>
+
   <div class="request-modal" id="requestModal" aria-hidden="true">
     <div class="request-modal__box" role="dialog" aria-modal="true" aria-labelledby="requestModalTitle">
       <button class="request-modal__close" id="requestModalClose" type="button" aria-label="Закрыть">&times;</button>
@@ -1158,13 +1344,62 @@
     document.querySelectorAll('[data-product-gallery]').forEach(function(gallery) {
       var main = gallery.querySelector('[data-gallery-main]');
       var buttons = Array.prototype.slice.call(gallery.querySelectorAll('[data-gallery-src]'));
+      var lightbox = document.getElementById('productLightbox');
+      var lightboxImg = lightbox ? lightbox.querySelector('[data-product-lightbox-img]') : null;
+      var lightboxClose = lightbox ? lightbox.querySelector('[data-product-lightbox-close]') : null;
+      var lightboxPrev = lightbox ? lightbox.querySelector('[data-product-lightbox-prev]') : null;
+      var lightboxNext = lightbox ? lightbox.querySelector('[data-product-lightbox-next]') : null;
+      var lightboxCounter = lightbox ? lightbox.querySelector('[data-product-lightbox-counter]') : null;
+      var lightboxThumbs = lightbox ? lightbox.querySelector('[data-product-lightbox-thumbs]') : null;
+      var lightboxTouchStartX = 0;
+      var previousBodyOverflow = '';
+      var currentIndex = 0;
+
       function activate(button) {
         if (!button || !main) return;
         buttons.forEach(function(item) { item.classList.remove('is-active'); });
         button.classList.add('is-active');
+        currentIndex = buttons.indexOf(button);
         main.src = button.getAttribute('data-gallery-src');
         main.alt = button.querySelector('img').alt;
       }
+
+      function showLightboxImage(index) {
+        if (!lightbox || !lightboxImg || !buttons.length) return;
+        if (index < 0) index = buttons.length - 1;
+        if (index >= buttons.length) index = 0;
+        currentIndex = index;
+        var button = buttons[currentIndex];
+        var thumbImg = button.querySelector('img');
+        lightboxImg.src = button.getAttribute('data-gallery-src');
+        lightboxImg.alt = thumbImg ? thumbImg.alt : main.alt;
+        if (lightboxCounter) lightboxCounter.textContent = (currentIndex + 1) + ' / ' + buttons.length;
+        if (lightboxThumbs) {
+          Array.prototype.forEach.call(lightboxThumbs.querySelectorAll('.product-lightbox__thumb'), function(thumb, thumbIndex) {
+            thumb.classList.toggle('is-active', thumbIndex === currentIndex);
+          });
+        }
+        activate(button);
+      }
+
+      function openLightbox(index) {
+        if (!lightbox) return;
+        previousBodyOverflow = document.body.style.overflow;
+        showLightboxImage(index);
+        lightbox.classList.add('is-open');
+        lightbox.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        if (lightboxClose) lightboxClose.focus();
+      }
+
+      function closeLightbox() {
+        if (!lightbox) return;
+        lightbox.classList.remove('is-open');
+        lightbox.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = previousBodyOverflow;
+        if (main) main.focus();
+      }
+
       buttons.forEach(function(button) {
         button.addEventListener('click', function() {
           activate(button);
@@ -1178,6 +1413,64 @@
           var nextIndex = (activeIndex + direction + buttons.length) % buttons.length;
           activate(buttons[nextIndex]);
         });
+      });
+
+      if (main) {
+        main.setAttribute('role', 'button');
+        main.setAttribute('tabindex', '0');
+        main.addEventListener('click', function() {
+          openLightbox(currentIndex);
+        });
+        main.addEventListener('keydown', function(e) {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            openLightbox(currentIndex);
+          }
+        });
+      }
+
+      if (lightboxThumbs) {
+        lightboxThumbs.innerHTML = '';
+        buttons.forEach(function(button, index) {
+          var thumbImg = button.querySelector('img');
+          var thumb = document.createElement('button');
+          thumb.className = 'product-lightbox__thumb' + (index === currentIndex ? ' is-active' : '');
+          thumb.type = 'button';
+          thumb.setAttribute('aria-label', 'Открыть фото ' + (index + 1));
+          var image = document.createElement('img');
+          image.src = button.getAttribute('data-gallery-src');
+          image.alt = thumbImg ? thumbImg.alt : '';
+          thumb.appendChild(image);
+          thumb.addEventListener('click', function() {
+            showLightboxImage(index);
+          });
+          lightboxThumbs.appendChild(thumb);
+        });
+      }
+
+      if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
+      if (lightboxPrev) lightboxPrev.addEventListener('click', function() { showLightboxImage(currentIndex - 1); });
+      if (lightboxNext) lightboxNext.addEventListener('click', function() { showLightboxImage(currentIndex + 1); });
+      if (lightbox) {
+        lightbox.addEventListener('click', function(e) {
+          if (e.target === lightbox) closeLightbox();
+        });
+        lightbox.addEventListener('touchstart', function(e) {
+          lightboxTouchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+        lightbox.addEventListener('touchend', function(e) {
+          var diff = lightboxTouchStartX - e.changedTouches[0].screenX;
+          if (Math.abs(diff) > 50) {
+            showLightboxImage(currentIndex + (diff > 0 ? 1 : -1));
+          }
+        }, { passive: true });
+      }
+
+      document.addEventListener('keydown', function(e) {
+        if (!lightbox || !lightbox.classList.contains('is-open')) return;
+        if (e.key === 'Escape') closeLightbox();
+        if (e.key === 'ArrowLeft') showLightboxImage(currentIndex - 1);
+        if (e.key === 'ArrowRight') showLightboxImage(currentIndex + 1);
       });
     });
 

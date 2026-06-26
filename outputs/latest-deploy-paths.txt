@@ -1,0 +1,2 @@
+WORK=D:\Ceramica Decor\???? CeramicaDecor\RU ???? full\outputs\deploy-files-20260626163807
+GITDIR=D:\Ceramica Decor\???? CeramicaDecor\RU ???? full\outputs\deploy-gitstore-20260626163807

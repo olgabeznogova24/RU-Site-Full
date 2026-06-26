@@ -66,7 +66,8 @@
 - камины: `catalog-kaminy.html`;
 - биокамины: `catalog-biokaminy.html`;
 - электрокамины: `catalog-elektrokaminy.html`;
-- мраморные камины и порталы: `catalog-mramornye-kaminy-portaly.html`;
+- мраморные порталы: `catalog-mramornye-portaly.html`;
+- камины в облицовке мрамором: `catalog-kaminy-v-oblicovke-mramorom.html`;
 - русские печи: `catalog-russkie-pechi.html`;
 - отопительные печи: `catalog-otopitelnye-pechi.html`;
 - барбекю комплексы: `catalog-barbekyu-kompleksy.html`;
@@ -561,3 +562,11 @@ Endpoint отправки заявок в статической верстке 
 Для раздела `restoration.html` добавлена одна демонстрационная карточка-заглушка реставрационного проекта, чтобы раздел не был пустым и программист видел структуру будущей карточки.
 
 Шаблоны `product-barbekyu-kompleks-albion-template.html` и `product-restavraciya-izrazcovye-pechi-template.html` оформлены по структуре и визуальному принципу карточки `product-drovyanoi-kamin-template.html`, но нужны как отдельные типы карточек для своих разделов.
+
+### Шаблон карточек раздела "Все для монтажа"
+
+Добавлен файл `product-components-astov-ps-7363-template.html` - отдельная HTML-страница товара "Каминная топка АСТОВ ПС 7363" из подраздела "Каминные топки" на странице `components.html`.
+
+Эта страница является шаблоном для всех будущих карточек товаров раздела "Все для монтажа": каминных топок, электроочагов и другого монтажного оборудования. При интеграции программист должен размножать этот шаблон и подставлять из внутренней системы название, подраздел, производителя, цену, скидку, описание, характеристики, фотографии, SEO-поля и данные формы заявки.
+
+Первая карточка в подразделе "Каминные топки" на странице `components.html` теперь ведет на `product-components-astov-ps-7363-template.html` обычной HTML-ссылкой. Для демонстрации используются изображения `images/astov_ps7363_1.png` и `images/astov_ps7363_2.png`.

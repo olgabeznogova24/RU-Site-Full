@@ -93,7 +93,34 @@
 
     /* ===== CATALOG FILTER TABS ===== */
     .catalog-filters {
-      padding: 44px 0 20px;
+      padding: 108px 0 0;
+    }
+    .catalog-filters__tabs-wrap {
+      position: relative;
+      max-width: 100%;
+    }
+    .catalog-filters__tabs-wrap::before,
+    .catalog-filters__tabs-wrap::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 96px;
+      pointer-events: none;
+      opacity: 1;
+      transition: opacity 0.2s ease;
+    }
+    .catalog-filters__tabs-wrap::before {
+      left: 0;
+      background: linear-gradient(to left, rgba(16,16,16,0), #101010 70%);
+    }
+    .catalog-filters__tabs-wrap::after {
+      right: 0;
+      background: linear-gradient(to right, rgba(16,16,16,0), #101010 70%);
+    }
+    .catalog-filters__tabs-wrap.is-start::before,
+    .catalog-filters__tabs-wrap.is-end::after {
+      opacity: 0;
     }
     .catalog-filters__tabs {
       display: flex;
@@ -101,12 +128,53 @@
       overflow-x: auto;
       scrollbar-width: none;
       -ms-overflow-style: none;
-      padding: 4px 0;
+      padding: 4px 54px;
       justify-content: center;
-      flex-wrap: wrap;
+      flex-wrap: nowrap;
+      scroll-behavior: smooth;
     }
     .catalog-filters__tabs::-webkit-scrollbar {
       display: none;
+    }
+    .catalog-filters__scroll {
+      position: absolute;
+      top: 50%;
+      z-index: 2;
+      width: 42px;
+      height: 42px;
+      transform: translateY(-50%);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.18);
+      background: #cb3b25;
+      color: #fff;
+      cursor: pointer;
+      transition: background 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+    }
+    .catalog-filters__scroll[hidden] {
+      display: none;
+    }
+    .catalog-filters__scroll--prev {
+      left: 0;
+    }
+    .catalog-filters__scroll--next {
+      right: 0;
+    }
+    .catalog-filters__scroll:hover {
+      background: #b5321f;
+      border-color: rgba(255,255,255,0.28);
+    }
+    .catalog-filters__scroll--prev:hover {
+      transform: translateY(-50%) translateX(-2px);
+    }
+    .catalog-filters__scroll--next:hover {
+      transform: translateY(-50%) translateX(2px);
+    }
+    .catalog-filters__scroll svg {
+      width: 18px;
+      height: 18px;
     }
     .catalog-filters__tab {
       display: inline-flex;
@@ -134,213 +202,12 @@
       color: #fff;
     }
 
-    /* ===== FIREBOX SCHEME ===== */
-    .firebox-guide {
-      background: #101010;
-      color: #fff;
-      padding: 32px 0 28px;
-      border-top: 1px solid rgba(255,255,255,0.06);
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-    }
-    .firebox-guide[hidden] {
-      display: none;
-    }
-    .firebox-guide__title {
-      font-family: var(--font-heading);
-      font-size: clamp(1.9rem, 3vw, 2.7rem);
-      font-weight: 400;
-      line-height: 1.15;
-      text-align: center;
-      margin: 0 0 26px;
-      color: #fff;
-    }
-    .firebox-guide__scheme {
-      position: relative;
-      min-height: 560px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .firebox-guide__image {
-      width: min(360px, 42vw);
-      height: auto;
-      display: block;
-      position: relative;
-      z-index: 1;
-      border-radius: 8px;
-      background: rgba(255,255,255,0.96);
-      box-shadow: 0 22px 80px rgba(0,0,0,0.42);
-    }
-    .firebox-guide__callout {
-      position: absolute;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      width: min(34%, 360px);
-      font-family: 'Inter', sans-serif;
-      font-size: 0.95rem;
-      font-weight: 400;
-      color: rgba(255,255,255,0.72);
-      white-space: nowrap;
-      border: 0;
-      background: transparent;
-      padding: 0;
-      cursor: pointer;
-      text-align: inherit;
-      transition: color 0.25s ease;
-    }
-    .firebox-guide__callout:hover,
-    .firebox-guide__callout--active {
-      color: #fff;
-    }
-    .firebox-guide__callout::before {
-      content: '+';
-      color: #cb3b25;
-      font-weight: 700;
-      font-size: 1.2rem;
-      line-height: 1;
-    }
-    .firebox-guide__callout::after {
-      content: '';
-      height: 1px;
-      background: rgba(255,255,255,0.22);
-      flex: 1;
-      min-width: 80px;
-      transition: background 0.25s ease;
-    }
-    .firebox-guide__callout:hover::after,
-    .firebox-guide__callout--active::after {
-      background: rgba(203,59,37,0.72);
-    }
-    .firebox-guide__callout--left {
-      flex-direction: row;
-      left: 4%;
-    }
-    .firebox-guide__callout--right {
-      flex-direction: row-reverse;
-      right: 4%;
-    }
-    .firebox-guide__callout--side { top: 32%; }
-    .firebox-guide__callout--lift { bottom: 24%; }
-    .firebox-guide__callout--door { top: 32%; }
-    .firebox-guide__callout--lining { bottom: 24%; }
-    .firebox-lining-panel {
-      position: absolute;
-      right: 4%;
-      bottom: 7%;
-      z-index: 3;
-      width: min(340px, 34vw);
-      padding: 18px 18px 20px;
-      border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 8px;
-      background: rgba(20,20,20,0.94);
-      box-shadow: 0 24px 80px rgba(0,0,0,0.46);
-    }
-    .firebox-lining-panel[hidden] {
-      display: none;
-    }
-    .firebox-lining-panel__close {
-      position: absolute;
-      top: 8px;
-      right: 10px;
-      width: 26px;
-      height: 26px;
-      border: 0;
-      background: transparent;
-      color: rgba(255,255,255,0.72);
-      font-size: 24px;
-      line-height: 1;
-      cursor: pointer;
-    }
-    .firebox-lining-panel__close:hover {
-      color: #fff;
-    }
-    .firebox-lining-panel__title {
-      margin: 0 34px 14px 0;
-      color: #fff;
-      font-family: 'Inter', sans-serif;
-      font-size: 0.88rem;
-      font-weight: 600;
-    }
-    .firebox-lining-panel__grid {
-      display: grid;
-      grid-template-columns: repeat(5, minmax(40px, 1fr));
-      gap: 14px;
-      justify-items: center;
-    }
-    .firebox-lining-panel__option {
-      width: 54px;
-      height: 54px;
-      border: 1px solid rgba(255,255,255,0.16);
-      border-radius: 50%;
-      cursor: pointer;
-      background: var(--lining-bg, #333);
-      box-shadow: inset 0 0 0 1px rgba(0,0,0,0.28);
-      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
-    }
-    .firebox-lining-panel__option:hover,
-    .firebox-lining-panel__option--active {
-      transform: translateY(-2px);
-      border-color: #cb3b25;
-      box-shadow: 0 0 0 3px rgba(203,59,37,0.18), inset 0 0 0 1px rgba(0,0,0,0.28);
-    }
-    .firebox-lining-panel__option--firebrick {
-      --lining-bg:
-        linear-gradient(160deg, rgba(0,0,0,0.18), transparent 44%),
-        repeating-linear-gradient(24deg, transparent 0 18px, rgba(0,0,0,0.26) 19px 21px),
-        repeating-linear-gradient(96deg, #b39a67 0 13px, #d7c18a 14px 27px);
-    }
-    .firebox-lining-panel__option--grey {
-      --lining-bg:
-        repeating-linear-gradient(0deg, rgba(0,0,0,0.22) 0 2px, transparent 2px 17px),
-        linear-gradient(135deg, #73757b, #4f5157);
-    }
-    .firebox-lining-panel__option--brick {
-      --lining-bg:
-        repeating-linear-gradient(0deg, rgba(0,0,0,0.24) 0 2px, transparent 2px 16px),
-        repeating-linear-gradient(90deg, transparent 0 22px, rgba(0,0,0,0.24) 22px 24px),
-        linear-gradient(135deg, #9d6f5f, #c19180);
-    }
-    .firebox-lining-panel__option--black {
-      --lining-bg: linear-gradient(135deg, #101010, #292929);
-    }
-    .firebox-lining-panel__option--ribbed {
-      --lining-bg:
-        repeating-linear-gradient(90deg, #171717 0 4px, #303030 4px 8px);
-    }
-    .firebox-lining-panel__option--sand {
-      --lining-bg:
-        radial-gradient(circle at 28% 24%, rgba(255,255,255,0.42), transparent 24%),
-        linear-gradient(135deg, #cbb7a2, #e4d2bd);
-    }
-    .firebox-lining-panel__option--graphite {
-      --lining-bg: linear-gradient(135deg, #252525, #3a3a3a);
-    }
-    .firebox-guide__note {
-      max-width: 620px;
-      margin: -12px auto 0;
-      text-align: center;
-    }
-    .firebox-guide__note-title {
-      font-family: 'Inter', sans-serif;
-      font-size: 0.92rem;
-      font-weight: 600;
-      color: #fff;
-      margin: 0 0 6px;
-    }
-    .firebox-guide__note-text {
-      font-family: 'Inter', sans-serif;
-      font-size: 0.9rem;
-      line-height: 1.55;
-      color: rgba(255,255,255,0.58);
-      margin: 0;
-    }
+    /* ===== FIREBOX TYPE FILTER ===== */
     .firebox-type-filter {
       display: flex;
-      justify-content: center;
+      justify-content: flex-start;
       gap: 10px;
       flex-wrap: wrap;
-      margin-top: 18px;
     }
     .firebox-type-filter__btn {
       display: inline-flex;
@@ -363,10 +230,13 @@
       background: rgba(255,255,255,0.06);
     }
     .firebox-type-filter__icon {
-      width: 30px;
-      height: 18px;
+      --icon-frame: rgba(255,255,255,0.88);
+      --icon-accent: #cb3b25;
+      width: 38px;
+      height: 24px;
       position: relative;
       display: inline-block;
+      flex: 0 0 38px;
     }
     .firebox-type-filter__icon::before,
     .firebox-type-filter__icon::after {
@@ -375,78 +245,60 @@
       inset: auto;
       display: block;
     }
-    .firebox-type-filter__icon::before {
-      left: 0;
-      right: 0;
-      top: 0;
-      height: 4px;
-      background: rgba(255,255,255,0.82);
-    }
-    .firebox-type-filter__icon::after {
-      left: 5px;
-      right: 5px;
-      bottom: 0;
-      height: 4px;
-      background: #cb3b25;
+    .firebox-type-filter__icon {
+      background:
+        linear-gradient(var(--icon-frame), var(--icon-frame)) 0 0 / 100% 5px no-repeat,
+        linear-gradient(var(--icon-frame), var(--icon-frame)) 0 0 / 5px 20px no-repeat,
+        linear-gradient(var(--icon-frame), var(--icon-frame)) 100% 0 / 5px 20px no-repeat,
+        linear-gradient(var(--icon-accent), var(--icon-accent)) 8px 15px / 22px 5px no-repeat;
     }
     .firebox-type-filter__btn--active {
       color: #fff;
       background: #cb3b25;
       border-color: #cb3b25;
     }
-    .firebox-type-filter__btn--active .firebox-type-filter__icon::before {
-      background: #fff;
+    .catalog-filter-template__group[hidden] {
+      display: none;
     }
-    .firebox-type-filter__btn--active .firebox-type-filter__icon::after {
-      background: rgba(255,255,255,0.72);
+    .firebox-type-filter__btn--active .firebox-type-filter__icon {
+      --icon-frame: #fff;
+      --icon-accent: rgba(255,255,255,0.72);
     }
-    .firebox-type-filter__btn--active .firebox-type-filter__icon--u::after {
-      box-shadow: -4px -7px 0 rgba(255,255,255,0.72), 4px -7px 0 rgba(255,255,255,0.72);
+    .firebox-type-filter__icon--corner {
+      background:
+        linear-gradient(var(--icon-frame), var(--icon-frame)) 0 0 / 100% 5px no-repeat,
+        linear-gradient(var(--icon-frame), var(--icon-frame)) 0 0 / 5px 20px no-repeat,
+        linear-gradient(var(--icon-accent), var(--icon-accent)) 8px 15px / 25px 5px no-repeat,
+        linear-gradient(var(--icon-accent), var(--icon-accent)) 33px 10px / 5px 10px no-repeat;
     }
-    .firebox-type-filter__btn--active .firebox-type-filter__icon--tunnel::before {
-      box-shadow: 26px 0 0 #fff;
+    .firebox-type-filter__icon--u {
+      background:
+        linear-gradient(var(--icon-frame), var(--icon-frame)) 0 0 / 100% 5px no-repeat,
+        linear-gradient(var(--icon-accent), var(--icon-accent)) 0 10px / 5px 10px no-repeat,
+        linear-gradient(var(--icon-accent), var(--icon-accent)) 33px 10px / 5px 10px no-repeat,
+        linear-gradient(var(--icon-accent), var(--icon-accent)) 0 15px / 38px 5px no-repeat;
     }
-    .firebox-type-filter__icon--corner::before {
-      width: 4px;
-      height: 18px;
-      left: 0;
-      top: 0;
-      right: auto;
-    }
-    .firebox-type-filter__icon--corner::after {
-      left: 4px;
-      right: 0;
-      top: 0;
-      bottom: auto;
-    }
-    .firebox-type-filter__icon--u::before {
-      height: 4px;
-      top: 0;
-    }
-    .firebox-type-filter__icon--u::after {
-      left: 4px;
-      right: 4px;
-      bottom: 0;
-      box-shadow: -4px -7px 0 #cb3b25, 4px -7px 0 #cb3b25;
+    .firebox-type-filter__icon--prism {
+      background:
+        linear-gradient(var(--icon-frame), var(--icon-frame)) 2px 0 / 34px 5px no-repeat;
     }
     .firebox-type-filter__icon--prism::before {
-      top: 1px;
-      height: 4px;
-      transform: skewX(28deg);
-    }
-    .firebox-type-filter__icon--tunnel::before {
       left: 0;
-      width: 4px;
-      height: 18px;
-      top: 0;
-      right: auto;
-      box-shadow: 26px 0 0 rgba(255,255,255,0.82);
+      right: 0;
+      bottom: 4px;
+      height: 13px;
+      background: var(--icon-accent);
+      clip-path: polygon(0 0, 13% 0, 26% 55%, 74% 55%, 87% 0, 100% 0, 78% 100%, 22% 100%);
     }
-    .firebox-type-filter__icon--tunnel::after {
-      left: 7px;
-      right: 7px;
-      top: 7px;
-      bottom: auto;
+    .firebox-type-filter__icon--prism::after {
+      display: none;
+    }
+    .firebox-type-filter__icon--tunnel {
+      background:
+        linear-gradient(var(--icon-frame), var(--icon-frame)) 0 0 / 5px 24px no-repeat,
+        linear-gradient(var(--icon-frame), var(--icon-frame)) 100% 0 / 5px 24px no-repeat,
+        linear-gradient(var(--icon-accent), var(--icon-accent)) 5px 5px / 28px 5px no-repeat,
+        linear-gradient(var(--icon-accent), var(--icon-accent)) 5px 15px / 28px 5px no-repeat;
     }
 
     /* ===== PRODUCT GRID ===== */
@@ -455,7 +307,7 @@
     }
     .catalog-grid__inner {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 32px;
     }
 
@@ -489,6 +341,117 @@
     .product-card.hidden {
       display: none;
     }
+    .product-card--horizontal {
+      display: grid;
+      grid-template-areas:
+        "head head"
+        "left right";
+      grid-template-columns: minmax(210px, 0.82fr) minmax(0, 1fr);
+      column-gap: 18px;
+      row-gap: 14px;
+      padding: 16px;
+      cursor: pointer;
+    }
+    .product-card--horizontal .product-card__head {
+      grid-area: head;
+      min-width: 0;
+      display: grid;
+      gap: 8px;
+      align-content: start;
+      height: 56px;
+      overflow: hidden;
+    }
+    @media (min-width: 769px) {
+      .catalog-grid .product-card.product-card--horizontal {
+        grid-template-rows: 56px auto;
+      }
+      .catalog-grid .product-card.product-card--horizontal .product-card__head {
+        height: 56px !important;
+        min-height: 56px !important;
+        max-height: 56px !important;
+      }
+    }
+    .product-card--horizontal .product-card__left,
+    .product-card--horizontal .product-card__right {
+      min-width: 0;
+    }
+    .product-card--horizontal .product-card__left {
+      grid-area: left;
+    }
+    .product-card--horizontal .product-card__right {
+      grid-area: right;
+    }
+    .product-card--horizontal .product-card__left {
+      display: grid;
+      gap: 14px;
+      align-content: start;
+    }
+    .product-card--horizontal .product-card__body {
+      padding: 0;
+    }
+    .product-card--horizontal .product-card__slider {
+      margin: 0;
+      aspect-ratio: 4 / 5;
+      background: #111;
+    }
+    .product-card__slider--firebox img {
+      object-fit: contain;
+      object-position: center;
+      padding: 8px;
+      background: #111;
+    }
+    .product-card__article {
+      margin: -4px 0 0;
+      color: rgba(255,255,255,0.48);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.86rem;
+      font-weight: 300;
+      line-height: 1.35;
+    }
+    .product-card__price-block {
+      display: grid;
+      gap: 4px;
+    }
+    .product-card--horizontal .product-card__price {
+      margin-bottom: 0;
+      font-size: 1.18rem;
+    }
+    .product-card--horizontal .product-card__price--old {
+      font-size: 0.94rem;
+    }
+    .product-card--horizontal .product-card__actions {
+      margin-top: 0;
+    }
+    .product-card--horizontal .product-card__btn--details {
+      flex-basis: auto;
+      margin-top: 6px;
+    }
+    .product-card__specs {
+      display: grid;
+      gap: 7px;
+      margin: 18px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+    .product-card__specs li {
+      display: grid;
+      grid-template-columns: minmax(120px, 0.9fr) minmax(0, 1fr);
+      gap: 10px;
+      padding: 7px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      color: rgba(255,255,255,0.72);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.82rem;
+      line-height: 1.35;
+    }
+    .product-card__specs span:first-child {
+      color: rgba(255,255,255,0.44);
+      font-weight: 300;
+    }
+    .product-card__specs span:last-child {
+      color: rgba(255,255,255,0.84);
+      text-align: right;
+    }
     .product-card__slider {
       position: relative;
       aspect-ratio: 4/3;
@@ -516,6 +479,23 @@
     }
     .product-card__slider img.active {
       opacity: 1;
+    }
+    .product-card__placeholder {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      padding: 28px;
+      border: 1px dashed rgba(255,255,255,0.18);
+      border-radius: 12px;
+      background:
+        linear-gradient(135deg, rgba(255,255,255,0.035), rgba(255,255,255,0.015)),
+        #111;
+      color: rgba(255,255,255,0.45);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      line-height: 1.45;
+      text-align: center;
     }
     /* Card arrows */
     .product-card__arrow {
@@ -581,6 +561,19 @@
       margin: 0 0 6px;
       letter-spacing: -0.01em;
     }
+    .product-card--horizontal .product-card__name,
+    .product-card--horizontal .product-card__article {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .product-card--horizontal .product-card__name,
+    .product-card--horizontal .product-card__article {
+      margin: 0;
+    }
+    .product-card--horizontal .product-card__name {
+      line-height: 1.15;
+    }
     .product-card__collection {
       font-family: 'Inter', sans-serif;
       font-size: 0.8rem;
@@ -597,10 +590,6 @@
       font-weight: 300;
       line-height: 1.5;
       margin: 0 0 16px;
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
     }
     .product-card__price {
       font-family: 'Inter', sans-serif;
@@ -670,6 +659,13 @@
       background: none;
       border: none;
       color: #fff;
+    }
+    .product-card__btn--details:disabled,
+    .product-card__btn--details.is-disabled {
+      color: rgba(255,255,255,0.32);
+      cursor: default;
+      pointer-events: none;
+      text-decoration-color: rgba(255,255,255,0.22);
     }
     /* ===== CARD REVIEW BLOCK ===== */
     .product-card__review {
@@ -1273,59 +1269,39 @@
         padding: 140px 0 70px;
       }
       .catalog-filters__tabs {
-        justify-content: flex-start;
+        justify-content: center;
         flex-wrap: nowrap;
         gap: 8px;
         padding: 4px 0;
       }
-      .firebox-guide {
-        padding: 30px 0 28px;
-      }
-      .firebox-guide__title {
-        margin-bottom: 20px;
-      }
-      .firebox-guide__scheme {
-        min-height: auto;
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 14px;
-      }
-      .firebox-guide__image {
-        width: min(280px, 78vw);
-        margin: 0 auto;
-      }
-      .firebox-guide__callout {
-        position: static;
-        width: auto;
-        white-space: normal;
-        justify-content: flex-start;
-        font-size: 0.88rem;
-      }
-      .firebox-guide__callout::after {
-        min-width: 40px;
-      }
-      .firebox-lining-panel {
-        position: relative;
-        right: auto;
-        bottom: auto;
-        width: 100%;
-        margin-top: 4px;
-      }
-      .firebox-lining-panel__grid {
-        grid-template-columns: repeat(auto-fit, minmax(46px, 1fr));
-      }
-      .firebox-lining-panel__option {
-        width: 50px;
-        height: 50px;
-      }
       .firebox-type-filter {
         gap: 14px 24px;
         justify-content: flex-start;
-        margin-top: 20px;
       }
       .catalog-grid__inner {
         grid-template-columns: 1fr;
         gap: 20px;
+      }
+      .product-card--horizontal {
+        grid-template-areas:
+          "head"
+          "left"
+          "right";
+        grid-template-columns: 1fr;
+        padding: 14px;
+      }
+      .product-card--horizontal .product-card__head {
+        min-height: 0;
+      }
+      .product-card--horizontal .product-card__slider {
+        aspect-ratio: 4 / 5;
+      }
+      .product-card__specs li {
+        grid-template-columns: 1fr;
+        gap: 4px;
+      }
+      .product-card__specs span:last-child {
+        text-align: left;
       }
       .product-modal__inner {
         padding: 20px 16px 60px;
@@ -1402,7 +1378,7 @@
             <li><a href="about.html" class="header__top-link">О компании</a></li>
             <li><a href="about.html#team" class="header__top-link">Наша команда</a></li>
             <li><a href="contacts-gallery-review.html" class="header__top-link">Видеоотзывы</a></li>
-            <li><a href="cooperation.html" class="header__top-link">Сотрудничество</a></li>
+            <li class="header__top-dropdown"><button type="button" class="header__top-link header__top-dropdown-toggle" aria-haspopup="true" aria-expanded="false">Сотрудничество</button><ul class="header__top-dropdown-menu"><li><a href="cooperation.html">Дизайнеры</a></li><li><a href="cooperation-stovemakers.html">Печники</a></li><li><a href="cooperation-developers.html">Застройщики</a></li><li><a href="cooperation-fireplace-salons.html">Салоны каминов</a></li></ul></li>
           </ul>
         </nav>
       </div>
@@ -1422,7 +1398,7 @@
                 <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="barbekyu" data-mega-href="catalog-barbekyu-kompleksy.html">Барбекю комплексы</button>
                 <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="izrazcy" data-mega-href="catalog-izrazcy.html">Изразцы</button>
                 <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="seriynye" data-mega-href="catalog-seriynye-modeli.html">Печи-камины<br>из наличия</button>
-                <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="mramor" data-mega-href="catalog-mramornye-kaminy-portaly.html">Мраморные камины<br>и порталы</button>
+                <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="mramor" data-mega-href="catalog-mramornye-portaly.html">Мраморные камины<br>и порталы</button>
                 <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="interior" data-mega-href="catalog-interernaya-keramika.html">Плитка ручной работы</button>
                 <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="fasad" data-mega-href="catalog-fasadnaya-keramika.html">Фасадная керамика</button>
                 <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="metlah" data-mega-href="catalog-metlahskaya-plitka.html">Метлахская плитка</button>
@@ -1440,7 +1416,7 @@
                 <section class="header__mega-panel" role="tabpanel" data-mega-panel="pechi">
                   <div class="header__mega-cards">
                     <a href="catalog-otopitelnye-pechi.html?subcategory=russkie-pechi" class="header__mega-card header__mega-card--large" role="menuitem"><img src="images/banner-russkie-pechi_desktop.webp" alt="Русские печи"><span>Русские печи</span></a>
-                    <a href="catalog-otopitelnye-pechi.html?subcategory=otopitelnye-pechi" class="header__mega-card" role="menuitem"><img src="images/banner-otopitelnye-pechi_desktop.webp" alt="Отопительные печи"><span>Отопительные печи</span></a>
+                    <a href="catalog-otopitelnye-pechi.html?subcategory=otopitelnye-pechi" class="header__mega-card" role="menuitem"><img src="images/5393.jpg" alt="Отопительные печи"><span>Отопительные печи</span></a>
                     <a href="catalog-otopitelnye-pechi.html?subcategory=bannye-pechi" class="header__mega-card" role="menuitem"><img src="images/banner-bannye-pechi_desktop.webp" alt="Банные печи"><span>Банные печи</span></a>
                     <a href="catalog-otopitelnye-pechi.html?subcategory=bannye-portaly" class="header__mega-card" role="menuitem"><img src="images/banner-bannye-portaly_desktop.webp" alt="Банные порталы"><span>Банные порталы</span></a>
                   </div>
@@ -1463,7 +1439,8 @@
                 </section>
                 <section class="header__mega-panel" role="tabpanel" data-mega-panel="mramor">
                   <div class="header__mega-cards">
-                    <a href="catalog-mramornye-kaminy-portaly.html" class="header__mega-card header__mega-card--large" role="menuitem"><img src="images/banner-mramor_desktop.webp" alt="Мраморные камины"><span>Мраморные камины<br>и порталы</span></a>
+                    <a href="catalog-mramornye-portaly.html" class="header__mega-card header__mega-card--large" role="menuitem"><img src="images/banner-mramor_desktop.webp" alt="Мраморные порталы"><span>Мраморные порталы</span></a>
+                    <a href="catalog-kaminy-v-oblicovke-mramorom.html" class="header__mega-card" role="menuitem"><img src="images/kaminy_iz_mramora.jpg" alt="Камины в облицовке мрамором"><span>Камины в облицовке<br>мрамором</span></a>
                   </div>
                 </section>
                 <section class="header__mega-panel" role="tabpanel" data-mega-panel="interior">
@@ -1510,7 +1487,7 @@
             <li><a href="about.html" class="header__nav-link">О компании</a></li>
             <li><a href="about.html#team" class="header__nav-link">Наша команда</a></li>
             <li><a href="contacts-gallery-review.html" class="header__nav-link">Видеоотзывы</a></li>
-            <li><a href="cooperation.html" class="header__nav-link">Сотрудничество</a></li>
+            <li class="header__nav-dropdown header__nav-dropdown--simple"><a href="cooperation.html" class="header__nav-link" aria-haspopup="true" aria-expanded="false">Сотрудничество</a><ul class="header__dropdown-menu"><li><a href="cooperation.html">Дизайнеры</a></li><li><a href="cooperation-stovemakers.html">Печники</a></li><li><a href="cooperation-developers.html">Застройщики</a></li><li><a href="cooperation-fireplace-salons.html">Салоны каминов</a></li></ul></li>
           </ul>
           <a href="tel:+74952293046" data-calltracking="phone" data-calltracking-group="main" class="header__nav-phone-link">+7 (495) 229-30-46</a>
           <div class="header__nav-messengers" aria-label="Мессенджеры">
@@ -1544,50 +1521,76 @@
       <p class="catalog-hero__subtitle">Топки, дымоходы и оборудование для каминов и печей</p>
     </div>
   </section>
-  <!-- ===== CATALOG FILTER TABS ===== -->
-  <section class="catalog-filters" aria-label="Фильтр подразделов">
+  <!-- ===== FILTER TEMPLATE ===== -->
+  <section class="catalog-filter-template" aria-label="Фильтры раздела Все для монтажа">
     <div class="container">
-      <div class="catalog-filters__tabs" role="tablist" aria-label="Подразделы Все для монтажа">
-        <button type="button" class="catalog-filters__tab catalog-filters__tab--active" data-category="kaminnye-topki" role="tab" aria-selected="true">Каминные топки</button>
-        <button type="button" class="catalog-filters__tab" data-category="ochagi" role="tab" aria-selected="false">Электроочаги</button>
-      </div>
-    </div>
-  </section>
-  <!-- ===== FIREBOX SCHEME ===== -->
-  <section class="firebox-guide" id="fireboxGuide" aria-label="Схема каминной топки">
-    <div class="container">
-      <h2 class="firebox-guide__title">Каминные топки</h2>
-      <div class="firebox-guide__scheme">
-        <button type="button" class="firebox-guide__callout firebox-guide__callout--left firebox-guide__callout--side firebox-guide__callout--active" data-scheme-state="side-opening" aria-pressed="true">Боковое открывание</button>
-        <button type="button" class="firebox-guide__callout firebox-guide__callout--left firebox-guide__callout--lift" data-scheme-state="vertical-lift" aria-pressed="false">Вертикальный подъём</button>
-        <img src="images/kaminnye-topki-schema.jpg" alt="Схема каминной топки: боковое открывание" class="firebox-guide__image" id="fireboxSchemeImage" loading="lazy">
-        <button type="button" class="firebox-guide__callout firebox-guide__callout--right firebox-guide__callout--door" data-scheme-state="drop-door" aria-pressed="false">Откидная дверца</button>
-        <button type="button" class="firebox-guide__callout firebox-guide__callout--right firebox-guide__callout--lining" data-scheme-state="lining" aria-pressed="false">Футеровка</button>
-        <div class="firebox-lining-panel" id="fireboxLiningPanel" hidden>
-          <button type="button" class="firebox-lining-panel__close" id="fireboxLiningClose" aria-label="Закрыть список футеровок">&times;</button>
-          <p class="firebox-lining-panel__title">Варианты футеровки</p>
-          <div class="firebox-lining-panel__grid" aria-label="Список возможных футеровок">
-            <button type="button" class="firebox-lining-panel__option firebox-lining-panel__option--firebrick firebox-lining-panel__option--active" data-lining="firebrick" aria-label="Светлый шамот"></button>
-            <button type="button" class="firebox-lining-panel__option firebox-lining-panel__option--grey" data-lining="grey" aria-label="Серый шамот"></button>
-            <button type="button" class="firebox-lining-panel__option firebox-lining-panel__option--brick" data-lining="brick" aria-label="Кирпичная футеровка"></button>
-            <button type="button" class="firebox-lining-panel__option firebox-lining-panel__option--black" data-lining="black" aria-label="Черная футеровка"></button>
-            <button type="button" class="firebox-lining-panel__option firebox-lining-panel__option--ribbed" data-lining="ribbed" aria-label="Ребристая черная футеровка"></button>
-            <button type="button" class="firebox-lining-panel__option firebox-lining-panel__option--sand" data-lining="sand" aria-label="Песочная футеровка"></button>
-            <button type="button" class="firebox-lining-panel__option firebox-lining-panel__option--graphite" data-lining="graphite" aria-label="Графитовая футеровка"></button>
+      <div class="catalog-filter-template__bar">
+        <button class="catalog-filter-template__toggle" type="button" aria-expanded="false" data-catalog-filter-toggle>
+          <span>Фильтры</span>
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="catalog-subcategories">
+          <div class="catalog-filters__tabs-wrap is-start is-end">
+            <button type="button" class="catalog-filters__scroll catalog-filters__scroll--prev" id="catalogTabsScrollPrev" aria-label="Предыдущие разделы" hidden>
+              <svg viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M11 4L6 9l5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="catalog-filters__tabs" id="catalogTabs" role="tablist" aria-label="Подразделы Все для монтажа">
+              <button type="button" class="catalog-filters__tab catalog-filters__tab--active" data-category="kaminnye-topki" role="tab" aria-selected="true">Каминные топки</button>
+              <button type="button" class="catalog-filters__tab" data-category="ochagi" role="tab" aria-selected="false">Электроочаги</button>
+            </div>
+            <button type="button" class="catalog-filters__scroll catalog-filters__scroll--next" id="catalogTabsScroll" aria-label="Следующие разделы" hidden>
+              <svg viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M7 4l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
           </div>
         </div>
+        <span class="catalog-filter-template__bar-spacer" aria-hidden="true"></span>
       </div>
-      <div class="firebox-guide__note" aria-live="polite">
-        <p class="firebox-guide__note-title" id="fireboxSchemeTitle">Боковое открывание</p>
-        <p class="firebox-guide__note-text" id="fireboxSchemeText">Динамическая зона схемы: сейчас используется демонстрационное изображение, позже сюда подключаются нужные состояния топки.</p>
-      </div>
-      <div class="firebox-type-filter" id="fireboxTypeFilter" role="tablist" aria-label="Типы каминных топок">
-        <button type="button" class="firebox-type-filter__btn" data-firebox-type="straight" role="tab" aria-selected="false"><span class="firebox-type-filter__icon"></span>Прямая</button>
-        <button type="button" class="firebox-type-filter__btn" data-firebox-type="corner" role="tab" aria-selected="false"><span class="firebox-type-filter__icon firebox-type-filter__icon--corner"></span>Угловая</button>
-        <button type="button" class="firebox-type-filter__btn" data-firebox-type="u-shaped" role="tab" aria-selected="false"><span class="firebox-type-filter__icon firebox-type-filter__icon--u"></span>П-образная</button>
-        <button type="button" class="firebox-type-filter__btn" data-firebox-type="prismatic" role="tab" aria-selected="false"><span class="firebox-type-filter__icon firebox-type-filter__icon--prism"></span>Призматическая</button>
-        <button type="button" class="firebox-type-filter__btn" data-firebox-type="tunnel" role="tab" aria-selected="false"><span class="firebox-type-filter__icon firebox-type-filter__icon--tunnel"></span>Туннельная</button>
-      </div>
+      <form class="catalog-filter-template__inner" data-filter-template>
+        <div class="catalog-filter-template__grid">
+          <fieldset class="catalog-filter-template__group catalog-filter-template__group--range">
+            <legend class="catalog-filter-template__group-title">Цена</legend>
+            <div class="catalog-filter-template__range">
+              <label class="catalog-filter-template__field">
+                <span>От</span>
+                <input class="catalog-filter-template__input" type="number" inputmode="numeric" placeholder="0">
+              </label>
+              <label class="catalog-filter-template__field">
+                <span>До</span>
+                <input class="catalog-filter-template__input" type="number" inputmode="numeric" placeholder="1000000">
+              </label>
+            </div>
+          </fieldset>
+          <fieldset class="catalog-filter-template__group" id="fireboxTypeGroup">
+            <legend class="catalog-filter-template__group-title">Тип топки</legend>
+            <div class="firebox-type-filter" id="fireboxTypeFilter" role="tablist" aria-label="Типы каминных топок">
+              <button type="button" class="firebox-type-filter__btn" data-firebox-type="straight" role="tab" aria-selected="false"><span class="firebox-type-filter__icon"></span>Прямая</button>
+              <button type="button" class="firebox-type-filter__btn" data-firebox-type="corner" role="tab" aria-selected="false"><span class="firebox-type-filter__icon firebox-type-filter__icon--corner"></span>Угловая</button>
+              <button type="button" class="firebox-type-filter__btn" data-firebox-type="u-shaped" role="tab" aria-selected="false"><span class="firebox-type-filter__icon firebox-type-filter__icon--u"></span>П-образная</button>
+              <button type="button" class="firebox-type-filter__btn" data-firebox-type="prismatic" role="tab" aria-selected="false"><span class="firebox-type-filter__icon firebox-type-filter__icon--prism"></span>Призматическая</button>
+              <button type="button" class="firebox-type-filter__btn" data-firebox-type="tunnel" role="tab" aria-selected="false"><span class="firebox-type-filter__icon firebox-type-filter__icon--tunnel"></span>Туннельная</button>
+            </div>
+          </fieldset>
+          <fieldset class="catalog-filter-template__group" id="fireboxProducerGroup">
+            <legend class="catalog-filter-template__group-title">Производитель</legend>
+            <label class="catalog-filter-template__option"><input type="checkbox"> <span>Astov</span></label>
+            <label class="catalog-filter-template__option"><input type="checkbox"> <span>Spartherm</span></label>
+            <label class="catalog-filter-template__option"><input type="checkbox"> <span>Brunner</span></label>
+            <label class="catalog-filter-template__option"><input type="checkbox"> <span>Hoxter</span></label>
+            <label class="catalog-filter-template__option"><input type="checkbox"> <span>Schmid</span></label>
+            <label class="catalog-filter-template__option"><input type="checkbox"> <span>Romotop</span></label>
+          </fieldset>
+          <fieldset class="catalog-filter-template__group" id="hearthProducerGroup" hidden>
+            <legend class="catalog-filter-template__group-title">Производитель</legend>
+            <label class="catalog-filter-template__option"><input type="checkbox"> <span>Airtone</span></label>
+            <label class="catalog-filter-template__option"><input type="checkbox"> <span>Dimplex</span></label>
+            <label class="catalog-filter-template__option"><input type="checkbox"> <span>Royal Flame</span></label>
+          </fieldset>
+        </div>
+        <div class="catalog-filter-template__actions">
+          <button class="catalog-filter-template__sort" type="button">Применить</button>
+          <button class="catalog-filter-template__reset" type="reset">Сбросить</button>
+        </div>
+      </form>
     </div>
   </section>
   <!-- ===== PRODUCT GRID ===== -->
@@ -1752,177 +1755,60 @@
         id: 'topka-astov-ps-7363',
         cat: 'kaminnye-topki',
         name: 'Каминная топка АСТОВ ПС 7363',
+        article: 'ASTQ26JE8348var11',
         collection: 'АСТОВ',
         fireboxType: 'straight',
-        desc: 'Прямая стальная каминная топка с вертикальным подъёмом, мощностью 8 кВт и КПД 82%.',
-        price: '290 000',
-        priceOld: '363 000',
-        discount: 'Выгода от 20%',
-        fullDesc: 'Каминная топка АСТОВ ПС 7363. Данные перенесены со страницы ceramicadecor.ru/kaminnye-topki/ как демонстрационный пример карточки товара для будущей интеграции.',
+        productUrl: 'product-components-astov-ps-7363-template.html',
+        desc: 'Популярная, надёжная топка, с лёгким и бесшумным подъёмным механизмом дверцы.',
+        price: '318 000',
+        priceOld: '398 000',
+        discount: 'Выгода 20%',
+        fullDesc: 'Каминная топка АСТОВ ПС 7363. Отдельная HTML-страница этой карточки используется как шаблон для товаров раздела Все для монтажа.',
         specs: {
-          'Габаритные размеры': '890 x 1420 x 522 мм',
-          'Размеры проёма': '730 x 630 мм',
-          'Диаметр дымохода': '200 мм',
-          'Вес': 'от 290 кг',
+          'Бренд': 'АСТОВ',
+          'Тип топки': 'Прямое стекло',
+          'Габаритные размеры (ШхВхГ)': '890x1420x522мм',
+          'Размер топочного окна (ШхВхГ)': '730x630мм',
+          'Диаметр дымохода': '200мм',
+          'Вес': '290-340 кг',
           'Мощность': '8 кВт',
-          'КПД': '82 %',
-          'Материал': 'Сталь'
+          'Топливо': 'Дрова',
+          'Тип соединения': 'По конденсату',
+          'КПД с закрытой дверкой, в номинальном режиме': '82%',
+          'Открывание: вертикальный подъём': 'Да',
+          'Открывание: откидное': 'Да',
+          'Материал': 'Сталь',
+          'Система «чистое стекло» регулируемая': 'Да',
+          'Регулируемый вторичный дожиг': 'Да',
+          'Рекомендуется для помещений не менее, м2': '100-200м2',
+          'Страна производитель': 'Россия',
+          'Гарантия': '5 лет'
         },
-        images: ['vse_dlya_montaga_banner.jpg']
+        images: ['astov_ps7363_1.png', 'astov_ps7363_2.png']
       },
       {
-        id: 'topka-astov-m-700-b',
+        id: 'topka-spartherm-varia-2l-80h',
         cat: 'kaminnye-topki',
-        name: 'Каминная топка АСТОВ М 700 Б',
-        collection: 'АСТОВ',
-        fireboxType: 'straight',
-        desc: 'Компактная стальная топка с боковым открыванием, мощностью 8 кВт и дымоходом 180 мм.',
-        price: '134 000',
-        priceOld: '167 000',
-        discount: 'Выгода от 20%',
-        fullDesc: 'Каминная топка АСТОВ М 700 Б. Карточка показывает набор полей, которые затем можно подключить к внутренней системе.',
-        specs: {
-          'Габаритные размеры': '710 x 885 x 388 мм',
-          'Размеры проёма': '704 x 514 мм',
-          'Диаметр дымохода': '180 мм',
-          'Вес': '98 кг',
-          'Мощность': '8 кВт',
-          'КПД': '82 %',
-          'Материал': 'Сталь'
-        },
-        images: ['kamin_card.jpg']
-      },
-      {
-        id: 'topka-astov-ps-8063',
-        cat: 'kaminnye-topki',
-        name: 'Каминная топка АСТОВ ПС 8063',
-        collection: 'АСТОВ',
-        fireboxType: 'straight',
-        desc: 'Топка с проёмом 800 x 630 мм, вертикальным подъёмом и стальным корпусом.',
-        price: '305 000',
-        priceOld: '381 000',
-        discount: 'Выгода от 20%',
-        fullDesc: 'Каминная топка АСТОВ ПС 8063. Подходит для облицовок, где требуется широкое прямое стекло.',
-        specs: {
-          'Габаритные размеры': '960 x 1435 x 522 мм',
-          'Размеры проёма': '800 x 630 мм',
-          'Диаметр дымохода': '200 мм',
-          'Вес': 'от 315 кг',
-          'Мощность': '8 кВт',
-          'КПД': '82 %',
-          'Материал': 'Сталь'
-        },
-        images: ['banner-kaminy_desktop.jpg']
-      },
-      {
-        id: 'topka-astov-ps-8057',
-        cat: 'kaminnye-topki',
-        name: 'Топка для камина АСТОВ ПС 8057',
-        collection: 'АСТОВ',
-        fireboxType: 'straight',
-        desc: 'Прямое стекло, проём 800 x 570 мм, мощность 8 кВт, КПД 82%.',
-        price: '290 000',
-        priceOld: '363 000',
-        discount: 'Выгода от 20%',
-        fullDesc: 'Топка для камина АСТОВ ПС 8057 с прямым стеклом. Демонстрационная карточка для подраздела каминных топок.',
-        specs: {
-          'Габаритные размеры': '960 x 1321 x 520 мм',
-          'Размеры проёма': '800 x 570 мм',
-          'Диаметр дымохода': '200 мм',
-          'Вес': 'от 280 кг',
-          'Мощность': '8 кВт',
-          'КПД': '82 %',
-          'Материал': 'Сталь'
-        },
-        images: ['kamin_albion_new_1.jpg']
-      },
-      {
-        id: 'topka-astov-ps-9074',
-        cat: 'kaminnye-topki',
-        name: 'Каминная топка АСТОВ ПС 9074',
-        collection: 'АСТОВ',
-        fireboxType: 'straight',
-        desc: 'Крупная прямая топка с проёмом 900 x 740 мм и дымоходом 250 мм.',
-        price: '330 000',
-        priceOld: '413 000',
-        discount: 'Выгода от 20%',
-        fullDesc: 'Каминная топка АСТОВ ПС 9074. Модель для просторных каминных облицовок.',
-        specs: {
-          'Габаритные размеры': '1060 x 1665 x 520 мм',
-          'Размеры проёма': '900 x 740 мм',
-          'Диаметр дымохода': '250 мм',
-          'Вес': 'от 360 кг',
-          'Мощность': '9 кВт',
-          'КПД': '82 %',
-          'Материал': 'Сталь'
-        },
-        images: ['kamin_bristol_new_1.jpg']
-      },
-      {
-        id: 'topka-astov-p2c-10057-r',
-        cat: 'kaminnye-topki',
-        name: 'Г-образная топка АСТОВ П2C 10057 R',
-        collection: 'АСТОВ',
+        name: 'Каминная топка Spartherm Linear 4S Varia 2L80h 2.0',
+        article: '1073522',
+        collection: 'Spartherm',
         fireboxType: 'corner',
-        desc: 'Два стекла и вертикальный подъём для угловых каминных решений.',
-        price: '427 000',
-        priceOld: '534 000',
-        discount: 'Выгода от 20%',
-        fullDesc: 'Г-образная топка АСТОВ П2C 10057 R с двумя стеклами и вертикальным подъёмом.',
+        desc: 'Каминная топка Spartherm сочетает в себе элегантный дизайн, высокое качество и передовые технологии, обеспечивая комфорт и уют в вашем доме.',
+        price: '691 000',
+        fullDesc: 'Каминная топка Spartherm Linear 4S Varia 2L80h 2.0 добавлена как демонстрационная карточка товара для подраздела Каминные топки. Отдельная HTML-страница для этой карточки не создается.',
         specs: {
-          'Габаритные размеры': '1134 x 1473 x 617 мм',
-          'Размеры проёма': '460 x 570 x 1000 мм',
-          'Диаметр дымохода': '250 мм',
-          'Вес': 'от 220 кг',
-          'Мощность': '6 кВт',
-          'КПД': '75 %',
+          'Бренд': 'Spartherm',
+          'Тип топки': 'Г-образное стекло',
+          'Габаритные размеры (ШхВхГ)': '948x1523x489 мм',
+          'Размер топочного окна (ШхВхГ)': '807x412x501 мм',
+          'Диаметр дымохода': '200 мм',
+          'Вес': '275 кг',
+          'Мощность': '7,7-14,3 кВт',
+          'Топливо': 'Дрова',
+          'КПД с закрытой дверкой, в номинальном режиме': '80%',
           'Материал': 'Сталь'
         },
-        images: ['kamin_dorf_new_1.jpg']
-      },
-      {
-        id: 'topka-ecokamin-delta-800',
-        cat: 'kaminnye-topki',
-        name: 'Топка Экокамин ДЕЛЬТА 800',
-        collection: 'Экокамин',
-        fireboxType: 'u-shaped',
-        desc: 'П-образное стекло, мощность 16 кВт, стальной корпус и КПД 80%.',
-        price: '331 000',
-        priceOld: '390 000',
-        discount: 'Выгода от 15%',
-        fullDesc: 'Топка Экокамин ДЕЛЬТА 800 с П-образным стеклом. Карточка демонстрирует формат товара с характеристиками и ценой.',
-        specs: {
-          'Габаритные размеры': '876 x 1401 x 643 мм',
-          'Размеры проёма': '814 x 508 x 460 мм',
-          'Диаметр дымохода': '250 мм',
-          'Вес': '370 кг',
-          'Мощность': '16 кВт',
-          'КПД': '80 %',
-          'Материал': 'Сталь'
-        },
-        images: ['kamin_elegans_1.jpg']
-      },
-      {
-        id: 'topka-ecokamin-vega-1000-m',
-        cat: 'kaminnye-topki',
-        name: 'Топка для камина Экокамин ВЕГА 1000 M',
-        collection: 'Экокамин',
-        fireboxType: 'prismatic',
-        desc: 'Широкая топка с мощностью 18 кВт и проёмом 900 x 700 мм.',
-        price: '297 000',
-        priceOld: '350 000',
-        discount: 'Выгода от 15%',
-        fullDesc: 'Топка для камина Экокамин ВЕГА 1000 M. Демонстрационная карточка товара для страницы Все для монтажа.',
-        specs: {
-          'Габаритные размеры': '1078 x 1565 x 575 мм',
-          'Размеры проёма': '900 x 700 мм',
-          'Диаметр дымохода': '250 мм',
-          'Вес': '398 кг',
-          'Мощность': '18 кВт',
-          'КПД': '80 %',
-          'Материал': 'Сталь'
-        },
-        images: ['kamin_minimalist_new_1.jpg']
+        images: []
       },
       // === ЭЛЕКТРООЧАГИ ===
       {
@@ -1938,7 +1824,7 @@
           'Назначение': 'Декоративный камин',
           'Интеграция': 'Под облицовку CeramicaDecor'
         },
-        images: ['kamin_dorf_new_1.jpg']
+        images: []
       },
       {
         id: 'ochag-vivente-150',
@@ -1953,22 +1839,7 @@
           'Формат': 'Встраиваемый',
           'Назначение': 'Порталы и облицовки'
         },
-        images: ['kamin_minimalist_new_1.jpg']
-      },
-      {
-        id: 'ochag-cassette-400',
-        cat: 'ochagi',
-        name: 'Очаг Cassette 400 LNH-INT',
-        collection: 'Электроочаги',
-        desc: 'Компактный очаг с декоративными дровами для порталов и ниш.',
-        price: 'по запросу',
-        fullDesc: 'Очаг Cassette 400 LNH-INT с дровами добавлен как демонстрационная карточка подраздела очагов.',
-        specs: {
-          'Тип': 'Электроочаг',
-          'Декор': 'Дрова',
-          'Формат': 'Встраиваемый'
-        },
-        images: ['kamin_albion_bio_new_1.jpg']
+        images: []
       },
       // === КАМИНЫ ===
       {
@@ -2701,6 +2572,7 @@
       filtered.forEach(function(p) {
         var card = document.createElement('div');
         card.className = 'product-card';
+        card.classList.add('product-card--horizontal');
         card.setAttribute('data-category', p.cat);
         card.setAttribute('data-id', p.id);
 
@@ -2708,12 +2580,14 @@
         var sliderDots = '';
         p.images.forEach(function(img, idx) {
           var webpImg = img.replace(/\.(jpg|jpeg|png)$/i, '.webp');
-          sliderImgs += '<picture><source srcset="images/' + webpImg + '" type="image/webp"><img src="images/' + img + '" alt="' + p.name + '" loading="' + (idx === 0 ? 'eager' : 'lazy') + '" class="' + (idx === 0 ? 'active' : '') + '" onerror="this.style.display=\'none\'"></picture>';
+          var imgHtml = '<img src="images/' + img + '" alt="' + p.name + '" loading="' + (idx === 0 ? 'eager' : 'lazy') + '" class="' + (idx === 0 ? 'active' : '') + '" onerror="this.style.display=\'none\'">';
+          sliderImgs += /\.(png)$/i.test(img) ? imgHtml : '<picture><source srcset="images/' + webpImg + '" type="image/webp">' + imgHtml + '</picture>';
           sliderDots += '<button class="product-card__dot' + (idx === 0 ? ' active' : '') + '" data-idx="' + idx + '"></button>';
         });
 
-        var verticalIds = ['kamin-dorf', 'kamin-rollers', 'kamin-dorf-brunner', 'bbq-albion-mini', 'bbq-versal', 'bbq-tulpan', 'bbq-dorf-mangal', 'bbq-pticy', 'bbq-scenki'];
-        var sliderClass = 'product-card__slider' + (p.id === 'kamin-minimalist' ? ' product-card__slider--contain' : '') + (verticalIds.indexOf(p.id) !== -1 ? ' product-card__slider--vertical' : '');
+        var verticalIds = ['topka-astov-ps-7363', 'topka-spartherm-varia-2l-80h', 'kamin-dorf', 'kamin-rollers', 'kamin-dorf-brunner', 'bbq-albion-mini', 'bbq-versal', 'bbq-tulpan', 'bbq-dorf-mangal', 'bbq-pticy', 'bbq-scenki'];
+        var fireboxImageIds = ['topka-astov-ps-7363', 'topka-spartherm-varia-2l-80h'];
+        var sliderClass = 'product-card__slider' + (p.id === 'kamin-minimalist' ? ' product-card__slider--contain' : '') + (verticalIds.indexOf(p.id) !== -1 ? ' product-card__slider--vertical' : '') + (fireboxImageIds.indexOf(p.id) !== -1 ? ' product-card__slider--firebox' : '');
         var pricePrefix = (p.cat === 'kaminnye-topki' || p.cat === 'ochagi') ? 'Цена: ' : 'Облицовка: ';
         var priceHtml = '<p class="product-card__price">' + pricePrefix + p.price + (p.price === 'по запросу' ? '' : ' &#8381;') + '</p>';
         if (p.priceOld) {
@@ -2721,27 +2595,50 @@
             '<p class="product-card__price product-card__price--old">' + p.priceOld + ' &#8381;</p>' +
             priceHtml;
         }
-        card.innerHTML =
+        var hasImages = p.images && p.images.length;
+        var sliderHtml =
           '<div class="' + sliderClass + '">' +
-            sliderImgs +
-            '<button class="product-card__arrow product-card__arrow--prev">&#8249;</button>' +
-            '<button class="product-card__arrow product-card__arrow--next">&#8250;</button>' +
-            '<div class="product-card__dots">' + sliderDots + '</div>' +
-          '</div>' +
-          '<div class="product-card__body">' +
-            '<p class="product-card__collection">' + p.collection + '</p>' +
+            (hasImages ? sliderImgs : '<div class="product-card__placeholder"></div>') +
+            (hasImages ? '<button class="product-card__arrow product-card__arrow--prev">&#8249;</button>' : '') +
+            (hasImages ? '<button class="product-card__arrow product-card__arrow--next">&#8250;</button>' : '') +
+            (hasImages ? '<div class="product-card__dots">' + sliderDots + '</div>' : '') +
+          '</div>';
+        var detailsButton = p.productUrl ? '<a class="product-card__btn product-card__btn--details" href="' + p.productUrl + '" data-id="' + p.id + '">Описание ' + ARROW_SVG + '</a>' : '<button class="product-card__btn product-card__btn--details is-disabled" data-id="' + p.id + '" type="button" disabled>Описание ' + ARROW_SVG + '</button>';
+        var requestButton = '<button class="product-card__btn product-card__btn--request" data-product="' + p.name + '" data-price="' + p.price + '" onclick="event.stopPropagation(); openRequestModal(\'' + p.name.replace(/'/g, "\\'") + '\', \'' + p.price + '\')">Оставить заявку</button>';
+
+        var cardSpecKeys = p.cat === 'kaminnye-topki' ? [
+            'Габаритные размеры (ШхВхГ)',
+            'Размер топочного окна (ШхВхГ)',
+            'Диаметр дымохода',
+            'Вес',
+            'Мощность',
+            'КПД с закрытой дверкой, в номинальном режиме',
+            'Материал'
+          ] : Object.keys(p.specs || {});
+        var specsList = '<ul class="product-card__specs">';
+        cardSpecKeys.forEach(function(key) {
+          if (!p.specs || !p.specs[key]) return;
+          var label = key === 'КПД с закрытой дверкой, в номинальном режиме' ? 'КПД' : key;
+          specsList += '<li><span>' + label + '</span><span>' + p.specs[key] + '</span></li>';
+        });
+        specsList += '</ul>';
+        card.innerHTML =
+          '<div class="product-card__head">' +
             '<h3 class="product-card__name">' + p.name + '</h3>' +
-            '<p class="product-card__desc">' + p.desc + '</p>' +
-            priceHtml +
-            (p.priceTurnkey ? '<p class="product-card__price product-card__price--turnkey">Под ключ: ' + p.priceTurnkey + ' &#8381;</p>' : '') +
-            '<div class="product-card__actions">' +
-              '<button class="product-card__btn product-card__btn--details" data-id="' + p.id + '">' +
-                'Описание ' + ARROW_SVG +
-              '</button>' +
-              '<button class="product-card__btn product-card__btn--request" data-product="' + p.name + '" data-price="' + p.price + '" onclick="event.stopPropagation(); openRequestModal(\'' + p.name.replace(/'/g, "\\'") + '\', \'' + p.price + '\')">' +
-                'Оставить заявку' +
-              '</button>' +
+            (p.article ? '<p class="product-card__article">Арт. ' + p.article + '</p>' : '<p class="product-card__article">' + p.collection + '</p>') +
+          '</div>' +
+          '<div class="product-card__left">' +
+            sliderHtml +
+            '<div class="product-card__price-block">' +
+              priceHtml +
+              (p.priceTurnkey ? '<p class="product-card__price product-card__price--turnkey">Под ключ: ' + p.priceTurnkey + ' &#8381;</p>' : '') +
             '</div>' +
+            '<div class="product-card__actions">' + requestButton + '</div>' +
+          '</div>' +
+          '<div class="product-card__right">' +
+            '<p class="product-card__desc">' + p.desc + '</p>' +
+            specsList +
+            '<div class="product-card__actions">' + detailsButton + '</div>' +
           '</div>';
 
         // Card slider logic
@@ -2751,6 +2648,7 @@
           var dots = cardEl.querySelectorAll('.product-card__dot');
           var slider = cardEl.querySelector('.product-card__slider');
           var touchStartX = 0;
+          if (!imgs.length) return;
 
           function showSlide(idx) {
             if (idx < 0) idx = imgs.length - 1;
@@ -2790,11 +2688,12 @@
           });
         })(card, p.images);
 
-        // Click on card opens modal (except arrows, dots, request button)
-        card.addEventListener('click', function(e) {
-          if (e.target.closest('.product-card__arrow') || e.target.closest('.product-card__dot') || e.target.closest('.product-card__btn--request')) return;
-          openModal(p.id);
-        });
+        if (p.productUrl) {
+          card.addEventListener('click', function(e) {
+            if (e.target.closest('.product-card__arrow') || e.target.closest('.product-card__dot') || e.target.closest('.product-card__btn--request') || e.target.closest('.product-card__btn--details')) return;
+            window.location.href = p.productUrl;
+          });
+        }
 
         grid.appendChild(card);
       });
@@ -2822,14 +2721,16 @@
       var thumbsHtml = '';
       var availableImages = p.images || [];
       availableImages.forEach(function(img, idx) {
+        var thumbImgHtml = '<img src="images/' + img + '" alt="' + p.name + ' фото ' + (idx+1) + '" loading="lazy" onerror="this.parentElement.style.display=\'none\'">';
         thumbsHtml += '<div class="product-modal__thumb' + (idx === 0 ? ' product-modal__thumb--active' : '') + '" data-idx="' + idx + '">' +
-          '<picture><source srcset="images/' + img.replace(/\.(jpg|jpeg|png)$/i, '.webp') + '" type="image/webp"><img src="images/' + img + '" alt="' + p.name + ' фото ' + (idx+1) + '" loading="lazy" onerror="this.parentElement.style.display=\'none\'"></picture>' +
+          (/\.(png)$/i.test(img) ? thumbImgHtml : '<picture><source srcset="images/' + img.replace(/\.(jpg|jpeg|png)$/i, '.webp') + '" type="image/webp">' + thumbImgHtml + '</picture>') +
         '</div>';
       });
 
       var modalImgsHtml = '';
       availableImages.forEach(function(img, idx) {
-        modalImgsHtml += '<picture><source srcset="images/' + img.replace(/\.(jpg|jpeg|png)$/i, '.webp') + '" type="image/webp"><img src="images/' + img + '" alt="' + p.name + ' фото ' + (idx+1) + '" class="' + (idx === 0 ? 'active' : '') + '" onerror="this.style.display=\'none\'"></picture>';
+        var modalImgHtml = '<img src="images/' + img + '" alt="' + p.name + ' фото ' + (idx+1) + '" class="' + (idx === 0 ? 'active' : '') + '" onerror="this.style.display=\'none\'">';
+        modalImgsHtml += /\.(png)$/i.test(img) ? modalImgHtml : '<picture><source srcset="images/' + img.replace(/\.(jpg|jpeg|png)$/i, '.webp') + '" type="image/webp">' + modalImgHtml + '</picture>';
       });
 
       modalContent.innerHTML =
@@ -3018,6 +2919,35 @@
 
     /* ===== FILTER TABS ===== */
     var tabs = document.querySelectorAll('.catalog-filters__tab');
+    var catalogTabsPrev = document.getElementById('catalogTabsScrollPrev');
+    var catalogTabsNext = document.getElementById('catalogTabsScroll');
+    var catalogTabsList = document.getElementById('catalogTabs');
+    var catalogTabsWrap = catalogTabsList ? catalogTabsList.closest('.catalog-filters__tabs-wrap') : null;
+
+    function updateCatalogTabsScroll() {
+      if (!catalogTabsList || !catalogTabsPrev || !catalogTabsNext) return;
+      var maxScroll = Math.max(0, catalogTabsList.scrollWidth - catalogTabsList.clientWidth);
+      var hasOverflow = maxScroll > 2;
+      var atStart = catalogTabsList.scrollLeft <= 1;
+      var atEnd = catalogTabsList.scrollLeft >= maxScroll - 1;
+      catalogTabsPrev.hidden = !hasOverflow || atStart;
+      catalogTabsNext.hidden = !hasOverflow || atEnd;
+      if (catalogTabsWrap) {
+        catalogTabsWrap.classList.toggle('is-start', !hasOverflow || atStart);
+        catalogTabsWrap.classList.toggle('is-end', !hasOverflow || atEnd);
+      }
+    }
+    if (catalogTabsPrev && catalogTabsNext && catalogTabsList) {
+      catalogTabsPrev.addEventListener('click', function() {
+        catalogTabsList.scrollTo({ left: 0, behavior: 'smooth' });
+      });
+      catalogTabsNext.addEventListener('click', function() {
+        catalogTabsList.scrollBy({ left: Math.max(280, catalogTabsList.clientWidth * 0.65), behavior: 'smooth' });
+      });
+      catalogTabsList.addEventListener('scroll', updateCatalogTabsScroll, { passive: true });
+      window.addEventListener('resize', updateCatalogTabsScroll, { passive: true });
+      updateCatalogTabsScroll();
+    }
 
     var validCategories = ['kaminnye-topki', 'ochagi'];
     var activeCategory = 'kaminnye-topki';
@@ -3063,7 +2993,9 @@
     var heroTitle = document.querySelector('.catalog-hero__title');
     var heroSubtitle = document.querySelector('.catalog-hero__subtitle');
     var heroSection = document.querySelector('.catalog-hero');
-    var fireboxGuide = document.getElementById('fireboxGuide');
+    var fireboxTypeGroup = document.getElementById('fireboxTypeGroup');
+    var fireboxProducerGroup = document.getElementById('fireboxProducerGroup');
+    var hearthProducerGroup = document.getElementById('hearthProducerGroup');
 
     function setActiveTab(category) {
       if (validCategories.indexOf(category) === -1) category = window.CATALOG_DEFAULT_CATEGORY || 'kaminy';
@@ -3081,7 +3013,9 @@
       if (heroSubtitle) heroSubtitle.innerHTML = categorySubtitles[category] || '';
       if (heroTitle) heroTitle.textContent = categoryTitles.components;
       if (heroSubtitle) heroSubtitle.innerHTML = categorySubtitles.components;
-      if (fireboxGuide) fireboxGuide.hidden = category !== 'kaminnye-topki';
+      if (fireboxTypeGroup) fireboxTypeGroup.hidden = category !== 'kaminnye-topki';
+      if (fireboxProducerGroup) fireboxProducerGroup.hidden = category !== 'kaminnye-topki';
+      if (hearthProducerGroup) hearthProducerGroup.hidden = category !== 'ochagi';
       renderCards(category);
     }
 
@@ -3116,88 +3050,8 @@
       });
     });
 
-    var fireboxSchemeStates = {
-      'side-opening': {
-        title: 'Боковое открывание',
-        text: 'Динамическая зона схемы: сейчас используется демонстрационное изображение бокового открывания. Программист может заменить image на нужный файл состояния.',
-        image: 'images/kaminnye-topki-schema.jpg',
-        alt: 'Схема каминной топки: боковое открывание'
-      },
-      'vertical-lift': {
-        title: 'Вертикальный подъём',
-        text: 'Заглушка для состояния вертикального подъёма. При интеграции сюда подставляется отдельная схема или кадр анимации.',
-        image: 'images/kaminnye-topki-schema.jpg',
-        alt: 'Схема каминной топки: вертикальный подъём'
-      },
-      'drop-door': {
-        title: 'Откидная дверца',
-        text: 'Заглушка для состояния откидной дверцы. Данные и изображение рассчитаны на последующую замену из внутренней системы.',
-        image: 'images/kaminnye-topki-schema.jpg',
-        alt: 'Схема каминной топки: откидная дверца'
-      },
-      'lining': {
-        title: 'Футеровка',
-        text: 'Заглушка для состояния футеровки. В будущем эта кнопка будет показывать нужный слой или отдельную схему.',
-        image: 'images/kaminnye-topki-schema.jpg',
-        alt: 'Схема каминной топки: футеровка'
-      }
-    };
-    var fireboxSchemeButtons = document.querySelectorAll('.firebox-guide__callout[data-scheme-state]');
-    var fireboxSchemeImage = document.getElementById('fireboxSchemeImage');
-    var fireboxSchemeTitle = document.getElementById('fireboxSchemeTitle');
-    var fireboxSchemeText = document.getElementById('fireboxSchemeText');
-    var fireboxLiningPanel = document.getElementById('fireboxLiningPanel');
-    var fireboxLiningClose = document.getElementById('fireboxLiningClose');
-    var fireboxLiningOptions = document.querySelectorAll('.firebox-lining-panel__option');
-
-    function setLiningPanelOpen(isOpen) {
-      if (!fireboxLiningPanel) return;
-      fireboxLiningPanel.hidden = !isOpen;
-    }
-
-    function setFireboxSchemeState(stateId) {
-      var state = fireboxSchemeStates[stateId] || fireboxSchemeStates['side-opening'];
-      fireboxSchemeButtons.forEach(function(button) {
-        var isActive = button.getAttribute('data-scheme-state') === stateId;
-        button.classList.toggle('firebox-guide__callout--active', isActive);
-        button.setAttribute('aria-pressed', isActive ? 'true' : 'false');
-      });
-      if (fireboxSchemeImage) {
-        fireboxSchemeImage.src = state.image;
-        fireboxSchemeImage.alt = state.alt;
-      }
-      if (fireboxSchemeTitle) fireboxSchemeTitle.textContent = state.title;
-      if (fireboxSchemeText) fireboxSchemeText.textContent = state.text;
-      setLiningPanelOpen(stateId === 'lining');
-    }
-
-    fireboxSchemeButtons.forEach(function(button) {
-      button.addEventListener('click', function() {
-        setFireboxSchemeState(this.getAttribute('data-scheme-state'));
-      });
-    });
-    if (fireboxLiningClose) {
-      fireboxLiningClose.addEventListener('click', function(e) {
-        e.stopPropagation();
-        setLiningPanelOpen(false);
-      });
-    }
-    fireboxLiningOptions.forEach(function(option) {
-      option.addEventListener('click', function(e) {
-        e.stopPropagation();
-        fireboxLiningOptions.forEach(function(item) {
-          item.classList.remove('firebox-lining-panel__option--active');
-        });
-        this.classList.add('firebox-lining-panel__option--active');
-      });
-    });
-    document.addEventListener('click', function(e) {
-      if (!fireboxLiningPanel || fireboxLiningPanel.hidden) return;
-      if (e.target.closest('#fireboxLiningPanel') || e.target.closest('[data-scheme-state="lining"]')) return;
-      setLiningPanelOpen(false);
-    });
-
     var fireboxTypeButtons = document.querySelectorAll('.firebox-type-filter__btn');
+    var filterForm = document.querySelector('[data-filter-template]');
     fireboxTypeButtons.forEach(function(button) {
       button.addEventListener('click', function() {
         var nextType = this.getAttribute('data-firebox-type') || 'all';
@@ -3213,11 +3067,26 @@
         renderCards('kaminnye-topki');
       });
     });
+    if (filterForm) {
+      filterForm.addEventListener('reset', function() {
+        activeFireboxType = 'all';
+        fireboxTypeButtons.forEach(function(item) {
+          item.classList.remove('firebox-type-filter__btn--active');
+          item.setAttribute('aria-selected', 'false');
+        });
+        setTimeout(function() {
+          renderCards(activeCategory);
+        }, 0);
+      });
+    }
 
     /* ===== INIT ===== */
     var params = new URLSearchParams(window.location.search);
     var productParam = params.get('product');
     var catParam = params.get('cat');
+    var defaultCategory = window.CATALOG_DEFAULT_CATEGORY || 'kaminnye-topki';
+    if (validCategories.indexOf(defaultCategory) === -1) defaultCategory = 'kaminnye-topki';
+    var initialCategory = validCategories.indexOf(catParam) !== -1 ? catParam : defaultCategory;
 
     if (productParam) {
       var p = products.find(function(item) { return item.id === productParam; });
@@ -3225,10 +3094,10 @@
         setActiveTab(p.cat === 'bbq' ? 'barbekyu-kompleksy' : p.cat);
         openModal(productParam);
       } else {
-        setActiveTab(initialCategory, subcategoryParam);
+        setActiveTab(initialCategory);
       }
     } else {
-      setActiveTab(initialCategory, subcategoryParam);
+      setActiveTab(initialCategory);
     }
 
     // Handle browser back/forward

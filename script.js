@@ -8,7 +8,7 @@
 
   function onScroll() {
     const scrollY = window.scrollY;
-    if (scrollY > 50) {
+    if (scrollY >= 42) {
       header.classList.add('header--scrolled');
     } else {
       header.classList.remove('header--scrolled');
@@ -18,6 +18,41 @@
 
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
+
+  /* ----- Header cooperation dropdown ----- */
+  const topCooperationDropdowns = document.querySelectorAll('.header__top-dropdown');
+
+  function closeTopCooperationDropdowns(exceptDropdown) {
+    topCooperationDropdowns.forEach(function (dropdown) {
+      if (exceptDropdown && dropdown === exceptDropdown) return;
+      dropdown.classList.remove('open');
+      var trigger = dropdown.querySelector('.header__top-dropdown-toggle');
+      if (trigger) trigger.setAttribute('aria-expanded', 'false');
+    });
+  }
+
+  topCooperationDropdowns.forEach(function (dropdown) {
+    var trigger = dropdown.querySelector('.header__top-dropdown-toggle');
+    if (!trigger) return;
+
+    trigger.addEventListener('click', function (event) {
+      event.preventDefault();
+      event.stopPropagation();
+      closeTopCooperationDropdowns(dropdown);
+      var isOpen = dropdown.classList.toggle('open');
+      trigger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+  });
+
+  document.addEventListener('click', function (event) {
+    if (!event.target.closest('.header__top-dropdown')) {
+      closeTopCooperationDropdowns();
+    }
+  });
+
+  document.addEventListener('keydown', function (event) {
+    if (event.key === 'Escape') closeTopCooperationDropdowns();
+  });
 
   /* ----- Shared calltracking contacts ----- */
   var calltrackingDefaults = {
@@ -143,14 +178,14 @@
         '<button class="request-modal__close" type="button" aria-label="Закрыть" data-standard-request-close>&times;</button>' +
         '<h3 id="standardRequestTitle">Оставить заявку</h3>' +
         '<p>Оставьте контакты, и мы свяжемся с вами в ближайшее рабочее время.</p>' +
-        '<form class="request-modal__form" id="standardRequestForm" novalidate>' +
+        '<form class="request-modal__form" id="standardRequestForm" autocomplete="off" novalidate>' +
           '<input type="hidden" name="source" value="">' +
           '<input type="hidden" name="product_name" value="">' +
           '<input type="hidden" name="product_article" value="">' +
           '<div class="standard-request-modal__product" data-standard-request-product hidden></div>' +
           '<div class="input-group">' +
             '<label for="standardRequestName">Ваше имя</label>' +
-            '<input type="text" id="standardRequestName" name="name" placeholder="Как к вам обращаться" required>' +
+            '<input type="text" id="standardRequestName" name="name" placeholder="Как к вам обращаться" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" required>' +
           '</div>' +
           '<div class="input-group">' +
             '<label for="standardRequestPhone">Телефон</label>' +
@@ -486,7 +521,9 @@
       if (target) {
         e.preventDefault();
         var headerH = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--header-h'));
-        var y = target.getBoundingClientRect().top + window.scrollY - headerH - 20;
+        var customOffset = target.getAttribute('data-scroll-offset');
+        var offset = customOffset !== null ? parseInt(customOffset, 10) || 0 : headerH + 20;
+        var y = target.getBoundingClientRect().top + window.scrollY - offset;
         window.scrollTo({ top: y, behavior: 'smooth' });
       }
     });
@@ -726,6 +763,31 @@
     }, { passive: true });
   });
 
+  document.querySelectorAll('.showcase__product-link--placeholder').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      e.preventDefault();
+    });
+  });
+
+  document.querySelectorAll('.portfolio-gallery__link[href="#"]').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      e.preventDefault();
+    });
+  });
+
+  document.querySelectorAll('.showcase__request-btn').forEach(function (button) {
+    button.addEventListener('click', function (e) {
+      e.preventDefault();
+      if (!window.openProductRequestModal) return;
+
+      window.openProductRequestModal(
+        button.dataset.projectName || button.textContent.trim(),
+        button.dataset.projectArticle || '',
+        'Главная страница: блок проектов клиентов'
+      );
+    });
+  });
+
   /* ----- Lightbox ----- */
   var lightbox = document.getElementById('lightbox');
   if (lightbox) {
@@ -749,8 +811,9 @@
       if (galleryItem) {
         galleryItem.setAttribute('tabindex', '0');
         galleryItem.setAttribute('role', 'button');
-        galleryItem.setAttribute('aria-label', 'Открыть фото ' + (i + 1));
+        galleryItem.setAttribute('aria-label', '\u041e\u0442\u043a\u0440\u044b\u0442\u044c \u0444\u043e\u0442\u043e ' + (i + 1));
         galleryItem.addEventListener('keydown', function (e) {
+          if (e.target.closest('a[href]')) return;
           if (e.key === 'Enter' || e.key === ' ') {
             e.preventDefault();
             showLightbox(i);
@@ -760,7 +823,10 @@
         });
       }
 
-      img.addEventListener('click', function () {
+      img.addEventListener('click', function (e) {
+        if (e.target.closest('.portfolio-gallery__project-link[href], .showcase__product-link[href]')) {
+          return;
+        }
         showLightbox(i);
         lightbox.classList.add('active');
         document.body.style.overflow = 'hidden';
@@ -923,15 +989,17 @@
     }
 
     var requestTrigger = e.target.closest(
-      '.header__cta-btn, a.btn[href="#contact"], a.btn[href="contacts.html"]'
+      '.hero__request-btn, .header__cta-btn, a.btn[href="#contact"], a.btn[href="contacts.html"]'
     );
     if (!requestTrigger) return;
 
-    if (isHomePage()) return;
+    if (isHomePage() && !requestTrigger.classList.contains('hero__request-btn')) return;
 
     e.preventDefault();
     if (nav && burger) closeMenu();
-    window.openStandardRequestModal(requestTrigger.textContent.trim());
+    window.openStandardRequestModal(
+      requestTrigger.dataset.standardRequestSource || requestTrigger.textContent.trim()
+    );
   });
 
   document.addEventListener('keydown', function(e) {
@@ -1011,6 +1079,61 @@
       toggleBtn.setAttribute('aria-expanded', String(isOpen));
       toggleBtn.querySelector('span').textContent = isOpen ? 'Скрыть фильтры' : 'Фильтры';
     });
+  });
+
+  /* ----- Homepage project gallery ----- */
+  document.querySelectorAll('[data-project-gallery]').forEach(function(gallery) {
+    var image = gallery.querySelector('[data-project-gallery-image]');
+    var prevBtn = gallery.querySelector('[data-project-gallery-prev]');
+    var nextBtn = gallery.querySelector('[data-project-gallery-next]');
+    var dotsWrap = gallery.querySelector('[data-project-gallery-dots]');
+    var photos = [
+      { src: 'images/bbq_albion_new_1.jpg', alt: 'Барбекю комплекс Альбион с мангалом и казаном' },
+      { src: 'images/bbq_albion_new_2.jpg', alt: 'Барбекю комплекс Альбион, ракурс 2' },
+      { src: 'images/bbq_albion_new_3.jpg', alt: 'Барбекю комплекс Альбион, ракурс 3' },
+      { src: 'images/bbq_albion_new_4.jpg', alt: 'Барбекю комплекс Альбион, деталь облицовки' }
+    ];
+    var current = 0;
+    var dots = [];
+
+    if (!image || !prevBtn || !nextBtn || !dotsWrap) return;
+
+    function setPhoto(index) {
+      current = (index + photos.length) % photos.length;
+      image.src = photos[current].src;
+      image.alt = photos[current].alt;
+      dots.forEach(function(dot, dotIndex) {
+        dot.classList.toggle('is-active', dotIndex === current);
+        dot.setAttribute('aria-current', dotIndex === current ? 'true' : 'false');
+      });
+    }
+
+    photos.forEach(function(photo, index) {
+      var dot = document.createElement('button');
+      dot.type = 'button';
+      dot.className = 'square_blocks_3__project-dot';
+      dot.setAttribute('aria-label', 'Показать фото ' + (index + 1));
+      dot.addEventListener('click', function(event) {
+        event.preventDefault();
+        event.stopPropagation();
+        setPhoto(index);
+      });
+      dotsWrap.appendChild(dot);
+      dots.push(dot);
+    });
+
+    prevBtn.addEventListener('click', function(event) {
+      event.preventDefault();
+      event.stopPropagation();
+      setPhoto(current - 1);
+    });
+    nextBtn.addEventListener('click', function(event) {
+      event.preventDefault();
+      event.stopPropagation();
+      setPhoto(current + 1);
+    });
+
+    setPhoto(0);
   });
 
   /* ----- Window resize ----- */

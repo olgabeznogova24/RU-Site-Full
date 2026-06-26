@@ -31,6 +31,9 @@ vendor/
 .cache/
 dist/
 build/
+outputs/github-deploy-*/
+outputs/deploy-files-*/
+outputs/deploy-gitstore-*/
 
 # Temporary/source design files
 *.tmp
@@ -42,3 +45,6 @@ build/
 
 # Heavy content excluded from GitHub deploy
 images/izrazcy-360/
+images/portfolio/*
+!images/portfolio/optimized/
+!images/portfolio/optimized/**

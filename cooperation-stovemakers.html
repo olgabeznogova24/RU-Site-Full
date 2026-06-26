@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Сотрудничество для печников — CeramicaDecor</title>
+  <meta name="description" content="Сотрудничество CeramicaDecor для печников: дизайн изразцовой облицовки по техническому заданию, проект, рабочие чертежи, производство изразцов и партнерская скидка.">
+  <link rel="canonical" href="https://ceramicadecor.ru/cooperation-stovemakers.html">
+  <meta property="og:title" content="Сотрудничество для печников — CeramicaDecor">
+  <meta property="og:description" content="Помогаем печникам закрывать дизайн, проектирование и производство изразцовой облицовки для каминов и печей по техническому заданию.">
+  <meta property="og:image" content="images/banner_pechniki_hero.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:url" content="https://ceramicadecor.ru/cooperation-stovemakers.html">
+  <meta property="og:site_name" content="CeramicaDecor">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.cdnfonts.com/css/tt-ramillas-trl" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .cooperation-hero {
+      position: relative;
+      min-height: 60vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: #101010 url('images/banner_pechniki_hero.jpg') center center / cover no-repeat;
+      overflow: hidden;
+      padding: 160px 0 100px;
+    }
+    .cooperation-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.60);
+      pointer-events: none;
+    }
+    .cooperation-hero__content {
+      position: relative;
+      z-index: 1;
+      max-width: none;
+    }
+    .cooperation-section__eyebrow {
+      display: inline-flex;
+      align-items: center;
+      margin-bottom: 18px;
+      color: var(--primary);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .cooperation-hero__title {
+      margin: 0 0 24px;
+      color: #fff;
+      font-family: 'TT Ramillas Trl', serif;
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      font-weight: 400;
+      line-height: 1.15;
+    }
+    .cooperation-hero__subtitle {
+      max-width: 700px;
+      margin: 0 auto;
+      color: rgba(255,255,255,0.6);
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(1rem, 1.5vw, 1.25rem);
+      font-weight: 300;
+      line-height: 1.6;
+    }
+    .cooperation-audience,
+    .cooperation-formats,
+    .cooperation-process,
+    .cooperation-support,
+    .cooperation-form-section {
+      background: #101010;
+      padding: 96px 0;
+    }
+    .cooperation-section__header {
+      max-width: 820px;
+      margin-bottom: 48px;
+    }
+    .cooperation-section__header--center {
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+    }
+    .cooperation-section__text {
+      margin: 16px 0 0;
+      color: rgba(255,255,255,0.58);
+      font-size: 1.05rem;
+      font-weight: 300;
+      line-height: 1.7;
+    }
+    .cooperation-cards {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+    }
+    .cooperation-card,
+    .cooperation-step,
+    .cooperation-support__panel,
+    .cooperation-form {
+      background: rgba(255,255,255,0.035);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+    }
+    .cooperation-card {
+      min-height: 360px;
+      padding: 30px 24px;
+      transition: border-color 0.25s ease, transform 0.25s ease;
+    }
+    .cooperation-card:hover {
+      border-color: rgba(203,59,37,0.42);
+      transform: translateY(-2px);
+    }
+    .cooperation-card--wide {
+      grid-column: 1 / -1;
+      min-height: 0;
+    }
+    .cooperation-card__icon {
+      width: 42px;
+      height: 42px;
+      margin-bottom: 22px;
+      color: var(--primary);
+    }
+    .cooperation-card__title,
+    .cooperation-step__title,
+    .cooperation-support__title {
+      margin: 0 0 12px;
+      color: #fff;
+      font-family: var(--font-heading);
+      font-size: 1.22rem;
+      font-weight: 400;
+      line-height: 1.3;
+    }
+    .cooperation-card__text,
+    .cooperation-step__text,
+    .cooperation-support__text,
+    .cooperation-list li {
+      color: rgba(255,255,255,0.58);
+      font-size: 0.95rem;
+      font-weight: 300;
+      line-height: 1.65;
+    }
+    .cooperation-card__list {
+      display: grid;
+      gap: 8px;
+      margin: 18px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+    .cooperation-card__list li {
+      position: relative;
+      padding-left: 18px;
+      color: rgba(255,255,255,0.62);
+      font-size: 0.92rem;
+      font-weight: 300;
+      line-height: 1.5;
+    }
+    .cooperation-card__list li::before {
+      content: '';
+      position: absolute;
+      top: 0.68em;
+      left: 0;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--primary);
+    }
+    .cooperation-card__note {
+      margin: 20px 0 0;
+      color: rgba(255,255,255,0.78);
+      font-size: 0.92rem;
+      font-weight: 500;
+      line-height: 1.45;
+    }
+    .cooperation-formats__grid {
+      display: grid;
+      grid-template-columns: 0.86fr 1.14fr;
+      gap: 40px;
+      align-items: stretch;
+    }
+    .cooperation-formats__image {
+      min-height: 520px;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .cooperation-formats__image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .cooperation-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .cooperation-list li {
+      position: relative;
+      padding: 20px 20px 20px 46px;
+      background: rgba(255,255,255,0.035);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+    }
+    .cooperation-list li::before {
+      content: '';
+      position: absolute;
+      top: 25px;
+      left: 22px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--primary);
+    }
+    .cooperation-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      counter-reset: cooperation-step;
+    }
+    .cooperation-step {
+      position: relative;
+      padding: 30px 24px;
+      overflow: hidden;
+      counter-increment: cooperation-step;
+    }
+    .cooperation-step::before {
+      content: counter(cooperation-step, decimal-leading-zero);
+      display: block;
+      margin-bottom: 32px;
+      color: rgba(203,59,37,0.78);
+      font-family: var(--font-heading);
+      font-size: 2.2rem;
+      line-height: 1;
+    }
+    .cooperation-support__grid {
+      display: grid;
+      grid-template-columns: 1.08fr 0.92fr;
+      gap: 40px;
+      align-items: center;
+    }
+    .cooperation-support__panel {
+      padding: 38px 34px;
+    }
+    .cooperation-support__image {
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .cooperation-support__image img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      display: block;
+    }
+    .cooperation-form-section {
+      padding-top: 80px;
+    }
+    .cooperation-form {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 36px;
+    }
+    .cooperation-form__grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+    .cooperation-form__field {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .cooperation-form__field--wide {
+      grid-column: 1 / -1;
+    }
+    .cooperation-form__label {
+      color: rgba(255,255,255,0.72);
+      font-size: 0.86rem;
+    }
+    .cooperation-form__input,
+    .cooperation-form__textarea {
+      width: 100%;
+      padding: 15px 18px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 10px;
+      color: #fff;
+      font: inherit;
+      outline: none;
+      transition: border-color 0.25s ease;
+    }
+    .cooperation-form__input:focus,
+    .cooperation-form__textarea:focus {
+      border-color: rgba(203,59,37,0.75);
+    }
+    .cooperation-form__textarea {
+      min-height: 130px;
+      resize: vertical;
+    }
+    .cooperation-form__input::placeholder,
+    .cooperation-form__textarea::placeholder {
+      color: rgba(255,255,255,0.34);
+    }
+    .cooperation-form__notice {
+      display: none;
+      margin-top: 16px;
+      padding: 16px 18px;
+      border-radius: 10px;
+      font-size: 0.92rem;
+      line-height: 1.5;
+    }
+    .cooperation-form__notice--success {
+      color: var(--green);
+      background: rgba(147,210,0,0.1);
+      border: 1px solid rgba(147,210,0,0.28);
+    }
+    .cooperation-form__notice--error {
+      color: var(--primary);
+      background: rgba(203,59,37,0.1);
+      border: 1px solid rgba(203,59,37,0.3);
+    }
+    @media (max-width: 1180px) {
+      .cooperation-steps {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (max-width: 768px) {
+      .cooperation-hero {
+        min-height: auto;
+        padding: 140px 0 70px;
+      }
+      .cooperation-audience,
+      .cooperation-formats,
+      .cooperation-process,
+      .cooperation-support,
+      .cooperation-form-section {
+        padding: 64px 0;
+      }
+      .cooperation-cards,
+      .cooperation-steps,
+      .cooperation-formats__grid,
+      .cooperation-support__grid,
+      .cooperation-list,
+      .cooperation-form__grid {
+        grid-template-columns: 1fr;
+      }
+      .cooperation-formats__image {
+        min-height: 320px;
+      }
+      .cooperation-form {
+        padding: 26px 20px;
+      }
+    }
+  </style>
+  <!-- Яндекс.Метрика — TODO: вставить код счётчика -->
+  <!-- Яндекс.Вебмастер — TODO: вставить мета-тег верификации -->
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="header" id="header">
+    <div class="container header__inner">
+      <div class="header__top-row">
+        <nav class="header__top-nav" aria-label="Дополнительная навигация">
+          <ul class="header__top-nav-list">
+            <li><a href="about.html" class="header__top-link">О компании</a></li>
+            <li><a href="about.html#team" class="header__top-link">Наша команда</a></li>
+            <li><a href="contacts-gallery-review.html" class="header__top-link">Видеоотзывы</a></li>
+            <li class="header__top-dropdown"><button type="button" class="header__top-link header__top-dropdown-toggle" aria-haspopup="true" aria-expanded="false">Сотрудничество</button><ul class="header__top-dropdown-menu"><li><a href="cooperation.html">Дизайнеры</a></li><li><a href="cooperation-stovemakers.html">Печники</a></li><li><a href="cooperation-developers.html">Застройщики</a></li><li><a href="cooperation-fireplace-salons.html">Салоны каминов</a></li></ul></li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="header__main-row">
+        <a href="index.html" class="header__logo">
+          <img src="images/logo.png" alt="CeramicaDecor" class="header__logo-img">
+        </a>
+        <nav class="header__nav" id="mainNav">
+          <ul class="header__nav-list">
+          <li class="header__nav-dropdown header__nav-dropdown--catalog">
+            <button type="button" class="header__catalog-btn" aria-haspopup="true" aria-expanded="false">Каталог</button>
+            <div class="header__mega-menu header__mega-menu--showcase" role="menu">
+              <div class="header__mega-tabs" role="tablist" aria-label="Разделы каталога">
+                <button type="button" class="header__mega-tab active" role="tab" aria-selected="true" data-mega-target="kaminy" data-mega-href="catalog-kaminy.html">Камины</button>
+                <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="pechi" data-mega-href="catalog-otopitelnye-pechi.html">Печи</button>
+                <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="barbekyu" data-mega-href="catalog-barbekyu-kompleksy.html">Барбекю комплексы</button>
+                <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="izrazcy" data-mega-href="catalog-izrazcy.html">Изразцы</button>
+                <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="seriynye" data-mega-href="catalog-seriynye-modeli.html">Печи-камины<br>из наличия</button>
+                <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="mramor" data-mega-href="catalog-mramornye-portaly.html">Мраморные камины<br>и порталы</button>
+                <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="interior" data-mega-href="catalog-interernaya-keramika.html">Плитка ручной работы</button>
+                <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="fasad" data-mega-href="catalog-fasadnaya-keramika.html">Фасадная керамика</button>
+                <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="metlah" data-mega-href="catalog-metlahskaya-plitka.html">Метлахская плитка</button>
+                <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="restoration" data-mega-href="restoration.html">Реставрация</button>
+                <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="suvenir" data-mega-href="catalog-suvenirnaya-produkciya.html">Сувенирная продукция</button>
+              </div>
+              <div class="header__mega-panels">
+                <section class="header__mega-panel active" role="tabpanel" data-mega-panel="kaminy">
+                  <div class="header__mega-cards">
+                    <a href="catalog-kaminy.html?subcategory=drovyanye-kaminy" class="header__mega-card header__mega-card--large" role="menuitem"><img src="images/kamin_dorf_murav_new_3.jpg" alt="Дровяные камины"><span>Дровяные камины</span></a>
+                    <a href="catalog-kaminy.html?subcategory=biokaminy" class="header__mega-card" role="menuitem"><img src="images/banner-biokaminy_desktop.webp" alt="Биокамины"><span>Биокамины</span></a>
+                    <a href="catalog-kaminy.html?subcategory=elektrokaminy" class="header__mega-card" role="menuitem"><img src="images/banner-elektrokaminy_desktop.webp" alt="Электрокамины"><span>Электрокамины</span></a>
+                  </div>
+                </section>
+                <section class="header__mega-panel" role="tabpanel" data-mega-panel="pechi">
+                  <div class="header__mega-cards">
+                    <a href="catalog-otopitelnye-pechi.html?subcategory=russkie-pechi" class="header__mega-card header__mega-card--large" role="menuitem"><img src="images/banner-russkie-pechi_desktop.webp" alt="Русские печи"><span>Русские печи</span></a>
+                    <a href="catalog-otopitelnye-pechi.html?subcategory=otopitelnye-pechi" class="header__mega-card" role="menuitem"><img src="images/5393.jpg" alt="Отопительные печи"><span>Отопительные печи</span></a>
+                    <a href="catalog-otopitelnye-pechi.html?subcategory=bannye-pechi" class="header__mega-card" role="menuitem"><img src="images/banner-bannye-pechi_desktop.webp" alt="Банные печи"><span>Банные печи</span></a>
+                    <a href="catalog-otopitelnye-pechi.html?subcategory=bannye-portaly" class="header__mega-card" role="menuitem"><img src="images/banner-bannye-portaly_desktop.webp" alt="Банные порталы"><span>Банные порталы</span></a>
+                  </div>
+                </section>
+                <section class="header__mega-panel" role="tabpanel" data-mega-panel="barbekyu">
+                  <div class="header__mega-cards">
+                    <a href="catalog-barbekyu-kompleksy.html" class="header__mega-card header__mega-card--large" role="menuitem"><img src="images/barbekyu_card_new.webp" alt="Барбекю комплексы"><span>Барбекю комплексы</span></a>
+                  </div>
+                </section>
+                <section class="header__mega-panel" role="tabpanel" data-mega-panel="izrazcy">
+                  <div class="header__mega-cards">
+                    <a href="catalog-izrazcy.html" class="header__mega-card header__mega-card--large" role="menuitem"><img src="images/izrazcy_card.webp" alt="Каталог изразцов"><span>Каталог изразцов</span></a>
+                    <a href="glaze-palette.html" class="header__mega-card" role="menuitem"><img src="images/palitra_izrazcy.jpg" alt="Палитра глазурей"><span>Палитра глазурей</span></a>
+                  </div>
+                </section>
+                <section class="header__mega-panel" role="tabpanel" data-mega-panel="seriynye">
+                  <div class="header__mega-cards">
+                    <a href="catalog-seriynye-modeli.html" class="header__mega-card header__mega-card--large header__mega-card--ready" role="menuitem"><img src="images/ready_banner.png" alt="Печи-камины из наличия"><span>Печи-камины<br>из наличия</span></a>
+                  </div>
+                </section>
+                <section class="header__mega-panel" role="tabpanel" data-mega-panel="mramor">
+                  <div class="header__mega-cards">
+                    <a href="catalog-mramornye-portaly.html" class="header__mega-card header__mega-card--large" role="menuitem"><img src="images/banner-mramor_desktop.webp" alt="Мраморные порталы"><span>Мраморные порталы</span></a>
+                    <a href="catalog-kaminy-v-oblicovke-mramorom.html" class="header__mega-card" role="menuitem"><img src="images/kaminy_iz_mramora.jpg" alt="Камины в облицовке мрамором"><span>Камины в облицовке<br>мрамором</span></a>
+                  </div>
+                </section>
+                <section class="header__mega-panel" role="tabpanel" data-mega-panel="interior">
+                  <div class="header__mega-cards">
+                    <a href="catalog-interernaya-keramika.html?subcategory=barnye-stoyki" class="header__mega-card header__mega-card--bar" role="menuitem"><img src="images/barnye stoyki.jpg" alt="Барные стойки"><span>Барные стойки</span></a>
+                    <a href="catalog-interernaya-keramika.html?subcategory=oblicovka-sten" class="header__mega-card" role="menuitem"><img src="images/oblicovka sten.jpg" alt="Облицовка стен"><span>Облицовка стен</span></a>
+                    <a href="catalog-interernaya-keramika.html?subcategory=kuhonnye-fartuki" class="header__mega-card header__mega-card--large" role="menuitem"><img src="images/banner-interior_desktop.webp" alt="Кухонные фартуки"><span>Кухонные фартуки</span></a>
+                  </div>
+                </section>
+                <section class="header__mega-panel" role="tabpanel" data-mega-panel="fasad">
+                  <div class="header__mega-cards">
+                    <a href="catalog-fasadnaya-keramika.html" class="header__mega-card header__mega-card--large" role="menuitem"><img src="images/banner-fasad_desktop.webp" alt="Фасадная керамика"><span>Фасадная керамика</span></a>
+                  </div>
+                </section>
+                <section class="header__mega-panel" role="tabpanel" data-mega-panel="metlah">
+                  <div class="header__mega-cards">
+                    <a href="catalog-metlahskaya-plitka.html" class="header__mega-card header__mega-card--large" role="menuitem"><img src="images/metlahskaya plitka.jpg?v=20260610-2041" alt="Метлахская плитка"><span>Метлахская плитка</span></a>
+                  </div>
+                </section>
+                <section class="header__mega-panel" role="tabpanel" data-mega-panel="restoration">
+                  <div class="header__mega-cards">
+                    <a href="restoration.html" class="header__mega-card header__mega-card--large" role="menuitem"><img src="images/restavraciya.jpg" alt="Реставрация"><span>Реставрация</span></a>
+                  </div>
+                </section>
+                <section class="header__mega-panel" role="tabpanel" data-mega-panel="suvenir">
+                  <div class="header__mega-cards">
+                    <a href="catalog-suvenirnaya-produkciya.html" class="header__mega-card header__mega-card--large" role="menuitem"><img src="images/suvenirnaya produkcya.jpg" alt="Сувенирная продукция"><span>Сувенирная продукция</span></a>
+                  </div>
+                </section>
+              </div>
+            </div>
+          </li>
+          <li><a href="portfolio.html" class="header__nav-link">Портфолио</a></li>
+          <li class="header__nav-dropdown header__nav-dropdown--simple">
+            <a href="components.html" class="header__nav-link" aria-haspopup="true" aria-expanded="false">Все для монтажа</a>
+            <ul class="header__dropdown-menu">
+              <li><a href="components.html">Каминные топки</a></li>
+              <li><a href="components.html">Электроочаги</a></li>
+            </ul>
+          </li>
+          <li><a href="contacts.html" class="header__nav-link">Контакты</a></li>
+          </ul>
+          <ul class="header__nav-list header__nav-list--mobile-secondary">
+            <li><a href="about.html" class="header__nav-link">О компании</a></li>
+            <li><a href="about.html#team" class="header__nav-link">Наша команда</a></li>
+            <li><a href="contacts-gallery-review.html" class="header__nav-link">Видеоотзывы</a></li>
+            <li class="header__nav-dropdown header__nav-dropdown--simple"><a href="cooperation.html" class="header__nav-link" aria-haspopup="true" aria-expanded="false">Сотрудничество</a><ul class="header__dropdown-menu"><li><a href="cooperation.html">Дизайнеры</a></li><li><a href="cooperation-stovemakers.html">Печники</a></li><li><a href="cooperation-developers.html">Застройщики</a></li><li><a href="cooperation-fireplace-salons.html">Салоны каминов</a></li></ul></li>
+          </ul>
+          <a href="tel:+74952293046" data-calltracking="phone" data-calltracking-group="main" class="header__nav-phone-link">+7 (495) 229-30-46</a>
+          <div class="header__nav-messengers" aria-label="Мессенджеры">
+            <a href="https://t.me/+79950001166" class="header__messenger-link" target="_blank" rel="noopener" aria-label="Telegram"><img src="images/icons/png-klev-club-p-telegram-logotip-png-9.png" alt="" class="header__messenger-icon"></a>
+            <a href="https://max.ru/" class="header__messenger-link" target="_blank" rel="noopener" aria-label="Max"><img src="images/icons/max.png" alt="" class="header__messenger-icon"></a>
+          </div>
+          <a href="mailto:info@ceramicadecor.ru" data-calltracking="email" data-calltracking-group="main" class="header__nav-phone-link">info@ceramicadecor.ru</a>
+          <div class="header__nav-item--search"><a href="#" class="header__nav-link" id="searchBtnMobile"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg> Поиск</a></div>
+        </nav>
+
+        <div class="header__actions">
+          <button class="header__search-btn" id="searchBtn" aria-label="Поиск"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></button>
+          <a href="#contact" class="btn btn--primary header__cta-btn">Оставить заявку</a>
+          <a href="tel:+74952293046" data-calltracking="phone" data-calltracking-group="main" class="header__phone-desktop">+7 (495) 229-30-46</a>
+          <div class="header__messengers" aria-label="Мессенджеры">
+            <a href="https://t.me/+79950001166" class="header__messenger-link" target="_blank" rel="noopener" aria-label="Telegram"><img src="images/icons/png-klev-club-p-telegram-logotip-png-9.png" alt="" class="header__messenger-icon"></a>
+            <a href="https://max.ru/" class="header__messenger-link" target="_blank" rel="noopener" aria-label="Max"><img src="images/icons/max.png" alt="" class="header__messenger-icon"></a>
+          </div>
+          <button class="header__burger" id="burgerBtn" aria-label="Меню">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <section class="cooperation-hero" id="hero">
+    <div class="container">
+      <div class="cooperation-hero__content">
+        <h1 class="cooperation-hero__title">Для печников</h1>
+        <p class="cooperation-hero__subtitle">Подключаемся к проекту по техническому заданию печника: разрабатываем дизайн облицовки, готовим проект, рабочие чертежи и изготавливаем изразцы для каминов и печей.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== AUDIENCE ===== -->
+  <section class="cooperation-audience" id="audience">
+    <div class="container">
+      <div class="cooperation-section__header cooperation-section__header--center">
+        <span class="cooperation-section__eyebrow">Для кого</span>
+        <h2 class="section-title section-title--center">Что получает печник</h2>
+        <p class="cooperation-section__text">Печник сохраняет техническую часть проекта, а CeramicaDecor берет на себя керамическую облицовку, дизайн, визуализацию, смету и коммуникацию по изделию.</p>
+      </div>
+      <div class="cooperation-cards">
+        <article class="cooperation-card cooperation-card--wide">
+          <svg class="cooperation-card__icon" viewBox="0 0 40 40" fill="none"><path d="M10 28l18-18 4 4-18 18H10v-4zM24 14l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <h3 class="cooperation-card__title">Изразцовая облицовка по техническому заданию</h3>
+          <p class="cooperation-card__text">Работаем с готовым конструктивом камина или печи и проектируем облицовку так, чтобы она точно соответствовала размерам, топке, дымоходу и интерьеру.</p>
+          <ul class="cooperation-card__list">
+            <li>Дизайн-проект облицовки для камина или печи: визуализация, схема с размерами и смета.</li>
+            <li>Подготовка рабочих чертежей для конструктивной части: позиционирование топки, дымохода и схема короба.</li>
+            <li>Изготовление типовых или индивидуальных изразцов на собственном производстве.</li>
+            <li>Продажа топок, дымоходов и материалов для монтажа, если нужна комплектация проекта.</li>
+          </ul>
+          <p class="cooperation-card__note">Начальная дилерская скидка от 10% на керамическую облицовку, система скидок накопительная.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FORMATS ===== -->
+  <section class="cooperation-formats" id="formats">
+    <div class="container">
+      <div class="cooperation-formats__grid">
+        <div class="cooperation-formats__image">
+          <picture>
+            <source srcset="images/work_kamin2_new.webp" type="image/webp">
+            <img src="images/work_kamin2_new.jpg" alt="Изготовление керамических элементов" loading="lazy">
+          </picture>
+        </div>
+        <div>
+          <div class="cooperation-section__header">
+            <span class="cooperation-section__eyebrow">Возможности</span>
+            <h2 class="section-title">Что берем на себя</h2>
+            <p class="cooperation-section__text">У CeramicaDecor собственное керамическое производство полного цикла и дизайн-бюро. Мы можем подключиться к проекту печника на этапе технического задания или готового конструктива.</p>
+          </div>
+          <ul class="cooperation-list">
+            <li>Разрабатываем дизайн облицовки будущей печи или камина по техническому заданию печника.</li>
+            <li>Готовим визуализацию, схему с размерами и смету с расчетом стоимости для заказчика.</li>
+            <li>Подготавливаем рабочие чертежи для позиционирования топки, дымохода и короба.</li>
+            <li>Изготавливаем керамическую изразцовую облицовку из типовой коллекции или по индивидуальному заданию.</li>
+            <li>При необходимости комплектуем проект топками, дымоходами и материалами для монтажа.</li>
+            <li>Можем взять коммуникацию с конечным заказчиком на персонального менеджера проекта.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PROCESS ===== -->
+  <section class="cooperation-process" id="process">
+    <div class="container">
+      <div class="cooperation-section__header cooperation-section__header--center">
+        <span class="cooperation-section__eyebrow">Процесс</span>
+        <h2 class="section-title section-title--center">Как проходит проект</h2>
+      </div>
+      <div class="cooperation-steps">
+        <article class="cooperation-step">
+          <h3 class="cooperation-step__title">Техническое задание</h3>
+          <p class="cooperation-step__text">Получаем параметры печи или камина, размеры, требования к топке, дымоходу, облицовке и интерьеру.</p>
+        </article>
+        <article class="cooperation-step">
+          <h3 class="cooperation-step__title">Дизайн и расчет</h3>
+          <p class="cooperation-step__text">Готовим визуализацию, схему с размерами и смету для согласования с вашим заказчиком.</p>
+        </article>
+        <article class="cooperation-step">
+          <h3 class="cooperation-step__title">Рабочие чертежи</h3>
+          <p class="cooperation-step__text">Фиксируем конструктив, позиционирование топки и дымохода, схему короба и размеры изразцов.</p>
+        </article>
+        <article class="cooperation-step">
+          <h3 class="cooperation-step__title">Производство облицовки</h3>
+          <p class="cooperation-step__text">Изготавливаем изразцы и передаем комплект печнику или сопровождаем дальнейшую установку.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SUPPORT ===== -->
+  <section class="cooperation-support" id="support">
+    <div class="container">
+      <div class="cooperation-support__grid">
+        <div class="cooperation-support__panel">
+          <span class="cooperation-section__eyebrow">Сопровождение</span>
+          <h2 class="section-title">Проектная поддержка для печника</h2>
+          <p class="cooperation-support__text">Для партнера работает персональный менеджер проекта. Он помогает пройти путь от технического задания и расчета до производства облицовки.</p>
+          <p class="cooperation-support__text">Если удобно, коммуникацию с конечным заказчиком можно передать менеджеру CeramicaDecor. Это не влияет на дилерскую скидку партнера.</p>
+          <p class="cooperation-support__text">Для встреч и презентаций предоставляем образцы продукции. Шоу-рум находится в Москве по адресу: ул. Свободы, 99к1.</p>
+        </div>
+        <div class="cooperation-support__image">
+          <img src="images/palitra_izrazcy_new1.jpg" alt="Палитра керамических глазурей" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FORM ===== -->
+  <section class="cooperation-form-section" id="cooperation-form">
+    <div class="container">
+      <div class="cooperation-section__header cooperation-section__header--center">
+        <span class="cooperation-section__eyebrow">Заявка</span>
+        <h2 class="section-title section-title--center">Свяжитесь с нами для долгосрочного сотрудничества</h2>
+      </div>
+      <form class="cooperation-form" id="cooperationContactForm" novalidate>
+        <div class="cooperation-form__grid">
+          <div class="cooperation-form__field">
+            <label class="cooperation-form__label" for="cooperationName">Имя *</label>
+            <input class="cooperation-form__input" id="cooperationName" name="name" type="text" placeholder="Ваше имя" required>
+          </div>
+          <div class="cooperation-form__field">
+            <label class="cooperation-form__label" for="cooperationPhone">Телефон *</label>
+            <input class="cooperation-form__input" id="cooperationPhone" name="phone" type="tel" placeholder="+7 (___) ___-__-__" required>
+          </div>
+          <div class="cooperation-form__field">
+            <label class="cooperation-form__label" for="cooperationCompany">Компания</label>
+            <input class="cooperation-form__input" id="cooperationCompany" name="company" type="text" placeholder="Название мастерской или компании">
+          </div>
+          <div class="cooperation-form__field">
+            <label class="cooperation-form__label" for="cooperationType">Формат</label>
+            <input class="cooperation-form__input" id="cooperationType" name="type" type="text" value="Печник или печная мастерская" placeholder="Печник или печная мастерская">
+          </div>
+          <div class="cooperation-form__field cooperation-form__field--wide">
+            <label class="cooperation-form__label" for="cooperationComment">Комментарий</label>
+            <textarea class="cooperation-form__textarea" id="cooperationComment" name="comment" placeholder="Опишите печь или камин, размеры, топку, дымоход, регион и сроки"></textarea>
+          </div>
+        </div>
+        <label class="consent-label" style="margin-top:18px;">
+          <input type="checkbox" class="consent-checkbox" id="cooperationConsent">
+          <span>Я даю согласие на обработку персональных данных в соответствии с <a href="privacy.html" target="_blank">политикой конфиденциальности</a></span>
+        </label>
+        <button type="submit" class="btn btn--primary btn--full" id="cooperationSubmitBtn" style="margin-top:20px;">Отправить заявку</button>
+        <div class="cooperation-form__notice cooperation-form__notice--success" id="cooperationSuccess">Спасибо! Заявка отправлена. Мы свяжемся с вами и обсудим формат сотрудничества.</div>
+        <div class="cooperation-form__notice cooperation-form__notice--error" id="cooperationError">Произошла ошибка при отправке. Пожалуйста, попробуйте еще раз или свяжитесь с нами по телефону.</div>
+      </form>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer" id="footer">
+    <div class="footer__glow"></div>
+    <div class="container">
+      <div class="footer__works-map" aria-label="Карта выполненных работ">
+        <h2 class="footer__works-map-title">Выполненные работы CeramicaDecor на карте</h2>
+        <div class="contacts-map" data-map-template="completed-works" data-map-provider="internal">
+          <div class="contacts-map__layout">
+            <div class="contacts-map__canvas" id="completedWorksMap" data-map-target="completed-works">
+              <span class="contacts-map__marker contacts-map__marker--spb" data-work-location="spb">Санкт-Петербург</span>
+              <span class="contacts-map__marker contacts-map__marker--moscow" data-work-location="moscow">Москва</span>
+              <p class="contacts-map__placeholder">Здесь будет интерактивная карта с выполненными работами, маркерами объектов, масштабированием и переходом к проектам.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer__top">
+        <div class="footer__brand">
+          <a href="index.html" class="footer__logo">
+            <img src="images/logo.png" alt="CeramicaDecor" class="footer__logo-img">
+          </a>
+          <p class="footer__tagline">Керамические премиальные облицовки.<br>14+ лет, своё производство, монтаж.<br>Под ключ по России и СНГ</p>
+        </div>
+        <div class="footer__columns">
+          <div class="footer__col">
+            <h4 class="footer__col-title" style="font-size:16px;font-weight:700;color:#fff;">Каталог</h4>
+            <ul class="footer__col-list">
+              <li><a href="catalog-kaminy.html">Камины</a></li>
+              <li><a href="catalog-otopitelnye-pechi.html">Печи</a></li>
+              <li><a href="catalog-seriynye-modeli.html">Печи-камины из наличия</a></li>
+              <li><a href="catalog-barbekyu-kompleksy.html">Барбекю комплексы</a></li>
+              <li><a href="catalog-izrazcy.html">Изразцы</a></li>
+              <li><a href="catalog-interernaya-keramika.html">Плитка ручной работы</a></li>
+            </ul>
+          </div>
+          <div class="footer__col">
+            <ul class="footer__col-list footer__col-list--offset">
+              <li><a href="portfolio.html" style="color:#fff;font-size:16px;font-weight:500;">Портфолио</a></li>
+              <li><a href="components.html" style="color:#fff;font-size:16px;font-weight:500;">Все для монтажа</a></li>
+              <li><a href="components.html">Каминные топки</a></li>
+              <li><a href="components.html">Электроочаги</a></li>
+              <li><a href="cooperation.html" style="color:#fff;font-size:16px;font-weight:500;">Сотрудничество</a></li>
+              <li><a href="blog.html" style="color:#fff;font-size:16px;font-weight:500;">Блог</a></li>
+              <li><a href="about.html" style="color:#fff;font-size:16px;font-weight:500;">О компании</a></li>
+            </ul>
+          </div>
+          <div class="footer__col footer__col--contacts">
+            <h4 class="footer__col-title" style="font-size:16px;font-weight:700;color:#fff;"><a href="contacts.html" class="footer__col-title-link">Контакты</a></h4>
+            <ul class="footer__col-list footer__contact-list">
+              <li><a href="tel:+74952293046" data-calltracking="phone" data-calltracking-group="main" style="font-weight:700;">+7 (495) 229-30-46</a></li>
+              <li><a href="mailto:info@ceramicadecor.ru" data-calltracking="email" data-calltracking-group="main" style="font-weight:700;">info@ceramicadecor.ru</a></li>
+              <li class="footer__messengers" aria-label="Мессенджеры">
+                <a href="https://t.me/+79950001166" class="footer__messenger-link" target="_blank" rel="noopener" aria-label="Telegram"><img src="images/icons/png-klev-club-p-telegram-logotip-png-9.png" alt="" class="footer__messenger-icon"></a>
+                <a href="https://max.ru/" class="footer__messenger-link" target="_blank" rel="noopener" aria-label="Max"><img src="images/icons/max.png" alt="" class="footer__messenger-icon"></a>
+</li>
+              <li style="margin-top: 0.75em;"><a href="contacts.html" class="btn btn--primary" style="padding:9px 20px;font-size:13px;color:#fff;">Оставить заявку</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p class="footer__copy">&copy; 2013&ndash;2026 CeramicaDecor. Все права защищены.</p>
+        <p class="footer__org-info">ООО «АРТ КЕРАМИКА» &middot; ИНН&nbsp;5018178964 &middot; ОГРН&nbsp;1155018002150 &middot; 141068, Московская обл., г.&nbsp;Королев, ул.&nbsp;Силикатная, д.&nbsp;74, пом.&nbsp;204</p>
+        <div class="footer__legal">
+          <a href="privacy.html" target="_blank">Политика конфиденциальности</a>
+          <a href="terms.html" target="_blank">Пользовательское соглашение</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <button class="scroll-to-top" aria-label="Наверх">
+    <svg viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+  </button>
+  <script src="script.js" defer></script>
+  <script>
+    (function() {
+      var form = document.getElementById('cooperationContactForm');
+      var submitBtn = document.getElementById('cooperationSubmitBtn');
+      var successMsg = document.getElementById('cooperationSuccess');
+      var errorMsg = document.getElementById('cooperationError');
+
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        successMsg.style.display = 'none';
+        errorMsg.style.display = 'none';
+
+        var name = document.getElementById('cooperationName').value.trim();
+        var phone = document.getElementById('cooperationPhone').value.trim();
+        var company = document.getElementById('cooperationCompany').value.trim();
+        var type = document.getElementById('cooperationType').value.trim();
+        var comment = document.getElementById('cooperationComment').value.trim();
+        var consent = document.getElementById('cooperationConsent');
+
+        if (!name || !phone) {
+          errorMsg.textContent = 'Пожалуйста, заполните обязательные поля: имя и телефон.';
+          errorMsg.style.display = 'block';
+          return;
+        }
+        if (consent && !consent.checked) {
+          if (window.requireCeramicaDecorConsent) window.requireCeramicaDecorConsent(form);
+          errorMsg.textContent = 'Пожалуйста, дайте согласие на обработку персональных данных.';
+          errorMsg.style.display = 'block';
+          return;
+        }
+
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Отправка...';
+
+        fetch('https://ceramicadecor.ru/feedback/ceramicadecor_pro', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: new URLSearchParams({
+            name: name,
+            phone: phone,
+            company: company,
+            type: type,
+            comment: 'Сотрудничество. ' + comment
+          })
+        })
+        .then(function(response) {
+          if (!response.ok) throw new Error('Network error');
+          return response.json();
+        })
+        .then(function(data) {
+          if (data.result) {
+            successMsg.style.display = 'block';
+            form.reset();
+          } else {
+            throw new Error(data.message);
+          }
+        })
+        .catch(function() {
+          errorMsg.textContent = 'Произошла ошибка при отправке. Пожалуйста, попробуйте еще раз или свяжитесь с нами по телефону.';
+          errorMsg.style.display = 'block';
+        })
+        .finally(function() {
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Отправить заявку';
+        });
+      });
+    })();
+  </script>
+  <script src="search.js" defer></script>
+
+  <!-- COOKIE BANNER -->
+  <div class="cookie-banner" id="cookieBanner">
+    <p class="cookie-banner__text">Мы используем файлы cookie. Продолжая использование сайта, вы соглашаетесь с нашей <a href="privacy.html">Политикой конфиденциальности</a>.</p>
+    <button class="cookie-banner__btn" id="cookieAccept">Принять</button>
+  </div>
+</body>
+</html>
+
+
+
+

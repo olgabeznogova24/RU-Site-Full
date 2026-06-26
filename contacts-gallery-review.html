@@ -29,9 +29,22 @@
     .video-reviews-hero p { font-family: 'Inter', sans-serif; font-size: clamp(1rem, 1.5vw, 1.25rem); font-weight: 300; color: rgba(255,255,255,0.6); max-width: 820px; line-height: 1.6; margin: 0 auto; text-wrap: balance; }
     .desktop-break { display: inline; }
     .video-reviews-section { padding: 54px 0 90px; background: #101010; }
-    .video-reviews-grid { display: grid; grid-template-columns: 1fr; gap: 18px; max-width: 1120px; margin: 0 auto; }
+    .video-reviews-section .fade-up { opacity: 1; visibility: visible; transform: none; }
+    .video-reviews-mobile-tabs { display: flex; justify-content: center; gap: 10px; overflow-x: auto; scrollbar-width: none; -ms-overflow-style: none; margin: 0 0 32px; padding: 4px 0; }
+    .video-reviews-mobile-tabs::-webkit-scrollbar { display: none; }
+    .video-reviews-mobile-tab { appearance: none; display: inline-flex; align-items: center; justify-content: center; min-height: 42px; padding: 10px 20px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.14); background: rgba(255,255,255,0.045); color: rgba(255,255,255,0.72); font-family: Inter, sans-serif; font-size: 0.92rem; font-weight: 500; line-height: 1.2; white-space: nowrap; cursor: pointer; transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease; }
+    .video-reviews-mobile-tab:hover { color: #fff; border-color: rgba(203,59,37,0.46); background: rgba(203,59,37,0.12); }
+    .video-reviews-mobile-tab.is-active { color: #fff; border-color: #cb3b25; background: #cb3b25; }
+    .video-reviews-layout { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; gap: 32px; }
+    .video-reviews-layout.is-filtered { grid-template-columns: 1fr; }
+    .video-reviews-column { min-width: 0; }
+    .video-reviews-column__title { font-family: var(--font-heading); font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 300; line-height: 1.15; margin: 0 0 24px; color: #fff; }
+    .video-reviews-grid { display: grid; grid-template-columns: 1fr; gap: 18px; max-width: none; margin: 0; }
+    .video-reviews-layout.is-filtered .video-reviews-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .video-reviews-layout.is-filtered .video-reviews-column__title { text-align: center; }
     .video-reviews-grid.fade-up { opacity: 1; visibility: visible; transform: none; }
-    .video-review-card { display: grid; grid-template-columns: minmax(360px, 0.92fr) minmax(0, 1fr); align-items: center; background: rgba(255,255,255,0.035); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; overflow: hidden; }
+    .video-review-card { display: grid; grid-template-columns: 1fr; grid-template-rows: auto 1fr; align-items: start; background: rgba(255,255,255,0.035); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; overflow: hidden; min-height: 570px; }
+    .video-review-card[hidden] { display: none; }
     .video-review-card__media { position: relative; display: block; aspect-ratio: 3 / 2; overflow: hidden; background: #181818; }
     .video-review-card__media picture { display: block; height: 100%; }
     .video-review-card__media img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.45s ease; }
@@ -39,7 +52,7 @@
     .video-review-card__media::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0.06), rgba(0,0,0,0.42)); pointer-events: none; }
     .video-review-card__play { position: absolute; z-index: 1; left: 50%; top: 50%; width: 58px; height: 58px; transform: translate(-50%, -50%); border-radius: 50%; background: rgba(203,59,37,0.92); }
     .video-review-card__play::after { content: ''; position: absolute; left: 23px; top: 18px; border-left: 16px solid #fff; border-top: 10px solid transparent; border-bottom: 10px solid transparent; }
-    .video-review-card__body { padding: 20px 24px; }
+    .video-review-card__body { display: flex; flex-direction: column; min-height: 270px; padding: 20px 24px; }
     .video-review-card__eyebrow { color: var(--primary); font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin: 0 0 9px; }
     .video-review-card h2 { font-family: var(--font-heading); font-size: 24px; font-weight: 300; line-height: 1.18; margin: 0 0 10px; }
     .video-review-card p { color: rgba(255,255,255,0.56); margin: 0 0 16px; }
@@ -48,6 +61,17 @@
     .video-review-card__body > p:not(.video-review-card__eyebrow)::-webkit-scrollbar-track { background: rgba(255,255,255,0.08); border-radius: 999px; }
     .video-review-card__body > p:not(.video-review-card__eyebrow)::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.28); border-radius: 999px; }
     .video-review-card__link { color: #fff; font-weight: 700; border-bottom: 1px solid rgba(255,255,255,0.34); }
+    .video-review-card__body .video-review-card__link { align-self: flex-start; margin-top: auto; }
+    .video-review-card--placeholder .video-review-card__media { cursor: default; }
+    .video-review-card--placeholder .video-review-card__play { background: rgba(255,255,255,0.16); }
+    .video-review-card__placeholder-media { position: relative; width: 100%; height: 100%; background: linear-gradient(135deg, rgba(203,59,37,0.2), rgba(255,255,255,0.06)), #181818; }
+    .video-review-card__placeholder-media::before { content: ''; position: absolute; inset: 18px; border: 1px solid rgba(255,255,255,0.12); border-radius: 6px; }
+    .video-review-card__placeholder-label { position: absolute; left: 18px; bottom: 16px; z-index: 1; color: rgba(255,255,255,0.78); font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+    .video-reviews-pagination { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 28px; }
+    .video-reviews-pagination[hidden] { display: none; }
+    .video-reviews-pagination__btn { appearance: none; display: inline-flex; align-items: center; justify-content: center; min-width: 38px; min-height: 38px; padding: 8px 13px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.14); background: rgba(255,255,255,0.045); color: rgba(255,255,255,0.72); font-family: Inter, sans-serif; font-size: 0.9rem; font-weight: 600; cursor: pointer; transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease; }
+    .video-reviews-pagination__btn:hover { color: #fff; border-color: rgba(203,59,37,0.46); background: rgba(203,59,37,0.12); }
+    .video-reviews-pagination__btn.is-active { color: #fff; border-color: #cb3b25; background: #cb3b25; cursor: default; }
     .video-review-modal { position: fixed; inset: 0; z-index: 10020; display: none; align-items: center; justify-content: center; padding: 24px; background: rgba(0,0,0,0.82); }
     .video-review-modal.active { display: flex; }
     .video-review-modal__dialog { position: relative; width: min(1120px, 100%); aspect-ratio: 16 / 9; background: #050505; border-radius: 8px; box-shadow: 0 24px 90px rgba(0,0,0,0.55); }
@@ -55,8 +79,12 @@
     .video-review-modal__dialog iframe { width: 100%; height: 100%; border: 0; display: block; border-radius: 8px; }
     .video-review-modal__close { position: absolute; right: -12px; top: -46px; width: 40px; height: 40px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50%; background: rgba(0,0,0,0.65); color: #fff; font-size: 26px; line-height: 1; cursor: pointer; }
     .video-review-modal__close:hover { border-color: rgba(255,255,255,0.5); }
-    @media (max-width: 960px) { .video-review-card { grid-template-columns: minmax(300px, 0.9fr) minmax(0, 1fr); } }
-    @media (max-width: 720px) { .video-reviews-grid, .video-review-card { grid-template-columns: 1fr; } .video-review-card__body { padding: 20px; } }
+    @media (max-width: 960px) { .video-reviews-layout { gap: 22px; } .video-reviews-layout.is-filtered .video-reviews-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 720px) { .video-reviews-section { padding-top: 34px; } .video-reviews-mobile-tabs { justify-content: flex-start; margin-bottom: 24px; } .video-reviews-layout, .video-reviews-grid, .video-reviews-layout.is-filtered .video-reviews-grid, .video-review-card { grid-template-columns: 1fr; } .video-review-card { min-height: 0; } .video-review-card__body { min-height: 0; padding: 20px; } }
+    @media (max-width: 720px) {
+      .video-reviews-column__title { display: none; }
+      .video-reviews-column[hidden] { display: none; }
+    }
     @media (max-width: 640px) { .desktop-break { display: none; } }
     @media (max-width: 640px) { .video-review-modal { padding: 14px; } .video-review-modal__close { right: 0; top: -48px; } }
   </style>
@@ -71,7 +99,7 @@
             <li><a href="about.html" class="header__top-link">О компании</a></li>
             <li><a href="about.html#team" class="header__top-link">Наша команда</a></li>
             <li><a href="contacts-gallery-review.html" class="header__top-link">Видеоотзывы</a></li>
-            <li><a href="cooperation.html" class="header__top-link">Сотрудничество</a></li>
+            <li class="header__top-dropdown"><button type="button" class="header__top-link header__top-dropdown-toggle" aria-haspopup="true" aria-expanded="false">Сотрудничество</button><ul class="header__top-dropdown-menu"><li><a href="cooperation.html">Дизайнеры</a></li><li><a href="cooperation-stovemakers.html">Печники</a></li><li><a href="cooperation-developers.html">Застройщики</a></li><li><a href="cooperation-fireplace-salons.html">Салоны каминов</a></li></ul></li>
           </ul>
         </nav>
       </div>
@@ -91,7 +119,7 @@
                 <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="barbekyu" data-mega-href="catalog-barbekyu-kompleksy.html">Барбекю комплексы</button>
                 <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="izrazcy" data-mega-href="catalog-izrazcy.html">Изразцы</button>
                 <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="seriynye" data-mega-href="catalog-seriynye-modeli.html">Печи-камины<br>из наличия</button>
-                <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="mramor" data-mega-href="catalog-mramornye-kaminy-portaly.html">Мраморные камины<br>и порталы</button>
+                <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="mramor" data-mega-href="catalog-mramornye-portaly.html">Мраморные камины<br>и порталы</button>
                 <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="interior" data-mega-href="catalog-interernaya-keramika.html">Плитка ручной работы</button>
                 <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="fasad" data-mega-href="catalog-fasadnaya-keramika.html">Фасадная керамика</button>
                 <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="metlah" data-mega-href="catalog-metlahskaya-plitka.html">Метлахская плитка</button>
@@ -109,7 +137,7 @@
                 <section class="header__mega-panel" role="tabpanel" data-mega-panel="pechi">
                   <div class="header__mega-cards">
                     <a href="catalog-otopitelnye-pechi.html?subcategory=russkie-pechi" class="header__mega-card header__mega-card--large" role="menuitem"><img src="images/banner-russkie-pechi_desktop.webp" alt="Русские печи"><span>Русские печи</span></a>
-                    <a href="catalog-otopitelnye-pechi.html?subcategory=otopitelnye-pechi" class="header__mega-card" role="menuitem"><img src="images/banner-otopitelnye-pechi_desktop.webp" alt="Отопительные печи"><span>Отопительные печи</span></a>
+                    <a href="catalog-otopitelnye-pechi.html?subcategory=otopitelnye-pechi" class="header__mega-card" role="menuitem"><img src="images/5393.jpg" alt="Отопительные печи"><span>Отопительные печи</span></a>
                     <a href="catalog-otopitelnye-pechi.html?subcategory=bannye-pechi" class="header__mega-card" role="menuitem"><img src="images/banner-bannye-pechi_desktop.webp" alt="Банные печи"><span>Банные печи</span></a>
                     <a href="catalog-otopitelnye-pechi.html?subcategory=bannye-portaly" class="header__mega-card" role="menuitem"><img src="images/banner-bannye-portaly_desktop.webp" alt="Банные порталы"><span>Банные порталы</span></a>
                   </div>
@@ -132,7 +160,8 @@
                 </section>
                 <section class="header__mega-panel" role="tabpanel" data-mega-panel="mramor">
                   <div class="header__mega-cards">
-                    <a href="catalog-mramornye-kaminy-portaly.html" class="header__mega-card header__mega-card--large" role="menuitem"><img src="images/banner-mramor_desktop.webp" alt="Мраморные камины"><span>Мраморные камины<br>и порталы</span></a>
+                    <a href="catalog-mramornye-portaly.html" class="header__mega-card header__mega-card--large" role="menuitem"><img src="images/banner-mramor_desktop.webp" alt="Мраморные порталы"><span>Мраморные порталы</span></a>
+                    <a href="catalog-kaminy-v-oblicovke-mramorom.html" class="header__mega-card" role="menuitem"><img src="images/kaminy_iz_mramora.jpg" alt="Камины в облицовке мрамором"><span>Камины в облицовке<br>мрамором</span></a>
                   </div>
                 </section>
                 <section class="header__mega-panel" role="tabpanel" data-mega-panel="interior">
@@ -179,7 +208,7 @@
             <li><a href="about.html" class="header__nav-link">О компании</a></li>
             <li><a href="about.html#team" class="header__nav-link">Наша команда</a></li>
             <li><a href="contacts-gallery-review.html" class="header__nav-link">Видеоотзывы</a></li>
-            <li><a href="cooperation.html" class="header__nav-link">Сотрудничество</a></li>
+            <li class="header__nav-dropdown header__nav-dropdown--simple"><a href="cooperation.html" class="header__nav-link" aria-haspopup="true" aria-expanded="false">Сотрудничество</a><ul class="header__dropdown-menu"><li><a href="cooperation.html">Дизайнеры</a></li><li><a href="cooperation-stovemakers.html">Печники</a></li><li><a href="cooperation-developers.html">Застройщики</a></li><li><a href="cooperation-fireplace-salons.html">Салоны каминов</a></li></ul></li>
           </ul>
           <a href="tel:+74952293046" data-calltracking="phone" data-calltracking-group="main" class="header__nav-phone-link">+7 (495) 229-30-46</a>
           <div class="header__nav-messengers" aria-label="Мессенджеры">
@@ -216,7 +245,14 @@
 
     <section class="video-reviews-section">
       <div class="container">
-        <div class="video-reviews-grid">
+        <div class="video-reviews-mobile-tabs" role="tablist" aria-label="Разделы видео">
+          <button class="video-reviews-mobile-tab" type="button" data-video-section-tab="reviews" aria-selected="false">Видеоотзывы</button>
+          <button class="video-reviews-mobile-tab" type="button" data-video-section-tab="blog" aria-selected="false">Видеоблог</button>
+        </div>
+        <div class="video-reviews-layout">
+          <section class="video-reviews-column" data-video-section="reviews" aria-labelledby="videoReviewsTitle">
+            <h2 class="video-reviews-column__title" id="videoReviewsTitle">Видеоотзывы</h2>
+            <div class="video-reviews-grid">
           <article class="video-review-card">
             <a class="video-review-card__media" href="#video-178201211_456239596" data-vk="video-178201211_456239596" aria-label="Смотреть видеоотзыв о камине Дорф">
               <img src="images/video_thumb_dorf_client.jpg" alt="Камин Дорф — отзыв клиента" loading="lazy" decoding="async">
@@ -382,6 +418,56 @@
               <a href="#video-178201211_456239070" data-vk="video-178201211_456239070" class="video-review-card__link">Смотреть видео</a>
             </div>
           </article>
+            </div>
+          </section>
+
+          <section class="video-reviews-column" data-video-section="blog" aria-labelledby="videoBlogTitle">
+            <h2 class="video-reviews-column__title" id="videoBlogTitle">Видеоблог</h2>
+            <div class="video-reviews-grid">
+              <article class="video-review-card video-review-card--placeholder">
+                <div class="video-review-card__media" aria-hidden="true">
+                  <div class="video-review-card__placeholder-media">
+                    <span class="video-review-card__play"></span>
+                    <span class="video-review-card__placeholder-label">Скоро</span>
+                  </div>
+                </div>
+                <div class="video-review-card__body">
+                  <p class="video-review-card__eyebrow">Видеоблог 01</p>
+                  <h2>Проектирование камина: с чего начать</h2>
+                  <p>Здесь появится выпуск видеоблога о первых решениях по камину, подборе формата и подготовке проекта.</p>
+                  <span class="video-review-card__link">Видео готовится</span>
+                </div>
+              </article>
+              <article class="video-review-card video-review-card--placeholder">
+                <div class="video-review-card__media" aria-hidden="true">
+                  <div class="video-review-card__placeholder-media">
+                    <span class="video-review-card__play"></span>
+                    <span class="video-review-card__placeholder-label">Скоро</span>
+                  </div>
+                </div>
+                <div class="video-review-card__body">
+                  <p class="video-review-card__eyebrow">Видеоблог 02</p>
+                  <h2>Как выбрать изразцы под интерьер</h2>
+                  <p>Временная заглушка для будущего видео о коллекциях, глазурях и сочетании керамики с материалами дома.</p>
+                  <span class="video-review-card__link">Видео готовится</span>
+                </div>
+              </article>
+              <article class="video-review-card video-review-card--placeholder">
+                <div class="video-review-card__media" aria-hidden="true">
+                  <div class="video-review-card__placeholder-media">
+                    <span class="video-review-card__play"></span>
+                    <span class="video-review-card__placeholder-label">Скоро</span>
+                  </div>
+                </div>
+                <div class="video-review-card__body">
+                  <p class="video-review-card__eyebrow">Видеоблог 03</p>
+                  <h2>Монтаж и уход за керамической облицовкой</h2>
+                  <p>Позже здесь будет ролик с практическими советами по эксплуатации, обслуживанию и срокам работ.</p>
+                  <span class="video-review-card__link">Видео готовится</span>
+                </div>
+              </article>
+            </div>
+          </section>
         </div>
       </div>
     </section>
@@ -479,6 +565,173 @@
       var modal = document.getElementById('videoReviewModal');
       var player = document.getElementById('videoReviewPlayer');
       var closeBtn = modal ? modal.querySelector('.video-review-modal__close') : null;
+      var videoTabs = document.querySelectorAll('[data-video-section-tab]');
+      var videoSections = document.querySelectorAll('[data-video-section]');
+      var videoLayout = document.querySelector('.video-reviews-layout');
+      var videoMobileMedia = window.matchMedia('(max-width: 720px)');
+      var videoColumnPageSize = 5;
+      var videoFilteredPageSize = 6;
+      var videoCurrentPage = 1;
+      var activeVideoSection = '';
+
+      function createVideoBlogPlaceholder(index) {
+        var article = document.createElement('article');
+        article.className = 'video-review-card video-review-card--placeholder';
+        article.innerHTML =
+          '<div class="video-review-card__media" aria-hidden="true">' +
+            '<div class="video-review-card__placeholder-media">' +
+              '<span class="video-review-card__play"></span>' +
+              '<span class="video-review-card__placeholder-label">Скоро</span>' +
+            '</div>' +
+          '</div>' +
+          '<div class="video-review-card__body">' +
+            '<p class="video-review-card__eyebrow">Видеоблог ' + String(index).padStart(2, '0') + '</p>' +
+            '<h2>Новый выпуск видеоблога</h2>' +
+            '<p>Заглушка для будущего ролика. После добавления видео карточку можно заменить реальным превью, названием и ссылкой.</p>' +
+            '<span class="video-review-card__link">Видео готовится</span>' +
+          '</div>';
+        return article;
+      }
+
+      function ensureVideoBlogPlaceholders() {
+        var blogSection = document.querySelector('[data-video-section="blog"]');
+        var blogGrid = blogSection ? blogSection.querySelector('.video-reviews-grid') : null;
+        if (!blogGrid) return;
+
+        var targetCount = 19;
+        var currentCount = blogGrid.querySelectorAll('.video-review-card').length;
+        for (var i = currentCount + 1; i <= targetCount; i++) {
+          blogGrid.appendChild(createVideoBlogPlaceholder(i));
+        }
+      }
+
+      function getVideoPageSize(sectionName) {
+        return sectionName ? videoFilteredPageSize : videoColumnPageSize;
+      }
+
+      function getSectionPages(section, pageSize) {
+        var grid = section.querySelector('.video-reviews-grid');
+        var cards = grid ? grid.querySelectorAll('.video-review-card') : [];
+        return Math.max(1, Math.ceil(cards.length / pageSize));
+      }
+
+      function getVideoTotalPages(sectionName) {
+        var pageSize = getVideoPageSize(sectionName);
+
+        if (sectionName) {
+          var activeSection = document.querySelector('[data-video-section="' + sectionName + '"]');
+          return activeSection ? getSectionPages(activeSection, pageSize) : 1;
+        }
+
+        return Array.prototype.reduce.call(videoSections, function(maxPages, section) {
+          return Math.max(maxPages, getSectionPages(section, pageSize));
+        }, 1);
+      }
+
+      function renderSectionPage(section, pageNumber, pageSize) {
+        var sectionName = section.getAttribute('data-video-section');
+        var grid = section.querySelector('.video-reviews-grid');
+        if (!sectionName || !grid) return;
+
+        var cards = Array.prototype.slice.call(grid.querySelectorAll('.video-review-card'));
+
+        cards.forEach(function(card, index) {
+          var page = Math.floor(index / pageSize) + 1;
+          card.hidden = page !== pageNumber;
+        });
+      }
+
+      function renderVideoPagination(totalPages) {
+        var pagination = videoLayout ? videoLayout.parentNode.querySelector('.video-reviews-pagination') : null;
+        if (!pagination) {
+          pagination = document.createElement('nav');
+          pagination.className = 'video-reviews-pagination';
+          pagination.setAttribute('aria-label', 'Страницы раздела');
+          if (videoLayout) {
+            videoLayout.insertAdjacentElement('afterend', pagination);
+          }
+        }
+
+        pagination.innerHTML = '';
+        pagination.hidden = totalPages <= 1;
+        if (totalPages <= 1) return;
+
+        for (var pageIndex = 1; pageIndex <= totalPages; pageIndex++) {
+          var button = document.createElement('button');
+          button.type = 'button';
+          button.className = 'video-reviews-pagination__btn' + (pageIndex === videoCurrentPage ? ' is-active' : '');
+          button.textContent = pageIndex;
+          button.setAttribute('aria-label', 'Страница ' + pageIndex);
+          button.setAttribute('aria-current', pageIndex === videoCurrentPage ? 'page' : 'false');
+          button.addEventListener('click', (function(page) {
+            return function() {
+              videoCurrentPage = page;
+              renderAllVideoPagination();
+              if (videoMobileMedia.matches) {
+                videoLayout.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              }
+            };
+          })(pageIndex));
+          pagination.appendChild(button);
+        }
+      }
+
+      function renderAllVideoPagination() {
+        var totalPages = getVideoTotalPages(activeVideoSection);
+        var pageSize = getVideoPageSize(activeVideoSection);
+        videoCurrentPage = Math.min(videoCurrentPage, totalPages);
+
+        videoSections.forEach(function(section) {
+          renderSectionPage(section, videoCurrentPage, pageSize);
+        });
+        renderVideoPagination(totalPages);
+      }
+
+      function setVideoSection(sectionName) {
+        sectionName = sectionName || '';
+        if (activeVideoSection !== sectionName) {
+          videoCurrentPage = 1;
+        }
+        activeVideoSection = sectionName;
+
+        videoTabs.forEach(function(tab) {
+          var isActive = tab.getAttribute('data-video-section-tab') === sectionName;
+          tab.classList.toggle('is-active', isActive);
+          tab.setAttribute('aria-selected', isActive ? 'true' : 'false');
+        });
+
+        if (videoLayout) {
+          videoLayout.classList.toggle('is-filtered', Boolean(sectionName));
+        }
+
+        videoSections.forEach(function(section) {
+          var isActive = section.getAttribute('data-video-section') === sectionName;
+          section.hidden = sectionName ? !isActive : false;
+        });
+        renderAllVideoPagination();
+      }
+
+      videoTabs.forEach(function(tab) {
+        tab.addEventListener('click', function() {
+          var requestedSection = this.getAttribute('data-video-section-tab');
+          var shouldResetDesktopFilter = !videoMobileMedia.matches && this.classList.contains('is-active');
+          setVideoSection(shouldResetDesktopFilter ? '' : requestedSection);
+        });
+      });
+
+      if (videoMobileMedia.addEventListener) {
+        videoMobileMedia.addEventListener('change', function() {
+          var activeTab = document.querySelector('[data-video-section-tab].is-active');
+          setVideoSection(activeTab ? activeTab.getAttribute('data-video-section-tab') : (videoMobileMedia.matches ? 'reviews' : ''));
+        });
+      } else if (videoMobileMedia.addListener) {
+        videoMobileMedia.addListener(function() {
+          var activeTab = document.querySelector('[data-video-section-tab].is-active');
+          setVideoSection(activeTab ? activeTab.getAttribute('data-video-section-tab') : (videoMobileMedia.matches ? 'reviews' : ''));
+        });
+      }
+      ensureVideoBlogPlaceholders();
+      setVideoSection(videoMobileMedia.matches ? 'reviews' : '');
 
       function buildVkEmbedUrl(vkId) {
         var parts = vkId.replace('video', '').split('_');
