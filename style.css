@@ -4520,7 +4520,7 @@ ul, ol {
     left: 0;
     right: 0;
     bottom: 0;
-    height: 30%;
+    height: 12%;
     background: linear-gradient(to bottom, rgba(16,16,16,0) 0%, var(--bg) 100%);
     pointer-events: none;
     z-index: 1;
@@ -5866,6 +5866,7 @@ ul, ol {
   margin: 0 auto 90px;
   border: 1px solid rgba(255,255,255,0.1);
   background: rgba(255,255,255,0.03);
+  cursor: pointer;
   overflow: hidden;
   transition: border-color 0.25s ease, background 0.25s ease, transform 0.25s ease;
 }
@@ -5873,6 +5874,10 @@ ul, ol {
 .square_blocks_3__project-card:focus-within {
   border-color: rgba(226, 77, 54, 0.45);
   background: rgba(255,255,255,0.05);
+}
+.square_blocks_3__project-card:focus-visible {
+  outline: 2px solid rgba(226, 77, 54, 0.8);
+  outline-offset: 4px;
 }
 .square_blocks_3__project-gallery {
   position: relative;
@@ -6174,7 +6179,8 @@ ul, ol {
     background-position: center center;
     height: 440px;
     margin: 0;
-    padding: 30px 0;
+    box-sizing: border-box;
+    padding: 76px 16px 30px;
   }
   .projects_experience_block .block_content .top_text h2 {
     font-size: 22px;

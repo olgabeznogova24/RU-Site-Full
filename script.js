@@ -7,6 +7,7 @@
   let lastScroll = 0;
 
   function onScroll() {
+    if (!header) return;
     const scrollY = window.scrollY;
     if (scrollY >= 42) {
       header.classList.add('header--scrolled');
@@ -1136,6 +1137,27 @@
     setPhoto(0);
   });
 
+  document.querySelectorAll('[data-card-link]').forEach(function(card) {
+    var href = card.getAttribute('data-card-link');
+    if (!href) return;
+
+    function isInteractive(target) {
+      return target.closest('a, button, input, textarea, select, label');
+    }
+
+    card.addEventListener('click', function(event) {
+      if (isInteractive(event.target)) return;
+      window.location.href = href;
+    });
+
+    card.addEventListener('keydown', function(event) {
+      if (event.key !== 'Enter' && event.key !== ' ') return;
+      if (isInteractive(event.target)) return;
+      event.preventDefault();
+      window.location.href = href;
+    });
+  });
+
   /* ----- Window resize ----- */
   var resizeTimer;
   window.addEventListener('resize', function () {
@@ -1148,12 +1170,43 @@
   });
 
   /* ----- Cookie banner ----- */
-  var cookieBanner = document.getElementById('cookieBanner');
+  function ensureCookieBannerStyles() {
+    if (document.getElementById('cookieBannerGeneratedStyles')) return;
+
+    var style = document.createElement('style');
+    style.id = 'cookieBannerGeneratedStyles';
+    style.textContent = [
+      '.cookie-banner{position:fixed;bottom:0;left:0;right:0;z-index:9999;background:#1a1a1a;border-top:1px solid rgba(255,255,255,0.1);padding:16px 24px;display:flex;align-items:center;gap:20px;box-shadow:0 -4px 24px rgba(0,0,0,0.4);transform:translateY(0);transition:transform 0.3s ease;}',
+      '.cookie-banner.cookie-banner--hidden{transform:translateY(110%);}',
+      '.cookie-banner__text{font-size:13px;color:rgba(255,255,255,0.75);line-height:1.5;flex:1;margin:0;}',
+      '.cookie-banner__text a{color:#cb3b25;text-decoration:none;}',
+      '.cookie-banner__text a:hover{text-decoration:underline;}',
+      '.cookie-banner__btn{flex-shrink:0;background:#cb3b25;color:#fff;border:none;border-radius:6px;padding:10px 24px;font-size:14px;font-weight:600;cursor:pointer;transition:background 0.2s;white-space:nowrap;}',
+      '.cookie-banner__btn:hover{background:#e04428;}',
+      '@media (max-width:600px){.cookie-banner{flex-direction:column;align-items:flex-start;gap:12px;padding:16px;}.cookie-banner__btn{width:100%;text-align:center;}}'
+    ].join('');
+    document.head.appendChild(style);
+  }
+
+  function createCookieBanner() {
+    ensureCookieBannerStyles();
+
+    var banner = document.createElement('div');
+    banner.className = 'cookie-banner cookie-banner--hidden';
+    banner.id = 'cookieBanner';
+    banner.innerHTML = '<p class="cookie-banner__text">Мы используем файлы cookie. Продолжая использование сайта, вы соглашаетесь с нашей <a href="privacy.html">Политикой конфиденциальности</a>.</p><button class="cookie-banner__btn" id="cookieAccept" type="button">Принять</button>';
+    document.body.appendChild(banner);
+    return banner;
+  }
+
+  var cookieBanner = document.getElementById('cookieBanner') || createCookieBanner();
   var cookieAcceptBtn = document.getElementById('cookieAccept');
   if (cookieBanner && cookieAcceptBtn) {
     if (localStorage.getItem('cookieAccepted')) {
       cookieBanner.style.display = 'none';
     } else {
+      cookieBanner.classList.add('cookie-banner--hidden');
+
       cookieAcceptBtn.addEventListener('click', function () {
         localStorage.setItem('cookieAccepted', '1');
         cookieBanner.classList.add('cookie-banner--hidden');
@@ -1161,7 +1214,8 @@
       });
 
       var catSection = document.getElementById('categories');
-      if (catSection && 'IntersectionObserver' in window) {
+      var isHomePage = Boolean(document.querySelector('.hero') && catSection);
+      if (isHomePage && 'IntersectionObserver' in window) {
         var cookieObserver = new IntersectionObserver(function (entries) {
           if (entries[0].isIntersecting) {
             cookieBanner.classList.remove('cookie-banner--hidden');
@@ -1169,6 +1223,14 @@
           }
         }, { threshold: 0.1 });
         cookieObserver.observe(catSection);
+      } else if (isHomePage) {
+        var showCookieOnScroll = function () {
+          if (window.scrollY < 80) return;
+          cookieBanner.classList.remove('cookie-banner--hidden');
+          window.removeEventListener('scroll', showCookieOnScroll);
+        };
+        window.addEventListener('scroll', showCookieOnScroll, { passive: true });
+        showCookieOnScroll();
       } else {
         cookieBanner.classList.remove('cookie-banner--hidden');
       }
