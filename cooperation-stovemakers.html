@@ -4,10 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Сотрудничество для печников — CeramicaDecor</title>
-  <meta name="description" content="Сотрудничество CeramicaDecor для печников: дизайн изразцовой облицовки по техническому заданию, проект, рабочие чертежи, производство изразцов и партнерская скидка.">
+  <meta name="description" content="Сотрудничество CeramicaDecor для печников: изразцовые облицовки по техническому заданию, дизайн, рабочие чертежи, производство и проектная поддержка.">
   <link rel="canonical" href="https://ceramicadecor.ru/cooperation-stovemakers.html">
   <meta property="og:title" content="Сотрудничество для печников — CeramicaDecor">
-  <meta property="og:description" content="Помогаем печникам закрывать дизайн, проектирование и производство изразцовой облицовки для каминов и печей по техническому заданию.">
+  <meta property="og:description" content="Помогаем печникам дополнять проекты изразцовой облицовкой: дизайн, расчеты, рабочие чертежи, производство и сопровождение.">
   <meta property="og:image" content="images/banner_pechniki_hero.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -25,12 +25,15 @@
   <style>
     .cooperation-hero {
       position: relative;
-      min-height: 60vh;
+      min-height: 620px;
+      box-sizing: border-box;
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
       background: #101010 url('images/banner_pechniki_hero.jpg') center center / cover no-repeat;
+      background-position: 50% 37%;
+      background-size: cover;
       overflow: hidden;
       padding: 160px 0 100px;
     }
@@ -44,7 +47,9 @@
     .cooperation-hero__content {
       position: relative;
       z-index: 1;
-      max-width: none;
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 0 16px;
     }
     .cooperation-section__eyebrow {
       display: inline-flex;
@@ -73,13 +78,64 @@
       font-weight: 300;
       line-height: 1.6;
     }
+    .cooperation-hero__actions {
+      display: flex;
+      justify-content: center;
+      margin-top: 34px;
+    }
     .cooperation-audience,
+    .cooperation-stats,
     .cooperation-formats,
     .cooperation-process,
-    .cooperation-support,
     .cooperation-form-section {
       background: #101010;
       padding: 96px 0;
+    }
+    .cooperation-audience {
+      padding-bottom: 48px;
+    }
+    .cooperation-stats {
+      position: relative;
+      overflow: hidden;
+      padding: 80px 0;
+      border: 0;
+      background: conic-gradient(from 90deg at 50% 99.94%, rgba(124, 42, 29, 0) 0deg, rgba(226, 77, 54, 0.6) 263.08deg, #FF7D0B 304.62deg, #FFFFFF 360deg);
+    }
+    .cooperation-stats::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background:
+        linear-gradient(180deg, rgba(17,17,17,0.62) 0%, rgba(17,17,17,0.78) 100%),
+        rgba(17,17,17,0.2);
+    }
+    .cooperation-stats .container {
+      position: relative;
+      z-index: 2;
+    }
+    .cooperation-stats .stats__grid {
+      margin-top: 48px;
+      padding: 0 24px;
+    }
+    .cooperation-stats .stats__item {
+      align-self: flex-start;
+    }
+    .cooperation-stats .stats__number {
+      text-shadow: 0 10px 36px rgba(0,0,0,0.28);
+    }
+    .cooperation-stats .stats__label {
+      color: rgba(255,255,255,0.76);
+    }
+    .cooperation-stats .stats__divider {
+      background: rgba(255,255,255,0.22);
+    }
+    .cooperation-formats {
+      padding-top: 48px;
+      padding-bottom: 48px;
+    }
+    .cooperation-process {
+      padding-top: 48px;
     }
     .cooperation-section__header {
       max-width: 820px;
@@ -90,12 +146,19 @@
       margin-right: auto;
       text-align: center;
     }
+    .cooperation-audience__label {
+      margin: 0 0 18px;
+      text-align: left;
+    }
     .cooperation-section__text {
       margin: 16px 0 0;
       color: rgba(255,255,255,0.58);
       font-size: 1.05rem;
       font-weight: 300;
       line-height: 1.7;
+    }
+    .cooperation-section__text-break {
+      display: inline;
     }
     .cooperation-cards {
       display: grid;
@@ -104,7 +167,6 @@
     }
     .cooperation-card,
     .cooperation-step,
-    .cooperation-support__panel,
     .cooperation-form {
       background: rgba(255,255,255,0.035);
       border: 1px solid rgba(255,255,255,0.08);
@@ -123,15 +185,36 @@
       grid-column: 1 / -1;
       min-height: 0;
     }
+    .cooperation-card--featured {
+      position: relative;
+      padding: 42px 40px;
+      overflow: hidden;
+      background: rgba(255,255,255,0.035);
+      border-color: rgba(203,59,37,0.34);
+      box-shadow: 0 24px 70px rgba(0,0,0,0.28);
+    }
+    .cooperation-card--featured::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-top: 1px solid rgba(255,255,255,0.12);
+      pointer-events: none;
+    }
+    .cooperation-card__heading {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
     .cooperation-card__icon {
       width: 42px;
       height: 42px;
-      margin-bottom: 22px;
+      flex: 0 0 auto;
+      margin-bottom: 0;
       color: var(--primary);
     }
     .cooperation-card__title,
-    .cooperation-step__title,
-    .cooperation-support__title {
+    .cooperation-step__title {
       margin: 0 0 12px;
       color: #fff;
       font-family: var(--font-heading);
@@ -139,9 +222,29 @@
       font-weight: 400;
       line-height: 1.3;
     }
+    .cooperation-card__heading .cooperation-card__title {
+      margin-bottom: 0;
+    }
+    .cooperation-card--featured .cooperation-card__heading {
+      gap: 18px;
+      margin-bottom: 30px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .cooperation-card--featured .cooperation-card__icon {
+      width: 52px;
+      height: 52px;
+      padding: 10px;
+      border-radius: 50%;
+      background: rgba(203,59,37,0.14);
+      border: 1px solid rgba(203,59,37,0.32);
+    }
+    .cooperation-card--featured .cooperation-card__title {
+      font-size: clamp(1.55rem, 2.6vw, 2.35rem);
+      line-height: 1.18;
+    }
     .cooperation-card__text,
     .cooperation-step__text,
-    .cooperation-support__text,
     .cooperation-list li {
       color: rgba(255,255,255,0.58);
       font-size: 0.95rem;
@@ -173,6 +276,37 @@
       border-radius: 50%;
       background: var(--primary);
     }
+    .cooperation-card--featured .cooperation-card__list {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px 24px;
+      margin-top: 0;
+      counter-reset: featured-benefit;
+    }
+    .cooperation-card--featured .cooperation-card__list li {
+      min-height: 118px;
+      padding: 22px 22px 22px 76px;
+      background: rgba(16,16,16,0.34);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+      color: rgba(255,255,255,0.76);
+      font-size: 1rem;
+      line-height: 1.55;
+      counter-increment: featured-benefit;
+    }
+    .cooperation-card--featured .cooperation-card__list li::before {
+      content: counter(featured-benefit, decimal-leading-zero);
+      top: 24px;
+      left: 22px;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(203,59,37,0.16);
+      color: rgba(203,59,37,0.95);
+      font-size: 0.76rem;
+      font-weight: 600;
+      line-height: 36px;
+      text-align: center;
+    }
     .cooperation-card__note {
       margin: 20px 0 0;
       color: rgba(255,255,255,0.78);
@@ -180,17 +314,97 @@
       font-weight: 500;
       line-height: 1.45;
     }
+    .cooperation-reasons {
+      margin-top: 56px;
+    }
+    .cooperation-reasons__header {
+      max-width: 760px;
+      margin: 0 auto 30px;
+      text-align: center;
+    }
+    .cooperation-reasons__grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+      counter-reset: reason-card;
+    }
+    .cooperation-reason {
+      position: relative;
+      min-height: 260px;
+      padding: 28px 24px 26px;
+      background: rgba(255,255,255,0.035);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+      overflow: hidden;
+      counter-increment: reason-card;
+    }
+    .cooperation-reason::before {
+      content: counter(reason-card, decimal-leading-zero);
+      position: absolute;
+      top: 28px;
+      left: 24px;
+      display: block;
+      color: rgba(203,59,37,0.78);
+      font-family: var(--font-heading);
+      font-size: 2rem;
+      line-height: 1;
+    }
+    .cooperation-reason__title {
+      display: flex;
+      align-items: center;
+      min-height: 2rem;
+      margin: 0 0 24px;
+      padding-left: 58px;
+      color: #fff;
+      font-family: var(--font-heading);
+      font-size: 1.2rem;
+      font-weight: 400;
+      line-height: 1.25;
+    }
+    .cooperation-reason__text,
+    .cooperation-reason__sublist li {
+      color: rgba(255,255,255,0.62);
+      font-size: 0.95rem;
+      font-weight: 300;
+      line-height: 1.6;
+    }
+    .cooperation-reason__sublist {
+      display: grid;
+      gap: 8px;
+      margin: 14px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+    .cooperation-reason__sublist li {
+      position: relative;
+      padding-left: 18px;
+    }
+    .cooperation-reason__sublist li::before {
+      content: '';
+      position: absolute;
+      top: 0.72em;
+      left: 0;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--primary);
+    }
     .cooperation-formats__grid {
       display: grid;
-      grid-template-columns: 0.86fr 1.14fr;
+      grid-template-columns: 0.92fr 1.08fr;
       gap: 40px;
       align-items: stretch;
     }
     .cooperation-formats__image {
-      min-height: 520px;
+      height: 572px;
+      margin-top: 34px;
       border-radius: 12px;
       overflow: hidden;
       border: 1px solid rgba(255,255,255,0.08);
+    }
+    .cooperation-formats__image picture {
+      display: block;
+      height: 100%;
     }
     .cooperation-formats__image img {
       width: 100%;
@@ -198,79 +412,422 @@
       object-fit: cover;
       display: block;
     }
+    .cooperation-formats__content {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+    }
+    .cooperation-formats__content .cooperation-section__header {
+      margin-bottom: 20px;
+    }
+    .cooperation-formats__content .section-title {
+      margin-bottom: 0;
+    }
     .cooperation-list {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 16px;
+      grid-template-columns: 1fr;
+      grid-auto-rows: minmax(86px, auto);
+      gap: 14px;
       margin: 0;
       padding: 0;
       list-style: none;
+      counter-reset: cooperation-list;
     }
     .cooperation-list li {
       position: relative;
-      padding: 20px 20px 20px 46px;
+      display: flex;
+      align-items: center;
+      min-height: 86px;
+      padding: 22px 24px 22px 72px;
       background: rgba(255,255,255,0.035);
       border: 1px solid rgba(255,255,255,0.08);
       border-radius: 12px;
+      color: rgba(255,255,255,0.74);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.98rem;
+      font-weight: 300;
+      line-height: 1.45;
+      transition: border-color 0.25s ease, transform 0.25s ease;
+      counter-increment: cooperation-list;
+    }
+    .cooperation-list li:hover {
+      border-color: rgba(203,59,37,0.4);
+      transform: translateY(-2px);
     }
     .cooperation-list li::before {
-      content: '';
+      content: counter(cooperation-list, decimal-leading-zero);
       position: absolute;
-      top: 25px;
-      left: 22px;
-      width: 8px;
-      height: 8px;
+      top: 50%;
+      left: 24px;
+      width: 32px;
+      height: 32px;
+      transform: translateY(-50%);
       border-radius: 50%;
-      background: var(--primary);
+      background: rgba(203,59,37,0.16);
+      color: rgba(203,59,37,0.92);
+      font-size: 0.72rem;
+      font-weight: 600;
+      line-height: 32px;
+      text-align: center;
     }
     .cooperation-steps {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
       counter-reset: cooperation-step;
     }
     .cooperation-step {
       position: relative;
-      padding: 30px 24px;
+      padding: 34px 30px;
       overflow: hidden;
       counter-increment: cooperation-step;
     }
     .cooperation-step::before {
+      content: none;
+    }
+    .cooperation-step__header {
+      margin-bottom: 26px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .cooperation-step__header .cooperation-step__text {
+      margin-bottom: 0;
+    }
+    .cooperation-step__header .cooperation-step__title {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      min-height: 2.2rem;
+      font-size: clamp(1.55rem, 2vw, 2rem);
+      line-height: 1.18;
+    }
+    .cooperation-step__header .cooperation-step__title::before {
       content: counter(cooperation-step, decimal-leading-zero);
-      display: block;
-      margin-bottom: 32px;
+      flex: 0 0 auto;
       color: rgba(203,59,37,0.78);
       font-family: var(--font-heading);
       font-size: 2.2rem;
       line-height: 1;
     }
-    .cooperation-support__grid {
+    .cooperation-step__list {
       display: grid;
-      grid-template-columns: 1.08fr 0.92fr;
-      gap: 40px;
-      align-items: center;
+      gap: 12px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      counter-reset: scenario-step;
     }
-    .cooperation-support__panel {
-      padding: 38px 34px;
-    }
-    .cooperation-support__image {
+    .cooperation-step__list li {
+      position: relative;
+      min-height: 88px;
+      padding: 20px 20px 20px 66px;
+      background: rgba(16,16,16,0.34);
+      border: 1px solid rgba(255,255,255,0.1);
       border-radius: 12px;
-      overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.08);
+      color: rgba(255,255,255,0.68);
+      font-size: 0.95rem;
+      font-weight: 300;
+      line-height: 1.6;
+      counter-increment: scenario-step;
     }
-    .cooperation-support__image img {
-      width: 100%;
-      aspect-ratio: 4 / 3;
-      object-fit: cover;
-      display: block;
+    .cooperation-step__list li::before {
+      content: counter(scenario-step, decimal-leading-zero);
+      position: absolute;
+      top: 22px;
+      left: 20px;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: rgba(203,59,37,0.16);
+      color: rgba(203,59,37,0.95);
+      font-size: 0.7rem;
+      font-weight: 600;
+      line-height: 30px;
+      text-align: center;
     }
     .cooperation-form-section {
-      padding-top: 80px;
+      padding-top: 48px;
+    }
+    .cooperation-form-section .container {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 0 28px;
+      align-items: start;
+    }
+    .cooperation-form-section .cooperation-section__header {
+      grid-column: 1 / -1;
+      margin-bottom: 18px;
     }
     .cooperation-form {
-      max-width: 760px;
-      margin: 0 auto;
+      grid-column: 2;
+      width: 100%;
+      max-width: none;
+      margin: calc(clamp(1.5rem, 2.5vw, 2rem) * 1.2 + 14px) 0 0;
       padding: 36px;
+    }
+    .cooperation-contact-block {
+      grid-column: 1;
+      display: grid;
+      grid-template-columns: 1fr;
+      align-items: stretch;
+      gap: 28px;
+      margin: 0;
+    }
+    .cooperation-contact-block__text {
+      grid-column: 1 / -1;
+      max-width: 820px;
+      margin: 0 auto 48px;
+      color: rgba(255,255,255,0.58);
+      font-size: 1.05rem;
+      font-weight: 300;
+      line-height: 1.7;
+      text-align: center;
+    }
+    .cooperation-contact-block__text-line {
+      display: block;
+    }
+    .cooperation-contact-block .contacts-cities__title {
+      margin-bottom: 14px;
+      color: var(--white);
+      font-family: var(--font-heading);
+      font-size: clamp(1.5rem, 2.5vw, 2rem);
+      font-weight: 400;
+      line-height: 1.2;
+    }
+    .cooperation-contact-block .contacts-cities__row {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      height: calc(100% - 52px);
+    }
+    .cooperation-contact-block .contacts-info,
+    .cooperation-contact-block .contacts-managers {
+      min-width: 0;
+      height: 100%;
+      padding: 24px 28px;
+      background: rgba(255,255,255,0.035);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 20px;
+    }
+    .cooperation-contact-block .contacts-cities,
+    .cooperation-contact-block .contacts-managers-section {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      height: 100%;
+    }
+    .cooperation-contact-block .contacts-info {
+      display: grid;
+      gap: 22px;
+    }
+    .cooperation-contact-block .contacts-info__city {
+      margin: 0 0 8px;
+      color: var(--white);
+      font-family: var(--font-heading);
+      font-size: 1.25rem;
+      font-weight: 400;
+    }
+    .cooperation-contact-block .contacts-info__phone,
+    .cooperation-contact-block .contacts-info__link {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+      color: var(--white);
+      font-family: var(--font-heading);
+      font-size: clamp(1rem, 1.4vw, 1.25rem);
+      text-decoration: none;
+      transition: color 0.25s ease;
+    }
+    .cooperation-contact-block .contacts-info__phone {
+      margin-bottom: 4px;
+    }
+    .cooperation-contact-block .contacts-info__phone:hover,
+    .cooperation-contact-block .contacts-info__link:hover {
+      color: var(--primary);
+    }
+    .cooperation-contact-block .contacts-info__links {
+      margin: 0 0 12px;
+      padding: 0;
+      list-style: none;
+    }
+    .cooperation-contact-block .contacts-info__links li {
+      padding: 6px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .cooperation-contact-block .contacts-info__links li:last-child {
+      border-bottom: 0;
+    }
+    .cooperation-contact-block .contacts-info__link-icon,
+    .cooperation-contact-block .contacts-info__meta-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+      color: var(--text-muted);
+    }
+    .cooperation-contact-block .contacts-info__meta {
+      padding-top: 4px;
+    }
+    .cooperation-contact-block .contacts-info__meta-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 5px 0;
+      color: var(--text-muted);
+      font-size: 0.9375rem;
+    }
+    .cooperation-contact-block .contacts-info__meta-icon {
+      margin-top: 2px;
+    }
+    .cooperation-contact-block .contacts-info__meta-sub {
+      display: block;
+      margin-top: 2px;
+      color: rgba(255,255,255,0.38);
+      font-size: 0.8125rem;
+    }
+    .cooperation-contact-block .contacts-managers-section {
+      gap: 0;
+    }
+    .cooperation-contact-block .contacts-managers__description {
+      max-width: 680px;
+      margin: -4px 0 0;
+      color: var(--text-muted);
+      font-size: 0.9375rem;
+      line-height: 1.55;
+    }
+    .cooperation-contact-block .contacts-managers__groups {
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+    }
+    .cooperation-contact-block .contacts-managers__group-title {
+      margin: 0 0 8px;
+      color: var(--white);
+      font-size: 0.8125rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .cooperation-contact-block .contacts-managers__list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px 24px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .cooperation-contact-block .contacts-managers__list--single {
+      grid-template-columns: 1fr;
+    }
+    .cooperation-contact-block .contacts-managers__item {
+      display: grid;
+      grid-template-columns: 144px minmax(0, 1fr);
+      gap: 6px 16px;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .cooperation-contact-block .contacts-managers__item:last-child {
+      border-bottom: 0;
+    }
+    .cooperation-contact-block .contacts-managers__name {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      color: var(--text-muted);
+      font-size: 0.9375rem;
+    }
+    .cooperation-contact-block .contacts-managers__phone {
+      display: inline-flex;
+      padding: 0;
+      border: 0;
+      background: none;
+      color: var(--white);
+      cursor: pointer;
+      font-family: var(--font-heading);
+      font-size: 1.125rem;
+      line-height: 1.2;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: color 0.25s ease;
+    }
+    .cooperation-contact-block .contacts-managers__phone:hover {
+      color: var(--primary);
+    }
+    .cooperation-contact-block .contacts-managers__contact {
+      position: relative;
+      justify-self: start;
+    }
+    .cooperation-contact-block .contacts-managers__contact summary {
+      list-style: none;
+    }
+    .cooperation-contact-block .contacts-managers__contact summary::-webkit-details-marker {
+      display: none;
+    }
+    .cooperation-contact-block .contacts-managers__contact-menu {
+      position: absolute;
+      right: 0;
+      top: calc(100% + 10px);
+      z-index: 10;
+      display: grid;
+      grid-template-columns: repeat(3, 42px);
+      gap: 8px;
+      padding: 8px;
+      background: var(--bg-lighter);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 14px;
+      box-shadow: 0 16px 36px rgba(0,0,0,0.36);
+    }
+    .cooperation-contact-block .contacts-managers__contact-menu::before {
+      content: '';
+      position: absolute;
+      top: -6px;
+      right: 22px;
+      width: 10px;
+      height: 10px;
+      background: var(--bg-lighter);
+      border-left: 1px solid rgba(255,255,255,0.08);
+      border-top: 1px solid rgba(255,255,255,0.08);
+      transform: rotate(45deg);
+    }
+    .cooperation-contact-block .contacts-managers__contact-link {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 42px;
+      height: 42px;
+      border: 0;
+      border-radius: 50%;
+      color: var(--white);
+      text-decoration: none;
+      overflow: hidden;
+      transition: transform 0.25s ease, filter 0.25s ease;
+    }
+    .cooperation-contact-block .contacts-managers__contact-link img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+    .cooperation-contact-block .contacts-managers__contact-link svg {
+      width: 21px;
+      height: 21px;
+    }
+    .cooperation-contact-block .contacts-managers__contact-link:hover {
+      transform: translateY(-2px);
+      filter: saturate(1.08);
+    }
+    .cooperation-contact-block .contacts-managers__contact-link--max {
+      border-radius: 13px;
+    }
+    .cooperation-contact-block .contacts-managers__contact-link[data-messenger="phone"] {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: 0 8px 18px rgba(0,0,0,0.22);
     }
     .cooperation-form__grid {
       display: grid;
@@ -338,29 +895,105 @@
     }
     @media (max-width: 768px) {
       .cooperation-hero {
-        min-height: auto;
-        padding: 140px 0 70px;
+        min-height: 520px;
+        padding: 120px 0 72px;
       }
       .cooperation-audience,
+      .cooperation-stats,
       .cooperation-formats,
       .cooperation-process,
-      .cooperation-support,
       .cooperation-form-section {
         padding: 64px 0;
       }
+      .cooperation-audience {
+        padding-bottom: 36px;
+      }
+      .cooperation-stats {
+        padding: 56px 0;
+      }
+      .cooperation-stats .stats__grid {
+        align-items: center;
+        flex-direction: column;
+        margin-top: 36px;
+        padding: 0;
+      }
+      .cooperation-stats .stats__item {
+        width: 100%;
+        text-align: center;
+      }
+      .cooperation-stats .stats__label {
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .cooperation-formats {
+        padding-top: 36px;
+        padding-bottom: 36px;
+      }
+      .cooperation-section__text-break {
+        display: none;
+      }
+      .cooperation-process {
+        padding-top: 36px;
+      }
+      .cooperation-form-section {
+        padding-top: 36px;
+      }
+      .cooperation-form-section .container {
+        grid-template-columns: 1fr;
+      }
+      .cooperation-form,
+      .cooperation-contact-block,
+      .cooperation-contact-block__text {
+        grid-column: 1;
+      }
       .cooperation-cards,
       .cooperation-steps,
+      .cooperation-reasons__grid,
       .cooperation-formats__grid,
-      .cooperation-support__grid,
+      .cooperation-card--featured .cooperation-card__list,
       .cooperation-list,
+      .cooperation-contact-block .contacts-cities__row,
+      .cooperation-contact-block .contacts-managers__list,
       .cooperation-form__grid {
         grid-template-columns: 1fr;
       }
+      .cooperation-card--featured {
+        padding: 30px 22px;
+      }
+      .cooperation-card--featured .cooperation-card__heading {
+        align-items: flex-start;
+        margin-bottom: 24px;
+      }
       .cooperation-formats__image {
+        height: 320px;
+        margin-top: 0;
         min-height: 320px;
+        max-height: 420px;
       }
       .cooperation-form {
         padding: 26px 20px;
+        margin-top: 0;
+      }
+      .cooperation-contact-block {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        margin: 36px 0 0;
+      }
+      .cooperation-contact-block__text {
+        margin: 0 0 36px;
+        font-size: 0.98rem;
+        text-align: center;
+      }
+      .cooperation-contact-block__text-line {
+        display: inline;
+      }
+      .cooperation-contact-block .contacts-info,
+      .cooperation-contact-block .contacts-managers {
+        padding: 16px;
+      }
+      .cooperation-contact-block .contacts-managers__item {
+        grid-template-columns: 1fr;
+        gap: 4px;
       }
     }
   </style>
@@ -378,7 +1011,7 @@
             <li><a href="about.html" class="header__top-link">О компании</a></li>
             <li><a href="about.html#team" class="header__top-link">Наша команда</a></li>
             <li><a href="contacts-gallery-review.html" class="header__top-link">Видеоотзывы</a></li>
-            <li class="header__top-dropdown"><button type="button" class="header__top-link header__top-dropdown-toggle" aria-haspopup="true" aria-expanded="false">Сотрудничество</button><ul class="header__top-dropdown-menu"><li><a href="cooperation.html">Дизайнеры</a></li><li><a href="cooperation-stovemakers.html">Печники</a></li><li><a href="cooperation-developers.html">Застройщики</a></li><li><a href="cooperation-fireplace-salons.html">Салоны каминов</a></li></ul></li>
+            <li class="header__top-dropdown"><button type="button" class="header__top-link header__top-dropdown-toggle" aria-haspopup="true" aria-expanded="false">Сотрудничество</button><ul class="header__top-dropdown-menu"><li><a href="cooperation.html">Дизайнеры</a></li><li><a href="cooperation-stovemakers.html">Печники</a></li><li><a href="cooperation-developers.html">Застройщики</a></li><li><a href="cooperation-fireplace-salons.html">Салоны каминов</a></li><li><a href="cooperation-tile-salons.html">Салоны плитки</a></li></ul></li>
           </ul>
         </nav>
       </div>
@@ -487,7 +1120,7 @@
             <li><a href="about.html" class="header__nav-link">О компании</a></li>
             <li><a href="about.html#team" class="header__nav-link">Наша команда</a></li>
             <li><a href="contacts-gallery-review.html" class="header__nav-link">Видеоотзывы</a></li>
-            <li class="header__nav-dropdown header__nav-dropdown--simple"><a href="cooperation.html" class="header__nav-link" aria-haspopup="true" aria-expanded="false">Сотрудничество</a><ul class="header__dropdown-menu"><li><a href="cooperation.html">Дизайнеры</a></li><li><a href="cooperation-stovemakers.html">Печники</a></li><li><a href="cooperation-developers.html">Застройщики</a></li><li><a href="cooperation-fireplace-salons.html">Салоны каминов</a></li></ul></li>
+            <li class="header__nav-dropdown header__nav-dropdown--simple"><a href="cooperation.html" class="header__nav-link" aria-haspopup="true" aria-expanded="false">Сотрудничество</a><ul class="header__dropdown-menu"><li><a href="cooperation.html">Дизайнеры</a></li><li><a href="cooperation-stovemakers.html">Печники</a></li><li><a href="cooperation-developers.html">Застройщики</a></li><li><a href="cooperation-fireplace-salons.html">Салоны каминов</a></li><li><a href="cooperation-tile-salons.html">Салоны плитки</a></li></ul></li>
           </ul>
           <a href="tel:+74952293046" data-calltracking="phone" data-calltracking-group="main" class="header__nav-phone-link">+7 (495) 229-30-46</a>
           <div class="header__nav-messengers" aria-label="Мессенджеры">
@@ -500,7 +1133,7 @@
 
         <div class="header__actions">
           <button class="header__search-btn" id="searchBtn" aria-label="Поиск"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></button>
-          <a href="#contact" class="btn btn--primary header__cta-btn">Оставить заявку</a>
+          <a href="#cooperation-form-title" class="btn btn--primary header__cta-btn">Оставить заявку</a>
           <a href="tel:+74952293046" data-calltracking="phone" data-calltracking-group="main" class="header__phone-desktop">+7 (495) 229-30-46</a>
           <div class="header__messengers" aria-label="Мессенджеры">
             <a href="https://t.me/+79950001166" class="header__messenger-link" target="_blank" rel="noopener" aria-label="Telegram"><img src="images/icons/png-klev-club-p-telegram-logotip-png-9.png" alt="" class="header__messenger-icon"></a>
@@ -519,7 +1152,10 @@
     <div class="container">
       <div class="cooperation-hero__content">
         <h1 class="cooperation-hero__title">Для печников</h1>
-        <p class="cooperation-hero__subtitle">Подключаемся к проекту по техническому заданию печника: разрабатываем дизайн облицовки, готовим проект, рабочие чертежи и изготавливаем изразцы для каминов и печей.</p>
+        <p class="cooperation-hero__subtitle">Подключаемся к проекту по техническому заданию печника: разрабатываем дизайн облицовки и проектируем под существующий конструктив или с нуля</p>
+        <div class="cooperation-hero__actions">
+          <a href="#cooperation-form-title" class="btn btn--primary btn--large">Оставить заявку</a>
+        </div>
       </div>
     </div>
   </section>
@@ -528,51 +1164,70 @@
   <section class="cooperation-audience" id="audience">
     <div class="container">
       <div class="cooperation-section__header cooperation-section__header--center">
+        <h2 class="section-title section-title--center">Премиальная облицовка<br>для печных проектов</h2>
+        <p class="cooperation-section__text">Собственное дизайн-бюро позволяет нам разрабатывать индивидуальное решение<br class="cooperation-section__text-break">под любой запрос, а для вас это способ выделиться с комплексным предложением<br class="cooperation-section__text-break">по оформлению камина или печи для ваших заказчиков.</p>
+      </div>
+      <div class="cooperation-audience__label">
         <span class="cooperation-section__eyebrow">Для кого</span>
-        <h2 class="section-title section-title--center">Что получает печник</h2>
-        <p class="cooperation-section__text">Печник сохраняет техническую часть проекта, а CeramicaDecor берет на себя керамическую облицовку, дизайн, визуализацию, смету и коммуникацию по изделию.</p>
       </div>
       <div class="cooperation-cards">
-        <article class="cooperation-card cooperation-card--wide">
-          <svg class="cooperation-card__icon" viewBox="0 0 40 40" fill="none"><path d="M10 28l18-18 4 4-18 18H10v-4zM24 14l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          <h3 class="cooperation-card__title">Изразцовая облицовка по техническому заданию</h3>
-          <p class="cooperation-card__text">Работаем с готовым конструктивом камина или печи и проектируем облицовку так, чтобы она точно соответствовала размерам, топке, дымоходу и интерьеру.</p>
+        <article class="cooperation-card cooperation-card--wide cooperation-card--featured">
+          <div class="cooperation-card__heading">
+            <svg class="cooperation-card__icon" viewBox="0 0 40 40" fill="none"><path d="M10 28l18-18 4 4-18 18H10v-4zM24 14l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <h3 class="cooperation-card__title">Что получает печник</h3>
+          </div>
           <ul class="cooperation-card__list">
-            <li>Дизайн-проект облицовки для камина или печи: визуализация, схема с размерами и смета.</li>
-            <li>Подготовка рабочих чертежей для конструктивной части: позиционирование топки, дымохода и схема короба.</li>
-            <li>Изготовление типовых или индивидуальных изразцов на собственном производстве.</li>
-            <li>Продажа топок, дымоходов и материалов для монтажа, если нужна комплектация проекта.</li>
+            <li>Начальная дилерская скидка на керамическую облицовку нашего производства.</li>
+            <li>Накопительная система скидок для постоянного сотрудничества и регулярных совместных проектов.</li>
+            <li>Персональный менеджер сопровождает проект от консультации и проектирования до сдачи объекта.</li>
+            <li>Работу с конечным заказчиком можно передать нашему менеджеру. Это не повлияет на вашу дилерскую скидку.</li>
           </ul>
-          <p class="cooperation-card__note">Начальная дилерская скидка от 10% на керамическую облицовку, система скидок накопительная.</p>
         </article>
+      </div>
+      <div class="cooperation-reasons">
+        <div class="cooperation-reasons__header">
+          <h2 class="section-title section-title--center">Почему печнику нужны изразцы</h2>
+        </div>
+        <div class="cooperation-reasons__grid">
+          <article class="cooperation-reason">
+            <h3 class="cooperation-reason__title">Сильные проекты в портфолио</h3>
+            <p class="cooperation-reason__text">Эксклюзивные изразцовые работы выделяют печника среди конкурентов и запоминаются заказчикам.</p>
+          </article>
+          <article class="cooperation-reason">
+            <h3 class="cooperation-reason__title">Дополнительный доход</h3>
+            <p class="cooperation-reason__text">Изразцовая облицовка расширяет стоимость проекта и дает печнику дополнительные источники дохода:</p>
+            <ul class="cooperation-reason__sublist">
+              <li>Партнерская скидка на изразцы нашего производства.</li>
+              <li>Дополнительная оплата работы по монтажу облицовки.</li>
+            </ul>
+          </article>
+          <article class="cooperation-reason">
+            <h3 class="cooperation-reason__title">Работа в несезон</h3>
+            <p class="cooperation-reason__text">Возможность работать в несезон. Монтаж изразцов обычно выполняется на этапе чистовой отделки дома, поэтому такие проекты помогают поддерживать загрузку в зимний период.</p>
+          </article>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ===== FORMATS ===== -->
-  <section class="cooperation-formats" id="formats">
+  <!-- ===== STATS ===== -->
+  <section class="stats cooperation-stats" id="catalog-capabilities">
     <div class="container">
-      <div class="cooperation-formats__grid">
-        <div class="cooperation-formats__image">
-          <picture>
-            <source srcset="images/work_kamin2_new.webp" type="image/webp">
-            <img src="images/work_kamin2_new.jpg" alt="Изготовление керамических элементов" loading="lazy">
-          </picture>
+      <h2 class="section-title section-title--center">Широкие возможности индивидуального проектирования</h2>
+      <div class="stats__grid">
+        <div class="stats__item">
+          <span class="stats__number" data-target="40">&gt;40</span>
+          <span class="stats__label">типовых коллекций</span>
         </div>
-        <div>
-          <div class="cooperation-section__header">
-            <span class="cooperation-section__eyebrow">Возможности</span>
-            <h2 class="section-title">Что берем на себя</h2>
-            <p class="cooperation-section__text">У CeramicaDecor собственное керамическое производство полного цикла и дизайн-бюро. Мы можем подключиться к проекту печника на этапе технического задания или готового конструктива.</p>
-          </div>
-          <ul class="cooperation-list">
-            <li>Разрабатываем дизайн облицовки будущей печи или камина по техническому заданию печника.</li>
-            <li>Готовим визуализацию, схему с размерами и смету с расчетом стоимости для заказчика.</li>
-            <li>Подготавливаем рабочие чертежи для позиционирования топки, дымохода и короба.</li>
-            <li>Изготавливаем керамическую изразцовую облицовку из типовой коллекции или по индивидуальному заданию.</li>
-            <li>При необходимости комплектуем проект топками, дымоходами и материалами для монтажа.</li>
-            <li>Можем взять коммуникацию с конечным заказчиком на персонального менеджера проекта.</li>
-          </ul>
+        <div class="stats__divider"></div>
+        <div class="stats__item">
+          <span class="stats__number" data-target="2000">&gt;2 000</span>
+          <span class="stats__label">форм изразцовых элементов</span>
+        </div>
+        <div class="stats__divider"></div>
+        <div class="stats__item">
+          <span class="stats__number" data-target="150">&gt;150</span>
+          <span class="stats__label">вариантов цвета в палитре глазурей</span>
         </div>
       </div>
     </div>
@@ -583,43 +1238,32 @@
     <div class="container">
       <div class="cooperation-section__header cooperation-section__header--center">
         <span class="cooperation-section__eyebrow">Процесс</span>
-        <h2 class="section-title section-title--center">Как проходит проект</h2>
+        <h2 class="section-title section-title--center">Этапы работы</h2>
       </div>
       <div class="cooperation-steps">
         <article class="cooperation-step">
-          <h3 class="cooperation-step__title">Техническое задание</h3>
-          <p class="cooperation-step__text">Получаем параметры печи или камина, размеры, требования к топке, дымоходу, облицовке и интерьеру.</p>
+          <div class="cooperation-step__header">
+            <h3 class="cooperation-step__title">Печь еще не построена</h3>
+            <p class="cooperation-step__text">Подключаемся на начальном этапе и предоставляем точные размеры для строительства конструктива с учетом будущей облицовки.</p>
+          </div>
+          <ul class="cooperation-step__list">
+            <li>Разрабатываем проект печи в облицовке и предоставляем чертежи конструктива для дальнейшей работы.</li>
+            <li>Изготавливаем комплект изразцов параллельно со строительством печи.</li>
+            <li>Монтаж облицовки выполняет печник; при необходимости мы предоставляем консультационную поддержку.</li>
+          </ul>
         </article>
         <article class="cooperation-step">
-          <h3 class="cooperation-step__title">Дизайн и расчет</h3>
-          <p class="cooperation-step__text">Готовим визуализацию, схему с размерами и смету для согласования с вашим заказчиком.</p>
+          <div class="cooperation-step__header">
+            <h3 class="cooperation-step__title">Печь уже построена</h3>
+            <p class="cooperation-step__text">Работаем с готовым конструктивом и адаптируем проект облицовки под фактические размеры объекта.</p>
+          </div>
+          <ul class="cooperation-step__list">
+            <li>Печник выполняет замер готовой печи и передает исходные данные для проектирования.</li>
+            <li>Готовим проект облицовки с учетом геометрии печи; при необходимости адаптируем размеры под изразцовые элементы.</li>
+            <li>Изготавливаем изразцы по согласованному проекту и комплектации.</li>
+            <li>Монтаж облицовки выполняет печник; при необходимости мы предоставляем консультационную поддержку.</li>
+          </ul>
         </article>
-        <article class="cooperation-step">
-          <h3 class="cooperation-step__title">Рабочие чертежи</h3>
-          <p class="cooperation-step__text">Фиксируем конструктив, позиционирование топки и дымохода, схему короба и размеры изразцов.</p>
-        </article>
-        <article class="cooperation-step">
-          <h3 class="cooperation-step__title">Производство облицовки</h3>
-          <p class="cooperation-step__text">Изготавливаем изразцы и передаем комплект печнику или сопровождаем дальнейшую установку.</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== SUPPORT ===== -->
-  <section class="cooperation-support" id="support">
-    <div class="container">
-      <div class="cooperation-support__grid">
-        <div class="cooperation-support__panel">
-          <span class="cooperation-section__eyebrow">Сопровождение</span>
-          <h2 class="section-title">Проектная поддержка для печника</h2>
-          <p class="cooperation-support__text">Для партнера работает персональный менеджер проекта. Он помогает пройти путь от технического задания и расчета до производства облицовки.</p>
-          <p class="cooperation-support__text">Если удобно, коммуникацию с конечным заказчиком можно передать менеджеру CeramicaDecor. Это не влияет на дилерскую скидку партнера.</p>
-          <p class="cooperation-support__text">Для встреч и презентаций предоставляем образцы продукции. Шоу-рум находится в Москве по адресу: ул. Свободы, 99к1.</p>
-        </div>
-        <div class="cooperation-support__image">
-          <img src="images/palitra_izrazcy_new1.jpg" alt="Палитра керамических глазурей" loading="lazy">
-        </div>
       </div>
     </div>
   </section>
@@ -628,8 +1272,102 @@
   <section class="cooperation-form-section" id="cooperation-form">
     <div class="container">
       <div class="cooperation-section__header cooperation-section__header--center">
-        <span class="cooperation-section__eyebrow">Заявка</span>
+        <span class="cooperation-section__eyebrow" id="cooperation-form-title" data-scroll-offset="0">Заявка</span>
         <h2 class="section-title section-title--center">Свяжитесь с нами для долгосрочного сотрудничества</h2>
+      </div>
+      <p class="cooperation-contact-block__text"><span class="cooperation-contact-block__text-line">Для обсуждения сотрудничества и ответов на любые вопросы предлагаем провести встречу с вами</span> <span class="cooperation-contact-block__text-line">в любое удобное для вас время. Мы готовы предоставить вам образцы нашей продукции</span> <span class="cooperation-contact-block__text-line">для демонстрации вашим заказчикам.</span></p>
+      <div class="cooperation-contact-block">
+        <section class="contacts-cities" aria-labelledby="cooperationShowroomsTitle">
+          <h3 class="contacts-cities__title" id="cooperationShowroomsTitle">Адреса шоурумов</h3>
+          <div class="contacts-cities__row">
+            <div class="contacts-info">
+              <div>
+                <h3 class="contacts-info__city">Москва</h3>
+                <div class="contacts-info__meta">
+                  <div class="contacts-info__meta-item">
+                    <span class="contacts-info__meta-icon">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.3"/><path d="M12 6v6l4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </span>
+                    Пн-Вс: 10:00 - 19:00
+                  </div>
+                  <div class="contacts-info__meta-item">
+                    <span class="contacts-info__meta-icon">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" stroke="currentColor" stroke-width="1.3"/><circle cx="12" cy="10" r="3" stroke="currentColor" stroke-width="1.3"/></svg>
+                    </span>
+                    <span>ул. Свободы, 99к1<span class="contacts-info__meta-sub">м. Планерная, 10 мин. пешком</span></span>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <h3 class="contacts-info__city">Санкт-Петербург</h3>
+                <div class="contacts-info__meta">
+                  <div class="contacts-info__meta-item">
+                    <span class="contacts-info__meta-icon">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.3"/><path d="M12 6v6l4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </span>
+                    <span>Пн-Пт: 10:00 - 19:00<span class="contacts-info__meta-sub">Выходные - по записи</span></span>
+                  </div>
+                  <div class="contacts-info__meta-item">
+                    <span class="contacts-info__meta-icon">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" stroke="currentColor" stroke-width="1.3"/><circle cx="12" cy="10" r="3" stroke="currentColor" stroke-width="1.3"/></svg>
+                    </span>
+                    <span>пр. Энгельса, д. 60<span class="contacts-info__meta-sub">м. Удельная, 7 мин. пешком</span></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="contacts-managers-section contacts-managers-section--partners" aria-labelledby="cooperationPartnersTitle">
+          <h3 class="contacts-cities__title" id="cooperationPartnersTitle">Отдел по работе с партнерами</h3>
+          <div class="contacts-managers contacts-managers--partners">
+            <div class="contacts-managers__groups">
+              <div class="contacts-managers__group">
+                <h4 class="contacts-managers__group-title">Коммерческий директор</h4>
+                <ul class="contacts-managers__list">
+                  <li class="contacts-managers__item">
+                    <span class="contacts-managers__name">Евгения</span>
+                    <details class="contacts-managers__contact">
+                      <summary class="contacts-managers__phone">+7 (995) 000-77-33</summary>
+                      <div class="contacts-managers__contact-menu" aria-label="Способы связи с Евгенией">
+                        <a href="tel:+79950007733" class="contacts-managers__contact-link" aria-label="Позвонить Евгении" data-manager="Евгения" data-messenger="phone"><svg viewBox="0 0 24 24" fill="none"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1 1 .4 1.9.7 2.8a2 2 0 01-.5 2.1L8.1 9.9a16 16 0 006 6l1.3-1.3a2 2 0 012.1-.5c.9.3 1.8.6 2.8.7A2 2 0 0122 16.9z" stroke="currentColor" stroke-width="1.6"/></svg></a>
+                        <a href="https://max.ru/" class="contacts-managers__contact-link contacts-managers__contact-link--max" target="_blank" rel="noopener" aria-label="Max" data-manager="Евгения" data-messenger="max" data-placeholder="true"><img src="images/logo_max.webp" alt="" loading="lazy"></a>
+                        <a href="https://t.me/+79950007733" class="contacts-managers__contact-link contacts-managers__contact-link--tg" target="_blank" rel="noopener" aria-label="Telegram" data-manager="Евгения" data-messenger="telegram"><img src="images/logo_telegram.svg.webp" alt="" loading="lazy"></a>
+                      </div>
+                    </details>
+                  </li>
+                </ul>
+              </div>
+              <div class="contacts-managers__group">
+                <h4 class="contacts-managers__group-title">Менеджеры по работе с партнерами</h4>
+                <ul class="contacts-managers__list contacts-managers__list--single">
+                  <li class="contacts-managers__item">
+                    <span class="contacts-managers__name">Сергей</span>
+                    <details class="contacts-managers__contact">
+                      <summary class="contacts-managers__phone">+7 (995) 000-11-77</summary>
+                      <div class="contacts-managers__contact-menu" aria-label="Способы связи с Сергеем">
+                        <a href="tel:+79950001177" class="contacts-managers__contact-link" aria-label="Позвонить Сергею" data-manager="Сергей" data-messenger="phone"><svg viewBox="0 0 24 24" fill="none"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1 1 .4 1.9.7 2.8a2 2 0 01-.5 2.1L8.1 9.9a16 16 0 006 6l1.3-1.3a2 2 0 012.1-.5c.9.3 1.8.6 2.8.7A2 2 0 0122 16.9z" stroke="currentColor" stroke-width="1.6"/></svg></a>
+                        <a href="https://max.ru/" class="contacts-managers__contact-link contacts-managers__contact-link--max" target="_blank" rel="noopener" aria-label="Max" data-manager="Сергей" data-messenger="max" data-placeholder="true"><img src="images/logo_max.webp" alt="" loading="lazy"></a>
+                        <a href="https://t.me/+79950001177" class="contacts-managers__contact-link contacts-managers__contact-link--tg" target="_blank" rel="noopener" aria-label="Telegram" data-manager="Сергей" data-messenger="telegram"><img src="images/logo_telegram.svg.webp" alt="" loading="lazy"></a>
+                      </div>
+                    </details>
+                  </li>
+                  <li class="contacts-managers__item">
+                    <span class="contacts-managers__name">Рина</span>
+                    <details class="contacts-managers__contact">
+                      <summary class="contacts-managers__phone">+7 (995) 000-30-80</summary>
+                      <div class="contacts-managers__contact-menu" aria-label="Способы связи с Риной">
+                        <a href="tel:+79950003080" class="contacts-managers__contact-link" aria-label="Позвонить Рине" data-manager="Рина" data-messenger="phone"><svg viewBox="0 0 24 24" fill="none"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1 1 .4 1.9.7 2.8a2 2 0 01-.5 2.1L8.1 9.9a16 16 0 006 6l1.3-1.3a2 2 0 012.1-.5c.9.3 1.8.6 2.8.7A2 2 0 0122 16.9z" stroke="currentColor" stroke-width="1.6"/></svg></a>
+                        <a href="https://max.ru/" class="contacts-managers__contact-link contacts-managers__contact-link--max" target="_blank" rel="noopener" aria-label="Max" data-manager="Рина" data-messenger="max" data-placeholder="true"><img src="images/logo_max.webp" alt="" loading="lazy"></a>
+                        <a href="https://t.me/+79950003080" class="contacts-managers__contact-link contacts-managers__contact-link--tg" target="_blank" rel="noopener" aria-label="Telegram" data-manager="Рина" data-messenger="telegram"><img src="images/logo_telegram.svg.webp" alt="" loading="lazy"></a>
+                      </div>
+                    </details>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
       </div>
       <form class="cooperation-form" id="cooperationContactForm" novalidate>
         <div class="cooperation-form__grid">
@@ -651,7 +1389,7 @@
           </div>
           <div class="cooperation-form__field cooperation-form__field--wide">
             <label class="cooperation-form__label" for="cooperationComment">Комментарий</label>
-            <textarea class="cooperation-form__textarea" id="cooperationComment" name="comment" placeholder="Опишите печь или камин, размеры, топку, дымоход, регион и сроки"></textarea>
+            <textarea class="cooperation-form__textarea" id="cooperationComment" name="comment" placeholder="Опишите объект, регион, сроки, наличие ТЗ или интересующий формат сотрудничества"></textarea>
           </div>
         </div>
         <label class="consent-label" style="margin-top:18px;">
@@ -782,7 +1520,7 @@
             phone: phone,
             company: company,
             type: type,
-            comment: 'Сотрудничество. ' + comment
+            comment: 'Сотрудничество для печников. ' + comment
           })
         })
         .then(function(response) {
@@ -817,6 +1555,9 @@
   </div>
 </body>
 </html>
+
+
+
 
 
 
