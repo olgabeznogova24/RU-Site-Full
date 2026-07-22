@@ -47,7 +47,7 @@ product-drovyanoi-kamin-template.html?product=kamin-versal
 
 ## Как править файлы
 
-**Шапка и футер продублированы в 39 HTML-файлах.** Любую правку навигации делать скриптом по всем файлам сразу, иначе страницы разъедутся. Править вручную в одном файле — почти всегда ошибка.
+**Шапка и футер продублированы в 38 HTML-файлах.** Любую правку навигации делать скриптом по всем файлам сразу, иначе страницы разъедутся. Править вручную в одном файле — почти всегда ошибка.
 
 **Кодировка.** Файлы в UTF-8, в git хранятся с LF (см. `.gitattributes`). Имена части файлов содержат кириллицу и пробелы. При массовых заменах через PowerShell читать и писать через `[System.Text.Encoding]::GetEncoding(28591)` (latin1, 1 байт = 1 символ) — тогда кириллица и BOM не искажаются. Обычный `Get-Content`/`Set-Content` в PowerShell 5.1 портит UTF-8.
 
@@ -100,5 +100,4 @@ Endpoint форм `https://ceramicadecor.ru/feedback/ceramicadecor_pro` (38 ме
 Открытые вопросы, зафиксированные в аудитах:
 
 - полный визуальный клик-тест на ширинах 1440/1280/768/390/360 px не проводился (`interface-audit.md`);
-- `privacy.html` имеет `noindex, nofollow`, но лежит в `sitemap.xml` — нужно решение (`seo-audit.md`);
-- `catalog-mramornye-kaminy-portaly.html` — страница-сирота без ссылок (`pages-audit.md`).
+- `privacy.html` имеет `noindex, nofollow`, но лежит в `sitemap.xml` — нужно решение (`seo-audit.md`).

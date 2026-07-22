@@ -37,10 +37,9 @@
 
 Разделы `catalog-pech-kaminy.html` и `catalog-bannye-portaly.html`, числившиеся в прошлой версии этого аудита, в проекте отсутствуют. Банные порталы стали подразделом отопительных печей (`catalog-otopitelnye-pechi.html?subcategory=bannye-portaly`).
 
-### Замечания
+### Замечание
 
-- `catalog-mramornye-kaminy-portaly.html` — страница-сирота: на неё нет ссылок, её нет в `sitemap.xml` и в `readme.md`. Подробнее в `pages-audit.md`.
-- В `catalog-mramornye-portaly.html` карточка-заглушка имеет идентификатор `project-kaminy-v-oblicovke-mramorom-placeholder` — похоже на копирование из соседнего раздела. На вёрстку не влияет, но при интеграции лучше поправить.
+В `catalog-mramornye-portaly.html` карточка-заглушка имеет идентификатор `project-kaminy-v-oblicovke-mramorom-placeholder` — похоже на копирование из соседнего раздела. На вёрстку не влияет, но при интеграции лучше поправить.
 
 ## Карточки и прямые ссылки
 
