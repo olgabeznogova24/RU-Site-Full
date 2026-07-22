@@ -31,9 +31,12 @@ vendor/
 .cache/
 dist/
 build/
-outputs/github-deploy-*/
-outputs/deploy-files-*/
-outputs/deploy-gitstore-*/
+
+# Рабочая папка: копии деплоев и отладочные скриншоты, не часть дизайн-пакета
+outputs/
+
+# Печатные материалы, к вёрстке сайта отношения не имеют
+Booklet OV 2026/
 
 # Temporary/source design files
 *.tmp

@@ -30,20 +30,19 @@
     .desktop-break { display: inline; }
     .video-reviews-section { padding: 54px 0 90px; background: #101010; }
     .video-reviews-section .fade-up { opacity: 1; visibility: visible; transform: none; }
-    .video-reviews-mobile-tabs { display: flex; justify-content: center; gap: 10px; overflow-x: auto; scrollbar-width: none; -ms-overflow-style: none; margin: 0 0 32px; padding: 4px 0; }
-    .video-reviews-mobile-tabs::-webkit-scrollbar { display: none; }
-    .video-reviews-mobile-tab { appearance: none; display: inline-flex; align-items: center; justify-content: center; min-height: 42px; padding: 10px 20px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.14); background: rgba(255,255,255,0.045); color: rgba(255,255,255,0.72); font-family: Inter, sans-serif; font-size: 0.92rem; font-weight: 500; line-height: 1.2; white-space: nowrap; cursor: pointer; transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease; }
-    .video-reviews-mobile-tab:hover { color: #fff; border-color: rgba(203,59,37,0.46); background: rgba(203,59,37,0.12); }
-    .video-reviews-mobile-tab.is-active { color: #fff; border-color: #cb3b25; background: #cb3b25; }
-    .video-reviews-layout { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; gap: 32px; }
-    .video-reviews-layout.is-filtered { grid-template-columns: 1fr; }
+    .video-reviews-tabs-wrap { position: relative; max-width: 100%; margin: 0 0 36px; }
+    .video-reviews-tabs { display: flex; justify-content: center; gap: 8px; overflow-x: auto; scrollbar-width: none; -ms-overflow-style: none; padding: 4px 54px; scroll-behavior: smooth; }
+    .video-reviews-tabs::-webkit-scrollbar { display: none; }
+    .video-reviews-tab { appearance: none; display: inline-flex; align-items: center; justify-content: center; padding: 10px 24px; border-radius: 100px; border: 1px solid rgba(255,255,255,0.15); background: transparent; color: rgba(255,255,255,0.7); font-family: Inter, sans-serif; font-size: 0.9rem; font-weight: 400; line-height: 1.2; white-space: nowrap; cursor: pointer; text-decoration: none; transition: all 0.3s ease; }
+    .video-reviews-tab:hover { border-color: rgba(255,255,255,0.35); color: #fff; }
+    .video-reviews-tab.is-active { color: #fff; border-color: #cb3b25; background: #cb3b25; }
+    .video-reviews-layout { display: grid; grid-template-columns: 1fr; align-items: start; gap: 32px; }
     .video-reviews-column { min-width: 0; }
-    .video-reviews-column__title { font-family: var(--font-heading); font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 300; line-height: 1.15; margin: 0 0 24px; color: #fff; }
-    .video-reviews-grid { display: grid; grid-template-columns: 1fr; gap: 18px; max-width: none; margin: 0; }
-    .video-reviews-layout.is-filtered .video-reviews-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-    .video-reviews-layout.is-filtered .video-reviews-column__title { text-align: center; }
+    .video-reviews-column__title { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+    .video-reviews-column[hidden] { display: none; }
+    .video-reviews-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; max-width: none; margin: 0; }
     .video-reviews-grid.fade-up { opacity: 1; visibility: visible; transform: none; }
-    .video-review-card { display: grid; grid-template-columns: 1fr; grid-template-rows: auto 1fr; align-items: start; background: rgba(255,255,255,0.035); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; overflow: hidden; min-height: 570px; }
+    .video-review-card { display: grid; grid-template-columns: 1fr; grid-template-rows: auto 1fr; align-items: start; background: rgba(255,255,255,0.035); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; overflow: hidden; min-height: 560px; }
     .video-review-card[hidden] { display: none; }
     .video-review-card__media { position: relative; display: block; aspect-ratio: 3 / 2; overflow: hidden; background: #181818; }
     .video-review-card__media picture { display: block; height: 100%; }
@@ -79,12 +78,8 @@
     .video-review-modal__dialog iframe { width: 100%; height: 100%; border: 0; display: block; border-radius: 8px; }
     .video-review-modal__close { position: absolute; right: -12px; top: -46px; width: 40px; height: 40px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50%; background: rgba(0,0,0,0.65); color: #fff; font-size: 26px; line-height: 1; cursor: pointer; }
     .video-review-modal__close:hover { border-color: rgba(255,255,255,0.5); }
-    @media (max-width: 960px) { .video-reviews-layout { gap: 22px; } .video-reviews-layout.is-filtered .video-reviews-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-    @media (max-width: 720px) { .video-reviews-section { padding-top: 34px; } .video-reviews-mobile-tabs { justify-content: flex-start; margin-bottom: 24px; } .video-reviews-layout, .video-reviews-grid, .video-reviews-layout.is-filtered .video-reviews-grid, .video-review-card { grid-template-columns: 1fr; } .video-review-card { min-height: 0; } .video-review-card__body { min-height: 0; padding: 20px; } }
-    @media (max-width: 720px) {
-      .video-reviews-column__title { display: none; }
-      .video-reviews-column[hidden] { display: none; }
-    }
+    @media (max-width: 960px) { .video-reviews-layout { gap: 22px; } }
+    @media (max-width: 720px) { .video-reviews-section { padding-top: 34px; } .video-reviews-tabs { justify-content: flex-start; padding: 4px 0; } .video-reviews-tabs-wrap { margin-bottom: 24px; } .video-reviews-grid, .video-review-card { grid-template-columns: 1fr; } .video-review-card { min-height: 0; } .video-review-card__body { min-height: 0; padding: 20px; } }
     @media (max-width: 640px) { .desktop-break { display: none; } }
     @media (max-width: 640px) { .video-review-modal { padding: 14px; } .video-review-modal__close { right: 0; top: -48px; } }
   </style>
@@ -99,7 +94,7 @@
             <li><a href="about.html" class="header__top-link">О компании</a></li>
             <li><a href="about.html#team" class="header__top-link">Наша команда</a></li>
             <li><a href="contacts-gallery-review.html" class="header__top-link">Видеоотзывы</a></li>
-            <li class="header__top-dropdown"><button type="button" class="header__top-link header__top-dropdown-toggle" aria-haspopup="true" aria-expanded="false">Сотрудничество</button><ul class="header__top-dropdown-menu"><li><a href="cooperation.html">Дизайнеры</a></li><li><a href="cooperation-stovemakers.html">Печники</a></li><li><a href="cooperation-developers.html">Застройщики</a></li><li><a href="cooperation-fireplace-salons.html">Салоны каминов</a></li><li><a href="cooperation-tile-salons.html">Салоны плитки</a></li></ul></li>
+            <li class="header__top-dropdown"><button type="button" class="header__top-link header__top-dropdown-toggle" aria-haspopup="true" aria-expanded="false">Сотрудничество</button><ul class="header__top-dropdown-menu"><li><a href="cooperation.html">Для дизайнеров</a></li><li><a href="cooperation-stovemakers.html">Для печников</a></li><li><a href="cooperation-developers.html">Для застройщиков</a></li><li><a href="cooperation-fireplace-salons.html">Для салонов каминов</a></li><li><a href="cooperation-tile-salons.html">Для салонов плитки</a></li></ul></li>
           </ul>
         </nav>
       </div>
@@ -139,7 +134,7 @@
                     <a href="catalog-otopitelnye-pechi.html?subcategory=russkie-pechi" class="header__mega-card header__mega-card--large" role="menuitem"><img src="images/banner-russkie-pechi_desktop.webp" alt="Русские печи"><span>Русские печи</span></a>
                     <a href="catalog-otopitelnye-pechi.html?subcategory=otopitelnye-pechi" class="header__mega-card" role="menuitem"><img src="images/5393.jpg" alt="Отопительные печи"><span>Отопительные печи</span></a>
                     <a href="catalog-otopitelnye-pechi.html?subcategory=bannye-pechi" class="header__mega-card" role="menuitem"><img src="images/banner-bannye-pechi_desktop.webp" alt="Банные печи"><span>Банные печи</span></a>
-                    <a href="catalog-otopitelnye-pechi.html?subcategory=bannye-portaly" class="header__mega-card" role="menuitem"><img src="images/banner-bannye-portaly_desktop.webp" alt="Банные порталы"><span>Банные порталы</span></a>
+                    <a href="catalog-otopitelnye-pechi.html?subcategory=bannye-portaly" class="header__mega-card" role="menuitem"><img src="images/banner_bannye portaly_new.jpg?v=20260714-1831" alt="Банные порталы"><span>Банные порталы</span></a>
                   </div>
                 </section>
                 <section class="header__mega-panel" role="tabpanel" data-mega-panel="barbekyu">
@@ -208,7 +203,7 @@
             <li><a href="about.html" class="header__nav-link">О компании</a></li>
             <li><a href="about.html#team" class="header__nav-link">Наша команда</a></li>
             <li><a href="contacts-gallery-review.html" class="header__nav-link">Видеоотзывы</a></li>
-            <li class="header__nav-dropdown header__nav-dropdown--simple"><a href="cooperation.html" class="header__nav-link" aria-haspopup="true" aria-expanded="false">Сотрудничество</a><ul class="header__dropdown-menu"><li><a href="cooperation.html">Дизайнеры</a></li><li><a href="cooperation-stovemakers.html">Печники</a></li><li><a href="cooperation-developers.html">Застройщики</a></li><li><a href="cooperation-fireplace-salons.html">Салоны каминов</a></li><li><a href="cooperation-tile-salons.html">Салоны плитки</a></li></ul></li>
+            <li class="header__nav-dropdown header__nav-dropdown--simple"><a href="cooperation.html" class="header__nav-link" aria-haspopup="true" aria-expanded="false">Сотрудничество</a><ul class="header__dropdown-menu"><li><a href="cooperation.html">Для дизайнеров</a></li><li><a href="cooperation-stovemakers.html">Для печников</a></li><li><a href="cooperation-developers.html">Для застройщиков</a></li><li><a href="cooperation-fireplace-salons.html">Для салонов каминов</a></li><li><a href="cooperation-tile-salons.html">Для салонов плитки</a></li></ul></li>
           </ul>
           <a href="tel:+74952293046" data-calltracking="phone" data-calltracking-group="main" class="header__nav-phone-link">+7 (495) 229-30-46</a>
           <div class="header__nav-messengers" aria-label="Мессенджеры">
@@ -245,9 +240,11 @@
 
     <section class="video-reviews-section">
       <div class="container">
-        <div class="video-reviews-mobile-tabs" role="tablist" aria-label="Разделы видео">
-          <button class="video-reviews-mobile-tab" type="button" data-video-section-tab="reviews" aria-selected="false">Видеоотзывы</button>
-          <button class="video-reviews-mobile-tab" type="button" data-video-section-tab="blog" aria-selected="false">Видеоблог</button>
+        <div class="video-reviews-tabs-wrap">
+          <div class="video-reviews-tabs" role="tablist" aria-label="Разделы видео">
+            <button class="video-reviews-tab is-active" type="button" data-video-section-tab="reviews" role="tab" aria-selected="true">Видеоотзывы</button>
+            <button class="video-reviews-tab" type="button" data-video-section-tab="blog" role="tab" aria-selected="false">Видеоблог</button>
+          </div>
         </div>
         <div class="video-reviews-layout">
           <section class="video-reviews-column" data-video-section="reviews" aria-labelledby="videoReviewsTitle">
@@ -568,11 +565,9 @@
       var videoTabs = document.querySelectorAll('[data-video-section-tab]');
       var videoSections = document.querySelectorAll('[data-video-section]');
       var videoLayout = document.querySelector('.video-reviews-layout');
-      var videoMobileMedia = window.matchMedia('(max-width: 720px)');
-      var videoColumnPageSize = 5;
-      var videoFilteredPageSize = 6;
+      var videoPageSize = 10;
       var videoCurrentPage = 1;
-      var activeVideoSection = '';
+      var activeVideoSection = 'reviews';
 
       function createVideoBlogPlaceholder(index) {
         var article = document.createElement('article');
@@ -605,8 +600,8 @@
         }
       }
 
-      function getVideoPageSize(sectionName) {
-        return sectionName ? videoFilteredPageSize : videoColumnPageSize;
+      function getVideoPageSize() {
+        return videoPageSize;
       }
 
       function getSectionPages(section, pageSize) {
@@ -616,16 +611,9 @@
       }
 
       function getVideoTotalPages(sectionName) {
-        var pageSize = getVideoPageSize(sectionName);
-
-        if (sectionName) {
-          var activeSection = document.querySelector('[data-video-section="' + sectionName + '"]');
-          return activeSection ? getSectionPages(activeSection, pageSize) : 1;
-        }
-
-        return Array.prototype.reduce.call(videoSections, function(maxPages, section) {
-          return Math.max(maxPages, getSectionPages(section, pageSize));
-        }, 1);
+        var pageSize = getVideoPageSize();
+        var activeSection = document.querySelector('[data-video-section="' + sectionName + '"]');
+        return activeSection ? getSectionPages(activeSection, pageSize) : 1;
       }
 
       function renderSectionPage(section, pageNumber, pageSize) {
@@ -667,7 +655,7 @@
             return function() {
               videoCurrentPage = page;
               renderAllVideoPagination();
-              if (videoMobileMedia.matches) {
+              if (videoLayout) {
                 videoLayout.scrollIntoView({ behavior: 'smooth', block: 'start' });
               }
             };
@@ -678,7 +666,7 @@
 
       function renderAllVideoPagination() {
         var totalPages = getVideoTotalPages(activeVideoSection);
-        var pageSize = getVideoPageSize(activeVideoSection);
+        var pageSize = getVideoPageSize();
         videoCurrentPage = Math.min(videoCurrentPage, totalPages);
 
         videoSections.forEach(function(section) {
@@ -700,10 +688,6 @@
           tab.setAttribute('aria-selected', isActive ? 'true' : 'false');
         });
 
-        if (videoLayout) {
-          videoLayout.classList.toggle('is-filtered', Boolean(sectionName));
-        }
-
         videoSections.forEach(function(section) {
           var isActive = section.getAttribute('data-video-section') === sectionName;
           section.hidden = sectionName ? !isActive : false;
@@ -714,24 +698,12 @@
       videoTabs.forEach(function(tab) {
         tab.addEventListener('click', function() {
           var requestedSection = this.getAttribute('data-video-section-tab');
-          var shouldResetDesktopFilter = !videoMobileMedia.matches && this.classList.contains('is-active');
-          setVideoSection(shouldResetDesktopFilter ? '' : requestedSection);
+          setVideoSection(requestedSection);
         });
       });
 
-      if (videoMobileMedia.addEventListener) {
-        videoMobileMedia.addEventListener('change', function() {
-          var activeTab = document.querySelector('[data-video-section-tab].is-active');
-          setVideoSection(activeTab ? activeTab.getAttribute('data-video-section-tab') : (videoMobileMedia.matches ? 'reviews' : ''));
-        });
-      } else if (videoMobileMedia.addListener) {
-        videoMobileMedia.addListener(function() {
-          var activeTab = document.querySelector('[data-video-section-tab].is-active');
-          setVideoSection(activeTab ? activeTab.getAttribute('data-video-section-tab') : (videoMobileMedia.matches ? 'reviews' : ''));
-        });
-      }
       ensureVideoBlogPlaceholders();
-      setVideoSection(videoMobileMedia.matches ? 'reviews' : '');
+      setVideoSection('reviews');
 
       function buildVkEmbedUrl(vkId) {
         var parts = vkId.replace('video', '').split('_');

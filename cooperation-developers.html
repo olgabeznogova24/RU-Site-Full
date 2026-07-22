@@ -55,7 +55,7 @@
       display: inline-flex;
       align-items: center;
       margin-bottom: 18px;
-      color: var(--primary);
+      color: var(--amber);
       font-size: 0.78rem;
       font-weight: 600;
       letter-spacing: 0.08em;
@@ -72,7 +72,7 @@
     .cooperation-hero__subtitle {
       max-width: 700px;
       margin: 0 auto;
-      color: rgba(255,255,255,0.6);
+      color: #fff;
       font-family: 'Inter', sans-serif;
       font-size: clamp(1rem, 1.5vw, 1.25rem);
       font-weight: 300;
@@ -84,12 +84,119 @@
       margin-top: 34px;
     }
     .cooperation-audience,
+    .cooperation-partners,
     .cooperation-stats,
     .cooperation-formats,
     .cooperation-process,
     .cooperation-form-section {
       background: #101010;
       padding: 96px 0;
+    }
+    .cooperation-partners {
+      position: relative;
+      overflow: hidden;
+      padding-top: 88px;
+      padding-bottom: 80px;
+      background:
+        radial-gradient(circle at 18% 0%, rgba(255,161,94,0.14), transparent 34%),
+        linear-gradient(180deg, #111 0%, #101010 100%);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .cooperation-partners .container {
+      max-width: 100%;
+      padding-left: clamp(40px, 4vw, 72px);
+      padding-right: clamp(40px, 4vw, 72px);
+    }
+    .cooperation-partners__intro {
+      display: grid;
+      grid-template-columns: minmax(0, 1.18fr) minmax(280px, 0.82fr);
+      gap: 36px;
+      align-items: center;
+      max-width: var(--container);
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 34px;
+    }
+    .cooperation-partners .cooperation-section__header {
+      margin-bottom: 0;
+    }
+    .cooperation-partners__open-logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 380px;
+      max-width: 100%;
+      min-height: 150px;
+      padding: 20px 36px;
+      box-sizing: border-box;
+      justify-self: center;
+      background: #fff;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .cooperation-partners__open-logo img {
+      display: block;
+      width: 100%;
+      height: auto;
+      transform: scale(1.12);
+      transform-origin: center;
+    }
+    .cooperation-partners__item img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+      object-fit: contain;
+    }
+    .cooperation-partners__grid {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: 20px;
+    }
+    .cooperation-partners__item {
+      min-width: 0;
+      padding: 18px;
+      background: rgba(255,255,255,0.035);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+      transition: border-color 0.25s ease, transform 0.25s ease;
+    }
+    .cooperation-partners__item:hover {
+      border-color: rgba(255,161,94,0.34);
+      transform: translateY(-2px);
+    }
+    .cooperation-partners__item-logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 112px;
+      padding: 16px;
+      background: #fff;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .cooperation-partners__item img {
+      max-height: 78px;
+    }
+    .cooperation-partners__item--logo-large img {
+      transform: scale(1.45);
+      transform-origin: center;
+    }
+    .cooperation-partners__item--logo-medium img {
+      transform: scale(0.9);
+      transform-origin: center;
+    }
+    .cooperation-partners__item--logo-xl img {
+      transform: scale(1.7);
+      transform-origin: center;
+    }
+    .cooperation-partners__item-name {
+      display: block;
+      margin-top: 12px;
+      overflow-wrap: anywhere;
+      color: rgba(255,255,255,0.7);
+      font-size: 0.82rem;
+      line-height: 1.35;
+      text-align: center;
     }
     .cooperation-audience {
       padding-bottom: 48px;
@@ -99,7 +206,7 @@
       overflow: hidden;
       padding: 80px 0;
       border: 0;
-      background: conic-gradient(from 90deg at 50% 99.94%, rgba(124, 42, 29, 0) 0deg, rgba(226, 77, 54, 0.6) 263.08deg, #FF7D0B 304.62deg, #FFFFFF 360deg);
+      background: conic-gradient(from 90deg at 50% 99.94%, rgba(124, 42, 29, 0) 0deg, rgba(255, 161, 94, 0.6) 263.08deg, #ffa15e 304.62deg, #FFFFFF 360deg);
     }
     .cooperation-stats::after {
       content: '';
@@ -122,6 +229,7 @@
       align-self: flex-start;
     }
     .cooperation-stats .stats__number {
+      color: var(--amber);
       text-shadow: 0 10px 36px rgba(0,0,0,0.28);
     }
     .cooperation-stats .stats__label {
@@ -175,7 +283,7 @@
       transition: border-color 0.25s ease, transform 0.25s ease;
     }
     .cooperation-card:hover {
-      border-color: rgba(203,59,37,0.42);
+      border-color: rgba(255,161,94,0.42);
       transform: translateY(-2px);
     }
     .cooperation-card--wide {
@@ -187,7 +295,7 @@
       padding: 42px 40px;
       overflow: hidden;
       background: rgba(255,255,255,0.035);
-      border-color: rgba(203,59,37,0.34);
+      border-color: rgba(255,161,94,0.34);
       box-shadow: 0 24px 70px rgba(0,0,0,0.28);
     }
     .cooperation-card--featured::before {
@@ -208,7 +316,7 @@
       height: 42px;
       flex: 0 0 auto;
       margin-bottom: 0;
-      color: var(--primary);
+      color: var(--amber);
     }
     .cooperation-card__title,
     .cooperation-step__title {
@@ -233,8 +341,8 @@
       height: 52px;
       padding: 10px;
       border-radius: 50%;
-      background: rgba(203,59,37,0.14);
-      border: 1px solid rgba(203,59,37,0.32);
+      background: rgba(255,161,94,0.14);
+      border: 1px solid rgba(255,161,94,0.32);
     }
     .cooperation-card--featured .cooperation-card__title {
       font-size: clamp(1.55rem, 2.6vw, 2.35rem);
@@ -271,7 +379,7 @@
       width: 6px;
       height: 6px;
       border-radius: 50%;
-      background: var(--primary);
+      background: var(--amber);
     }
     .cooperation-card--featured .cooperation-card__list {
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -297,8 +405,8 @@
       width: 36px;
       height: 36px;
       border-radius: 50%;
-      background: rgba(203,59,37,0.16);
-      color: rgba(203,59,37,0.95);
+      background: rgba(255,161,94,0.16);
+      color: rgba(255,161,94,0.95);
       font-size: 0.76rem;
       font-weight: 600;
       line-height: 36px;
@@ -373,7 +481,7 @@
       counter-increment: cooperation-list;
     }
     .cooperation-list li:hover {
-      border-color: rgba(203,59,37,0.4);
+      border-color: rgba(255,161,94,0.4);
       transform: translateY(-2px);
     }
     .cooperation-list li::before {
@@ -385,8 +493,8 @@
       height: 32px;
       transform: translateY(-50%);
       border-radius: 50%;
-      background: rgba(203,59,37,0.16);
-      color: rgba(203,59,37,0.92);
+      background: rgba(255,161,94,0.16);
+      color: rgba(255,161,94,0.92);
       font-size: 0.72rem;
       font-weight: 600;
       line-height: 32px;
@@ -408,7 +516,7 @@
       content: counter(cooperation-step, decimal-leading-zero);
       display: block;
       margin-bottom: 32px;
-      color: rgba(203,59,37,0.78);
+      color: rgba(255,161,94,0.78);
       font-family: var(--font-heading);
       font-size: 2.2rem;
       line-height: 1;
@@ -760,6 +868,24 @@
       .cooperation-steps {
         grid-template-columns: repeat(2, 1fr);
       }
+      .cooperation-partners .container {
+        padding-left: 40px;
+        padding-right: 40px;
+      }
+      .cooperation-partners__grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 14px;
+      }
+      .cooperation-partners__item {
+        padding: 14px;
+      }
+      .cooperation-partners__item-logo {
+        height: 82px;
+        padding: 12px;
+      }
+      .cooperation-partners__item img {
+        max-height: 58px;
+      }
     }
     @media (max-width: 768px) {
       .cooperation-hero {
@@ -769,6 +895,7 @@
         background-size: auto 200%;
       }
       .cooperation-audience,
+      .cooperation-partners,
       .cooperation-stats,
       .cooperation-formats,
       .cooperation-process,
@@ -780,6 +907,23 @@
       }
       .cooperation-stats {
         padding: 56px 0;
+      }
+      .cooperation-partners__intro {
+        grid-template-columns: 1fr;
+        gap: 22px;
+      }
+      .cooperation-partners__open-logo {
+        width: 380px;
+      }
+      .cooperation-partners__grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+      }
+      .cooperation-partners__item {
+        padding: 12px;
+      }
+      .cooperation-partners__item-logo {
+        height: 74px;
       }
       .cooperation-stats .stats__grid {
         align-items: center;
@@ -804,6 +948,10 @@
       }
       .cooperation-form-section {
         padding-top: 36px;
+      }
+      .cooperation-partners .container {
+        padding-left: clamp(16px, 5vw, 24px);
+        padding-right: clamp(16px, 5vw, 24px);
       }
       .cooperation-form-section .container {
         grid-template-columns: 1fr;
@@ -877,7 +1025,7 @@
             <li><a href="about.html" class="header__top-link">О компании</a></li>
             <li><a href="about.html#team" class="header__top-link">Наша команда</a></li>
             <li><a href="contacts-gallery-review.html" class="header__top-link">Видеоотзывы</a></li>
-            <li class="header__top-dropdown"><button type="button" class="header__top-link header__top-dropdown-toggle" aria-haspopup="true" aria-expanded="false">Сотрудничество</button><ul class="header__top-dropdown-menu"><li><a href="cooperation.html">Дизайнеры</a></li><li><a href="cooperation-stovemakers.html">Печники</a></li><li><a href="cooperation-developers.html">Застройщики</a></li><li><a href="cooperation-fireplace-salons.html">Салоны каминов</a></li><li><a href="cooperation-tile-salons.html">Салоны плитки</a></li></ul></li>
+            <li class="header__top-dropdown"><button type="button" class="header__top-link header__top-dropdown-toggle" aria-haspopup="true" aria-expanded="false">Сотрудничество</button><ul class="header__top-dropdown-menu"><li><a href="cooperation.html">Для дизайнеров</a></li><li><a href="cooperation-stovemakers.html">Для печников</a></li><li><a href="cooperation-developers.html">Для застройщиков</a></li><li><a href="cooperation-fireplace-salons.html">Для салонов каминов</a></li><li><a href="cooperation-tile-salons.html">Для салонов плитки</a></li></ul></li>
           </ul>
         </nav>
       </div>
@@ -917,7 +1065,7 @@
                     <a href="catalog-otopitelnye-pechi.html?subcategory=russkie-pechi" class="header__mega-card header__mega-card--large" role="menuitem"><img src="images/banner-russkie-pechi_desktop.webp" alt="Русские печи"><span>Русские печи</span></a>
                     <a href="catalog-otopitelnye-pechi.html?subcategory=otopitelnye-pechi" class="header__mega-card" role="menuitem"><img src="images/5393.jpg" alt="Отопительные печи"><span>Отопительные печи</span></a>
                     <a href="catalog-otopitelnye-pechi.html?subcategory=bannye-pechi" class="header__mega-card" role="menuitem"><img src="images/banner-bannye-pechi_desktop.webp" alt="Банные печи"><span>Банные печи</span></a>
-                    <a href="catalog-otopitelnye-pechi.html?subcategory=bannye-portaly" class="header__mega-card" role="menuitem"><img src="images/banner-bannye-portaly_desktop.webp" alt="Банные порталы"><span>Банные порталы</span></a>
+                    <a href="catalog-otopitelnye-pechi.html?subcategory=bannye-portaly" class="header__mega-card" role="menuitem"><img src="images/banner_bannye portaly_new.jpg?v=20260714-1831" alt="Банные порталы"><span>Банные порталы</span></a>
                   </div>
                 </section>
                 <section class="header__mega-panel" role="tabpanel" data-mega-panel="barbekyu">
@@ -986,7 +1134,7 @@
             <li><a href="about.html" class="header__nav-link">О компании</a></li>
             <li><a href="about.html#team" class="header__nav-link">Наша команда</a></li>
             <li><a href="contacts-gallery-review.html" class="header__nav-link">Видеоотзывы</a></li>
-            <li class="header__nav-dropdown header__nav-dropdown--simple"><a href="cooperation.html" class="header__nav-link" aria-haspopup="true" aria-expanded="false">Сотрудничество</a><ul class="header__dropdown-menu"><li><a href="cooperation.html">Дизайнеры</a></li><li><a href="cooperation-stovemakers.html">Печники</a></li><li><a href="cooperation-developers.html">Застройщики</a></li><li><a href="cooperation-fireplace-salons.html">Салоны каминов</a></li><li><a href="cooperation-tile-salons.html">Салоны плитки</a></li></ul></li>
+            <li class="header__nav-dropdown header__nav-dropdown--simple"><a href="cooperation.html" class="header__nav-link" aria-haspopup="true" aria-expanded="false">Сотрудничество</a><ul class="header__dropdown-menu"><li><a href="cooperation.html">Для дизайнеров</a></li><li><a href="cooperation-stovemakers.html">Для печников</a></li><li><a href="cooperation-developers.html">Для застройщиков</a></li><li><a href="cooperation-fireplace-salons.html">Для салонов каминов</a></li><li><a href="cooperation-tile-salons.html">Для салонов плитки</a></li></ul></li>
           </ul>
           <a href="tel:+74952293046" data-calltracking="phone" data-calltracking-group="main" class="header__nav-phone-link">+7 (495) 229-30-46</a>
           <div class="header__nav-messengers" aria-label="Мессенджеры">
@@ -1018,10 +1166,51 @@
     <div class="container">
       <div class="cooperation-hero__content">
         <h1 class="cooperation-hero__title">Для застройщиков</h1>
-        <p class="cooperation-hero__subtitle">Помогаем добавить в объект готовое решение камина или печи: анализируем характеристики дома и готовим комплексное решение под ключ.</p>
+        <p class="cooperation-hero__subtitle">Помогаем добавить в проект дома камин или печь: анализируем характеристики дома и готовим комплексное решение под ключ</p>
         <div class="cooperation-hero__actions">
           <a href="#cooperation-form-title" class="btn btn--primary btn--large">Оставить заявку</a>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PARTNERS ===== -->
+  <section class="cooperation-partners" id="trusted-partners">
+    <div class="container">
+      <div class="cooperation-partners__intro">
+        <div class="cooperation-section__header">
+          <h2 class="section-title">CeramicaDecor - надежный партнер для застройщиков</h2>
+          <p class="cooperation-section__text">Мы являемся проверенным партнером Open Village и уже сотрудничаем с крупными застройщиками. Берем на себя проектирование, производство, комплектацию и монтаж,<br>чтобы камин или печь стали идеальным дополнением дома</p>
+        </div>
+        <div class="cooperation-partners__open-logo">
+          <img src="images/logo-open-village.jpg" alt="Open Village" loading="lazy">
+        </div>
+      </div>
+      <div class="cooperation-partners__grid" aria-label="Компании, с которыми сотрудничала CeramicaDecor">
+        <article class="cooperation-partners__item cooperation-partners__item--logo-medium">
+          <div class="cooperation-partners__item-logo"><img src="images/logo-pro-dsk.png" alt="PRO-DSK" loading="lazy"></div>
+          <span class="cooperation-partners__item-name">PRO-DSK</span>
+        </article>
+        <article class="cooperation-partners__item cooperation-partners__item--logo-large">
+          <div class="cooperation-partners__item-logo"><img src="images/logo-good-wood.png" alt="Good Wood" loading="lazy"></div>
+          <span class="cooperation-partners__item-name">Good Wood</span>
+        </article>
+        <article class="cooperation-partners__item">
+          <div class="cooperation-partners__item-logo"><img src="images/logo-izburg.png" alt="Izburg" loading="lazy"></div>
+          <span class="cooperation-partners__item-name">Izburg</span>
+        </article>
+        <article class="cooperation-partners__item cooperation-partners__item--logo-xl">
+          <div class="cooperation-partners__item-logo"><img src="images/logo-tverstroyka.png" alt="Tverstroyka" loading="lazy"></div>
+          <span class="cooperation-partners__item-name">Tverstroyka</span>
+        </article>
+        <article class="cooperation-partners__item cooperation-partners__item--logo-large">
+          <div class="cooperation-partners__item-logo"><img src="images/logo-holzbalken.jpg" alt="Holzbalken" loading="lazy"></div>
+          <span class="cooperation-partners__item-name">Holzbalken</span>
+        </article>
+        <article class="cooperation-partners__item cooperation-partners__item--logo-xl">
+          <div class="cooperation-partners__item-logo"><img src="images/logo-стоун-дом.png" alt="Стоун Дом" loading="lazy"></div>
+          <span class="cooperation-partners__item-name">Стоун Дом</span>
+        </article>
       </div>
     </div>
   </section>
@@ -1030,11 +1219,8 @@
   <section class="cooperation-audience" id="audience">
     <div class="container">
       <div class="cooperation-section__header cooperation-section__header--center">
-        <h2 class="section-title section-title--center">Комплексное решение для загородного дома</h2>
-        <p class="cooperation-section__text">Помогаем застройщикам добавить в проект камин или печь под ключ: от дизайн-проекта до комплектации, монтажа и сдачи готового объекта.</p>
-      </div>
-      <div class="cooperation-audience__label">
-        <span class="cooperation-section__eyebrow">Для кого</span>
+        <h2 class="section-title section-title--center">Комплексное решение для&nbsp;загородного&nbsp;дома</h2>
+        <p class="cooperation-section__text">Помогаем застройщикам добавить в проект дома камин или печь под ключ: от дизайн-проекта до&nbsp;комплектации, монтажа&nbsp;и&nbsp;сдачи&nbsp;готового&nbsp;объекта.</p>
       </div>
       <div class="cooperation-cards">
         <article class="cooperation-card cooperation-card--wide cooperation-card--featured">
@@ -1043,10 +1229,10 @@
             <h3 class="cooperation-card__title">Что получает застройщик</h3>
           </div>
           <ul class="cooperation-card__list">
-            <li>Начальная дилерская скидка на керамическую облицовку нашего производства и монтажные работы.</li>
-            <li>Накопительная система скидок для постоянного сотрудничества.</li>
+            <li>Специальные цены на керамическую облицовку нашего производства и монтажные работы, а также удобный формат взаимодействия для долгосрочного сотрудничества.</li>
+            <li>CeramicaDecor объединяет несколько направлений: предлагаем решения по микроцементу и декоративным штукатуркам, а также по строительству беседок и навесов.</li>
             <li>Персональный менеджер сопровождает проект от консультации и проектирования до сдачи объекта.</li>
-            <li>Работу с конечным заказчиком можно передать нашему менеджеру. Это не повлияет на вашу дилерскую скидку.</li>
+            <li>Работу с конечным заказчиком можно передать нашему менеджеру. Это не повлияет на условия сотрудничества.</li>
           </ul>
         </article>
       </div>
@@ -1060,7 +1246,7 @@
       <div class="stats__grid">
         <div class="stats__item">
           <span class="stats__number" data-target="40">&gt;40</span>
-          <span class="stats__label">типовых коллекций</span>
+          <span class="stats__label">разработанных коллекций</span>
         </div>
         <div class="stats__divider"></div>
         <div class="stats__item">
@@ -1080,7 +1266,6 @@
   <section class="cooperation-process" id="process">
     <div class="container">
       <div class="cooperation-section__header cooperation-section__header--center">
-        <span class="cooperation-section__eyebrow">Процесс</span>
         <h2 class="section-title section-title--center">Этапы работы</h2>
       </div>
       <div class="cooperation-steps">
@@ -1093,11 +1278,11 @@
           <p class="cooperation-step__text">Готовим дизайн-проект - визуализацию, схему с размерами и смету с расчетом стоимости работ и материалов.</p>
         </article>
         <article class="cooperation-step">
-          <h3 class="cooperation-step__title">Согласование и производство</h3>
+          <h3 class="cooperation-step__title">Согласование и&nbsp;производство</h3>
           <p class="cooperation-step__text">После согласования проекта готовим чертежи конструктива и запускаем производство комплекта изразцов.</p>
         </article>
         <article class="cooperation-step">
-          <h3 class="cooperation-step__title">Производство и сдача объекта</h3>
+          <h3 class="cooperation-step__title">Монтаж и сдача объекта</h3>
           <p class="cooperation-step__text">Выполняем монтаж конструктива и облицовки и сдаем готовый объект.</p>
         </article>
       </div>
@@ -1108,8 +1293,7 @@
   <section class="cooperation-form-section" id="cooperation-form">
     <div class="container">
       <div class="cooperation-section__header cooperation-section__header--center">
-        <span class="cooperation-section__eyebrow" id="cooperation-form-title" data-scroll-offset="0">Заявка</span>
-        <h2 class="section-title section-title--center">Свяжитесь с нами для долгосрочного сотрудничества</h2>
+        <h2 class="section-title section-title--center" id="cooperation-form-title" data-scroll-offset="0">Свяжитесь с нами для долгосрочного сотрудничества</h2>
       </div>
       <p class="cooperation-contact-block__text"><span class="cooperation-contact-block__text-line">Для обсуждения сотрудничества и ответов на любые вопросы предлагаем провести встречу с вами</span> <span class="cooperation-contact-block__text-line">в любое удобное для вас время. Мы готовы предоставить вам образцы нашей продукции</span> <span class="cooperation-contact-block__text-line">для демонстрации вашим заказчикам.</span></p>
       <div class="cooperation-contact-block">

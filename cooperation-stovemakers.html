@@ -55,7 +55,7 @@
       display: inline-flex;
       align-items: center;
       margin-bottom: 18px;
-      color: var(--primary);
+      color: var(--amber);
       font-size: 0.78rem;
       font-weight: 600;
       letter-spacing: 0.08em;
@@ -72,7 +72,7 @@
     .cooperation-hero__subtitle {
       max-width: 700px;
       margin: 0 auto;
-      color: rgba(255,255,255,0.6);
+      color: #fff;
       font-family: 'Inter', sans-serif;
       font-size: clamp(1rem, 1.5vw, 1.25rem);
       font-weight: 300;
@@ -99,7 +99,7 @@
       overflow: hidden;
       padding: 80px 0;
       border: 0;
-      background: conic-gradient(from 90deg at 50% 99.94%, rgba(124, 42, 29, 0) 0deg, rgba(226, 77, 54, 0.6) 263.08deg, #FF7D0B 304.62deg, #FFFFFF 360deg);
+      background: conic-gradient(from 90deg at 50% 99.94%, rgba(124, 42, 29, 0) 0deg, rgba(255, 161, 94, 0.6) 263.08deg, #ffa15e 304.62deg, #FFFFFF 360deg);
     }
     .cooperation-stats::after {
       content: '';
@@ -122,6 +122,7 @@
       align-self: flex-start;
     }
     .cooperation-stats .stats__number {
+      color: var(--amber);
       text-shadow: 0 10px 36px rgba(0,0,0,0.28);
     }
     .cooperation-stats .stats__label {
@@ -178,7 +179,7 @@
       transition: border-color 0.25s ease, transform 0.25s ease;
     }
     .cooperation-card:hover {
-      border-color: rgba(203,59,37,0.42);
+      border-color: rgba(255,161,94,0.42);
       transform: translateY(-2px);
     }
     .cooperation-card--wide {
@@ -190,7 +191,7 @@
       padding: 42px 40px;
       overflow: hidden;
       background: rgba(255,255,255,0.035);
-      border-color: rgba(203,59,37,0.34);
+      border-color: rgba(255,161,94,0.34);
       box-shadow: 0 24px 70px rgba(0,0,0,0.28);
     }
     .cooperation-card--featured::before {
@@ -211,7 +212,7 @@
       height: 42px;
       flex: 0 0 auto;
       margin-bottom: 0;
-      color: var(--primary);
+      color: var(--amber);
     }
     .cooperation-card__title,
     .cooperation-step__title {
@@ -236,8 +237,8 @@
       height: 52px;
       padding: 10px;
       border-radius: 50%;
-      background: rgba(203,59,37,0.14);
-      border: 1px solid rgba(203,59,37,0.32);
+      background: rgba(255,161,94,0.14);
+      border: 1px solid rgba(255,161,94,0.32);
     }
     .cooperation-card--featured .cooperation-card__title {
       font-size: clamp(1.55rem, 2.6vw, 2.35rem);
@@ -274,7 +275,7 @@
       width: 6px;
       height: 6px;
       border-radius: 50%;
-      background: var(--primary);
+      background: var(--amber);
     }
     .cooperation-card--featured .cooperation-card__list {
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -300,8 +301,8 @@
       width: 36px;
       height: 36px;
       border-radius: 50%;
-      background: rgba(203,59,37,0.16);
-      color: rgba(203,59,37,0.95);
+      background: rgba(255,161,94,0.16);
+      color: rgba(255,161,94,0.95);
       font-size: 0.76rem;
       font-weight: 600;
       line-height: 36px;
@@ -317,10 +318,21 @@
     .cooperation-reasons {
       margin-top: 56px;
     }
+    .cooperation-reasons + .cooperation-cards {
+      margin-top: 56px;
+    }
     .cooperation-reasons__header {
-      max-width: 760px;
-      margin: 0 auto 30px;
-      text-align: center;
+      margin: 0 0 30px;
+      text-align: left;
+    }
+    .cooperation-reasons__title {
+      margin: 0;
+      color: #fff;
+      font-family: var(--font-heading);
+      font-size: clamp(1.55rem, 2.6vw, 2.35rem);
+      font-weight: 400;
+      line-height: 1.18;
+      text-align: left;
     }
     .cooperation-reasons__grid {
       display: grid;
@@ -344,7 +356,7 @@
       top: 28px;
       left: 24px;
       display: block;
-      color: rgba(203,59,37,0.78);
+      color: rgba(255,161,94,0.78);
       font-family: var(--font-heading);
       font-size: 2rem;
       line-height: 1;
@@ -387,7 +399,7 @@
       width: 6px;
       height: 6px;
       border-radius: 50%;
-      background: var(--primary);
+      background: var(--amber);
     }
     .cooperation-formats__grid {
       display: grid;
@@ -451,7 +463,7 @@
       counter-increment: cooperation-list;
     }
     .cooperation-list li:hover {
-      border-color: rgba(203,59,37,0.4);
+      border-color: rgba(255,161,94,0.4);
       transform: translateY(-2px);
     }
     .cooperation-list li::before {
@@ -463,8 +475,8 @@
       height: 32px;
       transform: translateY(-50%);
       border-radius: 50%;
-      background: rgba(203,59,37,0.16);
-      color: rgba(203,59,37,0.92);
+      background: rgba(255,161,94,0.16);
+      color: rgba(255,161,94,0.92);
       font-size: 0.72rem;
       font-weight: 600;
       line-height: 32px;
@@ -504,7 +516,7 @@
     .cooperation-step__header .cooperation-step__title::before {
       content: counter(cooperation-step, decimal-leading-zero);
       flex: 0 0 auto;
-      color: rgba(203,59,37,0.78);
+      color: rgba(255,161,94,0.78);
       font-family: var(--font-heading);
       font-size: 2.2rem;
       line-height: 1;
@@ -538,8 +550,8 @@
       width: 30px;
       height: 30px;
       border-radius: 50%;
-      background: rgba(203,59,37,0.16);
-      color: rgba(203,59,37,0.95);
+      background: rgba(255,161,94,0.16);
+      color: rgba(255,161,94,0.95);
       font-size: 0.7rem;
       font-weight: 600;
       line-height: 30px;
@@ -1011,7 +1023,7 @@
             <li><a href="about.html" class="header__top-link">О компании</a></li>
             <li><a href="about.html#team" class="header__top-link">Наша команда</a></li>
             <li><a href="contacts-gallery-review.html" class="header__top-link">Видеоотзывы</a></li>
-            <li class="header__top-dropdown"><button type="button" class="header__top-link header__top-dropdown-toggle" aria-haspopup="true" aria-expanded="false">Сотрудничество</button><ul class="header__top-dropdown-menu"><li><a href="cooperation.html">Дизайнеры</a></li><li><a href="cooperation-stovemakers.html">Печники</a></li><li><a href="cooperation-developers.html">Застройщики</a></li><li><a href="cooperation-fireplace-salons.html">Салоны каминов</a></li><li><a href="cooperation-tile-salons.html">Салоны плитки</a></li></ul></li>
+            <li class="header__top-dropdown"><button type="button" class="header__top-link header__top-dropdown-toggle" aria-haspopup="true" aria-expanded="false">Сотрудничество</button><ul class="header__top-dropdown-menu"><li><a href="cooperation.html">Для дизайнеров</a></li><li><a href="cooperation-stovemakers.html">Для печников</a></li><li><a href="cooperation-developers.html">Для застройщиков</a></li><li><a href="cooperation-fireplace-salons.html">Для салонов каминов</a></li><li><a href="cooperation-tile-salons.html">Для салонов плитки</a></li></ul></li>
           </ul>
         </nav>
       </div>
@@ -1051,7 +1063,7 @@
                     <a href="catalog-otopitelnye-pechi.html?subcategory=russkie-pechi" class="header__mega-card header__mega-card--large" role="menuitem"><img src="images/banner-russkie-pechi_desktop.webp" alt="Русские печи"><span>Русские печи</span></a>
                     <a href="catalog-otopitelnye-pechi.html?subcategory=otopitelnye-pechi" class="header__mega-card" role="menuitem"><img src="images/5393.jpg" alt="Отопительные печи"><span>Отопительные печи</span></a>
                     <a href="catalog-otopitelnye-pechi.html?subcategory=bannye-pechi" class="header__mega-card" role="menuitem"><img src="images/banner-bannye-pechi_desktop.webp" alt="Банные печи"><span>Банные печи</span></a>
-                    <a href="catalog-otopitelnye-pechi.html?subcategory=bannye-portaly" class="header__mega-card" role="menuitem"><img src="images/banner-bannye-portaly_desktop.webp" alt="Банные порталы"><span>Банные порталы</span></a>
+                    <a href="catalog-otopitelnye-pechi.html?subcategory=bannye-portaly" class="header__mega-card" role="menuitem"><img src="images/banner_bannye portaly_new.jpg?v=20260714-1831" alt="Банные порталы"><span>Банные порталы</span></a>
                   </div>
                 </section>
                 <section class="header__mega-panel" role="tabpanel" data-mega-panel="barbekyu">
@@ -1120,7 +1132,7 @@
             <li><a href="about.html" class="header__nav-link">О компании</a></li>
             <li><a href="about.html#team" class="header__nav-link">Наша команда</a></li>
             <li><a href="contacts-gallery-review.html" class="header__nav-link">Видеоотзывы</a></li>
-            <li class="header__nav-dropdown header__nav-dropdown--simple"><a href="cooperation.html" class="header__nav-link" aria-haspopup="true" aria-expanded="false">Сотрудничество</a><ul class="header__dropdown-menu"><li><a href="cooperation.html">Дизайнеры</a></li><li><a href="cooperation-stovemakers.html">Печники</a></li><li><a href="cooperation-developers.html">Застройщики</a></li><li><a href="cooperation-fireplace-salons.html">Салоны каминов</a></li><li><a href="cooperation-tile-salons.html">Салоны плитки</a></li></ul></li>
+            <li class="header__nav-dropdown header__nav-dropdown--simple"><a href="cooperation.html" class="header__nav-link" aria-haspopup="true" aria-expanded="false">Сотрудничество</a><ul class="header__dropdown-menu"><li><a href="cooperation.html">Для дизайнеров</a></li><li><a href="cooperation-stovemakers.html">Для печников</a></li><li><a href="cooperation-developers.html">Для застройщиков</a></li><li><a href="cooperation-fireplace-salons.html">Для салонов каминов</a></li><li><a href="cooperation-tile-salons.html">Для салонов плитки</a></li></ul></li>
           </ul>
           <a href="tel:+74952293046" data-calltracking="phone" data-calltracking-group="main" class="header__nav-phone-link">+7 (495) 229-30-46</a>
           <div class="header__nav-messengers" aria-label="Мессенджеры">
@@ -1165,28 +1177,11 @@
     <div class="container">
       <div class="cooperation-section__header cooperation-section__header--center">
         <h2 class="section-title section-title--center">Премиальная облицовка<br>для печных проектов</h2>
-        <p class="cooperation-section__text">Собственное дизайн-бюро позволяет нам разрабатывать индивидуальное решение<br class="cooperation-section__text-break">под любой запрос, а для вас это способ выделиться с комплексным предложением<br class="cooperation-section__text-break">по оформлению камина или печи для ваших заказчиков.</p>
-      </div>
-      <div class="cooperation-audience__label">
-        <span class="cooperation-section__eyebrow">Для кого</span>
-      </div>
-      <div class="cooperation-cards">
-        <article class="cooperation-card cooperation-card--wide cooperation-card--featured">
-          <div class="cooperation-card__heading">
-            <svg class="cooperation-card__icon" viewBox="0 0 40 40" fill="none"><path d="M10 28l18-18 4 4-18 18H10v-4zM24 14l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <h3 class="cooperation-card__title">Что получает печник</h3>
-          </div>
-          <ul class="cooperation-card__list">
-            <li>Начальная дилерская скидка на керамическую облицовку нашего производства.</li>
-            <li>Накопительная система скидок для постоянного сотрудничества и регулярных совместных проектов.</li>
-            <li>Персональный менеджер сопровождает проект от консультации и проектирования до сдачи объекта.</li>
-            <li>Работу с конечным заказчиком можно передать нашему менеджеру. Это не повлияет на вашу дилерскую скидку.</li>
-          </ul>
-        </article>
+        <p class="cooperation-section__text">Собственное дизайн-бюро позволяет нам разрабатывать индивидуальное решение<br class="cooperation-section__text-break">под любой запрос, а для вас это способ выделиться с комплексным предложением<br class="cooperation-section__text-break">по оформлению камина или печи для ваших заказчиков</p>
       </div>
       <div class="cooperation-reasons">
         <div class="cooperation-reasons__header">
-          <h2 class="section-title section-title--center">Почему печнику нужны изразцы</h2>
+          <h2 class="cooperation-reasons__title">Почему печнику нужны изразцы</h2>
         </div>
         <div class="cooperation-reasons__grid">
           <article class="cooperation-reason">
@@ -1197,15 +1192,29 @@
             <h3 class="cooperation-reason__title">Дополнительный доход</h3>
             <p class="cooperation-reason__text">Изразцовая облицовка расширяет стоимость проекта и дает печнику дополнительные источники дохода:</p>
             <ul class="cooperation-reason__sublist">
-              <li>Партнерская скидка на изразцы нашего производства.</li>
+              <li>Специальные партнерские цены на изразцы нашего производства.</li>
               <li>Дополнительная оплата работы по монтажу облицовки.</li>
             </ul>
           </article>
           <article class="cooperation-reason">
             <h3 class="cooperation-reason__title">Работа в несезон</h3>
-            <p class="cooperation-reason__text">Возможность работать в несезон. Монтаж изразцов обычно выполняется на этапе чистовой отделки дома, поэтому такие проекты помогают поддерживать загрузку в зимний период.</p>
+            <p class="cooperation-reason__text">Монтаж изразцов обычно выполняется на этапе чистовой отделки дома, поэтому такие проекты помогают поддерживать загрузку в зимний период.</p>
           </article>
         </div>
+      </div>
+      <div class="cooperation-cards">
+        <article class="cooperation-card cooperation-card--wide cooperation-card--featured">
+          <div class="cooperation-card__heading">
+            <svg class="cooperation-card__icon" viewBox="0 0 40 40" fill="none"><path d="M10 28l18-18 4 4-18 18H10v-4zM24 14l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <h3 class="cooperation-card__title">Что получает печник</h3>
+          </div>
+          <ul class="cooperation-card__list">
+            <li>Специальные партнерские цены на керамическую облицовку нашего производства, а также гибкие условия для постоянного сотрудничества и регулярных совместных проектов.</li>
+            <li>При необходимости оказываем техническую поддержку на объекте: консультируем по кладке изразцов и проводим шеф-монтаж.</li>
+            <li>Персональный менеджер сопровождает проект от консультации и проектирования до сдачи объекта.</li>
+            <li>Работу с конечным заказчиком можно передать нашему менеджеру. Это не повлияет на условия сотрудничества.</li>
+          </ul>
+        </article>
       </div>
     </div>
   </section>
@@ -1217,7 +1226,7 @@
       <div class="stats__grid">
         <div class="stats__item">
           <span class="stats__number" data-target="40">&gt;40</span>
-          <span class="stats__label">типовых коллекций</span>
+          <span class="stats__label">разработанных коллекций</span>
         </div>
         <div class="stats__divider"></div>
         <div class="stats__item">
@@ -1237,7 +1246,6 @@
   <section class="cooperation-process" id="process">
     <div class="container">
       <div class="cooperation-section__header cooperation-section__header--center">
-        <span class="cooperation-section__eyebrow">Процесс</span>
         <h2 class="section-title section-title--center">Этапы работы</h2>
       </div>
       <div class="cooperation-steps">
@@ -1272,8 +1280,7 @@
   <section class="cooperation-form-section" id="cooperation-form">
     <div class="container">
       <div class="cooperation-section__header cooperation-section__header--center">
-        <span class="cooperation-section__eyebrow" id="cooperation-form-title" data-scroll-offset="0">Заявка</span>
-        <h2 class="section-title section-title--center">Свяжитесь с нами для долгосрочного сотрудничества</h2>
+        <h2 class="section-title section-title--center" id="cooperation-form-title" data-scroll-offset="0">Свяжитесь с нами для долгосрочного сотрудничества</h2>
       </div>
       <p class="cooperation-contact-block__text"><span class="cooperation-contact-block__text-line">Для обсуждения сотрудничества и ответов на любые вопросы предлагаем провести встречу с вами</span> <span class="cooperation-contact-block__text-line">в любое удобное для вас время. Мы готовы предоставить вам образцы нашей продукции</span> <span class="cooperation-contact-block__text-line">для демонстрации вашим заказчикам.</span></p>
       <div class="cooperation-contact-block">

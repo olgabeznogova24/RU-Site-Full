@@ -783,6 +783,12 @@ ul, ol {
 .header__mega-card img[src$="5393.jpg"] {
   transform: scale(1.18);
 }
+@media (min-width: 961px) {
+  .header__mega-card[href*="subcategory=bannye-portaly"] img {
+    object-position: center 42%;
+    transform: scale(1.14);
+  }
+}
 .header__mega-card::after {
   content: '';
   position: absolute;
@@ -818,6 +824,12 @@ ul, ol {
 .header__mega-card:hover img[src$="5393.jpg"],
 .header__mega-card:focus-visible img[src$="5393.jpg"] {
   transform: scale(1.24);
+}
+@media (min-width: 961px) {
+  .header__mega-card[href*="subcategory=bannye-portaly"]:hover img,
+  .header__mega-card[href*="subcategory=bannye-portaly"]:focus-visible img {
+    transform: scale(1.18);
+  }
 }
 .header__mega-card:hover small,
 .header__mega-card:focus-visible small {
@@ -2434,26 +2446,57 @@ ul, ol {
   z-index: 1;
   display: flex;
   align-items: flex-end;
-  min-height: 64px;
-  padding: 28px 16px 14px;
+  justify-content: flex-start;
+  min-height: 88px;
+  padding: 28px 16px 16px;
   color: #fff;
-  font-size: 1.15rem;
+  font-size: 0;
   font-weight: 400;
   line-height: 1.25;
   background: linear-gradient(180deg, rgba(16, 16, 16, 0) 0%, rgba(16, 16, 16, 0.78) 100%);
   pointer-events: none;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.portfolio-gallery__item:hover .portfolio-gallery__caption,
+.portfolio-gallery__item:focus-within .portfolio-gallery__caption {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.portfolio-gallery__caption::after {
+  content: 'Подробнее';
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 34px;
+  padding: 7px 16px;
+  border: 1px solid rgba(255,255,255,0.72);
+  border-radius: 999px;
+  background: rgba(255,255,255,0.12);
+  color: #fff;
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1;
+  backdrop-filter: blur(4px);
+  white-space: nowrap;
 }
 
 .portfolio-gallery__project-link {
-  color: inherit;
+  position: absolute;
+  inset: 0;
+  color: transparent;
+  font-size: 0;
   text-decoration: none;
   pointer-events: auto;
 }
 
 .portfolio-gallery__project-link:hover,
 .portfolio-gallery__project-link:focus-visible {
-  text-decoration: underline;
-  text-underline-offset: 4px;
+  text-decoration: none;
 }
 
 .portfolio-gallery__item--large {
@@ -4474,6 +4517,10 @@ ul, ol {
     object-position: center 60%;
   }
 
+  .header__mega-card[href*="subcategory=bannye-portaly"] img {
+    object-position: center 72%;
+  }
+
   .header__mega-card small {
     display: none;
   }
@@ -6145,8 +6192,9 @@ ul, ol {
 }
 .projects_experience_block__project-link {
   position: absolute;
-  right: 40px;
-  top: 40px;
+  left: 64%;
+  right: auto;
+  top: 70%;
   z-index: 2;
   color: #fff;
   padding-bottom: 5px;
@@ -6197,6 +6245,7 @@ ul, ol {
     max-width: 400px;
   }
   .projects_experience_block__project-link {
+    left: auto;
     right: 20px;
     top: 22px;
     font-size: 14px;
@@ -6277,10 +6326,17 @@ ul, ol {
   height: 180px;
   overflow: hidden;
 }
+.our_team_content .user_photo picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
 .our_team_content .user_photo img {
   display: block;
-  max-width: 100%;
-  margin: 0px auto;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
   position: relative;
   z-index: 1;
 }
@@ -7377,9 +7433,28 @@ ul, ol {
 }
 
 /* Homepage: raise the image framing in the "Печи-камины из наличия" card. */
+.cat-cards .cat-card--ready picture {
+  position: absolute;
+  inset: 0;
+  display: block;
+  overflow: hidden;
+}
+
 .cat-cards .cat-card--ready picture img {
-  position: relative;
-  top: -28px;
-  height: calc(100% + 56px) !important;
-  object-position: center center !important;
+  position: absolute;
+  left: 0;
+  top: -14px;
+  width: 100%;
+  height: calc(100% + 14px) !important;
+  max-width: none;
+  object-fit: cover;
+  object-position: 50% 58% !important;
+}
+
+@media (max-width: 480px) {
+  .cat-cards .cat-card--ready picture img {
+    top: -36px;
+    height: calc(100% + 36px) !important;
+    object-position: 49% 72% !important;
+  }
 }

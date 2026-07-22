@@ -170,17 +170,25 @@
       transform: translateY(-2px);
     }
     .team-grid__avatar {
-      width: 90px;
-      height: 90px;
-      border-radius: 50%;
+      width: 196px;
+      height: 134px;
+      border-radius: 12px;
       overflow: hidden;
       margin: 0 auto 20px;
-      border: 2px solid rgba(203,59,37,0.3);
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.04);
+    }
+    .team-grid__avatar picture {
+      display: block;
+      width: 100%;
+      height: 100%;
     }
     .team-grid__avatar img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      object-position: center top;
+      display: block;
     }
     .team-grid__name {
       font-family: 'TT Ramillas Trl', serif;
@@ -195,6 +203,32 @@
       font-weight: 300;
       color: rgba(255,255,255,0.5);
       line-height: 1.4;
+    }
+
+    .process-steps__grid {
+      gap: 40px;
+    }
+    .process-steps__header {
+      margin-bottom: 36px;
+    }
+    .process-steps__header .section-title {
+      margin-bottom: 16px;
+    }
+    .process-steps__info {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      column-gap: 18px;
+      align-items: center;
+    }
+    .process-steps__num {
+      margin-bottom: 0;
+    }
+    .process-steps__name {
+      margin-bottom: 0;
+    }
+    .process-steps__desc {
+      grid-column: 1 / -1;
+      margin-top: 12px;
     }
 
     /* CONTACT FORM */
@@ -332,6 +366,12 @@
       .process-steps {
         padding-top: 24px;
       }
+      .process-steps__grid {
+        gap: 32px;
+      }
+      .process-steps__header {
+        margin-bottom: 28px;
+      }
       .about-info__cards {
         grid-template-columns: 1fr;
       }
@@ -343,8 +383,8 @@
         padding: 24px 12px 20px;
       }
       .team-grid__avatar {
-        width: 64px;
-        height: 64px;
+        width: 140px;
+        height: 96px;
       }
       .team-grid__name {
         font-size: 0.95rem;
@@ -372,7 +412,7 @@
             <li><a href="about.html" class="header__top-link">О компании</a></li>
             <li><a href="about.html#team" class="header__top-link">Наша команда</a></li>
             <li><a href="contacts-gallery-review.html" class="header__top-link">Видеоотзывы</a></li>
-            <li class="header__top-dropdown"><button type="button" class="header__top-link header__top-dropdown-toggle" aria-haspopup="true" aria-expanded="false">Сотрудничество</button><ul class="header__top-dropdown-menu"><li><a href="cooperation.html">Дизайнеры</a></li><li><a href="cooperation-stovemakers.html">Печники</a></li><li><a href="cooperation-developers.html">Застройщики</a></li><li><a href="cooperation-fireplace-salons.html">Салоны каминов</a></li><li><a href="cooperation-tile-salons.html">Салоны плитки</a></li></ul></li>
+            <li class="header__top-dropdown"><button type="button" class="header__top-link header__top-dropdown-toggle" aria-haspopup="true" aria-expanded="false">Сотрудничество</button><ul class="header__top-dropdown-menu"><li><a href="cooperation.html">Для дизайнеров</a></li><li><a href="cooperation-stovemakers.html">Для печников</a></li><li><a href="cooperation-developers.html">Для застройщиков</a></li><li><a href="cooperation-fireplace-salons.html">Для салонов каминов</a></li><li><a href="cooperation-tile-salons.html">Для салонов плитки</a></li></ul></li>
           </ul>
         </nav>
       </div>
@@ -412,7 +452,7 @@
                     <a href="catalog-otopitelnye-pechi.html?subcategory=russkie-pechi" class="header__mega-card header__mega-card--large" role="menuitem"><img src="images/banner-russkie-pechi_desktop.webp" alt="Русские печи"><span>Русские печи</span></a>
                     <a href="catalog-otopitelnye-pechi.html?subcategory=otopitelnye-pechi" class="header__mega-card" role="menuitem"><img src="images/5393.jpg" alt="Отопительные печи"><span>Отопительные печи</span></a>
                     <a href="catalog-otopitelnye-pechi.html?subcategory=bannye-pechi" class="header__mega-card" role="menuitem"><img src="images/banner-bannye-pechi_desktop.webp" alt="Банные печи"><span>Банные печи</span></a>
-                    <a href="catalog-otopitelnye-pechi.html?subcategory=bannye-portaly" class="header__mega-card" role="menuitem"><img src="images/banner-bannye-portaly_desktop.webp" alt="Банные порталы"><span>Банные порталы</span></a>
+                    <a href="catalog-otopitelnye-pechi.html?subcategory=bannye-portaly" class="header__mega-card" role="menuitem"><img src="images/banner_bannye portaly_new.jpg?v=20260714-1831" alt="Банные порталы"><span>Банные порталы</span></a>
                   </div>
                 </section>
                 <section class="header__mega-panel" role="tabpanel" data-mega-panel="barbekyu">
@@ -481,7 +521,7 @@
             <li><a href="about.html" class="header__nav-link">О компании</a></li>
             <li><a href="about.html#team" class="header__nav-link">Наша команда</a></li>
             <li><a href="contacts-gallery-review.html" class="header__nav-link">Видеоотзывы</a></li>
-            <li class="header__nav-dropdown header__nav-dropdown--simple"><a href="cooperation.html" class="header__nav-link" aria-haspopup="true" aria-expanded="false">Сотрудничество</a><ul class="header__dropdown-menu"><li><a href="cooperation.html">Дизайнеры</a></li><li><a href="cooperation-stovemakers.html">Печники</a></li><li><a href="cooperation-developers.html">Застройщики</a></li><li><a href="cooperation-fireplace-salons.html">Салоны каминов</a></li><li><a href="cooperation-tile-salons.html">Салоны плитки</a></li></ul></li>
+            <li class="header__nav-dropdown header__nav-dropdown--simple"><a href="cooperation.html" class="header__nav-link" aria-haspopup="true" aria-expanded="false">Сотрудничество</a><ul class="header__dropdown-menu"><li><a href="cooperation.html">Для дизайнеров</a></li><li><a href="cooperation-stovemakers.html">Для печников</a></li><li><a href="cooperation-developers.html">Для застройщиков</a></li><li><a href="cooperation-fireplace-salons.html">Для салонов каминов</a></li><li><a href="cooperation-tile-salons.html">Для салонов плитки</a></li></ul></li>
           </ul>
           <a href="tel:+74952293046" data-calltracking="phone" data-calltracking-group="main" class="header__nav-phone-link">+7 (495) 229-30-46</a>
           <div class="header__nav-messengers" aria-label="Мессенджеры">
@@ -625,6 +665,13 @@
 
         <div class="team-grid__card">
           <div class="team-grid__avatar">
+            <img src="images/team_Alex.jpg" alt="Александр Коршиков" loading="lazy"></div>
+          <h3 class="team-grid__name">Александр Коршиков</h3>
+          <p class="team-grid__role">Руководитель подразделения в Санкт-Петербурге</p>
+        </div>
+
+        <div class="team-grid__card">
+          <div class="team-grid__avatar">
             <picture><source srcset="images/team_polozova.webp" type="image/webp"><img src="images/team_polozova.jpg" alt="Елена Полозова" loading="lazy"></picture></div>
           <h3 class="team-grid__name">Елена Полозова</h3>
           <p class="team-grid__role">Главный менеджер проектов</p>
@@ -686,6 +733,13 @@
           <p class="team-grid__role">Менеджер по работе с партнерами</p>
         </div>
 
+        <div class="team-grid__card">
+          <div class="team-grid__avatar">
+            <img src="images/team_Elena.jpg" alt="Елена Быкова" loading="lazy"></div>
+          <h3 class="team-grid__name">Елена Быкова</h3>
+          <p class="team-grid__role">Логист</p>
+        </div>
+
       </div>
     </div>
   </section>
@@ -695,17 +749,17 @@
     <div class="container">
       <div class="process-steps__header">
         <h2 class="section-title">Как мы создаем камины и печи</h2>
-        <p class="section-subtitle">Каждый проект проходит путь от идеи до установки — всё создаётся вручную на нашем производстве</p>
+        <p class="section-subtitle">Каждый проект проходит путь от идеи до установки на&nbsp;объекте</p>
       </div>
       <div class="process-steps__grid">
         <div class="process-steps__item">
           <div class="process-steps__img">
-            <picture><source srcset="images/work_kamin1_new.webp" type="image/webp"><img src="images/work_kamin1_new.jpg" alt="Проектирование и дизайн" loading="lazy"></picture>
+            <picture><img src="images/proect_design.jpg" alt="Проектирование и дизайн" loading="lazy"></picture>
           </div>
           <div class="process-steps__info">
             <span class="process-steps__num">01</span>
             <h3 class="process-steps__name">Проектирование и дизайн</h3>
-            <p class="process-steps__desc">Создаём проект камина или печи с учётом архитектуры дома, интерьера и ваших пожеланий. Рассчитываем тепловую нагрузку и подбираем материалы.</p>
+            <p class="process-steps__desc">Все начинается с проекта. Мы разрабатываем архитектуру камина, подбираем материалы, создаем 3D-визуализацию для утверждения.</p>
           </div>
         </div>
         <div class="process-steps__item process-steps__item--reverse">
@@ -715,7 +769,7 @@
           <div class="process-steps__info">
             <span class="process-steps__num">02</span>
             <h3 class="process-steps__name">Изготовление изразцов</h3>
-            <p class="process-steps__desc">Каждый изразец формуется вручную, покрывается глазурью и проходит обжиг в печи при температуре свыше 1000 °C.</p>
+            <p class="process-steps__desc">Каждый элемент формуется и расписывается вручную. Проходит несколько технологических операций и двукратный обжиг при температуре свыше 1000 °C.</p>
           </div>
         </div>
         <div class="process-steps__item">
@@ -724,8 +778,8 @@
           </div>
           <div class="process-steps__info">
             <span class="process-steps__num">03</span>
-            <h3 class="process-steps__name">Монтаж конструктивной части</h3>
-            <p class="process-steps__desc">Возводим основание камина или печи, устанавливаем топку и дымоходную систему. Все работы — в соответствии со строительными нормами.</p>
+            <h3 class="process-steps__name">Монтаж конструктива</h3>
+            <p class="process-steps__desc">Строительство печи или установка топки и дымохода камина</p>
           </div>
         </div>
         <div class="process-steps__item process-steps__item--reverse">
@@ -735,7 +789,7 @@
           <div class="process-steps__info">
             <span class="process-steps__num">04</span>
             <h3 class="process-steps__name">Монтаж облицовки</h3>
-            <p class="process-steps__desc">Устанавливаем изразцовую облицовку вручную, подгоняя каждый элемент. Финальная затирка швов и проверка качества.</p>
+            <p class="process-steps__desc">Финальный этап — облицовка изразцами. Каждый элемент подгоняется вручную, создавая единое полотно.</p>
           </div>
         </div>
       </div>
@@ -747,7 +801,7 @@
     <div class="container">
       <div class="contact-form__header">
         <h2 class="section-title section-title--center">Оставьте заявку</h2>
-        <p class="contact-form__subtitle">Мы ответим на любые вопросы о наших каминах, изразцах и процессе работы</p>
+        <p class="contact-form__subtitle">Мы ответим на любые вопросы о наших проектах, изразцах и процессе работы</p>
       </div>
       <form class="contact-form__form" id="aboutContactForm" novalidate>
         <div class="contact-form__group">
