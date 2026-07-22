@@ -780,9 +780,6 @@ ul, ol {
   transition: transform var(--transition), opacity var(--transition);
   z-index: -2;
 }
-.header__mega-card img[src$="5393.jpg"] {
-  transform: scale(1.18);
-}
 @media (min-width: 961px) {
   .header__mega-card[href*="subcategory=bannye-portaly"] img {
     object-position: center 42%;
@@ -820,10 +817,6 @@ ul, ol {
 .header__mega-card:focus-visible img {
   opacity: 1;
   transform: scale(1.04);
-}
-.header__mega-card:hover img[src$="5393.jpg"],
-.header__mega-card:focus-visible img[src$="5393.jpg"] {
-  transform: scale(1.24);
 }
 @media (min-width: 961px) {
   .header__mega-card[href*="subcategory=bannye-portaly"]:hover img,
