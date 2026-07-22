@@ -1,0 +1,31 @@
+# Нормализация переносов строк.
+# Текстовые файлы хранятся в репозитории с LF, чтобы правки в git были видны
+# как правки, а не как "файл изменился целиком" при работе на Windows.
+* text=auto eol=lf
+
+*.html   text eol=lf
+*.css    text eol=lf
+*.js     text eol=lf
+*.json   text eol=lf
+*.md     text eol=lf
+*.xml    text eol=lf
+*.txt    text eol=lf
+*.svg    text eol=lf
+
+# Двоичные файлы git не должен трогать и пытаться сравнивать построчно.
+*.png    binary
+*.jpg    binary
+*.jpeg   binary
+*.gif    binary
+*.webp   binary
+*.ico    binary
+*.avif   binary
+*.pdf    binary
+*.pptx   binary
+*.woff   binary
+*.woff2  binary
+*.ttf    binary
+*.otf    binary
+*.eot    binary
+*.mp4    binary
+*.webm   binary
