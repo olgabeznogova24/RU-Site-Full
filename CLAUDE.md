@@ -99,5 +99,6 @@ Endpoint форм `https://ceramicadecor.ru/feedback/ceramicadecor_pro` (38 ме
 
 Открытые вопросы, зафиксированные в аудитах:
 
-- полный визуальный клик-тест на ширинах 1440/1280/768/390/360 px не проводился (`interface-audit.md`);
-- `privacy.html` имеет `noindex, nofollow`, но лежит в `sitemap.xml` — нужно решение (`seo-audit.md`).
+- полный визуальный клик-тест на ширинах 1440/1280/768/390/360 px не проводился (`interface-audit.md`).
+
+`noindex` осознанно стоит только на `login.html`, `password-recovery.html` и `404.html`. Остальные публичные страницы, включая `privacy.html`, индексируются.
