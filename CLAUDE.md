@@ -84,6 +84,21 @@ Endpoint форм `https://ceramicadecor.ru/feedback/ceramicadecor_pro` (38 ме
 
 ## Аудит-файлы
 
-`pages-audit.md`, `catalog-audit.md`, `forms-audit.md`, `seo-audit.md`, `assets-audit.md`, `dynamic-zones-audit.md`, `interface-audit.md`, `security-audit.md`.
+Самые ценные для программиста — `dynamic-zones-audit.md` (карта демо-данных) и `forms-audit.md` (поля форм и payload заявки).
 
-Внимание: `pages-audit.md` устарел — в нём числятся несуществующие `catalog-pech-kaminy.html` и `catalog-bannye-portaly.html` и не хватает `catalog-metlahskaya-plitka.html` и `catalog-kaminy-v-oblicovke-mramorom.html`.
+| Файл | Актуален на |
+|---|---|
+| `pages-audit.md` | 2026-07-22 |
+| `catalog-audit.md` | 2026-07-22 |
+| `interface-audit.md` | 2026-07-22 |
+| `seo-audit.md` | 2026-07-22 |
+| `dynamic-zones-audit.md` | частично 2026-07-22 (раздел про карточки главной) |
+| `assets-audit.md`, `forms-audit.md`, `security-audit.md` | 2026-05-29 |
+
+При правках, меняющих состав страниц или разделов каталога, обновлять `pages-audit.md` и `catalog-audit.md` — иначе программист получит документ, который выглядит достоверным, но врёт.
+
+Открытые вопросы, зафиксированные в аудитах:
+
+- полный визуальный клик-тест на ширинах 1440/1280/768/390/360 px не проводился (`interface-audit.md`);
+- `privacy.html` имеет `noindex, nofollow`, но лежит в `sitemap.xml` — нужно решение (`seo-audit.md`);
+- `catalog-mramornye-kaminy-portaly.html` — страница-сирота без ссылок (`pages-audit.md`).

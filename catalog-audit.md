@@ -1,6 +1,6 @@
 # Аудит каталога CeramicaDecor
 
-Дата проверки: 2026-05-29.
+Дата проверки: 2026-07-22. Предыдущая проверка: 2026-05-29.
 
 ## Структура
 
@@ -12,26 +12,35 @@
 
 ## Демонстрационные данные
 
-В обычном каталоге сейчас заполнены не все разделы. Это нормально для статического дизайн-пакета: пустые разделы показывают шаблон и сообщение, что реальные карточки будут подключены из внутренней системы.
+Структура изменилась с прошлой проверки. Раньше часть разделов была заполнена демо-карточками, а часть пуста. Сейчас во всех разделах лежит **один и тот же набор из 16 карточек-заглушек** с идентификаторами `template-*`, а в девяти разделах есть ещё одна карточка `project-*-placeholder`.
 
-| Раздел | Файл | Демонстрационные карточки |
+Ключевое: **реальных товаров в HTML нет ни в одном разделе** — все карточки являются заглушками. Это соответствует требованию `readme.md` не вшивать данные в вёрстку.
+
+| Раздел | Файл | Карточек |
 |---|---|---:|
-| Весь каталог | `catalog.html` | 42 |
-| Камины | `catalog-kaminy.html` | 24 |
-| Барбекю комплексы | `catalog-barbekyu-kompleksy.html` | 18 |
-| Серийные модели | `catalog-seriynye-modeli.html` | 6 |
+| Весь каталог | `catalog.html` | 16 |
 | Изразцы | `catalog-izrazcy.html` | данные из `izrazcy-data.js` |
-| Биокамины | `catalog-biokaminy.html` | 0, шаблон |
-| Электрокамины | `catalog-elektrokaminy.html` | 0, шаблон |
-| Печь-камины | `catalog-pech-kaminy.html` | 0, шаблон |
-| Мраморные камины и порталы | `catalog-mramornye-kaminy-portaly.html` | 0, шаблон |
-| Русские печи | `catalog-russkie-pechi.html` | 0, шаблон |
-| Отопительные печи | `catalog-otopitelnye-pechi.html` | 0, шаблон |
-| Банные печи | `catalog-bannye-pechi.html` | 0, шаблон |
-| Банные порталы | `catalog-bannye-portaly.html` | 0, шаблон |
-| Фасадная керамика | `catalog-fasadnaya-keramika.html` | 0, шаблон |
-| Интерьерная керамика | `catalog-interernaya-keramika.html` | 0, шаблон |
-| Сувенирная продукция | `catalog-suvenirnaya-produkciya.html` | 0, шаблон |
+| Камины | `catalog-kaminy.html` | 17 |
+| Биокамины | `catalog-biokaminy.html` | 16 |
+| Электрокамины | `catalog-elektrokaminy.html` | 16 |
+| Мраморные порталы | `catalog-mramornye-portaly.html` | 17 |
+| Камины в облицовке мрамором | `catalog-kaminy-v-oblicovke-mramorom.html` | 17 |
+| Русские печи | `catalog-russkie-pechi.html` | 16 |
+| Отопительные печи | `catalog-otopitelnye-pechi.html` | 17 |
+| Барбекю комплексы | `catalog-barbekyu-kompleksy.html` | 17 |
+| Банные печи | `catalog-bannye-pechi.html` | 16 |
+| Серийные модели | `catalog-seriynye-modeli.html` | 16 |
+| Фасадная керамика | `catalog-fasadnaya-keramika.html` | 17 |
+| Интерьерная керамика | `catalog-interernaya-keramika.html` | 17 |
+| Метлахская плитка | `catalog-metlahskaya-plitka.html` | 17 |
+| Сувенирная продукция | `catalog-suvenirnaya-produkciya.html` | 16 |
+
+Разделы `catalog-pech-kaminy.html` и `catalog-bannye-portaly.html`, числившиеся в прошлой версии этого аудита, в проекте отсутствуют. Банные порталы стали подразделом отопительных печей (`catalog-otopitelnye-pechi.html?subcategory=bannye-portaly`).
+
+### Замечания
+
+- `catalog-mramornye-kaminy-portaly.html` — страница-сирота: на неё нет ссылок, её нет в `sitemap.xml` и в `readme.md`. Подробнее в `pages-audit.md`.
+- В `catalog-mramornye-portaly.html` карточка-заглушка имеет идентификатор `project-kaminy-v-oblicovke-mramorom-placeholder` — похоже на копирование из соседнего раздела. На вёрстку не влияет, но при интеграции лучше поправить.
 
 ## Карточки и прямые ссылки
 
@@ -41,7 +50,10 @@
 
 ## Проверки
 
-- Все страницы `catalog*.html` существуют.
-- `catalog.html` показывает общий список, а не пустой раздел.
-- `catalog-seriynye-modeli.html` получил карточки серий Дорф и Ритм вместо старой роли `ready.html`.
-- Битых локальных `.html`-ссылок не найдено.
+Проверено 2026-07-22:
+
+- все 15 разделов каталога из `readme.md` существуют;
+- `catalog.html` показывает общий список, а не пустой раздел;
+- `catalog-seriynye-modeli.html` получил карточки серий Дорф и Ритм вместо старой роли `ready.html`;
+- битых локальных `.html`-ссылок не найдено во всём проекте;
+- все изображения из `src` и `srcset` существуют на диске.

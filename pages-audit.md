@@ -1,6 +1,10 @@
 # Аудит HTML-страниц CeramicaDecor
 
-Дата проверки: 2026-05-29.
+Дата проверки: 2026-07-22. Предыдущая проверка: 2026-05-29.
+
+Состав страниц перепроверен по факту: списки ниже соответствуют файлам на диске.
+
+Всего в пакете 41 HTML-файл: 33 публичные страницы, 5 шаблонов карточек товара, 2 внутренние страницы сотрудников и `404.html`.
 
 ## Обязательные страницы из README
 
@@ -12,15 +16,20 @@
 | `privacy.html` | есть |
 | `terms.html` | есть |
 | `catalog.html` | есть |
+| `portfolio.html` | есть |
 | `glaze-palette.html` | есть |
 | `restoration.html` | есть |
 | `components.html` | есть |
 | `cooperation.html` | есть |
-| `404.html` | добавлена |
-| `login.html` | добавлена |
-| `password-recovery.html` | добавлена |
+| `blog.html` | есть |
+| `contacts-gallery-review.html` | есть |
+| `404.html` | есть |
+| `login.html` | есть |
+| `password-recovery.html` | есть |
 
 ## Разделы каталога
+
+15 разделов из README, все на месте:
 
 | Страница | Статус |
 |---|---|
@@ -28,31 +37,65 @@
 | `catalog-kaminy.html` | есть |
 | `catalog-biokaminy.html` | есть |
 | `catalog-elektrokaminy.html` | есть |
-| `catalog-pech-kaminy.html` | есть |
-| `catalog-mramornye-kaminy-portaly.html` | есть |
+| `catalog-mramornye-portaly.html` | есть |
+| `catalog-kaminy-v-oblicovke-mramorom.html` | есть |
 | `catalog-russkie-pechi.html` | есть |
 | `catalog-otopitelnye-pechi.html` | есть |
 | `catalog-barbekyu-kompleksy.html` | есть |
 | `catalog-bannye-pechi.html` | есть |
-| `catalog-bannye-portaly.html` | есть |
 | `catalog-seriynye-modeli.html` | есть |
 | `catalog-fasadnaya-keramika.html` | есть |
 | `catalog-interernaya-keramika.html` | есть |
+| `catalog-metlahskaya-plitka.html` | есть |
 | `catalog-suvenirnaya-produkciya.html` | есть |
 
-## Дополнительные страницы
+## Страницы сотрудничества
 
-Эти страницы были в проекте, но не входят в обязательный список README и удалены из чистого дизайн-пакета:
+| Страница | Статус |
+|---|---|
+| `cooperation-stovemakers.html` | есть |
+| `cooperation-developers.html` | есть |
+| `cooperation-fireplace-salons.html` | есть |
+| `cooperation-tile-salons.html` | есть |
 
-- `hero-review.html`
-- `izrazcy.html`
-- `ready.html`
-- `reviews.html`
+Пункт `Дизайнеры` в меню ведёт на общую `cooperation.html`.
 
-Важно: `izrazcy.html` не хранила самостоятельную базу каталога. Рабочим шаблоном раздела изразцов является `catalog-izrazcy.html`; данные остаются в `izrazcy-data.js`, `izrazcy-relations.js` и `izrazcy-360-data.js`. Поиск изразцов переключен на `catalog-izrazcy.html?article=...`.
+## Шаблоны карточек товара
 
-Важно: `ready.html` была старой страницей серийных моделей. Её роль перенесена в `catalog-seriynye-modeli.html`: добавлены демонстрационные карточки серий Дорф и Ритм, используется `images/ready_banner.png`. Отдельный файл `ready.html` в чистом пакете не нужен.
+| Шаблон | Статус |
+|---|---|
+| `product-izrazec-template.html` | есть |
+| `product-drovyanoi-kamin-template.html` | есть |
+| `product-barbekyu-kompleks-albion-template.html` | есть |
+| `product-restavraciya-izrazcovye-pechi-template.html` | есть |
+| `product-components-astov-ps-7363-template.html` | есть |
+
+Отдельных файлов под каждый товар нет и делать их не нужно, см. правило `?product=` в `readme.md`.
+
+## Требует решения: страница-сирота
+
+`catalog-mramornye-kaminy-portaly.html` лежит в папке, но:
+
+- на неё нет ни одной ссылки с других страниц;
+- её нет в `sitemap.xml`;
+- её нет в списке разделов в `readme.md`.
+
+Судя по `CATALOG_DEFAULT_CATEGORY = mramornye-kaminy-portaly` и заголовку «Мраморные камины и порталы», это остаток от прежней структуры: раздел был разделён на `catalog-mramornye-portaly.html` и `catalog-kaminy-v-oblicovke-mramorom.html`. Файл нужно либо удалить, либо вернуть в навигацию осознанно.
+
+## Удалённые страницы
+
+Эти страницы были в проекте и удалены из чистого дизайн-пакета намеренно:
+
+- `hero-review.html`;
+- `izrazcy.html`;
+- `ready.html`;
+- `reviews.html`;
+- `portfolio-review.html` (удалена 2026-07-22).
+
+`izrazcy.html` не хранила самостоятельную базу каталога. Рабочим шаблоном раздела изразцов является `catalog-izrazcy.html`; данные остаются в `izrazcy-data.js`, `izrazcy-relations.js` и `izrazcy-360-data.js`. Поиск изразцов переключен на `catalog-izrazcy.html?article=...`.
+
+`ready.html` была старой страницей серийных моделей. Её роль перенесена в `catalog-seriynye-modeli.html`: добавлены демонстрационные карточки серий Дорф и Ритм, используется `images/ready_banner.png`.
 
 ## Важное
 
-`login.html` и `password-recovery.html` являются внутренними страницами для сотрудников. Они не должны добавляться в публичную шапку, футер, поиск или `sitemap.xml`.
+`login.html` и `password-recovery.html` являются внутренними страницами для сотрудников. Они не должны добавляться в публичную шапку, футер, поиск или `sitemap.xml`. Проверено 2026-07-22: в `sitemap.xml` их нет.

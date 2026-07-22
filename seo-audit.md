@@ -1,6 +1,8 @@
 # SEO-аудит CeramicaDecor
 
-Дата проверки: 2026-05-29.
+Дата проверки: 2026-07-22. Предыдущая проверка: 2026-05-29.
+
+Таблица «Текущее состояние» и раздел про повторяющиеся описания перепроверены 2026-07-22 по всем 41 HTML-файлу.
 
 ## Что проверено
 
@@ -43,31 +45,20 @@
 
 ### Повторяющиеся SEO-заготовки
 
-У 17 страниц сейчас одинаковый `description`:
+Ситуация улучшилась с прошлой проверки: было 17 страниц с одинаковым `description`, осталось 4.
+
+Общий текст:
 
 `Более 50 моделей каминов и барбекю в керамической облицовке. Собственное производство, ручная работа, доставка по всей России.`
 
-Страницы с повтором:
+Страницы с повтором на 2026-07-22:
 
 - `catalog.html`;
-- `catalog-kaminy.html`;
-- `catalog-biokaminy.html`;
-- `catalog-elektrokaminy.html`;
-- `catalog-pech-kaminy.html`;
-- `catalog-mramornye-kaminy-portaly.html`;
-- `catalog-russkie-pechi.html`;
-- `catalog-otopitelnye-pechi.html`;
-- `catalog-barbekyu-kompleksy.html`;
-- `catalog-bannye-pechi.html`;
-- `catalog-bannye-portaly.html`;
-- `catalog-fasadnaya-keramika.html`;
-- `catalog-interernaya-keramika.html`;
-- `catalog-suvenirnaya-produkciya.html`;
 - `components.html`;
 - `glaze-palette.html`;
 - `restoration.html`.
 
-При интеграции нужно заменить эти описания на уникальные SEO-поля из админки или справочника страниц.
+Разделы каталога получили собственные описания. При интеграции оставшиеся четыре нужно заменить на уникальные SEO-поля из админки или справочника страниц.
 
 ### Карточки товаров и изразцов
 
@@ -80,7 +71,7 @@
 
 ### Open Graph изображения
 
-Сейчас `og:image` указывает на локальные пути вида `images/...`. Для production нужно подставить абсолютные URL:
+Проверено 2026-07-22: все 36 найденных `og:image` указывают на локальные пути вида `images/...`, абсолютных URL нет ни одного. Для production нужно подставить абсолютные:
 
 ```text
 https://ceramicadecor.ru/images/...
@@ -90,7 +81,7 @@ https://ceramicadecor.ru/images/...
 
 ### Privacy и индексация
 
-`privacy.html` сейчас имеет `noindex, nofollow`, но находится в `sitemap.xml`. Перед production нужно принять решение:
+Проверено 2026-07-22: вопрос по-прежнему открыт. `privacy.html` имеет `noindex, nofollow`, но находится в `sitemap.xml`. Перед production нужно принять решение:
 
 - либо оставить страницу noindex и убрать ее из sitemap;
 - либо разрешить индексацию и оставить в sitemap.
