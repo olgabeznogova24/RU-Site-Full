@@ -29,7 +29,7 @@
       padding: 160px 0 140px;
       text-align: center;
       position: relative;
-      background: url('images/banner-proekty_desktop.jpg?v=20260723-2') center 20%/cover no-repeat;
+      background: url('images/banner-proekty_desktop.jpg?v=20260723-2') center center/cover no-repeat;
       margin-bottom: 0;
       min-height: 460px;
       box-sizing: border-box;
@@ -48,7 +48,7 @@
       height: 100%;
       display: block;
       object-fit: cover;
-      object-position: center 40%;
+      object-position: center center;
     }
     .catalog-hero__overlay {
       position: absolute;
@@ -79,7 +79,20 @@
       text-wrap: balance;
     }
     @media (min-width: 769px) {
-      .catalog-hero { height: 460px; }
+      /* Высота баннера растёт вместе с шириной в пропорции картинки
+         1920x620 (620 / 1920 = 32.3%), поэтому кадр виден целиком и на
+         широких экранах. Раньше здесь была жёсткая высота 460 px, и всё,
+         что не помещалось, обрезалось сверху и снизу */
+      .catalog-hero {
+        height: 32.3vw;
+        min-height: 460px;
+        max-height: 700px;
+        padding: 40px 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      .catalog-hero__content { width: 100%; }
     }
     @media (max-width: 768px) {
       .catalog-hero__subtitle br { display: none; }
