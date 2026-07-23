@@ -137,6 +137,7 @@
     }
     .cooperation-process {
       padding-top: 48px;
+      padding-bottom: 56px;
     }
     .cooperation-section__header {
       max-width: 820px;
@@ -342,7 +343,6 @@
     }
     .cooperation-reason {
       position: relative;
-      min-height: 260px;
       padding: 28px 24px 26px;
       background: rgba(255,255,255,0.035);
       border: 1px solid rgba(255,255,255,0.08);
@@ -499,8 +499,6 @@
     }
     .cooperation-step__header {
       margin-bottom: 26px;
-      padding-bottom: 24px;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
     }
     .cooperation-step__header .cooperation-step__text {
       margin-bottom: 0;
@@ -516,26 +514,24 @@
     .cooperation-step__header .cooperation-step__title::before {
       content: counter(cooperation-step, decimal-leading-zero);
       flex: 0 0 auto;
-      color: rgba(255,161,94,0.78);
+      color: rgba(203,59,37,0.78);
       font-family: var(--font-heading);
       font-size: 2.2rem;
       line-height: 1;
     }
     .cooperation-step__list {
       display: grid;
-      gap: 12px;
+      gap: 18px;
       margin: 0;
       padding: 0;
       list-style: none;
       counter-reset: scenario-step;
     }
     .cooperation-step__list li {
-      position: relative;
-      min-height: 88px;
-      padding: 20px 20px 20px 66px;
-      background: rgba(16,16,16,0.34);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      min-height: 30px;
       color: rgba(255,255,255,0.68);
       font-size: 0.95rem;
       font-weight: 300;
@@ -544,21 +540,19 @@
     }
     .cooperation-step__list li::before {
       content: counter(scenario-step, decimal-leading-zero);
-      position: absolute;
-      top: 22px;
-      left: 20px;
+      flex: 0 0 auto;
       width: 30px;
       height: 30px;
       border-radius: 50%;
-      background: rgba(255,161,94,0.16);
-      color: rgba(255,161,94,0.95);
+      background: rgba(203,59,37,0.16);
+      color: rgba(203,59,37,0.95);
       font-size: 0.7rem;
       font-weight: 600;
       line-height: 30px;
       text-align: center;
     }
     .cooperation-form-section {
-      padding-top: 48px;
+      padding-top: 32px;
     }
     .cooperation-form-section .container {
       display: grid;
@@ -1186,19 +1180,18 @@
         <div class="cooperation-reasons__grid">
           <article class="cooperation-reason">
             <h3 class="cooperation-reason__title">Сильные проекты в портфолио</h3>
-            <p class="cooperation-reason__text">Эксклюзивные изразцовые работы выделяют печника среди конкурентов и запоминаются заказчикам.</p>
+            <p class="cooperation-reason__text">Эксклюзивные работы в ваше портфолио, которые выделят вас и запомнятся заказчикам. Повысят ваш статус и имя как печника.</p>
           </article>
           <article class="cooperation-reason">
             <h3 class="cooperation-reason__title">Дополнительный доход</h3>
-            <p class="cooperation-reason__text">Изразцовая облицовка расширяет стоимость проекта и дает печнику дополнительные источники дохода:</p>
             <ul class="cooperation-reason__sublist">
-              <li>Специальные партнерские цены на изразцы нашего производства.</li>
-              <li>Дополнительная оплата работы по монтажу облицовки.</li>
+              <li>С изразцов: для печников мы предоставляем специальные партнерские цены.</li>
+              <li>С монтажа изразцов.</li>
             </ul>
           </article>
           <article class="cooperation-reason">
             <h3 class="cooperation-reason__title">Работа в несезон</h3>
-            <p class="cooperation-reason__text">Монтаж изразцов обычно выполняется на этапе чистовой отделки дома, поэтому такие проекты помогают поддерживать загрузку в зимний период.</p>
+            <p class="cooperation-reason__text">Возможность иметь работу в несезон - зимой. Работы по монтажу изразцов выполняются обычно на этапе чистовой отделки дома.</p>
           </article>
         </div>
       </div>
@@ -1252,24 +1245,22 @@
         <article class="cooperation-step">
           <div class="cooperation-step__header">
             <h3 class="cooperation-step__title">Печь еще не построена</h3>
-            <p class="cooperation-step__text">Подключаемся на начальном этапе и предоставляем точные размеры для строительства конструктива с учетом будущей облицовки.</p>
           </div>
           <ul class="cooperation-step__list">
-            <li>Разрабатываем проект печи в облицовке и предоставляем чертежи конструктива для дальнейшей работы.</li>
-            <li>Изготавливаем комплект изразцов параллельно со строительством печи.</li>
-            <li>Монтаж облицовки выполняет печник; при необходимости мы предоставляем консультационную поддержку.</li>
+            <li>Мы готовим проект печи в облицовке и предоставляем чертежи конструктива.</li>
+            <li>Пока вы строите печь, мы изготавливаем изразцы.</li>
+            <li>Вы делаете монтаж облицовки. Мы с этим помогаем при необходимости.</li>
           </ul>
         </article>
         <article class="cooperation-step">
           <div class="cooperation-step__header">
             <h3 class="cooperation-step__title">Печь уже построена</h3>
-            <p class="cooperation-step__text">Работаем с готовым конструктивом и адаптируем проект облицовки под фактические размеры объекта.</p>
           </div>
           <ul class="cooperation-step__list">
-            <li>Печник выполняет замер готовой печи и передает исходные данные для проектирования.</li>
-            <li>Готовим проект облицовки с учетом геометрии печи; при необходимости адаптируем размеры под изразцовые элементы.</li>
-            <li>Изготавливаем изразцы по согласованному проекту и комплектации.</li>
-            <li>Монтаж облицовки выполняет печник; при необходимости мы предоставляем консультационную поддержку.</li>
+            <li>Вы делаете замер печи.</li>
+            <li>Мы готовим проект облицовки. Чаще всего требуется адаптация размеров под изразцы.</li>
+            <li>Мы изготавливаем изразцы.</li>
+            <li>Вы делаете монтаж облицовки. Мы с этим помогаем при необходимости.</li>
           </ul>
         </article>
       </div>
