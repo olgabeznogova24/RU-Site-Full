@@ -7389,7 +7389,7 @@ ul, ol {
 /* Catalog banner image positions */
 [data-catalog-hero="catalog"] .catalog-hero__bg img { object-position: 50% 70% !important; }
 [data-catalog-hero="izrazcy"] .izrazcy-hero__bg img { object-position: 51% 50% !important; }
-[data-catalog-hero="kaminy"] .catalog-hero__bg img { object-position: 50% 72% !important; }
+[data-catalog-hero="kaminy"] .catalog-hero__bg img { object-position: 50% 65% !important; }
 [data-catalog-hero="barbekyu-kompleksy"] .catalog-hero__bg img { object-position: 50% 40% !important; }
 [data-catalog-hero="biokaminy"] .catalog-hero__bg img { object-position: 51% 60% !important; }
 [data-catalog-hero="elektrokaminy"] .catalog-hero__bg img { object-position: 50% 45% !important; }
