@@ -26,12 +26,15 @@
   <style>
     /* ===== CATALOG PAGE HERO ===== */
     .catalog-hero {
-      padding: 160px 0 140px;
+      padding: 160px 0 100px;
       text-align: center;
       position: relative;
+      min-height: 60vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       background: url('images/kaminy_iz_mramora.jpg') center 46%/cover no-repeat;
       margin-bottom: 0;
-      min-height: 460px;
       box-sizing: border-box;
       overflow: hidden;
     }
@@ -78,6 +81,7 @@
     .catalog-hero__content {
       position: relative;
       z-index: 2;
+      width: 100%;
     }
     .catalog-hero__title {
       font-family: 'TT Ramillas Trl', serif;
@@ -96,9 +100,6 @@
       margin: 0 auto;
       line-height: 1.45;
       text-wrap: balance;
-    }
-    @media (min-width: 769px) {
-      .catalog-hero { height: 460px; }
     }
     @media (max-width: 768px) {
       .catalog-hero__subtitle br { display: none; }
@@ -1020,8 +1021,8 @@
     /* ===== RESPONSIVE ===== */
     @media (max-width: 768px) {
       .catalog-hero {
-        padding: 130px 0 50px;
-        min-height: 480px;
+        padding: 140px 0 70px;
+        min-height: auto;
       }
       .catalog-hero__content { padding: 0 20px; }
       .catalog-hero__title { font-size: clamp(2rem, 5vw, 4rem); }

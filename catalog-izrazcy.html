@@ -24,10 +24,14 @@
   <style>
     /* HERO */
     .izrazcy-hero {
-      padding: 160px 0 140px;
+      padding: 160px 0 100px;
       margin-bottom: 0;
       text-align: center;
       position: relative;
+      min-height: 60vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       overflow: hidden;
     }
     .izrazcy-hero__bg {
@@ -56,6 +60,7 @@
     .izrazcy-hero__content {
       position: relative;
       z-index: 2;
+      width: 100%;
     }
     .izrazcy-hero__title {
       font-family: 'TT Ramillas Trl', serif;
@@ -76,7 +81,7 @@
       text-wrap: balance;
     }
     @media (min-width: 769px) {
-      .izrazcy-hero { height: 460px; box-sizing: border-box; }
+      .izrazcy-hero { box-sizing: border-box; }
     }
     @media (max-width: 768px) {
       .izrazcy-hero__subtitle br { display: none; }
@@ -741,7 +746,7 @@
       .izrazcy-modal__btn { padding: 10px 12px; font-size: 0.82rem; }
     }
     @media (max-width: 768px) {
-      .izrazcy-hero { padding: 130px 0 50px; min-height: 480px; }
+      .izrazcy-hero { padding: 140px 0 70px; min-height: auto; }
       .izrazcy-hero__content { padding: 0 20px; }
       .izrazcy-hero__title { font-size: clamp(2rem, 5vw, 4rem); }
     }
