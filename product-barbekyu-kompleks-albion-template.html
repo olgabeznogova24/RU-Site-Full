@@ -264,10 +264,27 @@
     }
     .product-actions {
       display: flex;
-      flex-wrap: wrap;
+      flex-direction: column;
       gap: 12px;
-      align-items: center;
+      align-items: flex-start;
       margin: 0;
+    }
+    .product-3d-link {
+      display: inline-flex;
+      align-items: center;
+      color: #cb3b25;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 500;
+      line-height: 1.3;
+      text-decoration: none;
+      transition: color 0.25s ease;
+    }
+    .product-3d-link:hover,
+    .product-3d-link:focus-visible {
+      color: #e14c35;
+      text-decoration: underline;
+      text-underline-offset: 3px;
     }
     .product-actions .btn {
       min-height: 50px;
@@ -1215,6 +1232,7 @@
               <p class="product-promo">Оставьте заявку сейчас, и мы сделаем бесплатный расчет + 3D-проект</p>
               <div class="product-actions">
                 <a href="#" class="btn btn--primary" data-product-request>Оставить заявку</a>
+                <a href="#" class="product-3d-link" data-product-3d-model download>Скачать 3D-модель облицовки</a>
               </div>
             </div>
           </div>
@@ -1251,6 +1269,7 @@
               </div>
               <div class="product-actions">
                 <a href="#" class="btn btn--primary" data-product-request>Оставить заявку</a>
+                <a href="#" class="product-3d-link" data-product-3d-model download>Скачать 3D-модель облицовки</a>
               </div>
             </div>
           </div>
