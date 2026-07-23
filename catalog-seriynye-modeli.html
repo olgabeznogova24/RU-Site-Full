@@ -75,7 +75,9 @@
       height: 100%;
       display: block;
       object-fit: cover;
-      object-position: center 40%;
+      /* Картинка почти совпадает с пропорцией баннера, поэтому поднимаем
+         её на максимум — прижимаем кадр к нижнему краю */
+      object-position: center bottom;
     }
     .catalog-hero__overlay {
       position: absolute;
