@@ -13,7 +13,7 @@
 
 ## Состав страниц
 
-Проверено 2026-07-22 по файлам на диске: 40 HTML-файлов, все страницы из `readme.md` на месте. Полный список — в `pages-audit.md`.
+Проверено 2026-07-22 по файлам на диске: 40 HTML-файлов, все страницы из `readme.md` на месте. 2026-07-23 добавлен второй шаг восстановления пароля `password-reset.html`, файлов стало 41. Полный список — в `pages-audit.md`.
 
 Разделы `catalog-pech-kaminy.html` и `catalog-bannye-portaly.html`, числившиеся в прошлой версии этого аудита, в проекте отсутствуют. Появились `catalog-metlahskaya-plitka.html`, `catalog-kaminy-v-oblicovke-mramorom.html` и `catalog-mramornye-portaly.html`.
 

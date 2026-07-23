@@ -22,7 +22,7 @@
 - Публичные телефоны, email, адреса и юридические данные в HTML-страницах.
 - Публичные `canonical`, `og:url`, `robots.txt` и `sitemap.xml` для домена `https://ceramicadecor.ru/`.
 - Временный endpoint форм `https://ceramicadecor.ru/feedback/ceramicadecor_pro`, который уже отмечен в аудитах как точка для замены при интеграции.
-- Служебные страницы `login.html` и `password-recovery.html`; они являются статическими демо-шаблонами без реальных паролей.
+- Служебные страницы `login.html`, `password-recovery.html` и `password-reset.html`; они являются статическими демо-шаблонами без реальных паролей. На `password-reset.html` токен из URL только подставляется в скрытое поле, никакой проверки в вёрстке нет — валидность токена, срок его жизни и совпадение email с адресом заявки проверяет backend.
 
 ## Что исключено через `.gitignore`
 

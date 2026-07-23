@@ -35,8 +35,8 @@
 | Все публичные HTML имеют один H1 | ок |
 | Все публичные HTML имеют `canonical` | ок |
 | Все публичные HTML имеют `og:url` | ок |
-| `login.html` и `password-recovery.html` имеют `noindex, nofollow` | ок |
-| `login.html` и `password-recovery.html` отсутствуют в `sitemap.xml` | ок |
+| `login.html`, `password-recovery.html` и `password-reset.html` имеют `noindex, nofollow` | ок |
+| `login.html`, `password-recovery.html` и `password-reset.html` отсутствуют в `sitemap.xml` | ок |
 | `404.html` отсутствует в `sitemap.xml` и имеет `noindex, follow` | ок |
 | `DOMAIN` в `sitemap.xml`, `robots.txt`, HTML | не найден |
 | Пустые `canonical` и `og:url` | не найдены |
@@ -93,6 +93,7 @@ https://ceramicadecor.ru/images/...
 |---|---|
 | `login.html` | `noindex, nofollow` |
 | `password-recovery.html` | `noindex, nofollow` |
+| `password-reset.html` | `noindex, nofollow` |
 | `404.html` | `noindex, follow` |
 
 ### Счетчики и вебмастер

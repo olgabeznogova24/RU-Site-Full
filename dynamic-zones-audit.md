@@ -125,7 +125,7 @@
 | `canonical`, `og:url` | HTML-страницы | реальные абсолютные URL |
 | `sitemap.xml` | `sitemap.xml` | sitemap из реальных маршрутов, категорий и карточек |
 | `robots.txt` | `robots.txt` | production-правила и адрес sitemap |
-| Внутренние страницы | `login.html`, `password-recovery.html` | оставить `noindex, nofollow` и не выводить в публичную навигацию |
+| Внутренние страницы | `login.html`, `password-recovery.html`, `password-reset.html` | оставить `noindex, nofollow` и не выводить в публичную навигацию; на втором шаге восстановления токен приходит из URL (`?token=...`) и проверяется на сервере |
 
 ## Assets
 
