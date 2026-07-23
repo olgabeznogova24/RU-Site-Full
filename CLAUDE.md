@@ -92,8 +92,9 @@ Endpoint форм `https://ceramicadecor.ru/feedback/ceramicadecor_pro` (38 ме
 | `catalog-audit.md` | 2026-07-22 |
 | `interface-audit.md` | 2026-07-22 |
 | `seo-audit.md` | 2026-07-22 |
-| `dynamic-zones-audit.md` | частично 2026-07-23 (разделы про карточки главной и страниц сотрудничества) |
-| `assets-audit.md`, `forms-audit.md`, `security-audit.md` | 2026-05-29 |
+| `dynamic-zones-audit.md` | частично 2026-07-23 (разделы про карточки главной, страниц сотрудничества и восстановление пароля) |
+| `forms-audit.md`, `security-audit.md` | 2026-05-29, разделы про внутренние страницы — 2026-07-23 |
+| `assets-audit.md` | 2026-05-29 |
 
 При правках, меняющих состав страниц или разделов каталога, обновлять `pages-audit.md` и `catalog-audit.md` — иначе программист получит документ, который выглядит достоверным, но врёт.
 
