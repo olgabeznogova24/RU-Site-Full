@@ -51,7 +51,9 @@
       height: 100%;
       display: block;
       object-fit: cover;
-      object-position: center 50%;
+      /* Максимально низкое положение картинки внутри баннера:
+         кадр прижат к её верхнему краю */
+      object-position: center top;
     }
     .catalog-hero__overlay {
       position: absolute;
