@@ -87,20 +87,12 @@
       color: rgba(255,255,255,.6);
       font-size: 14px;
     }
-    .auth-form__row a,
-    .auth-card__foot a {
+    .auth-form__row a {
       color: #cb3b25;
       text-decoration: none;
     }
-    .auth-form__row a:hover,
-    .auth-card__foot a:hover {
+    .auth-form__row a:hover {
       text-decoration: underline;
-    }
-    .auth-card__foot {
-      margin-top: 24px;
-      color: rgba(255,255,255,.54);
-      font-size: 13px;
-      line-height: 1.55;
     }
     .auth-form__message {
       display: none;
@@ -148,7 +140,6 @@
         <button class="btn btn--primary btn--full" type="submit">Войти</button>
         <div class="auth-form__message" id="loginMessage">В статической версии форма показывает состояние отправки. Backend подключается на Laravel.</div>
       </form>
-      <p class="auth-card__foot">Страница не предназначена для публичной навигации и не должна добавляться в меню, футер, поиск или sitemap.</p>
     </section>
   </main>
   <script>
