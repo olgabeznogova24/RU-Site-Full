@@ -1,6 +1,6 @@
 # Аудит каталога CeramicaDecor
 
-Дата проверки: 2026-07-22. Предыдущая проверка: 2026-05-29.
+Дата проверки: 2026-07-22, раздел «Проекты в работе» — 2026-07-23. Предыдущая проверка: 2026-05-29.
 
 ## Структура
 
@@ -34,6 +34,11 @@
 | Интерьерная керамика | `catalog-interernaya-keramika.html` | 17 |
 | Метлахская плитка | `catalog-metlahskaya-plitka.html` | 17 |
 | Сувенирная продукция | `catalog-suvenirnaya-produkciya.html` | 16 |
+| Проекты в работе | `catalog-proekty-v-rabote.html` | 3 |
+
+Раздел «Проекты в работе» добавлен 2026-07-23 и устроен иначе: общий набор из 16 карточек-заглушек в него не копировали. В нём лежат только три собственные карточки (`proekt-kamin-izrazcovyi`, `proekt-otopitelnaya-pech`, `proekt-barbekyu-kompleks`), все с `isProject: true` и плашкой `Проект`, все ведут на `product-drovyanoi-kamin-template.html?product=...`. Категория `proekty-v-rabote` добавлена в `validCategories`, `categoryTitles`, `categorySubtitles` и `categoryHeroBanners` внутри самой страницы; в остальных разделах её нет, поэтому переход туда идёт только по ссылке из шапки, `catalog.html` и поиска.
+
+Ещё одно отличие: изображения карточек этого раздела подключены обычным `<img>` без `<picture>`, потому что webp-версии визуализаций пока нет.
 
 Разделы `catalog-pech-kaminy.html` и `catalog-bannye-portaly.html`, числившиеся в прошлой версии этого аудита, в проекте отсутствуют. Банные порталы стали подразделом отопительных печей (`catalog-otopitelnye-pechi.html?subcategory=bannye-portaly`).
 

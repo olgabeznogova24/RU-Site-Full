@@ -21,6 +21,7 @@
     { title: 'Интерьерная керамика', url: 'catalog-interernaya-keramika.html', desc: 'Интерьерная керамика' },
     { title: 'Метлахская плитка', url: 'catalog-metlahskaya-plitka.html', desc: 'Метлахская плитка' },
     { title: 'Сувенирная продукция', url: 'catalog-suvenirnaya-produkciya.html', desc: 'Керамические сувениры' },
+    { title: 'Проекты в работе', url: 'catalog-proekty-v-rabote.html', desc: 'Проекты каминов, печей и барбекю комплексов в разработке' },
     { title: 'Палитра глазурей', url: 'glaze-palette.html', desc: 'Палитра глазурей и оттенков' },
     { title: 'Реставрация', url: 'restoration.html', desc: 'Реставрация каминов, печей и изразцов' },
     { title: 'Оборудование', url: 'components.html', desc: 'Топки, дымоходы и оборудование' },
