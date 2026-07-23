@@ -4,6 +4,8 @@
 
 Таблица «Текущее состояние» и раздел про повторяющиеся описания перепроверены 2026-07-22 по всем 40 HTML-файлам.
 
+2026-07-23 добавлены `password-reset.html` (внутренняя, `noindex, nofollow`, вне `sitemap.xml`) и `faq.html` (публичная: свои `title`, `description`, `canonical`, Open Graph с `og:image` баннера, один H1, добавлена в `sitemap.xml`).
+
 ## Что проверено
 
 Проверены все HTML-страницы, `sitemap.xml` и `robots.txt`:
