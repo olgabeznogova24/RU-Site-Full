@@ -187,9 +187,10 @@
       align-self: start;
     }
     .product-info {
-      grid-column: 1 / -1;
+      /* Ширина как у галереи выше: занимаем только первую колонку сетки */
+      grid-column: 1 / 2;
       margin: 8px 0 16px;
-      max-width: 920px;
+      max-width: none;
     }
     .product-summary h2,
     .product-info h2 {
