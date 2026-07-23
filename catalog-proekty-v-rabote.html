@@ -29,14 +29,14 @@
       padding: 160px 0 140px;
       text-align: center;
       position: relative;
-      background: url('images/banner-proekty_desktop.jpg') center 20%/cover no-repeat;
+      background: url('images/banner-proekty_desktop.jpg?v=20260723-2') center 20%/cover no-repeat;
       margin-bottom: 0;
       min-height: 460px;
       box-sizing: border-box;
       overflow: hidden;
     }
     @media (max-width: 768px) {
-      .catalog-hero { background-image: url('images/banner-proekty_mobile.jpg'); }
+      .catalog-hero { background-image: url('images/banner-proekty_mobile.jpg?v=20260723-2'); }
     }
     .catalog-hero__bg {
       position: absolute;
@@ -1283,8 +1283,8 @@
   <section class="catalog-hero" data-catalog-hero="proekty-v-rabote">
     <div class="catalog-hero__bg">
       <picture>
-        <source media="(max-width: 768px)" srcset="images/banner-proekty_mobile.jpg">
-        <img src="images/banner-proekty_desktop.jpg" alt="Проекты в работе CeramicaDecor" loading="eager" fetchpriority="high" decoding="async">
+        <source media="(max-width: 768px)" srcset="images/banner-proekty_mobile.jpg?v=20260723-2">
+        <img src="images/banner-proekty_desktop.jpg?v=20260723-2" alt="Проекты в работе CeramicaDecor" loading="eager" fetchpriority="high" decoding="async">
       </picture>
     </div>
     <div class="catalog-hero__overlay"></div>
@@ -2061,27 +2061,8 @@
     var heroTitle = document.querySelector('.catalog-hero__title');
     var heroSubtitle = document.querySelector('.catalog-hero__subtitle');
     var heroSection = document.querySelector('.catalog-hero');
-    var heroImage = document.querySelector('.catalog-hero__bg img');
-    var heroSource = document.querySelector('.catalog-hero__bg source');
-    var categoryHeroBanners = {
-      'kaminy': 'banner-kaminy_desktop',
-      'barbekyu-kompleksy': 'banner-bbk_desktop',
-      'biokaminy': 'banner-biokaminy_desktop',
-      'elektrokaminy': 'banner-elektrokaminy_desktop',
-      'mramornye-kaminy-portaly': 'banner-mramor_desktop',
-      'russkie-pechi': 'banner-russkie-pechi_desktop',
-      'otopitelnye-pechi': 'banner-otopitelnye-pechi_desktop',
-      'bannye-pechi': 'banner-bannye-pechi_desktop',
-      'seriynye-modeli': 'banner-typovie_desktop',
-      'fasadnaya-keramika': 'banner-fasad_desktop',
-      'interernaya-keramika': 'banner-interior_desktop',
-      'metlahskaya-plitka': 'banner-interior_desktop',
-      'suvenirnaya-produkciya': 'banner-suvenir_desktop',
-      'proekty-v-rabote': 'banner-proekty_desktop'
-    };
-    var categoryHeroMobileBanners = {
-      'proekty-v-rabote': 'banner-proekty_mobile'
-    };
+    // Баннер раздела: images/banner-proekty_desktop.jpg и banner-proekty_mobile.jpg,
+    // подключены прямо в разметке .catalog-hero__bg.
 
     function setActiveTab(category, subcategory) {
       if (subcategory && subcategoryCategoryAliases[subcategory]) category = subcategoryCategoryAliases[subcategory];
@@ -2104,13 +2085,8 @@
           heroSection.classList.remove('catalog-hero--bbq');
         }
       }
-      if (heroImage) {
-        var heroBase = categoryHeroBanners[category] || 'banner-proekty_desktop';
-        var heroMobileBase = categoryHeroMobileBanners[category] || heroBase;
-        heroImage.src = 'images/' + heroBase + '.jpg';
-        heroImage.alt = (categoryTitles[category] || 'Каталог') + ' CeramicaDecor';
-        if (heroSource) heroSource.srcset = 'images/' + heroMobileBase + '.jpg';
-      }
+      // Раздел один, баннер задан в разметке — скрипт его не подменяет,
+      // иначе версия в адресе картинки (?v=...) терялась бы при загрузке.
       if (heroTitle) heroTitle.textContent = categoryTitles[category] || 'Каталог';
       if (heroSubtitle) heroSubtitle.innerHTML = categorySubtitles[category] || '';
       renderCards(category, activeSubcategory);
