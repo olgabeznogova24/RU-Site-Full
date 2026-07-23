@@ -7389,7 +7389,7 @@ ul, ol {
 /* Catalog banner image positions */
 [data-catalog-hero="catalog"] .catalog-hero__bg img { object-position: 50% 70% !important; }
 [data-catalog-hero="izrazcy"] .izrazcy-hero__bg img { object-position: 51% 50% !important; }
-[data-catalog-hero="kaminy"] .catalog-hero__bg img { object-position: 50% 58% !important; }
+[data-catalog-hero="kaminy"] .catalog-hero__bg img { object-position: 50% 72% !important; }
 [data-catalog-hero="barbekyu-kompleksy"] .catalog-hero__bg img { object-position: 50% 40% !important; }
 [data-catalog-hero="biokaminy"] .catalog-hero__bg img { object-position: 51% 60% !important; }
 [data-catalog-hero="elektrokaminy"] .catalog-hero__bg img { object-position: 50% 45% !important; }
@@ -7398,12 +7398,18 @@ ul, ol {
 [data-catalog-hero="otopitelnye-pechi"] .catalog-hero__bg img { object-position: 50% 100% !important; }
 [data-catalog-hero="bannye-pechi"] .catalog-hero__bg img { object-position: 50% 30% !important; }
 [data-catalog-hero="bannye-portaly"] .catalog-hero__bg img { object-position: 50% 70% !important; }
-[data-catalog-hero="seriynye-modeli"] .catalog-hero__bg img { object-position: 49% 50% !important; }
+[data-catalog-hero="seriynye-modeli"] .catalog-hero__bg img { object-position: 49% 100% !important; }
 [data-catalog-hero="fasadnaya-keramika"] .catalog-hero__bg img { object-position: 50% 50% !important; }
 [data-catalog-hero="interernaya-keramika"] .catalog-hero__bg img { object-position: 50% 54% !important; }
 [data-catalog-hero="metlahskaya-plitka"] .catalog-hero__bg img { object-position: 50% 54% !important; }
-[data-catalog-hero="restoration"] .catalog-hero__bg img { object-position: 50% 28% !important; }
+[data-catalog-hero="restoration"] .catalog-hero__bg img { object-position: 50% 14% !important; }
 [data-catalog-hero="suvenirnaya-produkciya"] .catalog-hero__bg img { object-position: 50% 80% !important; }
+
+/* До 1024 px в разделе печей-каминов подставляется квадратная мобильная
+   картинка, к ней прижатый низ кадра не подходит */
+@media (max-width: 1024px) {
+  [data-catalog-hero="seriynye-modeli"] .catalog-hero__bg img { object-position: 50% 50% !important; }
+}
 
 @media (max-width: 768px) {
   [data-catalog-hero="catalog"] .catalog-hero__bg img { object-position: 50% 50% !important; }
