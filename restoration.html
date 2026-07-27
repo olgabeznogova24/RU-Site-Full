@@ -377,8 +377,11 @@
       object-fit: contain;
       background: #111;
     }
+    .product-card__slider--vertical {
+      aspect-ratio: 3/4;
+    }
     .product-card__slider--vertical img {
-      object-fit: contain;
+      object-fit: cover;
       background: #111;
     }
     .product-card__slider img.active {
@@ -1678,6 +1681,38 @@
         hasWebp: false,
         images: ['restoration_1.jpg','restoration_2.jpg','restoration_3.jpg','restoration_4.png','restoration_5.png','restoration_6.jpg']
       },
+      {
+        id: 'restavraciya-obrazec-2',
+        cat: 'restoration',
+        name: 'Реставрационный проект (образец 2)',
+        collection: 'Шаблон раздела',
+        desc: 'Демонстрационная карточка-заглушка реставрационного проекта',
+        price: 'по запросу',
+        priceTurnkey: '',
+        fullDesc: 'Заглушка карточки реставрационного проекта для заполнения сетки раздела. При интеграции сюда подставляются фотографии объекта, описание работ и итоговая стоимость.',
+        specs: {
+          'Производитель': 'CeramicaDecor',
+          'Раздел': 'Реставрация'
+        },
+        hasWebp: false,
+        images: ['restavraciya.jpg']
+      },
+      {
+        id: 'restavraciya-obrazec-3',
+        cat: 'restoration',
+        name: 'Реставрационный проект (образец 3)',
+        collection: 'Шаблон раздела',
+        desc: 'Демонстрационная карточка-заглушка реставрационного проекта',
+        price: 'по запросу',
+        priceTurnkey: '',
+        fullDesc: 'Заглушка карточки реставрационного проекта для заполнения сетки раздела. При интеграции сюда подставляются фотографии объекта, описание работ и итоговая стоимость.',
+        specs: {
+          'Производитель': 'CeramicaDecor',
+          'Раздел': 'Реставрация'
+        },
+        hasWebp: false,
+        images: ['fasad_2.jpg']
+      },
       // === КАМИНЫ ===
       {
         id: 'kamin-albion',
@@ -2408,6 +2443,7 @@
         card.setAttribute('data-category', p.cat);
         card.setAttribute('data-id', p.id);
 
+        var hasImages = p.images && p.images.length;
         var sliderImgs = '';
         var sliderDots = '';
         p.images.forEach(function(img, idx) {
@@ -2417,15 +2453,18 @@
           sliderDots += '<button class="product-card__dot' + (idx === 0 ? ' active' : '') + '" data-idx="' + idx + '"></button>';
         });
 
-        var verticalIds = ['restavraciya-izrazcovye-pechi', 'kamin-dorf', 'kamin-rollers', 'kamin-dorf-brunner', 'bbq-albion-mini', 'bbq-versal', 'bbq-tulpan', 'bbq-dorf-mangal', 'bbq-pticy', 'bbq-scenki'];
+        var verticalIds = ['restavraciya-izrazcovye-pechi', 'restavraciya-obrazec-2', 'restavraciya-obrazec-3', 'kamin-dorf', 'kamin-rollers', 'kamin-dorf-brunner', 'bbq-albion-mini', 'bbq-versal', 'bbq-tulpan', 'bbq-dorf-mangal', 'bbq-pticy', 'bbq-scenki'];
         var sliderClass = 'product-card__slider' + (p.id === 'kamin-minimalist' ? ' product-card__slider--contain' : '') + (verticalIds.indexOf(p.id) !== -1 ? ' product-card__slider--vertical' : '');
+        var sliderMarkup = hasImages
+          ? '<div class="' + sliderClass + '">' +
+              sliderImgs +
+              '<button class="product-card__arrow product-card__arrow--prev">&#8249;</button>' +
+              '<button class="product-card__arrow product-card__arrow--next">&#8250;</button>' +
+              '<div class="product-card__dots">' + sliderDots + '</div>' +
+            '</div>'
+          : '<div class="' + sliderClass + '"></div>';
         card.innerHTML =
-          '<div class="' + sliderClass + '">' +
-            sliderImgs +
-            '<button class="product-card__arrow product-card__arrow--prev">&#8249;</button>' +
-            '<button class="product-card__arrow product-card__arrow--next">&#8250;</button>' +
-            '<div class="product-card__dots">' + sliderDots + '</div>' +
-          '</div>' +
+          sliderMarkup +
           '<div class="product-card__body">' +
             '<p class="product-card__collection">' + p.collection + '</p>' +
             '<h3 class="product-card__name">' + p.name + '</h3>' +
@@ -2443,7 +2482,7 @@
           '</div>';
 
         // Card slider logic
-        (function(cardEl, images) {
+        if (hasImages) (function(cardEl, images) {
           var currentIdx = 0;
           var imgs = cardEl.querySelectorAll('.product-card__slider img');
           var dots = cardEl.querySelectorAll('.product-card__dot');
