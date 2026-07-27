@@ -1527,14 +1527,10 @@
       <p class="catalog-hero__subtitle">Топки, дымоходы и оборудование для каминов и печей</p>
     </div>
   </section>
-  <!-- ===== FILTER TEMPLATE ===== -->
-  <section class="catalog-filter-template" aria-label="Фильтры раздела Все для монтажа">
+  <!-- ===== FILTER + GRID WORKSPACE ===== -->
+  <section class="catalog-workspace">
     <div class="container">
-      <div class="catalog-filter-template__bar">
-        <button class="catalog-filter-template__toggle" type="button" aria-expanded="false" data-catalog-filter-toggle>
-          <span>Фильтры</span>
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </button>
+      <div class="catalog-workspace__bar">
         <div class="catalog-subcategories">
           <div class="catalog-filters__tabs-wrap is-start is-end">
             <button type="button" class="catalog-filters__scroll catalog-filters__scroll--prev" id="catalogTabsScrollPrev" aria-label="Предыдущие разделы" hidden>
@@ -1549,8 +1545,14 @@
             </button>
           </div>
         </div>
-        <span class="catalog-filter-template__bar-spacer" aria-hidden="true"></span>
       </div>
+      <div class="catalog-workspace__layout">
+        <!-- SIDEBAR: filters always open -->
+        <aside class="catalog-filter-template catalog-workspace__sidebar" aria-label="Фильтры раздела Все для монтажа">
+      <button class="catalog-filter-template__toggle" type="button" aria-expanded="false" data-catalog-filter-toggle>
+        <span>Фильтры</span>
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
       <form class="catalog-filter-template__inner" data-filter-template>
         <div class="catalog-filter-template__grid">
           <fieldset class="catalog-filter-template__group catalog-filter-template__group--range">
@@ -1597,13 +1599,13 @@
           <button class="catalog-filter-template__reset" type="reset">Сбросить</button>
         </div>
       </form>
-    </div>
-  </section>
-  <!-- ===== PRODUCT GRID ===== -->
-  <section class="catalog-grid">
-    <div class="container">
-      <div class="catalog-grid__inner" id="catalogGrid">
-        <!-- Cards rendered by JS -->
+        </aside>
+        <!-- MAIN: product grid -->
+        <div class="catalog-workspace__main">
+          <div class="catalog-grid__inner" id="catalogGrid">
+            <!-- Cards rendered by JS -->
+          </div>
+        </div>
       </div>
     </div>
   </section>
