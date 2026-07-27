@@ -338,6 +338,65 @@
       font-weight: 300;
       line-height: 1.55;
     }
+    /* Блок «Спецификации» виден только сотрудникам с правами администратора.
+       Программист управляет показом на сервере (роль/права). */
+    .product-admin-specs {
+      display: block;
+      margin: 28px 0 0;
+      padding: 18px 20px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+    }
+    .product-admin-specs__head {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0 0 12px;
+    }
+    .product-admin-specs__title {
+      margin: 0;
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 500;
+    }
+    .product-admin-specs__list {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .product-admin-specs__link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 12px 0;
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.92rem;
+      font-weight: 400;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      transition: color 0.15s ease;
+    }
+    .product-admin-specs__list .product-admin-specs__link:last-child {
+      border-bottom: 0;
+    }
+    .product-admin-specs__link:hover,
+    .product-admin-specs__link:focus-visible {
+      color: #cb3b25;
+    }
+    .product-admin-specs__link::after {
+      content: '\2192';
+      color: rgba(255,255,255,0.4);
+      transition: color 0.15s ease, transform 0.15s ease;
+    }
+    .product-admin-specs__link:hover::after,
+    .product-admin-specs__link:focus-visible::after {
+      color: #cb3b25;
+      transform: translateX(3px);
+    }
     .product-construction {
       grid-column: 1 / -1;
       margin: 8px 0 18px;
@@ -1351,6 +1410,22 @@
               </div>
             </dl>
             <p class="product-specs-note">Цена разработки проекта: 3 000 руб. за модуль (входит в стоимость при заключении договора). Стоимость замера: 4 000 руб. в пределах МКАД + доп. оплата за кол-во километров от МКАД (входит в стоимость при заключении договора). Стоимость проекта облицовки существующего комплекса бесплатно</p>
+
+            <!--
+              Блок «Спецификации» — только для сотрудников с правами администратора.
+              Программист выводит его на сервере лишь для авторизованного администратора
+              и подставляет реальные href вместо "#" в ссылках ниже.
+            -->
+            <section class="product-admin-specs" aria-label="Спецификации проекта (только для администратора)" data-role="admin">
+              <div class="product-admin-specs__head">
+                <h2 class="product-admin-specs__title">Спецификации</h2>
+              </div>
+              <div class="product-admin-specs__list">
+                <a class="product-admin-specs__link" href="#" data-spec="izrazcy">Изразцы</a>
+                <a class="product-admin-specs__link" href="#" data-spec="materialy">Материалы (изразцы + монтаж)</a>
+                <a class="product-admin-specs__link" href="#" data-spec="raboty">Работы (изразцы + монтаж)</a>
+              </div>
+            </section>
           </section>
 
           <section class="product-tiles" aria-label="Изразцы Альбион в цвете Белый Антик">
