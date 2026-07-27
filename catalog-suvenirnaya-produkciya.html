@@ -1315,19 +1315,21 @@
   </section>
 
 
-  <!-- ===== FILTER TEMPLATE ===== -->
-  <section class="catalog-filter-template" aria-label="Шаблон фильтров каталога">
+  <!-- ===== FILTER + GRID WORKSPACE ===== -->
+  <section class="catalog-workspace">
     <div class="container">
-      <div class="catalog-filter-template__bar">
+      <div class="catalog-workspace__bar">
+        <div class="catalog-subcategories" data-subcategory-tabs-section hidden>
+          <div class="catalog-subcategories__list" data-subcategory-tabs aria-label="Подразделы каталога"></div>
+        </div>
+      </div>
+      <div class="catalog-workspace__layout">
+        <!-- SIDEBAR: filters always open -->
+        <aside class="catalog-filter-template catalog-workspace__sidebar" aria-label="Фильтры каталога">
       <button class="catalog-filter-template__toggle" type="button" aria-expanded="false" data-catalog-filter-toggle>
         <span>Фильтры</span>
         <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </button>
-        <div class="catalog-subcategories" data-subcategory-tabs-section hidden>
-          <div class="catalog-subcategories__list" data-subcategory-tabs aria-label="Подразделы каталога"></div>
-        </div>
-        <span class="catalog-filter-template__bar-spacer" aria-hidden="true"></span>
-      </div>
       <form class="catalog-filter-template__inner" data-filter-template>
         <div class="catalog-filter-template__grid">
           <fieldset class="catalog-filter-template__group catalog-filter-template__group--subcategory" data-subcategory-group="kaminy" hidden>
@@ -1350,7 +1352,7 @@
             <label class="catalog-filter-template__option"><input type="checkbox" name="subcategory" value="oblicovka-sten" data-subcategory-checkbox> <span>&#1054;&#1073;&#1083;&#1080;&#1094;&#1086;&#1074;&#1082;&#1072; &#1089;&#1090;&#1077;&#1085;</span></label>
           </fieldset>
           <fieldset class="catalog-filter-template__group catalog-filter-template__group--range">
-            <legend class="catalog-filter-template__group-title">Интервал значений</legend>
+            <legend class="catalog-filter-template__group-title">Цена</legend>
             <div class="catalog-filter-template__range">
               <label class="catalog-filter-template__field">
                 <span>От</span>
@@ -1382,13 +1384,13 @@
           <button class="catalog-filter-template__reset" type="reset">Сбросить</button>
         </div>
       </form>
-    </div>
-  </section>
-  <!-- ===== PRODUCT GRID ===== -->
-  <section class="catalog-grid">
-    <div class="container">
-      <div class="catalog-grid__inner" id="catalogGrid">
-        <!-- Cards rendered by JS -->
+        </aside>
+        <!-- MAIN: product grid -->
+        <div class="catalog-workspace__main">
+          <div class="catalog-grid__inner" id="catalogGrid">
+            <!-- Cards rendered by JS -->
+          </div>
+        </div>
       </div>
     </div>
   </section>
