@@ -1142,6 +1142,17 @@
         font-size: 0.76rem;
       }
     }
+
+    /* Suvenirnaya layout like Kaminy: 3 per row, narrower filter column,
+       vertical product images */
+    @media (min-width: 1025px) {
+      .catalog-workspace__layout {
+        grid-template-columns: 240px minmax(0, 1fr);
+      }
+    }
+    .catalog-workspace__main .product-card__slider {
+      aspect-ratio: 4 / 5;
+    }
   </style>
   <!-- Яндекс.Метрика — TODO: вставить код счётчика -->
   <!-- Яндекс.Вебмастер — TODO: вставить мета-тег верификации -->
@@ -1808,7 +1819,40 @@
           'Производитель': 'CeramicaDecor',
           'Раздел': 'Сувенирная продукция'
         },
-        images: ['banner-suvenir_desktop.jpg']
+        hasWebp: false,
+        images: ['suvenir_1.jpg']
+      },
+      {
+        id: 'template-suvenirnaya-produkciya-2',
+        cat: 'suvenirnaya-produkciya',
+        name: 'Сувенирная продукция (образец 2)',
+        collection: 'Шаблон раздела',
+        desc: 'Керамические сувениры и декоративные изделия ручной работы',
+        price: '0',
+        priceTurnkey: '',
+        fullDesc: 'Шаблонная карточка сувенирной продукции. Здесь можно добавить реальные варианты изделий, размеры, глазури, упаковку и фотографии.',
+        specs: {
+          'Производитель': 'CeramicaDecor',
+          'Раздел': 'Сувенирная продукция'
+        },
+        hasWebp: false,
+        images: ['suvenir_2.jpg']
+      },
+      {
+        id: 'template-suvenirnaya-produkciya-3',
+        cat: 'suvenirnaya-produkciya',
+        name: 'Сувенирная продукция (образец 3)',
+        collection: 'Шаблон раздела',
+        desc: 'Керамические сувениры и декоративные изделия ручной работы',
+        price: '0',
+        priceTurnkey: '',
+        fullDesc: 'Шаблонная карточка сувенирной продукции. Здесь можно добавить реальные варианты изделий, размеры, глазури, упаковку и фотографии.',
+        specs: {
+          'Производитель': 'CeramicaDecor',
+          'Раздел': 'Сувенирная продукция'
+        },
+        hasWebp: false,
+        images: ['suvenir_3.jpg']
       }
     ];
 
@@ -1862,7 +1906,8 @@
         var sliderImgs = '';
         if (firstImage) {
           var webpImg = firstImage.replace(/\.(jpg|jpeg|png)$/i, '.webp');
-          sliderImgs = '<picture><source srcset="images/' + webpImg + '" type="image/webp"><img src="images/' + firstImage + '" alt="' + p.name + '" loading="eager" class="active" onerror="this.style.display=\'none\'"></picture>';
+          var imgTag = '<img src="images/' + firstImage + '" alt="' + p.name + '" loading="eager" class="active" onerror="this.style.display=\'none\'">';
+          sliderImgs = p.hasWebp === false ? imgTag : '<picture><source srcset="images/' + webpImg + '" type="image/webp">' + imgTag + '</picture>';
         }
 
         var verticalIds = ['kamin-dorf', 'kamin-rollers', 'kamin-dorf-brunner', 'bbq-albion-mini', 'bbq-versal', 'bbq-tulpan', 'bbq-dorf-mangal', 'bbq-pticy', 'bbq-scenki'];
