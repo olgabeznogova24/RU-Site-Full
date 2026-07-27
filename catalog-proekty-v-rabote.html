@@ -1125,6 +1125,17 @@
         font-size: 0.76rem;
       }
     }
+
+    /* Proekty layout like Kaminy: 3 per row, narrower filter column,
+       vertical product images */
+    @media (min-width: 1025px) {
+      .catalog-workspace__layout {
+        grid-template-columns: 240px minmax(0, 1fr);
+      }
+    }
+    .catalog-workspace__main .product-card__slider {
+      aspect-ratio: 4 / 5;
+    }
   </style>
   <!-- Яндекс.Метрика — TODO: вставить код счётчика -->
   <!-- Яндекс.Вебмастер — TODO: вставить мета-тег верификации -->
@@ -1541,7 +1552,7 @@
           'Стадия': 'Проектирование',
           'Статус': 'Проект'
         },
-        images: ['proekty-v-rabote_card.jpg'],
+        images: [],
         detailUrl: 'product-drovyanoi-kamin-template.html?product=proekt-kamin-izrazcovyi'
       },
       {
@@ -1560,7 +1571,7 @@
           'Стадия': 'Проектирование',
           'Статус': 'Проект'
         },
-        images: ['banner-otopitelnye-pechi_desktop.jpg'],
+        images: [],
         detailUrl: 'product-drovyanoi-kamin-template.html?product=proekt-otopitelnaya-pech'
       },
       {
@@ -1579,7 +1590,7 @@
           'Стадия': 'Проектирование',
           'Статус': 'Проект'
         },
-        images: ['bbq_albion_new_1.jpg'],
+        images: [],
         detailUrl: 'product-drovyanoi-kamin-template.html?product=proekt-barbekyu-kompleks'
       }
     ];
