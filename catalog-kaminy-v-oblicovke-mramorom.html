@@ -70,7 +70,7 @@
       height: 100%;
       display: block;
       object-fit: cover;
-      object-position: center 46%;
+      object-position: center 60%;
     }
     .catalog-hero__overlay {
       position: absolute;
@@ -1142,6 +1142,21 @@
         font-size: 0.76rem;
       }
     }
+
+    /* Marble page layout: same as Kaminy — sidebar filters 240px,
+       3 cards per row (shared), vertical 4:5 product images */
+    @media (min-width: 1025px) {
+      .catalog-workspace__layout {
+        grid-template-columns: 240px minmax(0, 1fr);
+      }
+    }
+    .catalog-workspace__main .product-card__slider {
+      aspect-ratio: 4 / 5;
+    }
+    /* Card 2 (образец 2): pin image to the right edge inside the frame */
+    .catalog-workspace__main .product-card[data-id="template-kaminy-v-oblicovke-mramorom-2"] .product-card__slider img {
+      object-position: 100% 50%;
+    }
   </style>
   <!-- Яндекс.Метрика — TODO: вставить код счётчика -->
   <!-- Яндекс.Вебмастер — TODO: вставить мета-тег верификации -->
@@ -1304,7 +1319,7 @@
     <div class="catalog-hero__bg">
       <picture>
         
-        <img src="images/kaminy_iz_mramora.jpg" alt="Камины в облицовке мрамором CeramicaDecor" loading="eager" fetchpriority="high" decoding="async">
+        <img src="images/banner_mramornie_kaminy.png" alt="Камины в облицовке мрамором CeramicaDecor" loading="eager" fetchpriority="high" decoding="async">
       </picture>
     </div>
     <div class="catalog-hero__overlay"></div>
@@ -1315,19 +1330,24 @@
   </section>
 
 
-  <!-- ===== FILTER TEMPLATE ===== -->
-  <section class="catalog-filter-template" aria-label="Шаблон фильтров каталога">
+  <!-- ===== FILTER + GRID WORKSPACE ===== -->
+  <section class="catalog-workspace">
     <div class="container">
-      <div class="catalog-filter-template__bar">
+      <div class="catalog-workspace__bar">
+        <div class="catalog-subcategories">
+          <div class="catalog-subcategories__list" aria-label="Разделы каталога мрамора">
+            <a href="catalog-mramornye-portaly.html" class="catalog-subcategories__item">Мраморные порталы</a>
+            <a href="catalog-kaminy-v-oblicovke-mramorom.html" class="catalog-subcategories__item is-active">Камины в облицовке мрамором</a>
+          </div>
+        </div>
+      </div>
+      <div class="catalog-workspace__layout">
+        <!-- SIDEBAR: filters always open -->
+        <aside class="catalog-filter-template catalog-workspace__sidebar" aria-label="Фильтры каталога">
       <button class="catalog-filter-template__toggle" type="button" aria-expanded="false" data-catalog-filter-toggle>
         <span>Фильтры</span>
         <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </button>
-        <div class="catalog-subcategories" data-subcategory-tabs-section hidden>
-          <div class="catalog-subcategories__list" data-subcategory-tabs aria-label="Подразделы каталога"></div>
-        </div>
-        <span class="catalog-filter-template__bar-spacer" aria-hidden="true"></span>
-      </div>
       <form class="catalog-filter-template__inner" data-filter-template>
         <div class="catalog-filter-template__grid">
           <fieldset class="catalog-filter-template__group catalog-filter-template__group--subcategory" data-subcategory-group="kaminy" hidden>
@@ -1350,7 +1370,7 @@
             <label class="catalog-filter-template__option"><input type="checkbox" name="subcategory" value="oblicovka-sten" data-subcategory-checkbox> <span>&#1054;&#1073;&#1083;&#1080;&#1094;&#1086;&#1074;&#1082;&#1072; &#1089;&#1090;&#1077;&#1085;</span></label>
           </fieldset>
           <fieldset class="catalog-filter-template__group catalog-filter-template__group--range">
-            <legend class="catalog-filter-template__group-title">Интервал значений</legend>
+            <legend class="catalog-filter-template__group-title">Цена</legend>
             <div class="catalog-filter-template__range">
               <label class="catalog-filter-template__field">
                 <span>От</span>
@@ -1382,13 +1402,13 @@
           <button class="catalog-filter-template__reset" type="reset">Сбросить</button>
         </div>
       </form>
-    </div>
-  </section>
-  <!-- ===== PRODUCT GRID ===== -->
-  <section class="catalog-grid">
-    <div class="container">
-      <div class="catalog-grid__inner" id="catalogGrid">
-        <!-- Cards rendered by JS -->
+        </aside>
+        <!-- MAIN: product grid -->
+        <div class="catalog-workspace__main">
+          <div class="catalog-grid__inner" id="catalogGrid">
+            <!-- Cards rendered by JS -->
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -1728,6 +1748,36 @@
         images: ['kaminy_iz_mramora.jpg']
       },
       {
+        id: 'template-kaminy-v-oblicovke-mramorom-2',
+        cat: 'kaminy-v-oblicovke-mramorom',
+        name: 'Камин в облицовке мрамором (образец 2)',
+        collection: 'Шаблон раздела',
+        desc: 'Демонстрационная карточка-заглушка камина в мраморной облицовке',
+        price: '0',
+        priceTurnkey: '',
+        fullDesc: 'Заглушка карточки камина в облицовке мрамором для заполнения сетки каталога.',
+        specs: {
+          'Производитель': 'CeramicaDecor',
+          'Раздел': 'Камины в облицовке мрамором'
+        },
+        images: ['mramor_kamin_2.jpg']
+      },
+      {
+        id: 'template-kaminy-v-oblicovke-mramorom-3',
+        cat: 'kaminy-v-oblicovke-mramorom',
+        name: 'Камин в облицовке мрамором (образец 3)',
+        collection: 'Шаблон раздела',
+        desc: 'Демонстрационная карточка-заглушка камина в мраморной облицовке',
+        price: '0',
+        priceTurnkey: '',
+        fullDesc: 'Заглушка карточки камина в облицовке мрамором для заполнения сетки каталога.',
+        specs: {
+          'Производитель': 'CeramicaDecor',
+          'Раздел': 'Камины в облицовке мрамором'
+        },
+        images: ['mramor_kamin_3.jpg']
+      },
+      {
         id: 'template-kuhonnye-fartuki',
         cat: 'interernaya-keramika',
         subcategory: 'kuhonnye-fartuki',
@@ -1875,7 +1925,8 @@
         var sliderImgs = '';
         if (firstImage) {
           var webpImg = firstImage.replace(/\.(jpg|jpeg|png)$/i, '.webp');
-          var webpSource = firstImage === 'kaminy_iz_mramora.jpg' ? '' : '<source srcset="images/' + webpImg + '" type="image/webp">';
+          var noWebpImages = ['kaminy_iz_mramora.jpg', 'mramor_kamin_2.jpg', 'mramor_kamin_3.jpg'];
+          var webpSource = noWebpImages.indexOf(firstImage) !== -1 ? '' : '<source srcset="images/' + webpImg + '" type="image/webp">';
           sliderImgs = '<picture>' + webpSource + '<img src="images/' + firstImage + '" alt="' + p.name + '" loading="eager" class="active" onerror="this.style.display=\'none\'"></picture>';
         }
 
@@ -2316,7 +2367,7 @@
       'biokaminy': 'banner-biokaminy_desktop',
       'elektrokaminy': 'banner-elektrokaminy_desktop',
       'mramornye-portaly': 'banner-mramor_desktop',
-      'kaminy-v-oblicovke-mramorom': 'kaminy_iz_mramora',
+      'kaminy-v-oblicovke-mramorom': 'banner_mramornie_kaminy.png',
       'russkie-pechi': 'banner-russkie-pechi_desktop',
       'otopitelnye-pechi': 'banner-otopitelnye-pechi_desktop',
       'bannye-pechi': 'banner-bannye-pechi_desktop',
@@ -2350,9 +2401,10 @@
       }
       if (heroImage) {
         var heroBase = categoryHeroBanners[category] || 'banner-kaminy_desktop';
-        heroImage.src = 'images/' + heroBase + '.jpg';
+        var heroHasExt = /\.(png|jpe?g|webp)$/i.test(heroBase);
+        heroImage.src = heroHasExt ? 'images/' + heroBase : 'images/' + heroBase + '.jpg';
         heroImage.alt = (categoryTitles[category] || 'Каталог') + ' CeramicaDecor';
-        if (heroSource) heroSource.srcset = 'images/' + heroBase + '.webp';
+        if (heroSource) heroSource.srcset = heroHasExt ? 'images/' + heroBase : 'images/' + heroBase + '.webp';
       }
       if (heroTitle) heroTitle.textContent = categoryTitles[category] || 'Каталог';
       if (heroSubtitle) heroSubtitle.innerHTML = categorySubtitles[category] || '';
