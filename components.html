@@ -346,7 +346,7 @@
       grid-template-areas:
         "head head"
         "left right";
-      grid-template-columns: minmax(210px, 0.82fr) minmax(0, 1fr);
+      grid-template-columns: minmax(170px, 0.78fr) minmax(0, 1fr);
       column-gap: 18px;
       row-gap: 14px;
       padding: 16px;
@@ -412,6 +412,9 @@
       display: grid;
       gap: 4px;
     }
+    .product-card--horizontal .product-card__price-block {
+      margin-top: 18px;
+    }
     .product-card--horizontal .product-card__price {
       margin-bottom: 0;
       font-size: 1.18rem;
@@ -435,7 +438,7 @@
     }
     .product-card__specs li {
       display: grid;
-      grid-template-columns: minmax(120px, 0.9fr) minmax(0, 1fr);
+      grid-template-columns: minmax(92px, 0.8fr) minmax(0, 1fr);
       gap: 10px;
       padding: 7px 0;
       border-bottom: 1px solid rgba(255,255,255,0.07);
@@ -451,6 +454,7 @@
     .product-card__specs span:last-child {
       color: rgba(255,255,255,0.84);
       text-align: right;
+      overflow-wrap: anywhere;
     }
     .product-card__slider {
       position: relative;
@@ -604,14 +608,28 @@
       font-weight: 400;
       margin-bottom: 4px;
     }
+    .product-card__old-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .product-card__old-row .product-card__price--old {
+      margin-bottom: 0;
+    }
     .product-card__discount {
       display: inline-flex;
-      align-self: flex-start;
-      padding: 5px 10px;
+      align-items: center;
+      width: max-content;
+      padding: 4px 10px;
       border-radius: 999px;
       background: rgba(203,59,37,0.16);
       color: #f0a093;
-      margin-bottom: 10px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      white-space: nowrap;
     }
     .product-card__price--turnkey {
       color: rgba(255,255,255,0.7);
@@ -1361,6 +1379,17 @@
       .request-modal__box {
         padding: 28px 20px;
         margin: 16px;
+      }
+    }
+
+    /* Sidebar width like the rest of the catalog; one wide horizontal card
+       per row so the product image reads large and all specs fit */
+    @media (min-width: 1025px) {
+      .catalog-workspace__layout {
+        grid-template-columns: 240px minmax(0, 1fr);
+      }
+      .catalog-workspace__main .catalog-grid__inner {
+        grid-template-columns: minmax(0, 1fr);
       }
     }
   </style>
@@ -2598,8 +2627,10 @@
         var pricePrefix = (p.cat === 'kaminnye-topki' || p.cat === 'ochagi') ? 'Цена: ' : 'Облицовка: ';
         var priceHtml = '<p class="product-card__price">' + pricePrefix + p.price + (p.price === 'по запросу' ? '' : ' &#8381;') + '</p>';
         if (p.priceOld) {
-          priceHtml = '<p class="product-card__collection product-card__discount">' + p.discount + '</p>' +
-            '<p class="product-card__price product-card__price--old">' + p.priceOld + ' &#8381;</p>' +
+          priceHtml = '<div class="product-card__old-row">' +
+              '<span class="product-card__price product-card__price--old">' + p.priceOld + ' &#8381;</span>' +
+              '<span class="product-card__discount">' + p.discount + '</span>' +
+            '</div>' +
             priceHtml;
         }
         var hasImages = p.images && p.images.length;
@@ -2634,16 +2665,15 @@
           '</div>' +
           '<div class="product-card__left">' +
             sliderHtml +
-            '<div class="product-card__price-block">' +
-              priceHtml +
-              (p.priceTurnkey ? '<p class="product-card__price product-card__price--turnkey">Под ключ: ' + p.priceTurnkey + ' &#8381;</p>' : '') +
-            '</div>' +
-            '<div class="product-card__actions">' + requestButton + '</div>' +
           '</div>' +
           '<div class="product-card__right">' +
             '<p class="product-card__desc">' + p.desc + '</p>' +
             specsList +
-            '<div class="product-card__actions">' + detailsButton + '</div>' +
+            '<div class="product-card__price-block">' +
+              priceHtml +
+              (p.priceTurnkey ? '<p class="product-card__price product-card__price--turnkey">Под ключ: ' + p.priceTurnkey + ' &#8381;</p>' : '') +
+            '</div>' +
+            '<div class="product-card__actions">' + requestButton + detailsButton + '</div>' +
           '</div>';
 
         // Card slider logic
