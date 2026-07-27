@@ -251,6 +251,24 @@
     @media (min-width: 1200px) {
       .izrazcy-products { grid-template-columns: repeat(4, 1fr); }
     }
+    /* Izrazcy grid inside the shared sidebar workspace */
+    .catalog-workspace__main .izrazcy-products {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 28px;
+      margin-bottom: 32px;
+    }
+    @media (max-width: 1024px) {
+      .catalog-workspace__main .izrazcy-products { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 768px) {
+      .catalog-workspace__main .izrazcy-products { grid-template-columns: 1fr; }
+    }
+    /* Same sidebar filter width as the other catalog pages */
+    @media (min-width: 1025px) {
+      .catalog-workspace__layout {
+        grid-template-columns: 240px minmax(0, 1fr);
+      }
+    }
     .izrazcy-product {
       background: rgba(255,255,255,0.03);
       border: 1px solid rgba(255,255,255,0.08);
@@ -280,6 +298,9 @@
       transition: transform 0.4s ease;
     }
     .izrazcy-product:hover .izrazcy-product__img img { transform: scale(1.05); }
+    /* First card uses a 360-photo where the tile sits smaller in frame — zoom it in slightly to match the others */
+    .izrazcy-product__img img[src*="izrazcy-360"] { transform: scale(1.15); }
+    .izrazcy-product:hover .izrazcy-product__img img[src*="izrazcy-360"] { transform: scale(1.2); }
     .izrazcy-product__body { padding: 20px; }
     .izrazcy-product__collection {
       font-family: 'Inter', sans-serif;
@@ -1114,9 +1135,12 @@
   </section>
 
 
-  <!-- ===== FILTER TEMPLATE ===== -->
-  <section class="catalog-filter-template" aria-label="Шаблон фильтров каталога">
+  <!-- ===== FILTER + GRID WORKSPACE ===== -->
+  <section class="izrazcy-catalog catalog-workspace" id="catalog">
     <div class="container">
+      <div class="catalog-workspace__layout">
+        <!-- SIDEBAR: filters always open -->
+        <aside class="catalog-filter-template catalog-workspace__sidebar" aria-label="Фильтры каталога">
       <button class="catalog-filter-template__toggle" type="button" aria-expanded="false" data-catalog-filter-toggle>
         <span>Фильтры</span>
         <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -1143,7 +1167,7 @@
             <label class="catalog-filter-template__option"><input type="checkbox" name="subcategory" value="oblicovka-sten" data-subcategory-checkbox> <span>&#1054;&#1073;&#1083;&#1080;&#1094;&#1086;&#1074;&#1082;&#1072; &#1089;&#1090;&#1077;&#1085;</span></label>
           </fieldset>
           <fieldset class="catalog-filter-template__group catalog-filter-template__group--range">
-            <legend class="catalog-filter-template__group-title">Интервал значений</legend>
+            <legend class="catalog-filter-template__group-title">Цена</legend>
             <div class="catalog-filter-template__range">
               <label class="catalog-filter-template__field">
                 <span>От</span>
@@ -1175,14 +1199,9 @@
           <button class="catalog-filter-template__reset" type="reset">Сбросить</button>
         </div>
       </form>
-    </div>
-  </section>
-
-  <!-- ===== CATALOG ===== -->
-  <section class="izrazcy-catalog" id="catalog">
-    <div class="container">
-      <div class="izrazcy-catalog__layout">
-        <div class="izrazcy-catalog__main">
+        </aside>
+        <!-- MAIN: product grid -->
+        <div class="catalog-workspace__main">
           <div class="izrazcy-products" id="izrazcyGrid"></div>
           <div class="izrazcy-pagination" id="izrazcyPagination"></div>
         </div>
@@ -1447,6 +1466,21 @@
             '</button>' +
           '</div>' +
         '</div>';
+      }
+      if (visibleItems.length > 0) {
+        var placeholderCards = ['images/011.webp', 'images/024.webp'];
+        for (var pi = 0; pi < placeholderCards.length; pi++) {
+          html += '<div class="izrazcy-product">' +
+            '<div class="izrazcy-product__img">' +
+              '<img src="' + placeholderCards[pi] + '" alt="Изразец (образец)" loading="lazy">' +
+            '</div>' +
+            '<div class="izrazcy-product__body">' +
+              '<p class="izrazcy-product__collection">Коллекция</p>' +
+              '<h3 class="izrazcy-product__name">Изразец (образец)</h3>' +
+              '<p class="izrazcy-product__art">Арт. —</p>' +
+            '</div>' +
+          '</div>';
+        }
       }
       if (visibleItems.length === 0) {
         html = '<p style="color:rgba(255,255,255,0.4);grid-column:1/-1;text-align:center;padding:60px 0;">Ничего не найдено. Попробуйте изменить фильтры.</p>';
