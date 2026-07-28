@@ -605,8 +605,15 @@
         font-weight: 300;
       }
       .block-media__text p:last-child { margin-bottom: 0; }
-      .block-media__img { margin-top: 22px; }
+      .block-media__img { margin: 22px 0 0; }
       .block-media__img img { border-radius: 12px; }
+      .block-media__img figcaption {
+        margin-top: 12px;
+        color: rgba(255,255,255,0.5);
+        font-size: 0.86rem;
+        letter-spacing: 0.02em;
+        text-align: center;
+      }
 
       /* ===== Блок 4. Картинка + описание к ней ===== */
       .block-figure { margin: 30px auto; }
@@ -722,7 +729,10 @@
             <p>Команда CeramicaDecor помогает кардинально изменить внешний вид помещения: наши изделия дают дому возможность заиграть новыми красками. В одном из выпусков телепередачи «Дачный ответ» мы продемонстрировали, какой важной и нужной частью интерьера может стать камин, облицованный уникальными, подобранными специально для вас изразцами.</p>
             <p>Установленная новая чугунная топка с закалённым стеклом и хорошим обзором огня позволяет регулировать пламя, а внутри на одних только дровах огонь может гореть пять-шесть часов.</p>
           </div>
-          <div class="block-media__img"><img src="images/blog/solnechnaya-keramika/02.jpg" alt="Чугунная топка с закалённым стеклом в изразцовом камине"></div>
+          <figure class="block-media__img">
+            <img src="images/blog/solnechnaya-keramika/02.jpg" alt="Чугунная топка с закалённым стеклом в изразцовом камине">
+            <figcaption>Чугунная топка с закалённым стеклом</figcaption>
+          </figure>
         </section>
 
         <!-- ===== БЛОК 4: Картинка + описание к ней ===== -->
