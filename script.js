@@ -523,7 +523,21 @@
         e.preventDefault();
         var headerH = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--header-h'));
         var customOffset = target.getAttribute('data-scroll-offset');
-        var offset = customOffset !== null ? parseInt(customOffset, 10) || 0 : headerH + 20;
+        var offset;
+        if (customOffset !== null) {
+          offset = parseInt(customOffset, 10) || 0;
+        } else if (target.classList.contains('blog-article')) {
+          // Once the page scrolls, the header shrinks to its fixed "scrolled" height.
+          // Measure that height so the article lands right below the compact header
+          // instead of below the taller top-of-page header.
+          var wasScrolled = header && header.classList.contains('header--scrolled');
+          if (header && !wasScrolled) header.classList.add('header--scrolled');
+          var scrolledH = header ? header.getBoundingClientRect().height : headerH;
+          if (header && !wasScrolled) header.classList.remove('header--scrolled');
+          offset = scrolledH + 20;
+        } else {
+          offset = headerH + 20;
+        }
         var y = target.getBoundingClientRect().top + window.scrollY - offset;
         window.scrollTo({ top: y, behavior: 'smooth' });
       }
