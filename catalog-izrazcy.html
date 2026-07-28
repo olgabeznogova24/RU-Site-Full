@@ -1318,7 +1318,7 @@
   <script src="script.js" defer></script>
   <script>
   window._onIzrazcyReady = function() {
-    var PER_PAGE = 24;
+    var PER_PAGE = 21;
     var currentPage = 1;
     var grid = document.getElementById('izrazcyGrid');
     var paginationEl = document.getElementById('izrazcyPagination');
@@ -1428,9 +1428,12 @@
     }
 
     function renderProducts(page) {
-      var visibleItems = filtered.slice(0, 1);
-      var start = (page - 1) * PER_PAGE;
-      var end = Math.min(start + PER_PAGE, visibleItems.length);
+      /* Демонстрационная выдача: на первой странице одна реальная карточка,
+         остальные позиции страницы — заглушки, чтобы не тянуть в вёрстку
+         изображения и наполнение. Пагинация считается по всей демо-базе. */
+      var visibleItems = page === 1 ? filtered.slice(0, 1) : [];
+      var start = 0;
+      var end = visibleItems.length;
       var html = '';
       for (var i = start; i < end; i++) {
         var item = visibleItems[i];
@@ -1467,12 +1470,14 @@
           '</div>' +
         '</div>';
       }
-      if (visibleItems.length > 0) {
-        var placeholderCards = ['images/011.webp', 'images/024.webp'];
-        for (var pi = 0; pi < placeholderCards.length; pi++) {
+      if (filtered.length > 0) {
+        var placeholderImgs = ['images/011.webp', 'images/024.webp'];
+        var itemsOnPage = Math.min(PER_PAGE, filtered.length - (page - 1) * PER_PAGE);
+        var placeholderCount = Math.max(0, itemsOnPage - visibleItems.length);
+        for (var pi = 0; pi < placeholderCount; pi++) {
           html += '<div class="izrazcy-product">' +
             '<div class="izrazcy-product__img">' +
-              '<img src="' + placeholderCards[pi] + '" alt="Изразец (образец)" loading="lazy">' +
+              '<img src="' + placeholderImgs[pi % placeholderImgs.length] + '" alt="Изразец (образец)" loading="lazy">' +
             '</div>' +
             '<div class="izrazcy-product__body">' +
               '<p class="izrazcy-product__collection">Коллекция</p>' +
@@ -1482,14 +1487,14 @@
           '</div>';
         }
       }
-      if (visibleItems.length === 0) {
+      if (filtered.length === 0) {
         html = '<p style="color:rgba(255,255,255,0.4);grid-column:1/-1;text-align:center;padding:60px 0;">Ничего не найдено. Попробуйте изменить фильтры.</p>';
       }
       grid.innerHTML = html;
     }
 
     function renderPagination(page) {
-      var totalPages = Math.ceil(Math.min(filtered.length, 1) / PER_PAGE);
+      var totalPages = Math.ceil(filtered.length / PER_PAGE);
       if (totalPages <= 1) { paginationEl.innerHTML = ''; return; }
       var html = '';
       html += '<button class="izrazcy-pagination__btn' + (page <= 1 ? ' izrazcy-pagination__btn--disabled' : '') + '" data-page="' + (page - 1) + '">&laquo;</button>';
@@ -1510,7 +1515,7 @@
     }
 
     function goToPage(page) {
-      var totalPages = Math.ceil(Math.min(filtered.length, 1) / PER_PAGE);
+      var totalPages = Math.ceil(filtered.length / PER_PAGE);
       if (page < 1 || page > totalPages) return;
       currentPage = page;
       renderProducts(page);
