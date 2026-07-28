@@ -596,23 +596,17 @@
       .block-toc a:hover { color: var(--primary); }
 
       /* ===== Блок 3. Картинка + текст (рядом) ===== */
-      .block-media {
-        display: grid;
-        grid-template-columns: minmax(0, 320px) 1fr;
-        gap: 30px;
-        align-items: center;
-      }
-      .block-media--right { grid-template-columns: 1fr minmax(0, 320px); }
-      .block-media--right .block-media__img { order: 2; }
-      .block-media__img img { border-radius: 12px; }
+      /* Текст на всю ширину, ниже — картинка на всю ширину */
       .block-media__text p {
-        margin: 0 0 14px;
+        margin: 0 0 16px;
         color: rgba(255,255,255,0.72);
         font-size: 1.02rem;
         line-height: 1.75;
         font-weight: 300;
       }
       .block-media__text p:last-child { margin-bottom: 0; }
+      .block-media__img { margin-top: 22px; }
+      .block-media__img img { border-radius: 12px; }
 
       /* ===== Блок 4. Картинка + описание к ней ===== */
       .block-figure { margin: 30px auto; }
@@ -683,9 +677,6 @@
 
       /* ===== Адаптив ===== */
       @media (max-width: 680px) {
-        .block-media,
-        .block-media--right { grid-template-columns: 1fr; gap: 18px; }
-        .block-media--right .block-media__img { order: 0; }
         .gallery--trio-feature {
           grid-template-columns: 1fr 1fr;
           grid-template-rows: auto;
@@ -727,11 +718,11 @@
         <!-- ===== БЛОК 3: Картинка + текст (рядом) ===== -->
         <p class="block-label">Блок 3 · картинка + текст</p>
         <section class="block block-media">
-          <div class="block-media__img"><img src="images/blog/solnechnaya-keramika/02.jpg" alt="Чугунная топка с закалённым стеклом в изразцовом камине"></div>
           <div class="block-media__text">
             <p>Команда CeramicaDecor помогает кардинально изменить внешний вид помещения: наши изделия дают дому возможность заиграть новыми красками. В одном из выпусков телепередачи «Дачный ответ» мы продемонстрировали, какой важной и нужной частью интерьера может стать камин, облицованный уникальными, подобранными специально для вас изразцами.</p>
             <p>Установленная новая чугунная топка с закалённым стеклом и хорошим обзором огня позволяет регулировать пламя, а внутри на одних только дровах огонь может гореть пять-шесть часов.</p>
           </div>
+          <div class="block-media__img"><img src="images/blog/solnechnaya-keramika/02.jpg" alt="Чугунная топка с закалённым стеклом в изразцовом камине"></div>
         </section>
 
         <!-- ===== БЛОК 4: Картинка + описание к ней ===== -->
