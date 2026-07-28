@@ -301,6 +301,11 @@
     /* First card uses a 360-photo where the tile sits smaller in frame — zoom it in slightly to match the others */
     .izrazcy-product__img img[src*="izrazcy-360"] { transform: scale(1.15); }
     .izrazcy-product:hover .izrazcy-product__img img[src*="izrazcy-360"] { transform: scale(1.2); }
+    .izrazcy-product__img--empty {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
     .izrazcy-product__body { padding: 20px; }
     .izrazcy-product__collection {
       font-family: 'Inter', sans-serif;
@@ -1471,14 +1476,21 @@
         '</div>';
       }
       if (filtered.length > 0) {
+        /* Изображения только у первых трёх карточек первой страницы,
+           остальные заглушки — без изображений */
         var placeholderImgs = ['images/011.webp', 'images/024.webp'];
         var itemsOnPage = Math.min(PER_PAGE, filtered.length - (page - 1) * PER_PAGE);
         var placeholderCount = Math.max(0, itemsOnPage - visibleItems.length);
         for (var pi = 0; pi < placeholderCount; pi++) {
+          var withImage = page === 1 && (visibleItems.length + pi) < 3;
           html += '<div class="izrazcy-product">' +
-            '<div class="izrazcy-product__img">' +
-              '<img src="' + placeholderImgs[pi % placeholderImgs.length] + '" alt="Изразец (образец)" loading="lazy">' +
-            '</div>' +
+            (withImage
+              ? '<div class="izrazcy-product__img">' +
+                  '<img src="' + placeholderImgs[pi % placeholderImgs.length] + '" alt="Изразец (образец)" loading="lazy">' +
+                '</div>'
+              : '<div class="izrazcy-product__img izrazcy-product__img--empty">' +
+                  '<svg width="64" height="64" viewBox="0 0 64 64" fill="none" opacity="0.18"><rect x="8" y="8" width="48" height="48" stroke="#fff" stroke-width="2"/><rect x="18" y="18" width="28" height="28" stroke="#fff" stroke-width="1.5" transform="rotate(45 32 32)"/></svg>' +
+                '</div>') +
             '<div class="izrazcy-product__body">' +
               '<p class="izrazcy-product__collection">Коллекция</p>' +
               '<h3 class="izrazcy-product__name">Изразец (образец)</h3>' +
