@@ -1433,9 +1433,9 @@
     }
 
     function renderProducts(page) {
-      /* Демонстрационная выдача: на первой странице одна реальная карточка,
-         остальные позиции страницы — заглушки, чтобы не тянуть в вёрстку
-         изображения и наполнение. Пагинация считается по всей демо-базе. */
+      /* Демонстрационная выдача: карточки только на первой странице —
+         одна реальная, остальные заглушки. Страницы после первой пустые,
+         пагинация считается по всей демо-базе. */
       var visibleItems = page === 1 ? filtered.slice(0, 1) : [];
       var start = 0;
       var end = visibleItems.length;
@@ -1475,14 +1475,14 @@
           '</div>' +
         '</div>';
       }
-      if (filtered.length > 0) {
-        /* Изображения только у первых трёх карточек первой страницы,
+      if (filtered.length > 0 && page === 1) {
+        /* Изображения только у первых трёх карточек,
            остальные заглушки — без изображений */
         var placeholderImgs = ['images/011.webp', 'images/024.webp'];
-        var itemsOnPage = Math.min(PER_PAGE, filtered.length - (page - 1) * PER_PAGE);
+        var itemsOnPage = Math.min(PER_PAGE, filtered.length);
         var placeholderCount = Math.max(0, itemsOnPage - visibleItems.length);
         for (var pi = 0; pi < placeholderCount; pi++) {
-          var withImage = page === 1 && (visibleItems.length + pi) < 3;
+          var withImage = (visibleItems.length + pi) < 3;
           html += '<div class="izrazcy-product">' +
             (withImage
               ? '<div class="izrazcy-product__img">' +
