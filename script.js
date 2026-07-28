@@ -567,9 +567,6 @@
 
   /* ----- Our Products: no slider needed, grid layout ----- */
 
-  /* ----- Category Tabs ----- */
-  /* Tabs on index.html are links to catalog.html — no preventDefault needed */
-
   /* ----- Intersection Observer for fade-up animations ----- */
   var fadeElements = document.querySelectorAll(
     'section:not(.hero) > .container > *,' +

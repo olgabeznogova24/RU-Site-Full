@@ -74,7 +74,7 @@ product-drovyanoi-kamin-template.html?product=kamin-versal
 - формы показывают состояние успешной отправки;
 - ширины 1440, 1280, 768, 390, 360 px.
 
-Endpoint форм `https://ceramicadecor.ru/feedback/ceramicadecor_pro` (38 мест) — временный, программист заменит.
+Endpoint форм `https://ceramicadecor.ru/feedback/ceramicadecor_pro` (37 мест в коде) — временный, программист заменит.
 
 ## Git
 
@@ -89,10 +89,10 @@ Endpoint форм `https://ceramicadecor.ru/feedback/ceramicadecor_pro` (38 ме
 | Файл | Актуален на |
 |---|---|
 | `pages-audit.md` | 2026-07-23 |
-| `catalog-audit.md` | 2026-07-22, раздел «Проекты в работе» — 2026-07-23 |
+| `catalog-audit.md` | 2026-07-22, раздел «Проекты в работе» — 2026-07-23, раздел «Изразцы» — 2026-07-28 |
 | `interface-audit.md` | 2026-07-22 |
 | `seo-audit.md` | 2026-07-22 |
-| `dynamic-zones-audit.md` | частично 2026-07-23 (разделы про карточки главной, страниц сотрудничества, восстановление пароля, частые вопросы и проекты в работе) |
+| `dynamic-zones-audit.md` | частично 2026-07-23 (разделы про карточки главной, страниц сотрудничества, восстановление пароля, частые вопросы и проекты в работе), раздел «Изразцы» — 2026-07-28 |
 | `forms-audit.md`, `security-audit.md` | 2026-05-29, разделы про внутренние страницы — 2026-07-23 |
 | `assets-audit.md` | 2026-05-29, баннеры `faq.html` и `catalog-proekty-v-rabote.html` — 2026-07-23 |
 
