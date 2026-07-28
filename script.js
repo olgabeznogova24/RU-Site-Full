@@ -586,6 +586,7 @@
       el.closest('.catalog-grid') ||
       el.closest('.izrazcy-catalog') ||
       el.closest('.izrazcy-seo') ||
+      el.closest('.faq-page') ||
       el.closest('.portfolio-page') ||
       el.closest('.blog-list') ||
       el.closest('.blog-articles')
