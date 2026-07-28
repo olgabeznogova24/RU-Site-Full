@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Шаблон статьи блога — CeramicaDecor</title>
+  <meta name="description" content="Шаблон страницы статьи блога CeramicaDecor: демонстрация всех типов контентных блоков.">
+  <link rel="canonical" href="https://ceramicadecor.ru/blog-article-template.html">
+  <meta property="og:title" content="Шаблон статьи блога — CeramicaDecor">
+  <meta property="og:description" content="Демонстрация всех типов контентных блоков статьи блога.">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:image" content="images/hero_main.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:url" content="https://ceramicadecor.ru/blog.html">
+  <meta property="og:site_name" content="CeramicaDecor">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .blog-hero {
+      padding: 160px 0 88px;
+      text-align: center;
+      background: #101010;
+      position: relative;
+    }
+    .blog-hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 220px;
+      height: 1px;
+      transform: translateX(-50%);
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.18), transparent);
+    }
+    .blog-hero__title {
+      margin: 0 0 18px;
+      color: #fff;
+      font-family: var(--font-heading);
+      font-size: clamp(2.6rem, 5vw, 4.4rem);
+      font-weight: 400;
+      line-height: 1.08;
+    }
+    .blog-hero__subtitle {
+      max-width: 680px;
+      margin: 0 auto;
+      color: #fff;
+      font-size: 1.08rem;
+      line-height: 1.65;
+      font-weight: 300;
+    }
+    .blog-list {
+      padding: 82px 0 110px;
+      background: #101010;
+    }
+    .blog-list__grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
+    }
+    .blog-card {
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 10px;
+      background: rgba(255,255,255,0.035);
+      color: inherit;
+      text-decoration: none;
+      transition: transform var(--transition), border-color var(--transition), background var(--transition);
+    }
+    .blog-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(203,59,37,0.38);
+      background: rgba(203,59,37,0.08);
+    }
+    .blog-card__image {
+      display: grid;
+      place-items: center;
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+      background:
+        linear-gradient(135deg, rgba(203,59,37,0.16), rgba(255,255,255,0.035)),
+        #171717;
+    }
+    .blog-card__image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .blog-card__placeholder {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: calc(100% - 36px);
+      height: calc(100% - 36px);
+      border: 1px dashed rgba(255,255,255,0.18);
+      color: rgba(255,255,255,0.54);
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-align: center;
+      text-transform: uppercase;
+    }
+    .blog-card__body {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      padding: 22px;
+    }
+    .blog-card__meta {
+      margin-bottom: 12px;
+      color: var(--primary);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .blog-card__title {
+      margin: 0 0 12px;
+      color: #fff;
+      font-family: var(--font-heading);
+      font-size: 1.28rem;
+      font-weight: 400;
+      line-height: 1.25;
+    }
+    .blog-card__text {
+      margin: 0;
+      color: rgba(255,255,255,0.58);
+      font-size: 0.95rem;
+      line-height: 1.6;
+      font-weight: 300;
+    }
+    .blog-list .fade-up,
+    .blog-articles .fade-up {
+      opacity: 1;
+      transform: none;
+    }
+    .blog-note {
+      max-width: 820px;
+      margin: 56px auto 0;
+      padding: 24px 28px;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 10px;
+      background: rgba(255,255,255,0.035);
+      color: rgba(255,255,255,0.6);
+      font-size: 0.96rem;
+      line-height: 1.65;
+      text-align: center;
+    }
+    .blog-articles {
+      background: #101010;
+      padding: 0 0 118px;
+    }
+    .blog-articles__inner {
+      display: grid;
+      gap: 46px;
+    }
+    .blog-article {
+      display: grid;
+      grid-template-columns: minmax(0, 260px) minmax(0, 1fr);
+      gap: 38px;
+      padding-top: 46px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      scroll-margin-top: 90px;
+    }
+    .blog-article__aside {
+      position: sticky;
+      top: 104px;
+      align-self: start;
+    }
+    .blog-article__kicker {
+      margin-bottom: 14px;
+      color: var(--primary);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .blog-article__title {
+      margin: 0;
+      color: #fff;
+      font-family: var(--font-heading);
+      font-size: clamp(1.45rem, 2.2vw, 2rem);
+      font-weight: 400;
+      line-height: 1.16;
+      overflow-wrap: anywhere;
+    }
+    .blog-article__lead {
+      margin: 22px 0 0;
+      color: rgba(255,255,255,0.68);
+      font-size: 1.06rem;
+      line-height: 1.7;
+      font-weight: 300;
+    }
+    .blog-article__toc {
+      display: grid;
+      gap: 10px;
+      margin-top: 24px;
+      padding-left: 0;
+      list-style: none;
+    }
+    .blog-article__toc a {
+      color: rgba(255,255,255,0.62);
+      font-size: 0.92rem;
+      line-height: 1.45;
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+    .blog-article__toc a:hover {
+      color: #fff;
+    }
+    .blog-article__content {
+      min-width: 0;
+    }
+    .blog-article__content h3 {
+      margin: 36px 0 16px;
+      scroll-margin-top: 90px;
+      color: #fff;
+      font-family: var(--font-heading);
+      font-size: clamp(1.45rem, 2vw, 2rem);
+      font-weight: 400;
+      line-height: 1.18;
+    }
+    .blog-article__content p,
+    .blog-article__content li {
+      color: rgba(255,255,255,0.66);
+      font-size: 1rem;
+      line-height: 1.75;
+      font-weight: 300;
+    }
+    .blog-article__content p {
+      margin: 0 0 18px;
+    }
+    .blog-article__content ul {
+      margin: 0 0 22px;
+      padding-left: 22px;
+    }
+    .blog-article__media {
+      display: grid;
+      place-items: center;
+      min-height: 320px;
+      margin: 28px 0;
+      border: 1px dashed rgba(255,255,255,0.18);
+      border-radius: 10px;
+      background:
+        linear-gradient(135deg, rgba(203,59,37,0.11), rgba(255,255,255,0.035)),
+        #171717;
+      color: rgba(255,255,255,0.5);
+      font-size: 0.86rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-align: center;
+      text-transform: uppercase;
+    }
+    .blog-article__figure {
+      margin: 28px auto;
+    }
+    .blog-article__figure img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .blog-article__figure figcaption {
+      margin-top: 10px;
+      color: rgba(255,255,255,0.5);
+      font-size: 0.82rem;
+      letter-spacing: 0.04em;
+      text-align: center;
+    }
+    .blog-article__quote {
+      margin: 30px 0;
+      padding: 22px 26px;
+      border-left: 2px solid var(--primary);
+      background: rgba(255,255,255,0.035);
+      color: rgba(255,255,255,0.72);
+      font-size: 1.02rem;
+      line-height: 1.65;
+      font-weight: 300;
+    }
+    .blog-article__video {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 12px;
+      color: #fff;
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .blog-article__video:hover {
+      color: var(--primary);
+    }
+    @media (max-width: 980px) {
+      .blog-list__grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .blog-article {
+        grid-template-columns: 1fr;
+      }
+      .blog-article__aside {
+        position: static;
+      }
+    }
+    @media (max-width: 640px) {
+      .blog-hero {
+        padding: 132px 0 64px;
+      }
+      .blog-list {
+        padding: 56px 0 82px;
+      }
+      .blog-list__grid {
+        grid-template-columns: 1fr;
+      }
+      .blog-articles {
+        padding-bottom: 82px;
+      }
+      .blog-article {
+        gap: 22px;
+        padding-top: 36px;
+      }
+      .blog-article__media {
+        min-height: 220px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="header" id="header">
+    <div class="container header__inner">
+      <div class="header__top-row">
+        <nav class="header__top-nav" aria-label="Дополнительная навигация">
+          <ul class="header__top-nav-list">
+            <li><a href="about.html" class="header__top-link">О компании</a></li>
+            <li><a href="about.html#team" class="header__top-link">Наша команда</a></li>
+            <li><a href="contacts-gallery-review.html" class="header__top-link">Видеоотзывы</a></li>
+            <li class="header__top-dropdown"><button type="button" class="header__top-link header__top-dropdown-toggle" aria-haspopup="true" aria-expanded="false">Сотрудничество</button><ul class="header__top-dropdown-menu"><li><a href="cooperation.html">Для дизайнеров</a></li><li><a href="cooperation-stovemakers.html">Для печников</a></li><li><a href="cooperation-developers.html">Для застройщиков</a></li><li><a href="cooperation-fireplace-salons.html">Для салонов каминов</a></li><li><a href="cooperation-tile-salons.html">Для салонов интерьерных решений</a></li></ul></li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="header__main-row">
+        <a href="index.html" class="header__logo">
+          <img src="images/logo.png" alt="CeramicaDecor" class="header__logo-img">
+        </a>
+        <nav class="header__nav" id="mainNav">
+          <ul class="header__nav-list">
+          <li class="header__nav-dropdown header__nav-dropdown--catalog">
+            <button type="button" class="header__catalog-btn" aria-haspopup="true" aria-expanded="false">Каталог</button>
+            <div class="header__mega-menu header__mega-menu--showcase" role="menu">
+              <div class="header__mega-tabs" role="tablist" aria-label="Разделы каталога">
+                <button type="button" class="header__mega-tab active" role="tab" aria-selected="true" data-mega-target="kaminy" data-mega-href="catalog-kaminy.html">Камины</button>
+                <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="pechi" data-mega-href="catalog-otopitelnye-pechi.html">Печи</button>
+                <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="barbekyu" data-mega-href="catalog-barbekyu-kompleksy.html">Барбекю комплексы</button>
+                <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="izrazcy" data-mega-href="catalog-izrazcy.html">Изразцы</button>
+                <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="seriynye" data-mega-href="catalog-seriynye-modeli.html">Печи-камины<br>из наличия</button>
+                <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="mramor" data-mega-href="catalog-mramornye-portaly.html">Мраморные камины<br>и порталы</button>
+                <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="interior" data-mega-href="catalog-interernaya-keramika.html">Плитка ручной работы</button>
+                <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="fasad" data-mega-href="catalog-fasadnaya-keramika.html">Фасадная керамика</button>
+                <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="metlah" data-mega-href="catalog-metlahskaya-plitka.html">Метлахская плитка</button>
+                <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="restoration" data-mega-href="restoration.html">Реставрация</button>
+                <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="suvenir" data-mega-href="catalog-suvenirnaya-produkciya.html">Сувенирная продукция</button>
+                <button type="button" class="header__mega-tab" role="tab" aria-selected="false" data-mega-target="proekty" data-mega-href="catalog-proekty-v-rabote.html">Проекты в работе</button>
+              </div>
+              <div class="header__mega-panels">
+                <section class="header__mega-panel active" role="tabpanel" data-mega-panel="kaminy">
+                  <div class="header__mega-cards">
+                    <a href="catalog-kaminy.html?subcategory=drovyanye-kaminy" class="header__mega-card header__mega-card--large" role="menuitem"><img src="images/kamin_dorf_murav_new_3.jpg" alt="Дровяные камины"><span>Дровяные камины</span></a>
+                    <a href="catalog-kaminy.html?subcategory=biokaminy" class="header__mega-card" role="menuitem"><img src="images/banner-biokaminy_desktop.webp" alt="Биокамины"><span>Биокамины</span></a>
+                    <a href="catalog-kaminy.html?subcategory=elektrokaminy" class="header__mega-card" role="menuitem"><img src="images/banner-elektrokaminy_desktop.webp" alt="Электрокамины"><span>Электрокамины</span></a>
+                  </div>
+                </section>
+                <section class="header__mega-panel" role="tabpanel" data-mega-panel="pechi">
+                  <div class="header__mega-cards">
+                    <a href="catalog-otopitelnye-pechi.html?subcategory=russkie-pechi" class="header__mega-card header__mega-card--large" role="menuitem"><img src="images/banner-russkie-pechi_desktop.webp" alt="Русские печи"><span>Русские печи</span></a>
+                    <a href="catalog-otopitelnye-pechi.html?subcategory=otopitelnye-pechi" class="header__mega-card" role="menuitem"><img src="images/banner_otopitelnye_pechy_card.jpg" alt="Отопительные печи"><span>Отопительные печи</span></a>
+                    <a href="catalog-otopitelnye-pechi.html?subcategory=bannye-pechi" class="header__mega-card" role="menuitem"><img src="images/banner-bannye-pechi_desktop.webp" alt="Банные печи"><span>Банные печи</span></a>
+                    <a href="catalog-otopitelnye-pechi.html?subcategory=bannye-portaly" class="header__mega-card" role="menuitem"><img src="images/banner_bannye portaly_new.jpg?v=20260714-1831" alt="Банные порталы"><span>Банные порталы</span></a>
+                  </div>
+                </section>
+                <section class="header__mega-panel" role="tabpanel" data-mega-panel="barbekyu">
+                  <div class="header__mega-cards">
+                    <a href="catalog-barbekyu-kompleksy.html" class="header__mega-card header__mega-card--large" role="menuitem"><img src="images/barbekyu_card_new.webp" alt="Барбекю комплексы"><span>Барбекю комплексы</span></a>
+                  </div>
+                </section>
+                <section class="header__mega-panel" role="tabpanel" data-mega-panel="izrazcy">
+                  <div class="header__mega-cards">
+                    <a href="catalog-izrazcy.html" class="header__mega-card header__mega-card--large" role="menuitem"><img src="images/izrazcy_card.webp" alt="Каталог изразцов"><span>Каталог изразцов</span></a>
+                    <a href="glaze-palette.html" class="header__mega-card" role="menuitem"><img src="images/palitra_izrazcy.jpg" alt="Палитра глазурей"><span>Палитра глазурей</span></a>
+                  </div>
+                </section>
+                <section class="header__mega-panel" role="tabpanel" data-mega-panel="seriynye">
+                  <div class="header__mega-cards">
+                    <a href="catalog-seriynye-modeli.html" class="header__mega-card header__mega-card--large header__mega-card--ready" role="menuitem"><img src="images/ready_banner.png" alt="Печи-камины из наличия"><span>Печи-камины<br>из наличия</span></a>
+                  </div>
+                </section>
+                <section class="header__mega-panel" role="tabpanel" data-mega-panel="mramor">
+                  <div class="header__mega-cards">
+                    <a href="catalog-mramornye-portaly.html" class="header__mega-card header__mega-card--large" role="menuitem"><img src="images/banner-mramor_desktop.webp" alt="Мраморные порталы"><span>Мраморные порталы</span></a>
+                    <a href="catalog-kaminy-v-oblicovke-mramorom.html" class="header__mega-card" role="menuitem"><img src="images/kaminy_iz_mramora.jpg" alt="Камины в облицовке мрамором"><span>Камины в облицовке<br>мрамором</span></a>
+                  </div>
+                </section>
+                <section class="header__mega-panel" role="tabpanel" data-mega-panel="interior">
+                  <div class="header__mega-cards">
+                    <a href="catalog-interernaya-keramika.html?subcategory=barnye-stoyki" class="header__mega-card header__mega-card--bar" role="menuitem"><img src="images/barnye stoyki.jpg" alt="Барные стойки"><span>Барные стойки</span></a>
+                    <a href="catalog-interernaya-keramika.html?subcategory=oblicovka-sten" class="header__mega-card" role="menuitem"><img src="images/oblicovka sten.jpg" alt="Облицовка стен"><span>Облицовка стен</span></a>
+                    <a href="catalog-interernaya-keramika.html?subcategory=kuhonnye-fartuki" class="header__mega-card header__mega-card--large" role="menuitem"><img src="images/banner-interior_desktop.webp" alt="Кухонные фартуки"><span>Кухонные фартуки</span></a>
+                  </div>
+                </section>
+                <section class="header__mega-panel" role="tabpanel" data-mega-panel="fasad">
+                  <div class="header__mega-cards">
+                    <a href="catalog-fasadnaya-keramika.html" class="header__mega-card header__mega-card--large" role="menuitem"><img src="images/banner-fasad_desktop.webp" alt="Фасадная керамика"><span>Фасадная керамика</span></a>
+                  </div>
+                </section>
+                <section class="header__mega-panel" role="tabpanel" data-mega-panel="metlah">
+                  <div class="header__mega-cards">
+                    <a href="catalog-metlahskaya-plitka.html" class="header__mega-card header__mega-card--large" role="menuitem"><img src="images/metlahskaya plitka.jpg?v=20260610-2041" alt="Метлахская плитка"><span>Метлахская плитка</span></a>
+                  </div>
+                </section>
+                <section class="header__mega-panel" role="tabpanel" data-mega-panel="restoration">
+                  <div class="header__mega-cards">
+                    <a href="restoration.html" class="header__mega-card header__mega-card--large" role="menuitem"><img src="images/restavraciya.jpg" alt="Реставрация"><span>Реставрация</span></a>
+                  </div>
+                </section>
+                <section class="header__mega-panel" role="tabpanel" data-mega-panel="suvenir">
+                  <div class="header__mega-cards">
+                    <a href="catalog-suvenirnaya-produkciya.html" class="header__mega-card header__mega-card--large" role="menuitem"><img src="images/suvenirnaya produkcya.jpg" alt="Сувенирная продукция"><span>Сувенирная продукция</span></a>
+                  </div>
+                </section>
+                <section class="header__mega-panel" role="tabpanel" data-mega-panel="proekty">
+                  <div class="header__mega-cards">
+                    <a href="catalog-proekty-v-rabote.html" class="header__mega-card header__mega-card--large" role="menuitem"><img src="images/proekty-v-rabote_card.jpg" alt="Проекты в работе"><span>Проекты в работе</span></a>
+                  </div>
+                </section>
+              </div>
+            </div>
+          </li>
+          <li><a href="portfolio.html" class="header__nav-link">Портфолио</a></li>
+          <li class="header__nav-dropdown header__nav-dropdown--simple">
+            <a href="components.html" class="header__nav-link" aria-haspopup="true" aria-expanded="false">Все для монтажа</a>
+            <ul class="header__dropdown-menu">
+              <li><a href="components.html">Каминные топки</a></li>
+              <li><a href="components.html">Электроочаги</a></li>
+            </ul>
+          </li>
+          <li><a href="contacts.html" class="header__nav-link">Контакты</a></li>
+          </ul>
+          <ul class="header__nav-list header__nav-list--mobile-secondary">
+            <li><a href="about.html" class="header__nav-link">О компании</a></li>
+            <li><a href="about.html#team" class="header__nav-link">Наша команда</a></li>
+            <li><a href="contacts-gallery-review.html" class="header__nav-link">Видеоотзывы</a></li>
+            <li class="header__nav-dropdown header__nav-dropdown--simple"><a href="cooperation.html" class="header__nav-link" aria-haspopup="true" aria-expanded="false">Сотрудничество</a><ul class="header__dropdown-menu"><li><a href="cooperation.html">Для дизайнеров</a></li><li><a href="cooperation-stovemakers.html">Для печников</a></li><li><a href="cooperation-developers.html">Для застройщиков</a></li><li><a href="cooperation-fireplace-salons.html">Для салонов каминов</a></li><li><a href="cooperation-tile-salons.html">Для салонов интерьерных решений</a></li></ul></li>
+          </ul>
+          <a href="tel:+74952293046" data-calltracking="phone" data-calltracking-group="main" class="header__nav-phone-link">+7 (495) 229-30-46</a>
+          <div class="header__nav-messengers" aria-label="Мессенджеры">
+            <a href="https://t.me/+79950001166" class="header__messenger-link" target="_blank" rel="noopener" aria-label="Telegram"><img src="images/icons/png-klev-club-p-telegram-logotip-png-9.png" alt="" class="header__messenger-icon"></a>
+            <a href="https://max.ru/" class="header__messenger-link" target="_blank" rel="noopener" aria-label="Max"><img src="images/icons/max.png" alt="" class="header__messenger-icon"></a>
+          </div>
+          <a href="mailto:info@ceramicadecor.ru" data-calltracking="email" data-calltracking-group="main" class="header__nav-phone-link">info@ceramicadecor.ru</a>
+          <div class="header__nav-item--search"><a href="#" class="header__nav-link" id="searchBtnMobile"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg> Поиск</a></div>
+        </nav>
+
+        <div class="header__actions">
+          <button class="header__search-btn" id="searchBtn" aria-label="Поиск"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></button>
+          <a href="#contact" class="btn btn--primary header__cta-btn">Оставить заявку</a>
+          <a href="tel:+74952293046" data-calltracking="phone" data-calltracking-group="main" class="header__phone-desktop">+7 (495) 229-30-46</a>
+          <div class="header__messengers" aria-label="Мессенджеры">
+            <a href="https://t.me/+79950001166" class="header__messenger-link" target="_blank" rel="noopener" aria-label="Telegram"><img src="images/icons/png-klev-club-p-telegram-logotip-png-9.png" alt="" class="header__messenger-icon"></a>
+            <a href="https://max.ru/" class="header__messenger-link" target="_blank" rel="noopener" aria-label="Max"><img src="images/icons/max.png" alt="" class="header__messenger-icon"></a>
+          </div>
+          <button class="header__burger" id="burgerBtn" aria-label="Меню">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!--
+      ШАБЛОН СТРАНИЦЫ СТАТЬИ БЛОГА.
+      Страница статьи собирается из отдельных блоков (ниже помечены комментариями).
+      Программисту нужен только дизайн блоков — реальные страницы собираются из них
+      динамически, эти же блоки могут переиспользоваться и в других разделах сайта.
+      Ниже показаны все 8 типов блоков с демонстрационным содержимым.
+    -->
+
+    <style>
+      /* ===== Оболочка страницы статьи ===== */
+      .article-page {
+        padding: 150px 0 90px;
+      }
+      .article-page__inner {
+        max-width: 840px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+      .article-page__head {
+        margin-bottom: 8px;
+      }
+      .article-page__kicker {
+        color: var(--primary);
+        font-size: 0.8rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+      .article-page__title {
+        margin: 14px 0 0;
+        color: #fff;
+        font-family: var(--font-heading);
+        font-size: clamp(1.8rem, 3.4vw, 2.8rem);
+        font-weight: 400;
+        line-height: 1.14;
+      }
+      .article-page__meta {
+        margin-top: 16px;
+        color: rgba(255,255,255,0.45);
+        font-size: 0.9rem;
+        letter-spacing: 0.02em;
+      }
+
+      /* Метка типа блока — только для этого шаблона, в реальных страницах не нужна */
+      .block-label {
+        margin: 54px 0 -8px;
+        padding-bottom: 6px;
+        border-bottom: 1px dashed rgba(203,59,37,0.4);
+        color: rgba(203,59,37,0.85);
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+
+      /* ===== Общий вертикальный ритм блоков ===== */
+      .block {
+        margin: 30px 0;
+      }
+      .block img {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+
+      /* ===== Блок 1. Простой текстовый блок ===== */
+      .block-text h2 {
+        margin: 0 0 16px;
+        color: #fff;
+        font-family: var(--font-heading);
+        font-size: clamp(1.4rem, 2.2vw, 2rem);
+        font-weight: 400;
+        line-height: 1.2;
+      }
+      .block-text p {
+        margin: 0 0 16px;
+        color: rgba(255,255,255,0.72);
+        font-size: 1.02rem;
+        line-height: 1.75;
+        font-weight: 300;
+      }
+      .block-text p:last-child { margin-bottom: 0; }
+
+      /* ===== Блок 2. Оглавление ===== */
+      .block-toc {
+        padding: 22px 26px;
+        border: 1px solid rgba(255,255,255,0.1);
+        border-radius: 12px;
+        background: rgba(255,255,255,0.03);
+      }
+      .block-toc__title {
+        margin: 0 0 14px;
+        color: rgba(255,255,255,0.55);
+        font-size: 0.78rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+      .block-toc ul {
+        display: grid;
+        gap: 10px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+      .block-toc a {
+        color: rgba(255,255,255,0.75);
+        font-size: 0.98rem;
+        line-height: 1.4;
+        text-decoration: none;
+        transition: color var(--transition);
+      }
+      .block-toc a:hover { color: var(--primary); }
+
+      /* ===== Блок 3. Картинка + текст (рядом) ===== */
+      .block-media {
+        display: grid;
+        grid-template-columns: minmax(0, 320px) 1fr;
+        gap: 30px;
+        align-items: center;
+      }
+      .block-media--right { grid-template-columns: 1fr minmax(0, 320px); }
+      .block-media--right .block-media__img { order: 2; }
+      .block-media__img img { border-radius: 12px; }
+      .block-media__text p {
+        margin: 0 0 14px;
+        color: rgba(255,255,255,0.72);
+        font-size: 1.02rem;
+        line-height: 1.75;
+        font-weight: 300;
+      }
+      .block-media__text p:last-child { margin-bottom: 0; }
+
+      /* ===== Блок 4. Картинка + описание к ней ===== */
+      .block-figure { margin: 30px auto; }
+      .block-figure img {
+        border-radius: 12px;
+        border: 1px solid rgba(255,255,255,0.08);
+      }
+      .block-figure figcaption {
+        margin-top: 12px;
+        color: rgba(255,255,255,0.5);
+        font-size: 0.86rem;
+        letter-spacing: 0.02em;
+        text-align: center;
+      }
+
+      /* ===== Блок 5. Цитата ===== */
+      .block-quote {
+        margin: 34px 0;
+        padding: 6px 0 6px 28px;
+        border-left: 3px solid var(--primary);
+        color: rgba(255,255,255,0.82);
+        font-family: var(--font-heading);
+        font-size: clamp(1.15rem, 1.8vw, 1.4rem);
+        font-style: italic;
+        line-height: 1.55;
+        font-weight: 400;
+      }
+      .block-quote cite {
+        display: block;
+        margin-top: 14px;
+        color: rgba(255,255,255,0.5);
+        font-family: var(--font-base, inherit);
+        font-size: 0.9rem;
+        font-style: normal;
+      }
+
+      /* ===== Галереи: общие правила ===== */
+      .gallery {
+        display: grid;
+        gap: 14px;
+      }
+      .gallery figure { margin: 0; }
+      .gallery img {
+        border-radius: 10px;
+        aspect-ratio: 3 / 2;
+        object-fit: cover;
+      }
+      .gallery figcaption {
+        margin-top: 8px;
+        color: rgba(255,255,255,0.5);
+        font-size: 0.8rem;
+        text-align: center;
+      }
+
+      /* Блок 6. Две картинки рядом */
+      .gallery--duo { grid-template-columns: 1fr 1fr; }
+
+      /* Блок 7. Три картинки, вариант 1: одна большая + две маленькие */
+      .gallery--trio-feature {
+        grid-template-columns: 2fr 1fr;
+        grid-template-rows: 1fr 1fr;
+      }
+      .gallery--trio-feature > :first-child { grid-row: 1 / 3; }
+      .gallery--trio-feature > :first-child img { aspect-ratio: auto; height: 100%; }
+
+      /* Блок 8. Три картинки, вариант 2: три одинаковые в ряд */
+      .gallery--trio-row { grid-template-columns: repeat(3, 1fr); }
+
+      /* ===== Адаптив ===== */
+      @media (max-width: 680px) {
+        .block-media,
+        .block-media--right { grid-template-columns: 1fr; gap: 18px; }
+        .block-media--right .block-media__img { order: 0; }
+        .gallery--trio-feature {
+          grid-template-columns: 1fr 1fr;
+          grid-template-rows: auto;
+        }
+        .gallery--trio-feature > :first-child { grid-row: auto; grid-column: 1 / 3; }
+        .gallery--trio-feature > :first-child img { aspect-ratio: 3 / 2; }
+        .gallery--trio-row { grid-template-columns: 1fr 1fr; }
+      }
+    </style>
+
+    <article class="article-page">
+      <div class="article-page__inner">
+
+        <header class="article-page__head">
+          <div class="article-page__kicker">Изразцы</div>
+          <h1 class="article-page__title">Заголовок статьи блога</h1>
+          <div class="article-page__meta">Демонстрационный шаблон · все типы блоков</div>
+        </header>
+
+        <!-- ===== БЛОК 1: Простой текстовый блок ===== -->
+        <p class="block-label">Блок 1 · простой текстовый блок</p>
+        <section class="block block-text">
+          <h2>Подзаголовок раздела</h2>
+          <p>Простой текстовый блок — основа статьи. Он состоит из необязательного подзаголовка и одного или нескольких абзацев. Такой блок задаёт ритм чтения и используется чаще всего.</p>
+          <p>Абзацы можно повторять сколько нужно. Текст набирается тем же шрифтом и с той же типографикой, что и на остальных страницах сайта, чтобы блог не выбивался из общего стиля.</p>
+        </section>
+
+        <!-- ===== БЛОК 2: Оглавление ===== -->
+        <p class="block-label">Блок 2 · оглавление</p>
+        <nav class="block block-toc">
+          <div class="block-toc__title">Содержание</div>
+          <ul>
+            <li><a href="#">Первый раздел статьи</a></li>
+            <li><a href="#">Второй раздел статьи</a></li>
+            <li><a href="#">Третий раздел статьи</a></li>
+            <li><a href="#">Заключение</a></li>
+          </ul>
+        </nav>
+
+        <!-- ===== БЛОК 3: Картинка + текст (рядом) ===== -->
+        <p class="block-label">Блок 3 · картинка + текст</p>
+        <section class="block block-media">
+          <div class="block-media__img"><img src="images/blog/pech-v-starorusskom-stile/01.jpg" alt="Демонстрационное фото"></div>
+          <div class="block-media__text">
+            <p>Блок «картинка + текст» ставит изображение и текст рядом. Он удобен, когда фото поясняет мысль абзаца, но не должно занимать всю ширину.</p>
+            <p>Картинку можно располагать слева или справа — для правого варианта используется модификатор <code>block-media--right</code>. На узких экранах блок автоматически сворачивается в одну колонку.</p>
+          </div>
+        </section>
+
+        <!-- ===== БЛОК 4: Картинка + описание к ней ===== -->
+        <p class="block-label">Блок 4 · картинка + описание</p>
+        <figure class="block block-figure">
+          <img src="images/blog/yaroslavskij-izrazets-unikalnyj-i-samobytnyj/01.jpg" alt="Демонстрационное фото">
+          <figcaption>Подпись к изображению — короткое пояснение под фото</figcaption>
+        </figure>
+
+        <!-- ===== БЛОК 5: Цитата ===== -->
+        <p class="block-label">Блок 5 · цитата</p>
+        <blockquote class="block block-quote">
+          Керамическая облицовка очага может не только радовать глаз, но и быть наполненной содержанием, глубиной и характером.
+          <cite>Необязательный источник или автор</cite>
+        </blockquote>
+
+        <!-- ===== БЛОК 6: Две картинки рядом ===== -->
+        <p class="block-label">Блок 6 · две картинки рядом</p>
+        <div class="block gallery gallery--duo">
+          <figure>
+            <img src="images/blog/belaya-bannaya-pech-v-russkom-stile/01.jpg" alt="Демонстрационное фото">
+            <figcaption>Подпись к первому фото</figcaption>
+          </figure>
+          <figure>
+            <img src="images/blog/belaya-bannaya-pech-v-russkom-stile/02.jpg" alt="Демонстрационное фото">
+            <figcaption>Подпись ко второму фото</figcaption>
+          </figure>
+        </div>
+
+        <!-- ===== БЛОК 7: Три картинки, вариант 1 (одна большая + две маленькие) ===== -->
+        <p class="block-label">Блок 7 · три картинки, вариант 1 (большая + две маленькие)</p>
+        <div class="block gallery gallery--trio-feature">
+          <figure><img src="images/blog/izraztsovyj-barbekyu-kompleks/01.jpg" alt="Демонстрационное фото"></figure>
+          <figure><img src="images/blog/izraztsovyj-barbekyu-kompleks/02.jpg" alt="Демонстрационное фото"></figure>
+          <figure><img src="images/blog/izraztsovyj-barbekyu-kompleks/03.jpg" alt="Демонстрационное фото"></figure>
+        </div>
+
+        <!-- ===== БЛОК 8: Три картинки, вариант 2 (три одинаковые в ряд) ===== -->
+        <p class="block-label">Блок 8 · три картинки, вариант 2 (три в ряд)</p>
+        <div class="block gallery gallery--trio-row">
+          <figure><img src="images/blog/solnechnaya-keramika/02.jpg" alt="Демонстрационное фото"></figure>
+          <figure><img src="images/blog/solnechnaya-keramika/03.jpg" alt="Демонстрационное фото"></figure>
+          <figure><img src="images/blog/solnechnaya-keramika/04.jpg" alt="Демонстрационное фото"></figure>
+        </div>
+
+      </div>
+    </article>
+  </main>
+
+  <footer class="footer" id="footer">
+    <div class="footer__glow"></div>
+    <div class="container">
+      <div class="footer__works-map" aria-label="Карта выполненных работ">
+        <h2 class="footer__works-map-title">Выполненные работы CeramicaDecor на карте</h2>
+        <div class="contacts-map" data-map-template="completed-works" data-map-provider="internal">
+          <div class="contacts-map__layout">
+            <div class="contacts-map__canvas" id="completedWorksMap" data-map-target="completed-works">
+              <span class="contacts-map__marker contacts-map__marker--spb" data-work-location="spb">Санкт-Петербург</span>
+              <span class="contacts-map__marker contacts-map__marker--moscow" data-work-location="moscow">Москва</span>
+              <p class="contacts-map__placeholder">Здесь будет интерактивная карта с выполненными работами, маркерами объектов, масштабированием и переходом к проектам.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer__top">
+        <div class="footer__brand">
+          <a href="index.html" class="footer__logo">
+            <img src="images/logo.png" alt="CeramicaDecor" class="footer__logo-img">
+          </a>
+          <p class="footer__tagline">Керамические премиальные облицовки.<br>14+ лет, своё производство, монтаж.<br>Под ключ по России и СНГ</p>
+        </div>
+        <div class="footer__columns">
+          <div class="footer__col">
+            <h4 class="footer__col-title" style="font-size:16px;font-weight:700;color:#fff;">Каталог</h4>
+            <ul class="footer__col-list">
+              <li><a href="catalog-kaminy.html">Камины</a></li>
+              <li><a href="catalog-otopitelnye-pechi.html">Печи</a></li>
+              <li><a href="catalog-seriynye-modeli.html">Печи-камины из наличия</a></li>
+              <li><a href="catalog-barbekyu-kompleksy.html">Барбекю комплексы</a></li>
+              <li><a href="catalog-izrazcy.html">Изразцы</a></li>
+              <li><a href="catalog-interernaya-keramika.html">Плитка ручной работы</a></li>
+            </ul>
+          </div>
+          <div class="footer__col">
+            <ul class="footer__col-list footer__col-list--offset">
+              <li><a href="portfolio.html" style="color:#fff;font-size:16px;font-weight:500;">Портфолио</a></li>
+              <li><a href="components.html" style="color:#fff;font-size:16px;font-weight:500;">Все для монтажа</a></li>
+              <li><a href="cooperation.html" style="color:#fff;font-size:16px;font-weight:500;">Сотрудничество</a></li>
+              <li><a href="blog.html" style="color:#fff;font-size:16px;font-weight:500;">Блог</a></li>
+              <li><a href="about.html" style="color:#fff;font-size:16px;font-weight:500;">О компании</a></li>
+              <li><a href="faq.html" style="color:#fff;font-size:16px;font-weight:500;">Часто задаваемые вопросы</a></li>
+            </ul>
+          </div>
+          <div class="footer__col footer__col--contacts">
+            <h4 class="footer__col-title" style="font-size:16px;font-weight:700;color:#fff;"><a href="contacts.html" class="footer__col-title-link">Контакты</a></h4>
+            <ul class="footer__col-list footer__contact-list">
+              <li><a href="tel:+74952293046" data-calltracking="phone" data-calltracking-group="main" style="font-weight:700;">+7 (495) 229-30-46</a></li>
+              <li><a href="mailto:info@ceramicadecor.ru" data-calltracking="email" data-calltracking-group="main" style="font-weight:700;">info@ceramicadecor.ru</a></li>
+              <li class="footer__messengers" aria-label="Мессенджеры">
+                <a href="https://t.me/+79950001166" class="footer__messenger-link" target="_blank" rel="noopener" aria-label="Telegram"><img src="images/icons/png-klev-club-p-telegram-logotip-png-9.png" alt="" class="footer__messenger-icon"></a>
+                <a href="https://max.ru/" class="footer__messenger-link" target="_blank" rel="noopener" aria-label="Max"><img src="images/icons/max.png" alt="" class="footer__messenger-icon"></a>
+</li>
+              <li style="margin-top: 0.75em;"><a href="contacts.html" class="btn btn--primary" style="padding:9px 20px;font-size:13px;color:#fff;">Оставить заявку</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p class="footer__copy">&copy; 2013&ndash;2026 CeramicaDecor. Все права защищены.</p>
+        <p class="footer__org-info">ООО «АРТ КЕРАМИКА» &middot; ИНН&nbsp;5018178964 &middot; ОГРН&nbsp;1155018002150 &middot; 141068, Московская обл., г.&nbsp;Королев, ул.&nbsp;Силикатная, д.&nbsp;74, пом.&nbsp;204</p>
+        <div class="footer__legal">
+          <a href="privacy.html" target="_blank">Политика конфиденциальности</a>
+          <a href="terms.html" target="_blank">Пользовательское соглашение</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <button class="scroll-to-top" aria-label="Наверх">
+    <svg viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+  </button>
+  <script src="script.js" defer></script>
+  <script src="search.js" defer></script>
+
+  <div class="cookie-banner" id="cookieBanner">
+    <p class="cookie-banner__text">Мы используем файлы cookie. Продолжая использование сайта, вы соглашаетесь с нашей <a href="privacy.html">Политикой конфиденциальности</a>.</p>
+    <button class="cookie-banner__btn" id="cookieAccept">Принять</button>
+  </div>
+</body>
+</html>
+
+
+
+
+
+
+
