@@ -526,9 +526,10 @@
         var offset;
         if (customOffset !== null) {
           offset = parseInt(customOffset, 10) || 0;
-        } else if (target.classList.contains('blog-article')) {
+        } else if (target.closest('.blog-articles')) {
+          // Blog articles and their in-page section anchors (table of contents).
           // Once the page scrolls, the header shrinks to its fixed "scrolled" height.
-          // Measure that height so the article lands right below the compact header
+          // Measure that height so the target lands right below the compact header
           // instead of below the taller top-of-page header.
           var wasScrolled = header && header.classList.contains('header--scrolled');
           if (header && !wasScrolled) header.classList.add('header--scrolled');
