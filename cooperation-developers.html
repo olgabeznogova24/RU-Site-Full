@@ -141,6 +141,13 @@
     }
     .cooperation-partners .cooperation-section__header {
       margin-bottom: 0;
+      /* Логотип Open Village центрируется в своей колонке, поэтому справа от
+         него остаётся пустое поле. Сдвигаем заголовок с текстом вправо ровно
+         на такое же расстояние, чтобы отступы слева и справа совпали.
+         Формула выведена из пропорций колонок 1.18fr / 0.82fr и ширины
+         логотипа 380px: отступ = (0.82/1.18 * ширина_колонки - 380) / 2.
+         Меняете пропорции колонок или ширину логотипа — пересчитайте. */
+      padding-left: calc(34.746% - 190px);
     }
     .cooperation-partners__open-logo {
       display: flex;
@@ -933,6 +940,10 @@
       .cooperation-partners__intro {
         grid-template-columns: 1fr;
         gap: 22px;
+      }
+      .cooperation-partners .cooperation-section__header {
+        /* Одна колонка — выравнивать нечего */
+        padding-left: 0;
       }
       .cooperation-partners__open-logo {
         width: 380px;
