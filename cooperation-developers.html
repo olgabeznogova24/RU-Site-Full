@@ -294,6 +294,11 @@
       font-weight: 300;
       line-height: 1.7;
     }
+    /* Ручной перенос строки: нужен только там, где текст идёт в две колонки.
+       На мобильных отключается, чтобы абзац переносился сам по ширине */
+    .cooperation-section__text-break {
+      display: inline;
+    }
     .cooperation-cards {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -917,6 +922,9 @@
       }
     }
     @media (max-width: 768px) {
+      .cooperation-section__text-break {
+        display: none;
+      }
       .cooperation-hero {
         min-height: 520px;
         padding: 120px 0 72px;
@@ -1230,7 +1238,7 @@
       <div class="cooperation-partners__intro">
         <div class="cooperation-section__header">
           <h2 class="section-title">CeramicaDecor - надежный партнер для застройщиков</h2>
-          <p class="cooperation-section__text">Мы являемся проверенным партнером Open Village и уже сотрудничаем с крупными застройщиками. Берем на себя проектирование, производство, комплектацию и монтаж,<br>чтобы камин или печь стали идеальным дополнением дома</p>
+          <p class="cooperation-section__text">Мы являемся проверенным партнером Open Village и уже сотрудничаем с крупными застройщиками. Берем на себя проектирование, производство, комплектацию и монтаж, <br class="cooperation-section__text-break">чтобы камин или печь стали идеальным дополнением дома</p>
         </div>
         <div class="cooperation-partners__open-logo">
           <img src="images/logo-open-village.jpg" alt="Open Village" loading="lazy">
