@@ -2176,8 +2176,10 @@ ul, ol {
   gap: 8px;
   padding: 10px 16px;
   border-radius: 10px;
-  background: rgba(255,197,53,0.1);
-  border: 1px solid rgba(255,197,53,0.25);
+  /* Тот же цвет, что у цифр опыта на баннере главной, — var(--amber) */
+  color: var(--amber);
+  background: rgba(255,161,94,0.1);
+  border: 1px solid rgba(255,161,94,0.25);
   margin-bottom: 14px;
 }
 
@@ -2185,7 +2187,7 @@ ul, ol {
   font-family: var(--font-body);
   font-size: 14px;
   font-weight: 600;
-  color: #ffc535;
+  color: inherit;
 }
 
 .showcase__cta-block {
