@@ -78,6 +78,28 @@
       font-weight: 300;
       line-height: 1.6;
     }
+    /* Перечисление под подзаголовком: блок центрируется целиком, а строки
+       внутри выключены по левому краю, тире висят в отступе */
+    .cooperation-hero__list {
+      width: max-content;
+      max-width: 100%;
+      margin: 10px auto 0;
+      padding: 0;
+      list-style: none;
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(1rem, 1.5vw, 1.25rem);
+      font-weight: 300;
+      line-height: 1.6;
+      text-align: left;
+    }
+    .cooperation-hero__list li {
+      padding-left: 16px;
+      text-indent: -16px;
+    }
+    .cooperation-hero__list li::before {
+      content: '- ';
+    }
     .cooperation-hero__actions {
       display: flex;
       justify-content: center;
@@ -1175,7 +1197,12 @@
     <div class="container">
       <div class="cooperation-hero__content">
         <h1 class="cooperation-hero__title">Для застройщиков</h1>
-        <p class="cooperation-hero__subtitle">Помогаем добавить в проект камин или печь: анализируем характеристики дома и готовим комплексное решение под ключ</p>
+        <p class="cooperation-hero__subtitle">Готовим комплексное решение под ключ</p>
+        <ul class="cooperation-hero__list">
+          <li>для дома: камин, отопительная печь, русская печь</li>
+          <li>для беседки или веранды: барбекю комплекс, гриль</li>
+          <li>для бани: банная печь, банный портал</li>
+        </ul>
         <div class="cooperation-hero__actions">
           <a href="#cooperation-form-title" class="btn btn--primary btn--large">Оставить заявку</a>
         </div>
