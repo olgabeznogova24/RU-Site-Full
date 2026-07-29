@@ -521,7 +521,7 @@ ul, ol {
 .header__nav-messengers {
   display: none;
 }
-@media (max-width: 1500px) and (min-width: 961px) {
+@media (max-width: 1500px) and (min-width: 1101px) {
   .header .container {
     padding-left: 32px;
     padding-right: 32px;
@@ -573,14 +573,14 @@ ul, ol {
     height: 28px;
   }
 }
-@media (max-width: 1240px) and (min-width: 961px) {
+@media (max-width: 1240px) and (min-width: 1101px) {
   .header__messengers { display: none; }
 }
 @media (max-width: 768px) {
   .header__phone-desktop,
   .header__messengers { display: none; }
 }
-@media (max-width: 960px) {
+@media (max-width: 1100px) {
   .header__phone-desktop,
   .header__messengers { display: none; }
 }
@@ -787,7 +787,7 @@ ul, ol {
   transition: transform var(--transition), opacity var(--transition);
   z-index: -2;
 }
-@media (min-width: 961px) {
+@media (min-width: 1101px) {
   .header__mega-card[href*="subcategory=bannye-portaly"] img {
     object-position: center 42%;
     transform: scale(1.14);
@@ -825,7 +825,7 @@ ul, ol {
   opacity: 1;
   transform: scale(1.04);
 }
-@media (min-width: 961px) {
+@media (min-width: 1101px) {
   .header__mega-card[href*="subcategory=bannye-portaly"]:hover img,
   .header__mega-card[href*="subcategory=bannye-portaly"]:focus-visible img {
     transform: scale(1.18);
@@ -851,7 +851,7 @@ ul, ol {
   line-height: 1.2;
 }
 
-@media (max-width: 960px) {
+@media (max-width: 1100px) {
   .header__actions .header__cta-btn {
     padding: 5px 10px;
     font-size: 11px;
@@ -3602,7 +3602,7 @@ ul, ol {
 .header__fav-btn:focus-visible {
   background: rgba(255,255,255,0.2);
 }
-@media (max-width: 960px) {
+@media (max-width: 1100px) {
   .header__search-btn { display: none; }
 }
 
@@ -4161,7 +4161,7 @@ ul, ol {
 }
 
 /* Narrower header cluster below 1500 — keep the footer in step with it */
-@media (max-width: 1500px) and (min-width: 961px) {
+@media (max-width: 1500px) and (min-width: 1101px) {
   .footer__top {
     column-gap: clamp(0px, calc((100% - 800px) / 3), 121px);
   }
@@ -4311,7 +4311,7 @@ ul, ol {
 }
 
 /* Mobile nav trigger */
-@media (max-width: 960px) {
+@media (max-width: 1100px) {
   :root {
     --header-h: 72px;
   }
