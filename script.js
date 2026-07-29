@@ -768,6 +768,18 @@
     });
   });
 
+  /* ----- Кнопки, открывающие стандартную модалку заявки ----- */
+  document.querySelectorAll('[data-request-modal]').forEach(function (trigger) {
+    trigger.addEventListener('click', function (e) {
+      e.preventDefault();
+      if (!window.openStandardRequestModal) return;
+
+      window.openStandardRequestModal(
+        trigger.getAttribute('data-request-modal') || document.title
+      );
+    });
+  });
+
   /* ----- Lightbox ----- */
   var lightbox = document.getElementById('lightbox');
   if (lightbox) {
