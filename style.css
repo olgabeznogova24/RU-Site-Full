@@ -45,6 +45,10 @@
   --font-body: 'TT Commons Pro', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   --max-width: 1920px;
   --container: 1600px;
+  /* Ширина видимого содержимого шапки: от логотипа до правого края блока
+     кнопок. По ней выравниваются баннер главной и футер. Значение зависит
+     от состава шапки — при изменении пунктов меню или кнопок пересчитать. */
+  --header-cluster: 1297px;
   --header-h: 112px;
   --transition: 0.3s ease;
 }
@@ -475,6 +479,9 @@ ul, ol {
   display: none;
 }
 @media (max-width: 1500px) and (min-width: 1101px) {
+  :root {
+    --header-cluster: 1147px;
+  }
   .header .container {
     padding-left: 32px;
     padding-right: 32px;
@@ -962,6 +969,8 @@ ul, ol {
   position: relative;
   z-index: 3;
   padding-bottom: 48px;
+  /* Левый край текста совпадает с левым краем шапки */
+  max-width: calc(var(--header-cluster) + 80px);
 }
 
 .hero__trust {
