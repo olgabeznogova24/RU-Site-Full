@@ -341,58 +341,30 @@
     .product-card.hidden {
       display: none;
     }
-    .product-card--horizontal {
+    /* Название и артикул стоят над изображением. Название ограничено двумя
+       строками, чтобы картинки в ряду начинались на одной высоте. */
+    .product-card__head {
       display: grid;
-      grid-template-areas:
-        "head head"
-        "left right";
-      grid-template-columns: minmax(170px, 0.78fr) minmax(0, 1fr);
-      column-gap: 18px;
-      row-gap: 14px;
-      padding: 16px;
-      cursor: pointer;
-    }
-    .product-card--horizontal .product-card__head {
-      grid-area: head;
-      min-width: 0;
-      display: grid;
-      gap: 8px;
+      gap: 6px;
       align-content: start;
-      height: 56px;
+      padding: 16px 16px 0;
+      min-width: 0;
+    }
+    .product-card__head .product-card__name {
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
       overflow: hidden;
-    }
-    @media (min-width: 769px) {
-      .catalog-grid .product-card.product-card--horizontal {
-        grid-template-rows: 56px auto;
-      }
-      .catalog-grid .product-card.product-card--horizontal .product-card__head {
-        height: 56px !important;
-        min-height: 56px !important;
-        max-height: 56px !important;
-      }
-    }
-    .product-card--horizontal .product-card__left,
-    .product-card--horizontal .product-card__right {
-      min-width: 0;
-    }
-    .product-card--horizontal .product-card__left {
-      grid-area: left;
-    }
-    .product-card--horizontal .product-card__right {
-      grid-area: right;
-    }
-    .product-card--horizontal .product-card__left {
-      display: grid;
-      gap: 14px;
-      align-content: start;
-    }
-    .product-card--horizontal .product-card__body {
-      padding: 0;
-    }
-    .product-card--horizontal .product-card__slider {
       margin: 0;
-      aspect-ratio: 4 / 5;
-      background: #111;
+      min-height: 2.5em;
+      font-size: 1.12rem;
+      line-height: 1.25;
+    }
+    .product-card__head .product-card__article {
+      overflow: hidden;
+      margin: 0;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
     .product-card__slider--firebox img {
       object-fit: contain;
@@ -411,54 +383,11 @@
     .product-card__price-block {
       display: grid;
       gap: 4px;
-    }
-    .product-card--horizontal .product-card__price-block {
-      margin-top: 18px;
-    }
-    .product-card--horizontal .product-card__price {
-      margin-bottom: 0;
-      font-size: 1.18rem;
-    }
-    .product-card--horizontal .product-card__price--old {
-      font-size: 0.94rem;
-    }
-    .product-card--horizontal .product-card__actions {
-      margin-top: 0;
-    }
-    .product-card--horizontal .product-card__btn--details {
-      flex-basis: auto;
-      margin-top: 6px;
-    }
-    .product-card__specs {
-      display: grid;
-      gap: 7px;
-      margin: 18px 0 0;
-      padding: 0;
-      list-style: none;
-    }
-    .product-card__specs li {
-      display: grid;
-      grid-template-columns: minmax(92px, 0.8fr) minmax(0, 1fr);
-      gap: 10px;
-      padding: 7px 0;
-      border-bottom: 1px solid rgba(255,255,255,0.07);
-      color: rgba(255,255,255,0.72);
-      font-family: 'Inter', sans-serif;
-      font-size: 0.82rem;
-      line-height: 1.35;
-    }
-    .product-card__specs span:first-child {
-      color: rgba(255,255,255,0.44);
-      font-weight: 300;
-    }
-    .product-card__specs span:last-child {
-      color: rgba(255,255,255,0.84);
-      text-align: right;
-      overflow-wrap: anywhere;
+      margin: 0 0 16px;
     }
     .product-card__slider {
       position: relative;
-      aspect-ratio: 4/3;
+      aspect-ratio: 1/1;
       overflow: hidden;
       border-radius: 12px;
       margin: 12px 12px 0;
@@ -555,7 +484,7 @@
       background: #fff;
     }
     .product-card__body {
-      padding: 20px 20px 24px;
+      padding: 16px 16px 20px;
     }
     .product-card__name {
       font-family: 'TT Ramillas Trl', serif;
@@ -565,19 +494,6 @@
       margin: 0 0 6px;
       letter-spacing: -0.01em;
     }
-    .product-card--horizontal .product-card__name,
-    .product-card--horizontal .product-card__article {
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
-    .product-card--horizontal .product-card__name,
-    .product-card--horizontal .product-card__article {
-      margin: 0;
-    }
-    .product-card--horizontal .product-card__name {
-      line-height: 1.15;
-    }
     .product-card__collection {
       font-family: 'Inter', sans-serif;
       font-size: 0.8rem;
@@ -586,14 +502,6 @@
       text-transform: uppercase;
       letter-spacing: 0.05em;
       margin: 0 0 10px;
-    }
-    .product-card__desc {
-      font-family: 'Inter', sans-serif;
-      font-size: 0.9rem;
-      color: rgba(255,255,255,0.55);
-      font-weight: 300;
-      line-height: 1.5;
-      margin: 0 0 16px;
     }
     .product-card__price {
       font-family: 'Inter', sans-serif;
@@ -1300,26 +1208,8 @@
         grid-template-columns: 1fr;
         gap: 20px;
       }
-      .product-card--horizontal {
-        grid-template-areas:
-          "head"
-          "left"
-          "right";
-        grid-template-columns: 1fr;
-        padding: 14px;
-      }
-      .product-card--horizontal .product-card__head {
+      .product-card__head .product-card__name {
         min-height: 0;
-      }
-      .product-card--horizontal .product-card__slider {
-        aspect-ratio: 4 / 5;
-      }
-      .product-card__specs li {
-        grid-template-columns: 1fr;
-        gap: 4px;
-      }
-      .product-card__specs span:last-child {
-        text-align: left;
       }
       .product-modal__inner {
         padding: 20px 16px 60px;
@@ -1382,14 +1272,11 @@
       }
     }
 
-    /* Sidebar width like the rest of the catalog; one wide horizontal card
-       per row so the product image reads large and all specs fit */
+    /* Sidebar width like the rest of the catalog; сетка карточек — общая для
+       каталога: три в ряд на десктопе (style.css) */
     @media (min-width: 1025px) {
       .catalog-workspace__layout {
         grid-template-columns: 240px minmax(0, 1fr);
-      }
-      .catalog-workspace__main .catalog-grid__inner {
-        grid-template-columns: minmax(0, 1fr);
       }
     }
   </style>
@@ -1849,6 +1736,32 @@
         },
         images: []
       },
+      {
+        id: 'topka-hoxter-eca-67-45',
+        cat: 'kaminnye-topki',
+        name: 'Каминная топка Hoxter ECKA 67/45',
+        article: '2041178',
+        collection: 'Hoxter',
+        fireboxType: 'corner',
+        desc: 'Угловая топка со стеклом от пола до перекрытия — демонстрационная карточка подраздела.',
+        price: '742 000',
+        priceOld: '824 000',
+        discount: 'Выгода 10%',
+        fullDesc: 'Каминная топка Hoxter ECKA 67/45 добавлена как демонстрационная карточка товара для подраздела Каминные топки. Отдельная HTML-страница для этой карточки не создается.',
+        specs: {
+          'Бренд': 'Hoxter',
+          'Тип топки': 'Угловое стекло',
+          'Габаритные размеры (ШхВхГ)': '780x1495x520 мм',
+          'Размер топочного окна (ШхВхГ)': '670x450 мм',
+          'Диаметр дымохода': '200 мм',
+          'Вес': '265 кг',
+          'Мощность': '9 кВт',
+          'Топливо': 'Дрова',
+          'КПД с закрытой дверкой, в номинальном режиме': '81%',
+          'Материал': 'Сталь'
+        },
+        images: []
+      },
       // === ЭЛЕКТРООЧАГИ ===
       {
         id: 'ochag-airtone-andalle-1000',
@@ -1877,6 +1790,21 @@
           'Тип': 'Электроочаг',
           'Формат': 'Встраиваемый',
           'Назначение': 'Порталы и облицовки'
+        },
+        images: []
+      },
+      {
+        id: 'ochag-dimplex-cassette-600',
+        cat: 'ochagi',
+        name: 'Очаг Dimplex Cassette 600',
+        collection: 'Электроочаги',
+        desc: 'Компактный электроочаг для узких порталов — демонстрационная карточка подраздела.',
+        price: 'по запросу',
+        fullDesc: 'Очаг Dimplex Cassette 600 показан как шаблон карточки для будущего подключения товарных данных.',
+        specs: {
+          'Тип': 'Электроочаг',
+          'Формат': 'Кассетный',
+          'Назначение': 'Узкие порталы и ниши'
         },
         images: []
       },
@@ -2611,7 +2539,6 @@
       filtered.forEach(function(p) {
         var card = document.createElement('div');
         card.className = 'product-card';
-        card.classList.add('product-card--horizontal');
         card.setAttribute('data-category', p.cat);
         card.setAttribute('data-id', p.id);
 
@@ -2647,31 +2574,15 @@
         var detailsButton = p.productUrl ? '<a class="product-card__btn product-card__btn--details" href="' + p.productUrl + '" data-id="' + p.id + '">Описание ' + ARROW_SVG + '</a>' : '<button class="product-card__btn product-card__btn--details is-disabled" data-id="' + p.id + '" type="button" disabled>Описание ' + ARROW_SVG + '</button>';
         var requestButton = '<button class="product-card__btn product-card__btn--request" data-product="' + p.name + '" data-price="' + p.price + '" onclick="event.stopPropagation(); openRequestModal(\'' + p.name.replace(/'/g, "\\'") + '\', \'' + p.price + '\')">Оставить заявку</button>';
 
-        var cardSpecKeys = p.cat === 'kaminnye-topki' ? [
-            'Габаритные размеры (ШхВхГ)',
-            'Размер топочного окна (ШхВхГ)',
-            'Диаметр дымохода',
-            'Вес',
-            'Мощность'
-          ] : Object.keys(p.specs || {});
-        var specsList = '<ul class="product-card__specs">';
-        cardSpecKeys.forEach(function(key) {
-          if (!p.specs || !p.specs[key]) return;
-          var label = key === 'КПД с закрытой дверкой, в номинальном режиме' ? 'КПД' : key;
-          specsList += '<li><span>' + label + '</span><span>' + p.specs[key] + '</span></li>';
-        });
-        specsList += '</ul>';
+        // Карточка каталога: название, артикул, изображение, цена и кнопки.
+        // Характеристики показываются на странице товара и в модалке.
         card.innerHTML =
           '<div class="product-card__head">' +
             '<h3 class="product-card__name">' + p.name + '</h3>' +
             (p.article ? '<p class="product-card__article">Арт. ' + p.article + '</p>' : '<p class="product-card__article">' + p.collection + '</p>') +
           '</div>' +
-          '<div class="product-card__left">' +
-            sliderHtml +
-          '</div>' +
-          '<div class="product-card__right">' +
-            '<p class="product-card__desc">' + p.desc + '</p>' +
-            specsList +
+          sliderHtml +
+          '<div class="product-card__body">' +
             '<div class="product-card__price-block">' +
               priceHtml +
               (p.priceTurnkey ? '<p class="product-card__price product-card__price--turnkey">Под ключ: ' + p.priceTurnkey + ' &#8381;</p>' : '') +
