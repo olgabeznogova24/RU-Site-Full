@@ -35,7 +35,7 @@
   --green: #93d200;
   --white: #ffffff;
   --text-muted: rgba(255,255,255,0.6);
-  --content_width: 1770px;
+  --content_width: 1520px;
   --transparent_white_color: rgb(255 255 255 / 60%);
   --color_1: #ffa25f;
   --text-dim: rgba(255,255,255,0.4);
@@ -44,7 +44,7 @@
   --font-heading: 'TT Ramillas', 'TT Ramillas Trl', Georgia, serif;
   --font-body: 'TT Commons Pro', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   --max-width: 1920px;
-  --container: 1320px;
+  --container: 1600px;
   --header-h: 112px;
   --transition: 0.3s ease;
 }
@@ -1426,9 +1426,9 @@ ul, ol {
   justify-content: space-between;
   align-items: flex-start;
   flex-wrap: wrap;
-  max-width: 1470px;
+  max-width: var(--container);
   margin: 0 auto;
-  padding: 50px 0 80px 0;
+  padding: 50px 40px 80px 40px;
   border-bottom: 1px solid rgba(255,255,255,0.1);
 }
 
@@ -1481,12 +1481,6 @@ ul, ol {
 
 .about__one-block ul li span {
   display: inline-block;
-}
-
-@media (max-width: 1580px) {
-  .about__blocks {
-    padding: 50px 40px 80px 40px;
-  }
 }
 
 @media (max-width: 1279px) {
@@ -1757,7 +1751,7 @@ ul, ol {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  max-width: 1400px;
+  max-width: var(--container);
   margin: 0 auto;
   position: relative;
   z-index: 2;
@@ -1809,7 +1803,7 @@ ul, ol {
 
 /* ===== SHOWCASE (PRODUCT GALLERY) ===== */
 .showcase__item {
-  max-width: 1400px;
+  max-width: var(--container);
   margin: 0 auto;
   padding: 0 40px;
   display: flex;
@@ -5840,8 +5834,9 @@ ul, ol {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  max-width: var(--content_width);
+  max-width: var(--container);
   margin: 0px auto;
+  padding: 0 40px;
 }
 .square_blocks_3 .blocks .one_block {
   display: flex;
@@ -5902,6 +5897,7 @@ ul, ol {
 .square_blocks_3__project-card {
   display: grid;
   grid-template-columns: minmax(0, 46%) minmax(320px, 54%);
+  width: calc(100% - 80px);
   max-width: var(--content_width);
   margin: 0 auto 90px;
   border: 1px solid rgba(255,255,255,0.1);
@@ -6043,15 +6039,6 @@ ul, ol {
   font-weight: 600;
   text-decoration: none;
 }
-@media (max-width: 1860px) {
-  .square_blocks_3 .blocks {
-    padding: 0 40px;
-  }
-  .square_blocks_3__project-card {
-    margin-left: 40px;
-    margin-right: 40px;
-  }
-}
 @media (max-width: 1279px) {
   .square_blocks_3 .archive-heading {
     max-width: 90%;
@@ -6112,6 +6099,7 @@ ul, ol {
   }
   .square_blocks_3__project-card {
     grid-template-columns: 1fr;
+    width: auto;
     margin: 8px 20px 70px;
   }
   .square_blocks_3__project-image {
@@ -6158,9 +6146,10 @@ ul, ol {
   flex-wrap: wrap;
   flex-direction: column;
   justify-content: space-between;
-  max-width: var(--content_width);
+  max-width: var(--container);
   height: 100%;
   margin: 0px auto;
+  padding: 0 40px;
   z-index: 2;
 }
 .projects_experience_block .block_content .top_text {
@@ -6211,6 +6200,9 @@ ul, ol {
   .projects_experience_block {
     background-image: none;
     height: auto;
+  }
+  .projects_experience_block .block_content {
+    padding: 0;
   }
   .projects_experience_block .block_content .top_text {
     position: relative;
