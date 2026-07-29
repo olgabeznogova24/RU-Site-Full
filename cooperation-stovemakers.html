@@ -296,7 +296,7 @@
       counter-increment: featured-benefit;
     }
     .cooperation-card--featured .cooperation-card__list li::before {
-      content: counter(featured-benefit, decimal-leading-zero);
+      content: counter(featured-benefit);
       top: 24px;
       left: 22px;
       width: 36px;
@@ -351,7 +351,7 @@
       counter-increment: reason-card;
     }
     .cooperation-reason::before {
-      content: counter(reason-card, decimal-leading-zero);
+      content: counter(reason-card);
       position: absolute;
       top: 28px;
       left: 24px;
@@ -366,7 +366,7 @@
       align-items: center;
       min-height: 2rem;
       margin: 0 0 24px;
-      padding-left: 58px;
+      padding-left: 30px;
       color: #fff;
       font-family: var(--font-heading);
       font-size: 1.2rem;
@@ -467,7 +467,7 @@
       transform: translateY(-2px);
     }
     .cooperation-list li::before {
-      content: counter(cooperation-list, decimal-leading-zero);
+      content: counter(cooperation-list);
       position: absolute;
       top: 50%;
       left: 24px;
@@ -486,16 +486,11 @@
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 24px;
-      counter-reset: cooperation-step;
     }
     .cooperation-step {
       position: relative;
       padding: 34px 30px;
       overflow: hidden;
-      counter-increment: cooperation-step;
-    }
-    .cooperation-step::before {
-      content: none;
     }
     .cooperation-step__header {
       margin-bottom: 26px;
@@ -506,18 +501,9 @@
     .cooperation-step__header .cooperation-step__title {
       display: flex;
       align-items: center;
-      gap: 18px;
       min-height: 2.2rem;
       font-size: clamp(1.55rem, 2vw, 2rem);
       line-height: 1.18;
-    }
-    .cooperation-step__header .cooperation-step__title::before {
-      content: counter(cooperation-step, decimal-leading-zero);
-      flex: 0 0 auto;
-      color: rgba(203,59,37,0.78);
-      font-family: var(--font-heading);
-      font-size: 2.2rem;
-      line-height: 1;
     }
     .cooperation-step__list {
       display: grid;
@@ -539,7 +525,7 @@
       counter-increment: scenario-step;
     }
     .cooperation-step__list li::before {
-      content: counter(scenario-step, decimal-leading-zero);
+      content: counter(scenario-step);
       flex: 0 0 auto;
       width: 30px;
       height: 30px;
