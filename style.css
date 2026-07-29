@@ -4019,7 +4019,8 @@ ul, ol {
   display: grid;
   grid-template-columns: repeat(4, max-content);
   justify-content: center;
-  column-gap: clamp(88px, 9vw, 184px);
+  /* Gap sized so the footer row matches the header cluster width */
+  column-gap: clamp(0px, calc((100% - 800px) / 3), 171px);
   padding-bottom: 48px;
   border-bottom: 1px solid var(--border);
 }
@@ -4155,8 +4156,18 @@ ul, ol {
   justify-content: center;
   align-items: start;
   padding-top: 32px;
-  column-gap: clamp(40px, 15vw, 307px);
+  column-gap: clamp(0px, calc(100% - 960px), 365px);
   row-gap: 0;
+}
+
+/* Narrower header cluster below 1500 — keep the footer in step with it */
+@media (max-width: 1500px) and (min-width: 961px) {
+  .footer__top {
+    column-gap: clamp(0px, calc((100% - 800px) / 3), 121px);
+  }
+  .footer__bottom {
+    column-gap: clamp(0px, calc(100% - 960px), 215px);
+  }
 }
 
 .footer__copy {
