@@ -20,41 +20,6 @@
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
-  /* ----- Header cooperation dropdown ----- */
-  const topCooperationDropdowns = document.querySelectorAll('.header__top-dropdown');
-
-  function closeTopCooperationDropdowns(exceptDropdown) {
-    topCooperationDropdowns.forEach(function (dropdown) {
-      if (exceptDropdown && dropdown === exceptDropdown) return;
-      dropdown.classList.remove('open');
-      var trigger = dropdown.querySelector('.header__top-dropdown-toggle');
-      if (trigger) trigger.setAttribute('aria-expanded', 'false');
-    });
-  }
-
-  topCooperationDropdowns.forEach(function (dropdown) {
-    var trigger = dropdown.querySelector('.header__top-dropdown-toggle');
-    if (!trigger) return;
-
-    trigger.addEventListener('click', function (event) {
-      event.preventDefault();
-      event.stopPropagation();
-      closeTopCooperationDropdowns(dropdown);
-      var isOpen = dropdown.classList.toggle('open');
-      trigger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-    });
-  });
-
-  document.addEventListener('click', function (event) {
-    if (!event.target.closest('.header__top-dropdown')) {
-      closeTopCooperationDropdowns();
-    }
-  });
-
-  document.addEventListener('keydown', function (event) {
-    if (event.key === 'Escape') closeTopCooperationDropdowns();
-  });
-
   /* ----- Shared calltracking contacts ----- */
   var calltrackingDefaults = {
     phone: {
