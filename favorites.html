@@ -3,19 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Часто задаваемые вопросы — CeramicaDecor</title>
-  <meta name="description" content="Ответы на частые вопросы об изразцах CeramicaDecor: цвет и роспись, индивидуальный заказ, использование на печах и каминах.">
-  <link rel="canonical" href="https://ceramicadecor.ru/faq.html">
-  <meta property="og:title" content="Часто задаваемые вопросы — CeramicaDecor">
-  <meta property="og:description" content="Ответы на частые вопросы об изразцах CeramicaDecor: цвет и роспись, индивидуальный заказ, использование на печах и каминах.">
+  <title>Избранное — CeramicaDecor</title>
+  <meta name="description" content="Товары, отмеченные вами на сайте CeramicaDecor: камины, печи, изразцы и комплектующие.">
+  <!-- Персональный список пользователя — из поиска исключён. -->
+  <meta name="robots" content="noindex, nofollow">
+  <meta property="og:title" content="Избранное — CeramicaDecor">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="ru_RU">
-  <meta property="og:image" content="images/banner-questions_desktop.jpg">
-  <meta property="og:image:width" content="1920">
-  <meta property="og:image:height" content="620">
-  <meta property="og:url" content="https://ceramicadecor.ru/faq.html">
   <meta property="og:site_name" content="CeramicaDecor">
-  <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,121 +18,280 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <!-- Яндекс.Метрика — TODO: вставить код счётчика -->
-  <!-- Яндекс.Вебмастер — TODO: вставить мета-тег верификации -->
   <style>
-    /* ===== HERO ===== */
-    .catalog-hero {
-      padding: 160px 0 140px;
-      text-align: center;
+    .favorites {
+      padding: 140px 0 100px;
+      min-height: 60vh;
+    }
+    .favorites__breadcrumbs {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.875rem;
+      color: var(--text-dim);
+      margin-bottom: 24px;
+    }
+    .favorites__breadcrumbs a {
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+    .favorites__breadcrumbs a:hover {
+      color: var(--white);
+    }
+    .favorites__head {
+      display: flex;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+    }
+    .favorites__title {
+      font-family: var(--font-heading);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 400;
+      color: var(--white);
+      line-height: 1.15;
+      margin: 0;
+    }
+    .favorites__count {
+      color: var(--text-muted);
+      font-size: 0.9375rem;
+      margin: 0;
+    }
+    .favorites__foreign {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+      background: var(--bg-lighter);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px 20px;
+      margin-top: 24px;
+      color: var(--text-muted);
+      font-size: 0.9375rem;
+    }
+    .favorites__foreign a {
+      color: var(--primary);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    .favorites__toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin: 28px 0 32px;
+    }
+    .favorites__tool {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--bg-lighter);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 10px 20px;
+      color: var(--white);
+      font-family: var(--font-body);
+      font-size: 0.875rem;
+      cursor: pointer;
+      transition: border-color var(--transition), color var(--transition);
+    }
+    .favorites__tool svg {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+    }
+    .favorites__tool:hover {
+      border-color: var(--border-light);
+    }
+    .favorites__tool--clear:hover {
+      color: var(--primary);
+      border-color: var(--primary);
+    }
+    .favorites__grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 24px;
+    }
+    /* у этих блоков есть display, поэтому атрибут hidden сам по себе их не прячет */
+    .favorites__foreign[hidden],
+    .favorites__toolbar[hidden],
+    .favorites__empty[hidden] {
+      display: none;
+    }
+    .fav-card {
+      position: relative; /* якорь для кнопки «убрать» */
+      display: flex;
+      flex-direction: column;
+      background: var(--bg-lighter);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: border-color var(--transition);
+    }
+    .fav-card:hover {
+      border-color: var(--border-light);
+    }
+    .fav-card__img {
       position: relative;
-      background: url('images/banner-questions_desktop.jpg') center center/cover no-repeat;
-      margin-bottom: 0;
+      display: block;
+      aspect-ratio: 4/3;
+      overflow: hidden;
+      background: #111;
     }
-    @media (max-width: 768px) {
-      .catalog-hero {
-        background-image: url('images/banner-questions_mobile.jpg');
-      }
+    .fav-card__img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
     }
-    .catalog-hero::before {
-      content: '';
+    .fav-card:hover .fav-card__img img {
+      transform: scale(1.04);
+    }
+    .fav-card__img--empty {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-dim);
+    }
+    .fav-card__remove {
       position: absolute;
-      inset: 0;
-      background: rgba(16,16,16,0.65);
-    }
-    .catalog-hero .container {
-      position: relative;
-      z-index: 1;
-    }
-    .catalog-hero__title {
-      font-family: 'TT Ramillas Trl', serif;
-      font-size: clamp(2.5rem, 5vw, 4rem);
-      font-weight: 400;
+      top: 12px;
+      right: 12px;
+      z-index: 3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 34px;
+      height: 34px;
+      padding: 0;
+      border: none;
+      border-radius: 50%;
+      background: rgba(17,17,17,0.6);
       color: #fff;
-      margin: 0 0 16px;
-      letter-spacing: -0.02em;
+      cursor: pointer;
+      transition: background var(--transition), color var(--transition);
     }
-    .catalog-hero__subtitle {
-      font-family: 'Inter', sans-serif;
-      font-size: clamp(1rem, 2vw, 1.25rem);
-      color: #fff;
-      font-weight: 300;
-      margin: 0 auto;
-      max-width: 820px;
-      text-wrap: balance;
+    .fav-card__remove svg {
+      width: 16px;
+      height: 16px;
+      pointer-events: none;
     }
-
-    /* ===== FAQ TEXT BLOCK ===== */
-    .faq-page {
-      padding: 90px 0 110px;
+    .fav-card__remove:hover {
+      background: var(--primary);
     }
-    .faq-page__inner {
-      max-width: 860px;
-      margin: 0 auto;
+    .fav-card__body {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      padding: 18px 20px 0;
+      flex: 1 1 auto;
     }
-    .faq-page__group + .faq-page__group {
-      margin-top: 64px;
-    }
-    .faq-page__reveal {
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
-    .faq-page__reveal.is-visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    @media (prefers-reduced-motion: reduce) {
-      .faq-page__reveal { opacity: 1; transform: none; transition: none; }
-    }
-    .faq-page__group-title {
-      font-family: 'TT Ramillas Trl', 'Times New Roman', serif;
-      font-size: clamp(1.5rem, 3vw, 2rem);
-      font-weight: 400;
-      color: #fff;
+    .fav-card__meta {
+      color: var(--text-dim);
+      font-size: 0.8125rem;
       margin: 0;
-      padding-bottom: 18px;
-      border-bottom: 1px solid rgba(255,255,255,0.14);
     }
-    .faq-page__item {
-      padding: 30px 0;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-    }
-    .faq-page__item:last-child {
-      border-bottom: none;
-      padding-bottom: 0;
-    }
-    .faq-page__question {
-      font-family: 'TT Commons Pro', 'Inter', sans-serif;
-      font-size: 18px;
-      font-weight: 600;
-      line-height: 1.45;
-      color: #fff;
-      margin: 0 0 12px;
-    }
-    .faq-page__answer {
-      font-size: 16px;
-      line-height: 1.75;
-      color: rgba(255,255,255,0.7);
+    .fav-card__name {
+      font-family: var(--font-heading);
+      font-size: 1.125rem;
+      font-weight: 400;
+      line-height: 1.25;
       margin: 0;
+    }
+    .fav-card__name a {
+      color: var(--white);
+      text-decoration: none;
+    }
+    .fav-card__name a:hover {
+      color: var(--primary);
+    }
+    .fav-card__price {
+      color: var(--white);
+      font-size: 0.9375rem;
+      margin: 4px 0 0;
+    }
+    .fav-card__actions {
+      display: flex;
+      gap: 10px;
+      padding: 18px 20px 20px;
+    }
+    .fav-card__btn {
+      flex: 1 1 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 10px;
+      padding: 11px 14px;
+      font-family: var(--font-body);
+      font-size: 0.8125rem;
+      text-align: center;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background var(--transition), color var(--transition), border-color var(--transition);
+    }
+    .fav-card__btn--details {
+      background: transparent;
+      border: 1px solid var(--border-light);
+      color: var(--white);
+    }
+    .fav-card__btn--details:hover {
+      border-color: var(--white);
+    }
+    .fav-card__btn--request {
+      background: var(--primary);
+      border: 1px solid var(--primary);
+      color: #fff;
+    }
+    .fav-card__btn--request:hover {
+      background: var(--primary-hover);
+      border-color: var(--primary-hover);
+    }
+    .favorites__empty {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 12px;
+      padding: 72px 24px 80px;
+    }
+    .favorites__empty svg {
+      width: 64px;
+      height: 64px;
+      color: var(--text-dim);
+      margin-bottom: 8px;
+    }
+    .favorites__empty-title {
+      font-family: var(--font-heading);
+      font-size: 1.5rem;
+      color: var(--white);
+      margin: 0;
+    }
+    .favorites__empty-text {
+      color: var(--text-muted);
+      font-size: 0.9375rem;
+      max-width: 460px;
+      margin: 0;
+    }
+    .favorites__empty .btn {
+      margin-top: 12px;
     }
     @media (max-width: 768px) {
-      .faq-page {
-        padding: 60px 0 80px;
+      .favorites {
+        padding: 110px 0 64px;
       }
-      .faq-page__item {
-        padding: 24px 0;
+      .favorites__grid {
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        gap: 16px;
       }
-      .faq-page__question {
-        font-size: 17px;
-      }
-      .faq-page__answer {
-        font-size: 15px;
+      .fav-card__actions {
+        flex-direction: column;
       }
     }
   </style>
 </head>
 <body>
-
   <!-- ===== HEADER ===== -->
   <header class="header" id="header">
     <div class="container header__inner">
@@ -291,99 +445,55 @@
       </div>
     </div>
   </header>
-  <main>
-    <section class="catalog-hero">
-      <div class="container">
-        <h1 class="catalog-hero__title">Часто задаваемые вопросы</h1>
-        <p class="catalog-hero__subtitle">Собрали вопросы об изразцах, которые нам задают чаще всего</p>
+
+  <!-- ===== ИЗБРАННОЕ =====
+       Демонстрационная страница. Список хранится в localStorage (favorites.js),
+       при интеграции заменить на список пользователя из внутренней системы.
+       Карточки рисуются скриптом внизу файла из данных, которые сохранены
+       в момент нажатия на сердечко. -->
+  <section class="favorites">
+    <div class="container">
+
+      <nav class="favorites__breadcrumbs" aria-label="Хлебные крошки">
+        <a href="index.html">Главная</a>
+        <span>/</span>
+        <span>Избранное</span>
+      </nav>
+
+      <div class="favorites__head">
+        <h1 class="favorites__title">Избранное</h1>
+        <p class="favorites__count" data-fav-page-count></p>
       </div>
-    </section>
 
-    <section class="faq-page">
-      <div class="container">
-        <div class="faq-page__inner">
-
-          <div class="faq-page__group">
-            <h2 class="faq-page__group-title">Цветные изразцы</h2>
-            <div class="faq-page__item">
-              <h3 class="faq-page__question">Чем цветной изразец отличается от расписного?</h3>
-              <p class="faq-page__answer">Однотонный изразец может похвастаться только ярким глазурным покрытием, когда как расписной несет на себе след руки художника, будь то простая окантовка по контуру или сложнейшая сюжетная сценка. Грамотное комбинирование однотонных и расписных изразцов в вашем проекте продемонстрирует красивейшую игру оттенков, которые перекликаются между элементами и напитывают пространство цветом.</p>
-            </div>
-            <div class="faq-page__item">
-              <h3 class="faq-page__question">Можно ли заказать индивидуальный цвет?</h3>
-              <p class="faq-page__answer">Да. Наша палитра полна разных по цвету и типу покрытия глазурей, но если вы мечтаете о каком-то определенном оттенке – мы подберем подходящий по каталогу RAL и воплотим его в керамике.</p>
-            </div>
-            <div class="faq-page__item">
-              <h3 class="faq-page__question">Подходят ли цветные изразцы для оформления дровяных печей и каминов?</h3>
-              <p class="faq-page__answer">Да. Изразец за свой технологический процесс проходит через несколько высокотемпературных обжигов, в некоторых случаях доходя до температуры в 1200°С, когда как внешняя часть короба камина или печи нагревается максимум до 150-200°С – изразцу такой нагрев не страшен.</p>
-            </div>
-          </div>
-
-          <div class="faq-page__group">
-            <h2 class="faq-page__group-title">Однотонные изразцы</h2>
-            <div class="faq-page__item">
-              <h3 class="faq-page__question">Можно ли подобрать индивидуальный цвет?</h3>
-              <p class="faq-page__answer">Да. Наша палитра полна разных по цвету и типу покрытия глазурей, но если вы мечтаете о каком-то определенном оттенке – мы подберем подходящий по каталогу RAL и воплотим его в керамике.</p>
-            </div>
-            <div class="faq-page__item">
-              <h3 class="faq-page__question">Можно ли заказать однотонные изразцы с рельефной поверхностью?</h3>
-              <p class="faq-page__answer">Да, и это будет замечательным решением – под однотонным покрытием рельеф читается особенно выразительно!</p>
-            </div>
-            <div class="faq-page__item">
-              <h3 class="faq-page__question">Можно ли сочетать однотонные изразцы с расписными?</h3>
-              <p class="faq-page__answer">Да, это классический прием. Однотонные изразцы формируют основной объем проекта, а расписные вставки станут яркими акцентами композиции.</p>
-            </div>
-            <div class="faq-page__item">
-              <h3 class="faq-page__question">Подходят ли однотонные изразцы для дровяной печи?</h3>
-              <p class="faq-page__answer">Да. Изразец за свой технологический процесс проходит через несколько высокотемпературных обжигов, в некоторых случаях доходя до температуры в 1200°С, когда как внешняя часть короба камина или печи нагревается максимум до 150-200°С – изразцу такой нагрев не страшен.</p>
-            </div>
-          </div>
-
-          <div class="faq-page__group">
-            <h2 class="faq-page__group-title">Изразцы с художественной росписью</h2>
-            <div class="faq-page__item">
-              <h3 class="faq-page__question">Чем расписные изразцы отличаются от однотонных?</h3>
-              <p class="faq-page__answer">Расписной изразец покрыт ручной художественной росписью; у однотонных изделий декоративную задачу выполняет только глазурное покрытие одного оттенка. Расписные и однотонные изразцы можно комбинировать в рамках одного проекта.</p>
-            </div>
-            <div class="faq-page__item">
-              <h3 class="faq-page__question">Можно ли заказать роспись по своему эскизу?</h3>
-              <p class="faq-page__answer">Да. Наши художники выполнят роспись любой сложности по эскизу, фотографии или иллюстрации заказчика – от простых орнаментов до детализированных пейзажей и портретов.</p>
-            </div>
-            <div class="faq-page__item">
-              <h3 class="faq-page__question">Не стирается ли роспись со временем?</h3>
-              <p class="faq-page__answer">Нет. Подглазурная роспись защищена слоем бесцветной глазури, а надглазурная надежно закреплена высокотемпературным обжигом – рисунок останется на долгие годы таким же красочным, как в первый день.</p>
-            </div>
-            <div class="faq-page__item">
-              <h3 class="faq-page__question">Можно ли собрать из расписных изразцов панно?</h3>
-              <p class="faq-page__answer">Да. Панно можно собрать и из орнаментальных изразцов, и из сюжетных сценок – у вас в проекте может получиться как единая яркая картина, так и собрание историй, развернувшееся на плитках.</p>
-            </div>
-          </div>
-
-          <div class="faq-page__group">
-            <h2 class="faq-page__group-title">Изразцы с румпой</h2>
-            <div class="faq-page__item">
-              <h3 class="faq-page__question">Что такое румпа простыми словами?</h3>
-              <p class="faq-page__answer">Румпа – это выступающий короб на задней стороне изразца. Он замуровывается в кладку печи, удерживает облицовку и помогает накапливать тепло.</p>
-            </div>
-            <div class="faq-page__item">
-              <h3 class="faq-page__question">Чем изразец с румпой лучше плитки для дровяной печи?</h3>
-              <p class="faq-page__answer">Изразец с румпой крепится в кладку механически и лучше аккумулирует тепло, поэтому для дровяных печей и каминов это более долговечное и практичное решение.</p>
-            </div>
-            <div class="faq-page__item">
-              <h3 class="faq-page__question">Можно ли заказать любой рисунок в исполнении с румпой?</h3>
-              <p class="faq-page__answer">Да. Любое изделие из нашего каталога мы можем выполнить как в виде классического изразца с румпой, так и в виде гладкой плитки — в зависимости от задачи проекта.</p>
-            </div>
-            <div class="faq-page__item">
-              <h3 class="faq-page__question">Подойдут ли изразцы с румпой для реставрации старой печи?</h3>
-              <p class="faq-page__answer">Да, это основной тип изделий для воссоздания и реставрации исторических очагов.</p>
-            </div>
-          </div>
-
-        </div>
+      <!-- Открыт чужой список: favorites.html?list=&lt;токен&gt;.
+           Токен выдаёт сервер, в вёрстке он демонстрационный. -->
+      <div class="favorites__foreign" data-fav-foreign hidden>
+        <span>Это ссылка на избранное другого человека.</span>
+        <a href="favorites.html">Перейти в моё избранное</a>
       </div>
-    </section>
-  </main>
 
+      <div class="favorites__toolbar" data-fav-toolbar hidden>
+        <button type="button" class="favorites__tool" data-fav-share>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          <span data-fav-share-label>Копировать ссылку</span>
+        </button>
+        <button type="button" class="favorites__tool favorites__tool--clear" data-fav-clear>Очистить список</button>
+      </div>
+
+      <!-- Зона демо-данных: карточки приходят из избранного пользователя -->
+      <div class="favorites__grid" id="favoritesGrid" data-dynamic-zone="favorites"></div>
+
+      <div class="favorites__empty" data-fav-empty hidden>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        <p class="favorites__empty-title">В избранном пока нет товаров</p>
+        <p class="favorites__empty-text">Нажмите на сердечко в карточке товара или на его странице — товар появится здесь, и его можно будет отправить менеджеру одной ссылкой.</p>
+        <a href="catalog.html" class="btn btn--primary">Перейти в каталог</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
   <footer class="footer" id="footer">
     <div class="footer__glow"></div>
     <div class="container">
@@ -465,29 +575,138 @@
     <p class="cookie-banner__text">Мы используем файлы cookie. Продолжая использование сайта, вы соглашаетесь с нашей <a href="privacy.html">Политикой конфиденциальности</a>.</p>
     <button class="cookie-banner__btn" id="cookieAccept">Принять</button>
   </div>
-
-  <!-- Плавное появление групп вопросов (по одной группе) -->
   <script>
-    (function() {
-      var groups = document.querySelectorAll('.faq-page__group');
-      if (!groups.length) return;
-      groups.forEach(function(g) { g.classList.add('faq-page__reveal'); });
-      if (!('IntersectionObserver' in window)) {
-        groups.forEach(function(g) { g.classList.add('is-visible'); });
-        return;
+    /* ===== СТРАНИЦА ИЗБРАННОГО =====
+       Карточки собираются из списка, который ведёт favorites.js.
+       INTEGRATION: заменить CDFavorites.list() на выдачу списка пользователя
+       из внутренней системы, а состав карточки брать из данных товара,
+       а не из data-атрибутов кнопки. */
+    /* favorites.js подключён с defer и выполняется после разбора страницы,
+       поэтому ждём DOMContentLoaded — иначе CDFavorites здесь ещё нет */
+    document.addEventListener('DOMContentLoaded', function () {
+      var grid = document.getElementById('favoritesGrid');
+      var emptyBlock = document.querySelector('[data-fav-empty]');
+      var toolbar = document.querySelector('[data-fav-toolbar]');
+      var countEl = document.querySelector('[data-fav-page-count]');
+      var foreignBlock = document.querySelector('[data-fav-foreign]');
+      var shareBtn = document.querySelector('[data-fav-share]');
+      var shareLabel = document.querySelector('[data-fav-share-label]');
+      var clearBtn = document.querySelector('[data-fav-clear]');
+      if (!grid || !window.CDFavorites) return;
+
+      /* Открыт чужой список. Настоящий список по токену отдаёт сервер —
+         в вёрстке показываем только уведомление. */
+      var listParam = new URL(window.location.href).searchParams.get('list');
+      var isForeign = !!listParam && listParam !== CDFavorites.shareToken();
+
+      var REMOVE_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>';
+
+      function esc(v) {
+        return String(v == null ? '' : v)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;');
       }
-      // threshold 0 + нижний отступ: группа проявляется, как только её верхний
-      // край входит в область просмотра, независимо от высоты группы
-      var io = new IntersectionObserver(function(entries) {
-        entries.forEach(function(entry) {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('is-visible');
-            io.unobserve(entry.target);
+
+      function plural(n) {
+        var d10 = n % 10;
+        var d100 = n % 100;
+        if (d10 === 1 && d100 !== 11) return n + ' товар';
+        if (d10 >= 2 && d10 <= 4 && (d100 < 10 || d100 >= 20)) return n + ' товара';
+        return n + ' товаров';
+      }
+
+      function cardHtml(item) {
+        var href = item.url || '';
+        var inner = item.img
+          ? '<img src="' + esc(item.img) + '" alt="' + esc(item.name) + '" loading="lazy">'
+          : '<span>Фото товара</span>';
+        var imgClass = 'fav-card__img' + (item.img ? '' : ' fav-card__img--empty');
+        var imgBlock = href
+          ? '<a class="' + imgClass + '" href="' + esc(href) + '">' + inner + '</a>'
+          : '<div class="' + imgClass + '">' + inner + '</div>';
+        var nameBlock = href
+          ? '<a href="' + esc(href) + '">' + esc(item.name) + '</a>'
+          : esc(item.name);
+
+        return '<article class="fav-card" data-fav-item="' + esc(item.id) + '">' +
+            '<button type="button" class="fav-card__remove" data-fav-remove="' + esc(item.id) + '" aria-label="Убрать из избранного" title="Убрать из избранного">' + REMOVE_SVG + '</button>' +
+            imgBlock +
+            '<div class="fav-card__body">' +
+              (item.meta ? '<p class="fav-card__meta">' + esc(item.meta) + '</p>' : '') +
+              '<h2 class="fav-card__name">' + nameBlock + '</h2>' +
+              (item.price ? '<p class="fav-card__price">' + esc(item.price) + '</p>' : '') +
+            '</div>' +
+            '<div class="fav-card__actions">' +
+              (href ? '<a class="fav-card__btn fav-card__btn--details" href="' + esc(href) + '">Описание</a>' : '') +
+              '<button type="button" class="fav-card__btn fav-card__btn--request" data-fav-request="' + esc(item.name) + '">Оставить заявку</button>' +
+            '</div>' +
+          '</article>';
+      }
+
+      function render() {
+        var list = isForeign ? [] : CDFavorites.list();
+        if (foreignBlock) foreignBlock.hidden = !isForeign;
+        if (countEl) countEl.textContent = list.length ? plural(list.length) : '';
+        if (toolbar) toolbar.hidden = !list.length;
+        if (emptyBlock) emptyBlock.hidden = !!list.length;
+        grid.innerHTML = list.map(cardHtml).join('');
+      }
+
+      grid.addEventListener('click', function (e) {
+        var removeBtn = e.target.closest('[data-fav-remove]');
+        if (removeBtn) {
+          e.preventDefault();
+          CDFavorites.remove(removeBtn.getAttribute('data-fav-remove'));
+          return;
+        }
+        var requestBtn = e.target.closest('[data-fav-request]');
+        if (requestBtn && window.openProductRequestModal) {
+          e.preventDefault();
+          window.openProductRequestModal(requestBtn.getAttribute('data-fav-request'), '', 'Страница избранного');
+        }
+      });
+
+      if (shareBtn) {
+        shareBtn.addEventListener('click', function () {
+          var url = CDFavorites.shareUrl();   /* INTEGRATION: ссылку выдаёт сервер */
+          var done = function () {
+            if (!shareLabel) return;
+            shareLabel.textContent = 'Ссылка скопирована';
+            setTimeout(function () { shareLabel.textContent = 'Копировать ссылку'; }, 2000);
+          };
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(url).then(done, function () { window.prompt('Скопируйте ссылку:', url); });
+          } else {
+            window.prompt('Скопируйте ссылку:', url);
           }
         });
-      }, { threshold: 0, rootMargin: '0px 0px -80px 0px' });
-      groups.forEach(function(g) { io.observe(g); });
-    })();
+      }
+
+      if (clearBtn) {
+        clearBtn.addEventListener('click', function () {
+          if (window.confirm('Убрать все товары из избранного?')) CDFavorites.clear();
+        });
+      }
+
+      document.addEventListener('favorites:change', render);
+      /* возврат «назад» со страницы товара отдаёт страницу из bfcache —
+         без этого список остался бы таким, каким был при уходе */
+      window.addEventListener('pageshow', render);
+      render();
+    });
   </script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+

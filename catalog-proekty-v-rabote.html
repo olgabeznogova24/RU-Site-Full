@@ -1274,13 +1274,13 @@
           </div>
           <a href="mailto:info@ceramicadecor.ru" data-calltracking="email" data-calltracking-group="main" class="header__nav-phone-link">info@ceramicadecor.ru</a>
           <div class="header__nav-utility">
-            <div class="header__nav-item--fav"><a href="#" class="header__nav-link" id="favBtnMobile"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg> Избранное</a></div>
+            <div class="header__nav-item--fav"><a href="favorites.html" class="header__nav-link" id="favBtnMobile"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg> Избранное<span class="header__fav-count" data-fav-count hidden></span></a></div>
             <div class="header__nav-item--search"><a href="#" class="header__nav-link" id="searchBtnMobile"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg> Поиск</a></div>
           </div>
         </nav>
 
         <div class="header__actions">
-          <a href="#" class="header__fav-btn" id="favBtn" aria-label="Избранное"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></a>
+          <a href="favorites.html" class="header__fav-btn" id="favBtn" aria-label="Избранное"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg><span class="header__fav-count" data-fav-count hidden></span></a>
           <button class="header__search-btn" id="searchBtn" aria-label="Поиск"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></button>
           <button type="button" class="btn btn--primary header__cta-btn" data-request-modal="Шапка сайта">Оставить заявку</button>
           <a href="tel:+74952293046" data-calltracking="phone" data-calltracking-group="main" class="header__phone-desktop">+7 (495) 229-30-46</a>
@@ -1624,6 +1624,26 @@
     /* ===== RENDER CARDS ===== */
     var grid = document.getElementById('catalogGrid');
 
+    /* Сердечко «в избранное». Логика — favorites.js, страница списка — favorites.html.
+       Имя, цена, коллекция, картинка и ссылка продублированы в data-атрибутах:
+       без бэкенда странице избранного неоткуда взять содержимое карточки. */
+    function favBtnHtml(p) {
+      function escFav(v) {
+        return String(v == null ? '' : v).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
+      }
+      var favImg = p.images && p.images.length ? 'images/' + p.images[0] : '';
+      return '<button type="button" class="fav-btn" data-fav-toggle' +
+        ' data-fav-id="' + escFav(p.id) + '"' +
+        ' data-fav-name="' + escFav(p.name) + '"' +
+        ' data-fav-price="' + escFav(p.price) + '"' +
+        ' data-fav-meta="' + escFav(p.collection) + '"' +
+        ' data-fav-url="' + escFav(p.detailUrl || p.productUrl || '') + '"' +
+        ' data-fav-img="' + escFav(favImg) + '"' +
+        ' aria-label="Добавить в избранное" aria-pressed="false">' +
+        '<svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>' +
+        '</button>';
+    }
+
     function renderCards(category, subcategory) {
       if (!grid) { grid = document.getElementById('catalogGrid'); }
       if (!grid) return;
@@ -1656,6 +1676,7 @@
         card.innerHTML =
           '<div class="' + sliderClass + '">' +
             sliderImgs +
+            favBtnHtml(p) +
             (p.isProject ? '<span class="product-card__project-badge">&#1055;&#1088;&#1086;&#1077;&#1082;&#1090;</span>' : '') +
           '</div>' +
           '<div class="product-card__body">' +
@@ -2274,6 +2295,7 @@
   <button class="scroll-to-top" aria-label="Наверх">
     <svg viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
   </button>
+  <script src="favorites.js" defer></script>
   <script src="search.js" defer></script>
 
   <!-- COOKIE BANNER -->

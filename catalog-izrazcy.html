@@ -289,6 +289,7 @@
       transform: translateY(-3px);
     }
     .izrazcy-product__img {
+      position: relative; /* якорь для сердечка избранного (.fav-btn) */
       aspect-ratio: 1/1;
       overflow: hidden;
       background: #1a1a1a;
@@ -1215,13 +1216,13 @@
           </div>
           <a href="mailto:info@ceramicadecor.ru" data-calltracking="email" data-calltracking-group="main" class="header__nav-phone-link">info@ceramicadecor.ru</a>
           <div class="header__nav-utility">
-            <div class="header__nav-item--fav"><a href="#" class="header__nav-link" id="favBtnMobile"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg> Избранное</a></div>
+            <div class="header__nav-item--fav"><a href="favorites.html" class="header__nav-link" id="favBtnMobile"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg> Избранное<span class="header__fav-count" data-fav-count hidden></span></a></div>
             <div class="header__nav-item--search"><a href="#" class="header__nav-link" id="searchBtnMobile"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg> Поиск</a></div>
           </div>
         </nav>
 
         <div class="header__actions">
-          <a href="#" class="header__fav-btn" id="favBtn" aria-label="Избранное"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></a>
+          <a href="favorites.html" class="header__fav-btn" id="favBtn" aria-label="Избранное"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg><span class="header__fav-count" data-fav-count hidden></span></a>
           <button class="header__search-btn" id="searchBtn" aria-label="Поиск"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></button>
           <button type="button" class="btn btn--primary header__cta-btn" data-request-modal="Шапка сайта">Оставить заявку</button>
           <a href="tel:+74952293046" data-calltracking="phone" data-calltracking-group="main" class="header__phone-desktop">+7 (495) 229-30-46</a>
@@ -1795,6 +1796,25 @@
       }
     }
 
+    /* Сердечко «в избранное». Логика — favorites.js, страница списка — favorites.html.
+       Имя, цена, коллекция, картинка и ссылка продублированы в data-атрибутах:
+       без бэкенда странице избранного неоткуда взять содержимое карточки. */
+    function favBtnHtml(fav) {
+      function escFav(v) {
+        return String(v == null ? '' : v).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
+      }
+      return '<button type="button" class="fav-btn" data-fav-toggle' +
+        ' data-fav-id="' + escFav(fav.id) + '"' +
+        ' data-fav-name="' + escFav(fav.name) + '"' +
+        ' data-fav-price="' + escFav(fav.price) + '"' +
+        ' data-fav-meta="' + escFav(fav.meta) + '"' +
+        ' data-fav-url="' + escFav(fav.url || '') + '"' +
+        ' data-fav-img="' + escFav(fav.img || '') + '"' +
+        ' aria-label="Добавить в избранное" aria-pressed="false">' +
+        '<svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>' +
+        '</button>';
+    }
+
     function renderProducts(page) {
       /* Демонстрационная выдача: карточки только на первой странице —
          одна реальная, остальные заглушки. Страницы после первой пустые,
@@ -1821,6 +1841,14 @@
         html += '<div class="izrazcy-product" data-idx="' + i + '" data-detail-url="' + detailUrl + '">' +
           '<div class="izrazcy-product__img">' +
             '<img src="' + imgUrl + '" alt="' + (item.n || '') + '" loading="lazy">' +
+            favBtnHtml({
+              id: 'izrazec-' + itemArticle,
+              name: displayName,
+              price: itemPrice ? itemPrice + ' / 1 шт' : '',
+              meta: itemCollection ? 'Коллекция ' + itemCollection : 'Изразцы',
+              url: detailUrl || ('catalog-izrazcy.html?article=' + encodeURIComponent(itemArticle)),
+              img: imgUrl
+            }) +
           '</div>' +
           '<div class="izrazcy-product__body">' +
             (itemCollection ? '<p class="izrazcy-product__collection">Коллекция ' + itemCollection + '</p>' : '') +
@@ -1850,9 +1878,11 @@
             (withImage
               ? '<div class="izrazcy-product__img">' +
                   '<img src="' + placeholderImgs[pi % placeholderImgs.length] + '" alt="Изразец (образец)" loading="lazy">' +
+                  favBtnHtml({ id: 'izrazec-obrazec-' + pi, name: 'Изразец (образец)', meta: 'Коллекция', img: placeholderImgs[pi % placeholderImgs.length] }) +
                 '</div>'
               : '<div class="izrazcy-product__img izrazcy-product__img--empty">' +
                   '<svg width="64" height="64" viewBox="0 0 64 64" fill="none" opacity="0.18"><rect x="8" y="8" width="48" height="48" stroke="#fff" stroke-width="2"/><rect x="18" y="18" width="28" height="28" stroke="#fff" stroke-width="1.5" transform="rotate(45 32 32)"/></svg>' +
+                  favBtnHtml({ id: 'izrazec-obrazec-' + pi, name: 'Изразец (образец)', meta: 'Коллекция' }) +
                 '</div>') +
             '<div class="izrazcy-product__body">' +
               '<p class="izrazcy-product__collection">Коллекция</p>' +
@@ -2526,6 +2556,7 @@
   })();
   </script>
 
+  <script src="favorites.js" defer></script>
   <script src="search.js" defer></script>
 
   <button class="scroll-to-top" id="scrollToTop" aria-label="Вернуться вверх">
