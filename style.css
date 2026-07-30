@@ -7662,9 +7662,11 @@ ul, ol {
 
   /* Сувенирка и проекты в работе: картинка начинается под шапкой, а не уходит
      под логотип — на узких экранах её верх иначе не читается */
-  [data-catalog-hero="suvenirnaya-produkciya"] .catalog-hero__bg,
-  [data-catalog-hero="proekty-v-rabote"] .catalog-hero__bg {
+  [data-catalog-hero="suvenirnaya-produkciya"] .catalog-hero__bg {
     top: var(--header-h);
+  }
+  [data-catalog-hero="proekty-v-rabote"] .catalog-hero__bg {
+    top: 28px;
   }
 }
 

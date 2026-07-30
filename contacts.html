@@ -52,6 +52,14 @@
         }
       }
     }
+    @media (max-width: 480px) {
+      /* кадр поднят к нижним полкам с изразцами: при cover фото на узком
+         экране вписывается по высоте целиком, сдвинуть его иначе нельзя */
+      .contacts-hero {
+        background-size: auto 115%;
+        background-position: 50% 100%;
+      }
+    }
     .contacts-hero::before {
       content: '';
       position: absolute;
