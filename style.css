@@ -4620,6 +4620,7 @@ ul, ol {
   .hero {
     height: auto;
     min-height: 0;
+    max-height: none;
     padding: 0;
     margin-top: 0;
     display: flex;
@@ -4630,8 +4631,12 @@ ul, ol {
   .hero__bg {
     position: relative;
     width: 100%;
-    height: 46svh;
+    /* высота от пропорций фото (768x600), а не от высоты окна браузера:
+       иначе кадрирование зависит от панелей браузера на телефоне */
+    height: auto;
+    aspect-ratio: 768 / 600;
     min-height: 240px;
+    flex-shrink: 0;
     -webkit-mask-image: none;
     mask-image: none;
   }
