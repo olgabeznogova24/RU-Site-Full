@@ -204,7 +204,9 @@
 
   window.openStandardRequestModal = function (source) {
     var modal = document.getElementById('standardRequestModal');
-    if (modal && !modal.querySelector('#standardRequestForm')) {
+    /* После успешной отправки innerHTML формы заменён на «Спасибо», но сам тег
+       формы остаётся — проверяем поле, а не форму, иначе модалка не пересоздастся */
+    if (modal && !modal.querySelector('#standardRequestForm [name="name"]')) {
       modal.remove();
       modal = null;
     }
@@ -969,7 +971,7 @@
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: new URLSearchParams({ name: name, phone: phone, comment: product || '' })
       });
-      this.innerHTML = '<p style="color:#25D366;text-align:center;padding:20px 0;">Спасибо! Мы перезвоним в ближайшее время.</p>';
+      this.innerHTML = '<p style="color:#93d200;text-align:center;padding:20px 0;">Спасибо! Мы перезвоним в ближайшее время.</p>';
     });
   }
 
@@ -1042,7 +1044,7 @@
       })
     });
 
-    form.innerHTML = '<p style="color:#25D366;text-align:center;padding:20px 0;">Спасибо! Мы свяжемся с вами в ближайшее время.</p>';
+    form.innerHTML = '<p style="color:#93d200;text-align:center;padding:20px 0;">Спасибо! Мы свяжемся с вами в ближайшее время.</p>';
   });
 
   /* ----- Scroll to top ----- */
