@@ -34,7 +34,7 @@
   --green: #93d200;
   --white: #ffffff;
   --text-muted: rgba(255,255,255,0.6);
-  --content_width: 1520px;
+  --content_width: 1360px;
   --transparent_white_color: rgb(255 255 255 / 60%);
   --color_1: #ffa25f;
   --text-dim: rgba(255,255,255,0.4);
@@ -43,11 +43,7 @@
   --font-heading: 'TT Ramillas', 'TT Ramillas Trl', Georgia, serif;
   --font-body: 'TT Commons Pro', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   --max-width: 1920px;
-  --container: 1600px;
-  /* Ширина видимого содержимого шапки: от логотипа до правого края блока
-     кнопок. По ней выравниваются баннер главной и футер. Значение зависит
-     от состава шапки — при изменении пунктов меню или кнопок пересчитать. */
-  --header-cluster: 1297px;
+  --container: 1440px;
   --header-h: 112px;
   --transition: 0.3s ease;
 }
@@ -271,7 +267,9 @@ ul, ol {
 }
 
 .header__main-row {
-  justify-content: center;
+  /* Ряд растянут на всю ширину контейнера: логотип по левому краю рельса,
+     блок кнопок — по правому. Свободное место уходит в промежутки. */
+  justify-content: space-between;
   min-height: 70px;
   gap: 32px;
   background: transparent;
@@ -478,14 +476,11 @@ ul, ol {
 .header__nav-messengers {
   display: none;
 }
-@media (max-width: 1500px) and (min-width: 1101px) {
-  :root {
-    --header-cluster: 1147px;
-  }
-  .header .container {
-    padding-left: 32px;
-    padding-right: 32px;
-  }
+/* Ниже 1440 контейнер перестаёт упираться в потолок и сжимается вместе с
+   окном — поджимаем содержимое шапки, чтобы оно продолжало помещаться. */
+@media (max-width: 1439px) and (min-width: 1101px) {
+  /* Паддинг шапки здесь не уменьшаем: он должен совпадать с остальными
+     контейнерами, иначе ряд шапки станет шире рельса секций и футера. */
   .header__logo-img {
     height: 38px;
   }
@@ -535,6 +530,17 @@ ul, ol {
 }
 @media (max-width: 1240px) and (min-width: 1101px) {
   .header__messengers { display: none; }
+}
+/* Самая узкая десктопная полоса: пять пунктов меню, кнопки и логотип
+   помещаются впритык. Поджимаем промежутки, чтобы не пришлось уменьшать
+   паддинг контейнера и уводить ряд шапки за общий рельс. */
+@media (max-width: 1160px) and (min-width: 1101px) {
+  .header__main-row {
+    gap: 16px;
+  }
+  .header__nav-list {
+    gap: 10px;
+  }
 }
 @media (max-width: 768px) {
   .header__phone-desktop,
@@ -969,8 +975,8 @@ ul, ol {
   position: relative;
   z-index: 3;
   padding-bottom: 48px;
-  /* Левый край текста совпадает с левым краем шапки */
-  max-width: calc(var(--header-cluster) + 80px);
+  /* Ширину и паддинги берёт от .container — тем же рельсом идут шапка,
+     секции и футер, поэтому левый край текста совпадает с логотипом. */
 }
 
 .hero__trust {
@@ -4083,9 +4089,10 @@ ul, ol {
 .footer__top {
   display: grid;
   grid-template-columns: repeat(4, max-content);
-  justify-content: center;
-  /* Gap sized so the footer row matches the header cluster width */
-  column-gap: clamp(0px, calc((100% - 800px) / 3), 171px);
+  /* Растянут на всю ширину контейнера, как и ряд шапки.
+     column-gap здесь минимум, остальное распределяет space-between. */
+  justify-content: space-between;
+  column-gap: 24px;
   padding-bottom: 48px;
   border-bottom: 1px solid var(--border);
 }
@@ -4218,21 +4225,11 @@ ul, ol {
 .footer__bottom {
   display: grid;
   grid-template-columns: max-content minmax(320px, 520px);
-  justify-content: center;
+  justify-content: space-between;
   align-items: start;
   padding-top: 32px;
-  column-gap: clamp(0px, calc(100% - 960px), 365px);
+  column-gap: 24px;
   row-gap: 0;
-}
-
-/* Narrower header cluster below 1500 — keep the footer in step with it */
-@media (max-width: 1500px) and (min-width: 1101px) {
-  .footer__top {
-    column-gap: clamp(0px, calc((100% - 800px) / 3), 121px);
-  }
-  .footer__bottom {
-    column-gap: clamp(0px, calc(100% - 960px), 215px);
-  }
 }
 
 .footer__copy {
@@ -6353,7 +6350,7 @@ ul, ol {
   z-index: 2;
   overflow: hidden;
   width: 100%;
-  max-width: 1400px;
+  max-width: var(--content_width);
   height: 820px;
   margin: 0px auto;
   display: flex;
@@ -6422,7 +6419,7 @@ ul, ol {
 .our_team_content .user_photo.photo_4 { left: 330px; top: 610px; }
 .our_team_content .user_photo.photo_5 { left: 1100px; top: 380px; }
 .our_team_content .user_photo.photo_6 { left: 940px; top: 640px; }
-@media (max-width: 1400px) {
+@media (max-width: 1360px) {
   .our_team_content { max-width: 100%; }
 }
 @media (max-width: 1279px) {

@@ -86,7 +86,9 @@
     }
     .contacts-main__grid {
       display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(320px, 420px);
+      /* колонка формы — 40% ширины ряда, но не уже прежних 420 px:
+         на узких экранах раскладка остаётся как была */
+      grid-template-columns: minmax(0, 1fr) max(420px, 40%);
       gap: 64px;
       align-items: start;
     }
