@@ -7659,6 +7659,13 @@ ul, ol {
   [data-catalog-hero="metlahskaya-plitka"] .catalog-hero__bg img { object-position: 50% 50% !important; }
   [data-catalog-hero="restoration"] .catalog-hero__bg img { object-position: 60% 50% !important; }
   [data-catalog-hero="suvenirnaya-produkciya"] .catalog-hero__bg img { object-position: 65% 50% !important; }
+
+  /* Сувенирка и проекты в работе: картинка начинается под шапкой, а не уходит
+     под логотип — на узких экранах её верх иначе не читается */
+  [data-catalog-hero="suvenirnaya-produkciya"] .catalog-hero__bg,
+  [data-catalog-hero="proekty-v-rabote"] .catalog-hero__bg {
+    top: var(--header-h);
+  }
 }
 
 /* Homepage: raise the image framing in the "Печи-камины из наличия" card. */
