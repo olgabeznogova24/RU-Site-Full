@@ -46,8 +46,12 @@ Booklet OV 2026/
 *.sketch
 *.fig
 
-# Heavy content excluded from GitHub deploy
-images/izrazcy-360/
+# Heavy content excluded from GitHub deploy.
+# Из izrazcy-360 в пакет входит только артикул демо-карточки изразцов —
+# без него на задеплоенной странице каталога первая карточка без фото.
+images/izrazcy-360/*
+!images/izrazcy-360/77133_52089_11647/
+!images/izrazcy-360/77133_52089_11647/**
 images/portfolio/*
 !images/portfolio/optimized/
 !images/portfolio/optimized/**
