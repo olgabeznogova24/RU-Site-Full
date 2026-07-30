@@ -5467,13 +5467,17 @@ ul, ol {
   }
 
   .hero {
-    min-height: 100vh;
-    padding: 60px 0 40px;
+    min-height: 0;
+    padding: 60px 0 16px;
   }
 
   .hero__content {
     max-width: 100%;
-    padding: 24px 16px 30px;
+    padding: 24px 16px 20px;
+  }
+
+  .hero__trust {
+    margin-bottom: 0;
   }
 
   .hero__title {
