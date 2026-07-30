@@ -307,7 +307,8 @@
     var tabs = menu.querySelectorAll('.header__mega-tab');
     var panelsContainer = menu.querySelector('.header__mega-panels');
     var panels = menu.querySelectorAll('.header__mega-panel');
-    var mobileMedia = window.matchMedia('(max-width: 960px)');
+    /* Порог совпадает с переключением шапки на бургер-меню в style.css */
+    var mobileMedia = window.matchMedia('(max-width: 1100px)');
     var hasMobileSelection = false;
     var hoverSwitchDelay = 300;
     var hoverSwitchTimer = null;
@@ -443,7 +444,7 @@
 
   nav.querySelectorAll('.header__nav-dropdown--simple > .header__nav-link').forEach(function (trigger) {
     trigger.addEventListener('click', function (e) {
-      if (!window.matchMedia('(max-width: 960px)').matches) return;
+      if (!window.matchMedia('(max-width: 1100px)').matches) return;
 
       e.preventDefault();
       e.stopPropagation();
@@ -468,7 +469,7 @@
   nav.querySelectorAll('a').forEach(function (link) {
     link.addEventListener('click', function () {
       if (
-        window.matchMedia('(max-width: 960px)').matches &&
+        window.matchMedia('(max-width: 1100px)').matches &&
         link.matches('.header__nav-dropdown--simple > .header__nav-link')
       ) {
         return;
